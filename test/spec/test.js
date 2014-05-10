@@ -1,4 +1,5 @@
-/* global describe, it */
+/* global describe, expect, it */
+/* jshint -W030 */
 
 (function () {
   'use strict';
@@ -11,8 +12,8 @@
     it('should have loaded jQuery', function () {
       expect(jQuery).to.exist;
       expect($).to.exist;
-    });   
-     
+    });
+
     it('should have loaded Ember', function () {
       expect(Ember).to.exist;
     });

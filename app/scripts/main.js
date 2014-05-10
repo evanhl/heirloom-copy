@@ -7,9 +7,9 @@
 
   if (Ember && Ember.VERSION) {
     $h.append($('<li/>').html('Ember'));
-  }  
+  }
 
   if (Handlebars && Handlebars.VERSION) {
     $h.append($('<li/>').html('Handlebars'));
-  }    
+  }
 })();
