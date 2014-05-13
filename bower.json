@@ -2,9 +2,8 @@
   "name": "heirloom-js",
   "private": true,
   "dependencies": {
-    "jquery": "~1.11.0"
-  },
-  "devDependencies": {
-    "ember": "~1.5.1"
+    "jquery": "~1.11.0",
+    "ember": "~1.5.1",
+    "picturefill": "~2.0.0"
   }
 }
