@@ -24,6 +24,25 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
+    <script type="text/x-handlebars">
+      <h1>Heirloom</h1>
+
+      <ul>
+        <li>{{#link-to 'gallery'}}Gallery{{/link-to}}</li>
+        <li>{{#link-to 'albums'}}Albums{{/link-to}}</li>
+      </ul>
+      {{outlet}}
+    </script>
+
+    <script type="text/x-handlebars" id="gallery">
+      <h2>Gallery</h2>
+    </script>
+
+
+    <script type="text/x-handlebars" id="albums">
+      <h2>Albums</h2>
+    </script>
+
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="../bower_components/jquery/dist/jquery.js"></script>
