@@ -195,8 +195,27 @@ module.exports = function(grunt) {
     // Automatically inject Bower components into the HTML file
     bowerInstall: {
       app: {
-        src: ['<%= config.app %>/index.html'],
-        exclude: ['bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap.js']
+        src: ['<%= config.app %>/*.html'],
+        exclude: [],
+        overrides: {
+          'jquery-file-upload': {
+            main: [
+              'js/vendor/jquery.ui.widget.js',
+              'js/jquery.fileupload.js',
+              'js/jquery.iframe-transport.js'
+            ],
+            dependencies: {
+              jquery: '>=1.6'
+            }
+          },
+          'dropzone': {
+            main: [
+              "downloads/css/basic.css",
+              "downloads/css/dropzone.css",
+              "downloads/dropzone.min.js"
+            ]
+          }
+        }
       },
       sass: {
         src: ['<%= config.app %>/styles/{,*/}*.{scss,sass}']

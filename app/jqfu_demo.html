@@ -22,24 +22,11 @@
     </script>
   </head>
   <body>
+    <!--[if lt IE 10]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
 
-    <div class="wrapper">
-      <div class="primary">
-        <h1>Primary</h1>
-      </div>
-      <div class="secondary">
-        <h1>Secondary</h1>
-      </div>
-    </div>
-
-    <div class="wrapper">
-      <div class="secondary">
-        <h1>Secondary</h1>
-      </div>
-      <div class="primary">
-        <h1>Primary</h1>
-      </div>
-    </div>
+    <input id="fileupload" type="file" name="file" data-url="http://localhost:3000/upload" multiple>
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
@@ -67,5 +54,34 @@
     <!-- build:js({app,.tmp}) scripts/main.js -->
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
+
+    <div id="progress" class="progress">
+        <div class="progress-bar progress-bar-success"></div>
+    </div>
+    <!-- The container for the uploaded files -->
+    <div id="files" class="files"></div>
+
+    <script>
+      $(function () {
+          // Change this to the location of your server-side upload handler:
+          $('#fileupload').fileupload({
+              url: 'http://localhost:3000/upload',
+              dataType: 'json',
+              done: function (e, data) {
+                  $.each(data.result.files, function (index, file) {
+                      $('<p/>').text(file.name).appendTo('#files');
+                  });
+              },
+              progressall: function (e, data) {
+                  var progress = parseInt(data.loaded / data.total * 100, 10);
+                  $('#progress .progress-bar').css(
+                      'width',
+                      progress + '%'
+                  );
+              }
+          }).prop('disabled', !$.support.fileInput)
+              .parent().addClass($.support.fileInput ? undefined : 'disabled');
+      });
+    </script>
 </body>
 </html>

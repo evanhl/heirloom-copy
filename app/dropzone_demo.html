@@ -22,24 +22,11 @@
     </script>
   </head>
   <body>
+    <!--[if lt IE 10]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
 
-    <div class="wrapper">
-      <div class="primary">
-        <h1>Primary</h1>
-      </div>
-      <div class="secondary">
-        <h1>Secondary</h1>
-      </div>
-    </div>
-
-    <div class="wrapper">
-      <div class="secondary">
-        <h1>Secondary</h1>
-      </div>
-      <div class="primary">
-        <h1>Primary</h1>
-      </div>
-    </div>
+    <section class="dropzone"></section>
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
@@ -67,5 +54,24 @@
     <!-- build:js({app,.tmp}) scripts/main.js -->
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
+
+    <script type="text/javascript">
+      // init Dropzone.js
+      // TODO: Move me to a .js file
+      ;(function () {
+        var i = 0;
+        var myDropzone;
+
+        Dropzone.autoDiscover = false;
+
+        myDropzone = new Dropzone('.dropzone', {
+          url: 'http://localhost:3000/upload',
+          processing: function (a, b, c) {
+            // I can dynamically change my URL for each upload
+            this.options.url = 'http://localhost:3000/upload/' + i++;
+          }
+        });
+      }());
+    </script>
 </body>
 </html>
