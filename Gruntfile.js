@@ -367,6 +367,32 @@ module.exports = function(grunt) {
         // 'imagemin',
         'svgmin'
       ]
+    },
+
+    todo: {
+      options: {
+        marks: [
+          {
+            name: "FIX",
+            pattern: /FIXME/,
+            color: "red"
+          },
+          {
+            name: "TODO",
+            pattern: /TODO/,
+            color: "yellow"
+          },
+          {
+            name: "NOTE",
+            pattern: /NOTE/,
+            color: "blue"
+          }
+        ]
+      },
+      src: [
+        '<%= config.app %>/scripts/**/*.js',
+        '<%= config.app %>/**/*.html'
+      ]
     }
   });
 
