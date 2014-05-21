@@ -26,12 +26,14 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
+    <!-- TODO: Move templates to separate files -->
     <script type="text/x-handlebars">
       <h1>Heirloom</h1>
 
       <ul>
         <li>{{#link-to 'gallery'}}Gallery{{/link-to}}</li>
         <li>{{#link-to 'albums'}}Albums{{/link-to}}</li>
+        <li>{{#link-to 'upload'}}Upload{{/link-to}}</li>
       </ul>
       {{outlet}}
     </script>
@@ -40,9 +42,14 @@
       <h2>Gallery</h2>
     </script>
 
-
     <script type="text/x-handlebars" id="albums">
       <h2>Albums</h2>
+    </script>
+
+    <script type="text/x-handlebars" id="upload" data-template-name="upload">
+      <h2>Upload</h2>
+
+      <section class="dropzone"></section>
     </script>
 
     <!-- build:js scripts/vendor.js -->
@@ -70,6 +77,7 @@
 
     <!-- build:js({app,.tmp}) scripts/main.js -->
     <script src="scripts/main.js"></script>
+    <script src="scripts/upload/uploadToS3.js"></script>
     <!-- endbuild -->
 </body>
 </html>

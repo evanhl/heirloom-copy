@@ -1,82 +1,92 @@
-/* global Dropzone, console */
+/* global Dropzone, Ember, console, App */
 /* jslint bitwise: true */
 
 // TODO: Follow proper Ember.js idioms
 // TODO: Remove global functions
+// TODO: Remove console.log & global exception
 
-// TODO: replace with API call
-var S3_DATA = {
-  "fields": {
-    "AWSAccessKeyId": "AKIAI36DQB4UNAJPB3DA",
-    "acl": "private",
-    "policy": "eyJleHBpcmF0aW9uIjoiMjAxNC0wNS0yMlQyMjoxNDoxN1oiLCJjb25kaXRpb25zIjpbeyJidWNrZXQiOiJoZWlybG9vbS1zdGFnaW5nLXVwbG9hZHMifSx7ImFjbCI6InByaXZhdGUifSx7InN1Y2Nlc3NfYWN0aW9uX3N0YXR1cyI6IjIwMSJ9LFsic3RhcnRzLXdpdGgiLCIkdXRmOCIsIiJdLFsic3RhcnRzLXdpdGgiLCIka2V5IiwidXBsb2Fkcy8zLyJdLFsic3RhcnRzLXdpdGgiLCIkeC1yZXF1ZXN0ZWQtd2l0aCIsIiJdLFsic3RhcnRzLXdpdGgiLCIkY29udGVudC10eXBlIiwiIl0sWyJjb250ZW50LWxlbmd0aC1yYW5nZSIsMCw1MzY4NzA5MTIwMF1dfQ==",
-    "signature": "f9aJXSn+wyAxa/QLIPRQpX5Yh6c=",
-    "success_action_status": "201",
-    "utf8": true,
-    "X-Requested-With": "xhr"
+App.UploadToS3 = Ember.Object.extend({
+  HOSTNAME: 'https://api.hlstage.com',
+  ENDPOINT: '/upload_signature',
+  AUTH_TOKEN: 'S57azk9UzxQSc3DN3mh4',
+  CONTENT_TYPE_EXTS: {
+    'image/gif': '.gif',
+    'image/jpeg': '.jpg',
+    'image/pjpeg': '.jpg',
+    'image/png': '.png'
   },
-  "key_starts_with": "uploads/3/",
-  "bucket_url": "https://heirloom-staging-uploads.s3.amazonaws.com/"
-};
 
-var CONTENT_TYPE_EXTS = {
-  'image/gif': '.gif',
-  'image/jpeg': '.jpg',
-  'image/pjpeg': '.jpg',
-  'image/png': '.png'
-};
+  init: function () {
+    this.requestUploadSignature();
+    this.initDropzone();
+  },
 
-// From http://stackoverflow.com/a/8809472
-// TODO: Move to separate .js file
-var generateUUID = function () {
-  var d = new Date().getTime();
-  var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-    var r = (d + Math.random() * 16) % 16 | 0;
-    d = Math.floor(d / 16);
-    return (c === 'x' ? r : (r & 0x7 | 0x8)).toString(16);
-  });
-  return uuid;
-};
+  requestUploadSignature: function () {
+    var self = this;
 
-var generateUploadName = function (contentType) {
-  return generateUUID() + CONTENT_TYPE_EXTS[contentType];
-};
+    $.ajax({
+      url: this.HOSTNAME + this.ENDPOINT,
+      type: 'GET',
+      dataType: 'json',
+      success: function (data) {
+        self.setProperties(data);
+      },
+      beforeSend: function setHeader (xhr) {
+        xhr.setRequestHeader('X-User-Token', self.AUTH_TOKEN);
+      }
+    });
+  },
 
-// init Dropzone.js
-// TODO: Move me to a .js file
-(function () {
-  var i = 0;
-  var myDropzone;
+  // From http://stackoverflow.com/a/8809472
+  // TODO: Move to separate utility .js file
+  generateUUID: function () {
+    var d = new Date().getTime();
+    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = (d + Math.random() * 16) % 16 | 0;
+      d = Math.floor(d / 16);
+      return (c === 'x' ? r : (r & 0x7 | 0x8)).toString(16);
+    });
+    return uuid;
+  },
 
-  Dropzone.autoDiscover = false;
+  generateUploadName: function (contentType) {
+    return this.get('key_starts_with') + this.generateUUID() + this.CONTENT_TYPE_EXTS[contentType];
+  },
 
-  myDropzone = new Dropzone('.dropzone', {
-    url: 'http://localhost:3000/upload',
-    autoProcessQueue: true,
-    acceptedFiles: 'image/gif,image/jpeg,image/pjpeg,image/png'
-  });
+  initDropzone: function () {
+    var dropzone;
+    var self = this;
 
-  myDropzone.on('processing', function () {
-    // I can dynamically change my URL for each upload
-    this.options.url = S3_DATA.bucket_url;
-  });
+    dropzone = new Dropzone('.dropzone', {
+      url: 'http://localhost:3000/upload',
+      autoProcessQueue: true,
+      acceptedFiles: 'image/gif,image/jpeg,image/pjpeg,image/png'
+    });
 
-  myDropzone.on('sending', function (file, xhr, formData) {
-    formData.append('AWSAccessKeyId',         S3_DATA.fields.AWSAccessKeyId);
-    formData.append('acl',                    S3_DATA.fields.acl);
-    formData.append('policy',                 S3_DATA.fields.policy);
-    formData.append('signature',              S3_DATA.fields.signature);
-    formData.append('success_action_status',  S3_DATA.fields.success_action_status);
-    formData.append('utf8',                   S3_DATA.fields.utf8);
-    formData.append('X-Requested-With',       S3_DATA.fields['X-Requested-With']);
-    formData.append('Content-Type',           file.type);
+    dropzone.on('processing', function () {
+      // I can dynamically change my URL for each upload
+      this.options.url = self.get('bucket_url');
+    });
 
-    file.uploadedName = S3_DATA.key_starts_with + generateUploadName(file.type);
-    formData.append('key',                    file.uploadedName);
-  });
+    dropzone.on('sending', function (file, xhr, formData) {
+      var s3Fields = self.get('fields');
+      var field;
 
-  // TODO: replace with request to create image record
-  myDropzone.on('success', function (file) {
-    console.log(file.uploadedName);
-  });
-}());
+      for (field in s3Fields) {
+        formData.append(field, s3Fields[field]);
+      }
+
+      formData.append('Content-Type',           file.type);
+
+      file.uploadedName = self.generateUploadName(file.type);
+
+      formData.append('key',                    file.uploadedName);
+    });
+
+    // TODO: replace with request to create image record
+    dropzone.on('success', function (file) {
+      console.log(file.uploadedName);
+    });
+  }
+});
+
