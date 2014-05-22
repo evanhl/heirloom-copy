@@ -8,11 +8,10 @@ App.Router.map(function() {
   this.route('upload');
 });
 
-// FIXME: Don't re-init Dropzone on every render
-// FIXME: Separate render and S3 setup logic
+// TODO: clean up view on destroy
 App.UploadView = Ember.View.extend({
   didInsertElement: function () {
-    var upload = new App.UploadToS3();
+    var upload = new App.Upload.UploadToS3();
   }
 });
 
