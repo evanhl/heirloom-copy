@@ -7,7 +7,8 @@
 
 App.UploadToS3 = Ember.Object.extend({
   HOSTNAME: 'https://api.hlstage.com',
-  ENDPOINT: '/upload_signature',
+  UPLOAD_ENDPOINT: '/upload_signature',
+  PHOTOS_ENDPOINT: '/photos',
   AUTH_TOKEN: 'S57azk9UzxQSc3DN3mh4',
   CONTENT_TYPE_EXTS: {
     'image/gif': '.gif',
@@ -21,19 +22,36 @@ App.UploadToS3 = Ember.Object.extend({
     this.initDropzone();
   },
 
-  requestUploadSignature: function () {
+  // TODO: centralize API call logic
+  apiCall: function (url, type, data, success, error) {
     var self = this;
+    var dataToSend = data;
+
+    if (type === 'POST') {
+      dataToSend = JSON.stringify(dataToSend);
+    }
 
     $.ajax({
-      url: this.HOSTNAME + this.ENDPOINT,
-      type: 'GET',
+      url: this.HOSTNAME + url,
+      type: type,
       dataType: 'json',
-      success: function (data) {
-        self.setProperties(data);
-      },
+      data: dataToSend,
+      contentType: 'application/json; charset=utf-8',
+      success: success,
+      error: error,
       beforeSend: function setHeader (xhr) {
         xhr.setRequestHeader('X-User-Token', self.AUTH_TOKEN);
       }
+    });
+  },
+
+  requestUploadSignature: function () {
+    var self = this;
+
+    this.apiCall(this.UPLOAD_ENDPOINT, 'GET', {}, function (data) {
+      self.setProperties(data);
+    }, function () {
+        // TODO: Handle failure to request upload signature
     });
   },
 
@@ -83,9 +101,12 @@ App.UploadToS3 = Ember.Object.extend({
       formData.append('key',                    file.uploadedName);
     });
 
-    // TODO: replace with request to create image record
     dropzone.on('success', function (file) {
-      console.log(file.uploadedName);
+      self.apiCall(self.PHOTOS_ENDPOINT, 'POST', { key: file.uploadedName }, function (data) {
+
+      }, function () {
+          // TODO: Handle failure to register photo as uploaded
+      });
     });
   }
 });
