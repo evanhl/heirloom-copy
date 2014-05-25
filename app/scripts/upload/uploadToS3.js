@@ -1,9 +1,8 @@
-/* global Dropzone, Ember, console, App, Utils */
+/* global Dropzone, Ember, App, Utils */
 /* jslint bitwise: true */
 
 // TODO: Follow proper Ember.js idioms
 // TODO: Remove global functions
-// TODO: Remove console.log & global exception
 
 Utils.ensureNamespace('App.Upload');
 
@@ -37,15 +36,18 @@ App.Upload.UploadToS3 = Ember.Object.extend({
   },
 
   generateUploadName: function (contentType) {
-    return  App.Upload.uploadSignature.get('key_starts_with') +
-            this.generateUUID() +
-            this.CONTENT_TYPE_EXTS[contentType];
+    return  App.Upload.uploadSignature.get('key_starts_with') + this.generateFilename(contentType);
+  },
+
+  generateFilename: function (contentType) {
+    return this.generateUUID() + this.CONTENT_TYPE_EXTS[contentType];
   },
 
   initDropzone: function () {
     var dropzone;
     var self = this;
 
+    // FIXME: don't use unqualified element selectors
     dropzone = new Dropzone('.dropzone', {
       url: 'http://fake.url',
       autoProcessQueue: true,

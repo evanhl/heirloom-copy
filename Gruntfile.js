@@ -198,16 +198,6 @@ module.exports = function(grunt) {
         src: ['<%= config.app %>/*.html'],
         exclude: [],
         overrides: {
-          'jquery-file-upload': {
-            main: [
-              'js/vendor/jquery.ui.widget.js',
-              'js/jquery.fileupload.js',
-              'js/jquery.iframe-transport.js'
-            ],
-            dependencies: {
-              jquery: '>=1.6'
-            }
-          },
           'dropzone': {
             main: [
               "downloads/css/basic.css",
