@@ -31,22 +31,28 @@
       <h1>Heirloom</h1>
 
       <ul>
-        <li>{{#link-to 'gallery'}}Gallery{{/link-to}}</li>
+        <li>{{#link-to 'photos'}}Photos{{/link-to}}</li>
         <li>{{#link-to 'albums'}}Albums{{/link-to}}</li>
         <li>{{#link-to 'upload'}}Upload{{/link-to}}</li>
       </ul>
       {{outlet}}
     </script>
 
-    <script type="text/x-handlebars" id="gallery">
-      <h2>Gallery</h2>
+    <script type="text/x-handlebars" data-template-name="photos">
+      <h2>Photos</h2>
+
+      {{#each}}
+        {{#if source}}
+          <img style="width:200px;" {{bind-attr src=source}}>
+        {{/if}}
+      {{/each}}
     </script>
 
-    <script type="text/x-handlebars" id="albums">
+    <script type="text/x-handlebars" data-template-name="albums">
       <h2>Albums</h2>
     </script>
 
-    <script type="text/x-handlebars" id="upload" data-template-name="upload">
+    <script type="text/x-handlebars" data-template-name="upload">
       <h2>Upload</h2>
 
       <section class="dropzone"></section>
@@ -59,6 +65,7 @@
     <script src="../bower_components/ember/ember.js"></script>
     <script src="../bower_components/picturefill/dist/picturefill.js"></script>
     <script src="../bower_components/dropzone/downloads/dropzone.min.js"></script>
+    <script src="../bower_components/ember-data/ember-data.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -75,6 +82,7 @@
     <!-- build:js({app,.tmp}) scripts/main.js -->
     <script src="scripts/utils/utils.js"></script>
     <script src="scripts/main.js"></script>
+    <script src="scripts/adapters/applicationAdapter.js"></script>
     <script src="scripts/upload/uploadSignature.js"></script>
     <script src="scripts/upload/uploadToS3.js"></script>
     <!-- endbuild -->

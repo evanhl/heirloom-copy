@@ -8,9 +8,15 @@ var App = Ember.Application.create({});
 // });
 
 App.Router.map(function() {
-  this.resource('gallery');
+  this.resource('photos');
   this.resource('albums');
   this.route('upload');
+});
+
+App.PhotosRoute = Ember.Route.extend({
+  model: function() {
+    return this.store.find('photo');
+  }
 });
 
 // TODO: clean up view on destroy

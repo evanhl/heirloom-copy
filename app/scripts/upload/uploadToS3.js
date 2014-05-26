@@ -7,7 +7,7 @@
 Utils.ensureNamespace('App.Upload');
 
 App.Upload.UploadToS3 = Ember.Object.extend({
-  ENDPOINT: '/photos',
+  ENDPOINT: '/me/photos',
   CONTENT_TYPE_EXTS: {
     'image/gif': '.gif',
     'image/jpeg': '.jpg',
