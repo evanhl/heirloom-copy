@@ -2,10 +2,10 @@
 
 var App = Ember.Application.create({});
 
-// TODO: conditionally enable push state based on browser support
-// App.Router.reopen({
-//   location: 'history'
-// });
+// Use HTML5 History API (pushState) to manage app URLs
+App.Router.reopen({
+  location: 'history'
+});
 
 App.Router.map(function() {
   this.resource('photos');
