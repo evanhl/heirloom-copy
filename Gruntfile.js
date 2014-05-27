@@ -200,9 +200,14 @@ module.exports = function(grunt) {
         overrides: {
           'dropzone': {
             main: [
-              "downloads/css/basic.css",
-              "downloads/css/dropzone.css",
-              "downloads/dropzone.min.js"
+              'downloads/css/basic.css',
+              'downloads/css/dropzone.css',
+              'downloads/dropzone.min.js'
+            ]
+          },
+          'ember-infinite-scroll': {
+            main: [
+              'infinite_scroll.js'
             ]
           }
         }

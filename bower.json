@@ -9,7 +9,8 @@
     "neat": "~1.5.1",
     "normalize-scss": "~3.0.1",
     "dropzone": "~3.10.0",
-    "ember-data": "1.0.0-beta.7"
+    "ember-data": "1.0.0-beta.7",
+    "ember-infinite-scroll": "*"
   },
   "overrides": {
     "picturefill": {
