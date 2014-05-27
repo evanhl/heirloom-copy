@@ -20,7 +20,7 @@ App.PhotosRoute = Ember.Route.extend({
       per_page: 4
     }).then(function (photos) {
       return photos.content;
-    });;
+    });
   },
 
   // TODO: if we get empty results back, we're at max page
