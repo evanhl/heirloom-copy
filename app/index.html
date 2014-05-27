@@ -43,7 +43,7 @@
 
       {{#each}}
         {{#if source}}
-          <img style="width:200px;height:200px;" {{bind-attr src=source}}>
+          <img {{bind-attr src=source}} class="gallery-photo">
         {{/if}}
       {{/each}}
 
@@ -70,7 +70,6 @@
     <script src="../bower_components/picturefill/dist/picturefill.js"></script>
     <script src="../bower_components/dropzone/downloads/dropzone.min.js"></script>
     <script src="../bower_components/ember-data/ember-data.js"></script>
-    <script src="../bower_components/ember-infinite-scroll/infinite_scroll.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -86,6 +85,7 @@
 
     <!-- build:js({app,.tmp}) scripts/main.js -->
     <script src="scripts/utils/utils.js"></script>
+    <script src="scripts/utils/infiniteScroll.js"></script>
     <script src="scripts/main.js"></script>
     <script src="scripts/routes/photosRoute.js"></script>
     <script src="scripts/controllers/photosController.js"></script>

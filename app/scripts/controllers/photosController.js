@@ -1,9 +1,15 @@
-/* globals App, Ember */
+/* globals App, Ember, InfiniteScroll */
 
 // TODO: extract infinite scroll logic
-App.PhotosController = Ember.ArrayController.extend({
+App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMixin, {
   page: 0,
   perPage: 20,
+  // fetchPage: function () {
+  //   return this.store.find('photo', {
+  //     page: nextPage,
+  //     per_page: perPage
+  //   });
+  // },
   actions: {
     getMore: function () {
       if (this.get('loadingMore')) { return; }
@@ -25,16 +31,6 @@ App.PhotosController = Ember.ArrayController.extend({
           self.send('gotMore', photos.content, nextPage);
         }, 2000);
       });
-    },
-    gotMore: function (items, nextPage) {
-      this.set('loadingMore', false);
-
-      if (items.length === 0) {
-        this.set('maxPage', this.get('page'));
-      }
-
-      this.pushObjects(items);
-      this.set('page', nextPage);
     }
   }
 });
