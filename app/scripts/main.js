@@ -7,6 +7,8 @@ var App = Ember.Application.create({});
 //   location: 'history'
 // });
 
+// TODO: split this out into multiple files
+
 App.Router.map(function() {
   this.resource('photos');
   this.resource('albums');
@@ -15,36 +17,55 @@ App.Router.map(function() {
 
 App.PhotosRoute = Ember.Route.extend({
   model: function () {
-    return this.store.find('photo', {
-      page: 1,
-      per_page: 4
-    }).then(function (photos) {
-      return photos.content;
-    });
+    // return an empty array that the controller can append to as the user pages
+    return [];
   },
 
-  // TODO: if we get empty results back, we're at max page
+  setupController: function(controller, model) {
+    controller.send('getMore');
+  }
+});
+
+// TODO: extract infinite scroll logic
+App.PhotosController = Ember.ArrayController.extend({
+  page: 0,
+  perPage: 20,
   actions: {
     getMore: function () {
-      var controller = this.get('controller'),
-          nextPage   = controller.get('page') + 1,
-          perPage    = controller.get('perPage'),
+      if (this.get('loadingMore')) { return; }
+
+      var nextPage   = this.get('page') + 1,
+          perPage    = this.get('perPage'),
           self       = this;
+
+      if (nextPage > this.get('maxPage')) { return; }
+
+      this.set('loadingMore', true);
 
       this.store.find('photo', {
         page: nextPage,
         per_page: perPage
       }).then(function (photos) {
-        self.get('controller').send('gotMore', photos.content, nextPage);
+        // TODO: timeout is for demo only. remove.
+        setTimeout(function () {
+          self.send('gotMore', photos.content, nextPage);
+        }, 2000);
       });
+    },
+    gotMore: function (items, nextPage) {
+      this.set('loadingMore', false);
+
+      if (items.length === 0) {
+        this.set('maxPage', this.get('page'));
+      }
+
+      this.pushObjects(items);
+      this.set('page', nextPage);
     }
   }
 });
 
-App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMixin, { perPage: 4 }, {
-
-});
-
+// TODO: make spinner show/hide less jerky
 App.PhotosView = Ember.View.extend(InfiniteScroll.ViewMixin, {
   didInsertElement: function (){
     this.setupInfiniteScrollListener();

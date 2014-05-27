@@ -1,0 +1,39 @@
+// spinner from http://codepen.io/seandrickson/pen/wGmoq
+
+.spinner {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  background: #0FF;
+  animation: 1s spin infinite;
+  margin: 10px auto;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+  }
+  &::before {
+    background: #F0F;
+    animation: .5s blur1 infinite alternate linear;
+  }
+  &::after {
+    background: #FFF;
+    animation: .5s blur2 infinite alternate linear;
+  }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg) }
+  100% { transform: rotate(360deg) }
+}
+
+@keyframes blur1 {
+    0% { transform: rotate(0deg) }
+  100% { transform: rotate(-30deg) }
+}
+@keyframes blur2 {
+    0% { transform: rotate(0deg) }
+  100% { transform: rotate(-15deg) }
+}

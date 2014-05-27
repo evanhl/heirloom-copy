@@ -41,15 +41,15 @@
     <script type="text/x-handlebars" data-template-name="photos">
       <h2>Photos</h2>
 
-      <div class="inf-scroll-outer-container vertical">
-        <div class="inf-scroll-inner-container">
-          {{#each}}
-            {{#if source}}
-              <img style="width:200px;" {{bind-attr src=source}}>
-            {{/if}}
-          {{/each}}
-        </div>
-      </div>
+      {{#each}}
+        {{#if source}}
+          <img style="width:200px;height:200px;" {{bind-attr src=source}}>
+        {{/if}}
+      {{/each}}
+
+      {{#if loadingMore}}
+      <div class="spinner"></div>
+      {{/if}}
     </script>
 
     <script type="text/x-handlebars" data-template-name="albums">
