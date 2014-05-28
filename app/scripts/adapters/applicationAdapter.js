@@ -1,4 +1,4 @@
-/* globals App, DS */
+// TODO: split into separate files
 
 App.ApplicationAdapter = DS.RESTAdapter.extend({
   host: 'https://api.hlstage.com',
@@ -18,9 +18,18 @@ App.PhotoSerializer = DS.RESTSerializer.extend({
 });
 
 App.PhotoAdapter = App.ApplicationAdapter.extend({
-  namespace: 'me'
+  namespace: 'me',
+  // FIXME: this is really hacky
+  buildURL: function (type, id) {
+    if (Ember.isNone(id)) {
+      return this._super(type, id);
+    } else {
+      return this._super(type, id).replace('/me/', '/');
+    }
+  }
 });
 
 App.Photo = DS.Model.extend({
   source: DS.attr()
 });
+

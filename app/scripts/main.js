@@ -1,4 +1,4 @@
-/* globals Dropzone, InfiniteScroll */
+/* jshint -W079 */
 
 var App = Ember.Application.create({});
 

@@ -14,7 +14,7 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="/styles/main.css">
     <!-- endbuild -->
     <script>
       // Picture element HTML5 shiv
@@ -28,13 +28,15 @@
 
     <!-- TODO: Move templates to separate files -->
     <script type="text/x-handlebars">
-      <h1>Heirloom</h1>
+      <nav>
+        <h1>Heirloom</h1>
 
-      <ul>
-        <li>{{#link-to 'photos'}}Photos{{/link-to}}</li>
-        <li>{{#link-to 'albums'}}Albums{{/link-to}}</li>
-        <li>{{#link-to 'upload'}}Upload{{/link-to}}</li>
-      </ul>
+        <ul>
+          <li>{{#link-to 'photos'}}Photos{{/link-to}}</li>
+          <li>{{#link-to 'albums'}}Albums{{/link-to}}</li>
+          <li>{{#link-to 'upload'}}Upload{{/link-to}}</li>
+        </ul>
+      </nav>
       {{outlet}}
     </script>
 
@@ -49,6 +51,8 @@
 
       {{#if loadingMore}}
       <div class="spinner"></div>
+      {{else}}
+      <div class="spinner-placeholder"></div>
       {{/if}}
     </script>
 
@@ -88,16 +92,16 @@
     </script>
 
     <!-- build:js({app,.tmp}) scripts/main.js -->
-    <script src="scripts/utils/utils.js"></script>
-    <script src="scripts/utils/infiniteScroll.js"></script>
-    <script src="scripts/main.js"></script>
-    <script src="scripts/routes/photosRoute.js"></script>
-    <script src="scripts/controllers/photosController.js"></script>
-    <script src="scripts/views/photosView.js"></script>
-    <script src="scripts/views/uploadView.js"></script>
-    <script src="scripts/adapters/applicationAdapter.js"></script>
-    <script src="scripts/upload/uploadSignature.js"></script>
-    <script src="scripts/upload/uploadToS3.js"></script>
+    <script src="/scripts/utils/utils.js"></script>
+    <script src="/scripts/utils/infiniteScroll.js"></script>
+    <script src="/scripts/main.js"></script>
+    <script src="/scripts/routes/photosRoute.js"></script>
+    <script src="/scripts/controllers/photosController.js"></script>
+    <script src="/scripts/views/photosView.js"></script>
+    <script src="/scripts/views/uploadView.js"></script>
+    <script src="/scripts/adapters/applicationAdapter.js"></script>
+    <script src="/scripts/upload/uploadSignature.js"></script>
+    <script src="/scripts/upload/uploadToS3.js"></script>
     <!-- endbuild -->
 </body>
 </html>

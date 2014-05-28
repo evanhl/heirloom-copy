@@ -1,5 +1,3 @@
-/* globals App, Ember, Dropzone */
-
 // TODO: clean up view on destroy
 App.UploadView = Ember.View.extend({
   didInsertElement: function () {

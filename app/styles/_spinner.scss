@@ -1,12 +1,21 @@
 // spinner from http://codepen.io/seandrickson/pen/wGmoq
 
+$spinner-height: 30px;
+$spinner-width: $spinner-height;
+
+.spinner-placeholder {
+  width: $spinner-width;
+  height: $spinner-height;
+  margin: 20px auto;
+}
+
 .spinner {
   position: relative;
-  width: 30px;
-  height: 30px;
+  width: $spinner-width;
+  height: $spinner-height;
   background: #0FF;
   animation: 1s spin infinite;
-  margin: 10px auto;
+  margin: 20px auto;
 
   &::before,
   &::after {

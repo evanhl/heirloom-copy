@@ -2,7 +2,6 @@
 /* jslint bitwise: true */
 
 // TODO: Follow proper Ember.js idioms
-// TODO: Remove global functions
 
 Utils.ensureNamespace('App.Upload');
 
