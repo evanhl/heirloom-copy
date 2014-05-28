@@ -2,7 +2,7 @@
   "name": "heirloom-js",
   "private": true,
   "dependencies": {
-    "jquery": "~1.11.0",
+    "jquery": "~2.1.0",
     "ember": "~1.5.1",
     "picturefill": "~2.0.0",
     "bourbon": "~3.1.8",
