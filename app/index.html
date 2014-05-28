@@ -43,7 +43,7 @@
 
       {{#each}}
         {{#if source}}
-          <img {{bind-attr src=source}} class="gallery-photo">
+          {{#link-to 'photo' id}}<img {{bind-attr src=source}} class="gallery-photo">{{/link-to}}
         {{/if}}
       {{/each}}
 
@@ -60,6 +60,10 @@
       <h2>Upload</h2>
 
       <section class="dropzone"></section>
+    </script>
+
+    <script type="text/x-handlebars" data-template-name="photo">
+      <img {{bind-attr src=source}} class="large-photo">
     </script>
 
     <!-- build:js scripts/vendor.js -->

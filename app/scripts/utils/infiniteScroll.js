@@ -44,6 +44,7 @@
     }
   });
 
+  // TODO: Add lookahead. Load a few hundred px before we hit the bottom.
   InfiniteScroll.ViewMixin = Ember.Mixin.create({
     setupInfiniteScrollListener: function () {
       $(window).on('scroll', $.proxy(this.didScroll, this));
