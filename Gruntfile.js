@@ -208,13 +208,11 @@ module.exports = function(grunt) {
               'downloads/css/dropzone.css',
               'downloads/dropzone.min.js'
             ]
-          },
-          'ember-infinite-scroll': {
-            main: [
-              'infinite_scroll.js'
-            ]
           }
-        }
+        },
+        // Removes initial '..' from '../bower_componenents/path/file.ext'
+        // so that Ember router works for deep URLs on test server
+        ignorePath: '..'
       },
       sass: {
         src: ['<%= config.app %>/styles/{,*/}*.{scss,sass}']
