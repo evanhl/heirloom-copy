@@ -4,6 +4,8 @@
 
 @import '_spinner';
 
+$lightbox-color: rgba(255, 255, 255, 0.9);
+
 body {
   background: #fafafa;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -46,20 +48,29 @@ img {
 .lightbox {
   width: auto;
   height: auto;
-  bottom: 0px;
-  right: 0px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
   position: fixed;
   overflow: hidden;
-  left: 0px;
-  top: 0px;
   z-index: 99;
   text-align: center;
-  background: rgba(255, 255, 255, 0.9);
-}
+  background: $lightbox-color;
 
-// FIXME: Add support for image height = viewport height
-.large-photo {
-  height: 100vh;
+  img {
+    position: absolute;
+
+    max-height: 100%;
+
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+
+    margin: auto;
+    padding: 2em;
+  }
 }
 
 .gallery-photo {
