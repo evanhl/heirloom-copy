@@ -57,6 +57,7 @@
         this.get('controller').send('getMore');
       }
     },
+    // FIXME: right scroll triggers page load
     isScrolledToRight: function () {
       var distanceToViewportLeft = (
         $(document).width() - $(window).width());

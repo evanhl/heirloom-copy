@@ -8,8 +8,9 @@ App.Router.reopen({
 });
 
 App.Router.map(function() {
-  this.resource('photos');
-  this.resource('photo', { path: 'photo/:photo_id' });
+  this.resource('photos', function () {
+    this.resource('photo', { path: 'photo/:photo_id' });
+  });
   this.resource('albums');
   this.route('upload');
 });

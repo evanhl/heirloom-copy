@@ -43,9 +43,23 @@ img {
     padding: 0.2em 0;
 }
 
+.lightbox {
+  width: auto;
+  height: auto;
+  bottom: 0px;
+  right: 0px;
+  position: fixed;
+  overflow: hidden;
+  left: 0px;
+  top: 0px;
+  z-index: 99;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.9);
+}
+
 // FIXME: Add support for image height = viewport height
 .large-photo {
-  height: 75vh;
+  height: 100vh;
 }
 
 .gallery-photo {

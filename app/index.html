@@ -41,6 +41,8 @@
     </script>
 
     <script type="text/x-handlebars" data-template-name="photos">
+      {{outlet}}
+
       <h2>Photos</h2>
 
       {{#each}}
@@ -67,7 +69,11 @@
     </script>
 
     <script type="text/x-handlebars" data-template-name="photo">
-      <img {{bind-attr src=source}} class="large-photo">
+      {{#link-to 'photos'}}
+        <section class="lightbox">
+          <img {{bind-attr src=source}} class="large-photo">
+        </section>
+      {{/link-to}}
     </script>
 
     <!-- build:js scripts/vendor.js -->
