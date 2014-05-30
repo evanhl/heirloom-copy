@@ -209,10 +209,10 @@ module.exports = function(grunt) {
               'downloads/dropzone.min.js'
             ]
           }
-        },
+        }
         // Removes initial '..' from '../bower_componenents/path/file.ext'
         // so that Ember router works for deep URLs on test server
-        ignorePath: '..'
+        // ignorePath: '..'
       },
       sass: {
         src: ['<%= config.app %>/styles/{,*/}*.{scss,sass}']
