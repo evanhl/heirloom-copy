@@ -1,1 +1,1 @@
-web: sudo npm install -g grunt-cli; grunt; node app.js
+web: npm install -g grunt-cli; grunt; node app.js
