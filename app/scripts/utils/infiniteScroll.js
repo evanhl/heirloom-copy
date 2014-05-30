@@ -25,10 +25,7 @@
         this.set('loadingMore', true);
 
         this.fetchPage(nextPage, perPage).then(function (photos) {
-          // TODO: timeout is for demo only. remove.
-          setTimeout(function () {
-            self.send('gotMore', photos.content, nextPage);
-          }, 2000);
+          self.send('gotMore', photos.content, nextPage);
         });
       },
       gotMore: function (items, nextPage) {

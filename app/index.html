@@ -69,11 +69,17 @@
     </script>
 
     <script type="text/x-handlebars" data-template-name="photo">
-      {{#link-to 'photos'}}
-        <section class="lightbox">
-          <img {{bind-attr src=source}}>
-        </section>
-      {{/link-to}}
+
+      <section class="lightbox">
+        <img {{bind-attr src=source}}>
+        {{#if prevId}}
+          {{#link-to 'photo' prevId}}<div class="left-arrow"></div>{{/link-to}}
+        {{/if}}
+        {{#if nextId}}
+          {{#link-to 'photo' nextId}}<div class="right-arrow"></div>{{/link-to}}
+        {{/if}}
+      </section>
+
     </script>
 
     <!-- build:js scripts/vendor.js -->
@@ -102,7 +108,9 @@
     <script src="/scripts/utils/infiniteScroll.js"></script>
     <script src="/scripts/main.js"></script>
     <script src="/scripts/routes/photosRoute.js"></script>
+    <script src="/scripts/controllers/photoController.js"></script>
     <script src="/scripts/controllers/photosController.js"></script>
+    <script src="/scripts/views/photoView.js"></script>
     <script src="/scripts/views/photosView.js"></script>
     <script src="/scripts/views/uploadView.js"></script>
     <script src="/scripts/adapters/applicationAdapter.js"></script>
