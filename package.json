@@ -1,7 +1,9 @@
 {
   "name": "heirloom-js",
   "version": "0.0.1",
-  "dependencies": {},
+  "dependencies": {
+    "express": "^4.3.2"
+  },
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-copy": "~0.5.0",
