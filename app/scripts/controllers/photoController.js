@@ -10,6 +10,9 @@ App.PhotoController = Ember.ObjectController.extend({
     },
     nextPhoto: function () {
       this.toPhoto(this.get('nextId'));
+    },
+    toCollection: function () {
+      this.transitionToRoute('photos');
     }
   }
 });
