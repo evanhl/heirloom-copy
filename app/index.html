@@ -47,7 +47,7 @@
 
       {{#each}}
         {{#if source}}
-          {{#link-to 'photo' id}}<img {{bind-attr src=source}} class="gallery-photo">{{/link-to}}
+          {{#link-to 'photo' id}}<img {{bind-attr src=thumbVersion}} class="gallery-photo">{{/link-to}}
         {{/if}}
       {{/each}}
 
@@ -71,7 +71,7 @@
     <script type="text/x-handlebars" data-template-name="photo">
 
       <section class="lightbox">
-        <img {{bind-attr src=source}}>
+        <img {{bind-attr src=largeVersion}}>
         {{#if prevId}}
           {{#link-to 'photo' prevId}}<div class="left-arrow"></div>{{/link-to}}
         {{/if}}

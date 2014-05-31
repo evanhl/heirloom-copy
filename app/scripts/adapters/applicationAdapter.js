@@ -30,6 +30,27 @@ App.PhotoAdapter = App.ApplicationAdapter.extend({
 });
 
 App.Photo = DS.Model.extend({
-  source: DS.attr()
+  source: DS.attr(),
+  state: DS.attr(),
+  versions: DS.attr(),
+
+  versionForDimension: function (dim) {
+    var versions = this.get('versions') || [];
+    var thumb;
+
+    thumb = versions.filter(function (version) {
+      return parseInt(version.width) === dim || parseInt(version.height) === dim
+    });
+
+    return thumb[0] && thumb[0].url;
+  },
+
+  thumbVersion: function () {
+    return this.versionForDimension(420);
+  }.property('versions'),
+
+  largeVersion: function () {
+    return this.versionForDimension(1280);
+  }.property('versions')
 });
 
