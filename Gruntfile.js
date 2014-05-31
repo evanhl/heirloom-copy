@@ -199,6 +199,8 @@ module.exports = function(grunt) {
     // Automatically inject Bower components into the HTML file
     wiredep: {
       app: {
+        // trims initial '..' from '../bower_components/...'
+        ignorePath: '..',
         src: ['<%= config.app %>/*.html'],
         exclude: [],
         overrides: {
@@ -210,9 +212,6 @@ module.exports = function(grunt) {
             ]
           }
         }
-        // Removes initial '..' from '../bower_componenents/path/file.ext'
-        // so that Ember router works for deep URLs on test server
-        // ignorePath: '..'
       },
       sass: {
         src: ['<%= config.app %>/styles/{,*/}*.{scss,sass}']
@@ -226,9 +225,9 @@ module.exports = function(grunt) {
           src: [
             '<%= config.dist %>/scripts/{,*/}*.js',
             '<%= config.dist %>/styles/{,*/}*.css',
-            '<%= config.dist %>/images/{,*/}*.*',
+            // '<%= config.dist %>/images/{,*/}*.*',
             '<%= config.dist %>/styles/fonts/{,*/}*.*',
-            '<%= config.dist %>/*.{ico,png}'
+            // '<%= config.dist %>/*.{ico,png}'
           ]
         }
       }
@@ -239,6 +238,8 @@ module.exports = function(grunt) {
     // additional tasks can operate on them
     useminPrepare: {
       options: {
+        // allows usemin to find '/bower_components/...' in index.html
+        root: '.',
         dest: '<%= config.dist %>'
       },
       html: '<%= config.app %>/index.html'
@@ -334,7 +335,8 @@ module.exports = function(grunt) {
           src: [
             '*.{ico,png,txt}',
             '.htaccess',
-            'images/{,*/}*.webp',
+            'images/{,*/}*.{webp,gif,jpeg,jpg,png}',
+            '{,*/}*.{gif,jpeg,jpg,png}',
             '{,*/}*.html',
             'styles/fonts/{,*/}*.*'
           ]
