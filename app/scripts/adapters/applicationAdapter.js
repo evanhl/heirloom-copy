@@ -39,7 +39,7 @@ App.Photo = DS.Model.extend({
     var thumb;
 
     thumb = versions.filter(function (version) {
-      return parseInt(version.width) === dim || parseInt(version.height) === dim
+      return parseInt(version.width) === dim || parseInt(version.height) === dim;
     });
 
     return thumb[0] && thumb[0].url;
