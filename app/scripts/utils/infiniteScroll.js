@@ -24,8 +24,8 @@
 
         this.set('loadingMore', true);
 
-        this.fetchPage(nextPage, perPage).then(function (photos) {
-          self.send('gotMore', photos.content, nextPage);
+        this.fetchPage(nextPage, perPage).then(function (items) {
+          self.send('gotMore', items, nextPage);
         });
       },
       gotMore: function (items, nextPage) {
@@ -50,11 +50,10 @@
       $(window).off('scroll', $.proxy(this.didScroll, this));
     },
     didScroll: function () {
-      if (this.isScrolledToRight() || this.isScrolledToBottom()) {
+      if (this.isScrolledToBottom()) {
         this.get('controller').send('getMore');
       }
     },
-    // FIXME: right scroll triggers page load
     isScrolledToRight: function () {
       var distanceToViewportLeft = (
         $(document).width() - $(window).width());
@@ -73,13 +72,7 @@
         $(document).height() - $(window).height());
       var viewPortTop = $(window).scrollTop();
 
-      if (viewPortTop === 0) {
-        // if we are at the top of the page, don't do
-        // the infinite scroll thing
-        return false;
-      }
-
-      return (viewPortTop >= distanceToViewportTop);
+      return (viewPortTop >= distanceToViewportTop - 1000);
     }
   });
 
