@@ -3,9 +3,15 @@ App.PhotoView = Ember.View.extend({
     // brings the view into focus in order to capture keyUps.
     return this.$().attr({ tabindex: 1 }), this.$().focus();
   }.on('didInsertElement'),
-  click: function (e) {
 
+  click: function (e) {
+    if (!$(e.target).is('.lightbox')) {
+      return;
+    }
+
+    this.get('controller').send('toCollection');
   },
+
   keyDown: function (e) {
     var controller = this.get('controller');
     var LEFT_KEY = 37;
