@@ -9,6 +9,20 @@ $spinner-width: $spinner-height;
   margin: 20px auto;
 }
 
+.lightbox .spinner {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  z-index: 100;
+  animation:  fadein 0.3s ease,
+              1s spin infinite;
+}
+
 .spinner {
   position: relative;
   width: $spinner-width;

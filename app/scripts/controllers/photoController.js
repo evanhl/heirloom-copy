@@ -1,4 +1,5 @@
 App.PhotoController = Ember.ObjectController.extend({
+  loadingImg: false,
   needs: ['photos'],
   photos: Ember.computed.alias("controllers.photos"),
 
