@@ -1,7 +1,7 @@
 App.PhotoView = Ember.View.extend({
   setFocus: function() {
     // brings the view into focus in order to capture keyUps.
-    return this.$().attr({ tabindex: 1 }), this.$().focus();
+    this.$().attr({ tabindex: 1 }).focus();
   }.on('didInsertElement'),
 
   click: function (e) {
