@@ -30,6 +30,7 @@ App.ImageView = Ember.View.extend({
   srcChanged: function (src) {
     var self = this;
 
+    this.set('controller.loadingImg', true);
     this.$().one('load', function (e){
       return self.imageLoaded(e);
     }).one('error', function (e){
@@ -54,11 +55,11 @@ App.ImageView = Ember.View.extend({
       this.$().css('opacity', 1);
     }
 
-    // this.set('controller.loadingImg', false);
+    this.set('controller.loadingImg', false);
   },
 
   // TODO: handle error state
   imageError: function (e) {
-    // this.set('controller.loadingImg', false);
+    this.set('controller.loadingImg', false);
   }
 });

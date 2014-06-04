@@ -19,7 +19,7 @@ $spinner-width: $spinner-height;
   height: 100px;
   margin: auto;
   z-index: 100;
-  animation:  fadein 0.3s ease,
+  animation:  1s delayed-fadein linear,
               1s spin infinite;
 }
 
@@ -45,6 +45,12 @@ $spinner-width: $spinner-height;
     background: #FFF;
     animation: .5s blur2 infinite alternate linear;
   }
+}
+
+@keyframes delayed-fadein {
+  0%    { opacity: 0; }
+  30%   { opacity: 0; }
+  100%  { opacity: 1; }
 }
 
 @keyframes spin {
