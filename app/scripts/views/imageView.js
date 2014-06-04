@@ -39,8 +39,6 @@ App.ImageView = Ember.View.extend({
   },
 
   didInsertElement: function () {
-    this.$().css("opacity", 0).css('transition', 'opacity .25s ease-in-out');
-
     this.imageChanged();
   },
   willDestroyElement: function () {
