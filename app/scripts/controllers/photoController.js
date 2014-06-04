@@ -2,6 +2,35 @@ App.PhotoController = Ember.ObjectController.extend({
   loadingImg: false,
   needs: ['photos'],
   photos: Ember.computed.alias("controllers.photos"),
+  firstSlot: false,
+
+  largeVersionChanged: function () {
+    var properties;
+
+    if (!this.get('largeVersion')) {
+      return;
+    }
+
+    this.toggleProperty('firstSlot');
+  }.observes('largeVersion'),
+
+  firstState: function () {
+    var state = {};
+
+    state.visible = this.get('firstSlot');
+    state.src = this.get('firstSlot') ? this.get('largeVersion') : null;
+
+    return state;
+  }.property('firstSlot'),
+
+  secondState: function () {
+    var state = {};
+
+    state.visible = !this.get('firstSlot');
+    state.src = this.get('firstSlot') ? null : this.get('largeVersion');
+
+    return state;
+  }.property('firstSlot'),
 
   toPhoto: function (toId) {
     if (!toId) { return; }

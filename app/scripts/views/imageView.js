@@ -1,30 +1,64 @@
-
-
 App.ImageView = Ember.View.extend({
   tagName: 'img',
-  attributeBindings:['src'],
   src: null,
 
-  srcChanged: function () {
-    this.set('controller.loadingImg', true);
-  }.observes('src'),
+  imageChanged: function () {
+    var image = this.get('image');
 
-  didInsertElement: function(){
+    if (image.src && image.src !== this.$().attr('src')) {
+      this.srcChanged(image.src);
+      this.visibleChanged(image.visible);
+    } else {
+      this.onlyVisibleChanged(image.visible);
+    }
+  }.observes('image'),
+
+  onlyVisibleChanged: function (visible) {
+    if (visible) {
+      this.$().css('opacity', 1);
+    } else {
+      this.$().css('opacity', 0);
+    }
+  },
+
+  visibleChanged: function (visible) {
+    if (!visible) {
+      this.$().css('opacity', 0);
+    }
+  },
+
+  srcChanged: function (src) {
     var self = this;
 
-    this.$().on('load', function(evt){
-      return self.imageLoaded(evt);
-    }).on('error', function(evt){
-      return self.imageError(evt);
-    });
+    this.$().one('load', function (e){
+      return self.imageLoaded(e);
+    }).one('error', function (e){
+      return self.imageError(e);
+    }).attr('src', src);
+  },
+
+  didInsertElement: function () {
+    this.$().css("opacity", 0).css('transition', 'opacity .25s ease-in-out');
+
+    this.imageChanged();
   },
   willDestroyElement: function () {
+
     this.$().off('load', 'error');
   },
+
   imageLoaded: function (e) {
-    this.set('controller.loadingImg', false);
+    var self = this;
+
+    if (this.get('image').visible) {
+      this.$().css('opacity', 1);
+    }
+
+    // this.set('controller.loadingImg', false);
   },
+
+  // TODO: handle error state
   imageError: function (e) {
-    this.set('controller.loadingImg', false);
+    // this.set('controller.loadingImg', false);
   }
 });

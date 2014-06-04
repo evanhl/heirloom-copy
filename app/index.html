@@ -72,7 +72,8 @@
       <section class="lightbox">
         {{#if loadingImg}}<div class="spinner"></div>{{/if}}
 
-        {{view App.ImageView src=largeVersion}}
+        {{view App.ImageView image=firstState}}
+        {{view App.ImageView image=secondState}}
 
         {{#if prevId}}
           {{#link-to 'photo' prevId}}<div class="left-arrow"></div>{{/link-to}}
