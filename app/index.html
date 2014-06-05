@@ -26,64 +26,6 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- TODO: Move templates to separate files -->
-    <script type="text/x-handlebars">
-      <nav>
-        <h1>Heirloom</h1>
-
-        <ul>
-          <li>{{#link-to 'photos'}}Photos{{/link-to}}</li>
-          <li>{{#link-to 'albums'}}Albums{{/link-to}}</li>
-          <li>{{#link-to 'upload'}}Upload{{/link-to}}</li>
-        </ul>
-      </nav>
-      {{outlet}}
-    </script>
-
-    <script type="text/x-handlebars" data-template-name="photos">
-      {{outlet}}
-
-      <h2>Photos</h2>
-
-      {{#each}}
-        {{#if source}}
-          {{#link-to 'photo' id}}<img {{bind-attr src=thumbVersion}} class="gallery-photo">{{/link-to}}
-        {{/if}}
-      {{/each}}
-
-      {{#if loadingMore}}
-      <div class="spinner"></div>
-      {{else}}
-      <div class="spinner-placeholder"></div>
-      {{/if}}
-    </script>
-
-    <script type="text/x-handlebars" data-template-name="albums">
-      <h2>Albums</h2>
-    </script>
-
-    <script type="text/x-handlebars" data-template-name="upload">
-      <h2>Upload</h2>
-
-      <section class="dropzone"></section>
-    </script>
-
-    <script type="text/x-handlebars" data-template-name="photo">
-      <section class="lightbox">
-        {{#if loadingImg}}<div class="spinner"></div>{{/if}}
-
-        {{view App.ImageView image=firstState}}
-        {{view App.ImageView image=secondState}}
-
-        {{#if prevId}}
-          {{#link-to 'photo' prevId}}<div class="left-arrow"></div>{{/link-to}}
-        {{/if}}
-        {{#if nextId}}
-          {{#link-to 'photo' nextId}}<div class="right-arrow"></div>{{/link-to}}
-        {{/if}}
-      </section>
-    </script>
-
     <!-- build:js /scripts/vendor.js -->
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
@@ -119,6 +61,7 @@
     <script src="/scripts/adapters/applicationAdapter.js"></script>
     <script src="/scripts/upload/uploadSignature.js"></script>
     <script src="/scripts/upload/uploadToS3.js"></script>
+    <script src="/templates.js"></script>
     <!-- endbuild -->
 </body>
 </html>

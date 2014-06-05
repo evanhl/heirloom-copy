@@ -59,6 +59,10 @@ module.exports = function(grunt) {
         files: ['<%= config.app %>/styles/{,*/}*.css'],
         tasks: ['newer:copy:styles', 'autoprefixer']
       },
+      templates: {
+        files: ['<%= config.app %>/templates/**/*.hbs'],
+        tasks: ['emberTemplates']
+      },
       livereload: {
         options: {
           livereload: '<%= connect.options.livereload %>'
@@ -66,6 +70,7 @@ module.exports = function(grunt) {
         files: [
           '<%= config.app %>/{,*/}*.html',
           '.tmp/styles/{,*/}*.css',
+          '.tmp/templates.js',
           '<%= config.app %>/images/{,*/}*'
         ]
       }
@@ -361,6 +366,7 @@ module.exports = function(grunt) {
         'copy:styles'
       ],
       dist: [
+        'emberTemplates',
         'sass',
         'copy:styles',
         // 'imagemin',
@@ -392,6 +398,17 @@ module.exports = function(grunt) {
         '<%= config.app %>/scripts/**/*.js',
         '<%= config.app %>/**/*.html'
       ]
+    },
+
+    emberTemplates: {
+      compile: {
+        options: {
+          templateBasePath: '<%= config.app %>/templates/'
+        },
+        files: {
+          ".tmp/templates.js": "<%= config.app %>/templates/**/*.hbs"
+        }
+      }
     }
   });
 
