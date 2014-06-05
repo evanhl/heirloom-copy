@@ -6,6 +6,8 @@ App.PhotoController = Ember.ObjectController.extend({
 
   init: function () {
     this._super();
+
+    // observes only fires on a computed property if get has been called on it at least once
     this.get('photosUntilEnd');
   },
 

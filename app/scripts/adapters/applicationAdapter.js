@@ -35,22 +35,18 @@ App.Photo = DS.Model.extend({
   versions: DS.attr(),
 
   versionForDimension: function (dim) {
-    var versions = this.get('versions') || [];
+    var versions = this.get('versions') || {};
     var thumb;
 
-    thumb = versions.filter(function (version) {
-      return parseInt(version.width) === dim || parseInt(version.height) === dim;
-    });
-
-    return thumb[0] && thumb[0].url;
+    return versions[dim] && versions[dim].url;
   },
 
   thumbVersion: function () {
-    return this.versionForDimension(420);
+    return this.versionForDimension('s');
   }.property('versions'),
 
   largeVersion: function () {
-    return this.versionForDimension(1280);
+    return this.versionForDimension('n');
   }.property('versions')
 });
 

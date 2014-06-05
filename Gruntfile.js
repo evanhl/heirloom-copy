@@ -189,7 +189,7 @@ module.exports = function(grunt) {
     // Add vendor prefixed styles
     autoprefixer: {
       options: {
-        browsers: ['last 1 version']
+        browsers: ['last 5 versions']
       },
       dist: {
         files: [{
@@ -359,6 +359,7 @@ module.exports = function(grunt) {
     // Run some tasks in parallel to speed up build process
     concurrent: {
       server: [
+        'emberTemplates',
         'sass:server',
         'copy:styles'
       ],
