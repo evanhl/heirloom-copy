@@ -215,6 +215,11 @@ module.exports = function(grunt) {
               'downloads/css/dropzone.css',
               'downloads/dropzone.min.js'
             ]
+          },
+          'ember': {
+            main: [
+              'ember.prod.js'
+            ]
           }
         }
       },

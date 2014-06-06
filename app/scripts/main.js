@@ -13,5 +13,20 @@ App.Router.map(function() {
   });
   this.resource('albums');
   this.route('upload');
+  this.route('registration');
 });
 
+App.RegistrationController = Ember.ObjectController.extend({
+  email: null,
+  name: null,
+  username: null,
+  password: null,
+
+  actions: {
+    create: function () {
+      var registration = this.getProperties(['name', 'email', 'username', 'password']);
+      var record = this.store.createRecord('registration', registration);
+      record.save();
+    }
+  }
+});
