@@ -3,6 +3,7 @@ App.RegistrationController = Ember.ObjectController.extend({
   name: null,
   username: null,
   password: null,
+  error: {},
 
   actions: {
     create: function () {
@@ -17,9 +18,13 @@ App.RegistrationController = Ember.ObjectController.extend({
         localStorage.setItem('X-User-Token', token);
 
         self.transitionToRoute('photos');
-      }, function () {
-        // TODO: handle error
+      }, function (response) {
+        if (response.responseJSON && response.responseJSON instanceof Object) {
+          self.set('error', response.responseJSON);
+        }
       });
     }
   }
 });
+
+// TODO: DRY up registration.hbs template by creating helper templates for input+error blocks
