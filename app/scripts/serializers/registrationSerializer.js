@@ -5,5 +5,5 @@ App.RegistrationSerializer = DS.RESTSerializer.extend({
     Object.keys(serialized).forEach(function (key) {
       hash[key] = serialized[key];
     });
-  },
+  }
 });

@@ -2,6 +2,12 @@
 
 var App = Ember.Application.create({});
 
+App.httpHeaders = {};
+
+if (localStorage.getItem('X-User-Token')) {
+  App.httpHeaders['X-User-Token'] = localStorage.getItem('X-User-Token');
+}
+
 // Use HTML5 History API (pushState) to manage app URLs
 App.Router.reopen({
   location: 'history'
@@ -16,17 +22,12 @@ App.Router.map(function() {
   this.route('registration');
 });
 
-App.RegistrationController = Ember.ObjectController.extend({
-  email: null,
-  name: null,
-  username: null,
-  password: null,
+DS.RESTSerializer.reopen({
+  normalizePayload: function(type, payload) {
+    var newPayload = {};
 
-  actions: {
-    create: function () {
-      var registration = this.getProperties(['name', 'email', 'username', 'password']);
-      var record = this.store.createRecord('registration', registration);
-      record.save();
-    }
+    newPayload[type.typeKey] = payload;
+
+    return newPayload;
   }
 });

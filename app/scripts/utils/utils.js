@@ -14,7 +14,6 @@
 
 // TODO: centralize API call logic
 Utils.HOSTNAME = 'https://api.hlstage.com';
-Utils.AUTH_TOKEN = 'S57azk9UzxQSc3DN3mh4';
 Utils.apiCall = function (url, type, data, success, error) {
   var self = this;
   var dataToSend = data;
@@ -32,7 +31,7 @@ Utils.apiCall = function (url, type, data, success, error) {
     success: success,
     error: error,
     beforeSend: function setHeader (xhr) {
-      xhr.setRequestHeader('X-User-Token', self.AUTH_TOKEN);
+      xhr.setRequestHeader('X-User-Token', App.httpHeaders['X-User-Token']);
     }
   });
 };
