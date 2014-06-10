@@ -1,7 +1,5 @@
 {{outlet}}
 
-<h2>Photos</h2>
-
 {{#each}}
   {{#if source}}
     {{#link-to 'photo' id}}<img {{bind-attr src=thumbVersion}} class="gallery-photo">{{/link-to}}
