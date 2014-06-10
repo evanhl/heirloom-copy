@@ -220,6 +220,9 @@ module.exports = function(grunt) {
             main: [
               'ember.prod.js'
             ]
+          },
+          'foundation': {
+            main: []
           }
         }
       },

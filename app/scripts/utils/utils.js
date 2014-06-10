@@ -14,7 +14,7 @@
 
 // TODO: centralize API call logic
 Utils.HOSTNAME = 'https://api.hlstage.com';
-Utils.AUTH_TOKEN = 'UNoPHd8x2Wzw8zdY4aMi';
+Utils.AUTH_TOKEN = 'S57azk9UzxQSc3DN3mh4';
 Utils.apiCall = function (url, type, data, success, error) {
   var self = this;
   var dataToSend = data;

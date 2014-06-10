@@ -2,6 +2,13 @@
 @import 'neat/app/assets/stylesheets/_neat';
 @import 'normalize-scss/_normalize';
 
+// $include-html-classes: false;
+$topbar-bg-color: #eee;
+
+@import 'foundation/scss/foundation/components/grid';
+@import 'foundation/scss/foundation/components/forms';
+@import 'foundation/scss/foundation/components/top-bar';
+
 @import '_spinner';
 
 $lightbox-color: rgba(255, 255, 255, 0.9);
@@ -14,6 +21,18 @@ body {
 
 img {
   max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+.top-bar {
+  li {
+    a.active {
+      color: #666;
+    }
+  }
 }
 
 .wrapper {
@@ -124,3 +143,7 @@ img {
   }
 }
 
+
+input[type="text"], input[type="password"], input[type="email"] {
+  @include grid-column($columns:6);
+}

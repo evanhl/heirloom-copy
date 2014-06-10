@@ -1,8 +1,20 @@
-Registation
+<div class="row">
+  <h1>Registration</h1>
+</div>
 
-{{input value=name placeholder="Name"}}
-{{input value=email type="email" placeholder="Email"}}
-{{input value=username placeholder="Username"}}
-{{input value=password type="password" placeholder="Password"}}
+<div class="row">
+  {{input value=name placeholder="Name" class="custom-input-class"}}
+</div>
+<div class="row">
+  {{input value=email type="email" placeholder="Email" class="custom-input-class"}}
+</div>
+<div class="row">
+  {{input value=username placeholder="Username" class="custom-input-class"}}
+</div>
+<div class="row">
+  {{input value=password type="password" placeholder="Password" class="custom-input-class"}}
+</div>
 
-<button {{action 'create' bubbles=false}}>Create</button>
+<div class="row">
+  <button {{action 'create' bubbles=false}}>Sign Up</button>
+</div>

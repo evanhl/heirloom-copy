@@ -1,10 +1,18 @@
-<nav>
-<h1>Heirloom</h1>
+<nav class="top-bar">
+  <ul class="title-area">
+    <li class="name">
+      <h1>Heirloom</h1>
+    </li>
+  </ul>
 
-<ul>
-  <li>{{#link-to 'photos'}}Photos{{/link-to}}</li>
-  <li>{{#link-to 'albums'}}Albums{{/link-to}}</li>
-  <li>{{#link-to 'upload'}}Upload{{/link-to}}</li>
-</ul>
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li>{{#link-to 'photos'}}Photos{{/link-to}}</li>
+      <li>{{#link-to 'albums'}}Albums{{/link-to}}</li>
+      <li>{{#link-to 'upload'}}Upload{{/link-to}}</li>
+    </ul>
+  </section>
 </nav>
+
 {{outlet}}
