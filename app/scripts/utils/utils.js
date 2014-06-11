@@ -31,7 +31,7 @@ Utils.apiCall = function (url, type, data, success, error) {
     success: success,
     error: error,
     beforeSend: function setHeader (xhr) {
-      xhr.setRequestHeader('X-User-Token', App.httpHeaders['X-User-Token']);
+      xhr.setRequestHeader('X-User-Token', App.auth.get('authToken'));
     }
   });
 };

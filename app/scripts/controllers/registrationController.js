@@ -11,11 +11,10 @@ App.RegistrationController = Ember.ObjectController.extend({
       var record = this.store.createRecord('registration', registration);
       var self = this;
 
-      record.save().then(function (registrationResponse) {
-        var token = registrationResponse.get('authentication_token');
+      record.save().then(function (regModel) {
+        var token = regModel.get('authentication_token');
 
-        App.httpHeaders['X-User-Token'] = token;
-        localStorage.setItem('X-User-Token', token);
+        App.auth.set('authToken', token);
 
         self.transitionToRoute('photos');
       }, function (response) {

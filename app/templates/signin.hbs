@@ -1,0 +1,42 @@
+<div class="row">
+  <h1>Sign In</h1>
+</div>
+
+{{#if error.errors.base}}
+  <div class="row">
+    <div class="alert-box alert large-6">
+      {{error.errors.base}}
+    </div>
+  </div>
+{{/if}}
+
+<div class="row">
+  <div class="large-6">
+    {{#if error.login}}
+      {{input value=login placeholder="Email/Username" class="error"}}
+      {{#each error.login}}
+        <small class="error">{{this}}</small>
+      {{/each}}
+    {{else}}
+      {{input value=login placeholder="Email/Username"}}
+    {{/if}}
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-6">
+    {{#if error.password}}
+      {{input value=password type="password" placeholder="Password" class="error"}}
+      {{#each error.password}}
+        <small class="error">{{this}}</small>
+      {{/each}}
+    {{else}}
+      {{input value=password type="password" placeholder="Password"}}
+    {{/if}}
+  </div>
+</div>
+
+
+<div class="row">
+  <button {{action 'signin' bubbles=false}}>Sign In</button>
+</div>
