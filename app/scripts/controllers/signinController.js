@@ -1,4 +1,4 @@
-App.SigninController = Ember.ObjectController.extend({
+App.SigninController = Ember.Controller.extend({
   login: null,
   password: null,
   error: {},
@@ -16,6 +16,12 @@ App.SigninController = Ember.ObjectController.extend({
         App.auth.set('authToken', token);
 
         self.transitionToRoute('photos');
+
+        self.setProperties({
+          login: null,
+          password: null,
+          error: null
+        });
       }, function (response) {
         if (response.responseJSON && response.responseJSON instanceof Object) {
           self.set('error', response.responseJSON);

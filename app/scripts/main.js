@@ -20,7 +20,12 @@ App.Authorization = Ember.Object.extend({
       }
     });
 
-    localStorage.setItem('authToken', this.get('authToken'));
+    if (this.get('authToken')) {
+      localStorage.setItem('authToken', this.get('authToken'));
+    } else {
+      localStorage.removeItem('authToken');
+    }
+
   }.observes('authToken').on('init')
 });
 
@@ -39,6 +44,7 @@ App.Router.map(function() {
   this.route('upload');
   this.route('registration');
   this.route('signin');
+  this.route('signout');
 });
 
 DS.RESTSerializer.reopen({

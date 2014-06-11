@@ -1,8 +1,11 @@
 App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMixin, {
-  page: 0,
-  perPage: 20,
   needs: ['photo'],
   photo: Ember.computed.alias("controllers.photo"),
+
+  reset: function () {
+    this.set('model', []);
+    this._super();
+  },
 
   fetchPage: function (page, perPage) {
     var self = this;

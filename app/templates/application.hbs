@@ -6,12 +6,17 @@
   </ul>
 
   <section class="top-bar-section">
-    <!-- Right Nav Section -->
     <ul class="right">
-      <li>{{#link-to 'photos'}}Photos{{/link-to}}</li>
-      <li>{{#link-to 'albums'}}Albums{{/link-to}}</li>
-      <li>{{#link-to 'upload'}}Upload{{/link-to}}</li>
-      <li><a href="javascript:void();">{{userFullName}}</a></li>
+      {{#if isLoggedIn}}
+        <li>{{#link-to 'photos'}}Photos{{/link-to}}</li>
+        <li>{{#link-to 'albums'}}Albums{{/link-to}}</li>
+        <li>{{#link-to 'upload'}}Upload{{/link-to}}</li>
+        <li><a href="javascript:void();" {{action 'signout'}}>Sign Out</a></li>
+        <li><a href="javascript:void();">{{userFullName}}</a></li>
+      {{else}}
+        <li>{{#link-to 'signin'}}Sign In{{/link-to}}</li>
+        <li>{{#link-to 'registration'}}Sign Up{{/link-to}}</li>
+      {{/if}}
     </ul>
   </section>
 </nav>

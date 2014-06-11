@@ -1,15 +1,24 @@
 // Tweak of https://github.com/bantic/ember-infinite-scroll
 
 (function(window, Ember, $){
-  var InfiniteScroll = {
-    PAGE:     1,  // default start page
-    PER_PAGE: 25 // default per page
-  };
+  var InfiniteScroll = {};
 
   InfiniteScroll.ControllerMixin = Ember.Mixin.create({
+    page: 0,
+    perPage: 20,
+
     fetchPage: function (page, perPage) {
       throw new Error("Must override fetchPage and return a Promise.");
     },
+
+    reset: function () {
+      this.setProperties({
+        maxPage: null,
+        page: 0,
+        loadingMore: false
+      });
+    },
+
     actions: {
       getMore: function () {
         var nextPage, perPage, self;
@@ -20,7 +29,7 @@
         perPage    = this.get('perPage');
         self       = this;
 
-        if (nextPage > this.get('maxPage')) { return; }
+        if (this.get('maxPage') && nextPage > this.get('maxPage')) { return; }
 
         this.set('loadingMore', true);
 
