@@ -1,5 +1,3 @@
-/* global Utils */
-
 (function () {
   var ensureNamespace = function (namespace) {
     namespace.split('.').reduce(function (currentContext, context) {

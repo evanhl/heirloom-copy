@@ -1,4 +1,3 @@
-/* global Dropzone, Ember, App, Utils */
 /* jslint bitwise: true */
 
 // TODO: Follow proper Ember.js idioms

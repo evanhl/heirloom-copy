@@ -1,5 +1,3 @@
-/* global App, Utils */
-
 Utils.ensureNamespace('App.Upload');
 
 App.Upload.uploadSignature = Ember.Object.create({
