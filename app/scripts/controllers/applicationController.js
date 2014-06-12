@@ -1,11 +1,12 @@
 App.ApplicationController = Ember.Controller.extend({
   needs: ['photos'],
+
   userFullName: function () {
-    return App.get('currentSession.name');
-  }.property('App.currentSession.name'),
+    return App.get('auth.currentSession.name');
+  }.property('App.auth.currentSession.name'),
 
   isLoggedIn: function () {
-    return App.auth.get('isLoggedIn');
+    return App.get('auth.isLoggedIn');
   }.property('App.auth.isLoggedIn'),
 
   actions: {
@@ -15,8 +16,7 @@ App.ApplicationController = Ember.Controller.extend({
 
       adapter.ajax(adapter.buildURL('session'), 'DELETE').then(function () {
         // TODO: don't maintain separate session and authToken
-        App.set('currentSession', null);
-        App.auth.set('authToken', null);
+        App.set('auth.currentSession', null);
 
         self.transitionToRoute('signin');
         self.get('controllers.photos').reset();
@@ -26,3 +26,4 @@ App.ApplicationController = Ember.Controller.extend({
     }
   }
 });
+

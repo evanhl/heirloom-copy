@@ -1,17 +1,44 @@
 /* jshint -W079 */
 
-var App = Ember.Application.create({
-  currentSession: null
+// Adapted from http://stackoverflow.com/a/10199338
+Ember.Object.reopen({
+  // allows us to get raw object from any Ember.Object so that we can serialize to localStorage
+  getJson: function() {
+    var v, ret = [];
+
+    for (var key in this) {
+      if (this.hasOwnProperty(key)) {
+        v = this[key];
+
+        if (v === 'toString') {
+          continue;
+        }
+
+        if (Ember.typeOf(v) === 'function') {
+          continue;
+        }
+
+        ret.push(key);
+      }
+    }
+
+    return this.getProperties.apply(this, ret);
+  }
 });
 
+var App = Ember.Application.create({
+});
+
+// TODO: abstract localStorage so that classes don't have to directly interact with it
 App.Authorization = Ember.Object.extend({
-  authToken: localStorage.getItem('authToken'),
+  currentSession: (localStorage.getItem('currentSession') ? Ember.Object.create(JSON.parse(localStorage.getItem('currentSession'))) : null),
+  authToken: Ember.computed.alias('currentSession.authentication_token'),
 
   isLoggedIn: function () {
     return !!this.get('authToken');
   }.property('authToken'),
 
-  authTokenChanged: function () {
+  currentSessionChanged: function () {
     var self = this;
 
     Ember.$.ajaxPrefilter(function(options, originalOptions, jqXhr) {
@@ -20,16 +47,16 @@ App.Authorization = Ember.Object.extend({
       }
     });
 
-    if (this.get('authToken')) {
-      localStorage.setItem('authToken', this.get('authToken'));
+    if (this.get('currentSession')) {
+      localStorage.setItem('currentSession', JSON.stringify(this.get('currentSession').getJson()));
     } else {
-      localStorage.removeItem('authToken');
+      localStorage.removeItem('currentSession');
     }
 
-  }.observes('authToken').on('init')
+  }.observes('currentSession').on('init')
 });
 
-App.auth = new App.Authorization();
+App.set('auth', new App.Authorization());
 
 // Use HTML5 History API (pushState) to manage app URLs
 App.Router.reopen({

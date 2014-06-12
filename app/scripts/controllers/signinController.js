@@ -10,10 +10,8 @@ App.SigninController = Ember.Controller.extend({
       var self = this;
 
       record.save().then(function (session) {
-        var token = session.get('authentication_token');
-
-        App.set('currentSession', session);
-        App.auth.set('authToken', token);
+        var sessionObj = Ember.Object.create(session.toJSON());
+        App.set('auth.currentSession', sessionObj);
 
         self.transitionToRoute('photos');
 
