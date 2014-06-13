@@ -4,6 +4,6 @@ App.ApplicationAdapter = DS.RESTAdapter.extend({
     if (jqXHR.status === 401) { // 401 = HTTP unauthorized
       App.set('auth.currentSession', null);
     }
-    this._super(jqXHR);
+    return this._super(jqXHR);
   }
 });
