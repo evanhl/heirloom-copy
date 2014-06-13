@@ -1,8 +1,18 @@
 {{outlet}}
 
+{{#if numSelected}}
+  <div class="row">
+    <h2 class="large-3 columns">{{numSelected}} selected</h2>
+    <button class="large-3 columns" {{action 'removePhotos'}}>Delete</button>
+  </div>
+  {{/if}}
+
 {{#each}}
   {{#if source}}
-    {{#link-to 'photo' id}}<img {{bind-attr src=thumbVersion}} class="gallery-photo">{{/link-to}}
+    <div class="gallery-photo">
+      <img {{bind-attr src=thumbVersion}} {{action enlarge id}}>
+      <div {{bind-attr class=":select selected"}} {{action select id}}></div>
+    </div>
   {{/if}}
 {{/each}}
 

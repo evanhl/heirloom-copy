@@ -13,6 +13,7 @@ $topbar-bg-color: #eee;
 @import '_spinner';
 
 $lightbox-color: rgba(255, 255, 255, 0.9);
+$selection-color: rgb(102, 200, 237);
 
 body {
   background: #fafafa;
@@ -95,7 +96,7 @@ a {
     transition: opacity .25s ease-in-out;
   }
 
-  // FIXME: this sucks
+  // FIXME: these arrows don't position correctly for large horizontal:vertical ratios or mobile browsers
   .left-arrow, .right-arrow {
     height: 100px;
     width: 5%;
@@ -127,7 +128,7 @@ a {
 .gallery-photo {
   height: 200px;
   width: 200px;
-  margin: 1em;
+  margin: 2em 0 0 2em;
 
   display: inline-block;
   -webkit-transition-duration: 0.3s;
@@ -138,8 +139,28 @@ a {
   transform: translateZ(0);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 
-  &:hover, &:focus, &:active {
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
+  cursor: pointer;
+  overflow: hidden;
+
+  // &:hover, &:focus, &:active {
+  //   -webkit-transform: scale(1.1);
+  //   transform: scale(1.1);
+  // }
+
+  .select {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    // TODO: replace with sprite
+    background-image: url(/images/ios7-checkmark.svg);
+    background-size: 50px 50px;
+    cursor: pointer;
+
+    &:hover, &.selected {
+      // TODO: replace with sprite
+      background-image: url(/images/ios7-checkmark-hover.svg);
+    }
   }
 }
