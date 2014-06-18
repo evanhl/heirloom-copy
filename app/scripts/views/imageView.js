@@ -16,16 +16,26 @@ App.ImageView = Ember.View.extend({
 
   onlyVisibleChanged: function (visible) {
     if (visible) {
-      this.$().css('opacity', 1);
+      this.transitionIn();
     } else {
-      this.$().css('opacity', 0);
+      this.transitionOut();
     }
   },
 
   visibleChanged: function (visible) {
     if (!visible) {
-      this.$().css('opacity', 0);
+      this.transitionOut();
     }
+  },
+
+  transitionIn: function () {
+    this.$().css('width', '');
+    this.$().css('opacity', 1);
+  },
+
+  transitionOut: function () {
+    this.$().css('width', '');
+    this.$().css('opacity', 0);
   },
 
   srcChanged: function (src) {
@@ -40,18 +50,23 @@ App.ImageView = Ember.View.extend({
   },
 
   didInsertElement: function () {
+    this.$().on('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function () {
+      if ($(this).css('opacity') < 0.02) {
+        $(this).css('width', 0);
+      }
+    });
+
     this.imageChanged();
   },
   willDestroyElement: function () {
-
-    this.$().off('load', 'error');
+    this.$().off();
   },
 
   imageLoaded: function (e) {
     var self = this;
 
     if (this.get('image').visible) {
-      this.$().css('opacity', 1);
+      this.transitionIn();
     }
 
     this.set('controller.loadingImg', false);
