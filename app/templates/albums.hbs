@@ -1,0 +1,16 @@
+{{#each}}
+{{!--   <div style="margin:10px;">
+    Album {{id}}: {{name}}
+    {{#if cover_photo.versions.n.url}}
+    <img {{bind-attr src=cover_photo.versions.n.url}}>
+  </div> --}}
+  <div class="album" {{bind-attr style=style}}>
+    <span>{{name}}</span>
+  </div>
+{{/each}}
+
+{{#if loadingMore}}
+<div class="spinner"></div>
+{{else}}
+<div class="spinner-placeholder"></div>
+{{/if}}

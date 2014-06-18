@@ -125,6 +125,28 @@ a {
   }
 }
 
+.album {
+  position: relative;
+  background-color: #666;
+  height: 100px;
+  background-size: 100% auto;
+  background-position: 50%;
+  opacity: 0.9;
+  transition: opacity .1s ease-in-out;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  span {
+    text-shadow: 4px 4px 9px rgba(0, 0, 0, 1);
+    color: white;
+    position: absolute;
+    bottom: 0;
+    padding: 1em;
+  }
+}
+
 .gallery-photo {
   height: 200px;
   width: 200px;
