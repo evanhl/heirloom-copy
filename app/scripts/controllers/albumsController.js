@@ -6,5 +6,22 @@ App.AlbumsController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
     }).then(function (albums) {
       return albums.filter(function () { return true; });
     });
+  },
+
+  actions: {
+    create: function () {
+      var self = this;
+      var album = this.getProperties(['name']);
+      var record = this.store.createRecord('album', album);
+
+      record.save().then(function (createdRecord) {
+        self.unshiftObject(createdRecord);
+        self.set('error', null);
+      }, function (response) {
+        if (response.responseJSON && response.responseJSON instanceof Object) {
+          self.set('error', response.responseJSON);
+        }
+      });
+    }
   }
 });

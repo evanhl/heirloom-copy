@@ -1,9 +1,19 @@
+
+<div class="row collapse">
+  <div class="large-10 columns">
+    {{input value=name classNameBindings="error.name:error"}}
+    {{#if error.name}}
+      {{#each error.name}}
+        <small class="error">{{this}}</small>
+      {{/each}}
+    {{/if}}
+  </div>
+  <div class="large-2 columns">
+    <a class="button postfix" {{action 'create'}}>Create</a>
+  </div>
+</div>
+
 {{#each}}
-{{!--   <div style="margin:10px;">
-    Album {{id}}: {{name}}
-    {{#if cover_photo.versions.n.url}}
-    <img {{bind-attr src=cover_photo.versions.n.url}}>
-  </div> --}}
   <div class="album" {{bind-attr style=style}}>
     <span>{{name}}</span>
   </div>
