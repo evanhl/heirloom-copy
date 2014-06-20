@@ -26,6 +26,8 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
+    <!-- TODO: only use ember.prod in production
+    -->
     <!-- build:js /scripts/vendor.js -->
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
@@ -52,20 +54,25 @@
     <script src="/scripts/utils/infiniteScroll.js"></script>
     <script src="/scripts/main.js"></script>
     <script src="/scripts/routes/signedInRouteMixin.js"></script>
+    <script src="/scripts/routes/albumPhotosRoute.js"></script>
     <script src="/scripts/routes/albumsRoute.js"></script>
     <script src="/scripts/routes/photosRoute.js"></script>
     <script src="/scripts/routes/uploadRoute.js"></script>
+    <script src="/scripts/controllers/basePhotosController.js"></script>
     <script src="/scripts/controllers/albumsController.js"></script>
+    <script src="/scripts/controllers/albumPhotosController.js"></script>
     <script src="/scripts/controllers/applicationController.js"></script>
     <script src="/scripts/controllers/photoController.js"></script>
     <script src="/scripts/controllers/photosController.js"></script>
     <script src="/scripts/controllers/registrationController.js"></script>
     <script src="/scripts/controllers/signinController.js"></script>
     <script src="/scripts/models/album.js"></script>
+    <script src="/scripts/models/albumPhoto.js"></script>
     <script src="/scripts/models/photo.js"></script>
     <script src="/scripts/models/registration.js"></script>
     <script src="/scripts/models/session.js"></script>
     <script src="/scripts/views/albumsView.js"></script>
+    <script src="/scripts/views/albumPhotosView.js"></script>
     <script src="/scripts/views/imageView.js"></script>
     <script src="/scripts/views/photoView.js"></script>
     <script src="/scripts/views/photosView.js"></script>
@@ -75,6 +82,7 @@
     <script src="/scripts/adapters/applicationAdapter.js"></script>
     <script src="/scripts/adapters/userNamespacedAdapterMixin.js"></script>
     <script src="/scripts/adapters/albumAdapter.js"></script>
+    <script src="/scripts/adapters/albumPhotoAdapter.js"></script>
     <script src="/scripts/adapters/photoAdapter.js"></script>
     <script src="/scripts/serializers/registrationSerializer.js"></script>
     <script src="/scripts/upload/uploadSignature.js"></script>

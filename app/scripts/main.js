@@ -26,6 +26,7 @@ Ember.Object.reopen({
   }
 });
 
+// TODO: use deferReadiness for auth
 var App = Ember.Application.create({
 });
 
@@ -63,11 +64,14 @@ App.Router.reopen({
   location: 'history'
 });
 
-App.Router.map(function() {
+App.Router.map(function () {
   this.resource('photos', function () {
     this.resource('photo', { path: 'photo/:photo_id' });
   });
   this.resource('albums');
+  this.resource('album', { path: 'album/:album_id' }, function () {
+    this.resource('albumPhotos', { path: 'photos' });
+  });
   this.route('upload');
   this.route('registration');
   this.route('signin');

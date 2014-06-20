@@ -30,7 +30,6 @@ App.ApplicationController = Ember.Controller.extend({
       var adapter = this.store.adapterFor('application');
 
       adapter.ajax(adapter.buildURL('session'), 'DELETE').then(function () {
-        // TODO: don't maintain separate session and authToken
         App.set('auth.currentSession', null);
       }, function () {
         // TODO: handle error

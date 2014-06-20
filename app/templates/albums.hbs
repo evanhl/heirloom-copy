@@ -14,9 +14,11 @@
 </div>
 
 {{#each}}
-  <div class="album" {{bind-attr style=style}}>
-    <span>{{name}}</span>
-  </div>
+  {{#link-to 'albumPhotos' id}}
+    <div class="album" {{bind-attr style=style}}>
+      <span>{{name}}</span>
+    </div>
+  {{/link-to}}
 {{/each}}
 
 {{#if loadingMore}}
