@@ -38,14 +38,23 @@
         });
       },
       gotMore: function (items, nextPage) {
-        this.set('loadingMore', false);
+        var self = this;
+        var processItems = function () {
+          self.set('loadingMore', false);
 
-        if (items.length === 0) {
-          this.set('maxPage', this.get('page'));
+          if (items.get('length') === 0) {
+            self.set('maxPage', self.get('page'));
+          }
+
+          self.pushObjects(items.content);
+          self.set('page', nextPage);
+        };
+
+        if (!items.get('isLoaded')) {
+          items.on('didLoad', processItems);
+        } else {
+          processItems();
         }
-
-        this.pushObjects(items);
-        this.set('page', nextPage);
       }
     }
   });

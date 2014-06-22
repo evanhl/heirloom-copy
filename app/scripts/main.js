@@ -78,22 +78,4 @@ App.Router.map(function () {
   this.route('signout');
 });
 
-DS.RESTSerializer.reopen({
-  // removes root element from requests
-  normalizePayload: function(type, payload) {
-    var newPayload = {};
 
-    newPayload[type.typeKey] = payload;
-
-    return newPayload;
-  },
-
-  // removes root element from responses
-  serializeIntoHash: function(hash, type, record, options) {
-    var serialized = this.serialize(record, options);
-
-    Object.keys(serialized).forEach(function (key) {
-      hash[key] = serialized[key];
-    });
-  }
-});

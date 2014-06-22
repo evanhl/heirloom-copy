@@ -6,7 +6,7 @@ App.SigninController = Ember.Controller.extend({
   actions: {
     signin: function () {
       var login = this.getProperties(['login', 'password']);
-      var record = this.store.createRecord('session', login);
+      var record = App.Session.create(login);
       var self = this;
 
       record.save().then(function (session) {

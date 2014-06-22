@@ -33,3 +33,13 @@ Utils.apiCall = function (url, type, data, success, error) {
     }
   });
 };
+
+Utils.wrapInPromise = function (result) {
+  if (!(result instanceof Ember.RSVP.Promise)) {
+    return new Ember.RSVP.Promise(function (resolve, reject) {
+      resolve(result);
+    });
+
+  }
+  return result;
+};

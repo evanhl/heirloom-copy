@@ -1,7 +1,7 @@
-App.Photo = DS.Model.extend({
-  source: DS.attr(),
-  state: DS.attr(),
-  versions: DS.attr(),
+App.Photo = Ember.Model.extend({
+  source: Ember.attr(),
+  state: Ember.attr(),
+  versions: Ember.attr(),
 
   versionForDimension: function (dim) {
     var versions = this.get('versions') || {};
@@ -17,4 +17,9 @@ App.Photo = DS.Model.extend({
   largeVersion: function () {
     return this.versionForDimension('n');
   }.property('versions')
+});
+
+App.Photo.url = 'photos';
+App.Photo.adapter = App.APIAdapter.create({
+  userNamespaced: true
 });

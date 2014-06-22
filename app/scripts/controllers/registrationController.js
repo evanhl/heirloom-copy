@@ -8,7 +8,7 @@ App.RegistrationController = Ember.ObjectController.extend({
   actions: {
     create: function () {
       var registration = this.getProperties(['name', 'email', 'username', 'password']);
-      var record = this.store.createRecord('registration', registration);
+      var record = App.Registration.create(registration);
       var self = this;
 
       record.save().then(function (session) {

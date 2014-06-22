@@ -1,9 +1,12 @@
-Ember.Inflector.inflector.uncountable('registration');
+App.Registration = Ember.Model.extend({
+  name: Ember.attr(),
+  username: Ember.attr(),
+  email: Ember.attr(),
+  password: Ember.attr(),
+  authentication_token: Ember.attr()
+});
 
-App.Registration = DS.Model.extend({
-  name: DS.attr(),
-  username: DS.attr(),
-  email: DS.attr(),
-  password: DS.attr(),
-  authentication_token: DS.attr()
+App.Registration.url = 'registration';
+App.Registration.adapter = App.APIAdapter.create({
+  userNamespaced: false
 });

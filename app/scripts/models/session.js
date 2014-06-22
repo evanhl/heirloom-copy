@@ -1,9 +1,12 @@
-Ember.Inflector.inflector.uncountable('session');
+App.Session = Ember.Model.extend({
+  login: Ember.attr(),
+  password: Ember.attr(),
+  authentication_token: Ember.attr(),
+  name: Ember.attr(),
+  username: Ember.attr()
+});
 
-App.Session = DS.Model.extend({
-  login: DS.attr(),
-  password: DS.attr(),
-  authentication_token: DS.attr(),
-  name: DS.attr(),
-  username: DS.attr()
+App.Session.url = 'session';
+App.Session.adapter = App.APIAdapter.create({
+  userNamespaced: false
 });

@@ -1,6 +1,6 @@
-App.Album = DS.Model.extend({
-  name: DS.attr(),
-  cover_photo: DS.attr(),
+App.Album = Ember.Model.extend({
+  name: Ember.attr(),
+  cover_photo: Ember.attr(),
 
   style: function () {
     var backgroundImage = '';
@@ -12,4 +12,9 @@ App.Album = DS.Model.extend({
     return backgroundImage;
 
   }.property('cover_photo.versions.n.url')
+});
+
+App.Album.url = 'albums';
+App.Album.adapter = App.APIAdapter.create({
+  userNamespaced: true
 });

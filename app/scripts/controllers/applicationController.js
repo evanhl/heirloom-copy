@@ -27,9 +27,10 @@ App.ApplicationController = Ember.Controller.extend({
   actions: {
     signout: function () {
       var self = this;
-      var adapter = this.store.adapterFor('application');
+      // dummy record is required to delete record
+      var session = App.Session.create();
 
-      adapter.ajax(adapter.buildURL('session'), 'DELETE').then(function () {
+      session.deleteRecord().then(function () {
         App.set('auth.currentSession', null);
       }, function () {
         // TODO: handle error

@@ -1,0 +1,25 @@
+{
+  "name": "ember-model",
+  "main": "ember-model.js",
+  "dependencies": {
+    "ember": "~1.5"
+  },
+  "devDependencies": {
+    "qunit": "~1.11"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "homepage": "https://github.com/ebryn/ember-model",
+  "_release": "7cd79f57",
+  "_resolution": {
+    "type": "commit",
+    "commit": "7cd79f57"
+  },
+  "_source": "https://github.com/ebryn/ember-model.git",
+  "_target": "7cd79f57",
+  "_originalSource": "https://github.com/ebryn/ember-model.git",
+  "_direct": true
+}
