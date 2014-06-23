@@ -34,8 +34,13 @@ App.ImageView = Ember.View.extend({
   },
 
   transitionOut: function () {
-    this.$().css('width', '');
-    this.$().css('opacity', 0);
+    if (parseFloat(this.$().css('opacity')) === 0) {
+      // fixes firefox bug where 0-opacity image has non-zero width for first image and captures click event
+      this.$().css('width', 0);
+    } else {
+      this.$().css('width', '');
+      this.$().css('opacity', 0);
+    }
   },
 
   srcChanged: function (src) {
