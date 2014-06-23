@@ -5,14 +5,6 @@ App.AlbumPhotosController = App.BasePhotosController.extend({
     { name: 'Remove from Album', action: 'removePhotos' }
   ],
 
-  count: function () {
-    return this.get('model').get('length');
-  }.property('@each'),
-
-  albumId: function () {
-    return this.get('album.id');
-  }.property('album'),
-
   fetchPage: function (page, perPage) {
     var adapter = new App.APIAdapter();
     var params = {
