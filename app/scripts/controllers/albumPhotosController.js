@@ -6,7 +6,7 @@ App.AlbumPhotosController = App.BasePhotosController.extend({
   ],
 
   fetchPage: function (page, perPage) {
-    var adapter = new App.APIAdapter();
+    var adapter = App.Album.adapter;
     var params = {
       page: page,
       per_page: perPage
@@ -19,6 +19,19 @@ App.AlbumPhotosController = App.BasePhotosController.extend({
   actions: {
     enlarge: function (id) {
       this.transitionToRoute('albumPhoto', this.get('album.id'), id);
+    },
+
+    removePhotos: function () {
+      var adapter = App.Album.adapter;
+      var self = this;
+
+      this.get('selected').forEach(function (photo) {
+        adapter.removeNestedRecord(self.get('album.model'), photo, 'photos').then(function () {
+          // FIXME: this remove operation is O(n)
+          // TODO: update albums list with cover photo
+          self.get('model').removeObject(photo);
+        });
+      });
     }
   }
 });
