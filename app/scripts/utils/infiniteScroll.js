@@ -38,23 +38,19 @@
         });
       },
       gotMore: function (items, nextPage) {
-        var self = this;
-        var processItems = function () {
-          self.set('loadingMore', false);
-
-          if (items.get('length') === 0) {
-            self.set('maxPage', self.get('page'));
-          }
-
-          self.pushObjects(items.content);
-          self.set('page', nextPage);
-        };
-
-        if (!items.get('isLoaded')) {
-          items.on('didLoad', processItems);
-        } else {
-          processItems();
+        // if it's a wrapped array like Ember.RecordArray, get the inner array
+        if (items.content) {
+          items = items.content;
         }
+
+        this.set('loadingMore', false);
+
+        if (items.length === 0) {
+          this.set('maxPage', this.get('page'));
+        }
+
+        this.pushObjects(items);
+        this.set('page', nextPage);
       }
     }
   });

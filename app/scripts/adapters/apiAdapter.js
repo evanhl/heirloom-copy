@@ -1,5 +1,6 @@
 App.APIAdapter = Ember.RESTAdapter.extend({
   host: 'https://api.hlstage.com',
+
   buildURL: function(klass, id) {
     var urlParts = [];
     var urlRoot = Ember.get(klass, 'url');
@@ -19,6 +20,18 @@ App.APIAdapter = Ember.RESTAdapter.extend({
 
     return urlParts.join('/');
   },
+
+  findNestedQuery: function(parent, childClass, nestedUrl, records, params) {
+    var klass = parent.constructor;
+    var url = this.buildURL(klass, parent.id) + '/' + nestedUrl,
+        self = this;
+
+    return this.ajax(url, params).then(function (data) {
+      self.didFindQuery(childClass, records, params, data);
+      return records;
+    });
+  },
+
   ajax: function (url, params, method, settings) {
     // kick out session on any 401 response
     return this._super(url, params, method, settings).then(function (x) {

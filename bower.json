@@ -9,7 +9,7 @@
     "neat": "~1.5.1",
     "normalize-scss": "~3.0.1",
     "dropzone": "~3.10.0",
-    "ember-data": "1.0.0-beta.7"
+    "ember-model": "https://github.com/ebryn/ember-model.git#7cd79f57"
   },
   "overrides": {
     "picturefill": {

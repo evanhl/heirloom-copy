@@ -1,9 +1,9 @@
 App.AlbumsController = Ember.ArrayController.extend(InfiniteScroll.ControllerMixin, {
   fetchPage: function (page, perPage) {
-    return Utils.wrapInPromise(App.Album.findQuery({
+    return App.Album.fetchQuery({
       page: page,
       per_page: perPage
-    }));
+    });
   },
 
   actions: {

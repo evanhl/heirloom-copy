@@ -31,15 +31,8 @@ App.BasePhotosController = Ember.ArrayController.extend(InfiniteScroll.Controlle
       this.transitionToRoute('photo', id);
     },
 
-    removePhotos: function () {
-      var self = this;
-
-      this.get('selected').forEach(function (photo) {
-        photo.destroyRecord().then(function () {
-          // FIXME: this remove operation is O(n)
-          self.get('model').removeObject(photo);
-        });
-      });
+    batchAction: function (action) {
+      this.send(action);
     }
   }
 });

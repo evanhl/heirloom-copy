@@ -3,12 +3,14 @@
 {{#if numSelected}}
   <div class="row">
     <h2 class="large-3 columns">{{numSelected}} selected</h2>
-    <button class="large-3 columns" {{action 'removePhotos'}}>Delete</button>
+    {{#each batchActions}}
+    <button class="large-3 columns" {{action 'batchAction' action}}>{{name}}</button>
+    {{/each}}
   </div>
 {{/if}}
 
 {{#each}}
-  {{#if source}}
+  {{#if thumbVersion}}
     <div class="gallery-photo">
       <img {{bind-attr src=thumbVersion}} {{action enlarge id}}>
       <div {{bind-attr class=":select selected"}} {{action select id}}></div>
