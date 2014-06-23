@@ -43,14 +43,14 @@
           items = items.content;
         }
 
-        this.set('loadingMore', false);
-
         if (items.length === 0) {
           this.set('maxPage', this.get('page'));
         }
 
         this.pushObjects(items);
         this.set('page', nextPage);
+
+        this.set('loadingMore', false);
       }
     }
   });

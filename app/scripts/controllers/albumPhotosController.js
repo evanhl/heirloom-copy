@@ -14,5 +14,11 @@ App.AlbumPhotosController = App.BasePhotosController.extend({
     var records = Ember.RecordArray.create({ modelClass: App.Photo, _query: params, container: false });
 
     return adapter.findNestedQuery(this.get('album.model'), App.Photo, 'photos', records, params);
+  },
+
+  actions: {
+    enlarge: function (id) {
+      this.transitionToRoute('albumPhoto', this.get('album.id'), id);
+    }
   }
 });

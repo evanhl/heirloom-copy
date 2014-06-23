@@ -1,0 +1,1 @@
+App.AlbumPhotoView = App.PhotoView.extend();

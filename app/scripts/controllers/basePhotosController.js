@@ -27,10 +27,6 @@ App.BasePhotosController = Ember.ArrayController.extend(InfiniteScroll.Controlle
       photo.toggleProperty('selected');
     },
 
-    enlarge: function (id) {
-      this.transitionToRoute('photo', id);
-    },
-
     batchAction: function (action) {
       this.send(action);
     }

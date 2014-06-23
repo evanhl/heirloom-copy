@@ -26,6 +26,10 @@ App.PhotosController = App.BasePhotosController.extend({
           self.get('model').removeObject(photo);
         });
       });
+    },
+
+    enlarge: function (id) {
+      this.transitionToRoute('photo', id);
     }
   }
 });

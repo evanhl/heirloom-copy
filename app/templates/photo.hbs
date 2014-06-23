@@ -5,9 +5,9 @@
   {{view App.ImageView image=secondState}}
 
   {{#if prevId}}
-    {{#link-to 'photo' prevId}}<div class="left-arrow"></div>{{/link-to}}
+    <a href="javascript:void();" {{action 'prevPhoto'}}><div class="left-arrow"></div></a>
   {{/if}}
   {{#if nextId}}
-    {{#link-to 'photo' nextId}}<div class="right-arrow"></div>{{/link-to}}
+    <a href="javascript:void();" {{action 'nextPhoto'}}><div class="right-arrow"></div></a>
   {{/if}}
 </section>

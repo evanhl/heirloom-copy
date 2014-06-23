@@ -70,7 +70,9 @@ App.Router.map(function () {
   });
   this.resource('albums');
   this.resource('album', { path: 'album/:album_id' }, function () {
-    this.resource('albumPhotos', { path: 'photos' });
+    this.resource('albumPhotos', { path: 'photos' }, function () {
+      this.resource('albumPhoto', { path: 'photo/:photo_id' });
+    });
   });
   this.route('upload');
   this.route('registration');
