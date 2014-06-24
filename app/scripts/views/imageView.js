@@ -29,18 +29,13 @@ App.ImageView = Ember.View.extend({
   },
 
   transitionIn: function () {
-    this.$().css('width', '');
+    this.$().css('width', 'auto');
     this.$().css('opacity', 1);
   },
 
   transitionOut: function () {
-    if (parseFloat(this.$().css('opacity')) === 0) {
-      // fixes firefox bug where 0-opacity image has non-zero width for first image and captures click event
-      this.$().css('width', 0);
-    } else {
-      this.$().css('width', '');
-      this.$().css('opacity', 0);
-    }
+    this.$().css('width', 'auto');
+    this.$().css('opacity', 0);
   },
 
   srcChanged: function (src) {
@@ -56,12 +51,14 @@ App.ImageView = Ember.View.extend({
 
   didInsertElement: function () {
     this.$().on('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function () {
-      if ($(this).css('opacity') < 0.02) {
+      if (parseFloat($(this).css('opacity')) === 0) {
         $(this).css('width', 0);
       }
     });
 
-    this.imageChanged();
+    if (this.get('image').visible) {
+      this.imageChanged();
+    }
   },
   willDestroyElement: function () {
     this.$().off();
