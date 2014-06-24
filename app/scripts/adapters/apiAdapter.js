@@ -38,7 +38,16 @@ App.APIAdapter = Ember.RESTAdapter.extend({
     var primaryKey = Ember.get(parent.constructor, 'primaryKey'),
         url = this.buildURL(parent.constructor, Ember.get(parent, primaryKey)) + '/' + nestedUrl + '/' + record.id;
 
-    return this.ajax(url, {}, "DELETE");
+    return this.ajax(url, {}, 'DELETE');
+  },
+
+
+  postNested: function(parent, params, nestedUrl) {
+    // TODO: use hasMany to obtain nestedUrl instead of passing in
+    var primaryKey = Ember.get(parent.constructor, 'primaryKey'),
+        url = this.buildURL(parent.constructor, Ember.get(parent, primaryKey)) + '/' + nestedUrl;
+
+    return this.ajax(url, params, 'POST');
   },
 
   ajax: function (url, params, method, settings) {

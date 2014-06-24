@@ -1,5 +1,5 @@
 App.ApplicationController = Ember.Controller.extend({
-  needs: ['photos'],
+  needs: ['photos', 'albums'],
 
   userFullName: function () {
     return App.get('auth.currentSession.name');
@@ -22,6 +22,7 @@ App.ApplicationController = Ember.Controller.extend({
     // only invoke if server session has already expired
     this.transitionToRoute('signin');
     this.get('controllers.photos').reset();
+    this.get('controllers.albums').reset();
   },
 
   actions: {

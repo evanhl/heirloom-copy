@@ -67,6 +67,7 @@ App.Router.reopen({
 App.Router.map(function () {
   this.resource('photos', function () {
     this.resource('photo', { path: 'photo/:photo_id' });
+    this.route('addToAlbum');
   });
   this.resource('albums');
   this.resource('album', { path: 'album/:album_id' }, function () {

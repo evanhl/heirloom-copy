@@ -16,15 +16,12 @@ App.PhotoView = Ember.View.extend({
 
   keyDown: function (e) {
     var controller = this.get('controller');
-    var LEFT_KEY = 37;
-    var RIGHT_KEY = 39;
-    var ESCAPE_KEY = 27;
 
-    if (e.keyCode === LEFT_KEY) {
+    if (e.keyCode === Utils.Keys.LEFT) {
       controller.send('prevPhoto');
-    } else if (e.keyCode === RIGHT_KEY) {
+    } else if (e.keyCode === Utils.Keys.RIGHT) {
       controller.send('nextPhoto');
-    } else if (e.keyCode === ESCAPE_KEY) {
+    } else if (e.keyCode === Utils.Keys.ESC) {
       controller.send('toCollection');
     }
   }

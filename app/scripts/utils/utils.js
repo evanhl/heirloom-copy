@@ -33,3 +33,10 @@ Utils.apiCall = function (url, type, data, success, error) {
     }
   });
 };
+
+Utils.Keys = {
+  ENTER: 13,
+  ESC: 27,
+  LEFT: 37,
+  RIGHT: 39
+};

@@ -55,7 +55,6 @@
     }
   });
 
-  // TODO: Add lookahead. Load a few hundred px before we hit the bottom.
   InfiniteScroll.ViewMixin = Ember.Mixin.create({
     setupInfiniteScrollListener: function () {
       $(window).on('scroll', $.proxy(this.didScroll, this));
@@ -86,6 +85,7 @@
         $(document).height() - $(window).height());
       var viewPortTop = $(window).scrollTop();
 
+      // instead of waiting til we hit the bottom, check if we are within 1000px
       return (viewPortTop >= distanceToViewportTop - 1000);
     }
   });

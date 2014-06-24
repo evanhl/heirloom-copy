@@ -1,6 +1,7 @@
 App.PhotosController = App.BasePhotosController.extend({
   batchActions: [
-    { name: 'Delete', action: 'removePhotos' }
+    { name: 'Delete', action: 'removePhotos' },
+    { name: 'Add to Album', action: 'addToAlbum' }
   ],
 
   fetchPage: function (page, perPage) {
@@ -30,6 +31,28 @@ App.PhotosController = App.BasePhotosController.extend({
 
     enlarge: function (id) {
       this.transitionToRoute('photo', id);
+    },
+
+    addToAlbum: function () {
+      this.transitionToRoute('photos.addToAlbum');
+    },
+
+    addPhotosToAlbum: function (album) {
+      var self = this;
+      var adapter = App.Album.adapter;
+      var selectedIds = this.get('selected').map(function (photo) {
+        return photo.id;
+      });
+
+      adapter.postNested(album, {
+        photo_ids: selectedIds
+      }, 'photos').then(function () {
+        self.get('selected').forEach(function (photo) {
+          photo.set('selected', false);
+        });
+        self.transitionToRoute('albumPhotos', album.id);
+        album.reload();
+      });
     }
   }
 });
