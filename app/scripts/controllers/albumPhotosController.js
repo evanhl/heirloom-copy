@@ -24,12 +24,18 @@ App.AlbumPhotosController = App.BasePhotosController.extend({
     removePhotos: function () {
       var adapter = App.Album.adapter;
       var self = this;
+      var album = self.get('album.model');
+      var selected = this.get('selected');
+      var selectedIds = selected.map(function (photo) {
+        return photo.id;
+      });
 
-      this.get('selected').forEach(function (photo) {
-        adapter.removeNestedRecord(self.get('album.model'), photo, 'photos').then(function () {
-          // FIXME: this remove operation is O(n)
-          // TODO: update albums list with cover photo
-          self.get('model').removeObject(photo);
+      selected.forEach(function (photo) {
+        adapter.postNested(album, {
+          photo_ids: selectedIds
+        }, 'photos/delete').then(function () {
+          self.get('model').removeObjects(selected);
+          album.reload();
         });
       });
     }

@@ -1,1 +1,1 @@
-App.PhotosAddToAlbumRoute = Ember.Route.extend(App.SignedInRouteMixin);
+App.PhotosAddToAlbumRoute = Ember.Route.extend(App.SignedInRouteMixin, InfiniteScroll.RouteMixin);
