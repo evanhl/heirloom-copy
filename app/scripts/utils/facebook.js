@@ -12,13 +12,14 @@ Utils.Facebook = Ember.Object.extend({
       };
 
       // Load API
-      (function(d, s, id){
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement(s); js.id = id;
-         js.src = "//connect.facebook.net/en_US/sdk.js";
-         fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
+      (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) { return; }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
     }
   },
 
@@ -45,8 +46,8 @@ Utils.Facebook = Ember.Object.extend({
     }
 
     var fbIdentity = App.Identity.create({
-        provider: 'facebook',
-        token: response.authResponse.accessToken
+      provider: 'facebook',
+      token: response.authResponse.accessToken
     });
     fbIdentity.save();
   }

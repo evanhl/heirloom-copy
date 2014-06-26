@@ -6,4 +6,4 @@ App.FbControllerMixin = Ember.Mixin.create({
   isFbInit: function () {
     return App.get('facebook.isInit');
   }.property('App.facebook.isInit')
-})
+});
