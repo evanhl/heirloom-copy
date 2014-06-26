@@ -37,7 +37,10 @@
           self.send('gotMore', items, nextPage);
         });
       },
+
       gotMore: function (items, nextPage) {
+        var proxiedItems;
+
         // if it's a wrapped array like Ember.RecordArray, get the inner array
         if (items.content) {
           items = items.content;
@@ -47,7 +50,14 @@
           this.set('maxPage', this.get('page'));
         }
 
-        this.pushObjects(items);
+        proxiedItems = items.map(function (item) {
+          return App.ModelProxy.create({
+            content: item,
+            selected: false
+          });
+        });
+
+        this.pushObjects(proxiedItems);
         this.set('page', nextPage);
 
         this.set('loadingMore', false);

@@ -27,7 +27,7 @@ App.AlbumPhotosController = App.BasePhotosController.extend({
       var album = self.get('album.model');
       var selected = this.get('selected');
       var selectedIds = selected.map(function (photo) {
-        return photo.id;
+        return photo.get('id');
       });
 
       selected.forEach(function (photo) {

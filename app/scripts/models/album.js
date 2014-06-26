@@ -1,4 +1,5 @@
 App.Album = Ember.Model.extend({
+  id: Ember.attr(Number),
   name: Ember.attr(),
   cover_photo: Ember.attr(),
 

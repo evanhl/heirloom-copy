@@ -24,7 +24,7 @@ App.APIAdapter = Ember.RESTAdapter.extend({
   findNestedQuery: function(parent, childClass, nestedUrl, records, params) {
     // TODO: use hasMany to obtain nestedUrl instead of passing in
     var klass = parent.constructor,
-        url = this.buildURL(klass, parent.id) + '/' + nestedUrl,
+        url = this.buildURL(klass, parent.get('id')) + '/' + nestedUrl,
         self = this;
 
     return this.ajax(url, params).then(function (data) {
@@ -36,7 +36,7 @@ App.APIAdapter = Ember.RESTAdapter.extend({
   removeNestedRecord: function(parent, record, nestedUrl) {
     // TODO: use hasMany to obtain nestedUrl instead of passing in
     var primaryKey = Ember.get(parent.constructor, 'primaryKey'),
-        url = this.buildURL(parent.constructor, Ember.get(parent, primaryKey)) + '/' + nestedUrl + '/' + record.id;
+        url = this.buildURL(parent.constructor, Ember.get(parent, primaryKey)) + '/' + nestedUrl + '/' + record.get('id');
 
     return this.ajax(url, {}, 'DELETE');
   },

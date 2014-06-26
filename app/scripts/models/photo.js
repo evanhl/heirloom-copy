@@ -1,4 +1,5 @@
 App.Photo = Ember.Model.extend({
+  id: Ember.attr(Number),
   source: Ember.attr(),
   state: Ember.attr(),
   versions: Ember.attr(),

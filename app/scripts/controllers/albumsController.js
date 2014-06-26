@@ -18,7 +18,7 @@ App.AlbumsController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
       var record = App.Album.create(album);
 
       record.save().then(function (createdRecord) {
-        self.unshiftObject(createdRecord);
+        self.unshiftObject(record);
         self.set('error', null);
       }, function (response) {
         if (response.responseJSON && response.responseJSON instanceof Object) {

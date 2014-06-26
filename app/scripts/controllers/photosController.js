@@ -41,16 +41,16 @@ App.PhotosController = App.BasePhotosController.extend({
       var self = this;
       var adapter = App.Album.adapter;
       var selectedIds = this.get('selected').map(function (photo) {
-        return photo.id;
+        return photo.get('id');
       });
 
-      adapter.postNested(album, {
+      adapter.postNested(album.content, {
         photo_ids: selectedIds
       }, 'photos').then(function () {
         self.get('selected').forEach(function (photo) {
           photo.set('selected', false);
         });
-        self.transitionToRoute('albumPhotos', album.id);
+        self.transitionToRoute('albumPhotos', album.get('id'));
         album.reload();
       });
     }
