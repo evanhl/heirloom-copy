@@ -57,7 +57,8 @@ App.Authorization = Ember.Object.extend({
   }.observes('currentSession').on('init')
 });
 
-App.set('auth', new App.Authorization());
+App.set('auth', App.Authorization.create());
+App.set('facebook', Utils.Facebook.create());
 
 // Use HTML5 History API (pushState) to manage app URLs
 App.Router.reopen({

@@ -40,3 +40,9 @@
 <div class="row">
   <button {{action 'signin' bubbles=false}}>Sign In</button>
 </div>
+
+{{#if isFbInit}}
+  <div class="row">
+    <button {{action 'fbSignin'}}>Sign In with Facebook</button>
+  </div>
+{{/if}}

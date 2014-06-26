@@ -52,6 +52,7 @@
     <!-- build:js({app,.tmp}) /scripts/main.js -->
     <script src="/scripts/utils/utils.js"></script>
     <script src="/scripts/utils/infiniteScroll.js"></script>
+    <script src="/scripts/utils/facebook.js"></script>
     <script src="/scripts/main.js"></script>
     <script src="/scripts/adapters/apiAdapter.js"></script>
     <script src="/scripts/routes/signedInRouteMixin.js"></script>
@@ -60,7 +61,10 @@
     <script src="/scripts/routes/albumRoute.js"></script>
     <script src="/scripts/routes/albumsRoute.js"></script>
     <script src="/scripts/routes/photosRoute.js"></script>
+    <script src="/scripts/routes/signinRoute.js"></script>
+    <script src="/scripts/routes/registrationRoute.js"></script>
     <script src="/scripts/routes/uploadRoute.js"></script>
+    <script src="/scripts/controllers/fbControllerMixin.js"></script>
     <script src="/scripts/controllers/photosAddToAlbumController.js"></script>
     <script src="/scripts/controllers/basePhotoController.js"></script>
     <script src="/scripts/controllers/basePhotosController.js"></script>
@@ -84,6 +88,7 @@
     <script src="/scripts/views/uploadView.js"></script>
     <script src="/scripts/models/modelProxy.js"></script>
     <script src="/scripts/models/album.js"></script>
+    <script src="/scripts/models/identity.js"></script>
     <script src="/scripts/models/photo.js"></script>
     <script src="/scripts/models/registration.js"></script>
     <script src="/scripts/models/session.js"></script>
@@ -91,5 +96,8 @@
     <script src="/scripts/upload/uploadToS3.js"></script>
     <script src="/templates.js"></script>
     <!-- endbuild -->
+
+    <!-- Facebook -->
+    <div id="fb-root"></div>
 </body>
 </html>

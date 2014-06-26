@@ -1,4 +1,4 @@
-App.RegistrationController = Ember.ObjectController.extend({
+App.RegistrationController = Ember.ObjectController.extend(App.FbControllerMixin, {
   email: null,
   name: null,
   username: null,
@@ -6,7 +6,7 @@ App.RegistrationController = Ember.ObjectController.extend({
   error: {},
 
   actions: {
-    create: function () {
+    signup: function () {
       var registration = this.getProperties(['name', 'email', 'username', 'password']);
       var record = App.Registration.create(registration);
       var self = this;
@@ -21,6 +21,10 @@ App.RegistrationController = Ember.ObjectController.extend({
           self.set('error', response.responseJSON);
         }
       });
+    },
+
+    fbSignup: function () {
+      App.get('facebook').attemptLogin();
     }
   }
 });

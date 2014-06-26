@@ -1,4 +1,4 @@
-App.SigninController = Ember.Controller.extend({
+App.SigninController = Ember.Controller.extend(App.FbControllerMixin, {
   login: null,
   password: null,
   error: {},
@@ -25,6 +25,10 @@ App.SigninController = Ember.Controller.extend({
           self.set('error', response.responseJSON);
         }
       });
+    },
+
+    fbSignin: function () {
+      App.get('facebook').attemptLogin();
     }
   }
 });

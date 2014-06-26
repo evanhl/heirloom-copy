@@ -64,5 +64,11 @@
 
 
 <div class="row">
-  <button {{action 'create' bubbles=false}}>Sign Up</button>
+  <button {{action 'signup' bubbles=false}}>Sign Up</button>
 </div>
+
+{{#if isFbInit}}
+  <div class="row">
+    <button {{action 'fbSignup' bubbles=false}}>Sign Up with Facebook</button>
+  </div>
+{{/if}}
