@@ -409,7 +409,9 @@ module.exports = function(grunt) {
         ]
       },
       src: [
+        '<%= config.app %>/styles/**/*.scss',
         '<%= config.app %>/scripts/**/*.js',
+        '<%= config.app %>/templates/**/*.hbs',
         '<%= config.app %>/**/*.html'
       ]
     },
