@@ -50,3 +50,7 @@ Utils.Keys = {
   LEFT: 37,
   RIGHT: 39
 };
+
+Ember.Handlebars.registerHelper('ts', function (key) {
+  return Em.I18n.t(key);
+});

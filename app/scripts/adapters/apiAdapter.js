@@ -59,7 +59,7 @@ App.APIAdapter = Ember.RESTAdapter.extend({
         App.set('auth.currentSession', null);
       }
 
-      return jqXHR;
+      throw jqXHR;
     });
   }
 });

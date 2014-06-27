@@ -7,7 +7,7 @@ App.RegistrationView = Ember.View.extend({
     var controller = this.get('controller');
 
     if (e.keyCode === Utils.Keys.ENTER) {
-      controller.send('create');
+      controller.send('signup');
     }
   }
 });

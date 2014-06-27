@@ -223,6 +223,11 @@ module.exports = function(grunt) {
           },
           'foundation': {
             main: []
+          },
+          'cldr': {
+            main: [
+              'plurals.js'
+            ]
           }
         }
       },

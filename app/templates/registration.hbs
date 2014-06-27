@@ -1,5 +1,5 @@
 <div class="row">
-  <h1>Registration</h1>
+  <h1>{{t 'signup'}}</h1>
 </div>
 
 {{#if error.errors.base}}
@@ -13,12 +13,12 @@
 <div class="row">
   <div class="large-6">
     {{#if error.name}}
-      {{input value=name placeholder="Name" class="error"}}
+      {{input value=name placeholder=(ts 'signup.name') class="error"}}
       {{#each error.name}}
         <small class="error">{{this}}</small>
       {{/each}}
     {{else}}
-      {{input value=name placeholder="Name"}}
+      {{input value=name placeholder=(ts 'signup.name')}}
     {{/if}}
   </div>
 </div>
@@ -26,12 +26,12 @@
 <div class="row">
   <div class="large-6">
     {{#if error.email}}
-      {{input value=email type="email" placeholder="Email" class="error"}}
+      {{input value=email type="email" placeholder=(ts 'signup.email') class="error"}}
       {{#each error.email}}
         <small class="error">{{this}}</small>
       {{/each}}
     {{else}}
-      {{input value=email type="email" placeholder="Email"}}
+      {{input value=email type="email" placeholder=(ts 'signup.email')}}
     {{/if}}
   </div>
 </div>
@@ -39,12 +39,12 @@
 <div class="row">
   <div class="large-6">
     {{#if error.username}}
-      {{input value=username placeholder="Username" class="error"}}
+      {{input value=username placeholder=(ts 'signup.username') class="error"}}
       {{#each error.username}}
         <small class="error">{{this}}</small>
       {{/each}}
     {{else}}
-      {{input value=username placeholder="Username"}}
+      {{input value=username placeholder=(ts 'signup.username')}}
     {{/if}}
   </div>
 </div>
@@ -52,23 +52,23 @@
 <div class="row">
   <div class="large-6">
     {{#if error.password}}
-      {{input value=password type="password" placeholder="Password" class="error"}}
+      {{input value=password type="password" placeholder=(ts 'signup.password') class="error"}}
       {{#each error.password}}
         <small class="error">{{this}}</small>
       {{/each}}
     {{else}}
-      {{input value=password type="password" placeholder="Password"}}
+      {{input value=password type="password" placeholder=(ts 'signup.password')}}
     {{/if}}
   </div>
 </div>
 
 
 <div class="row">
-  <button {{action 'signup' bubbles=false}}>Sign Up</button>
+  <button {{action 'signup' bubbles=false}}>{{t 'signup.button.signup'}}</button>
 </div>
 
 {{#if isFbInit}}
   <div class="row">
-    <button {{action 'fbSignup' bubbles=false}}>Sign Up with Facebook</button>
+    <button {{action 'fbSignup' bubbles=false}}>{{t 'signup.button.facebook'}}</button>
   </div>
 {{/if}}
