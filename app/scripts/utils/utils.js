@@ -34,6 +34,16 @@ Utils.apiCall = function (url, type, data, success, error) {
   });
 };
 
+Utils.findIndexOf = function (arr, filter) {
+  var i;
+  for (i = 0; i < arr.length; i++) {
+    if (filter(arr[i])) {
+      return i;
+    }
+  }
+  return -1;
+};
+
 Utils.Keys = {
   ENTER: 13,
   ESC: 27,

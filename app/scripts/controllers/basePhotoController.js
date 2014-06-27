@@ -48,7 +48,10 @@ App.BasePhotoController = Ember.ObjectController.extend({
   },
 
   currentIndex: function () {
-    var index = this.get('photos.model').indexOf(this.get('model'));
+    var photoId = this.get('model.id');
+    var index = Utils.findIndexOf(this.get('photos.model'), function (photo) {
+      return photo.get('id') === photoId;
+    });
 
     if (index !== -1) {
       return index;
