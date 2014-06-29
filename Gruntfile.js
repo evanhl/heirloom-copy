@@ -377,6 +377,7 @@ module.exports = function(grunt) {
         'copy:styles'
       ],
       test: [
+        'emberTemplates',
         'copy:styles'
       ],
       dist: [
@@ -481,7 +482,6 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('default', [
-    'newer:jshint',
     'test',
     'build'
   ]);
