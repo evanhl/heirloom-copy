@@ -10,14 +10,14 @@
   <section class="top-bar-section">
     <ul class="right">
       {{#if isLoggedIn}}
-        <li>{{#link-to 'photos'}}{{t 'photos'}}{{/link-to}}</li>
-        <li>{{#link-to 'albums'}}{{t 'albums'}}{{/link-to}}</li>
-        <li>{{#link-to 'upload'}}{{t 'upload'}}{{/link-to}}</li>
-        <li><a href="javascript:void();" {{action 'signout'}}>{{t 'signout'}}</a></li>
-        <li><a href="javascript:void();">{{userFullName}}</a></li>
+        <li class='photos'>{{#link-to 'photos'}}{{t 'photos'}}{{/link-to}}</li>
+        <li class='albums'>{{#link-to 'albums'}}{{t 'albums'}}{{/link-to}}</li>
+        <li class='upload'>{{#link-to 'upload'}}{{t 'upload'}}{{/link-to}}</li>
+        <li class='signout'><a href="javascript:void();" {{action 'signout'}}>{{t 'signout'}}</a></li>
+        <li class='userfullname'><a href="javascript:void();">{{userFullName}}</a></li>
       {{else}}
-        <li>{{#link-to 'signin'}}{{t 'signin'}}{{/link-to}}</li>
-        <li>{{#link-to 'registration'}}{{t 'signup'}}{{/link-to}}</li>
+        <li class='signin'>{{#link-to 'signin'}}{{t 'signin'}}{{/link-to}}</li>
+        <li class='signup'>{{#link-to 'registration'}}{{t 'signup'}}{{/link-to}}</li>
       {{/if}}
     </ul>
   </section>
