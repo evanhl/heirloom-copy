@@ -12,59 +12,43 @@
 
 <div class="row">
   <div class="large-6">
-    {{#if error.name}}
-      {{input value=name placeholder=(ts 'signup.name') class="error"}}
-      {{#each error.name}}
-        <small class="error">{{this}}</small>
-      {{/each}}
-    {{else}}
-      {{input value=name placeholder=(ts 'signup.name')}}
-    {{/if}}
+    {{input value=name placeholder=(ts 'signup.name') classBinding="error.name:error :name"}}
+    {{#each error.name}}
+      <small class="error">{{this}}</small>
+    {{/each}}
   </div>
 </div>
 
 <div class="row">
   <div class="large-6">
-    {{#if error.email}}
-      {{input value=email type="email" placeholder=(ts 'signup.email') class="error"}}
-      {{#each error.email}}
-        <small class="error">{{this}}</small>
-      {{/each}}
-    {{else}}
-      {{input value=email type="email" placeholder=(ts 'signup.email')}}
-    {{/if}}
+    {{input value=email placeholder=(ts 'signup.email') classBinding="error.email:error :email"}}
+    {{#each error.email}}
+      <small class="error">{{this}}</small>
+    {{/each}}
   </div>
 </div>
 
 <div class="row">
   <div class="large-6">
-    {{#if error.username}}
-      {{input value=username placeholder=(ts 'signup.username') class="error"}}
-      {{#each error.username}}
-        <small class="error">{{this}}</small>
-      {{/each}}
-    {{else}}
-      {{input value=username placeholder=(ts 'signup.username')}}
-    {{/if}}
+    {{input value=username placeholder=(ts 'signup.username') classBinding="error.username:error :username"}}
+    {{#each error.username}}
+      <small class="error">{{this}}</small>
+    {{/each}}
   </div>
 </div>
 
 <div class="row">
   <div class="large-6">
-    {{#if error.password}}
-      {{input value=password type="password" placeholder=(ts 'signup.password') class="error"}}
-      {{#each error.password}}
-        <small class="error">{{this}}</small>
-      {{/each}}
-    {{else}}
-      {{input value=password type="password" placeholder=(ts 'signup.password')}}
-    {{/if}}
+    {{input value=password placeholder=(ts 'signup.password') classBinding="error.password:error :password"}}
+    {{#each error.password}}
+      <small class="error">{{this}}</small>
+    {{/each}}
   </div>
 </div>
 
 
 <div class="row">
-  <button {{action 'signup' bubbles=false}}>{{t 'signup.button.signup'}}</button>
+  <button {{action 'signup' bubbles=false}} class="signup">{{t 'signup.button.signup'}}</button>
 </div>
 
 {{#if isFbInit}}
