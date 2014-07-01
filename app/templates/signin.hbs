@@ -12,7 +12,7 @@
 
 <div class="row">
   <div class="large-6">
-    {{input value=login placeholder=(ts 'signin.login') class="error.login:error" }}
+    {{input value=login placeholder=(ts 'signin.login') classBinding="error.login:error :login" }}
     {{#each error.login}}
       <small class="error">{{this}}</small>
     {{/each}}
@@ -21,7 +21,7 @@
 
 <div class="row">
   <div class="large-6">
-    {{input value=password placeholder=(ts 'signin.password') class="error.password:error" }}
+    {{input value=password placeholder=(ts 'signin.password') classBinding="error.password:error :password" }}
     {{#each error.password}}
       <small class="error">{{this}}</small>
     {{/each}}
@@ -30,7 +30,7 @@
 
 
 <div class="row">
-  <button {{action 'signin' bubbles=false}}>{{t 'signin.button.signin'}}</button>
+  <button {{action 'signin' bubbles=false}} class="signin">{{t 'signin.button.signin'}}</button>
 </div>
 
 {{#if isFbInit}}

@@ -76,25 +76,46 @@
     <script src="bower_components/mocha/mocha.js"></script>
     <script src="bower_components/chai/chai.js"></script>
     <script src="bower_components/ember-mocha-adapter/adapter.js"></script>
+    <script src="bower_components/jquery-mockjax/jquery.mockjax.js"></script>
     <script>
-        var assert = chai.assert;
-        var expect = chai.expect;
-        var should = chai.should();
+      var assert = chai.assert;
+      var expect = chai.expect;
+      var should = chai.should();
 
-        Ember.testing = true;
+      Ember.testing = true;
 
-        App.rootElement = '#ember-fixture';
-        App.setupForTesting();
-        App.injectTestHelpers();
+      App.rootElement = '#ember-fixture';
+      App.setupForTesting();
+      App.injectTestHelpers();
+
+      function stubEndpointForHttpRequest(url, json) {
+        $.mockjax({
+          url: url,
+          dataType: 'json',
+          responseText: json
+        });
+      }
+
+      $.mockjaxSettings.logging = false;
+      $.mockjaxSettings.responseTime = 0;
+
+      getCurrentRoute = function () {
+        var router = App.__container__.lookup("router:main"); //get the main router
+        var currentHandlerInfos = router.router.currentHandlerInfos; //get all handlers
+        var activeHandler = currentHandlerInfos[currentHandlerInfos.length - 1]; // get active handler
+        var activeRoute = activeHandler.handler; // active route
+
+        return activeRoute;
+      }
     </script>
 
     <!-- include spec files here... -->
     <script src="spec/test.js"></script>
 
     <script>
-        Ember.$(function() {
-            mocha.run();
-        });
+      Ember.$(function() {
+        mocha.run();
+      });
     </script>
 </body>
 </html>

@@ -112,6 +112,22 @@ module.exports = function(grunt) {
           }
         }
       },
+      testServer: {
+        options: {
+          open: false,
+          port: 9001,
+          livereload: false,
+          keepalive: true,
+          middleware: function(connect) {
+            return [
+              connect.static('.tmp'),
+              connect.static('test'),
+              connect().use('/bower_components', connect.static('./bower_components')),
+              connect.static(config.app)
+            ];
+          }
+        }
+      },
       dist: {
         options: {
           base: '<%= config.dist %>',
@@ -378,6 +394,7 @@ module.exports = function(grunt) {
       ],
       test: [
         'emberTemplates',
+        'sass:server',
         'copy:styles'
       ],
       dist: [

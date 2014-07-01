@@ -24,7 +24,11 @@ Utils.Facebook = Ember.Object.extend({
   },
 
   fbApiLoaded: function () {
-    this.set('isInit', true);
+    var self = this;
+
+    Ember.run.later(function () {
+      self.set('isInit', true);
+    });
 
     FB.init({
       appId: this.get('appId'),

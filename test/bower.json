@@ -4,7 +4,8 @@
   "dependencies": {
     "chai": "~1.8.0",
     "mocha": "~1.14.0",
-    "ember-mocha-adapter": "~0.2.0"
+    "ember-mocha-adapter": "~0.2.0",
+    "jquery-mockjax": "~1.5.3"
   },
   "devDependencies": {}
 }

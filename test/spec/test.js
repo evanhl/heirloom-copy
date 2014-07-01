@@ -20,18 +20,56 @@
   });
 
   describe('Sign In', function () {
-    beforeEach(function() {
-      visit('signin');
-    });
-
     afterEach(function () {
       App.reset();
     });
 
-    it('did render template', function () {
-      // TODO: this is a trivial test. replace with something more substantive
-      andThen(function () {
-        expect($('#ember-fixture h1:eq(1)').text()).to.eql('Sign In');
+    after(function () {
+      $.mockjaxClear();
+    });
+
+    describe('on successful sign in', function () {
+      before(function () {
+        visit('signin');
+
+        $.mockjax({
+          url: 'https://api.hlstage.com/session',
+          data: JSON.stringify({ login: 'foo', password: 'bar' }),
+          responseText: {
+            'id': 11022,
+            'username': 'savion_brown',
+            'name': 'Alf Wintheiser Sr.',
+            'email': 'jayne@dooley.info',
+            'authentication_token': 'tuoo6XoHzTR3Npzp8xRw'
+          }
+        });
+
+        $.mockjax({
+          url: 'https://api.hlstage.com/me/photos',
+          responseText: []
+        });
+
+        fillIn('.login', 'foo');
+        fillIn('.password', 'bar');
+        click('.signin');
+      });
+
+      it('is logged in', function () {
+        andThen(function () {
+          expect(App.get('auth.isLoggedIn')).to.be.true;
+        });
+      });
+
+      it('has the right auth token', function () {
+        andThen(function () {
+          expect(App.get('auth.authToken')).to.equal('tuoo6XoHzTR3Npzp8xRw');
+        });
+      });
+
+      it('has the right session', function () {
+        andThen(function () {
+          expect(App.get('auth.currentSession.name')).to.equal('Alf Wintheiser Sr.');
+        });
       });
     });
   });
