@@ -76,6 +76,7 @@ App.Router.map(function () {
       this.resource('albumPhoto', { path: ':photo_id' });
     });
   });
+  this.route('conversations', { path: 'groups' });
   this.route('upload');
   this.route('registration');
   this.route('signin');

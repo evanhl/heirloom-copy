@@ -2,6 +2,7 @@ Ember.I18n.translations = {
   'albums': 'Albums',
   'photos': 'Photos',
   'upload': 'Upload',
+  'conversations': 'Groups',
   'signin': 'Sign In',
   'signout': 'Sign Out',
   'signup': 'Sign Up',

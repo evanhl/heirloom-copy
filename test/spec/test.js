@@ -1,4 +1,5 @@
 /* global describe, expect, it, beforeEach, visit, afterEach, andThen */
+/* global before, after, fillIn, click, find  */
 /* jshint -W030 */
 
 (function () {
