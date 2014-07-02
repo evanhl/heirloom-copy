@@ -28,8 +28,6 @@
 
     describe('on successful sign in', function () {
       before(function () {
-        visit('signin');
-
         $.mockjax({
           url: 'https://api.hlstage.com/session',
           data: JSON.stringify({ login: 'foo', password: 'bar' }),
@@ -47,6 +45,7 @@
           responseText: []
         });
 
+        visit('signin');
         fillIn('.login', 'foo');
         fillIn('.password', 'bar');
         click('button.signin');
