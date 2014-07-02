@@ -21,7 +21,7 @@
 
 <div class="row">
   <div class="large-6">
-    {{input value=password placeholder=(ts 'signin.password') classBinding="error.password:error :password" }}
+    {{input type="password" value=password placeholder=(ts 'signin.password') classBinding="error.password:error :password" }}
     {{#each error.password}}
       <small class="error">{{this}}</small>
     {{/each}}

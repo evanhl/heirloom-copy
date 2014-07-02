@@ -1,5 +1,5 @@
 App.APIAdapter = Ember.RESTAdapter.extend({
-  host: 'https://api.hlstage.com',
+  host: Utils.HOSTNAME,
 
   buildURL: function(klass, id) {
     var urlParts = [];
