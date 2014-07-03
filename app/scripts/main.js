@@ -76,7 +76,11 @@ App.Router.map(function () {
       this.resource('albumPhoto', { path: ':photo_id' });
     });
   });
-  this.route('conversations', { path: 'groups' });
+  this.resource('conversations', { path: 'groups' }, function () {
+    this.resource('conversation', { path: ':conversation_id' }, function () {
+      this.resource('conversationPosts', { path: 'posts' });
+    });
+  });
   this.route('upload');
   this.route('registration');
   this.route('signin');

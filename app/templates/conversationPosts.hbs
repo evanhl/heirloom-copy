@@ -1,10 +1,9 @@
 {{#each}}
-  {{#link-to 'conversationPosts' id}}<div style="
+  <div style="
     padding: 10px;
-    background: white;
+    background: yellow;
     width: 300px;
-    margin: 10px;"
-  >{{name}}</div>{{/link-to}}
+    margin: 10px;">{{message}}</div>
 {{/each}}
 
 {{#if loadingMore}}
@@ -12,5 +11,3 @@
 {{else}}
 <div class="spinner-placeholder"></div>
 {{/if}}
-
-{{outlet}}
