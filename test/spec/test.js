@@ -22,8 +22,11 @@
 
   describe('Sign In', function () {
     after(function () {
-      App.reset();
-      $.mockjaxClear();
+      // wrap in Ember run loop to eliminate race condition
+      andThen(function () {
+        App.reset();
+        $.mockjaxClear();
+      });
     });
 
     describe('on successful sign in', function () {
@@ -105,12 +108,14 @@
 
       describe('and subsequent sign out', function () {
         before(function () {
-          $.mockjax({
-            type: 'delete',
-            url: 'https://api.hlstage.com/session',
-            responseText: null,
-            status: 204
-          });
+          andThen(function () {
+            $.mockjax({
+              type: 'delete',
+              url: 'https://api.hlstage.com/session',
+              responseText: null,
+              status: 204
+            });
+          })''
 
           click('nav .signout a');
         });
@@ -146,31 +151,32 @@
 
     describe('Sign Up', function () {
       before(function () {
+        andThen(function () {
+          $.mockjax({
+            url: 'https://api.hlstage.com/registration',
+            type: 'post',
+            data: JSON.stringify({
+              name: 'Big Bird',
+              username: 'bigbird123',
+              email: 'abc@example.com',
+              password: 'b1gb1rd'
+            }),
+            responseText: {
+              name: 'Big Bird',
+              email: 'abc@example.com',
+              username: 'bigbird123',
+              password: 'b1gb1rd',
+              authentication_token: 'tuoo6XoHzTR3Npzp8xRw'
+            }
+          });
+
+          $.mockjax({
+            url: 'https://api.hlstage.com/me/photos',
+            responseText: []
+          });
+        });
+
         visit('registration');
-
-        $.mockjax({
-          url: 'https://api.hlstage.com/registration',
-          type: 'post',
-          data: JSON.stringify({
-            name: 'Big Bird',
-            username: 'bigbird123',
-            email: 'abc@example.com',
-            password: 'b1gb1rd'
-          }),
-          responseText: {
-            name: 'Big Bird',
-            email: 'abc@example.com',
-            username: 'bigbird123',
-            password: 'b1gb1rd',
-            authentication_token: 'tuoo6XoHzTR3Npzp8xRw'
-          }
-        });
-
-        $.mockjax({
-          url: 'https://api.hlstage.com/me/photos',
-          responseText: []
-        });
-
         fillIn('.name', 'Big Bird');
         fillIn('.email', 'abc@example.com');
         fillIn('.username', 'bigbird123');
