@@ -28,21 +28,24 @@
 
     describe('on successful sign in', function () {
       before(function () {
-        $.mockjax({
-          url: 'https://api.hlstage.com/session',
-          data: JSON.stringify({ login: 'foo', password: 'bar' }),
-          responseText: {
-            'id': 11022,
-            'username': 'savion_brown',
-            'name': 'Alf Wintheiser Sr.',
-            'email': 'jayne@dooley.info',
-            'authentication_token': 'tuoo6XoHzTR3Npzp8xRw'
-          }
-        });
+        // wrap AJAX mocking in Ember run loop to eliminate race condition
+        andThen(function () {
+          $.mockjax({
+            url: 'https://api.hlstage.com/session',
+            data: JSON.stringify({ login: 'foo', password: 'bar' }),
+            responseText: {
+              'id': 11022,
+              'username': 'savion_brown',
+              'name': 'Alf Wintheiser Sr.',
+              'email': 'jayne@dooley.info',
+              'authentication_token': 'tuoo6XoHzTR3Npzp8xRw'
+            }
+          });
 
-        $.mockjax({
-          url: 'https://api.hlstage.com/me/photos',
-          responseText: []
+          $.mockjax({
+            url: 'https://api.hlstage.com/me/photos',
+            responseText: []
+          });
         });
 
         visit('signin');
