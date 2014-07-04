@@ -3,4 +3,5 @@ App.Post = Ember.Model.extend({
   message: Ember.attr()
 });
 
+App.Post.url = 'posts';
 App.Post.adapter = App.APIAdapter.create();

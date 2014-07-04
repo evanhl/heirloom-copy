@@ -21,6 +21,7 @@
   });
 
   describe('Sign In', function () {
+    this.timeout(4000);
     after(function () {
       // wrap in Ember run loop to eliminate race condition
       andThen(function () {
@@ -115,7 +116,7 @@
               responseText: null,
               status: 204
             });
-          })''
+          });
 
           click('nav .signout a');
         });
