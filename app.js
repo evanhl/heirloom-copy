@@ -1,10 +1,11 @@
 // Really thin node/express server to serve up static resources
 
 var express = require('express');
+var compress = require('compression')();
 var port = process.env.PORT || 3000;
 var app = express();
 
-
+app.use(compress);
 app.use(function(req, res, next) {
   if (!req.url.match(/\.js$|\.css$|\.svg$|\.png$|\.html$/)) {
     req.url = '/index.html';
