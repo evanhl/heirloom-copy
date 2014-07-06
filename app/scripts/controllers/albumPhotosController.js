@@ -1,3 +1,4 @@
+//= require basePhotosController
 App.AlbumPhotosController = App.BasePhotosController.extend({
   needs: ['album'],
   album: Ember.computed.alias('controllers.album'),

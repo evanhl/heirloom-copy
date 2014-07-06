@@ -1,3 +1,4 @@
+//= require ../utils/infiniteScroll
 App.ConversationPostsView = Ember.View.extend(InfiniteScroll.ViewMixin, {
   keyPress: function (e) {
     if (!$(e.target).hasClass('newPostMessage')) { return; }

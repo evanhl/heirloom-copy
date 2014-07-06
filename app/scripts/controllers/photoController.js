@@ -1,3 +1,4 @@
+//= require basePhotoController
 App.PhotoController = App.BasePhotoController.extend({
   needs: ['photos'],
   photos: Ember.computed.alias('controllers.photos'),

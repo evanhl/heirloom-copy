@@ -26,7 +26,7 @@
       // wrap in Ember run loop to eliminate race condition
       andThen(function () {
         // prevents facebook API from loading
-        FB = {};
+        window.FB = {};
         App.reset();
         $.mockjaxClear();
       });

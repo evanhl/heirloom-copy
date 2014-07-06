@@ -1,3 +1,4 @@
+//= require ../utils/utils
 App.APIAdapter = Ember.RESTAdapter.extend({
   host: Utils.HOSTNAME,
 

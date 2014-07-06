@@ -1,3 +1,4 @@
+//= require ../utils/infiniteScroll
 App.ConversationsView = Ember.View.extend(InfiniteScroll.ViewMixin, {
   didInsertElement: function (){
     this.setupInfiniteScrollListener();

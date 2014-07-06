@@ -1,3 +1,4 @@
+//= require utils
 Utils.Facebook = Ember.Object.extend({
   // FIXME: pull correct app ID for environment (prod vs. staging)
   appId: '593382107427220',

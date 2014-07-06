@@ -389,16 +389,19 @@ module.exports = function(grunt) {
     concurrent: {
       server: [
         'emberTemplates',
+        'directives',
         'sass:server',
         'copy:styles'
       ],
       test: [
         'emberTemplates',
+        'directives',
         'sass:server',
         'copy:styles'
       ],
       dist: [
         'emberTemplates',
+        'directives',
         'sass',
         'copy:styles',
         // 'imagemin',
@@ -434,6 +437,7 @@ module.exports = function(grunt) {
       ]
     },
 
+    // pre-compile Ember Handlebars templates
     emberTemplates: {
       compile: {
         options: {
@@ -445,6 +449,14 @@ module.exports = function(grunt) {
         files: {
           ".tmp/templates.js": "<%= config.app %>/templates/**/*.hbs"
         }
+      }
+    },
+
+    // sprockets for JS dependency management
+    directives: {
+      files: {
+        src: '<%= config.app %>/scripts/main.js',
+        dest: '.tmp/main.js'
       }
     }
   });
@@ -499,6 +511,7 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('default', [
+    'test',
     'build'
   ]);
 };
