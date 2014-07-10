@@ -17,5 +17,7 @@ Ember.I18n.translations = {
   'signup.username': 'Username',
   'signup.password': 'Password',
   'signup.button.signup': 'Sign Up',
-  'signup.button.facebook': 'Sign Up with Facebook'
+  'signup.button.facebook': 'Sign Up with Facebook',
+
+  'comments.prompt': 'Enter comment'
 };

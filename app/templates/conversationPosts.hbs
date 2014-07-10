@@ -1,11 +1,7 @@
 {{input placeholder="Create Post" value=newPostMessage class="temp newPostMessage"}}
 
 {{#each}}
-  <div style="
-    padding: 10px;
-    background: yellow;
-    width: 300px;
-    margin: 10px;">{{message}}</div>
+  {{view App.ConversationPostView post=this}}
 {{/each}}
 
 {{#if loadingMore}}

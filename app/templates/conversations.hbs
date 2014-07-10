@@ -1,18 +1,19 @@
-{{#each}}
-  {{#link-to 'conversationPosts' id}}<div style="
-    padding: 10px;
-    background: white;
-    width: 300px;
-    margin: 10px;"
-  >{{name}}</div>{{/link-to}}
-{{/each}}
+<div class="row">
+  <div class="small-3 columns">
+    {{#each}}
+      {{#link-to 'conversationPosts' id}}<div class="convo">{{name}}</div>{{/link-to}}
+    {{/each}}
 
-{{input placeholder="Create Conversation" value=newConversationName class="temp newConversationName"}}
+    {{input placeholder="Create Conversation" value=newConversationName class="temp newConversationName"}}
 
-{{#if loadingMore}}
-<div class="spinner"></div>
-{{else}}
-<div class="spinner-placeholder"></div>
-{{/if}}
+    {{#if loadingMore}}
+    <div class="spinner"></div>
+    {{else}}
+    <div class="spinner-placeholder"></div>
+    {{/if}}
+  </div>
 
-{{outlet}}
+  <div class="small-9 columns">
+    {{outlet}}
+  </div>
+</div>

@@ -203,7 +203,30 @@ a {
   }
 }
 
+// TODO: delete me
 input.temp {
-  width: 300px;
-  margin: 10px;
+  // margin: 10px;
+}
+
+a.active {
+  &:visited, &:link, &:active {
+    font-weight: bold;
+  }
+}
+
+a .convo {
+  color: black;
+}
+
+.convo, .post-message {
+  padding: 10px;
+  // margin: 10px;
+}
+
+.convo {
+  background: white;
+}
+
+.post-message {
+  background: yellow;
 }

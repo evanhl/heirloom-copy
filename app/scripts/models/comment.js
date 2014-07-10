@@ -4,6 +4,9 @@ App.Comment = Ember.Model.extend({
   owner: Ember.attr()
 });
 
+App.Comment.url = 'comments';
 App.Comment.adapter = App.APIAdapter.create({
   userNamespaced: false
 });
+
+
