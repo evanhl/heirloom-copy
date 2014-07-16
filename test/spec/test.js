@@ -25,8 +25,6 @@
     after(function () {
       // wrap in Ember run loop to eliminate race condition
       andThen(function () {
-        // prevents facebook API from loading
-        window.FB = {};
         App.reset();
         $.mockjaxClear();
       });
@@ -36,6 +34,9 @@
       before(function () {
         // wrap AJAX mocking in Ember run loop to eliminate race condition
         andThen(function () {
+          // prevents facebook API from loading
+          window.FB = {};
+
           $.mockjax({
             url: 'https://api.hlstage.com/session',
             data: JSON.stringify({ login: 'foo', password: 'bar' }),
