@@ -53,6 +53,17 @@ App.APIAdapter = Ember.RESTAdapter.extend({
     });
   },
 
+  createNestedRecord: function(parent, record, nestedUrl) {
+    var primaryKey = Ember.get(parent.constructor, 'primaryKey'),
+        url = this.buildURL(parent.constructor, parent.get('id')) + '/' + nestedUrl,
+        self = this;
+
+    return this.ajax(url, record.toJSON(), "POST").then(function(data) {
+      self.didCreateRecord(record, data);
+      return record;
+    });
+  },
+
   postNested: function(parent, params, nestedUrl) {
     // TODO: use hasMany to obtain nestedUrl instead of passing in
     var primaryKey = Ember.get(parent.constructor, 'primaryKey'),

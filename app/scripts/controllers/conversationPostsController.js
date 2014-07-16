@@ -25,26 +25,11 @@ App.ConversationPostsController = Ember.ArrayController.extend(InfiniteScroll.Co
       };
       var post = App.Post.create(postProps);
 
-      adapter.saveNestedRecord(conversation, post, 'posts').then(function () {
+      adapter.createNestedRecord(conversation, post, 'posts').then(function () {
         self.unshiftObject(App.ModelProxy.create({
           content: post
         }));
         self.set('newPostMessage', null);
-      }, function () {
-        // TODO: handle failure
-      });
-    },
-
-    createComment: function (post, message) {
-      var adapter = App.Comment.adapter;
-      var self = this;
-      var commentProps = {
-        message: message
-      };
-      var comment = App.Comment.create(commentProps);
-
-      adapter.saveNestedRecord(post.content, comment, 'comments').then(function () {
-        post.set('newComment', null);
       }, function () {
         // TODO: handle failure
       });

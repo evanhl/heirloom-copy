@@ -1,7 +1,7 @@
 {{input placeholder="Create Post" value=newPostMessage class="temp newPostMessage"}}
 
 {{#each}}
-  {{view App.ConversationPostView post=this}}
+  {{render 'conversationPost' this}}
 {{/each}}
 
 {{#if loadingMore}}

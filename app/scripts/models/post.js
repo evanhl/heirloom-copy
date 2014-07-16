@@ -1,5 +1,6 @@
 App.Post = Ember.Model.extend({
   id: Ember.attr(Number),
+  owner: Ember.attr(),
   message: Ember.attr()
 });
 
