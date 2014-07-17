@@ -3,7 +3,7 @@ App.ModalDialogComponent = Ember.Component.extend({
   tagName: 'section',
 
   setFocus: function() {
-    // brings the view into focus in order to capture keyUps.
+    // brings the view into focus in order to capture keyDown events.
     this.$().attr({ tabindex: 1 }).focus();
   }.on('didInsertElement'),
 

@@ -10,6 +10,11 @@ App.ConversationsController = Ember.ArrayController.extend(InfiniteScroll.Contro
     });
   },
 
+  reset: function () {
+    this.set('model', []);
+    this._super();
+  },
+
   actions: {
     create: function () {
       var self = this;

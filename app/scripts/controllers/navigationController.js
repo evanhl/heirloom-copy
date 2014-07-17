@@ -1,5 +1,5 @@
 App.NavigationController = Ember.Controller.extend({
-  needs: ['photos', 'albums'],
+  needs: ['photos', 'albums', 'conversations'],
 
   userFullName: function () {
     return App.get('auth.currentSession.name');
@@ -23,6 +23,7 @@ App.NavigationController = Ember.Controller.extend({
     this.transitionToRoute('signin');
     this.get('controllers.photos').reset();
     this.get('controllers.albums').reset();
+    this.get('controllers.conversations').reset();
   },
 
   actions: {
