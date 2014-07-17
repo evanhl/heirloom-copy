@@ -4,7 +4,6 @@ App.PostCommentsView = Ember.View.extend({
 
     var controller = this.get('controller');
 
-    // FIXME: newComment shouldn't be stashed on the post
     if (e.keyCode === Utils.Keys.ENTER) {
       controller.send('createComment');
     }
