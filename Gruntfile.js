@@ -234,7 +234,7 @@ module.exports = function(grunt) {
           },
           'ember': {
             main: [
-              'ember.prod.js'
+              'ember.js'
             ]
           },
           'foundation': {

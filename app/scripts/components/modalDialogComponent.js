@@ -7,7 +7,11 @@ App.ModalDialogComponent = Ember.Component.extend({
     this.$().attr({ tabindex: 1 }).focus();
   }.on('didInsertElement'),
 
-  click: function () {
+  click: function (e) {
+    if (!$(e.target).is(this.$())) {
+      return;
+    }
+
     this.sendAction();
   },
 

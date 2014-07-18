@@ -1,3 +1,38 @@
 {{#modal-dialog action="close"}}
-  PHOTO PICKER
+  <div style="
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+    margin: auto;
+    height: 50%;
+    width: 100%;
+    max-width: 1000px;
+    min-height: 600px;
+    background: white;
+  ">
+    <nav class="top-bar">
+      <section class="top-bar-section">
+        <ul class="right">
+          <li class='photosPicker'><a href="javascript:void();" {{action 'changeTab' 'photosPicker'}}>{{t 'photos'}}</a></li>
+          <li class='albumsPicker'><a href="javascript:void();" {{action 'changeTab' 'albumsPicker'}}>{{t 'albums'}}</a></li>
+          <li class='uploadPicker'><a href="javascript:void();" {{action 'changeTab' 'uploadPicker'}}>{{t 'upload'}}</a></li>
+        </ul>
+      </section>
+    </nav>
+
+    {{#if photosPickerIsActive}}
+      {{render 'photosPicker'}}
+    {{/if}}
+
+    {{#if albumsPickerIsActive}}
+      {{render 'albumsPicker'}}
+    {{/if}}
+
+    {{#if uploadPickerIsActive}}
+      {{render 'uploadPicker'}}
+    {{/if}}
+  </div>
+
 {{/modal-dialog}}
