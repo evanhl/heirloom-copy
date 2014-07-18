@@ -88,11 +88,6 @@
     },
 
     didScroll: function () {
-      var $scrollEl = this.$scrollEl();
-      var distanceToViewportTop = $scrollEl.prop('scrollHeight') - $scrollEl.height();
-      var viewPortTop = $scrollEl.scrollTop();
-
-      console.log(distanceToViewportTop, viewPortTop);
       if (this.isScrolledToBottom()) {
         this.get('controller').send('getMore');
       }
