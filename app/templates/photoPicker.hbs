@@ -15,23 +15,38 @@
     <nav class="top-bar">
       <section class="top-bar-section">
         <ul class="right">
-          <li class='photosPicker'><a href="javascript:void();" {{action 'changeTab' 'photosPicker'}}>{{t 'photos'}}</a></li>
-          <li class='albumsPicker'><a href="javascript:void();" {{action 'changeTab' 'albumsPicker'}}>{{t 'albums'}}</a></li>
-          <li class='uploadPicker'><a href="javascript:void();" {{action 'changeTab' 'uploadPicker'}}>{{t 'upload'}}</a></li>
+          <li class='photosPicker'>
+            <a href="javascript:void();"
+              {{action "changeTab" "photosPicker"}}
+              {{bind-attr class="photosPickerIsActive:active"}}
+            >{{t "photos"}}</a>
+          </li>
+          <li class='albumsPicker'>
+            <a href="javascript:void();"
+              {{action "changeTab" "albumsPicker"}}
+              {{bind-attr class="albumsPickerIsActive:active"}}
+            >{{t "albums"}}</a>
+          </li>
+          <li class='uploadPicker'>
+            <a href="javascript:void();"
+              {{action "changeTab" "uploadPicker"}}
+              {{bind-attr class="uploadPickerIsActive:active"}}
+            >{{t "upload"}}</a>
+          </li>
         </ul>
       </section>
     </nav>
 
     {{#if photosPickerIsActive}}
-      {{render 'photosPicker'}}
+      {{render "photosPicker"}}
     {{/if}}
 
     {{#if albumsPickerIsActive}}
-      {{render 'albumsPicker'}}
+      {{render "albumsPicker"}}
     {{/if}}
 
     {{#if uploadPickerIsActive}}
-      {{render 'uploadPicker'}}
+      {{render "uploadPicker"}}
     {{/if}}
   </div>
 
