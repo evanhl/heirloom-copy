@@ -1,6 +1,6 @@
 //= require ../utils/infiniteScroll
 App.PhotosAddToAlbumView = Ember.View.extend(InfiniteScroll.ViewMixin, {
-  setFocus: function() {
+  setFocus: function () {
     // brings the view into focus in order to capture keyUps.
     this.$().attr({ tabindex: 1 }).focus();
   }.on('didInsertElement'),

@@ -1,6 +1,7 @@
 App.ImageView = Ember.View.extend({
   tagName: 'img',
   src: null,
+  classNames: ['detail'],
 
   // TODO: Use Ember.run.once to separate src and visible properties
   imageChanged: function () {

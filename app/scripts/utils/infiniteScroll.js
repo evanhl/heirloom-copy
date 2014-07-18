@@ -1,4 +1,5 @@
 // Tweak of https://github.com/bantic/ember-infinite-scroll
+/*globals console*/
 
 (function(window, Ember, $){
   var InfiniteScroll = {};
@@ -67,33 +68,40 @@
 
   InfiniteScroll.ViewMixin = Ember.Mixin.create({
     setupInfiniteScrollListener: function () {
-      $(window).on('scroll', $.proxy(this.didScroll, this));
+      this.$listenerEl().on('scroll', $.proxy(this.didScroll, this));
     },
+
     teardownInfiniteScrollListener: function () {
-      $(window).off('scroll', $.proxy(this.didScroll, this));
+      this.$listenerEl().off('scroll', $.proxy(this.didScroll, this));
     },
+
+    $listenerEl: function () {
+      if (this.$scrollEl().css('overflow-y') === 'scroll') {
+        return this.$scrollEl();
+      } else {
+        return $(window);
+      }
+    },
+
+    $scrollEl: function () {
+      return this.get('scrollEl') ? $(this.get('scrollEl')) : this.$();
+    },
+
     didScroll: function () {
+      var $scrollEl = this.$scrollEl();
+      var distanceToViewportTop = $scrollEl.prop('scrollHeight') - $scrollEl.height();
+      var viewPortTop = $scrollEl.scrollTop();
+
+      console.log(distanceToViewportTop, viewPortTop);
       if (this.isScrolledToBottom()) {
         this.get('controller').send('getMore');
       }
     },
-    isScrolledToRight: function () {
-      var distanceToViewportLeft = (
-        $(document).width() - $(window).width());
-      var viewPortLeft = $(window).scrollLeft();
 
-      if (viewPortLeft === 0) {
-        // if we are at the left of the page, don't do
-        // the infinite scroll thing
-        return false;
-      }
-
-      return (viewPortLeft - distanceToViewportLeft);
-    },
     isScrolledToBottom: function () {
-      var distanceToViewportTop = (
-        $(document).height() - $(window).height());
-      var viewPortTop = $(window).scrollTop();
+      var $scrollEl = this.$scrollEl();
+      var distanceToViewportTop = $scrollEl.prop('scrollHeight') - $scrollEl.height();
+      var viewPortTop = $scrollEl.scrollTop();
 
       // instead of waiting til we hit the bottom, check if we are within 1000px
       return (viewPortTop >= distanceToViewportTop - 1000);

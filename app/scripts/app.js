@@ -3,7 +3,7 @@
 // Adapted from http://stackoverflow.com/a/10199338
 Ember.Object.reopen({
   // allows us to get raw object from any Ember.Object so that we can serialize to localStorage
-  getJson: function() {
+  getJson: function () {
     var v, ret = [];
 
     for (var key in this) {

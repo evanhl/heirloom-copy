@@ -9,7 +9,7 @@ $spinner-width: $spinner-height;
   margin: 20px auto;
 }
 
-.lightbox .spinner {
+.big-spinner {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -23,7 +23,7 @@ $spinner-width: $spinner-height;
               1s spin infinite;
 }
 
-.spinner {
+.spinner, .big-spinner {
   position: relative;
   width: $spinner-width;
   height: $spinner-height;

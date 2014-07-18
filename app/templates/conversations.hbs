@@ -6,11 +6,7 @@
 
     {{input placeholder="Create Conversation" value=newConversationName class="temp newConversationName"}}
 
-    {{#if loadingMore}}
-    <div class="spinner"></div>
-    {{else}}
-    <div class="spinner-placeholder"></div>
-    {{/if}}
+    {{partial 'spinner'}}
   </div>
 
   <div class="small-9 columns">

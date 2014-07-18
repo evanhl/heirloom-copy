@@ -1,1 +1,10 @@
-PHOTOS PICKER
+{{#each photos}}
+  {{#if thumbVersion}}
+    <div class="gallery-photo">
+      <img {{bind-attr src=thumbVersion}} {{action enlarge id}}>
+      <div {{bind-attr class=":select selected"}} {{action select id}}></div>
+    </div>
+  {{/if}}
+{{/each}}
+
+{{partial 'spinner'}}
