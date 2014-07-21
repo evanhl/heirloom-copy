@@ -164,27 +164,18 @@ img.detail {
   }
 }
 
-.gallery-photo {
+.gallery-photo, .thumb-photo {
   height: 200px;
   width: 200px;
   margin: 2em 0 0 2em;
 
   display: inline-block;
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-property: transform;
-  transition-property: transform;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 
   cursor: pointer;
   overflow: hidden;
-
-  // &:hover, &:focus, &:active {
-  //   -webkit-transform: scale(1.1);
-  //   transform: scale(1.1);
-  // }
 
   .select {
     width: 50px;
@@ -204,16 +195,21 @@ img.detail {
   }
 }
 
+.thumb-photo {
+  height: 150px;
+  width: 150px;
+}
+
 // TODO: delete me
 input.temp {
   // margin: 10px;
 }
 
-a.active {
-  &:visited, &:link, &:active {
-    font-weight: bold;
-  }
-}
+// a.active {
+//   &:visited, &:link, &:active {
+//     font-weight: bold;
+//   }
+// }
 
 a .convo {
   color: black;
@@ -230,4 +226,47 @@ a .convo {
 
 .post-message {
   background: yellow;
+}
+
+.mini-nav {
+  background: rgb(248,249,244);
+  position: fixed;
+  z-index: 5;
+  width: 100%;
+  max-width: 1000px;
+
+  ul {
+    margin: 0;
+    text-align: center;
+  }
+
+  li {
+    display: inline-block;
+    padding: 28px 0 23px;
+    width: 150px;
+    margin: 0 40px;
+    border-bottom: 5px rgb(248,249,244) solid;
+    transition: border-bottom-color .25s ease-in-out;
+
+    &.active {
+      border-bottom: 5px rgb(252,91,45) solid;
+
+      a {
+        color: rgb(252,91,45);
+      }
+    }
+
+    a {
+      line-height: 16px;
+      text-transform: uppercase;
+      color: rgb(161,162,157);
+      transition: color .25s ease-in-out;
+      letter-spacing: 2px;
+    }
+  }
+}
+
+.nav-filler {
+  height: 72px;
+  width: 100%;
 }

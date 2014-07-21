@@ -1,6 +1,6 @@
 {{#each photos}}
   {{#if thumbVersion}}
-    <div class="gallery-photo">
+    <div class="thumb-photo">
       <img {{bind-attr src=thumbVersion}} {{action enlarge id}}>
       <div {{bind-attr class=":select selected"}} {{action select id}}></div>
     </div>

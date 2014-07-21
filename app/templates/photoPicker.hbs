@@ -12,32 +12,29 @@
     min-height: 600px;
     background: white;
     overflow: scroll;
-
   ">
-    <nav class="top-bar">
-      <section class="top-bar-section">
-        <ul class="right">
-          <li class='photosPicker'>
-            <a href="javascript:void();"
-              {{action "changeTab" "photosPicker"}}
-              {{bind-attr class="photosPickerIsActive:active"}}
-            >{{t "photos"}}</a>
-          </li>
-          <li class='albumsPicker'>
-            <a href="javascript:void();"
-              {{action "changeTab" "albumsPicker"}}
-              {{bind-attr class="albumsPickerIsActive:active"}}
-            >{{t "albums"}}</a>
-          </li>
-          <li class='uploadPicker'>
-            <a href="javascript:void();"
-              {{action "changeTab" "uploadPicker"}}
-              {{bind-attr class="uploadPickerIsActive:active"}}
-            >{{t "upload"}}</a>
-          </li>
-        </ul>
-      </section>
+
+    <nav class="mini-nav">
+      <ul>
+        <li {{bind-attr class=":photosPicker photosPickerIsActive:active"}}>
+          <a href="javascript:void();"
+            {{action "changeTab" "photosPicker"}}
+          >{{t "photos"}}</a>
+        </li>
+        <li {{bind-attr class=":albumsPicker albumsPickerIsActive:active"}}>
+          <a href="javascript:void();"
+            {{action "changeTab" "albumsPicker"}}
+          >{{t "albums"}}</a>
+        </li>
+        <li {{bind-attr class=":uploadPicker uploadPickerIsActive:active"}}>
+          <a href="javascript:void();"
+            {{action "changeTab" "uploadPicker"}}
+          >{{t "upload"}}</a>
+        </li>
+      </ul>
     </nav>
+
+    <div class="nav-filler"></div>
 
     {{#if photosPickerIsActive}}
       {{render "photosPicker"}}
