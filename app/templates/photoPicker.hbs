@@ -6,7 +6,7 @@
         <li {{bind-attr class=":photosPicker photosPickerIsActive:active"}}>
           <a href="javascript:void();"
             {{action "changeTab" "photosPicker"}}
-          >{{t "photos"}}</a>
+          >{{t "moments"}}</a>
         </li>
         <li {{bind-attr class=":albumsPicker albumsPickerIsActive:active"}}>
           <a href="javascript:void();"
@@ -23,6 +23,8 @@
 
     <nav class="footer-nav">
       <span class="sub-info">{{t "photos.selected" countBinding="selectedCount"}}</span>
+      <button {{action 'add'}}>Add</button>
+      <button {{action 'close'}}>Cancel</button>
     </nav>
 
     <div class="nav-filler"></div>

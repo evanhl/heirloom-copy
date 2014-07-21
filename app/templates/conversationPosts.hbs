@@ -1,5 +1,9 @@
-{{input placeholder="Create Post" value=newPostMessage class="temp newPostMessage"}}
+{{input placeholder=(ts 'post.prompt') value=newPostMessage class="temp newPostMessage"}}
 <button {{action 'openModal' 'photoPicker'}}>Add Photo</button>
+
+{{#each photo in newPostPhotos}}
+  {{photo.id}}
+{{/each}}
 
 {{#each}}
   {{render 'conversationPost' this}}

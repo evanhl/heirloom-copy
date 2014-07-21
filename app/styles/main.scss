@@ -12,8 +12,8 @@ $topbar-bg-color: #eee;
 
 @import '_spinner';
 
-$lightbox-color: rgba(0, 0, 0, 0.15);
-$selection-color: rgb(102, 200, 237);
+$lightbox-color: rgba(0,0,0,0.15);
+$selection-color: rgb(102,200,237);
 $bg-color-accent: rgb(248,249,244);
 $highlight-color: rgb(252,91,45);
 
@@ -280,10 +280,15 @@ a .convo {
   margin-top: 578px;
   height: 72px;
   padding-left: 60px;
+  padding-right: 20px;
 
   .sub-info {
     line-height: 72px;
     height: 72px;
+  }
+
+  button {
+    float: right;
   }
 }
 
@@ -310,3 +315,5 @@ a .convo {
   background: white;
   overflow: scroll;
 }
+
+

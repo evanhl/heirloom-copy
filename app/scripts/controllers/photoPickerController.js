@@ -1,9 +1,9 @@
-App.PhotoPickerController = Ember.Controller.extend({
+App.PhotoPickerController = Ember.Controller.extend(Ember.Evented, {
   needs: ['photosPicker'],
   photosPicker: Ember.computed.alias('controllers.photosPicker'),
   activeTab: 'photosPicker',
-
   selected: Ember.computed.alias('photosPicker.selected'),
+
   selectedCount: function () {
     return this.get('selected').length;
   }.property('selected.@each'),
@@ -25,6 +25,11 @@ App.PhotoPickerController = Ember.Controller.extend({
   actions: {
     close: function () {
       this.send('closeModal');
+    },
+
+    add: function () {
+      this.trigger('photosAdded', this.get('selected'));
+      this.send('close');
     },
 
     changeTab: function (tab) {

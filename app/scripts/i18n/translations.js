@@ -1,6 +1,6 @@
 Ember.I18n.translations = {
   'albums': 'Albums',
-  'photos': 'Photos',
+  'moments': 'Moments',
   'upload': 'Upload',
   'conversations': 'Groups',
   'signin': 'Sign In',
@@ -19,7 +19,8 @@ Ember.I18n.translations = {
   'signup.button.signup': 'Sign Up',
   'signup.button.facebook': 'Sign Up with Facebook',
 
-  'comments.prompt': 'Enter comment',
+  'post.prompt': 'Write something...',
+  'comments.prompt': 'Reply...',
 
   'photos.selected.one': '{{count}} photo selected',
   'photos.selected.other': '{{count}} photos selected',

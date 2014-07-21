@@ -1,7 +1,17 @@
 App.ConversationPostsController = Ember.ArrayController.extend(InfiniteScroll.ControllerMixin, {
-  needs: ['conversation'],
+  needs: ['conversation', 'photoPicker'],
   conversation: Ember.computed.alias('controllers.conversation'),
+  photoPicker: Ember.computed.alias('controllers.photoPicker'),
   newPostMessage: null,
+
+  init: function () {
+    var self = this;
+    this.set('newPostPhotos', []);
+    this.get('photoPicker').on('photosAdded', function (addedPhotos) {
+      self.get('newPostPhotos').pushObjects(addedPhotos);
+    });
+    this._super();
+  },
 
   fetchPage: function (page, perPage) {
     // TODO: remove copypasta with AlbumPhotosController
