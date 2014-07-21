@@ -1,4 +1,5 @@
 /* jshint -W079 */
+/* globals CLDR */
 
 // Adapted from http://stackoverflow.com/a/10199338
 Ember.Object.reopen({
@@ -87,4 +88,5 @@ App.Router.map(function () {
   this.route('signout');
 });
 
+CLDR.defaultLanguage = 'en-US';
 

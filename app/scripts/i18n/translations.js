@@ -19,5 +19,8 @@ Ember.I18n.translations = {
   'signup.button.signup': 'Sign Up',
   'signup.button.facebook': 'Sign Up with Facebook',
 
-  'comments.prompt': 'Enter comment'
+  'comments.prompt': 'Enter comment',
+
+  'photos.selected.one': '{{count}} photo selected',
+  'photos.selected.other': '{{count}} photos selected',
 };

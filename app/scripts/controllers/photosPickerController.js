@@ -2,6 +2,7 @@ App.PhotosPickerController = Ember.Controller.extend({
   needs: ['photos'],
   photos: Ember.computed.alias('controllers.photos'),
   loadingMore: Ember.computed.alias('photos.loadingMore'),
+  selected: Ember.computed.alias('photos.selected'),
 
   init: function () {
     this.send('getMore');

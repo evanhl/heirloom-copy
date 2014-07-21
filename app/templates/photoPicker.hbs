@@ -1,18 +1,5 @@
 {{#modal-dialog action="close"}}
-  <div style="
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    top: 0;
-    margin: auto;
-    height: 50%;
-    width: 100%;
-    max-width: 1000px;
-    min-height: 600px;
-    background: white;
-    overflow: scroll;
-  ">
+  <div class="photo-picker">
 
     <nav class="mini-nav">
       <ul>
@@ -34,6 +21,10 @@
       </ul>
     </nav>
 
+    <nav class="footer-nav">
+      <span class="sub-info">{{t "photos.selected" countBinding="selectedCount"}}</span>
+    </nav>
+
     <div class="nav-filler"></div>
 
     {{#if photosPickerIsActive}}
@@ -47,6 +38,8 @@
     {{#if uploadPickerIsActive}}
       {{render "uploadPicker"}}
     {{/if}}
+
+    <div class="nav-filler"></div>
   </div>
 
 {{/modal-dialog}}
