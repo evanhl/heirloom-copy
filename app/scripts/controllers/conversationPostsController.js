@@ -26,9 +26,7 @@ App.ConversationPostsController = Ember.ArrayController.extend(InfiniteScroll.Co
       var post = App.Post.create(postProps);
 
       adapter.createNestedRecord(conversation, post, 'posts').then(function () {
-        self.unshiftObject(App.ModelProxy.create({
-          content: post
-        }));
+        self.unshiftObject(post);
         self.set('newPostMessage', null);
       }, function () {
         // TODO: handle failure

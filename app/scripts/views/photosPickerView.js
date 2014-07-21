@@ -4,12 +4,7 @@ App.PhotosPickerView = Ember.View.extend(InfiniteScroll.ViewMixin, {
     return this.$().parent();
   }.property(),
 
-  // TODO: consider moving didInsertElement and willDestroyElement into ViewMixin
-  didInsertElement: function (){
-    this.setupInfiniteScrollListener();
-  },
-
-  willDestroyElement: function (){
-    this.teardownInfiniteScrollListener();
-  }
+  clearSelected: function () {
+    this.get('controller').clearSelected();
+  }.on('willDestroyElement')
 });

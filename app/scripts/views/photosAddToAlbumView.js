@@ -17,13 +17,5 @@ App.PhotosAddToAlbumView = Ember.View.extend(InfiniteScroll.ViewMixin, {
     if (e.keyCode === Utils.Keys.ESC) {
       this.get('controller').send('toCollection');
     }
-  },
-
-  didInsertElement: function (){
-    this.setupInfiniteScrollListener();
-  },
-
-  willDestroyElement: function (){
-    this.teardownInfiniteScrollListener();
   }
 });

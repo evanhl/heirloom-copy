@@ -24,12 +24,8 @@ $spinner-width: $spinner-height;
 }
 
 .spinner, .big-spinner {
-  position: relative;
-  width: $spinner-width;
-  height: $spinner-height;
   background: #0FF;
   animation: 1s spin infinite;
-  margin: 20px auto;
 
   &::before,
   &::after {
@@ -45,6 +41,13 @@ $spinner-width: $spinner-height;
     background: #FFF;
     animation: .5s blur2 infinite alternate linear;
   }
+}
+
+.spinner {
+  position: relative;
+  width: $spinner-width;
+  height: $spinner-height;
+  margin: 20px auto;
 }
 
 @keyframes delayed-fadein {

@@ -17,7 +17,7 @@ App.PostCommentsController = Ember.ArrayController.extend(InfiniteScroll.Control
     // on the base model to handle this logic
     var records = Ember.RecordArray.create({ modelClass: App.Comment, _query: params, container: false });
 
-    return adapter.findNestedQuery(this.get('post.model.content'), App.Comment, 'comments', records, params);
+    return adapter.findNestedQuery(this.get('post.model'), App.Comment, 'comments', records, params);
   },
 
   createComment: function () {
@@ -31,10 +31,8 @@ App.PostCommentsController = Ember.ArrayController.extend(InfiniteScroll.Control
     var comment = App.Comment.create(commentProps);
 
     // TODO: we shouldn't have to unwrap the post's ModelProxy here
-    adapter.createNestedRecord(post.content, comment, 'comments').then(function () {
-      self.unshiftObject(App.ModelProxy.create({
-        content: comment
-      }));
+    adapter.createNestedRecord(post, comment, 'comments').then(function () {
+      self.unshiftObject(comment);
       self.set('newComment', null);
     }, function () {
       // TODO: handle failure

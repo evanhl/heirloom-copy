@@ -19,6 +19,12 @@ App.BasePhotosController = Ember.ArrayController.extend(InfiniteScroll.Controlle
     this._super();
   },
 
+  clearSelected: function () {
+    return this.get('model').forEach(function (photo) {
+      photo.set('selected', false);
+    });
+  },
+
   actions: {
     select: function (id) {
       // FIXME: this lookup is O(n). implement array with hash index for fast lookup.

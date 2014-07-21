@@ -11,9 +11,17 @@ App.PhotosPickerController = Ember.Controller.extend({
     this.get('photos').fetchPage(page, perPage);
   },
 
+  clearSelected: function () {
+    this.get('photos').clearSelected();
+  },
+
   actions: {
     getMore: function () {
       this.get('photos').send('getMore');
+    },
+
+    select: function (id) {
+      this.get('photos').send('select', id);
     }
   }
 });

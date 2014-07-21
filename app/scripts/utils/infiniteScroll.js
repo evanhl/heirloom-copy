@@ -40,8 +40,6 @@
       },
 
       gotMore: function (items, nextPage) {
-        var proxiedItems;
-
         // if it's a wrapped array like Ember.RecordArray, get the inner array
         if (items.content) {
           items = items.content;
@@ -51,14 +49,7 @@
           this.set('maxPage', this.get('page'));
         }
 
-        proxiedItems = items.map(function (item) {
-          return App.ModelProxy.create({
-            content: item,
-            selected: false
-          });
-        });
-
-        this.pushObjects(proxiedItems);
+        this.pushObjects(items);
         this.set('page', nextPage);
 
         this.set('loadingMore', false);
@@ -69,11 +60,11 @@
   InfiniteScroll.ViewMixin = Ember.Mixin.create({
     setupInfiniteScrollListener: function () {
       this.$listenerEl().on('scroll', $.proxy(this.didScroll, this));
-    },
+    }.on('didInsertElement'),
 
     teardownInfiniteScrollListener: function () {
       this.$listenerEl().off('scroll', $.proxy(this.didScroll, this));
-    },
+    }.on('willDestroyElement'),
 
     $listenerEl: function () {
       if (this.$scrollEl().css('overflow-y') === 'scroll') {

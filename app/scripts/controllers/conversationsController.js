@@ -24,9 +24,7 @@ App.ConversationsController = Ember.ArrayController.extend(InfiniteScroll.Contro
       var convo = App.Conversation.create(conversationProps);
 
       convo.save().then(function () {
-        self.pushObject(App.ModelProxy.create({
-          content: convo
-        }));
+        self.pushObject(convo);
       }, function () {
         // TODO: handle failure
       });

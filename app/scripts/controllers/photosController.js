@@ -44,7 +44,7 @@ App.PhotosController = App.BasePhotosController.extend({
         return photo.get('id');
       });
 
-      adapter.postNested(album.content, {
+      adapter.postNested(album, {
         photo_ids: selectedIds
       }, 'photos').then(function () {
         self.get('selected').forEach(function (photo) {
