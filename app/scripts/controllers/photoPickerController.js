@@ -8,6 +8,10 @@ App.PhotoPickerController = Ember.Controller.extend(Ember.Evented, {
     return this.get('selected').length;
   }.property('selected.@each'),
 
+  noneSelected: function () {
+    return this.get('selectedCount') === 0;
+  }.property('selectedCount'),
+
   // This is repetitive, but there's no way to dynamically render like this: {{render dynamicName}}.
   // I could use {{outlet}}, but then I have to push logic into ApplicationRoute. Bleh.
   photosPickerIsActive: function () {

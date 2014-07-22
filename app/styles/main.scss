@@ -3,6 +3,7 @@
 @import 'normalize-scss/_normalize';
 
 // $include-html-classes: false;
+$include-html-button-classes: false;
 $topbar-bg-color: #eee;
 
 @import 'foundation/scss/foundation/components/alert-boxes';
@@ -16,6 +17,8 @@ $lightbox-color: rgba(0,0,0,0.15);
 $selection-color: rgb(102,200,237);
 $bg-color-accent: rgb(248,249,244);
 $highlight-color: rgb(252,91,45);
+$subtle-highlight-color: rgb(237,237,237);
+$button-text-color: rgb(161,162,157);
 
 body {
   background: #fafafa;
@@ -259,7 +262,7 @@ a .convo {
       font-size: 14px;
       line-height: 16px;
       text-transform: uppercase;
-      color: rgb(161,162,157);
+      color: $button-text-color;
       transition: color .25s ease-in-out;
       letter-spacing: 2px;
 
@@ -274,7 +277,7 @@ a .convo {
 }
 
 .footer-nav {
-  border-top: 1px solid rgb(237,237,237);
+  border-top: 1px solid $subtle-highlight-color;
   background: white;
   position: fixed;
   z-index: 5;
@@ -292,6 +295,37 @@ a .convo {
 
   button {
     float: right;
+    // FIXME: shouldn't be hardcoding this width
+    width: 130px;
+    height: 36px;
+    margin: 18px 6px;
+    border-radius: 3px;
+    background: $subtle-highlight-color;
+    color: $button-text-color;
+    border: 0;
+    box-shadow: 0px 1px 0px 0px darken($subtle-highlight-color, 20%);
+
+    opacity: 0.9;
+    outline: 0;
+
+    &.take-action {
+      background: $highlight-color;
+      color: white;
+      box-shadow: 0px 1px 0px 0px darken($highlight-color, 20%);
+    }
+
+    &:disabled {
+      opacity: 0.3;
+    }
+
+    &:hover {
+      opacity: 1
+    }
+
+    &:active {
+      box-shadow: none;
+      margin-top: 19px;
+    }
   }
 }
 

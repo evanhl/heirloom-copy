@@ -23,7 +23,7 @@
 
     <nav class="footer-nav">
       <span class="sub-info">{{t "photos.selected" countBinding="selectedCount"}}</span>
-      <button {{action 'add'}}>Add</button>
+      <button {{action 'add'}} {{bind-attr disabled=noneSelected}} class="take-action">Add</button>
       <button {{action 'close'}}>Cancel</button>
     </nav>
 
