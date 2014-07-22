@@ -20,6 +20,14 @@ $highlight-color: rgb(252,91,45);
 $subtle-highlight-color: rgb(237,237,237);
 $button-text-color: rgb(161,162,157);
 
+$convo-height: 88px;
+$convo-icon-size: 50px;
+$convo-highlight-border-width: 5px;
+$convo-padding: ($convo-height - $convo-icon-size) / 2;
+$left-col-width: 375px;
+$nav-height: 45px;
+$convo-text-width: $left-col-width - ($convo-padding * 2) - $convo-icon-size - 10px;
+
 @font-face {
   font-family: 'Open Sans';
   font-style: normal;
@@ -231,59 +239,6 @@ input.temp {
   // margin: 10px;
 }
 
-a .convo {
-  color: black;
-}
-
-a.active .convo {
-  border-left: 5px $highlight-color solid;
-  padding-left: 14px;
-}
-
-.post-message {
-  padding: 10px;
-  // margin: 10px;
-}
-
-.convo {
-  width: 300px;
-  height: 88px;
-  background: white;
-  padding: 19px 19px 19px 14px;
-  border-left: 5px white solid;
-  border-bottom: 1px lightgray solid;
-  transition: border-left-color .25s ease-in-out;
-}
-
-.convo:hover {
-  border-left-color: $subtle-highlight-color;
-}
-
-.icon {
-    height: 50px;
-    width: 50px;
-    border-radius: 25px;
-    background: lightgray;
-    float: left;
-}
-
-.details {
-  margin-left: 69px;
-}
-
-.names {
-  font-size: 20px;
-  margin-top: 6px;
-  margin-bottom: 4px;
-}
-
-.names, .details {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 210px;
-}
-
 .post-message {
   background: yellow;
 }
@@ -387,6 +342,7 @@ a.active .convo {
   }
 }
 
+// TODO: choose more meaningful name
 .sub-info {
   color: $highlight-color;
 }
@@ -411,17 +367,70 @@ a.active .convo {
   overflow: scroll;
 }
 
+.icon {
+    height: $convo-icon-size;
+    width: $convo-icon-size;
+    border-radius: $convo-icon-size / 2;
+    background: lightgray;
+    float: left;
+}
+
+.details {
+  margin-left: 69px;
+}
+
+.names {
+  font-size: 20px;
+  margin-top: 6px;
+  margin-bottom: 4px;
+}
+
+.names, .details {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: $convo-text-width;
+}
+
+a .convo {
+  color: black;
+}
+
+a.active .convo {
+  border-left: $convo-highlight-border-width $highlight-color solid;
+  padding-left: ($convo-padding - $convo-highlight-border-width);
+}
+
+.post-message {
+  padding: 10px;
+  // margin: 10px;
+}
+
+.convo {
+  width: $left-col-width;
+  height: $convo-height;
+  background: white;
+  padding: $convo-padding $convo-padding $convo-padding ($convo-padding - $convo-highlight-border-width);
+  border-left: $convo-highlight-border-width white solid;
+  border-bottom: 1px lightgray solid;
+  transition: border-left-color .25s ease-in-out;
+}
+
+.convo:hover {
+  border-left-color: $subtle-highlight-color;
+}
+
 .left-col {
   position: fixed;
   left: 0;
-  top: 45px;
-  width: 300px;
+  top: $nav-height;
+  width: $left-col-width;
   background: $bg-color-accent;
-  height: calc(100vh - 45px);
+  height: calc(100vh - #{$nav-height});
 }
 
 .main-col {
-  margin: 0 300px 0 300px;
+  margin: 0 300px 0 $left-col-width;
 }
 
 .right-col {
