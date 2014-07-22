@@ -2,7 +2,9 @@
 <button {{action 'openModal' 'photoPicker'}}>Add Photo</button>
 
 {{#each photo in newPostPhotos}}
-  {{photo.id}}
+  <div class="thumb-photo">
+    <img {{bind-attr src=photo.thumbVersion}}>
+  </div>
 {{/each}}
 
 {{#each}}

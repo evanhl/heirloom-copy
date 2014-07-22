@@ -25,13 +25,20 @@ App.ConversationPostsController = Ember.ArrayController.extend(InfiniteScroll.Co
     return adapter.findNestedQuery(this.get('conversation.model'), App.Post, 'posts', records, params);
   },
 
+  newPostPhotoIds: function () {
+    return this.get('newPostPhotos').map(function (photo) {
+      return photo.get('id');
+    });
+  },
+
   actions: {
     create: function () {
       var adapter = App.Conversation.adapter;
       var self = this;
       var conversation = self.get('conversation.model');
       var postProps = {
-        message: this.get('newPostMessage')
+        message: this.get('newPostMessage'),
+        photo_ids: this.newPostPhotoIds()
       };
       var post = App.Post.create(postProps);
 

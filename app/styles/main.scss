@@ -176,7 +176,6 @@ img.detail {
   transform: translateZ(0);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 
-  cursor: pointer;
   overflow: hidden;
 
   .select {
@@ -195,6 +194,10 @@ img.detail {
       background-image: url(/images/ios7-checkmark-hover.svg);
     }
   }
+}
+
+.gallery-photo {
+  cursor: pointer;
 }
 
 .thumb-photo {

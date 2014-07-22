@@ -2,5 +2,12 @@
   <div class="small-12 columns post-message">{{owner.name}}: {{message}}</div>
 </div>
 <div class="row">
+  {{#each photos}}
+    <div class="thumb-photo">
+      <img {{bind-attr src=thumbVersion}}>
+    </div>
+  {{/each}}
+</div>
+<div class="row">
   {{render 'postComments' model}}
 </div>
