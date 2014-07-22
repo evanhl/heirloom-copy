@@ -1,15 +1,32 @@
-<div class="row">
-  <div class="small-3 columns">
+<div class="" style="
+
+">
+  <div class="left-col" style="">
     {{#each}}
-      {{#link-to 'conversationPosts' id}}<div class="convo">{{name}}</div>{{/link-to}}
+      {{#link-to 'conversationPosts' id}}
+        <div class="convo">
+          <div class="icon"></div>
+          <div class="details">
+            <div class="names">{{name}}</div>
+            <div class="sub">Bar</div>
+          </div>
+        </div>
+      {{/link-to}}
     {{/each}}
 
-    {{input placeholder="Create Conversation" value=newConversationName class="temp newConversationName"}}
+{{!--     {{input placeholder="Create Conversation" value=newConversationName class="temp newConversationName"}} --}}
 
     {{partial 'spinner'}}
   </div>
 
-  <div class="small-9 columns">
-    {{outlet}}
+  <div class="main-col" style="
+  ">
+      {{outlet}}
+  </div>
+
+{{!--   <div class="right-col" style="
+
+  "> --}}
+
   </div>
 </div>
