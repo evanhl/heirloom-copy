@@ -1,16 +1,19 @@
 //= require ../utils/infiniteScroll
 App.ConversationPostsView = Ember.View.extend(InfiniteScroll.ViewMixin, {
-  keyPress: function (e) {
+  keyDown: function (e) {
     if (!$(e.target).hasClass('newPostMessage')) { return; }
 
     var controller = this.get('controller');
 
-    // if (e.keyCode === Utils.Keys.ENTER) {
-    //   controller.send('create');
-    // }
+    if (e.keyCode === Utils.Keys.ENTER && (e.ctrlKey || e.metaKey)) {
+      e.preventDefault();
+      controller.send('create');
+    }
   },
 
   setupAutosizeTextarea: function () {
-    this.$('textarea').autosize();
+    this.$('textarea').focus(function () {
+      $(this).autosize();
+    });
   }.on('didInsertElement')
 });

@@ -45,6 +45,7 @@ App.ConversationPostsController = Ember.ArrayController.extend(InfiniteScroll.Co
       adapter.createNestedRecord(conversation, post, 'posts').then(function () {
         self.unshiftObject(post);
         self.set('newPostMessage', null);
+        self.set('newPostPhotos', []);
       }, function () {
         // TODO: handle failure
       });
