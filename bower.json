@@ -10,7 +10,8 @@
     "normalize-scss": "~3.0.1",
     "dropzone": "~3.10.0",
     "ember-model": "https://github.com/ebryn/ember-model.git#7cd79f57",
-    "ember-i18n": "~2.0.0"
+    "ember-i18n": "~2.0.0",
+    "jquery-autosize": "~1.18.9"
   },
   "overrides": {
     "picturefill": {

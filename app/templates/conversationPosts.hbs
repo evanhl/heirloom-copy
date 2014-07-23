@@ -1,11 +1,36 @@
-{{input placeholder=(ts 'post.prompt') value=newPostMessage class="temp newPostMessage"}}
-<button {{action 'openModal' 'photoPicker'}}>Add Photo</button>
-
-{{#each photo in newPostPhotos}}
-  <div class="thumb-photo">
-    <img {{bind-attr src=photo.thumbVersion}}>
+{{#if newPostPhotos.length}}
+  <div class="new-post-photos">
+    {{#each photo in newPostPhotos}}
+      <div class="thumb-photo">
+        <img {{bind-attr src=photo.thumbVersion}}>
+      </div>
+    {{/each}}
+    <a href="javascript:void(0);" {{action 'openModal' 'photoPicker'}}><div class="fake-photo"></div></a>
   </div>
-{{/each}}
+{{/if}}
+
+<div class="new-post">
+  <button {{action 'openModal' 'photoPicker'}} style="
+    width: 36px;
+    height: 36px;
+    float: left;
+  ">Add Photo</button>
+  <button {{action 'create'}} class="take-action" style="
+    float: right;
+    display: block;
+  ">Post</button>
+  <div style="
+    margin-left: 46px;
+    margin-right: 140px;
+    display: block;
+  ">
+    {{textarea placeholder=(ts 'post.prompt') value=newPostMessage class="newPostMessage"}}
+  </div>
+</div>
+
+
+
+
 
 {{#each}}
   {{render 'conversationPost' this}}

@@ -5,8 +5,12 @@ App.ConversationPostsView = Ember.View.extend(InfiniteScroll.ViewMixin, {
 
     var controller = this.get('controller');
 
-    if (e.keyCode === Utils.Keys.ENTER) {
-      controller.send('create');
-    }
-  }
+    // if (e.keyCode === Utils.Keys.ENTER) {
+    //   controller.send('create');
+    // }
+  },
+
+  setupAutosizeTextarea: function () {
+    this.$('textarea').autosize();
+  }.on('didInsertElement')
 });

@@ -26,29 +26,13 @@ $convo-highlight-border-width: 5px;
 $convo-padding: ($convo-height - $convo-icon-size) / 2;
 $left-col-width: 375px;
 $nav-height: 45px;
-$convo-text-width: $left-col-width - ($convo-padding * 2) - $convo-icon-size - 10px;
+$convo-extra-left-padding: 0;
+$convo-left-padding: $convo-padding + $convo-extra-left-padding - $convo-highlight-border-width;
+$convo-text-width: $left-col-width - $convo-padding - $convo-left-padding - $convo-highlight-border-width - $convo-icon-size - 10px;
 
-@font-face {
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 300;
-  src: local('Open Sans Light'), local('OpenSans-Light'), url(http://themes.googleusercontent.com/static/fonts/opensans/v8/DXI1ORHCpsQm3Vp6mXoaTaRDOzjiPcYnFooOUGCOsRk.woff) format('woff');
-}
-@font-face {
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Open Sans'), local('OpenSans'), url(http://themes.googleusercontent.com/static/fonts/opensans/v8/cJZKeOuBrn4kERxqtaUH3bO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
-}
-@font-face {
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 600;
-  src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url(http://themes.googleusercontent.com/static/fonts/opensans/v8/MTP_ySUJH_bn48VBG8sNSqRDOzjiPcYnFooOUGCOsRk.woff) format('woff');
-}
 body {
-  background: #fafafa;
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: white;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #333;
 }
 
@@ -234,11 +218,6 @@ img.detail {
   width: 150px;
 }
 
-// TODO: delete me
-input.temp {
-  // margin: 10px;
-}
-
 .post-message {
   background: yellow;
 }
@@ -309,36 +288,75 @@ input.temp {
   button {
     float: right;
     // FIXME: shouldn't be hardcoding this width
-    width: 130px;
-    height: 36px;
+
     margin: 18px 6px;
-    border-radius: 3px;
-    background: $subtle-highlight-color;
-    color: $button-text-color;
-    border: 0;
-    box-shadow: 0px 1px 0px 0px darken($subtle-highlight-color, 20%);
-
-    opacity: 0.9;
-    outline: 0;
-
-    &.take-action {
-      background: $highlight-color;
-      color: white;
-      box-shadow: 0px 1px 0px 0px darken($highlight-color, 20%);
-    }
-
-    &:disabled {
-      opacity: 0.3;
-    }
-
-    &:hover:enabled {
-      opacity: 1
-    }
 
     &:active:enabled {
-      box-shadow: none;
       margin-top: 19px;
     }
+  }
+}
+
+button {
+  width: 130px;
+  height: 36px;
+
+  border-radius: 3px;
+  background: $subtle-highlight-color;
+  color: $button-text-color;
+  border: 0;
+  box-shadow: 0px 1px 0px 0px darken($subtle-highlight-color, 20%);
+
+  opacity: 0.9;
+  outline: 0;
+
+  &.take-action {
+    background: $highlight-color;
+    color: white;
+    box-shadow: 0px 1px 0px 0px darken($highlight-color, 20%);
+  }
+
+  &:disabled {
+    opacity: 0.3;
+  }
+
+  &:hover:enabled {
+    opacity: 1
+  }
+
+  &:active:enabled {
+    box-shadow: none;
+  }
+}
+
+.new-post {
+  padding: 18px;
+  border-bottom: 1px $subtle-highlight-color solid;
+  border-left: 1px $subtle-highlight-color solid;
+  border-right: 1px $subtle-highlight-color solid;
+
+  textarea {
+    margin: 0;
+    height: 36px;
+  }
+}
+
+.new-post-photos {
+  border-bottom: 1px $subtle-highlight-color solid;
+  border-left: 1px $subtle-highlight-color solid;
+  border-right: 1px $subtle-highlight-color solid;
+  padding-top: 18px;
+  padding-left: 18px;
+
+  .thumb-photo, .fake-photo {
+    margin: 0 18px 18px 0;
+  }
+
+  .fake-photo {
+    width: 150px;
+    height: 150px;
+    border: 2px dashed $subtle-highlight-color;
+    display: inline-block;
   }
 }
 
@@ -367,30 +385,7 @@ input.temp {
   overflow: scroll;
 }
 
-.icon {
-    height: $convo-icon-size;
-    width: $convo-icon-size;
-    border-radius: $convo-icon-size / 2;
-    background: lightgray;
-    float: left;
-}
 
-.details {
-  margin-left: 69px;
-}
-
-.names {
-  font-size: 20px;
-  margin-top: 6px;
-  margin-bottom: 4px;
-}
-
-.names, .details {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: $convo-text-width;
-}
 
 a .convo {
   color: black;
@@ -398,7 +393,7 @@ a .convo {
 
 a.active .convo {
   border-left: $convo-highlight-border-width $highlight-color solid;
-  padding-left: ($convo-padding - $convo-highlight-border-width);
+  padding-left: $convo-left-padding;
 }
 
 .post-message {
@@ -410,10 +405,36 @@ a.active .convo {
   width: $left-col-width;
   height: $convo-height;
   background: white;
-  padding: $convo-padding $convo-padding $convo-padding ($convo-padding - $convo-highlight-border-width);
+  padding: $convo-padding $convo-padding $convo-padding $convo-left-padding;
   border-left: $convo-highlight-border-width white solid;
-  border-bottom: 1px lightgray solid;
+  border-bottom: 1px $subtle-highlight-color solid;
+  border-right: 1px $subtle-highlight-color solid;
   transition: border-left-color .25s ease-in-out;
+
+  .icon {
+      height: $convo-icon-size;
+      width: $convo-icon-size;
+      border-radius: $convo-icon-size / 2;
+      background: $subtle-highlight-color;
+      float: left;
+  }
+
+  .details {
+    margin-left: 69px;
+  }
+
+  .names {
+    font-size: 18px;
+    margin-top: 6px;
+    margin-bottom: 4px;
+  }
+
+  .names, .details {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: $convo-text-width;
+  }
 }
 
 .convo:hover {
@@ -430,13 +451,18 @@ a.active .convo {
 }
 
 .main-col {
-  margin: 0 300px 0 $left-col-width;
+  margin: 0 300px 0 ($left-col-width + 16px);
 }
 
 .right-col {
   float: right;
   width: 300px;
   background: green;
+}
+
+textarea {
+  resize: none;
+  min-height: 36px;
 }
 
 
