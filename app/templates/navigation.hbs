@@ -12,7 +12,7 @@
         {{#link-to 'conversations' tagName='li' class='conversations'}}{{#link-to 'conversations'}}{{t 'conversations'}}{{/link-to}}{{/link-to}}
         {{#link-to 'upload' tagName='li' class='upload'}}{{#link-to 'upload'}}{{t 'upload'}}{{/link-to}}{{/link-to}}
         <li class='signout'><a href="javascript:void();" {{action 'signout'}}>{{t 'signout'}}</a></li>
-        {{userFullName}}
+        <span class="userfullname">{{userFullName}}</span>
 
       {{else}}
         <li class='signin'>{{#link-to 'signin'}}{{t 'signin'}}{{/link-to}}</li>
