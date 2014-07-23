@@ -1,23 +1,23 @@
-<nav class="top-bar">
-  <ul class="title-area">
+<nav class="full-nav">
+{{!--   <ul class="title-area">
     <li class="name">
       <h1>Heirloom</h1>
     </li>
-  </ul>
+  </ul> --}}
 
-  <section class="top-bar-section">
-    <ul class="right">
+    <ul>
       {{#if isLoggedIn}}
-        <li class='photos'>{{#link-to 'photos'}}{{t 'moments'}}{{/link-to}}</li>
-        <li class='albums'>{{#link-to 'albums'}}{{t 'albums'}}{{/link-to}}</li>
-        <li class='conversations'>{{#link-to 'conversations'}}{{t 'conversations'}}{{/link-to}}</li>
-        <li class='upload'>{{#link-to 'upload'}}{{t 'upload'}}{{/link-to}}</li>
+        {{#link-to 'photos' tagName='li' class='photos'}}{{#link-to 'photos'}}{{t 'moments'}}{{/link-to}}{{/link-to}}
+        {{#link-to 'albums' tagName='li' class='albums'}}{{#link-to 'albums'}}{{t 'albums'}}{{/link-to}}{{/link-to}}
+        {{#link-to 'conversations' tagName='li' class='conversations'}}{{#link-to 'conversations'}}{{t 'conversations'}}{{/link-to}}{{/link-to}}
+        {{#link-to 'upload' tagName='li' class='upload'}}{{#link-to 'upload'}}{{t 'upload'}}{{/link-to}}{{/link-to}}
         <li class='signout'><a href="javascript:void();" {{action 'signout'}}>{{t 'signout'}}</a></li>
-        <li class='userfullname'><a href="javascript:void();">{{userFullName}}</a></li>
+        {{userFullName}}
+
       {{else}}
         <li class='signin'>{{#link-to 'signin'}}{{t 'signin'}}{{/link-to}}</li>
         <li class='signup'>{{#link-to 'registration'}}{{t 'signup'}}{{/link-to}}</li>
       {{/if}}
     </ul>
-  </section>
 </nav>
+<div class="nav-filler"></div>

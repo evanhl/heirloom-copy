@@ -9,7 +9,7 @@ $topbar-bg-color: #eee;
 @import 'foundation/scss/foundation/components/alert-boxes';
 @import 'foundation/scss/foundation/components/grid';
 @import 'foundation/scss/foundation/components/forms';
-@import 'foundation/scss/foundation/components/top-bar';
+// @import 'foundation/scss/foundation/components/top-bar';
 
 @import '_spinner';
 
@@ -25,7 +25,7 @@ $convo-icon-size: 50px;
 $convo-highlight-border-width: 5px;
 $convo-padding: ($convo-height - $convo-icon-size) / 2;
 $left-col-width: 375px;
-$nav-height: 45px;
+$nav-height: 75px;
 $convo-extra-left-padding: 0;
 $convo-left-padding: $convo-padding + $convo-extra-left-padding - $convo-highlight-border-width;
 $convo-text-width: $left-col-width - $convo-padding - $convo-left-padding - $convo-highlight-border-width - $convo-icon-size - 10px;
@@ -224,10 +224,28 @@ img.detail {
 
 .mini-nav {
   background: $bg-color-accent;
+  max-width: 1000px;
+
+  li {
+    border-bottom: 5px $bg-color-accent solid;
+  }
+}
+
+.full-nav {
+  background: white;
+  border-bottom: 1px $subtle-highlight-color solid;
+
+
+  li {
+    border-bottom: 5px white solid;
+  }
+}
+
+.mini-nav, .full-nav {
+
   position: fixed;
   z-index: 5;
   width: 100%;
-  max-width: 1000px;
 
   ul {
     margin: 0;
@@ -239,7 +257,6 @@ img.detail {
     padding: 28px 0 23px;
     width: 150px;
     margin: 0 40px;
-    border-bottom: 5px $bg-color-accent solid;
     transition: border-bottom-color .25s ease-in-out;
 
     &.active {
@@ -451,13 +468,17 @@ a.active .convo {
 }
 
 .main-col {
-  margin: 0 300px 0 ($left-col-width + 16px);
+  margin: 0 ($left-col-width + 16px) 0 ($left-col-width + 16px);
+  min-width: 300px;
 }
 
 .right-col {
-  float: right;
-  width: 300px;
-  background: green;
+  position: fixed;
+  right: 0;
+  top: $nav-height;
+  width: $left-col-width;
+  background: $bg-color-accent;
+  height: calc(100vh - #{$nav-height});
 }
 
 textarea {
