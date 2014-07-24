@@ -19,6 +19,7 @@ $bg-color-accent: rgb(248,249,244);
 $highlight-color: rgb(252,91,45);
 $subtle-highlight-color: rgb(237,237,237);
 $button-text-color: rgb(161,162,157);
+$default-text-color: rgb(70,70,70);
 
 $convo-height: 88px;
 $convo-icon-size: 50px;
@@ -31,11 +32,13 @@ $nav-height: 75px;
 $convo-extra-left-padding: 0;
 $convo-left-padding: $convo-padding + $convo-extra-left-padding - $convo-highlight-border-width;
 $convo-text-width: $left-col-width - $convo-padding - $convo-left-padding - $convo-highlight-border-width - $convo-icon-size - 20px;
+$post-left-margin: 75px;
+$post-icon-size: $convo-icon-size;
 
 body {
   background: white;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #333;
+  color: $default-text-color;
 }
 
 img {
@@ -178,6 +181,67 @@ img.detail {
     bottom: 0;
     left: 0;
     padding: 1em;
+  }
+}
+
+.post {
+  padding-bottom: 10px;
+  border-bottom: 1px $subtle-highlight-color solid;
+
+  .icon {
+    height: $post-icon-size;
+    width: $post-icon-size;
+    border-radius: $post-icon-size / 2;
+    background: $subtle-highlight-color;
+    float: left;
+    margin-top: -7px;
+    margin-left: (0 - $post-left-margin + (($post-left-margin - $post-icon-size) / 2));
+  }
+
+  .post-body {
+    margin-left: $post-left-margin;
+    min-height: 75px;
+    margin-top: 20px;
+  }
+
+  .post-author {
+    margin-top: 7px;
+    font-size: 16px;
+    color: $highlight-color;
+    font-weight: 500;
+  }
+
+  .post-time {
+    color: $button-text-color;
+    font-size: 12px;
+    margin-top: 6px;
+  }
+
+  .post-likes {
+    font-size: 14px;
+    color: $highlight-color;
+    margin-top: 20px;
+    font-weight: 500;
+  }
+
+  .post-text {
+    font-size: 14px;
+    margin-top: 10px;
+
+    p {
+      margin: 4px 0;
+      white-space: pre;
+    }
+  }
+
+  .large-photo {
+    margin-top: 10px;
+  }
+}
+
+.large-photo {
+  img {
+    max-height: 400px;
   }
 }
 
@@ -441,7 +505,7 @@ button {
 
 
 a .convo {
-  color: black;
+  color: $default-text-color;
 }
 
 a.active .convo {
@@ -465,11 +529,11 @@ a.active .convo {
   transition: border-left-color .25s ease-in-out;
 
   .icon {
-      height: $convo-icon-size;
-      width: $convo-icon-size;
-      border-radius: $convo-icon-size / 2;
-      background: $subtle-highlight-color;
-      float: left;
+    height: $convo-icon-size;
+    width: $convo-icon-size;
+    border-radius: $convo-icon-size / 2;
+    background: $subtle-highlight-color;
+    float: left;
   }
 
   .details {

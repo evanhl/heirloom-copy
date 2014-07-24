@@ -1,13 +1,20 @@
-<div class="row">
-  <div class="small-12 columns post-message">{{owner.name}}: {{message}}</div>
-</div>
-<div class="row">
-  {{#each photos}}
-    <div class="thumb-photo">
-      <img {{bind-attr src=thumbVersion}}>
-    </div>
-  {{/each}}
-</div>
+{{!--
 <div class="row">
   {{render 'postComments' model}}
+</div> --}}
+
+{{#if firstPhoto}}
+  <div class="large-photo">
+    <img {{bind-attr src=firstPhoto.largeVersion}}>
+  </div>
+{{/if}}
+
+<div class="post-body">
+  <div class="icon"></div>
+  <div class="post-author">{{owner.name}}</div>
+  <div class="post-time">5m ago</div>
+  <div class="post-likes">2 Likes</div>
+  <div class="post-text">
+    {{multiline message}}
+  </div>
 </div>

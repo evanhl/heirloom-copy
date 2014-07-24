@@ -54,3 +54,10 @@ Utils.Keys = {
 Ember.Handlebars.registerHelper('ts', function (key) {
   return Em.I18n.t(key);
 });
+
+Ember.Handlebars.helper('multiline', function (text) {
+  return new Ember.Handlebars.SafeString(text.split('\n').map(function (line) {
+    return '<p>' + (line || '&nbsp;') + '</p>';
+  }).join(''));
+});
+
