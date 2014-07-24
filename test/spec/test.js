@@ -104,9 +104,9 @@
         });
       });
 
-      it('user\'s full name is rendered', function () {
+      it('user\'s username is rendered', function () {
         andThen(function () {
-          expect(find('nav .userfullname').text()).to.equal('Alf Wintheiser Sr.');
+          expect(find('nav .username').text()).to.equal('savion_brown');
         });
       });
 
@@ -231,9 +231,9 @@
         });
       });
 
-      it('user\'s full name is rendered', function () {
+      it('user\'s username is rendered', function () {
         andThen(function () {
-          expect(find('nav .userfullname').text()).to.equal('Big Bird');
+          expect(find('nav .username').text()).to.equal('bigbird123');
         });
       });
 

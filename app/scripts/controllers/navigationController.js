@@ -1,9 +1,9 @@
 App.NavigationController = Ember.Controller.extend({
   needs: ['photos', 'albums', 'conversations'],
 
-  userFullName: function () {
-    return App.get('auth.currentSession.name');
-  }.property('App.auth.currentSession.name'),
+  username: function () {
+    return App.get('auth.currentSession.username');
+  }.property('App.auth.currentSession.username'),
 
   isLoggedIn: function () {
     return App.get('auth.isLoggedIn');

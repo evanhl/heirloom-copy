@@ -1,23 +1,19 @@
 <nav class="full-nav">
-{{!--   <ul class="title-area">
-    <li class="name">
-      <h1>Heirloom</h1>
-    </li>
-  </ul> --}}
+  <div class="logo"></div>
 
-    <ul>
-      {{#if isLoggedIn}}
-        {{#link-to 'photos' tagName='li' class='photos'}}{{#link-to 'photos'}}{{t 'moments'}}{{/link-to}}{{/link-to}}
-        {{#link-to 'albums' tagName='li' class='albums'}}{{#link-to 'albums'}}{{t 'albums'}}{{/link-to}}{{/link-to}}
-        {{#link-to 'conversations' tagName='li' class='conversations'}}{{#link-to 'conversations'}}{{t 'conversations'}}{{/link-to}}{{/link-to}}
-        {{#link-to 'upload' tagName='li' class='upload'}}{{#link-to 'upload'}}{{t 'upload'}}{{/link-to}}{{/link-to}}
-        <li class='signout'><a href="javascript:void();" {{action 'signout'}}>{{t 'signout'}}</a></li>
-        <span class="userfullname">{{userFullName}}</span>
+  <ul>
+    {{#if isLoggedIn}}
+      {{#link-to 'photos' tagName='li' class='photos'}}{{#link-to 'photos'}}{{t 'moments'}}{{/link-to}}{{/link-to}}
+      {{#link-to 'albums' tagName='li' class='albums'}}{{#link-to 'albums'}}{{t 'albums'}}{{/link-to}}{{/link-to}}
+      {{#link-to 'conversations' tagName='li' class='conversations'}}{{#link-to 'conversations'}}{{t 'conversations'}}{{/link-to}}{{/link-to}}
+      {{#link-to 'upload' tagName='li' class='upload'}}{{#link-to 'upload'}}{{t 'upload'}}{{/link-to}}{{/link-to}}
+      <li class='signout'><a href="javascript:void();" {{action 'signout'}}>{{t 'signout'}}</a></li>
+      <span class="username">{{username}}</span>
 
-      {{else}}
-        <li class='signin'>{{#link-to 'signin'}}{{t 'signin'}}{{/link-to}}</li>
-        <li class='signup'>{{#link-to 'registration'}}{{t 'signup'}}{{/link-to}}</li>
-      {{/if}}
-    </ul>
+    {{else}}
+      <li class='signin'>{{#link-to 'signin'}}{{t 'signin'}}{{/link-to}}</li>
+      <li class='signup'>{{#link-to 'registration'}}{{t 'signup'}}{{/link-to}}</li>
+    {{/if}}
+  </ul>
 </nav>
 <div class="nav-filler"></div>

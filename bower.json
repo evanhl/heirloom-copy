@@ -11,7 +11,8 @@
     "dropzone": "~3.10.0",
     "ember-model": "https://github.com/ebryn/ember-model.git#7cd79f57",
     "ember-i18n": "~2.0.0",
-    "jquery-autosize": "~1.18.9"
+    "jquery-autosize": "~1.18.9",
+    "headroom.js": "~0.6.0"
   },
   "overrides": {
     "picturefill": {

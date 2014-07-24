@@ -25,10 +25,12 @@ $convo-icon-size: 50px;
 $convo-highlight-border-width: 5px;
 $convo-padding: ($convo-height - $convo-icon-size) / 2;
 $left-col-width: 375px;
+$left-col-margin: 16px;
+$left-col-outer-width: $left-col-width + $left-col-margin;
 $nav-height: 75px;
 $convo-extra-left-padding: 0;
 $convo-left-padding: $convo-padding + $convo-extra-left-padding - $convo-highlight-border-width;
-$convo-text-width: $left-col-width - $convo-padding - $convo-left-padding - $convo-highlight-border-width - $convo-icon-size - 10px;
+$convo-text-width: $left-col-width - $convo-padding - $convo-left-padding - $convo-highlight-border-width - $convo-icon-size - 20px;
 
 body {
   background: white;
@@ -239,6 +241,17 @@ img.detail {
   li {
     border-bottom: 5px white solid;
   }
+
+  .logo {
+    border-right: 1px $subtle-highlight-color solid;
+    width: 36px;
+    height: 36px;
+    padding: 36px;
+    float: left;
+    background: url(/images/heirloom_logo.png) no-repeat;
+    background-size: 36px auto;
+    background-position: center;
+  }
 }
 
 .mini-nav, .full-nav {
@@ -255,8 +268,7 @@ img.detail {
   li {
     display: inline-block;
     padding: 28px 0 23px;
-    width: 150px;
-    margin: 0 40px;
+    margin: 0 32px;
     transition: border-bottom-color .25s ease-in-out;
 
     &.active {
@@ -346,11 +358,24 @@ button {
   }
 }
 
-.new-post {
+.new-post-post {
   padding: 18px;
+}
+
+.new-post {
+  margin-bottom: 5px;
   border-bottom: 1px $subtle-highlight-color solid;
   border-left: 1px $subtle-highlight-color solid;
   border-right: 1px $subtle-highlight-color solid;
+  box-shadow: 0px 1px 2px 0px rgba(219,219,219,0.5);
+  background: white;
+
+  position: fixed;
+  top: 74px;
+  left: 0;
+  z-index: 3;
+  margin: 0 $left-col-outer-width 0 $left-col-outer-width;
+  width: calc(100% - #{$left-col-outer-width * 2});
 
   textarea {
     margin: 0;
@@ -358,10 +383,21 @@ button {
   }
 }
 
+// Styles for headroom.js (retractable sticky post creation widget)
+.headroom {
+    transition: transform 500ms linear;
+}
+
+.headroom--pinned {
+    transform: translateY(0%);
+}
+
+.headroom--unpinned {
+    transform: translateY(-100%);
+}
+
 .new-post-photos {
   border-bottom: 1px $subtle-highlight-color solid;
-  border-left: 1px $subtle-highlight-color solid;
-  border-right: 1px $subtle-highlight-color solid;
   padding-top: 18px;
   padding-left: 18px;
 
@@ -468,7 +504,7 @@ a.active .convo {
 }
 
 .main-col {
-  margin: 0 ($left-col-width + 16px) 0 ($left-col-width + 16px);
+  margin: 0 $left-col-outer-width 0 $left-col-outer-width;
   min-width: 300px;
 }
 

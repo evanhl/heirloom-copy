@@ -1,7 +1,7 @@
 // Tweak of https://github.com/bantic/ember-infinite-scroll
 /*globals console*/
 
-(function(window, Ember, $){
+(function (window, Ember, $) {
   var InfiniteScroll = {};
 
   InfiniteScroll.ControllerMixin = Ember.Mixin.create({
@@ -100,7 +100,7 @@
       return [];
     },
 
-    setupController: function(controller, model) {
+    setupController: function (controller, model) {
       controller.send('getMore');
     }
   });

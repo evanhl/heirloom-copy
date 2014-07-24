@@ -15,5 +15,13 @@ App.ConversationPostsView = Ember.View.extend(InfiniteScroll.ViewMixin, {
     this.$('textarea').focus(function () {
       $(this).autosize();
     });
-  }.on('didInsertElement')
+  }.on('didInsertElement'),
+
+  setupHeadroomForPost: function () {
+    this.$('.new-post').headroom();
+  }.on('didInsertElement'),
+
+  destroyHeadroomForPost: function () {
+    this.$('.new-post').headroom('destroy');
+  }.on('willDestroyElement')
 });
