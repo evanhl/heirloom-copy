@@ -418,6 +418,7 @@ button {
   }
 
   &:active:enabled {
+    transform: translateY(1px);
     box-shadow: none;
   }
 }
@@ -449,6 +450,22 @@ button {
       transition: height 0.15s;
     }
   }
+
+  button {
+    height: 36px;
+    float: left;
+  }
+
+  button.add-photos {
+    width: 36px;
+  }
+
+  button.take-action {
+    float: right;
+    display: block;
+  }
+
+
 }
 
 // Styles for headroom.js (retractable sticky post creation widget)
