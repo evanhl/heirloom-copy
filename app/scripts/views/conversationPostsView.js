@@ -36,12 +36,10 @@ App.ConversationPostsView = Ember.View.extend(InfiniteScroll.ViewMixin, {
     var self = this;
 
     this.$('textarea').focus(function () {
-      $(this).addClass('animate');
       $(this).autosize({
         callback: function () {
           self.resizeNavFiller();
-        },
-        animate: true
+        }
       });
     });
   }.on('didInsertElement'),

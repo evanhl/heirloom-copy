@@ -445,10 +445,6 @@ button {
   textarea {
     margin: 0;
     height: 36px;
-
-    &.animate {
-      transition: height 0.15s;
-    }
   }
 
   button {
