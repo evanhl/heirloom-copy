@@ -1,5 +1,12 @@
 //= require ../utils/infiniteScroll
 App.ConversationPostsView = Ember.View.extend(InfiniteScroll.ViewMixin, {
+  scrollEl: 'body',
+
+  init: function () {
+    this.resizeNavFiller = $.proxy(this.resizeNavFiller, this);
+    this._super();
+  },
+
   keyDown: function (e) {
     if (!$(e.target).hasClass('newPostMessage')) { return; }
 
@@ -11,9 +18,31 @@ App.ConversationPostsView = Ember.View.extend(InfiniteScroll.ViewMixin, {
     }
   },
 
+  resizeNavFiller: function () {
+    if (!this.$()) { return; }
+
+    var self = this;
+
+    Ember.run.next(function () {
+      var $scrollEl = self.$scrollEl();
+      var newPostHeight = self.$('.new-post').outerHeight();
+      var navFillerHeight = self.$('.nav-filler').outerHeight();
+
+      self.$('.nav-filler').css('height', newPostHeight);
+    });
+  }.observes('controller.newPostPhotos.length'),
+
   setupAutosizeTextarea: function () {
+    var self = this;
+
     this.$('textarea').focus(function () {
-      $(this).autosize();
+      $(this).addClass('animate');
+      $(this).autosize({
+        callback: function () {
+          self.resizeNavFiller();
+        },
+        animate: true
+      });
     });
   }.on('didInsertElement'),
 
@@ -23,5 +52,13 @@ App.ConversationPostsView = Ember.View.extend(InfiniteScroll.ViewMixin, {
 
   destroyHeadroomForPost: function () {
     this.$('.new-post').headroom('destroy');
+  }.on('willDestroyElement'),
+
+  setupWindowListener: function () {
+    $(window).on('resize', this.resizeNavFiller);
+  }.on('didInsertElement'),
+
+  destroyWindowListener: function () {
+    $(window).off('resize', this.resizeNavFiller);
   }.on('willDestroyElement')
 });

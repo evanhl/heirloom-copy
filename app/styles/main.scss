@@ -28,7 +28,7 @@ $convo-padding: ($convo-height - $convo-icon-size) / 2;
 $left-col-width: 375px;
 $left-col-margin: 16px;
 $left-col-outer-width: $left-col-width + $left-col-margin;
-$nav-height: 75px;
+$nav-height: 74px;
 $convo-extra-left-padding: 0;
 $convo-left-padding: $convo-padding + $convo-extra-left-padding - $convo-highlight-border-width;
 $convo-text-width: $left-col-width - $convo-padding - $convo-left-padding - $convo-highlight-border-width - $convo-icon-size - 20px;
@@ -310,7 +310,7 @@ img.detail {
     border-right: 1px $subtle-highlight-color solid;
     width: 36px;
     height: 36px;
-    padding: 36px;
+    padding: 36px 36px 37px 36px;
     float: left;
     background: url(/images/heirloom_logo.png) no-repeat;
     background-size: 36px auto;
@@ -444,6 +444,10 @@ button {
   textarea {
     margin: 0;
     height: 36px;
+
+    &.animate {
+      transition: height 0.15s;
+    }
   }
 }
 
@@ -457,7 +461,7 @@ button {
 }
 
 .headroom--unpinned {
-    transform: translateY(-100%);
+    transform: translateY(-110%);
 }
 
 .new-post-photos {
@@ -565,6 +569,7 @@ a.active .convo {
   width: $left-col-width;
   background: $bg-color-accent;
   height: calc(100vh - #{$nav-height});
+  overflow-y: scroll;
 }
 
 .main-col {
