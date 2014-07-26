@@ -18,6 +18,15 @@ App.ConversationPostsView = Ember.View.extend(InfiniteScroll.ViewMixin, {
     }
   },
 
+  manualAutosize: function () {
+    // manually trigger an autosize of the text area. since we cleared the textarea via JS,
+    // autosize doesn't have a typing event to go off of
+
+    Ember.run.next(this, function () {
+      this.$('textarea').trigger('autosize.resize');
+    });
+  },
+
   resizeNavFiller: function () {
     if (!this.$()) { return; }
 
@@ -31,6 +40,14 @@ App.ConversationPostsView = Ember.View.extend(InfiniteScroll.ViewMixin, {
       self.$('.nav-filler').css('height', newPostHeight);
     });
   }.observes('controller.newPostPhotos.length'),
+
+  setupControllerListener: function () {
+    this.get('controller').on('clearNewPost', this, this.manualAutosize);
+  }.on('didInsertElement'),
+
+  clearControllerListener: function () {
+    this.get('controller').off('clearNewPost', this, this.manualAutosize);
+  }.on('willDestroyElement'),
 
   setupAutosizeTextarea: function () {
     var self = this;

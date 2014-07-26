@@ -1,4 +1,4 @@
-App.ConversationPostsController = Ember.ArrayController.extend(InfiniteScroll.ControllerMixin, {
+App.ConversationPostsController = Ember.ArrayController.extend(Ember.Evented, InfiniteScroll.ControllerMixin, {
   needs: ['conversation', 'photoPicker'],
   conversation: Ember.computed.alias('controllers.conversation'),
   photoPicker: Ember.computed.alias('controllers.photoPicker'),
@@ -46,6 +46,7 @@ App.ConversationPostsController = Ember.ArrayController.extend(InfiniteScroll.Co
         self.unshiftObject(post);
         self.set('newPostMessage', null);
         self.set('newPostPhotos', []);
+        self.trigger('clearNewPost');
       }, function () {
         // TODO: handle failure
       });
