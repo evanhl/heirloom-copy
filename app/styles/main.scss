@@ -230,8 +230,9 @@ img.detail {
     margin-top: 10px;
 
     p {
-      margin: 4px 0;
-      white-space: pre;
+      margin: 0;
+      line-height: 16px;
+      white-space: pre-wrap;
     }
   }
 
