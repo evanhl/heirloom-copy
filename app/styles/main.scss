@@ -582,7 +582,7 @@ a.active .convo {
   top: $nav-height;
   width: $left-col-width;
   background: $bg-color-accent;
-  height: calc(100vh - #{$nav-height});
+  height: 100vh;
   overflow-y: scroll;
 }
 
@@ -597,7 +597,7 @@ a.active .convo {
   top: $nav-height;
   width: $left-col-width;
   background: $bg-color-accent;
-  height: calc(100vh - #{$nav-height});
+  height: 100vh;
 }
 
 textarea {
