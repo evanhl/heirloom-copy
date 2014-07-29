@@ -44,6 +44,12 @@ Utils.findIndexOf = function (arr, filter) {
   return -1;
 };
 
+// Adapted from http://css-tricks.com/snippets/jquery/image-preloader/
+Utils.preloadImage = function (imgUrl) {
+  $("<img />").attr("src", imgUrl);
+};
+
+
 Utils.Keys = {
   ENTER: 13,
   ESC: 27,

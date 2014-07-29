@@ -25,7 +25,6 @@ $spinner-width: $spinner-height;
 
 .spinner, .big-spinner {
   background: #0FF;
-  animation: 1s spin infinite;
 
   &::before,
   &::after {
@@ -48,11 +47,12 @@ $spinner-width: $spinner-height;
   width: $spinner-width;
   height: $spinner-height;
   margin: 20px auto;
+  animation: 1s spin infinite;
 }
 
 @keyframes delayed-fadein {
   0%    { opacity: 0; }
-  30%   { opacity: 0; }
+  50%   { opacity: 0; }
   100%  { opacity: 1; }
 }
 

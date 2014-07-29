@@ -1,8 +1,9 @@
 App.PhotoView = Ember.View.extend({
   // explicitly supply template for views that inherit from this one
   templateName: 'photo',
+
   setFocus: function () {
-    // brings the view into focus in order to capture keyUps.
+    // brings the view into focus in order to capture keyDowns.
     this.$().attr({ tabindex: 1 }).focus();
   }.on('didInsertElement'),
 
@@ -24,5 +25,10 @@ App.PhotoView = Ember.View.extend({
     } else if (e.keyCode === Utils.Keys.ESC) {
       controller.send('toCollection');
     }
-  }
+  },
+
+  preloadNextNextImage: function () {
+    debugger;
+    Utils.preloadImage(this.get('controller.nextNextImageUrl'));
+  }.observes('controller.nextNextImageUrl')
 });

@@ -39,12 +39,15 @@ App.BasePhotoController = Ember.ObjectController.extend({
 
   // FIXME: add cached array position so this isn't O(n)
   adjacentId: function (offset) {
-    var photo;
-    var index = this.get('currentIndex');
-
-    photo = this.get('photos.model')[index + offset];
+    var photo = this.adjacentPhoto(offset);
 
     return photo && photo.get('id');
+  },
+
+  adjacentPhoto: function (offset) {
+    var index = this.get('currentIndex');
+
+    return this.get('photos.model')[index + offset];
   },
 
   currentIndex: function () {
@@ -64,6 +67,12 @@ App.BasePhotoController = Ember.ObjectController.extend({
 
   nextId: function () {
     return this.adjacentId(1);
+  }.property('photos.model.length', 'id'),
+
+  nextNextImageUrl: function () {
+    var photo = this.adjacentPhoto(2);
+
+    return photo && photo.get('largeVersion');
   }.property('photos.model.length', 'id'),
 
   photosUntilEnd: function () {
