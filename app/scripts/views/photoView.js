@@ -28,7 +28,6 @@ App.PhotoView = Ember.View.extend({
   },
 
   preloadNextNextImage: function () {
-    debugger;
     Utils.preloadImage(this.get('controller.nextNextImageUrl'));
   }.observes('controller.nextNextImageUrl')
 });
