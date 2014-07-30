@@ -12,7 +12,7 @@
 <div class="post-body">
   <div class="icon"></div>
   <div class="post-author">{{owner.name}}</div>
-  <div class="post-time">5m ago</div>
+  <div class="post-time">{{fromNow created_at}}</div>
   <div class="post-likes">{{t "post.likes" countBinding="like_count"}}</div>
   <div class="post-text">
     {{multiline message}}

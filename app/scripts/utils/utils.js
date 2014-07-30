@@ -57,13 +57,18 @@ Utils.Keys = {
   RIGHT: 39
 };
 
+// TODO: Should this be a "bound helper"?
 Ember.Handlebars.registerHelper('ts', function (key) {
   return Em.I18n.t(key);
 });
 
+// TODO: Should this be a "bound helper"?
 Ember.Handlebars.helper('multiline', function (text) {
   return new Ember.Handlebars.SafeString(text.split('\n').map(function (line) {
     return '<p>' + (line || '&nbsp;') + '</p>';
   }).join(''));
 });
 
+Ember.Handlebars.registerBoundHelper('fromNow', function (date) {
+  return moment.min(moment(date), moment()).fromNow();
+});
