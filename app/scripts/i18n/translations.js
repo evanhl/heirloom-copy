@@ -19,6 +19,8 @@ Ember.I18n.translations = {
   'signup.button.signup': 'Sign Up',
   'signup.button.facebook': 'Sign Up with Facebook',
 
+  "conversation.members.one": "{{count}} Person",
+  "conversation.members.other": "{{count}} People",
   'post.prompt': 'Write something...',
   'comments.prompt': 'Reply...',
   'post.likes.one': '{{count}} Like',
