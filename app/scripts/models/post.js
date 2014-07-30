@@ -3,7 +3,8 @@ App.Post = Ember.Model.extend({
   owner: Ember.attr(),
   message: Ember.attr(),
   photos: Ember.hasMany('App.Photo', { key: 'photos', embedded: true }),
-  photo_ids: Ember.attr()
+  photo_ids: Ember.attr(),
+  like_count: Ember.attr(Number)
 });
 
 App.Post.url = 'posts';

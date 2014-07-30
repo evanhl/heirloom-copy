@@ -21,6 +21,8 @@ Ember.I18n.translations = {
 
   'post.prompt': 'Write something...',
   'comments.prompt': 'Reply...',
+  'post.likes.one': '{{count}} Like',
+  'post.likes.other': '{{count}} Likes',
 
   'photos.selected.one': '{{count}} Photo Selected',
   'photos.selected.other': '{{count}} Photos Selected',
