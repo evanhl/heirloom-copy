@@ -28,7 +28,8 @@
     "InfiniteScroll",
     "Dropzone",
     "Utils",
-    "FB"
+    "FB",
+    "moment"
   ],
 
 
