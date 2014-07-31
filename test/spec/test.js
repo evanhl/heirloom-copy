@@ -95,18 +95,17 @@
         });
       });
 
-      it('photos, albums, upload link are rendered', function () {
+      it('photos and albums link are rendered', function () {
         andThen(function () {
           expect(find('nav .photos')[0]).to.exist;
           expect(find('nav .albums')[0]).to.exist;
-          expect(find('nav .upload')[0]).to.exist;
           expect(find('nav .signout')[0]).to.exist;
         });
       });
 
       it('user\'s username is rendered', function () {
         andThen(function () {
-          expect(find('nav .username').text()).to.equal('savion_brown');
+          expect(find('nav .username').text().trim()).to.equal('savion_brown');
         });
       });
 
@@ -121,7 +120,7 @@
             });
           });
 
-          click('nav .signout a');
+          click('nav .signout');
         });
 
         it('is logged out', function () {
@@ -143,11 +142,10 @@
           });
         });
 
-        it('photos, albums, upload link are not rendered', function () {
+        it('photos and albums link are not rendered', function () {
           andThen(function () {
             expect(find('nav .photos')[0]).to.not.exist;
             expect(find('nav .albums')[0]).to.not.exist;
-            expect(find('nav .upload')[0]).to.not.exist;
           });
         });
       });
@@ -222,18 +220,17 @@
         });
       });
 
-      it('photos, albums, upload link are rendered', function () {
+      it('photos and albums link are rendered', function () {
         andThen(function () {
           expect(find('nav .photos')[0]).to.exist;
           expect(find('nav .albums')[0]).to.exist;
-          expect(find('nav .upload')[0]).to.exist;
           expect(find('nav .signout')[0]).to.exist;
         });
       });
 
       it('user\'s username is rendered', function () {
         andThen(function () {
-          expect(find('nav .username').text()).to.equal('bigbird123');
+          expect(find('nav .username').text().trim()).to.equal('bigbird123');
         });
       });
 

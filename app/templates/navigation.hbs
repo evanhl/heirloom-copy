@@ -6,32 +6,15 @@
       {{#link-to 'photos' tagName='li' class='photos'}}{{#link-to 'photos'}}{{t 'moments'}}{{/link-to}}{{/link-to}}
       {{#link-to 'albums' tagName='li' class='albums'}}{{#link-to 'albums'}}{{t 'albums'}}{{/link-to}}{{/link-to}}
       {{#link-to 'conversations' tagName='li' class='conversations'}}{{#link-to 'conversations'}}{{t 'conversations'}}{{/link-to}}{{/link-to}}
-      {{#link-to 'upload' tagName='li' class='upload'}}{{#link-to 'upload'}}{{t 'upload'}}{{/link-to}}{{/link-to}}
-      <li class='signout'><a href="javascript:void();" {{action 'signout'}}>{{t 'signout'}}</a></li>
-      <div style="
-          display: inline-block;
-          margin-bottom: -11px;
-          margin-left: 32px;
-      ">
-        <div style="
-          border-radius: 17px;
-          background: lightgray;
-          width: 34px;
-          height: 34px;
-          float: left;
-      ">
-        </div>
-        <div style="
-          float: left;
-          margin-left: -17px;
-          padding-left: 27px;
-          padding-top: 9px;
-          padding-bottom: 9px;
-          padding-right: 30px;
-          border: 1px solid lightgray;
-          font-size: 14px;
-      ">
-        <span class="username">{{username}}</span>
+      {{!-- {{#link-to 'upload' tagName='li' class='upload'}}{{#link-to 'upload'}}{{t 'upload'}}{{/link-to}}{{/link-to}} --}}
+      <div class="user-dropdown">
+        <div class="icon"></div>
+        <div class="menu">
+          <div class="username"><span>{{username}}</span></div>
+          <div class="down-arrow"></div>
+          <div class="menu-item"><span>Activity</span></div>
+          <div class="menu-item"><span>Settings</span></div>
+          <div class="menu-item signout" {{action 'signout'}}><span>Log Out</span></div>
         </div>
       </div>
 
