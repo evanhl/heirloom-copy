@@ -11,29 +11,11 @@ $topbar-bg-color: #eee;
 @import 'foundation/scss/foundation/components/forms';
 // @import 'foundation/scss/foundation/components/top-bar';
 
-@import '_spinner';
 
-$lightbox-color: rgba(0,0,0,0.15);
-$selection-color: rgb(102,200,237);
-$bg-color-accent: rgb(248,249,244);
-$highlight-color: rgb(252,91,45);
-$subtle-highlight-color: rgb(237,237,237);
-$button-text-color: rgb(161,162,157);
-$default-text-color: rgb(70,70,70);
-
-$convo-height: 88px;
-$convo-icon-size: 50px;
-$convo-highlight-border-width: 5px;
-$convo-padding: ($convo-height - $convo-icon-size) / 2;
-$left-col-width: 375px;
-$left-col-margin: 16px;
-$left-col-outer-width: $left-col-width + $left-col-margin;
-$nav-height: 74px;
-$convo-extra-left-padding: 0;
-$convo-left-padding: $convo-padding + $convo-extra-left-padding - $convo-highlight-border-width;
-$convo-text-width: $left-col-width - $convo-padding - $convo-left-padding - $convo-highlight-border-width - $convo-icon-size - 20px;
-$post-left-margin: 75px;
-$post-icon-size: $convo-icon-size;
+@import 'vars';
+@import 'spinner';
+@import 'nav';
+@import 'conversations';
 
 body {
   background: white;
@@ -185,61 +167,6 @@ img.detail {
   }
 }
 
-.post {
-  padding-bottom: 10px;
-  border-bottom: 1px $subtle-highlight-color solid;
-
-  .icon {
-    height: $post-icon-size;
-    width: $post-icon-size;
-    border-radius: $post-icon-size / 2;
-    background: $subtle-highlight-color;
-    float: left;
-    margin-top: -7px;
-    margin-left: (0 - $post-left-margin + (($post-left-margin - $post-icon-size) / 2));
-  }
-
-  .post-body {
-    margin-left: $post-left-margin;
-    min-height: 75px;
-    margin-top: 20px;
-  }
-
-  .post-author {
-    margin-top: 7px;
-    font-size: 16px;
-    color: $highlight-color;
-    font-weight: 500;
-  }
-
-  .post-time {
-    color: $button-text-color;
-    font-size: 12px;
-    margin-top: 6px;
-  }
-
-  .post-likes {
-    font-size: 14px;
-    color: $highlight-color;
-    margin-top: 20px;
-    font-weight: 500;
-  }
-
-  .post-text {
-    font-size: 14px;
-    margin-top: 10px;
-
-    p {
-      margin: 0;
-      line-height: 16px;
-      white-space: pre-wrap;
-    }
-  }
-
-  .large-photo {
-    margin-top: 10px;
-  }
-}
 
 .large-photo {
   img {
@@ -287,112 +214,6 @@ img.detail {
   width: 150px;
 }
 
-.post-message {
-  background: yellow;
-}
-
-.mini-nav {
-  background: $bg-color-accent;
-  max-width: 1000px;
-
-  li {
-    border-bottom: 5px $bg-color-accent solid;
-  }
-}
-
-.full-nav {
-  background: white;
-  border-bottom: 1px $subtle-highlight-color solid;
-
-
-  li {
-    border-bottom: 5px white solid;
-  }
-
-  .logo {
-    border-right: 1px $subtle-highlight-color solid;
-    width: 36px;
-    height: 36px;
-    padding: 36px 36px 37px 36px;
-    float: left;
-    background: url(/images/heirloom_logo.png) no-repeat;
-    background-size: 36px auto;
-    background-position: center;
-  }
-}
-
-.mini-nav, .full-nav {
-
-  position: fixed;
-  z-index: 5;
-  width: 100%;
-
-  ul {
-    margin: 0;
-    text-align: center;
-  }
-
-  li {
-    display: inline-block;
-    padding: 28px 0 23px;
-    margin: 0 32px;
-    transition: border-bottom-color .25s ease-in-out;
-
-    &.active {
-      border-bottom: 5px $highlight-color solid;
-
-      a {
-        color: $highlight-color;
-      }
-    }
-
-    a {
-      font-size: 14px;
-      line-height: 16px;
-      text-transform: uppercase;
-      color: $button-text-color;
-      transition: color .25s ease-in-out;
-      letter-spacing: 2px;
-
-      // Enlarges hover/click target
-      padding: 25px;
-
-      &:hover {
-        color: $highlight-color;
-      }
-    }
-  }
-}
-
-.footer-nav {
-  border-top: 1px solid $subtle-highlight-color;
-  background: white;
-  position: fixed;
-  z-index: 5;
-  width: 100%;
-  max-width: 1000px;
-  margin-top: 578px;
-  height: 72px;
-  padding-left: 60px;
-  padding-right: 20px;
-
-  .sub-info {
-    line-height: 72px;
-    height: 72px;
-  }
-
-  button {
-    float: right;
-    // FIXME: shouldn't be hardcoding this width
-
-    margin: 18px 6px;
-
-    &:active:enabled {
-      margin-top: 19px;
-    }
-  }
-}
-
 button {
   width: 130px;
   height: 36px;
@@ -426,47 +247,6 @@ button {
   }
 }
 
-.new-post-post {
-  padding: 18px;
-}
-
-.new-post {
-  margin-bottom: 5px;
-  border-bottom: 1px $subtle-highlight-color solid;
-  border-left: 1px $subtle-highlight-color solid;
-  border-right: 1px $subtle-highlight-color solid;
-  box-shadow: 0px 1px 2px 0px rgba(219,219,219,0.5);
-  background: white;
-
-  position: fixed;
-  top: 74px;
-  left: 0;
-  z-index: 3;
-  margin: 0 $left-col-outer-width 0 $left-col-outer-width;
-  width: calc(100% - #{$left-col-outer-width * 2});
-
-  textarea {
-    margin: 0;
-    height: 36px;
-  }
-
-  button {
-    height: 36px;
-    float: left;
-  }
-
-  button.add-photos {
-    width: 36px;
-  }
-
-  button.take-action {
-    float: right;
-    display: block;
-  }
-
-
-}
-
 // Styles for headroom.js (retractable sticky post creation widget)
 .headroom {
     transition: transform 500ms linear;
@@ -478,23 +258,6 @@ button {
 
 .headroom--unpinned {
     transform: translateY(-110%);
-}
-
-.new-post-photos {
-  border-bottom: 1px $subtle-highlight-color solid;
-  padding-top: 18px;
-  padding-left: 18px;
-
-  .thumb-photo, .fake-photo {
-    margin: 0 18px 18px 0;
-  }
-
-  .fake-photo {
-    width: 150px;
-    height: 150px;
-    border: 2px dashed $subtle-highlight-color;
-    display: inline-block;
-  }
 }
 
 // TODO: choose more meaningful name
@@ -524,83 +287,6 @@ button {
 
 
 
-a .convo {
-  color: $default-text-color;
-}
-
-a.active .convo {
-  border-left: $convo-highlight-border-width $highlight-color solid;
-  padding-left: $convo-left-padding;
-}
-
-.post-message {
-  padding: 10px;
-  // margin: 10px;
-}
-
-.convo {
-  width: $left-col-width;
-  height: $convo-height;
-  background: white;
-  padding: $convo-padding $convo-padding $convo-padding $convo-left-padding;
-  border-left: $convo-highlight-border-width white solid;
-  border-bottom: 1px $subtle-highlight-color solid;
-  border-right: 1px $subtle-highlight-color solid;
-  transition: border-left-color .25s ease-in-out;
-
-  .icon {
-    height: $convo-icon-size;
-    width: $convo-icon-size;
-    border-radius: $convo-icon-size / 2;
-    background: $subtle-highlight-color;
-    float: left;
-  }
-
-  .details {
-    margin-left: 69px;
-  }
-
-  .names {
-    font-size: 18px;
-    margin-top: 6px;
-    margin-bottom: 4px;
-  }
-
-  .names, .details {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: $convo-text-width;
-  }
-}
-
-.convo:hover {
-  border-left-color: $subtle-highlight-color;
-}
-
-.left-col {
-  position: fixed;
-  left: 0;
-  top: $nav-height;
-  width: $left-col-width;
-  background: $bg-color-accent;
-  height: 100vh;
-  overflow-y: scroll;
-}
-
-.main-col {
-  margin: 0 $left-col-outer-width 0 $left-col-outer-width;
-  min-width: 300px;
-}
-
-.right-col {
-  position: fixed;
-  right: 0;
-  top: $nav-height;
-  width: $left-col-width;
-  background: $bg-color-accent;
-  height: 100vh;
-}
 
 textarea {
   resize: none;

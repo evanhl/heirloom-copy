@@ -1,0 +1,189 @@
+
+a .convo {
+  color: $default-text-color;
+}
+
+a.active .convo {
+  border-left: $convo-highlight-border-width $highlight-color solid;
+  padding-left: $convo-left-padding;
+}
+
+.post-message {
+  padding: 10px;
+}
+
+.convo {
+  width: $left-col-width;
+  height: $convo-height;
+  background: white;
+  padding: $convo-padding $convo-padding $convo-padding $convo-left-padding;
+  border-left: $convo-highlight-border-width white solid;
+  border-bottom: 1px $subtle-highlight-color solid;
+  border-right: 1px $subtle-highlight-color solid;
+  transition: border-left-color .25s ease-in-out;
+
+  .icon {
+    height: $convo-icon-size;
+    width: $convo-icon-size;
+    border-radius: $convo-icon-size / 2;
+    background: $subtle-highlight-color;
+    float: left;
+  }
+
+  .details {
+    margin-left: 69px;
+  }
+
+  .names {
+    font-size: 18px;
+    margin-top: 6px;
+    margin-bottom: 4px;
+  }
+
+  .names, .details {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: $convo-text-width;
+  }
+}
+
+.convo:hover {
+  border-left-color: $subtle-highlight-color;
+}
+
+.left-col {
+  position: fixed;
+  left: 0;
+  top: $nav-height;
+  width: $left-col-width;
+  background: $bg-color-accent;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.main-col {
+  margin: 0 $left-col-outer-width 0 $left-col-outer-width;
+  min-width: 300px;
+}
+
+.right-col {
+  position: fixed;
+  right: 0;
+  top: $nav-height;
+  width: $left-col-width;
+  background: $bg-color-accent;
+  height: 100vh;
+}
+
+.post {
+  padding-bottom: 10px;
+  border-bottom: 1px $subtle-highlight-color solid;
+
+  .icon {
+    height: $post-icon-size;
+    width: $post-icon-size;
+    border-radius: $post-icon-size / 2;
+    background: $subtle-highlight-color;
+    float: left;
+    margin-top: -7px;
+    margin-left: (0 - $post-left-margin + (($post-left-margin - $post-icon-size) / 2));
+  }
+
+  .post-body {
+    margin-left: $post-left-margin;
+    min-height: 75px;
+    margin-top: 20px;
+  }
+
+  .post-author {
+    margin-top: 7px;
+    font-size: 16px;
+    color: $highlight-color;
+    font-weight: 500;
+  }
+
+  .post-time {
+    color: $button-text-color;
+    font-size: 12px;
+    margin-top: 6px;
+  }
+
+  .post-likes {
+    font-size: 14px;
+    color: $highlight-color;
+    margin-top: 20px;
+    font-weight: 500;
+  }
+
+  .post-text {
+    font-size: 14px;
+    margin-top: 10px;
+
+    p {
+      margin: 0;
+      line-height: 16px;
+      white-space: pre-wrap;
+    }
+  }
+
+  .large-photo {
+    margin-top: 10px;
+  }
+}
+
+.new-post {
+  margin-bottom: 5px;
+  border-bottom: 1px $subtle-highlight-color solid;
+  border-left: 1px $subtle-highlight-color solid;
+  border-right: 1px $subtle-highlight-color solid;
+  box-shadow: 0px 1px 2px 0px rgba(219,219,219,0.5);
+  background: white;
+
+  position: fixed;
+  top: 74px;
+  left: 0;
+  z-index: 3;
+  margin: 0 $left-col-outer-width 0 $left-col-outer-width;
+  width: calc(100% - #{$left-col-outer-width * 2});
+
+  textarea {
+    margin: 0;
+    height: 36px;
+  }
+
+  button {
+    height: 36px;
+    float: left;
+  }
+
+  button.add-photos {
+    width: 36px;
+  }
+
+  button.take-action {
+    float: right;
+    display: block;
+  }
+}
+
+.new-post-post {
+  padding: 18px;
+}
+
+.new-post-photos {
+  border-bottom: 1px $subtle-highlight-color solid;
+  padding-top: 18px;
+  padding-left: 18px;
+
+  .thumb-photo, .fake-photo {
+    margin: 0 18px 18px 0;
+  }
+
+  .fake-photo {
+    width: 150px;
+    height: 150px;
+    border: 2px dashed $subtle-highlight-color;
+    display: inline-block;
+  }
+}
