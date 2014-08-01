@@ -19,7 +19,7 @@
 
   @media screen and (min-width: $user-dropdown-breakpoint) {
     ul {
-      width: $left-main-max-width;
+      width: $left-main-max-width - $main-col-horiz-padding;
     }
   }
 
