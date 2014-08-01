@@ -14,12 +14,12 @@
 
   ul {
     float: left;
-    width: calc(100% - 300px);
+    width: calc(100% - #{$right-col-user-dropdown-ideal-width + $main-col-horiz-padding});
   }
 
   @media screen and (min-width: $user-dropdown-breakpoint) {
     ul {
-      width: $left-main-max-width - $main-col-horiz-padding;
+      width: $main-col-right-inner-edge;
     }
   }
 
