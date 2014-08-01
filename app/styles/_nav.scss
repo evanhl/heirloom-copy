@@ -26,7 +26,7 @@
   li {
     border-bottom: 5px white solid;
     float: right;
-    margin-left: 64px;
+    margin-left: (64px / $left-main-max-width) * 100%;
   }
 
   .logo {
@@ -167,7 +167,7 @@
     padding-top: 9px;
     padding-bottom: 9px;
     padding-right: 40px;
-    max-width: 181px;
+    width: 181px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

@@ -40,6 +40,10 @@ a.active .convo {
     margin-bottom: 4px;
   }
 
+  .sub {
+    height: 20px;
+  }
+
   .names, .details {
     white-space: nowrap;
     overflow: hidden;
@@ -62,15 +66,17 @@ a.active .convo {
   width: $left-col-width;
   max-width: $left-col-max-width;
   background: $bg-color-accent;
-  height: 100vh;
+  height: calc(100vh - 74px);
   overflow-y: scroll;
 }
 
 
 .main-col {
+  background: white;
   width: $main-col-width;
   margin-left: $left-col-width;
   padding: 0 $main-col-horiz-padding;
+  min-height: calc(100vh - 74px);
 
   @media screen and (min-width: $left-main-max-width) {
     width: $main-col-max-width;
