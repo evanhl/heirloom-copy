@@ -1,28 +1,28 @@
 <nav class="full-nav">
-  {{#link-to 'photos'}}<div class="logo"></div>{{/link-to}}
-
   <ul>
+    {{#link-to 'photos'}}<div class="logo"></div>{{/link-to}}
     {{#if isLoggedIn}}
-      {{#link-to 'photos' tagName='li' class='photos'}}{{#link-to 'photos'}}{{t 'moments'}}{{/link-to}}{{/link-to}}
-      {{#link-to 'albums' tagName='li' class='albums'}}{{#link-to 'albums'}}{{t 'albums'}}{{/link-to}}{{/link-to}}
       {{#link-to 'conversations' tagName='li' class='conversations'}}{{#link-to 'conversations'}}{{t 'conversations'}}{{/link-to}}{{/link-to}}
-      {{!-- {{#link-to 'upload' tagName='li' class='upload'}}{{#link-to 'upload'}}{{t 'upload'}}{{/link-to}}{{/link-to}} --}}
-      <div class="user-dropdown">
-        <div class="icon"></div>
-        <div class="menu">
-          <div class="username"><span>{{username}}</span></div>
-          <div class="down-arrow"></div>
-          <div class="menu-item"><span>Activity</span></div>
-          <div class="menu-item"><span>Settings</span></div>
-          <div class="menu-item signout" {{action 'signout'}}><span>Log Out</span></div>
-        </div>
-      </div>
-
+      {{#link-to 'albums' tagName='li' class='albums'}}{{#link-to 'albums'}}{{t 'albums'}}{{/link-to}}{{/link-to}}
+      {{#link-to 'photos' tagName='li' class='photos'}}{{#link-to 'photos'}}{{t 'moments'}}{{/link-to}}{{/link-to}}
     {{else}}
       <li class='signin'>{{#link-to 'signin'}}{{t 'signin'}}{{/link-to}}</li>
       <li class='signup'>{{#link-to 'registration'}}{{t 'signup'}}{{/link-to}}</li>
     {{/if}}
   </ul>
+
+  {{#if isLoggedIn}}
+  <div class="user-dropdown">
+    <div class="icon"></div>
+    <div class="menu">
+      <div class="username"><span>{{username}}</span></div>
+      <div class="down-arrow"></div>
+      <div class="menu-item"><span>Activity</span></div>
+      <div class="menu-item"><span>Settings</span></div>
+      <div class="menu-item signout" {{action 'signout'}}><span>Log Out</span></div>
+    </div>
+  </div>
+  {{/if}}
 </nav>
 <div class="nav-filler"></div>
 

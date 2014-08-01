@@ -1,4 +1,4 @@
-<div>
+<div class="col-container">
   <div class="left-col">
     {{#each}}
       {{#link-to 'conversationPosts' id}}
@@ -12,16 +12,11 @@
       {{/link-to}}
     {{/each}}
 
-{{!--     {{input placeholder="Create Conversation" value=newConversationName class="newConversationName"}} --}}
-
     {{partial 'spinner'}}
   </div>
 
-  <div class="main-col">
+  <div class="main-col" style="background: white;">
       {{outlet}}
   </div>
 
-{{!--   <div class="right-col">
-
-  </div> --}}
 </div>

@@ -4,6 +4,7 @@
 
   li {
     border-bottom: 5px $bg-color-accent solid;
+    margin: 0 32px;
   }
 }
 
@@ -11,9 +12,21 @@
   background: white;
   border-bottom: 1px $subtle-highlight-color solid;
 
+  ul {
+    float: left;
+    width: calc(100% - 300px);
+  }
+
+  @media screen and (min-width: $user-dropdown-breakpoint) {
+    ul {
+      width: $left-main-max-width;
+    }
+  }
 
   li {
     border-bottom: 5px white solid;
+    float: right;
+    margin-left: 64px;
   }
 
   .logo {
@@ -36,13 +49,14 @@
 
   ul {
     margin: 0;
+    padding: 0;
     text-align: center;
   }
 
   li {
     display: inline-block;
     padding: 28px 0 23px;
-    margin: 0 32px;
+
     transition: border-bottom-color .25s ease-in-out;
 
     &.active {
@@ -101,11 +115,13 @@
 }
 
 .user-dropdown {
-  display: inline-block;
+  display: block;
+  margin-right: 3.7453%;
   margin-left: 32px;
   position: relative;
-  top: -22px;
-  width: 150px;
+  float: right;
+  top: 20px;
+  width: 200px;
 
   .icon {
     border-radius: 17px;
@@ -122,7 +138,6 @@
     font-size: 14px;
     position: absolute;
     left: 17px;
-    width: 150px;
     background: white;
     border-radius: 3px;
     height: 34px;
@@ -148,14 +163,15 @@
   }
 
   .username {
-    padding-left: 21px;
+    padding-left: 29px;
     padding-top: 9px;
     padding-bottom: 9px;
     padding-right: 40px;
-    max-width: 173px;
+    max-width: 181px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    text-align: left;
 
     span {
       transition: color 0.15s linear;
@@ -179,7 +195,7 @@
     border-radius: 3px;
     height: 15px;
     width: 20px;
-    border: 1px solid black;
+    border: 1px solid $default-text-color;
     display: inline-block;
     position: absolute;
     top: 8px;

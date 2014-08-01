@@ -13,7 +13,7 @@ a.active .convo {
 }
 
 .convo {
-  width: $left-col-width;
+  width: 100%;
   height: $convo-height;
   background: white;
   padding: $convo-padding $convo-padding $convo-padding $convo-left-padding;
@@ -44,7 +44,6 @@ a.active .convo {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: $convo-text-width;
   }
 }
 
@@ -52,28 +51,31 @@ a.active .convo {
   border-left-color: $subtle-highlight-color;
 }
 
+.col-container {
+  background: $bg-color-accent;
+}
+
 .left-col {
   position: fixed;
   left: 0;
   top: $nav-height;
   width: $left-col-width;
+  max-width: $left-col-max-width;
   background: $bg-color-accent;
   height: 100vh;
   overflow-y: scroll;
 }
 
-.main-col {
-  margin: 0 $left-col-outer-width 0 $left-col-outer-width;
-  min-width: 300px;
-}
 
-.right-col {
-  position: fixed;
-  right: 0;
-  top: $nav-height;
-  width: $left-col-width;
-  background: $bg-color-accent;
-  height: 100vh;
+.main-col {
+  width: $main-col-width;
+  margin-left: $left-col-width;
+  padding: 0 $main-col-horiz-padding;
+
+  @media screen and (min-width: $left-main-max-width) {
+    width: $main-col-max-width;
+    margin-left: $left-col-max-width;
+  }
 }
 
 .post {
@@ -144,8 +146,13 @@ a.active .convo {
   top: 74px;
   left: 0;
   z-index: 3;
-  margin: 0 $left-col-outer-width 0 $left-col-outer-width;
-  width: calc(100% - #{$left-col-outer-width * 2});
+  width: $main-col-inner-width;
+  margin-left: $left-col-outer-width;
+
+  @media screen and (min-width: $left-main-max-width) {
+    width: $main-col-max-inner-width;
+    margin-left: $left-col-max-outer-width;
+  }
 
   textarea {
     margin: 0;
