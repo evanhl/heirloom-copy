@@ -1,0 +1,28 @@
+<div class="new-post">
+  {{#if newPostPhotos.length}}
+    <div class="new-post-photos">
+      {{#each photo in newPostPhotos}}
+        <div class="thumb-photo">
+          <img {{bind-attr src=photo.thumbVersion}}>
+        </div>
+      {{/each}}
+      <a href="javascript:void(0);" {{action 'openModal' 'photoPicker'}}><div class="fake-photo"></div></a>
+    </div>
+  {{/if}}
+
+  {{!-- TODO: remove inline styles. bleh.
+  --}}
+  <div class="new-post-post">
+    <button {{action 'openModal' 'photoPicker'}} class="add-photos">+</button>
+    <button {{action 'create'}} class="take-action">Post</button>
+    <div style="
+      margin-left: 46px;
+      margin-right: 140px;
+      display: block;
+    ">
+      {{textarea placeholder=(ts 'post.prompt') value=newPostMessage class="newPostMessage"}}
+    </div>
+  </div>
+</div>
+
+<div class="nav-filler"></div>

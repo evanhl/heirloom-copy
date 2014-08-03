@@ -16,18 +16,22 @@ App.ConversationsController = Ember.ArrayController.extend(InfiniteScroll.Contro
   },
 
   actions: {
-    create: function () {
-      var self = this;
-      var conversationProps = {
-        name: this.get('newConversationName')
-      };
-      var convo = App.Conversation.create(conversationProps);
+    // create: function () {
+    //   var self = this;
+    //   var conversationProps = {
+    //     name: this.get('newConversationName')
+    //   };
+    //   var convo = App.Conversation.create(conversationProps);
 
-      convo.save().then(function () {
-        self.pushObject(convo);
-      }, function () {
-        // TODO: handle failure
-      });
+    //   convo.save().then(function () {
+    //     self.pushObject(convo);
+    //   }, function () {
+    //     // TODO: handle failure
+    //   });
+    // }
+
+    create: function () {
+      this.transitionToRoute('conversations.create');
     }
   }
 });

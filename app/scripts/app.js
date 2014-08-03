@@ -78,6 +78,7 @@ App.Router.map(function () {
     });
   });
   this.resource('conversations', { path: 'groups' }, function () {
+    this.route('create', { path: 'create' });
     this.resource('conversation', { path: ':conversation_id' }, function () {
       this.resource('conversationPosts', { path: 'posts' });
     });

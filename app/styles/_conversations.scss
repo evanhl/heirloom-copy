@@ -200,3 +200,13 @@ a.active .convo {
     display: inline-block;
   }
 }
+
+.settings {
+  background: white;
+  text-align: right;
+  border-bottom: 1px solid $subtle-highlight-color;
+
+  button {
+    margin: 15px 0 15px 15px;
+  }
+}

@@ -1,5 +1,8 @@
 <div class="col-container">
   <div class="left-col">
+    <div class="settings">
+      <button class="take-action" {{action 'create'}}>Create New Group</button>
+    </div>
     {{#each}}
       {{#link-to 'conversationPosts' id}}
         <div class="convo">

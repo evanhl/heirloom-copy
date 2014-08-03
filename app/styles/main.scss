@@ -16,6 +16,7 @@ $topbar-bg-color: #eee;
 @import 'spinner';
 @import 'nav';
 @import 'conversations';
+@import 'select2';
 
 body {
   background: white;
@@ -285,8 +286,81 @@ button {
   overflow: scroll;
 }
 
+.select2-container-multi .select2-choices .select2-search-field input {
+  margin: 4px 0;
+  height: 19px;
+}
 
+.select2-container-multi .select2-choices .select2-search-choice {
 
+  &.select2-search-choice-focus {
+    border-color: darken($highlight-color, 15%);
+
+    &::after {
+      border-color: darken($highlight-color, 15%);
+    }
+  }
+
+  border: 2px solid $highlight-color;
+  border-radius: 6px;
+  line-height: 27px;
+  height: 35px;
+  padding: 3px 54px 3px 21px;
+  background: white;
+
+  &::after {
+    content: '';
+    height: 33px;
+    width: 1px;
+    border-right: 2px solid $highlight-color;
+    position: absolute;
+    top: 0;
+    right: 33px;
+  }
+}
+
+$contact-result-height: 88px;
+
+.select2-container-multi .select2-search-choice-close {
+  right: 10px;
+  top: 11px;
+  left: auto;
+}
+
+.select2-container .select2-results {
+  max-height: $contact-result-height * 3;
+
+  li {
+    height: $contact-result-height;
+    padding: 0;
+    border-bottom: 1px solid $subtle-highlight-color;
+  }
+
+  .select2-highlighted {
+    background: $highlight-color;
+  }
+}
+
+.select2-container {
+  .name {
+    font-size: 18px;
+    padding-top: 28px;
+  }
+
+  .sub {
+    padding-top: 7px;
+  }
+
+  .icon {
+    height: $convo-icon-size;
+    width: $convo-icon-size;
+    border-radius: $convo-icon-size / 2;
+    background: $subtle-highlight-color;
+    float: left;
+    margin: ($contact-result-height - $convo-icon-size) / 2;
+  }
+
+}
 
 textarea {
   resize: none;
