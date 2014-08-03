@@ -14,10 +14,10 @@ Version: 2.1 Timestamp: Tue Jun 12 19:50:25 PDT 2012
 .select2-drop,
 .select2-search,
 .select2-container .select2-search input{
-  /* 
+  /*
     Force border-box so that % widths fit the parent
     container without overlap because of margin/padding.
-    
+
     More Info : http://www.quirksmode.org/css/box.html
   */
   -moz-box-sizing: border-box;    /* firefox */
@@ -172,7 +172,7 @@ Version: 2.1 Timestamp: Tue Jun 12 19:50:25 PDT 2012
     box-shadow: none;
     border-radius: 0;
     -moz-border-radius: 0;
-    -webkit-border-radius: 0;  
+    -webkit-border-radius: 0;
 }
 
 .select2-container .select2-search input.select2-active {
