@@ -34,10 +34,12 @@ App.ConversationsNewPostView = Ember.View.extend(InfiniteScroll.ViewMixin, {
 
     Ember.run.next(function () {
       var $scrollEl = self.$scrollEl();
+      // FIXME: this view shouldn't be reaching outside of its scope
+      var $navFiller = self.$().parent().parent().find('.nav-filler');
       var newPostHeight = self.$('.new-post').outerHeight();
-      var navFillerHeight = self.$('.nav-filler').outerHeight();
+      var navFillerHeight = $navFiller.outerHeight();
 
-      self.$('.nav-filler').css('height', newPostHeight);
+      $navFiller.css('height', newPostHeight);
     });
   }.observes('controller.newPostPhotos.length'),
 

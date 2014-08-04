@@ -140,14 +140,7 @@ a.active .convo {
   }
 }
 
-.new-post {
-  margin-bottom: 5px;
-  border-bottom: 1px $subtle-highlight-color solid;
-  border-left: 1px $subtle-highlight-color solid;
-  border-right: 1px $subtle-highlight-color solid;
-  box-shadow: 0px 1px 2px 0px rgba(219,219,219,0.5);
-  background: white;
-
+.main-col-widget {
   position: fixed;
   top: 74px;
   left: 0;
@@ -155,10 +148,21 @@ a.active .convo {
   width: $main-col-inner-width;
   margin-left: $left-col-outer-width;
 
+
   @media screen and (min-width: $left-main-max-width) {
     width: $main-col-max-inner-width;
     margin-left: $left-col-max-outer-width;
   }
+
+}
+
+.new-post {
+  margin-bottom: 5px;
+  border-bottom: 1px $subtle-highlight-color solid;
+  border-left: 1px $subtle-highlight-color solid;
+  border-right: 1px $subtle-highlight-color solid;
+  box-shadow: 0px 1px 2px 0px rgba(219,219,219,0.5);
+  background: white;
 
   textarea {
     margin: 0;

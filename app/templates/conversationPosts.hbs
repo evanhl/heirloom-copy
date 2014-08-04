@@ -1,4 +1,8 @@
-{{render 'conversations/newPost' conversation.model}}
+<div class="main-col-widget">
+  {{render 'conversations/newPost' conversation.model}}
+</div>
+
+<div class="nav-filler"></div>
 
 {{#each}}
   {{render 'conversationPost' this}}
