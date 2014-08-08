@@ -83,6 +83,7 @@ App.Router.map(function () {
       this.resource('conversationPosts', { path: 'posts' });
     });
   });
+  this.resource('share', { path: 'share/:share_id' });
   this.route('upload');
   this.route('registration');
   this.route('signin');
