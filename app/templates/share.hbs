@@ -2,8 +2,8 @@
   <img {{bind-attr src=photo.largeVersion}}>
   <div class="share-info">
     <div class="icon"></div>
-    <div class="author">David Clifford</div>
-    <div class="time">5 mins ago</div>
+    <div class="author">{{owner.name}}</div>
+    <div class="time">{{fromNow created_at}}</div>
     <div class="watermark">*Captured using HEIRLOOM</div>
   </div>
 </div>
