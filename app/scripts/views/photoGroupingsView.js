@@ -9,7 +9,7 @@ App.PhotoGroupingsView = Ember.View.extend({
 
   resizeSectionBorder: function () {
     Ember.run.scheduleOnce('afterRender', this, function () {
-      this.$('.photo-grouping').each(function (index, el) {
+      this.$('.photo-grouping') && this.$('.photo-grouping').each(function (index, el) {
         var $grouping = $(el);
         var $imgsCont = $grouping.find('.images-container');
         var contOffset = $imgsCont.offset().left;
