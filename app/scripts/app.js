@@ -67,10 +67,13 @@ App.Router.reopen({
 });
 
 App.Router.map(function () {
-  this.resource('photos', { path: 'moments' }, function () {
-    this.resource('photo', { path: ':photo_id' });
-    this.route('addToAlbum');
+  // this.resource('photos', { path: 'moments' }, function () {
+  //   this.resource('photo', { path: ':photo_id' });
+  //   this.route('addToAlbum');
+  // });
+  this.resource('photoGroupings', { path: 'moments' }, function () {
   });
+
   this.resource('albums');
   this.resource('album', { path: 'albums/:album_id' }, function () {
     this.resource('albumPhotos', { path: 'photos' }, function () {

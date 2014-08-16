@@ -1,10 +1,10 @@
 <nav class="full-nav">
   <ul>
-    {{#link-to 'photos'}}<div class="logo"></div>{{/link-to}}
+    {{#link-to 'photoGroupings'}}<div class="logo"></div>{{/link-to}}
     {{#if isLoggedIn}}
       {{#link-to 'conversations' tagName='li' class='conversations'}}{{#link-to 'conversations'}}{{t 'conversations'}}{{/link-to}}{{/link-to}}
       {{#link-to 'albums' tagName='li' class='albums'}}{{#link-to 'albums'}}{{t 'albums'}}{{/link-to}}{{/link-to}}
-      {{#link-to 'photos' tagName='li' class='photos'}}{{#link-to 'photos'}}{{t 'moments'}}{{/link-to}}{{/link-to}}
+      {{#link-to 'photoGroupings' tagName='li' class='photos'}}{{#link-to 'photoGroupings'}}{{t 'moments'}}{{/link-to}}{{/link-to}}
     {{else}}
       <li class='signin'>{{#link-to 'signin'}}{{t 'signin'}}{{/link-to}}</li>
       <li class='signup'>{{#link-to 'registration'}}{{t 'signup'}}{{/link-to}}</li>

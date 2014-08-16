@@ -1,0 +1,30 @@
+.images-container {
+  margin-top: 16px;
+  display: inline-block;
+}
+
+
+.photo-grouping {
+  h2 {
+    margin: 0;
+    font-weight: normal;
+    font-size: 16px;
+    color: #797979;
+  }
+
+  img {
+    width: 186px;
+    margin: 0 16px 16px 0;
+  }
+
+  .border {
+    border-top: 1px solid $subtle-highlight-color;
+    display: inline-block;
+  }
+
+  margin-top: 20px;
+}
+
+.groupings-container {
+  margin-left: 73px;
+}

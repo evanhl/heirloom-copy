@@ -1,5 +1,5 @@
 App.NavigationController = Ember.Controller.extend({
-  needs: ['photos', 'albums', 'conversations'],
+  needs: ['photos', 'albums', 'conversations', 'photoGroupings'],
 
   username: function () {
     return App.get('auth.currentSession.username');
@@ -24,6 +24,7 @@ App.NavigationController = Ember.Controller.extend({
     this.get('controllers.photos').reset();
     this.get('controllers.albums').reset();
     this.get('controllers.conversations').reset();
+    this.get('controllers.photoGroupings').reset();
   },
 
   actions: {
