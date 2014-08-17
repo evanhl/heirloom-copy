@@ -1,5 +1,7 @@
-<h2>{{name}}</h2>
-<div><div class="border"></div></div>
+{{#if name}}
+  <h2>{{name}}</h2>
+  <div><div class="border"></div></div>
+{{/if}}
 <div class="images-container">
   {{#each photos}}<img {{bind-attr src=thumbVersion}}/>{{/each}}
 </div>
