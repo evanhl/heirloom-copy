@@ -8,7 +8,9 @@ App.PhotoGroupingsController = Ember.ArrayController.extend(InfiniteScroll.Contr
     var self = this;
 
     return App.PhotoGrouping.fetchQuery({
-      grouped_by: 'created_at'
+      grouped_by: 'created_at',
+      // let server user default perPage
+      page: page
     });
   }
 });
