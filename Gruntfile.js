@@ -258,9 +258,9 @@ module.exports = function(grunt) {
         files: {
           src: [
             '<%= config.dist %>/scripts/{,*/}*.js',
-            '<%= config.dist %>/styles/{,*/}*.css',
+            '<%= config.dist %>/styles/{,*/}*.css'
             // '<%= config.dist %>/images/{,*/}*.*',
-            '<%= config.dist %>/styles/fonts/{,*/}*.*',
+            // '<%= config.dist %>/styles/fonts/{,*/}*.*',
             // '<%= config.dist %>/*.{ico,png}'
           ]
         }
@@ -387,14 +387,10 @@ module.exports = function(grunt) {
         dot: true,
         cwd: '<%= config.app %>/styles',
         dest: '.tmp/styles/',
-        src: '{,*/}*.css'
-      },
-      fonts: {
-        expand: true,
-        dot: true,
-        cwd: '<%= config.app %>/styles/fonts',
-        dest: '.tmp/styles/fonts',
-        src: '{,*/}*.woff'
+        src: [
+          '{,*/}*.css',
+          'fonts/*.woff'
+        ]
       }
     },
 
@@ -404,22 +400,19 @@ module.exports = function(grunt) {
         'emberTemplates',
         'resolveDependencies',
         'sass:server',
-        'copy:styles',
-        'copy:fonts'
+        'copy:styles'
       ],
       test: [
         'emberTemplates',
         'resolveDependencies',
         'sass:server',
-        'copy:styles',
-        'copy:fonts'
+        'copy:styles'
       ],
       dist: [
         'emberTemplates',
         'resolveDependencies',
         'sass',
         'copy:styles',
-        'copy:fonts',
         // 'imagemin',
         'svgmin'
       ]
@@ -522,6 +515,7 @@ module.exports = function(grunt) {
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
+    'concat:generated',
     'cssmin',
     'uglify',
     'copy:dist',
