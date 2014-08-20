@@ -11,7 +11,6 @@
 }());
 
 // TODO: centralize API call logic
-Utils.HOSTNAME = 'https://api.hlstage.com';
 Utils.apiCall = function (url, type, data, success, error) {
   var self = this;
   var dataToSend = data;
@@ -21,7 +20,7 @@ Utils.apiCall = function (url, type, data, success, error) {
   }
 
   $.ajax({
-    url: this.HOSTNAME + url,
+    url: HLConfig.HOSTNAME + url,
     type: type,
     dataType: 'json',
     data: dataToSend,

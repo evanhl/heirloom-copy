@@ -39,7 +39,7 @@ module.exports = function(grunt) {
       },
       js: {
         files: ['<%= config.app %>/scripts/{,*/}*.js'],
-        tasks: ['jshint', 'directives'],
+        tasks: ['jshint', 'resolveDependencies'],
         options: {
           livereload: true
         }
@@ -354,9 +354,15 @@ module.exports = function(grunt) {
     //         }
     //     }
     // },
-    // concat: {
-    //     dist: {}
-    // },
+    concat: {
+      config: {
+        src: [
+          '<%= config.app %>/scripts/config/<%= process.env.WEB_ENV || "development" %>.js',
+          '.tmp/mainWithoutConfig.js'
+        ],
+        dest: '.tmp/main.js'
+      },
+    },
 
     // Copies remaining files to places other tasks can use
     copy: {
@@ -396,21 +402,21 @@ module.exports = function(grunt) {
     concurrent: {
       server: [
         'emberTemplates',
-        'directives',
+        'resolveDependencies',
         'sass:server',
         'copy:styles',
         'copy:fonts'
       ],
       test: [
         'emberTemplates',
-        'directives',
+        'resolveDependencies',
         'sass:server',
         'copy:styles',
         'copy:fonts'
       ],
       dist: [
         'emberTemplates',
-        'directives',
+        'resolveDependencies',
         'sass',
         'copy:styles',
         'copy:fonts',
@@ -465,8 +471,8 @@ module.exports = function(grunt) {
     // sprockets for JS dependency management
     directives: {
       files: {
-        src: '<%= config.app %>/scripts/main.js',
-        dest: '.tmp/main.js'
+        src: ['<%= config.app %>/scripts/main.js'],
+        dest: '.tmp/mainWithoutConfig.js'
       }
     }
   });
@@ -506,12 +512,16 @@ module.exports = function(grunt) {
     ]);
   });
 
+  grunt.registerTask('resolveDependencies', [
+    'directives',
+    'concat:config'
+  ]);
+
   grunt.registerTask('build', [
     'clean:dist',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
-    'concat',
     'cssmin',
     'uglify',
     'copy:dist',

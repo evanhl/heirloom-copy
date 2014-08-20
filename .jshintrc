@@ -29,7 +29,8 @@
     "Dropzone",
     "Utils",
     "FB",
-    "moment"
+    "moment",
+    "HLConfig"
   ],
 
 

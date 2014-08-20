@@ -10,7 +10,7 @@ App.ConversationsCreateView = Ember.View.extend({
       minimumInputLength: 1,
       multiple: true,
       ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
-        url: Utils.HOSTNAME + '/me/connection_suggestions',
+        url: HLConfig.HOSTNAME + '/me/connection_suggestions',
         dataType: 'json',
         data: function (term, page) {
           return {

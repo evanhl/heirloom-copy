@@ -1,6 +1,6 @@
 //= require ../utils/utils
 App.APIAdapter = Ember.RESTAdapter.extend({
-  host: Utils.HOSTNAME,
+  host: HLConfig.HOSTNAME,
 
   buildURL: function(klass, id) {
     var urlParts = [];
