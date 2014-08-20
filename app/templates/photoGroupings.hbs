@@ -1,8 +1,12 @@
 <div {{bind-attr class=":groupings-container isSelectionMode:selection-mode"}}>
   <div class="toolbar">
-    {{selectedCount}}
     <button class="take-action">Upload</button>
   </div>
+  {{#if isSelectionMode}}
+    <div class="selection-toolbar">
+      <span class="count-text">{{t "photos.selected" countBinding="selectedCount"}}</span>
+    </div>
+  {{/if}}
 {{#each}}
   {{render 'photoGrouping' this}}
 {{/each}}

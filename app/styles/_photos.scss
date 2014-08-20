@@ -36,9 +36,30 @@
   }
 }
 
+.selection-toolbar {
+  height: 72px;
+  border-bottom: 1px solid $subtle-highlight-color;
+  line-height: 72px;
+  position: fixed;
+  top: 74px;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  background: $bg-color-accent;
+  padding-left: 73px;
+}
+
 .photo {
   width: 186px;
   margin: 0 16px 16px 0;
   display: inline-block;
   position: relative;
+}
+
+.count-text {
+  color: $highlight-color;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 2px;
 }
