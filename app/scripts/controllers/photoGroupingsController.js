@@ -9,8 +9,9 @@ App.PhotoGroupingsController = Ember.ArrayController.extend(InfiniteScroll.Contr
 
     return App.PhotoGrouping.fetchQuery({
       grouped_by: 'created_at',
-      // let server user default perPage
-      page: page
+      page: page,
+      // this is a hack until we have a pagination UI design
+      photos_per_page: 1000
     });
   }
 });

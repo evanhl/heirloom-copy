@@ -90,7 +90,7 @@ module.exports = function(grunt) {
           middleware: function(connect) {
             return [
               // supports single page app URLs
-              modRewrite(['!\\.html|\\.js|\\.svg|\\.css|\\.png|\\.jpg$ /index.html [L]']),
+              modRewrite(['!\\.html|\\.js|\\.svg|\\.css|\\.png|\\.jpg|\\.woff$ /index.html [L]']),
               connect.static('.tmp'),
               connect().use('/bower_components', connect.static('./bower_components')),
               connect.static(config.app)
@@ -382,6 +382,13 @@ module.exports = function(grunt) {
         cwd: '<%= config.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
+      },
+      fonts: {
+        expand: true,
+        dot: true,
+        cwd: '<%= config.app %>/styles/fonts',
+        dest: '.tmp/styles/fonts',
+        src: '{,*/}*.woff'
       }
     },
 
@@ -391,19 +398,22 @@ module.exports = function(grunt) {
         'emberTemplates',
         'directives',
         'sass:server',
-        'copy:styles'
+        'copy:styles',
+        'copy:fonts'
       ],
       test: [
         'emberTemplates',
         'directives',
         'sass:server',
-        'copy:styles'
+        'copy:styles',
+        'copy:fonts'
       ],
       dist: [
         'emberTemplates',
         'directives',
         'sass',
         'copy:styles',
+        'copy:fonts',
         // 'imagemin',
         'svgmin'
       ]

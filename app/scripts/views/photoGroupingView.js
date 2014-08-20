@@ -18,8 +18,9 @@ App.PhotoGroupingView = Ember.View.extend({
     Ember.run.scheduleOnce('afterRender', this, function () {
       // in some test scenarios, this.$('.photo-grouping') is undefined
       var $grouping = this.$();
+      var $border = $grouping.find('.border');
 
-      if (!$grouping) {
+      if (!$grouping || !$border) {
         return;
       }
 
@@ -40,7 +41,7 @@ App.PhotoGroupingView = Ember.View.extend({
         }
       }
 
-      $grouping.find('.border').width(rightMostImageRightEdge - contOffset);
+      $border.width(rightMostImageRightEdge - contOffset);
     });
   }.observes('controller.photos.length')
 });

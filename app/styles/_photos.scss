@@ -26,5 +26,17 @@
 }
 
 .groupings-container {
-  margin-left: 73px;
+  margin: 0 73px;
+}
+
+.toolbar {
+  height: 72px;
+  border-bottom: 1px solid $subtle-highlight-color;
+  line-height: 72px;
+  text-align: right;
+
+  button {
+    line-height: 36px;
+    vertical-align: middle;
+  }
 }
