@@ -69,9 +69,10 @@
 
     a {
       font-size: 14px;
+      font-weight: bold;
       line-height: 16px;
       text-transform: uppercase;
-      color: $button-text-color;
+      color: $default-text-color;
       transition: color .25s ease-in-out;
       letter-spacing: 2px;
 

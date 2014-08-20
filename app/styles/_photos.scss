@@ -12,11 +12,6 @@
     color: #797979;
   }
 
-  img {
-    width: 186px;
-    margin: 0 16px 16px 0;
-  }
-
   .border {
     border-top: 1px solid $subtle-highlight-color;
     display: inline-block;
@@ -39,4 +34,11 @@
     line-height: 36px;
     vertical-align: middle;
   }
+}
+
+.photo {
+  width: 186px;
+  margin: 0 16px 16px 0;
+  display: inline-block;
+  position: relative;
 }

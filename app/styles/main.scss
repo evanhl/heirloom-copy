@@ -185,27 +185,42 @@ img.detail {
 
   display: inline-block;
   vertical-align: top;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 
   overflow: hidden;
+}
 
+.gallery-photo, .thumb-photo, .photo {
   .select {
-    width: 50px;
-    height: 50px;
+    width: 36px;
+    height: 36px;
     position: absolute;
     top: 0;
     right: 0;
+    margin: 16px;
     // TODO: replace with sprite
-    background-image: url(/images/ios7-checkmark.svg);
-    background-size: 50px 50px;
+    background-size: 36px 36px;
     cursor: pointer;
 
     &:hover, &.selected {
       // TODO: replace with sprite
       background-image: url(/images/ios7-checkmark-hover.svg);
     }
+  }
+}
+
+.gallery-photo, .thumb-photo, .selection-mode .photo {
+  .select {
+    background-image: url(/images/ios7-checkmark.svg);
+
+    &:hover, &.selected {
+      background-image: url(/images/ios7-checkmark-hover.svg);
+    }
+  }
+}
+
+.photo {
+  .select {
+    background-image: none;
   }
 }
 
@@ -274,7 +289,7 @@ button {
 }
 
 .nav-filler {
-  height: 72px;
+  height: 73px;
   width: 100%;
 }
 

@@ -1,5 +1,6 @@
-<div class="groupings-container">
+<div {{bind-attr class=":groupings-container isSelectionMode:selection-mode"}}>
   <div class="toolbar">
+    {{selectedCount}}
     <button class="take-action">Upload</button>
   </div>
 {{#each}}

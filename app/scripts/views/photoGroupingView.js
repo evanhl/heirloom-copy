@@ -27,7 +27,7 @@ App.PhotoGroupingView = Ember.View.extend({
       var $imgsCont = $grouping.find('.images-container');
       var contOffset = $imgsCont.offset().left;
       var outerRightEdge = $imgsCont.outerWidth() + contOffset;
-      var imgs = $imgsCont.children('img');
+      var imgs = $imgsCont.find('img');
       var rightMostImageRightEdge = 0;
       var rightMostImageOuterRightEdge = 0;
 
