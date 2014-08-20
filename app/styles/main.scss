@@ -208,7 +208,7 @@ img.detail {
   }
 }
 
-.gallery-photo, .thumb-photo, .selection-mode .photo {
+.gallery-photo, .thumb-photo, .selection-mode .photo, .photo:hover {
   .select {
     background-image: url(/images/ios7-checkmark.svg);
 

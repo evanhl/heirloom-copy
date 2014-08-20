@@ -3,10 +3,8 @@
   <div><div class="border"></div></div>
 {{/if}}
 <div class="images-container">
-  {{#each photos}}
-    <div class="photo">
-      <img {{bind-attr src=thumbVersion}} {{action enlarge id}} alt="">
-      <div {{bind-attr class=":select selected"}} {{action select id}}></div>
-    </div>
-  {{/each}}
+  {{#each photos}}<div class="photo">
+    <img {{bind-attr src=thumbVersion}} {{action enlarge id}} alt="">
+    <div {{bind-attr class=":select selected"}} {{action select id}}></div>
+  </div>{{/each}}
 </div>

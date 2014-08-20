@@ -19,29 +19,15 @@ App.PhotoGroupingView = Ember.View.extend({
       // in some test scenarios, this.$('.photo-grouping') is undefined
       var $grouping = this.$();
       var $border = $grouping.find('.border');
+      var $examplePhoto = $('<div/>').addClass('photo').hide().appendTo('body');
+      var photoWidth = $examplePhoto.outerWidth(true);
+      var rightMargin = parseInt($examplePhoto.css('margin-right'), 10);
 
-      if (!$grouping || !$border) {
-        return;
-      }
+      var numPhotos = this.get('controller.photos.length');
+      var containerWidth = $grouping.width();
+      var photosPerLine = Math.min(numPhotos, Math.floor(containerWidth / photoWidth));
 
-      var $imgsCont = $grouping.find('.images-container');
-      var contOffset = $imgsCont.offset().left;
-      var outerRightEdge = $imgsCont.outerWidth() + contOffset;
-      var imgs = $imgsCont.find('img');
-      var rightMostImageRightEdge = 0;
-      var rightMostImageOuterRightEdge = 0;
-
-      for (var i = 0; i < imgs.size(); i++) {
-        var img = $(imgs.get(i));
-        rightMostImageRightEdge = img.offset().left + img.outerWidth();
-        rightMostImageOuterRightEdge = img.offset().left + img.outerWidth(true);
-
-        if (rightMostImageOuterRightEdge + img.outerWidth(true) > outerRightEdge) {
-          break;
-        }
-      }
-
-      $border.width(rightMostImageRightEdge - contOffset);
+      $border.width((photosPerLine * photoWidth) - rightMargin);
     });
   }.observes('controller.photos.length')
 });
