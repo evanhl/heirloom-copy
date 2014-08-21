@@ -252,6 +252,7 @@ img.detail {
 button {
   width: 130px;
   height: 36px;
+  line-height: 36px;
 
   border-radius: 3px;
   background: $subtle-highlight-color;
@@ -262,14 +263,22 @@ button {
   opacity: 0.9;
   outline: 0;
 
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 2px;
+
   &.take-action {
     background: $highlight-color;
     color: white;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 14px;
-    letter-spacing: 2px;
     box-shadow: 0px 1px 0px 0px darken($highlight-color, 20%);
+  }
+
+  &.secondary {
+    background: white;
+    color: $alternate-button-text-color;
+    // border: 1px solid $alternate-button-border-color;
+    box-shadow: 0px 1px 0px 0px darken(white, 20%);
   }
 
   &:disabled {
@@ -329,4 +338,10 @@ textarea {
   min-height: 36px;
 }
 
+.left {
+  float: left;
+}
 
+.right {
+  float: right;
+}

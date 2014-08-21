@@ -5,6 +5,7 @@ App.PhotoGroupingsController = Ember.ArrayController.extend(InfiniteScroll.Contr
   },
 
   reset: function () {
+    this.set('selected', {});
     this.set('model', []);
     this._super();
   },
@@ -20,20 +21,63 @@ App.PhotoGroupingsController = Ember.ArrayController.extend(InfiniteScroll.Contr
     });
   },
 
-  toggleSelected: function (photo, isSelected) {
+  toggleSelected: function (photo, grouping, isSelected) {
     if (isSelected) {
-      this.get('selected')[photo.get('id')] = true;
+      // We have to include photo and grouping here so that we can remove the photo from the grouping on delete
+      this.get('selected')[photo.get('id')] = {
+        photo: photo,
+        grouping: grouping
+      };
     } else {
       delete this.get('selected')[photo.get('id')];
     }
     this.notifyPropertyChange('selected');
   },
 
-  selectedCount: function () {
-    return Object.keys(this.get('selected')).length;
+  selectedIds: function () {
+    return Object.keys(this.get('selected'));
   }.property('selected'),
+
+  selectedCount: function () {
+    return this.get('selectedIds').length;
+  }.property('selectedIds'),
 
   isSelectionMode: function () {
     return this.get('selectedCount') > 0;
-  }.property('selectedCount')
+  }.property('selectedCount'),
+
+  deselectPhotos: function () {
+    this.get('model').forEach(function (grouping) {
+      grouping.get('photos').forEach(function (photo) {
+        photo.set('selected', false);
+      });
+    });
+    this.set('selected', {});
+  },
+
+  actions: {
+    cancel: function () {
+      this.deselectPhotos();
+    },
+
+    deletePhotos: function () {
+      var adapter = App.Photo.adapter;
+      var self = this;
+
+      adapter.batchDelete(App.Photo, this.get('selectedIds'), 'photo_ids').then(function (response) {
+        response.photo_ids.forEach(function (id) {
+          var selected = self.get('selected')[id];
+          var photo = selected.photo;
+          var grouping = selected.grouping;
+
+          // FIXME: This sucks. We should have a specialized data structure that abstracts the traversal from one
+          // grouping's photos to another grouping's photos. This data structure could support removeObjects
+          grouping.get('photos').removeObject(photo);
+          photo.destroy();
+        });
+
+        self.deselectPhotos();
+      });
+    }
+  }
 });

@@ -4,7 +4,17 @@
   </div>
   {{#if isSelectionMode}}
     <div class="selection-toolbar">
-      <span class="count-text">{{t "photos.selected" countBinding="selectedCount"}}</span>
+      <div class="left">
+        <div class="num-selected">
+          <span class="count-text">{{t "photos.selected" countBinding="selectedCount"}}</span>
+        </div>
+        <button class="take-action">Share</button>
+        <button class="secondary">Album</button>
+      </div>
+      <div class="right">
+        <button class="secondary" {{action 'deletePhotos'}}>Delete</button>
+        <button class="secondary" {{action 'cancel'}}>Cancel</button>
+      </div>
     </div>
   {{/if}}
 {{#each}}

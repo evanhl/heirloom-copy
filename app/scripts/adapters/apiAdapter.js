@@ -2,14 +2,15 @@
 App.APIAdapter = Ember.RESTAdapter.extend({
   host: HLConfig.HOSTNAME,
 
-  buildURL: function(klass, id) {
+  buildURL: function(klass, id, userNamespacedOverride) {
     var urlParts = [];
     var urlRoot = Ember.get(klass, 'url');
+    var userNamespaced = (typeof userNamespacedOverride === 'undefined') ? this.get('userNamespaced')  : userNamespacedOverride;
     if (!urlRoot) { throw new Error('Ember.RESTAdapter requires a `url` property to be specified'); }
 
     urlParts.push(this.host);
 
-    if (this.get('userNamespaced') && Ember.isEmpty(id)) {
+    if (userNamespaced && Ember.isEmpty(id)) {
       urlParts.push('me');
     }
 
@@ -68,6 +69,15 @@ App.APIAdapter = Ember.RESTAdapter.extend({
     // TODO: use hasMany to obtain nestedUrl instead of passing in
     var primaryKey = Ember.get(parent.constructor, 'primaryKey'),
         url = this.buildURL(parent.constructor, Ember.get(parent, primaryKey)) + '/' + nestedUrl;
+
+    return this.ajax(url, params, 'POST');
+  },
+
+  batchDelete: function (klass, ids, key) {
+    var params = {};
+    var url = this.buildURL(klass, null, false) + '/' + 'delete';
+
+    params[key] = ids;
 
     return this.ajax(url, params, 'POST');
   },

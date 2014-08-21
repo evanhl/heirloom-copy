@@ -29,11 +29,6 @@
   border-bottom: 1px solid $subtle-highlight-color;
   line-height: 72px;
   text-align: right;
-
-  button {
-    line-height: 36px;
-    vertical-align: middle;
-  }
 }
 
 .selection-toolbar {
@@ -46,7 +41,12 @@
   width: 100%;
   z-index: 1;
   background: $bg-color-accent;
-  padding-left: 73px;
+  padding: 0 73px;
+
+  .num-selected {
+    width: 220px;
+    display: inline-block;
+  }
 }
 
 .photo {

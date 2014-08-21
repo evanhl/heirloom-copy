@@ -6,7 +6,7 @@ App.PhotoGroupingController = Ember.ObjectController.extend({
     select: function (id) {
       var photo = this.get('photos').findBy('id', id);
       var newValue = photo.toggleProperty('selected');
-      this.get('photoGroupings').toggleSelected(photo, newValue);
+      this.get('photoGroupings').toggleSelected(photo, this.get('model'), newValue);
     }
   }
 });
