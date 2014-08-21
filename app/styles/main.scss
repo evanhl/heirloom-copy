@@ -222,6 +222,22 @@ img.detail {
   .select {
     background-image: none;
   }
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 186px;
+    height: 186px;
+    top: 0;
+    left: 0;
+    border: 6px solid $highlight-color;
+    transition: opacity 0.15s linear;
+    opacity: 0;
+  }
+
+  &.selected::before {
+    opacity: 1;
+  }
 }
 
 .gallery-photo {
