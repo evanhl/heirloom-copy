@@ -78,6 +78,10 @@ App.PhotoGroupingsController = Ember.ArrayController.extend(InfiniteScroll.Contr
 
         self.deselectPhotos();
       });
+    },
+
+    addToAlbum: function () {
+      this.send('openModal', 'albumPicker');
     }
   }
 });

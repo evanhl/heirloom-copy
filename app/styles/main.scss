@@ -154,7 +154,6 @@ img.detail {
   height: 100px;
   background-size: 100% auto;
   background-position: 50%;
-  opacity: 0.9;
   transition: opacity .1s ease-in-out;
 
   &:hover {
@@ -221,6 +220,7 @@ img.detail {
 .photo {
   .select {
     background-image: none;
+    z-index: 6;
   }
 
   &::before {
@@ -233,10 +233,42 @@ img.detail {
     border: 6px solid $highlight-color;
     transition: opacity 0.15s linear;
     opacity: 0;
+    z-index: 6;
   }
 
   &.selected::before {
     opacity: 1;
+  }
+}
+
+.album {
+  width: 296px;
+  height: 296px;
+  margin: 0 28px 28px 0;
+
+  &::after {
+    content: '';
+    box-shadow: inset 0px -76px 85px -24px rgba(0, 0, 0, 0.75);
+    height: 296px;
+    width: 296px;
+    display: block;
+    position: absolute;
+    top: 0;
+  }
+
+  &::before {
+    width: 296px;
+    height: 296px;
+  }
+
+  .title {
+    position: absolute;
+    bottom: 40px;
+    color: white;
+    z-index: 5;
+    font-weight: 600;
+    font-size: 20px;
+    left: 20px;
   }
 }
 
@@ -318,7 +350,7 @@ button {
   width: 100%;
 }
 
-.photo-picker {
+.photo-picker, .album-picker {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -328,9 +360,55 @@ button {
   height: 50%;
   width: 100%;
   max-width: 1000px;
+  overflow: scroll;
+  box-shadow: 0 2px 3px 0 rgba(0,0,0,0.25);
+}
+
+.photo-picker {
   min-height: 650px;
   background: white;
-  overflow: scroll;
+}
+
+.album-picker {
+  border-radius: 3px;
+  min-height: 500px;
+  background: $bg-color-accent;
+}
+
+.top-bar {
+  background: white;
+  position: absolute;
+  width: 100%;
+  border-bottom: 1px solid $subtle-highlight-color;
+  height: 72px;
+  line-height: 72px;
+  padding: 0 28px;
+  vertical-align: middle;
+  z-index: 5;
+
+  h3 {
+    // FIXME: this is hack. Brandon font rides high.
+    margin: 4px 0 0 0 ;
+  }
+}
+
+// TODO: Fix dupe with .top-bar
+.bottom-bar {
+  border-top: 1px solid $subtle-highlight-color;
+  width: 100%;
+  background: white;
+  position: absolute;
+  bottom: 0;
+  height: 72px;
+  line-height: 72px;
+  z-index: 5;
+  padding: 0 28px;
+}
+
+.picker-content {
+  height: #{500px - 73px - 73px};
+  overflow-y: scroll;
+  padding: 28px 0 0 28px;
 }
 
 textarea {

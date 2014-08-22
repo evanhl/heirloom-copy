@@ -1,0 +1,22 @@
+{{#modal-dialog action="close"}}
+  <div class="album-picker">
+    <div class="top-bar">
+      <h3>Add to Album</h3>
+    </div>
+    <div class="bottom-bar">
+      <div class="right">
+        <button class="secondary" {{action 'close'}}>Cancel</button>
+        <button class="take-action">Add</button>
+      </div>
+    </div>
+    <div class="nav-filler"></div>
+
+    <div class="picker-content">
+      {{#each albums}}{{#if cover_photo}}<div {{bind-attr class=":album :photo selected"}}>
+        <img {{bind-attr src=cover_photo.thumbVersion}} alt="">
+        <div {{bind-attr class=":select selected"}} {{action select id}}></div>
+        <div class="title">{{name}}</div>
+      </div>{{/if}}{{/each}}
+    </div>
+  </div>
+{{/modal-dialog}}
