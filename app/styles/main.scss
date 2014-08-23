@@ -220,7 +220,7 @@ img.detail {
 .photo {
   .select {
     background-image: none;
-    z-index: 6;
+    z-index: 1;
   }
 
   &::before {
@@ -233,7 +233,7 @@ img.detail {
     border: 6px solid $highlight-color;
     transition: opacity 0.15s linear;
     opacity: 0;
-    z-index: 6;
+    z-index: 1;
   }
 
   &.selected::before {
