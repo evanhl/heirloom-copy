@@ -31,4 +31,9 @@ Ember.I18n.translations = {
 
   'photos.count.one': '{{count}} Photo',
   'photos.count.other': '{{count}} Photos',
+
+  'photos.addToAlbum': 'Add to Album',
+
+  'cancel': 'Cancel',
+  'add': 'Add'
 };

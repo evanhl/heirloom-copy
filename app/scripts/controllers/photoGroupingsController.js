@@ -62,6 +62,7 @@ App.PhotoGroupingsController = Ember.ArrayController.extend(InfiniteScroll.Contr
     adapter.postNested(album, {
       photo_ids: this.get('selectedIds')
     }, 'photos').then(function () {
+      // TODO: handle error
       self.deselectPhotos();
       album.reload();
     });

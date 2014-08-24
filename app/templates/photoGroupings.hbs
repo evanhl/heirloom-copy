@@ -1,6 +1,6 @@
 <div {{bind-attr class=":groupings-container isSelectionMode:selection-mode"}}>
   <div class="toolbar">
-    <button class="take-action">Upload</button>
+    <button class="take-action">{{t 'upload'}}</button>
   </div>
   {{#if isSelectionMode}}
     <div class="selection-toolbar">
@@ -13,7 +13,7 @@
       </div>
       <div class="right">
         <button class="secondary" {{action 'deletePhotos'}}>Delete</button>
-        <button class="secondary" {{action 'cancel'}}>Cancel</button>
+        <button class="secondary" {{action 'cancel'}}>{{t 'cancel'}}</button>
       </div>
     </div>
   {{/if}}
