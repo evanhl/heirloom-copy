@@ -22,6 +22,12 @@ App.PhotoGroupingsController = Ember.ArrayController.extend(InfiniteScroll.Contr
       page: page,
       // TODO: this is a hack until we have a pagination UI design
       photos_per_page: 1000
+    }).then(function (groupings) {
+      groupings.forEach(function (grouping) {
+        var filtered = grouping.get('photos').filterBy('state', 'ready');
+        grouping.set('photos', filtered);
+      });
+      return groupings;
     });
   },
 
