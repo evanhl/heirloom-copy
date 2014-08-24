@@ -12,11 +12,13 @@
     <div class="nav-filler"></div>
 
     <div class="picker-content">
-      {{#each albums}}{{#if cover_photo}}<div {{bind-attr class=":album :photo selected"}}>
-        <img {{bind-attr src=cover_photo.thumbVersion}} alt="">
+      {{#each albums}}<div {{bind-attr class=":album :photo selected"}}>
+        {{#if cover_photo}}
+          <img {{bind-attr src=cover_photo.thumbVersion}} alt="">
+        {{/if}}
         <div {{bind-attr class=":select selected"}} {{action select id}}></div>
         <div class="title">{{name}}</div>
-      </div>{{/if}}{{/each}}
+      </div>{{/each}}
     </div>
   </div>
 {{/modal-dialog}}

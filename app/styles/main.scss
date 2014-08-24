@@ -150,7 +150,7 @@ img.detail {
 
 .album {
   position: relative;
-  background-color: #666;
+  background-color: $subtle-highlight-color;
   height: 100px;
   background-size: 100% auto;
   background-position: 50%;
@@ -248,7 +248,7 @@ img.detail {
 
   &::after {
     content: '';
-    box-shadow: inset 0px -76px 85px -24px rgba(0, 0, 0, 0.75);
+    box-shadow: inset 0px -86px 44px -30px rgba(0, 0, 0, 0.75);
     height: 296px;
     width: 296px;
     display: block;
@@ -360,13 +360,13 @@ button {
   height: 50%;
   width: 100%;
   max-width: 1000px;
-  overflow: scroll;
   box-shadow: 0 2px 3px 0 rgba(0,0,0,0.25);
 }
 
 .photo-picker {
   min-height: 650px;
   background: white;
+  overflow: scroll;
 }
 
 .album-picker {
@@ -376,6 +376,7 @@ button {
 }
 
 .top-bar {
+  border-radius: 3px 3px 0 0;
   background: white;
   position: absolute;
   width: 100%;
@@ -394,6 +395,7 @@ button {
 
 // TODO: Fix dupe with .top-bar
 .bottom-bar {
+  border-radius: 0 0 3px 3px ;
   border-top: 1px solid $subtle-highlight-color;
   width: 100%;
   background: white;
