@@ -235,7 +235,7 @@ img.detail {
 .album {
   width: $album-width;
   height: $album-width;
-  margin: 0 28px 28px 0;
+  margin: 0 $picker-padding $picker-padding 0;
 
   &::after {
     content: '';
@@ -373,7 +373,7 @@ button {
 
 .album-picker {
   border-radius: 3px;
-  min-height: 500px;
+  min-height: #{($album-width * 1.5) + (2 * $picker-padding) + (73px * 2)};
   background: $bg-color-accent;
 }
 
@@ -385,7 +385,7 @@ button {
   border-bottom: 1px solid $subtle-highlight-color;
   height: 72px;
   line-height: 72px;
-  padding: 0 28px;
+  padding: 0 $picker-padding;
   vertical-align: middle;
   z-index: 5;
 
@@ -406,13 +406,13 @@ button {
   height: 72px;
   line-height: 72px;
   z-index: 5;
-  padding: 0 28px;
+  padding: 0 $picker-padding;
 }
 
 .picker-content {
-  height: #{500px - 73px - 73px};
+  height: #{($album-width * 1.5) + (2 * $picker-padding)};
   overflow-y: scroll;
-  padding: 28px 0 0 28px;
+  padding: $picker-padding 0 0 $picker-padding;
 }
 
 textarea {
