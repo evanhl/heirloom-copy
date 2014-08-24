@@ -28,4 +28,7 @@ Ember.I18n.translations = {
 
   'photos.selected.one': '{{count}} Photo Selected',
   'photos.selected.other': '{{count}} Photos Selected',
+
+  'photos.count.one': '{{count}} Photo',
+  'photos.count.other': '{{count}} Photos',
 };

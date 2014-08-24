@@ -2,6 +2,7 @@ App.Album = Ember.Model.extend({
   id: Ember.attr(Number),
   name: Ember.attr(),
   cover_photo: Ember.belongsTo('App.Photo', { key: 'cover_photo', embedded: true }),
+  photo_count: Ember.attr(Number),
 
   style: function () {
     var backgroundImage = '';

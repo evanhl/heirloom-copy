@@ -159,15 +159,6 @@ img.detail {
   &:hover {
     opacity: 1;
   }
-
-  span {
-    text-shadow: 4px 4px 9px rgba(0, 0, 0, 1);
-    color: white;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    padding: 1em;
-  }
 }
 
 
@@ -242,33 +233,44 @@ img.detail {
 }
 
 .album {
-  width: 296px;
-  height: 296px;
+  width: $album-width;
+  height: $album-width;
   margin: 0 28px 28px 0;
 
   &::after {
     content: '';
     box-shadow: inset 0px -86px 44px -30px rgba(0, 0, 0, 0.75);
-    height: 296px;
-    width: 296px;
+    height: $album-width;
+    width: $album-width;
     display: block;
     position: absolute;
     top: 0;
   }
 
   &::before {
-    width: 296px;
-    height: 296px;
+    width: $album-width;
+    height: $album-width;
+  }
+
+
+  .count, .title {
+    position: absolute;
+    color: white;
+    z-index: 5;
+    left: $album-padding;
+    max-width: #{$album-width - ($album-padding * 2)};
+    word-wrap: break-word;
+    font-weight: 600;
   }
 
   .title {
-    position: absolute;
     bottom: 40px;
-    color: white;
-    z-index: 5;
-    font-weight: 600;
     font-size: 20px;
-    left: 20px;
+  }
+
+  .count {
+    bottom: 20px;
+    font-size: 14px;
   }
 }
 
