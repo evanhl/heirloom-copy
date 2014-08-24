@@ -155,6 +155,7 @@ img.detail {
   background-size: 100% auto;
   background-position: 50%;
   transition: opacity .1s ease-in-out;
+  vertical-align: top;
 
   &:hover {
     opacity: 1;
@@ -383,8 +384,8 @@ button {
   position: absolute;
   width: 100%;
   border-bottom: 1px solid $subtle-highlight-color;
-  height: 72px;
-  line-height: 72px;
+  height: 73px;
+  line-height: 73px;
   padding: 0 $picker-padding;
   vertical-align: middle;
   z-index: 5;
@@ -397,14 +398,14 @@ button {
 
 // TODO: Fix dupe with .top-bar
 .bottom-bar {
-  border-radius: 0 0 3px 3px ;
+  border-radius: 0 0 3px 3px;
   border-top: 1px solid $subtle-highlight-color;
   width: 100%;
   background: white;
   position: absolute;
   bottom: 0;
-  height: 72px;
-  line-height: 72px;
+  height: 73px;
+  line-height: 73px;
   z-index: 5;
   padding: 0 $picker-padding;
 }

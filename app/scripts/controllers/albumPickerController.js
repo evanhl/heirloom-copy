@@ -13,9 +13,8 @@ App.AlbumPickerController = Ember.Controller.extend(Ember.Evented, {
   },
 
   clearSelected: function () {
-    this.get('albums').clearSelected();
+    this.get('albums').setEach('selected', false);
   },
-
 
   actions: {
     getMore: function () {
@@ -24,11 +23,22 @@ App.AlbumPickerController = Ember.Controller.extend(Ember.Evented, {
 
     select: function (id) {
       // TODO: move in to Album Controller when we get the chance
-
-      this.get('albums').findBy('id', id).toggleProperty('selected');
+      var album = this.get('albums').findBy('id', id);
+      var newValue = album.toggleProperty('selected');
+      this.get('albums').setEach('selected', false);
+      album.set('selected', newValue);
     },
 
     close: function () {
+      this.clearSelected();
+      this.send('closeModal');
+    },
+
+    // for now, this is only add to album, but there could
+    // be other action types later on.
+    complete: function () {
+      this.trigger('didSelect', this.get('albums').findBy('selected', true));
+      this.clearSelected();
       this.send('closeModal');
     }
   }

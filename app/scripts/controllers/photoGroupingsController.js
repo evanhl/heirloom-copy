@@ -1,6 +1,10 @@
-App.PhotoGroupingsController = Ember.ArrayController.extend(InfiniteScroll.ControllerMixin, {
+App.PhotoGroupingsController = Ember.ArrayController.extend(InfiniteScroll.ControllerMixin, Ember.Evented, {
+  needs: ['albumPicker'],
+  albumPicker: Ember.computed.alias('controllers.albumPicker'),
+
   init: function () {
     this.set('selected', {});
+    this.get('albumPicker').on('didSelect', this, this.addPhotosToAlbum);
     this._super();
   },
 
@@ -47,12 +51,20 @@ App.PhotoGroupingsController = Ember.ArrayController.extend(InfiniteScroll.Contr
   }.property('selectedCount'),
 
   deselectPhotos: function () {
-    this.get('model').forEach(function (grouping) {
-      grouping.get('photos').forEach(function (photo) {
-        photo.set('selected', false);
-      });
-    });
+    this.trigger('deselectPhotos');
     this.set('selected', {});
+  },
+
+  addPhotosToAlbum: function (album) {
+    var self = this;
+    var adapter = App.Album.adapter;
+
+    adapter.postNested(album, {
+      photo_ids: this.get('selectedIds')
+    }, 'photos').then(function () {
+      self.deselectPhotos();
+      album.reload();
+    });
   },
 
   actions: {
