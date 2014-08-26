@@ -34,13 +34,14 @@ Utils.apiCall = function (url, type, data, success, error) {
 };
 
 Utils.findIndexOf = function (arr, filter) {
-  var i;
-  for (i = 0; i < arr.length; i++) {
-    if (filter(arr[i])) {
-      return i;
+  var foundIndex = -1;
+
+  arr.forEach(function (item, index) {
+    if (filter(item)) {
+      foundIndex = index;
     }
-  }
-  return -1;
+  });
+  return foundIndex;
 };
 
 // Adapted from http://css-tricks.com/snippets/jquery/image-preloader/

@@ -44,6 +44,14 @@ App.PhotoGroupingsController = Ember.ArrayController.extend(InfiniteScroll.Contr
     this.notifyPropertyChange('selected');
   },
 
+  compositeModel: function () {
+    return Utils.CompositeEnumerable.create({
+      arrays: this.get('model').map(function (grouping) {
+        return grouping.get('photos');
+      })
+    });
+  }.property('model.[]'),
+
   selectedIds: function () {
     return Object.keys(this.get('selected'));
   }.property('selected'),

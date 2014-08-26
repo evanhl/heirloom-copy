@@ -47,36 +47,36 @@ App.BasePhotoController = Ember.ObjectController.extend({
   adjacentPhoto: function (offset) {
     var index = this.get('currentIndex');
 
-    return this.get('photos.model')[index + offset];
+    return this.get('photosModel').objectAt(index + offset);
   },
 
   currentIndex: function () {
     var photoId = this.get('model.id');
-    var index = Utils.findIndexOf(this.get('photos.model'), function (photo) {
+    var index = Utils.findIndexOf(this.get('photosModel'), function (photo) {
       return photo.get('id') === photoId;
     });
 
     if (index !== -1) {
       return index;
     }
-  }.property('photos.model.length', 'model'),
+  }.property('photosModel.length', 'model'),
 
   prevId: function () {
     return this.adjacentId(-1);
-  }.property('photos.model.length', 'id'),
+  }.property('photosModel.length', 'id'),
 
   nextId: function () {
     return this.adjacentId(1);
-  }.property('photos.model.length', 'id'),
+  }.property('photosModel.length', 'id'),
 
   nextNextImageUrl: function () {
     var photo = this.adjacentPhoto(2);
 
     return photo && photo.get('largeVersion');
-  }.property('photos.model.length', 'id'),
+  }.property('photosModel.length', 'id'),
 
   photosUntilEnd: function () {
-    var photosLength = this.get('photos.model.length');
+    var photosLength = this.get('photosModel.length');
     var currentIndex = this.get('currentIndex');
 
     if (!Em.isNone(photosLength) && !Em.isNone(currentIndex)) {

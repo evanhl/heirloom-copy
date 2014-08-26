@@ -1,4 +1,4 @@
-<div {{bind-attr class=":photo selected"}}>
-  <img {{bind-attr src=thumbVersion}} {{action enlarge id}} alt="">
-  <div {{bind-attr class=":select selected"}} {{action select id}}></div>
+<div {{bind-attr class=":photo selected"}} {{action enlarge}}>
+  <img {{bind-attr src=thumbVersion}} alt="">
+  <div {{bind-attr class=":select selected"}} {{action select bubbles=false}}></div>
 </div>

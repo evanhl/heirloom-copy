@@ -8,6 +8,10 @@ App.PhotoGroupingController = Ember.ObjectController.extend(Ember.Evented, {
     this.trigger('deselectPhotos');
   },
 
+  willDestroy: function () {
+    this.get('parentController').off('deselectPhotos', this, this.deselectPhotos);
+  },
+
   actions: {
     select: function (photoController) {
       var newValue = photoController.get('selected');
