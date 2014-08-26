@@ -16,10 +16,11 @@
     {{/if}}
   </div>
 
-{{!--   {{#if prevId}}
-    <a href="javascript:void();" {{action 'prevPhoto'}}><div class="left-arrow"></div></a>
+  {{#if prevId}}
+    <div class="left-arrow" {{action 'prevPhoto'}}></div>
   {{/if}}
   {{#if nextId}}
-    <a href="javascript:void();" {{action 'nextPhoto'}}><div class="right-arrow"></div></a>
-  {{/if}} --}}
+    <div class="right-arrow" {{action 'nextPhoto'}}></div>
+  {{/if}}
+  <div class="close" {{action 'toCollection'}}></div>
 </section>

@@ -150,16 +150,26 @@ img.detail {
   overflow: hidden;
   z-index: 99;
 
-  // FIXME: these arrows don't position correctly for large horizontal:vertical ratios or mobile browsers
   .left-arrow, .right-arrow {
-    height: 100px;
+    line-height: 100vh;
+    font-size: 5vw;
+  }
+
+  .left-arrow, .right-arrow, .close {
+    vertical-align: middle;
+    height: 100%;
     width: 5%;
     top: 0;
     bottom: 0;
     position: absolute;
-    font-size: 10em;
-    margin: auto 1em;
-    line-height: 50%;
+
+    text-align: center;
+    color: $subtle-highlight-color;
+    transition: color 0.15s;
+
+    &:hover {
+      color: white;
+    }
   }
 
   .left-arrow {
@@ -175,7 +185,22 @@ img.detail {
       content: '>';
     }
 
-    right: 0;
+    right: 25%;
+  }
+
+  .close {
+    position: absolute;
+    text-align: center;
+    width: 5%;
+    right: 25%;
+    font-size: 3vw;
+    height: 5%;
+    vertical-align: middle;
+    line-height: 5vw;
+
+    &::after {
+      content: 'x';
+    }
   }
 }
 
