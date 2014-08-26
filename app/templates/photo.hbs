@@ -1,13 +1,23 @@
-<section class="lightbox">
+<section class="opaque-lightbox">
   {{!-- {{#if loadingImg}}<div class="big-spinner"></div>{{/if}} --}}
 
   {{view App.ImageView image=firstState}}
   {{view App.ImageView image=secondState}}
 
-  {{#if prevId}}
+  <div class="photo-sidebar">
+    <div class="owner">
+      <div class="icon"></div>
+      <div class="name">Evan Owski</div>
+      <div class="date">June 02, 2014</div>
+      <div style="clear: both;"></div>
+    </div>
+    <div class="description">{{description}}</div>
+  </div>
+
+{{!--   {{#if prevId}}
     <a href="javascript:void();" {{action 'prevPhoto'}}><div class="left-arrow"></div></a>
   {{/if}}
   {{#if nextId}}
     <a href="javascript:void();" {{action 'nextPhoto'}}><div class="right-arrow"></div></a>
-  {{/if}}
+  {{/if}} --}}
 </section>

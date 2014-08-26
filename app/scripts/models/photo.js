@@ -1,7 +1,9 @@
 App.Photo = Ember.Model.extend({
   id: Ember.attr(Number),
+  description: Ember.attr(String),
   source: Ember.attr(),
   state: Ember.attr(),
+  created_at: Ember.attr(Date),
   versions: Ember.attr(),
 
   versionForDimension: function (dim) {

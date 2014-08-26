@@ -8,7 +8,7 @@ App.PhotoView = Ember.View.extend({
   }.on('didInsertElement'),
 
   click: function (e) {
-    if (!$(e.target).is('.lightbox')) {
+    if (!$(e.target).is('.opaque-lightbox')) {
       return;
     }
 

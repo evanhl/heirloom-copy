@@ -79,11 +79,11 @@ img.detail {
   position: absolute;
 
   max-height: 90%;
-  max-width: 90%;
+  max-width: 65%;
 
   bottom: 0;
   right: 0;
-  left: 0;
+  left: -27.5%;
   top: 0;
 
   margin: auto;
@@ -93,7 +93,53 @@ img.detail {
   transition: opacity .25s ease-in-out;
 }
 
-.lightbox {
+.photo-sidebar {
+  position: absolute;
+  width: 25%;
+  height: 100%;
+
+  background: $bg-color-accent;
+  right: 0;
+  top: 0;
+
+  padding-left: 2.5%;
+
+  .description {
+    padding: 6% 10% 6% 0%;
+    border-bottom: 1px solid $subtle-highlight-color;
+    line-height: 18px;
+  }
+
+  .owner {
+    padding: 6% 10% 6% 0%;
+    border-bottom: 1px solid $subtle-highlight-color;
+  }
+
+  .name {
+    margin-left: 60px;
+    margin-top: 9px;
+    font-weight: 600;
+    font-size: 18px;
+    color: $highlight-color;
+  }
+
+  .date {
+    margin-left: 60px;
+    margin-top: 4px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .icon {
+    height: $convo-icon-size;
+    width: $convo-icon-size;
+    border-radius: $convo-icon-size / 2;
+    background: $subtle-highlight-color;
+    float: left;
+  }
+}
+
+.lightbox, .opaque-lightbox {
   width: auto;
   height: auto;
   bottom: 0;
@@ -103,7 +149,6 @@ img.detail {
   position: fixed;
   overflow: hidden;
   z-index: 99;
-  background: $lightbox-color;
 
   // FIXME: these arrows don't position correctly for large horizontal:vertical ratios or mobile browsers
   .left-arrow, .right-arrow {
@@ -132,20 +177,14 @@ img.detail {
 
     right: 0;
   }
+}
 
-  .scrollable {
-    max-height: 90%;
-    width: 50%;
-    overflow-y: scroll;
+.lightbox {
+  background: $lightbox-color;
+}
 
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-
-    position: absolute;
-  }
+.opaque-lightbox {
+  background: $opaque-lightbox-color;
 }
 
 .album {
