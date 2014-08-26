@@ -93,6 +93,11 @@ App.BasePhotoController = Ember.ObjectController.extend({
     }
   }.observes('photosUntilEnd'),
 
+  // TODO: Replace with photo's owner once available. For now we can assume photo owner == current user
+  userName: function () {
+    return App.get('auth.currentSession.name');
+  }.property('App.auth.currentSession.name'),
+
   actions: {
     prevPhoto: function () {
       this.toPhoto(this.get('prevId'));

@@ -72,3 +72,7 @@ Ember.Handlebars.helper('multiline', function (text) {
 Ember.Handlebars.registerBoundHelper('fromNow', function (date) {
   return moment.min(moment(date), moment()).fromNow();
 });
+
+Ember.Handlebars.registerBoundHelper('prettyDay', function (date) {
+  return moment(date).format('MMMM DD, YYYY');
+});

@@ -7,6 +7,14 @@ App.PhotoView = Ember.View.extend({
     this.$().attr({ tabindex: 1 }).focus();
   }.on('didInsertElement'),
 
+  disableBodyScroll: function () {
+    $('body').addClass('noscroll');
+  }.on('didInsertElement'),
+
+  enableBodyScroll: function () {
+    $('body').removeClass('noscroll');
+  }.on('willDestroyElement'),
+
   click: function (e) {
     if (!$(e.target).is('.opaque-lightbox')) {
       return;

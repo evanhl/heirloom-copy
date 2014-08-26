@@ -7,11 +7,13 @@
   <div class="photo-sidebar">
     <div class="owner">
       <div class="icon"></div>
-      <div class="name">Evan Owski</div>
-      <div class="date">June 02, 2014</div>
+      <div class="name">{{userName}}</div>
+      <div class="date">{{prettyDay created_at}}</div>
       <div style="clear: both;"></div>
     </div>
-    <div class="description">{{description}}</div>
+    {{#if description}}
+      <div class="description">{{description}}</div>
+    {{/if}}
   </div>
 
 {{!--   {{#if prevId}}
