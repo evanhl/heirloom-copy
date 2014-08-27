@@ -21,7 +21,20 @@
 }
 
 .groupings-container {
-  margin: 0 73px;
+  margin: 0 #{73px - $photo-margin} 0 73px;
+
+  .toolbar {
+    margin-right: $photo-margin;
+  }
+}
+
+.albums-container {
+  margin: 0 #{73px - $album-margin} 0 73px;
+
+  .toolbar {
+    margin-bottom: 36px;
+    margin-right: $album-margin;
+  }
 }
 
 .toolbar {
@@ -51,7 +64,7 @@
 
 .photo {
   width: 186px;
-  margin: 0 16px 16px 0;
+  margin: 0 $photo-margin $photo-margin 0;
   display: inline-block;
   position: relative;
   cursor: pointer;

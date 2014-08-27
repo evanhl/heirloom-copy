@@ -14,6 +14,10 @@ App.Photo = Ember.Model.extend({
   },
 
   thumbVersion: function () {
+    return this.versionForDimension('xs') || this.get('mediumVersion');
+  }.property('versions'),
+
+  mediumVersion: function () {
     return this.versionForDimension('s');
   }.property('versions'),
 

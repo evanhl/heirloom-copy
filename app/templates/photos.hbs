@@ -1,21 +1,7 @@
 {{outlet}}
 
-{{#if numSelected}}
-  <div class="row">
-    <h2 class="large-3 columns">{{numSelected}} selected</h2>
-    {{#each batchActions}}
-    <button class="large-3 columns" {{action 'batchAction' action}}>{{name}}</button>
-    {{/each}}
-  </div>
-{{/if}}
-
 {{#each}}
-  {{#if thumbVersion}}
-    <div class="gallery-photo">
-      <img {{bind-attr src=thumbVersion}} {{action enlarge id}} alt="">
-      <div {{bind-attr class=":select selected"}} {{action select id}}></div>
-    </div>
-  {{/if}}
+  {{render 'thumbPhoto' this}}
 {{/each}}
 
 {{partial 'spinner'}}

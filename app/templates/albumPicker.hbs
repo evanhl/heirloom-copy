@@ -14,7 +14,7 @@
     <div class="picker-content">
       {{#each albums}}<div {{bind-attr class=":album :photo selected"}} {{action select id}}>
         {{#if cover_photo}}
-          <img {{bind-attr src=cover_photo.thumbVersion}} alt="">
+          <img {{bind-attr src=cover_photo.mediumVersion}} alt="">
         {{/if}}
         <div {{bind-attr class=":select selected"}}></div>
         <div class="title">{{name}}</div>

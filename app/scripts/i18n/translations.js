@@ -35,5 +35,6 @@ Ember.I18n.translations = {
   'photos.addToAlbum': 'Add to Album',
 
   'cancel': 'Cancel',
-  'add': 'Add'
+  'add': 'Add',
+  'create': 'Create'
 };

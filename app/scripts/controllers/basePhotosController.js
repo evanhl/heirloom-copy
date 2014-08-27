@@ -1,4 +1,4 @@
-App.BasePhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMixin, {
+App.BasePhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMixin, Ember.Evented, {
   needs: ['photo'],
   photo: Ember.computed.alias("controllers.photo"),
 
