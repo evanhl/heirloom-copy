@@ -1,5 +1,5 @@
 // TODO: clean up view on destroy
-App.UploadView = Ember.View.extend({
+App.UploadModalView = Ember.View.extend({
   didInsertElement: function () {
     var upload = new App.Upload.UploadToS3();
   }

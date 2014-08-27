@@ -84,7 +84,6 @@ App.Router.map(function () {
     });
   });
   this.resource('share', { path: 'share/:share_id' });
-  this.route('upload');
   this.route('registration');
   this.route('signin');
   this.route('signout');

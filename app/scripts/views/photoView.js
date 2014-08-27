@@ -15,14 +15,6 @@ App.PhotoView = Ember.View.extend({
     $('body').removeClass('noscroll');
   }.on('willDestroyElement'),
 
-  click: function (e) {
-    if (!$(e.target).is('.opaque-lightbox')) {
-      return;
-    }
-
-    this.get('controller').send('toCollection');
-  },
-
   keyDown: function (e) {
     var controller = this.get('controller');
 

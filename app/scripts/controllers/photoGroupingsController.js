@@ -109,6 +109,10 @@ App.PhotoGroupingsController = Ember.ArrayController.extend(InfiniteScroll.Contr
 
     addToAlbum: function () {
       this.send('openModal', 'albumPicker');
+    },
+
+    upload: function () {
+      this.send('openModal', 'uploadModal');
     }
   }
 });

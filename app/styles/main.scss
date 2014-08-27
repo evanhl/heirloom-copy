@@ -166,6 +166,7 @@ img.detail {
     text-align: center;
     color: $subtle-highlight-color;
     transition: color 0.15s;
+    cursor: pointer;
 
     &:hover {
       color: white;

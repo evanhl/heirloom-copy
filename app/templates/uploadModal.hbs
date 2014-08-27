@@ -1,0 +1,17 @@
+{{#modal-dialog action="close"}}
+  {{!-- TODO: reduce copypasta between this and albumPicker.hbs
+  --}}
+  <div class="album-picker">
+    <div class="top-bar">
+      <h3>Upload</h3>
+    </div>
+    <div class="bottom-bar">
+      <div class="right">
+        <button class="secondary" {{action 'close'}}>{{t 'cancel'}}</button>
+        <button class="take-action" {{action 'complete'}}>Done</button>
+      </div>
+    </div>
+    <div class="nav-filler"></div>
+    <div class="picker-content dropzone"></div>
+  </div>
+{{/modal-dialog}}
