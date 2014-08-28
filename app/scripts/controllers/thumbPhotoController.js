@@ -21,7 +21,7 @@ App.ThumbPhotoController = Ember.ObjectController.extend({
     },
 
     enlarge: function () {
-      this.transitionToRoute('photo', this.get('id'));
+      this.get('parentController').send('enlarge', this.get('id'));
     }
   }
 });
