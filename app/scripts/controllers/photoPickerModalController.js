@@ -1,10 +1,11 @@
 App.PhotoPickerModalController = Ember.Controller.extend(Ember.Evented, {
   init: function () {
-    this.resetSelected();
+    this.reset();
   },
 
-  resetSelected: function () {
+  reset: function () {
     this.set('selected', {});
+    this.set('name', null);
   },
 
   toggleSelected: function (id, isSelected) {
@@ -35,7 +36,7 @@ App.PhotoPickerModalController = Ember.Controller.extend(Ember.Evented, {
 
   actions: {
     close: function () {
-      this.resetSelected();
+      this.reset();
       this.send('closeModal');
     },
 
@@ -43,7 +44,7 @@ App.PhotoPickerModalController = Ember.Controller.extend(Ember.Evented, {
     // TODO: Only reset & closeModal on successful operation by parentController (e.g. added photos to album)
     complete: function () {
       this.trigger('photosSelected', this.get('selectedIds'));
-      this.resetSelected();
+      this.reset();
       this.send('closeModal');
     },
 
