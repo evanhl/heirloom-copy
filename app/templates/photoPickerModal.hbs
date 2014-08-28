@@ -13,7 +13,7 @@
       </div>
       <div class="right">
         <button class="secondary" {{action 'close'}}>{{t 'cancel'}}</button>
-        <button class="take-action" {{action 'complete'}}>{{t 'add'}}</button>
+        <button class="take-action" {{action 'complete'}} {{bind-attr disabled=noneSelected}}>{{t 'add'}}</button>
       </div>
     </div>
     <div class="nav-filler"></div>

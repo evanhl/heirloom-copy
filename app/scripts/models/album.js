@@ -3,6 +3,7 @@ App.Album = Ember.Model.extend({
   name: Ember.attr(),
   cover_photo: Ember.belongsTo('App.Photo', { key: 'cover_photo', embedded: true }),
   photo_count: Ember.attr(Number),
+  photo_ids: Ember.attr()
 });
 
 App.Album.url = 'albums';
