@@ -7,7 +7,7 @@ var app = express();
 
 app.use(compress);
 app.use(function(req, res, next) {
-  if (!req.url.match(/\.js$|\.css$|\.svg$|\.png$|\.html|\.woff$/)) {
+  if (!req.url.match(/\.js$|\.css$|\.svg$|\.png$|\.jpg$|\.html|\.woff$/)) {
     req.url = '/index.html';
   }
 
