@@ -1,60 +1,62 @@
-<div class="row">
-  <h1>{{t 'signup'}}</h1>
-</div>
-
-{{#if error.errors.base}}
+<div class="signin-container">
   <div class="row">
-    <div class="alert-box alert large-6">
-      {{error.errors.base}}
+    <h1>{{t 'signup'}}</h1>
+  </div>
+
+  {{#if error.errors.base}}
+    <div class="row">
+      <div class="alert-box alert large-12">
+        {{error.errors.base}}
+      </div>
+    </div>
+  {{/if}}
+
+  <div class="row">
+    <div class="large-12">
+      {{input value=name placeholder=(ts 'signup.name') classBinding="error.name:error :name"}}
+      {{#each error.name}}
+        <small class="error">{{this}}</small>
+      {{/each}}
     </div>
   </div>
-{{/if}}
 
-<div class="row">
-  <div class="large-6">
-    {{input value=name placeholder=(ts 'signup.name') classBinding="error.name:error :name"}}
-    {{#each error.name}}
-      <small class="error">{{this}}</small>
-    {{/each}}
-  </div>
-</div>
-
-<div class="row">
-  <div class="large-6">
-    {{input value=email placeholder=(ts 'signup.email') classBinding="error.email:error :email"}}
-    {{#each error.email}}
-      <small class="error">{{this}}</small>
-    {{/each}}
-  </div>
-</div>
-
-<div class="row">
-  <div class="large-6">
-    {{input value=username placeholder=(ts 'signup.username') classBinding="error.username:error :username"}}
-    {{#each error.username}}
-      <small class="error">{{this}}</small>
-    {{/each}}
-  </div>
-</div>
-
-<div class="row">
-  <div class="large-6">
-    {{input type="password" value=password placeholder=(ts 'signup.password') classBinding="error.password:error :password"}}
-    {{#each error.password}}
-      <small class="error">{{this}}</small>
-    {{/each}}
-  </div>
-</div>
-
-
-{{!-- TODO: remove inline style once we have proper mocks
---}}
-<div class="row" style="margin-bottom: 16px;">
-  <button {{action 'signup' bubbles=false}} class="signup">{{t 'signup.button.signup'}}</button>
-</div>
-
-{{#if isFbInit}}
   <div class="row">
-    <button {{action 'fbSignup' bubbles=false}}>{{t 'signup.button.facebook'}}</button>
+    <div class="large-12">
+      {{input value=email placeholder=(ts 'signup.email') classBinding="error.email:error :email"}}
+      {{#each error.email}}
+        <small class="error">{{this}}</small>
+      {{/each}}
+    </div>
   </div>
-{{/if}}
+
+  <div class="row">
+    <div class="large-12">
+      {{input value=username placeholder=(ts 'signup.username') classBinding="error.username:error :username"}}
+      {{#each error.username}}
+        <small class="error">{{this}}</small>
+      {{/each}}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-12">
+      {{input type="password" value=password placeholder=(ts 'signup.password') classBinding="error.password:error :password"}}
+      {{#each error.password}}
+        <small class="error">{{this}}</small>
+      {{/each}}
+    </div>
+  </div>
+
+
+  {{!-- TODO: remove inline style once we have proper mocks
+  --}}
+  <div class="row" style="margin-bottom: 16px;">
+    <button {{action 'signup' bubbles=false}} class="signup take-action">{{t 'signup.button.signup'}}</button>
+  </div>
+
+  {{!-- {{#if isFbInit}}
+    <div class="row">
+      <button {{action 'fbSignup' bubbles=false}}>{{t 'signup.button.facebook'}}</button>
+    </div>
+  {{/if}} --}}
+</div>

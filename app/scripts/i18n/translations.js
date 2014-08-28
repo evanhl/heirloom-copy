@@ -3,10 +3,11 @@ Ember.I18n.translations = {
   'moments': 'Moments',
   'upload': 'Upload',
   'conversations': 'Groups',
-  'signin': 'Sign In',
+  'signin': 'Log In',
   'signout': 'Sign Out',
   'signup': 'Sign Up',
 
+  'signin.message': 'Welcome back.',
   'signin.login': 'Email/Username',
   'signin.password': 'Password',
   'signin.button.signin': 'Sign In',
@@ -16,7 +17,7 @@ Ember.I18n.translations = {
   'signup.email': 'Email',
   'signup.username': 'Username',
   'signup.password': 'Password',
-  'signup.button.signup': 'Sign Up',
+  'signup.button.signup': 'Create Account',
   'signup.button.facebook': 'Sign Up with Facebook',
 
   "conversation.members.one": "{{count}} Person",

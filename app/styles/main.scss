@@ -350,7 +350,7 @@ img.detail {
 }
 
 button {
-  width: 130px;
+  min-width: 130px;
   height: 36px;
   line-height: 36px;
 
@@ -367,6 +367,8 @@ button {
   font-weight: bold;
   font-size: 14px;
   letter-spacing: 2px;
+
+  padding: 2px 14px 3px;
 
   &.take-action {
     background: $highlight-color;

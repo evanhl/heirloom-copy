@@ -42,6 +42,14 @@ App.NavigationController = Ember.Controller.extend({
       }, function () {
         // TODO: handle error
       });
-    }
+    },
+
+    register: function () {
+      this.transitionToRoute('registration');
+    },
+
+    signin: function () {
+      this.transitionToRoute('signin');
+    },
   }
 });

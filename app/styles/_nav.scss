@@ -41,12 +41,16 @@
   }
 
   .not-logged-in {
-    margin: 0 54px;
+    padding: 0 54px;
+    line-height: 76px;
+    vertical-align: middle;
+    width: 100%;
   }
 
   .full-logo {
     height: 76px;
-    background-size: 76px auto;
+    width: 190px;
+    background-size: 76px 190px;
     background: url(/images/regwall_logo.png) no-repeat;
   }
 }

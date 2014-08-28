@@ -21,7 +21,13 @@
     </div>
   {{else}}
     <ul class="not-logged-in">
-      <div class="full-logo"></div>
+      <div class="left">
+        <div class="full-logo"></div>
+      </div>
+      <div class="right">
+        <button class="take-action signup" {{action 'register'}}>{{t 'signup'}}</button>
+        <button class="secondary signin" {{action 'signin'}}>{{t 'signin'}}</button>
+      </div>
     </ul>
 {{!--     {{else}}
       <li class='signin'>{{#link-to 'signin'}}{{t 'signin'}}{{/link-to}}</li>
