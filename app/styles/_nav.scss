@@ -39,6 +39,16 @@
     background-size: 36px auto;
     background-position: center;
   }
+
+  .not-logged-in {
+    margin: 0 54px;
+  }
+
+  .full-logo {
+    height: 76px;
+    background-size: 76px auto;
+    background: url(/images/regwall_logo.png) no-repeat;
+  }
 }
 
 .mini-nav, .full-nav {

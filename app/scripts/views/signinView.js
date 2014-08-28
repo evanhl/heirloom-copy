@@ -1,4 +1,6 @@
 App.SigninView = Ember.View.extend({
+  classNames: ['backdrop'],
+
   didInsertElement: function () {
     this.$().find('input:first').focus();
   },

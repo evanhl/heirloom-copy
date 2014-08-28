@@ -1,41 +1,44 @@
-<div class="row">
-  <h1>{{t 'signin'}}</h1>
-</div>
-
-{{#if error.errors.base}}
+<div class="signin-container">
   <div class="row">
-    <div class="alert-box alert large-6">
-      {{error.errors.base}}
+    <h1>{{t 'signin'}}</h1>
+  </div>
+
+  {{#if error.errors.base}}
+    <div class="row">
+      <div class="alert-box alert large-12">
+        {{error.errors.base}}
+      </div>
+    </div>
+  {{/if}}
+
+  <div class="row">
+    <div class="large-12">
+      {{input value=login placeholder=(ts 'signin.login') classBinding="error.login:error :login" }}
+      {{#each error.login}}
+        <small class="error">{{this}}</small>
+      {{/each}}
     </div>
   </div>
-{{/if}}
 
-<div class="row">
-  <div class="large-6">
-    {{input value=login placeholder=(ts 'signin.login') classBinding="error.login:error :login" }}
-    {{#each error.login}}
-      <small class="error">{{this}}</small>
-    {{/each}}
-  </div>
-</div>
-
-<div class="row">
-  <div class="large-6">
-    {{input type="password" value=password placeholder=(ts 'signin.password') classBinding="error.password:error :password" }}
-    {{#each error.password}}
-      <small class="error">{{this}}</small>
-    {{/each}}
-  </div>
-</div>
-
-{{!-- TODO: remove inline style once we have proper mocks
---}}
-<div class="row" style="margin-bottom: 16px;">
-  <button {{action 'signin' bubbles=false}} class="signin">{{t 'signin.button.signin'}}</button>
-</div>
-
-{{#if isFbInit}}
   <div class="row">
-    <button {{action 'fbSignin'}}>{{t 'signin.button.facebook'}}</button>
+    <div class="large-12">
+      {{input type="password" value=password placeholder=(ts 'signin.password') classBinding="error.password:error :password" }}
+      {{#each error.password}}
+        <small class="error">{{this}}</small>
+      {{/each}}
+    </div>
   </div>
-{{/if}}
+
+  {{!-- TODO: remove inline style once we have proper mocks
+  --}}
+  <div class="row" style="margin-bottom: 16px;">
+    <button {{action 'signin' bubbles=false}} class="signin take-action">{{t 'signin.button.signin'}}</button>
+  </div>
+
+  {{!--
+  {{#if isFbInit}}
+    <div class="row">
+      <button {{action 'fbSignin'}}>{{t 'signin.button.facebook'}}</button>
+    </div>
+  {{/if}} --}}
+</div>
