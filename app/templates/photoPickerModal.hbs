@@ -3,9 +3,12 @@
   --}}
   {{!-- TODO: remove inline style
   --}}
-  <div class="album-picker" style="width: 848px;">
+  <div class="photo-picker-modal" style="width: 848px;">
     <div class="top-bar">
       <h3>Add Photos to New Album</h3>
+    </div>
+    <div class="sub-top-bar">
+      {{input value=name placeholder="Album Name..."}}
     </div>
     <div class="bottom-bar">
       <div class="left">
@@ -13,7 +16,7 @@
       </div>
       <div class="right">
         <button class="secondary" {{action 'close'}}>{{t 'cancel'}}</button>
-        <button class="take-action" {{action 'complete'}} {{bind-attr disabled=noneSelected}}>{{t 'add'}}</button>
+        <button class="take-action" {{action 'complete'}} {{bind-attr disabled=completeDisabled}}>{{t 'add'}}</button>
       </div>
     </div>
     <div class="nav-filler"></div>

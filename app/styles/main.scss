@@ -418,7 +418,7 @@ button {
   width: 100%;
 }
 
-.photo-picker, .album-picker {
+.photo-picker, .album-picker, .photo-picker-modal {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -437,10 +437,20 @@ button {
   overflow: scroll;
 }
 
-.album-picker {
+.album-picker, .photo-picker-modal {
   border-radius: 3px;
   min-height: #{($album-width * 1.5) + (2 * $album-margin) + (73px * 2)};
   background: $bg-color-accent;
+}
+
+.photo-picker-modal {
+  .nav-filler {
+    height: 149px;
+  }
+
+  .picker-content {
+    height: #{($album-width * 1.5) + (2 * $album-margin) - 76px};
+  }
 }
 
 .top-bar {
@@ -458,6 +468,21 @@ button {
   h3 {
     // FIXME: this is hack. Brandon font rides high.
     margin: 4px 0 0 0 ;
+  }
+}
+
+.sub-top-bar {
+  position: absolute;
+  background: white;
+  height: 76px;
+  top: 73px;
+  z-index: 5;
+  width: 100%;
+  padding: 0 $album-margin;
+  border-bottom: 1px solid $subtle-highlight-color;
+
+  input {
+    margin-top: 19px;
   }
 }
 

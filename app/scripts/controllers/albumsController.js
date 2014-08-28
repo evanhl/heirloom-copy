@@ -22,7 +22,7 @@ App.AlbumsController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
   create: function (ids) {
     var self = this;
     var album = {
-      name: "Album " + Math.floor(Math.random() * 1000),
+      name: this.get('photoPickerModal.name'),
       photo_ids: ids
     };
     var record = App.Album.create(album);

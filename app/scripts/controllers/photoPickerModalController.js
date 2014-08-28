@@ -29,6 +29,10 @@ App.PhotoPickerModalController = Ember.Controller.extend(Ember.Evented, {
     return this.get('selectedCount') === 0;
   }.property('selectedCount'),
 
+  completeDisabled: function () {
+    return this.get('noneSelected') || !this.get('name');
+  }.property('noneSelected', 'name'),
+
   actions: {
     close: function () {
       this.resetSelected();
