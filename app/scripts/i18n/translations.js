@@ -13,6 +13,7 @@ Ember.I18n.translations = {
   'signin.button.signin': 'Sign In',
   'signin.button.facebook': 'Sign In with Facebook',
 
+  'signup.message': 'Sign up and bring the past to the present, effortlessly.',
   'signup.name': 'Name',
   'signup.email': 'Email',
   'signup.username': 'Username',
