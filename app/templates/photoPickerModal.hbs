@@ -1,0 +1,24 @@
+{{#modal-dialog action="close"}}
+  {{!-- TODO: reduce copypasta between this and albumPicker.hbs/uploadModal.hbs
+  --}}
+  {{!-- TODO: remove inline style
+  --}}
+  <div class="album-picker" style="width: 848px;">
+    <div class="top-bar">
+      <h3>Add Photos to New Album</h3>
+    </div>
+    <div class="bottom-bar">
+      <div class="left">
+        <span class="count-text">{{t "photos.selected" countBinding="selectedCount"}}</span>
+      </div>
+      <div class="right">
+        <button class="secondary" {{action 'close'}}>{{t 'cancel'}}</button>
+        <button class="take-action" {{action 'complete'}}>{{t 'add'}}</button>
+      </div>
+    </div>
+    <div class="nav-filler"></div>
+    <div class="picker-content">
+      {{render 'photosPicker'}}
+    </div>
+  </div>
+{{/modal-dialog}}

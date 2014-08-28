@@ -1,4 +1,4 @@
-App.PhotosPickerController = Ember.Controller.extend({
+App.PhotosPickerController = Ember.Controller.extend(Ember.Evented, {
   needs: ['photos'],
   photos: Ember.computed.alias('controllers.photos'),
   loadingMore: Ember.computed.alias('photos.loadingMore'),
@@ -22,7 +22,7 @@ App.PhotosPickerController = Ember.Controller.extend({
     },
 
     select: function (id) {
-      this.get('photos').send('select', id);
+      this.get('parentController').send('select', id);
     }
   }
 });

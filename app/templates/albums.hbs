@@ -3,17 +3,18 @@
     <button class="take-action" {{action 'create'}}>{{t 'create'}}</button>
   </div>
 
-  {{#each}}
-    {{#link-to 'albumPhotos' id}}
-      <div class="album photo">
+{{!-- The HTML comments below are to ensure no accidental spaces between inline-block lements --}}
+  {{#each}}<!--
+ -->{{#link-to 'albumPhotos' id}}<!--
+   --><div class="album photo">
         {{#if cover_photo}}
           <img {{bind-attr src=cover_photo.mediumVersion}} alt="">
         {{/if}}
         <div class="title">{{name}}</div>
         <div class="count">{{t "photos.count" countBinding="photo_count"}}</div>
-      </div>
-    {{/link-to}}
-  {{/each}}
+      </div><!--
+ -->{{/link-to}}<!--
+-->{{/each}}
 
   {{partial 'spinner'}}
 </div>

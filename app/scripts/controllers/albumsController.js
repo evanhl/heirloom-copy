@@ -12,19 +12,22 @@ App.AlbumsController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
   },
 
   actions: {
-    create: function () {
-      var self = this;
-      var album = this.getProperties(['name']);
-      var record = App.Album.create(album);
+    // create: function () {
+    //   var self = this;
+    //   var album = this.getProperties(['name']);
+    //   var record = App.Album.create(album);
 
-      record.save().then(function (createdRecord) {
-        self.unshiftObject(record);
-        self.set('error', null);
-      }, function (response) {
-        if (response.responseJSON && response.responseJSON instanceof Object) {
-          self.set('error', response.responseJSON);
-        }
-      });
+    //   record.save().then(function (createdRecord) {
+    //     self.unshiftObject(record);
+    //     self.set('error', null);
+    //   }, function (response) {
+    //     if (response.responseJSON && response.responseJSON instanceof Object) {
+    //       self.set('error', response.responseJSON);
+    //     }
+    //   });
+    // }
+    create: function () {
+      this.send('openModal', 'photoPickerModal');
     }
   }
 });

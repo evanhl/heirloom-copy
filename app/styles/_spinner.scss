@@ -24,7 +24,7 @@ $spinner-width: $spinner-height;
 }
 
 .spinner, .big-spinner {
-  background: #0FF;
+  background: lighten($highlight-color, 10%);
 
   &::before,
   &::after {
@@ -33,7 +33,7 @@ $spinner-width: $spinner-height;
     top: 0; bottom: 0; left: 0; right: 0;
   }
   &::before {
-    background: #F0F;
+    background: darken($highlight-color, 10%);
     animation: .5s blur1 infinite alternate linear;
   }
   &::after {

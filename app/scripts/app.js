@@ -1,6 +1,17 @@
 /* jshint -W079 */
 /* globals CLDR */
 
+// Adapted from http://discuss.emberjs.com/t/emberconf-talk-disable-ember-eventhandlers-for-mobile/4877
+
+(function () {
+  var klass = Ember.EventDispatcher;
+  var events = klass.proto().events;
+
+  delete events.mousemove;
+  delete events.mouseleave;
+  delete events.mouseenter;
+}());
+
 // Adapted from http://stackoverflow.com/a/10199338
 Ember.Object.reopen({
   // allows us to get raw object from any Ember.Object so that we can serialize to localStorage
