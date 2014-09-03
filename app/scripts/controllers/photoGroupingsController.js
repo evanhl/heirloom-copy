@@ -64,8 +64,8 @@ App.PhotoGroupingsController = Ember.ArrayController.extend(InfiniteScroll.Contr
     return this.get('selectedCount') > 0;
   }.property('selectedCount'),
 
-  deselectPhotos: function () {
-    this.trigger('deselectPhotos');
+  deselect: function () {
+    this.trigger('deselect');
     this.set('selected', {});
   },
 
@@ -77,14 +77,14 @@ App.PhotoGroupingsController = Ember.ArrayController.extend(InfiniteScroll.Contr
       photo_ids: this.get('selectedIds')
     }, 'photos').then(function () {
       // TODO: handle error
-      self.deselectPhotos();
+      self.deselect();
       album.reload();
     });
   },
 
   actions: {
     cancel: function () {
-      this.deselectPhotos();
+      this.deselect();
     },
 
     deletePhotos: function () {
@@ -103,7 +103,7 @@ App.PhotoGroupingsController = Ember.ArrayController.extend(InfiniteScroll.Contr
           photo.destroy();
         });
 
-        self.deselectPhotos();
+        self.deselect();
       });
     },
 

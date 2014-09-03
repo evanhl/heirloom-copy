@@ -21,9 +21,9 @@ App.AlbumPickerController = Ember.Controller.extend(Ember.Evented, {
       this.get('albums').send('getMore');
     },
 
-    select: function (id) {
+    select: function (albumController) {
       // TODO: move in to Album Controller when we get the chance
-      var album = this.get('albums').findBy('id', id);
+      var album = albumController.get('model');
       var newValue = album.toggleProperty('selected');
       this.get('albums').setEach('selected', false);
       album.set('selected', newValue);

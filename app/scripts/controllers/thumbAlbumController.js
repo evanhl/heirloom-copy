@@ -1,0 +1,1 @@
+App.ThumbAlbumController = App.SelectableController.extend();

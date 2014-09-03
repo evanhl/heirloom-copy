@@ -2,18 +2,17 @@
   <div class="toolbar">
     <button class="take-action" {{action 'create'}}>{{t 'create'}}</button>
   </div>
+  {{#if isSelectionMode}}
+    <div class="selection-toolbar">
+      <div class="right">
+        <button class="secondary" {{action 'cancel'}}>{{t 'cancel'}}</button>
+      </div>
+    </div>
+  {{/if}}
 
-{{!-- The HTML comments below are to ensure no accidental spaces between inline-block lements --}}
+{{!-- The HTML comments below are to ensure no accidental spaces between inline-block elements --}}
   {{#each}}<!--
- -->{{#link-to 'albumPhotos' id}}<!--
-   --><div class="album photo">
-        {{#if cover_photo}}
-          <img {{bind-attr src=cover_photo.mediumVersion}} alt="">
-        {{/if}}
-        <div class="title">{{name}}</div>
-        <div class="count">{{t "photos.count" countBinding="photo_count"}}</div>
-      </div><!--
- -->{{/link-to}}<!--
+ -->{{#link-to 'albumPhotos' id}}{{render 'thumbAlbum' this enlargeDisabled=false}}{{/link-to}}<!--
 -->{{/each}}
 
   {{partial 'spinner'}}

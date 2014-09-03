@@ -1,0 +1,6 @@
+{{#if cover_photo}}
+  <img {{bind-attr src=cover_photo.mediumVersion}} alt="">
+{{/if}}
+<div {{bind-attr class=":select selected"}} {{action select bubbles=false}}></div>
+<div class="title">{{name}}</div>
+<div class="count">{{t "photos.count" countBinding="photo_count"}}</div>

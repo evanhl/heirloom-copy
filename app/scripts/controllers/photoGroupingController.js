@@ -1,15 +1,15 @@
 App.PhotoGroupingController = Ember.ObjectController.extend(Ember.Evented, {
   init: function () {
-    this.get('parentController').on('deselectPhotos', this, this.deselectPhotos);
+    this.get('parentController').on('deselect', this, this.deselect);
     this._super();
   },
 
-  deselectPhotos: function () {
-    this.trigger('deselectPhotos');
+  deselect: function () {
+    this.trigger('deselect');
   },
 
   willDestroy: function () {
-    this.get('parentController').off('deselectPhotos', this, this.deselectPhotos);
+    this.get('parentController').off('deselect', this, this.deselect);
   },
 
   actions: {
