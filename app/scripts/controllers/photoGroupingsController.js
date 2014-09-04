@@ -3,15 +3,19 @@ App.PhotoGroupingsController = Ember.ArrayController.extend(InfiniteScroll.Contr
   albumPicker: Ember.computed.alias('controllers.albumPicker'),
 
   init: function () {
-    this.set('selected', {});
+    this.resetSelected();
     this.get('albumPicker').on('didSelect', this, this.addPhotosToAlbum);
     this._super();
   },
 
   reset: function () {
-    this.set('selected', {});
+    this.resetSelected();
     this.set('model', []);
     this._super();
+  },
+
+  resetSelected: function () {
+    this.set('selected', {});
   },
 
   fetchPage: function (page, perPage) {

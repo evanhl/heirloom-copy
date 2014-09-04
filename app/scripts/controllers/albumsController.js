@@ -3,7 +3,7 @@ App.AlbumsController = Ember.ArrayController.extend(Ember.Evented, InfiniteScrol
   photoPickerModal: Ember.computed.alias('controllers.photoPickerModal'),
 
   init: function () {
-    this.set('selected', {});
+    this.resetSelected();
     this.get('photoPickerModal').on('photosSelected', this, this.photosSelected);
     this._super();
   },
@@ -16,9 +16,13 @@ App.AlbumsController = Ember.ArrayController.extend(Ember.Evented, InfiniteScrol
   },
 
   reset: function () {
-    this.set('selected', {});
+    this.resetSelected();
     this.set('model', []);
     this._super();
+  },
+
+  resetSelected: function () {
+    this.set('selected', {});
   },
 
   create: function (ids) {
