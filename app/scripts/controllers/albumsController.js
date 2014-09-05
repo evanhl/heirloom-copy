@@ -84,6 +84,21 @@ App.AlbumsController = Ember.ArrayController.extend(Ember.Evented, InfiniteScrol
 
     cancel: function () {
       this.deselect();
+    },
+
+    deleteAlbums: function () {
+      var adapter = App.Album.adapter;
+      var self = this;
+
+      adapter.batchDelete(App.Album, this.get('selectedIds'), 'album_ids').then(function (response) {
+        response.album_ids.forEach(function (id) {
+          var album = self.findBy('id', id);
+          self.removeObject(album);
+          album.destroy();
+        });
+
+        self.deselect();
+      });
     }
   }
 });
