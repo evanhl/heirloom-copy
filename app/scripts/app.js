@@ -94,6 +94,8 @@ App.Router.map(function () {
       this.resource('conversationPosts', { path: 'posts' });
     });
   });
+  this.resource('conversationInvitation', { path: 'conversation_invitations/:conversation_invitation_id' });
+
   this.resource('share', { path: 'share/:share_id' });
   this.route('registration');
   this.route('signin');
