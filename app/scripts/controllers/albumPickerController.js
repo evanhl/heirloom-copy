@@ -4,8 +4,10 @@ App.AlbumPickerController = Ember.Controller.extend(Ember.Evented, {
   loadingMore: Ember.computed.alias('albums.loadingMore'),
   selected: Ember.computed.alias('albums.selected'),
 
-  init: function () {
-    this.send('getMore');
+  fetchFirstPage: function () {
+    if (this.get('albums.page') <= 0) {
+      this.send('getMore');
+    }
   },
 
   fetchPage: function (page, perPage) {
