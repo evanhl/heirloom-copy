@@ -7,7 +7,6 @@ Utils.ensureNamespace('App.Upload');
 App.Upload.UploadToS3 = Ember.Object.extend({
   ENDPOINT: '/me/photos',
   CONTENT_TYPE_EXTS: {
-    'image/gif': '.gif',
     'image/jpeg': '.jpg',
     'image/pjpeg': '.jpg',
     'image/png': '.png'
@@ -49,7 +48,7 @@ App.Upload.UploadToS3 = Ember.Object.extend({
     dropzone = new Dropzone('.dropzone', {
       url: 'http://fake.url',
       autoProcessQueue: true,
-      acceptedFiles: 'image/gif,image/jpeg,image/pjpeg,image/png'
+      acceptedFiles: 'image/jpeg,image/pjpeg,image/png'
     });
 
     dropzone.on('processing', function () {
