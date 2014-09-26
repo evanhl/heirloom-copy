@@ -3,11 +3,11 @@
   {{render 'postComments' model}}
 </div> --}}
 
-{{#if firstPhoto}}
+{{#each photos}}
   <div class="large-photo">
-    <img {{bind-attr src=firstPhoto.largeVersion}}>
+    <img {{bind-attr src=largeVersion}}>
   </div>
-{{/if}}
+{{/each}}
 
 <div class="post-body">
   <div class="icon"></div>
