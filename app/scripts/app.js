@@ -95,11 +95,26 @@ App.Router.map(function () {
     });
   });
   this.resource('conversationInvitation', { path: 'conversation_invitations/:conversation_invitation_id' });
+  this.resource('i', { path: 'i/:id' });
 
   this.resource('share', { path: 'share/:share_id' });
+  this.resource('s', { path: 'share/:id' });
   this.route('registration');
   this.route('signin');
   this.route('signout');
+});
+
+// TODO: remove temporary redirects once we remove fully qualified share and conversation_invitation URLs
+App.IRoute = Ember.Route.extend({
+  beforeModel: function (transition) {
+    this.transitionTo('conversationInvitation', transition.params.i.id);
+  }
+});
+
+App.SRoute = Ember.Route.extend({
+  beforeModel: function (transition) {
+    this.transitionTo('share', transition.params.s.id);
+  }
 });
 
 CLDR.defaultLanguage = 'en-US';
