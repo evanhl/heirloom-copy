@@ -98,7 +98,7 @@ App.Router.map(function () {
   this.resource('i', { path: 'i/:id' });
 
   this.resource('share', { path: 'share/:share_id' });
-  this.resource('s', { path: 'share/:id' });
+  this.resource('s', { path: 's/:id' });
   this.route('registration');
   this.route('signin');
   this.route('signout');
