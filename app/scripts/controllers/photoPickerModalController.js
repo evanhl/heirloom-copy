@@ -1,4 +1,5 @@
-App.PhotoPickerModalController = Ember.Controller.extend(Ember.Evented, {
+//= require selectableMixin
+App.PhotoPickerModalController = Ember.Controller.extend(Ember.Evented, App.SelectableMixin, {
   init: function () {
     this.reset();
   },
@@ -7,28 +8,6 @@ App.PhotoPickerModalController = Ember.Controller.extend(Ember.Evented, {
     this.set('selected', {});
     this.set('name', null);
   },
-
-  toggleSelected: function (id, isSelected) {
-    if (isSelected) {
-      // We have to include photo and grouping here so that we can remove the photo from the grouping on delete
-      this.get('selected')[id] = true;
-    } else {
-      delete this.get('selected')[id];
-    }
-    this.notifyPropertyChange('selected');
-  },
-
-  selectedIds: function () {
-    return Object.keys(this.get('selected'));
-  }.property('selected'),
-
-  selectedCount: function () {
-    return this.get('selectedIds').length;
-  }.property('selectedIds'),
-
-  noneSelected: function () {
-    return this.get('selectedCount') === 0;
-  }.property('selectedCount'),
 
   completeDisabled: function () {
     return this.get('noneSelected') || !this.get('name');

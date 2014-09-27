@@ -1,9 +1,9 @@
-App.PhotoGroupingsController = Ember.ArrayController.extend(InfiniteScroll.ControllerMixin, Ember.Evented, {
+//= require selectableMixin
+App.PhotoGroupingsController = Ember.ArrayController.extend(InfiniteScroll.ControllerMixin, Ember.Evented, App.SelectableMixin, {
   needs: ['albumPicker'],
   albumPicker: Ember.computed.alias('controllers.albumPicker'),
 
   init: function () {
-    this.resetSelected();
     this.get('albumPicker').on('didSelect', this, this.addPhotosToAlbum);
     this._super();
   },
@@ -12,10 +12,6 @@ App.PhotoGroupingsController = Ember.ArrayController.extend(InfiniteScroll.Contr
     this.resetSelected();
     this.set('model', []);
     this._super();
-  },
-
-  resetSelected: function () {
-    this.set('selected', {});
   },
 
   fetchPage: function (page, perPage) {
@@ -35,19 +31,6 @@ App.PhotoGroupingsController = Ember.ArrayController.extend(InfiniteScroll.Contr
     });
   },
 
-  toggleSelected: function (photo, grouping, isSelected) {
-    if (isSelected) {
-      // We have to include photo and grouping here so that we can remove the photo from the grouping on delete
-      this.get('selected')[photo.get('id')] = {
-        photo: photo,
-        grouping: grouping
-      };
-    } else {
-      delete this.get('selected')[photo.get('id')];
-    }
-    this.notifyPropertyChange('selected');
-  },
-
   compositeModel: function () {
     return Utils.CompositeEnumerable.create({
       arrays: this.get('model').map(function (grouping) {
@@ -55,18 +38,6 @@ App.PhotoGroupingsController = Ember.ArrayController.extend(InfiniteScroll.Contr
       })
     });
   }.property('model.[]'),
-
-  selectedIds: function () {
-    return Object.keys(this.get('selected'));
-  }.property('selected'),
-
-  selectedCount: function () {
-    return this.get('selectedIds').length;
-  }.property('selectedIds'),
-
-  isSelectionMode: function () {
-    return this.get('selectedCount') > 0;
-  }.property('selectedCount'),
 
   deselect: function () {
     this.trigger('deselect');

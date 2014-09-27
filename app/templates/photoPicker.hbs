@@ -29,7 +29,9 @@
     <div class="nav-filler"></div>
 
     {{#if photosPickerIsActive}}
-      {{render "photosPicker"}}
+      <div class="picker-content">
+        {{render "photosPicker"}}
+      </div>
     {{/if}}
 
     {{#if albumsPickerIsActive}}

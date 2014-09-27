@@ -15,7 +15,12 @@ App.PhotoGroupingController = Ember.ObjectController.extend(Ember.Evented, {
   actions: {
     select: function (photoController) {
       var newValue = photoController.get('selected');
-      this.get('parentController').toggleSelected(photoController.get('model'), this.get('model'), newValue);
+      var payload = {
+        photo: photoController.get('model'),
+        grouping: this.get('model')
+      };
+
+      this.get('parentController').toggleSelected(photoController.get('model.id'), newValue, payload);
     },
 
     enlarge: function (id) {

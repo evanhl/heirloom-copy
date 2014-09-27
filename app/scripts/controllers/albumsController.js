@@ -1,9 +1,9 @@
-App.AlbumsController = Ember.ArrayController.extend(Ember.Evented, InfiniteScroll.ControllerMixin, {
+//= require selectableMixin
+App.AlbumsController = Ember.ArrayController.extend(Ember.Evented, InfiniteScroll.ControllerMixin, App.SelectableMixin, {
   needs: ['photoPickerModal'],
   photoPickerModal: Ember.computed.alias('controllers.photoPickerModal'),
 
   init: function () {
-    this.resetSelected();
     this.get('photoPickerModal').on('photosSelected', this, this.photosSelected);
     this._super();
   },
@@ -19,10 +19,6 @@ App.AlbumsController = Ember.ArrayController.extend(Ember.Evented, InfiniteScrol
     this.resetSelected();
     this.set('model', []);
     this._super();
-  },
-
-  resetSelected: function () {
-    this.set('selected', {});
   },
 
   create: function (ids) {
@@ -46,19 +42,6 @@ App.AlbumsController = Ember.ArrayController.extend(Ember.Evented, InfiniteScrol
   photosSelected: function (ids) {
     this.create(ids);
   },
-
-  // TODO: remove copypasta between this and photoGroupingsController selection handling
-  selectedIds: function () {
-    return Object.keys(this.get('selected'));
-  }.property('selected'),
-
-  selectedCount: function () {
-    return this.get('selectedIds').length;
-  }.property('selectedIds'),
-
-  isSelectionMode: function () {
-    return this.get('selectedCount') > 0;
-  }.property('selectedCount'),
 
   deselect: function () {
     this.trigger('deselect');

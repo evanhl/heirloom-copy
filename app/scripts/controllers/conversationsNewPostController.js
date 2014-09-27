@@ -7,7 +7,8 @@ App.ConversationsNewPostController = Ember.ObjectController.extend(Ember.Evented
 
   init: function () {
     var self = this;
-    this.get('photoPicker').on('photosAdded', function (addedPhotos) {
+    this.get('photoPicker').on('photosAdded', function (addedPhotoIds) {
+      var addedPhotos = addedPhotoIds.map(function (id) { return App.Photo.find(id); });
       self.get('newPostPhotos').pushObjects(addedPhotos);
     });
     this._super();
