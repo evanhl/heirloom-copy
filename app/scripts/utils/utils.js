@@ -64,6 +64,7 @@ Ember.Handlebars.registerHelper('ts', function (key) {
 
 // TODO: Should this be a "bound helper"?
 Ember.Handlebars.helper('multiline', function (text) {
+  text = text || '';
   return new Ember.Handlebars.SafeString(text.split('\n').map(function (line) {
     return '<p>' + (line || '&nbsp;') + '</p>';
   }).join(''));
