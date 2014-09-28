@@ -27,8 +27,6 @@ App.BasePhotosController = Ember.ArrayController.extend(InfiniteScroll.Controlle
 
   actions: {
     select: function (id) {
-      // FIXME: this lookup is O(n). implement array with hash index for fast lookup.
-      // FIXME: use Ember.ObjectProxy on photo model so that selected attribute is specific to this view
       var photo = this.get('model').findBy('id', id);
       photo.toggleProperty('selected');
     },

@@ -1,10 +1,7 @@
-//= require basePhotosController
-App.AlbumPhotosController = App.BasePhotosController.extend({
+//= require selectableMixin
+App.AlbumPhotosController = Ember.ArrayController.extend(Ember.Evented, InfiniteScroll.ControllerMixin, App.SelectableMixin, {
   needs: ['album'],
   album: Ember.computed.alias('controllers.album'),
-  batchActions: [
-    { name: 'Remove from Album', action: 'removePhotos' }
-  ],
 
   fetchPage: function (page, perPage) {
     var adapter = App.Album.adapter;
@@ -17,27 +14,38 @@ App.AlbumPhotosController = App.BasePhotosController.extend({
     return adapter.findNestedQuery(this.get('album.model'), App.Photo, 'photos', records, params);
   },
 
+  deselect: function () {
+    this.resetSelected();
+    this.trigger('deselect');
+  },
+
   actions: {
+    select: function (photoController) {
+      var newValue = photoController.get('selected');
+      this.toggleSelected(photoController.get('model.id'), newValue);
+    },
+
     enlarge: function (id) {
       this.transitionToRoute('albumPhoto', this.get('album.id'), id);
+    },
+
+    cancel: function () {
+      this.deselect();
     },
 
     removePhotos: function () {
       var adapter = App.Album.adapter;
       var self = this;
       var album = self.get('album.model');
-      var selected = this.get('selected');
-      var selectedIds = selected.map(function (photo) {
-        return photo.get('id');
-      });
+      var selectedIds = this.get('selectedIds');
+      var selected = selectedIds.map(function (id) { return App.Photo.find(id); });
 
-      selected.forEach(function (photo) {
-        adapter.postNested(album, {
-          photo_ids: selectedIds
-        }, 'photos/delete').then(function () {
-          self.get('model').removeObjects(selected);
-          album.reload();
-        });
+      adapter.postNested(album, {
+        photo_ids: selectedIds
+      }, 'photos/delete').then(function () {
+        self.deselect();
+        self.get('model').removeObjects(selected);
+        album.reload();
       });
     }
   }
