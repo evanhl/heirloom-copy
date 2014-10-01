@@ -37,6 +37,7 @@ Ember.I18n.translations = {
   'photos.addToAlbum': 'Add to Album',
 
   'upload.modal.title': 'Upload Photos',
+  'upload.modal.addButton': 'Add',
 
   'cancel': 'Cancel',
   'add': 'Add',

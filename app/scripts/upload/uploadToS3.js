@@ -12,13 +12,23 @@ App.Upload.UploadToS3 = Ember.Object.extend({
     'image/png': '.png'
   },
 
+  dropzoneEl: null,
+  totalFiles: 0,
+  successfulUploads: null,
+
   init: function () {
+    var self = this;
+
+    this.set('successfulUploads', []);
+
     if (!App.Upload.uploadSignature.get('fields')) {
       App.Upload.uploadSignature.addObserver('fields', this, 'initDropzone');
       App.Upload.uploadSignature.request();
     } else {
       this.initDropzone();
     }
+
+    this._super();
   },
 
   // From http://stackoverflow.com/a/8809472
@@ -42,38 +52,61 @@ App.Upload.UploadToS3 = Ember.Object.extend({
 
   initDropzone: function () {
     var dropzone;
-    var self = this;
+    var $dropzoneEl = this.get('dropzoneEl');
 
-    // FIXME: don't use unqualified element selectors
-    dropzone = new Dropzone('.dropzone', {
+    $dropzoneEl.dropzone({
       url: 'http://fake.url',
       autoProcessQueue: true,
       acceptedFiles: 'image/jpeg,image/pjpeg,image/png',
       previewTemplate: '<div class="photo dz-preview dz-file-preview"><img data-dz-thumbnail /><div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div></div>',
       thumbnailWidth: 372,
-      thumbnailHeight: 372
+      thumbnailHeight: 372,
+      addRemoveLinks: true
     });
+    dropzone = $dropzoneEl.get(0).dropzone;
 
-    dropzone.on('processing', function () {
-      // I can dynamically change my URL for each upload
-      this.options.url = App.Upload.uploadSignature.get('bucket_url');
-    });
+    dropzone.on('processing', this.onProcessing);
+    dropzone.on('sending', $.proxy(this.onSending, this));
+    dropzone.on('success', $.proxy(this.onSuccess, this));
+    dropzone.on('addedfile', $.proxy(this.onAddedFile, this));
+    dropzone.on('removedfile', $.proxy(this.onRemovedFile, this));
+  },
 
-    dropzone.on('sending', function (file, xhr, formData) {
-      var s3Fields = App.Upload.uploadSignature.get('fields');
-      var field;
+  onProcessing: function () {
+    // I can dynamically change my URL for each upload
+    this.options.url = App.Upload.uploadSignature.get('bucket_url');
+  },
 
-      for (field in s3Fields) {
-        formData.append(field, s3Fields[field]);
-      }
+  onSending: function (file, xhr, formData) {
+    var s3Fields = App.Upload.uploadSignature.get('fields');
+    var field;
 
-      file.uploadedName = self.generateUploadName(file.type);
+    for (field in s3Fields) {
+      formData.append(field, s3Fields[field]);
+    }
 
-      formData.append('Content-Type', file.type);
-      formData.append('key', file.uploadedName);
-    });
+    file.uploadedName = this.generateUploadName(file.type);
 
-    dropzone.on('success', function (file) {
+    formData.append('Content-Type', file.type);
+    formData.append('key', file.uploadedName);
+  },
+
+  onSuccess: function (file) {
+    this.get('successfulUploads').pushObject(file);
+  },
+
+  onAddedFile: function () {
+    this.set('totalFiles', this.get('totalFiles') + 1);
+  },
+
+  onRemovedFile: function (file) {
+    this.set('totalFiles', this.get('totalFiles') - 1);
+    this.get('successfulUploads').removeObject(file);
+  },
+
+  createPhotoRecords: function () {
+    var self = this;
+    this.get('successfulUploads').forEach(function (file) {
       Utils.apiCall(self.ENDPOINT, 'POST', { key: file.uploadedName }, function (data) {
 
       }, function () {
