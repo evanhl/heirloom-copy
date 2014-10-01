@@ -20,6 +20,8 @@ $topbar-bg-color: #eee;
 @import 'photos';
 @import 'select2';
 @import 'share';
+@import 'upload';
+
 
 body {
   background: white;
@@ -420,7 +422,7 @@ button {
   width: 100%;
 }
 
-.photo-picker, .album-picker, .photo-picker-modal {
+.photo-picker, .album-picker, .photo-picker-modal, .upload-modal {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -429,8 +431,16 @@ button {
   margin: auto;
   height: 50%;
   width: 100%;
-  max-width: 1000px;
+
   box-shadow: 0 2px 3px 0 rgba(0,0,0,0.25);
+}
+
+.photo-picker, .album-picker, .photo-picker-modal {
+  max-width: 1000px;
+}
+
+.upload-modal {
+  max-width: 848px;
 }
 
 .photo-picker {
@@ -439,7 +449,7 @@ button {
   overflow: scroll;
 }
 
-.album-picker, .photo-picker-modal {
+.album-picker, .photo-picker-modal, .upload-modal {
   border-radius: 3px;
   min-height: #{($album-width * 1.5) + (2 * $album-margin) + (73px * 2)};
   background: $bg-color-accent;

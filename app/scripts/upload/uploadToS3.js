@@ -48,7 +48,10 @@ App.Upload.UploadToS3 = Ember.Object.extend({
     dropzone = new Dropzone('.dropzone', {
       url: 'http://fake.url',
       autoProcessQueue: true,
-      acceptedFiles: 'image/jpeg,image/pjpeg,image/png'
+      acceptedFiles: 'image/jpeg,image/pjpeg,image/png',
+      previewTemplate: '<div class="photo dz-preview dz-file-preview"><img data-dz-thumbnail /><div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div></div>',
+      thumbnailWidth: 372,
+      thumbnailHeight: 372
     });
 
     dropzone.on('processing', function () {
