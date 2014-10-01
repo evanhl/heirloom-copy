@@ -61,7 +61,10 @@ App.Upload.UploadToS3 = Ember.Object.extend({
       previewTemplate: '<div class="photo dz-preview dz-file-preview"><img data-dz-thumbnail /><div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div></div>',
       thumbnailWidth: 372,
       thumbnailHeight: 372,
-      addRemoveLinks: true
+      addRemoveLinks: true,
+      parallelUploads: 4,
+      dictCancelUpload: "",
+      dictRemoveFile: ""
     });
     dropzone = $dropzoneEl.get(0).dropzone;
 

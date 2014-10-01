@@ -379,7 +379,7 @@ button {
   }
 
   &.secondary {
-    background: white;
+    background: $alternate-button-color;
     color: $alternate-button-text-color;
     // border: 1px solid $alternate-button-border-color;
     box-shadow: 0px 1px 0px 0px darken(white, 20%);
