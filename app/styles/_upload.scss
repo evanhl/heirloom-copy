@@ -324,6 +324,16 @@
   }
 }
 
+.dropzone .fake-photo {
+  display: inline-block;
+  width: 186px;
+  height: 186px;
+  background: white;
+  border: 2px dashed $subtle-highlight-color;
+  vertical-align: top;
+  cursor: pointer;
+  margin: 0 18px 18px 0;
+}
 
 .dropzone a.dz-remove:hover,
 .dropzone-previews a.dz-remove:hover {

@@ -1,7 +1,8 @@
-App.UploadModalController = Ember.Controller.extend({
+App.UploadModalController = Ember.Controller.extend(Ember.Evented, {
   totalFiles: Ember.computed.alias('uploadToS3.totalFiles'),
   successCount: Ember.computed.alias('uploadToS3.successfulUploads.length'),
   processingFiles: Ember.computed.alias('uploadToS3.processingFiles'),
+
   readyToAdd: function () {
     var notReady = this.get('processingFiles') === 0 && this.get('successCount') > 0;
     return !notReady;
@@ -10,6 +11,11 @@ App.UploadModalController = Ember.Controller.extend({
   initDropzone: function ($dropzoneEl) {
     var upload = App.Upload.UploadToS3.create({ dropzoneEl: $dropzoneEl });
     this.set('uploadToS3', upload);
+    upload.on('fileAdded', $.proxy(this.addFakePhoto, this));
+  },
+
+  addFakePhoto: function () {
+    this.trigger('addFakePhoto');
   },
 
   destroyDropzone: function ($dropzoneEl) {

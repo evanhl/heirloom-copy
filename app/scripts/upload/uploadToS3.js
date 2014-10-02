@@ -4,7 +4,7 @@
 
 Utils.ensureNamespace('App.Upload');
 
-App.Upload.UploadToS3 = Ember.Object.extend({
+App.Upload.UploadToS3 = Ember.Object.extend(Ember.Evented, {
   ENDPOINT: '/me/photos',
   CONTENT_TYPE_EXTS: {
     'image/jpeg': '.jpg',
@@ -105,6 +105,7 @@ App.Upload.UploadToS3 = Ember.Object.extend({
 
   onAddedFile: function () {
     this.set('totalFiles', this.get('totalFiles') + 1);
+    this.trigger('fileAdded');
   },
 
   onRemovedFile: function (file) {
