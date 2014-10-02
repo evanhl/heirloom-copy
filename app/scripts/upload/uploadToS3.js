@@ -15,6 +15,7 @@ App.Upload.UploadToS3 = Ember.Object.extend(Ember.Evented, {
   dropzoneEl: null,
   totalFiles: 0,
   failedFiles: 0,
+
   processingFiles: function () {
     return this.get('totalFiles') - this.get('failedFiles') - this.get('successfulUploads.length');
   }.property('successfulUploads.length', 'failedFiles', 'totalFiles'),
@@ -63,8 +64,8 @@ App.Upload.UploadToS3 = Ember.Object.extend(Ember.Evented, {
       autoProcessQueue: true,
       acceptedFiles: 'image/jpeg,image/pjpeg,image/png',
       previewTemplate: '<div class="photo dz-preview dz-file-preview"><img data-dz-thumbnail /><div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div><div class="dz-error-message"><span data-dz-errormessage></span></div></div></div>',
-      thumbnailWidth: 372,
-      thumbnailHeight: 372,
+      thumbnailWidth: 186,
+      thumbnailHeight: 186,
       addRemoveLinks: true,
       parallelUploads: 4,
       dictCancelUpload: "",
@@ -121,15 +122,20 @@ App.Upload.UploadToS3 = Ember.Object.extend(Ember.Evented, {
     this.set('failedFiles', this.get('failedFiles') + 1);
   },
 
-  createPhotoRecords: function () {
+  createPhotoRecords: function (processedList) {
     var self = this;
-    this.get('successfulUploads').forEach(function (file) {
-      Utils.apiCall(self.ENDPOINT, 'POST', { key: file.uploadedName }, function (data) {
-
-      }, function () {
-          // TODO: Handle failure to register photo as uploaded
+    var promises = this.get('successfulUploads').map(function (file) {
+      return new Ember.RSVP.Promise(function (resolve, reject) {
+        Utils.apiCall(self.ENDPOINT, 'POST', { key: file.uploadedName }, function (data) {
+          resolve();
+        }, function () {
+          reject();
+            // TODO: Handle failure to register photo as uploaded
+        });
       });
     });
+
+    Ember.RSVP.allSettled(promises).then(processedList);
   }
 });
 

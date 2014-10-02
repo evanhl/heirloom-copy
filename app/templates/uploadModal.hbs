@@ -11,7 +11,7 @@
       </div>
       <div class="right">
         <button class="secondary" {{action 'close'}}>{{t 'cancel'}}</button>
-        <button class="take-action" {{bind-attr disabled=readyToAdd}} {{action 'complete'}}>{{t 'upload.modal.addButton'}}</button>
+        <button {{bind-attr class=":take-action waiting"}} {{bind-attr disabled=disableAdd}} {{action 'complete'}}>{{t 'upload.modal.addButton'}}</button>
       </div>
     </div>
     <div class="nav-filler"></div>

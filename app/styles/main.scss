@@ -387,6 +387,10 @@ button {
 
   &:disabled {
     opacity: 0.3;
+
+    &.waiting {
+      animation: fadeinout 1.3s ease-in-out infinite;
+    }
   }
 
   &:hover:enabled {
@@ -397,6 +401,12 @@ button {
     transform: translateY(1px);
     box-shadow: none;
   }
+}
+
+@keyframes fadeinout {
+  0%      { opacity: 0.6; }
+  50%     { opacity: 0.3; }
+  100%    { opacity: 0.6; }
 }
 
 // Styles for headroom.js (retractable sticky post creation widget)
