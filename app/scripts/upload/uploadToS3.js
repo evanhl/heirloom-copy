@@ -14,6 +14,10 @@ App.Upload.UploadToS3 = Ember.Object.extend({
 
   dropzoneEl: null,
   totalFiles: 0,
+  failedFiles: 0,
+  processingFiles: function () {
+    return this.get('totalFiles') - this.get('failedFiles') - this.get('successfulUploads.length');
+  }.property('successfulUploads.length', 'failedFiles', 'totalFiles'),
   successfulUploads: null,
 
   init: function () {
@@ -58,7 +62,7 @@ App.Upload.UploadToS3 = Ember.Object.extend({
       url: 'http://fake.url',
       autoProcessQueue: true,
       acceptedFiles: 'image/jpeg,image/pjpeg,image/png',
-      previewTemplate: '<div class="photo dz-preview dz-file-preview"><img data-dz-thumbnail /><div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div></div>',
+      previewTemplate: '<div class="photo dz-preview dz-file-preview"><img data-dz-thumbnail /><div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div><div class="dz-error-message"><span data-dz-errormessage></span></div></div></div>',
       thumbnailWidth: 372,
       thumbnailHeight: 372,
       addRemoveLinks: true,
@@ -73,6 +77,7 @@ App.Upload.UploadToS3 = Ember.Object.extend({
     dropzone.on('success', $.proxy(this.onSuccess, this));
     dropzone.on('addedfile', $.proxy(this.onAddedFile, this));
     dropzone.on('removedfile', $.proxy(this.onRemovedFile, this));
+    dropzone.on('error', $.proxy(this.onError, this));
   },
 
   onProcessing: function () {
@@ -103,8 +108,16 @@ App.Upload.UploadToS3 = Ember.Object.extend({
   },
 
   onRemovedFile: function (file) {
+    if (file.status === "error") {
+      this.set('failedFiles', this.get('failedFiles') - 1);
+    }
+
     this.set('totalFiles', this.get('totalFiles') - 1);
     this.get('successfulUploads').removeObject(file);
+  },
+
+  onError: function () {
+    this.set('failedFiles', this.get('failedFiles') + 1);
   },
 
   createPhotoRecords: function () {

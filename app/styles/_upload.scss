@@ -19,6 +19,7 @@
   }
 }
 
+// TODO: remove unused style below
 
 /* The MIT License */
 .dropzone,
@@ -138,13 +139,14 @@
 .dropzone .dz-preview .dz-error-message,
 .dropzone-previews .dz-preview .dz-error-message {
   display: none;
-  absolute: top -5px left -20px;
   background: rgba(245,245,245,0.8);
   padding: 8px 10px;
   color: #800;
   min-width: 140px;
   max-width: 500px;
   z-index: 500;
+  position: absolute;
+  bottom: 0;
 }
 .dropzone .dz-preview:hover.dz-error .dz-error-message,
 .dropzone-previews .dz-preview:hover.dz-error .dz-error-message {
@@ -295,8 +297,7 @@
   -ms-filter: none;
   filter: none;
 }
-.dropzone a.dz-remove,
-.dropzone-previews a.dz-remove {
+.dropzone .dz-image-preview a.dz-remove, .dropzone .dz-error a.dz-remove {
   display: block;
   position: absolute;
   top: 0.5em;
@@ -316,6 +317,14 @@
     // font-size: 10px;
   }
 }
+
+.dropzone .dz-error a.dz-remove {
+  &:after {
+    color: red;
+  }
+}
+
+
 .dropzone a.dz-remove:hover,
 .dropzone-previews a.dz-remove:hover {
   color: #666;

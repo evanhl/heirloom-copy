@@ -7,11 +7,11 @@
     </div>
     <div class="bottom-bar">
       <div class="left">
-        {{successCount}} / {{totalFiles}}
+        <span class="count-text"><span class="alternate">{{successCount}} /</span> {{t 'photos.count' countBinding='totalFiles'}}</span>
       </div>
       <div class="right">
         <button class="secondary" {{action 'close'}}>{{t 'cancel'}}</button>
-        <button class="take-action" {{bind-attr disabled=noneSuccessful}} {{action 'complete'}}>{{t 'upload.modal.addButton'}}</button>
+        <button class="take-action" {{bind-attr disabled=readyToAdd}} {{action 'complete'}}>{{t 'upload.modal.addButton'}}</button>
       </div>
     </div>
     <div class="nav-filler"></div>

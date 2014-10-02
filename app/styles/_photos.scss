@@ -64,6 +64,8 @@
 
 .photo {
   width: 186px;
+  height: 186px;
+  vertical-align: top;
   margin: 0 $photo-margin $photo-margin 0;
   display: inline-block;
   position: relative;
@@ -76,4 +78,8 @@
   font-weight: bold;
   font-size: 14px;
   letter-spacing: 2px;
+
+  .alternate {
+    color: $default-text-color;
+  }
 }
