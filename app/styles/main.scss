@@ -439,6 +439,7 @@ button {
   }
 
   &.add-to-album {
+    min-width: 140px;
 
     &:before {
       content: ''; // &nbsp;
