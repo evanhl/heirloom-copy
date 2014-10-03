@@ -467,6 +467,25 @@ module.exports = function(grunt) {
         src: ['<%= config.app %>/scripts/main.js'],
         dest: '.tmp/mainWithoutConfig.js'
       }
+    },
+
+    sprite: {
+      '1x': {
+        src: ['<%= config.app %>/images/sprites/*.png'],
+        destImg: '<%= config.app %>/images/spritesheet.png',
+        destCSS: '<%= config.app %>/styles/_spritesheet.scss',
+        algorithm: 'binary-tree',
+        cssFormat: 'scss',
+        padding: 1
+      },
+      '2x': {
+        src: ['<%= config.app %>/images/sprites-2x/*.png'],
+        destImg: '<%= config.app %>/images/spritesheet-2x.png',
+        destCSS: '<%= config.app %>/styles/_spritesheet-2x.scss',
+        algorithm: 'binary-tree',
+        cssFormat: 'scss',
+        padding: 2
+      }
     }
   });
 
