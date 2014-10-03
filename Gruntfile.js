@@ -486,7 +486,7 @@ module.exports = function(grunt) {
 
     sprite: {
       '1x': {
-        src: ['<%= config.app %>/images/sprites/*.png'],
+        src: ['<%= config.app %>/images/sprites-1x/*.png'],
         destImg: '<%= config.app %>/images/spritesheet.png',
         destCSS: '<%= config.app %>/styles/_spritesheet.scss',
         algorithm: 'binary-tree',
