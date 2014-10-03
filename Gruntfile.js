@@ -148,7 +148,8 @@ module.exports = function(grunt) {
           ]
         }]
       },
-      server: '.tmp'
+      server: '.tmp',
+      '1x_sprites': '<%= config.app %>/images/sprites-1x/*2x.png'
     },
 
     // Make sure code styles are up to par and there are no obvious mistakes
@@ -391,6 +392,20 @@ module.exports = function(grunt) {
           '{,*/}*.css',
           'fonts/*.woff'
         ]
+      },
+      '1x_sprites': {
+        expand: true,
+        dot: true,
+        cwd: '<%= config.app %>/images/',
+        src: [
+          'sprites-1x/*2x.png'
+        ],
+        dest: 'sprites-1x/',
+        rename: function (dest, src, opts) {
+          var newPath = opts.cwd + dest + src.substring(src.lastIndexOf('/') + 1).replace('-2x', '');
+          grunt.log.write(newPath + '\n');
+          return newPath;
+        }
       }
     },
 
@@ -486,6 +501,17 @@ module.exports = function(grunt) {
         cssFormat: 'scss',
         padding: 2
       }
+    },
+
+    image_resize: {
+      resize: {
+        options: {
+          width: '50%',
+          height: '50%'
+        },
+        src: '<%= config.app %>/images/sprites-2x/*.png',
+        dest: '<%= config.app %>/images/sprites-1x/',
+      }
     }
   });
 
@@ -523,6 +549,13 @@ module.exports = function(grunt) {
       'mocha'
     ]);
   });
+
+  grunt.registerTask('genSprites', [
+    'image_resize',
+    'copy:1x_sprites',
+    'clean:1x_sprites',
+    'sprite'
+  ]);
 
   grunt.registerTask('resolveDependencies', [
     'directives',
