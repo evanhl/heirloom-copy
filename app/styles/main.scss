@@ -369,6 +369,14 @@ img.detail {
   .count {
     bottom: 20px;
     font-size: 14px;
+
+    &:before {
+      content: '';
+      display: inline-block;
+      @include sprite-retina($album_icon, $album_icon-2x);
+      margin-bottom: -3px;
+      margin-right: 5px;
+    }
   }
 }
 
