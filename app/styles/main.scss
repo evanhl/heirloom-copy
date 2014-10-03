@@ -11,17 +11,6 @@ $topbar-bg-color: #eee;
 @import 'foundation/scss/foundation/components/forms';
 // @import 'foundation/scss/foundation/components/top-bar';
 
-
-@import 'vars';
-@import 'fonts';
-@import 'spinner';
-@import 'nav';
-@import 'conversations';
-@import 'photos';
-@import 'select2';
-@import 'share';
-@import 'upload';
-
 @import 'spritesheet';
 @import 'spritesheet-2x';
 
@@ -38,6 +27,16 @@ $topbar-bg-color: #eee;
     @include sprite-background-size($sprite);
   }
 }
+
+@import 'vars';
+@import 'fonts';
+@import 'spinner';
+@import 'nav';
+@import 'conversations';
+@import 'photos';
+@import 'select2';
+@import 'share';
+@import 'upload';
 
 body {
   background: white;

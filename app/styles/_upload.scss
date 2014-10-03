@@ -333,6 +333,17 @@
   vertical-align: top;
   cursor: pointer;
   margin: 0 18px 18px 0;
+  position: relative;
+
+  &:after {
+    content: '';
+    position: absolute;
+    @include sprite-retina($new_album_plus, $new_album_plus-2x);
+    top: 93px;
+    left: 93px;
+    margin-top: -$new_album_plus-height / 2;
+    margin-left: -$new_album_plus-width / 2;
+  }
 }
 
 .dropzone a.dz-remove:hover,
