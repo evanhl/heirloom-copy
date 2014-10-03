@@ -39,10 +39,6 @@ $topbar-bg-color: #eee;
   }
 }
 
-.add_to_album {
-  @include sprite-retina($add_to_album, $add_to_album-2x);
-}
-
 body {
   background: white;
   font-family: Brandon Text, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -275,23 +271,20 @@ img.detail {
     top: 0;
     right: 0;
     margin: 16px;
-    // TODO: replace with sprite
-    background-size: 36px 36px;
     cursor: pointer;
 
     &:hover, &.selected {
-      // TODO: replace with sprite
-      background-image: url(/images/ios7-checkmark-hover.svg);
+      @include sprite-retina($checkmark_active, $checkmark_active-2x);
     }
   }
 }
 
 .gallery-photo, .thumb-photo, .selection-mode .photo, .photo:hover {
   .select {
-    background-image: url(/images/ios7-checkmark.svg);
+    @include sprite-retina($checkmark_hover, $checkmark_hover-2x);
 
     &:hover, &.selected {
-      background-image: url(/images/ios7-checkmark-hover.svg);
+      @include sprite-retina($checkmark_active, $checkmark_active-2x);
     }
   }
 }
