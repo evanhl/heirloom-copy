@@ -11,6 +11,11 @@ app.use(function(req, res, next) {
     req.url = '/index.html';
   }
 
+  res.set({
+    'Access-Control-Allow-Origin': '*',
+    'Cache-Control': 'public, max-age=315360000' // 10 years
+  });
+
   next();
 });
 app.use(express.static(__dirname + '/dist'));
