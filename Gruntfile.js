@@ -512,6 +512,16 @@ module.exports = function(grunt) {
         src: '<%= config.app %>/images/sprites-2x/*.png',
         dest: '<%= config.app %>/images/sprites-1x/',
       }
+    },
+
+    cdn: {
+      options: {
+        cdn: '<%= process.env.FASTLY_CDN_URL || "" %>',
+        flatten: false
+      },
+      dist: {
+        src: ['<%= config.dist %>/*.html', '<%= config.dist %>/styles/**/*.css']
+      }
     }
   });
 
@@ -573,7 +583,8 @@ module.exports = function(grunt) {
     'copy:dist',
     'rev',
     'usemin',
-    'htmlmin'
+    'cdn:dist',
+    'htmlmin',
   ]);
 
   grunt.registerTask('default', [
