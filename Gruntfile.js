@@ -516,7 +516,7 @@ module.exports = function(grunt) {
 
     cdn: {
       options: {
-        cdn: '<%= process.env.FASTLY_CDN_URL || "" %>',
+        cdn: '"https://<%= process.env.FASTLY_CDN_URL" || "" %>',
         flatten: false
       },
       dist: {
