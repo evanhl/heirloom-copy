@@ -1,5 +1,6 @@
 // Really thin node/express server to serve up static resources
 
+var newrelic = require('newrelic');
 var express = require('express');
 var compress = require('compression')();
 var port = process.env.PORT || 3000;
