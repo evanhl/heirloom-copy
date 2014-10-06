@@ -238,19 +238,19 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
 /*
  *
  * More info at [www.dropzonejs.com](http://www.dropzonejs.com)
- * 
- * Copyright (c) 2012, Matias Meno  
- * 
+ *
+ * Copyright (c) 2012, Matias Meno
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -279,9 +279,9 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
 
     /*
     This is a list of all available events you can register on a dropzone object.
-    
+
     You can register an event handler like this:
-    
+
         dropzone.on("dragEnter", function() { });
      */
 
@@ -360,15 +360,13 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
         srcRatio = file.width / file.height;
         info.optWidth = this.options.thumbnailWidth;
         info.optHeight = this.options.thumbnailHeight;
-        if (!((info.optWidth != null) && (info.optHeigh != null))) {
-          if ((info.optWidth == null) && (info.optHeight == null)) {
-            info.optWidth = info.srcWidth;
-            info.optHeight = info.srcHeight;
-          } else if (info.optWidth == null) {
-            info.optWidth = srcRatio * info.optHeight;
-          } else if (info.optHeight == null) {
-            info.optHeight = (1 / srcRatio) * info.optWidth;
-          }
+        if ((info.optWidth == null) && (info.optHeight == null)) {
+          info.optWidth = info.srcWidth;
+          info.optHeight = info.srcHeight;
+        } else if (info.optWidth == null) {
+          info.optWidth = srcRatio * info.optHeight;
+        } else if (info.optHeight == null) {
+          info.optHeight = (1 / srcRatio) * info.optWidth;
         }
         trgRatio = info.optWidth / info.optHeight;
         if (file.height < info.optHeight || file.width < info.optWidth) {
@@ -1236,7 +1234,9 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
             canvas.width = resizeInfo.trgWidth;
             canvas.height = resizeInfo.trgHeight;
             drawImageIOSFix(ctx, img, (_ref = resizeInfo.srcX) != null ? _ref : 0, (_ref1 = resizeInfo.srcY) != null ? _ref1 : 0, resizeInfo.srcWidth, resizeInfo.srcHeight, (_ref2 = resizeInfo.trgX) != null ? _ref2 : 0, (_ref3 = resizeInfo.trgY) != null ? _ref3 : 0, resizeInfo.trgWidth, resizeInfo.trgHeight);
-            thumbnail = canvas.toDataURL("image/png");
+            thumbnail = canvas.toDataURL("image/jpeg");
+            img = undefined;
+            canvase = undefined;
             _this.emit("thumbnail", file, thumbnail);
             if (callback != null) {
               return callback();
@@ -1522,7 +1522,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
 
   })(Em);
 
-  Dropzone.version = "3.10.0";
+  Dropzone.version = "3.10.2";
 
   Dropzone.options = {};
 
@@ -1753,7 +1753,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
 
 
   /*
-  
+
   Bugfix for iOS 6 and 7
   Source: http://stackoverflow.com/questions/11929099/html5-canvas-drawimage-ratio-bug-ios
   based on the work of https://github.com/stomita/ios-imagefile-megapixel
