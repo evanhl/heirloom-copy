@@ -102,7 +102,7 @@ $contact-result-height: 88px;
   width: 12px;
   height: 13px;
   font-size: 1px;
-  background: url(select2.png) right top no-repeat;
+  background: url(/images/select2.png) right top no-repeat;
   outline: none;
 }
 
@@ -145,7 +145,7 @@ $contact-result-height: 88px;
 
 
 .select2-more-results.select2-active {
-    background: #f4f4f4 url('spinner.gif') no-repeat 100%;
+    background: #f4f4f4 url('/images/spinner.gif') no-repeat 100%;
 }
 
 .select2-more-results {
