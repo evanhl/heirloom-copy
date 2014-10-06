@@ -356,6 +356,15 @@ module.exports = function(grunt) {
     //     }
     // },
     concat: {
+      options: {
+        // process: function (src, filepath) {
+        //   if (filepath.split(/\./).pop === 'js') {
+        //     return src + ';\n';
+        //   }
+        //   return src;
+        // }
+        separator: ';\n'
+      },
       config: {
         src: [
           '<%= config.app %>/scripts/config/<%= process.env.WEB_ENV || "development" %>.js',
