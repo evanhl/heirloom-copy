@@ -277,7 +277,7 @@ module.exports = function(grunt) {
         root: '.',
         dest: '<%= config.dist %>'
       },
-      html: '<%= config.app %>/index.html'
+      html: ['<%= config.app %>/index.html', '<%= config.app %>/preLaunch.html']
     },
 
     // Performs rewrites based on rev and the useminPrepare configuration
@@ -362,7 +362,7 @@ module.exports = function(grunt) {
           '.tmp/mainWithoutConfig.js'
         ],
         dest: '.tmp/main.js'
-      },
+      }
     },
 
     // Copies remaining files to places other tasks can use
@@ -478,9 +478,13 @@ module.exports = function(grunt) {
 
     // sprockets for JS dependency management
     directives: {
-      files: {
-        src: ['<%= config.app %>/scripts/main.js'],
+      foo: {
+        src: '<%= config.app %>/scripts/main.js',
         dest: '.tmp/mainWithoutConfig.js'
+      },
+      bar: {
+        src: '<%= config.app %>/scripts/preLaunch.js',
+        dest: '.tmp/preLaunch.js'
       }
     },
 

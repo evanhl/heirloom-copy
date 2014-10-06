@@ -5,11 +5,12 @@ var express = require('express');
 var compress = require('compression')();
 var port = process.env.PORT || 3000;
 var app = express();
+var indexFile = (process.env.WEB_ENV === "prelaunch") ? '/preLaunch.html' : '/index.html';
 
 app.use(compress);
 app.use(function(req, res, next) {
   if (!req.url.match(/\.js$|\.css$|\.svg$|\.png$|\.jpg$|\.html|\.woff$/)) {
-    req.url = '/index.html';
+    req.url = indexFile;
   }
 
   res.set({

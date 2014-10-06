@@ -67,7 +67,7 @@ App.Upload.UploadToS3 = Ember.Object.extend(Ember.Evented, {
       thumbnailWidth: 186,
       thumbnailHeight: 186,
       addRemoveLinks: true,
-      parallelUploads: 4,
+      parallelUploads: 2,
       dictCancelUpload: "",
       dictRemoveFile: ""
     });
