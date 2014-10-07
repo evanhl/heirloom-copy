@@ -517,6 +517,7 @@ module.exports = function(grunt) {
         src: ['<%= config.app %>/images/sprites-1x/*.png'],
         destImg: '<%= config.app %>/images/spritesheet.png',
         destCSS: '<%= config.app %>/styles/_spritesheet.scss',
+        imgPath: '/images/spritesheet.png',
         algorithm: 'binary-tree',
         cssFormat: 'scss',
         padding: 1
@@ -525,6 +526,7 @@ module.exports = function(grunt) {
         src: ['<%= config.app %>/images/sprites-2x/*.png'],
         destImg: '<%= config.app %>/images/spritesheet-2x.png',
         destCSS: '<%= config.app %>/styles/_spritesheet-2x.scss',
+        imgPath: '/images/spritesheet-2x.png',
         algorithm: 'binary-tree',
         cssFormat: 'scss',
         padding: 2
@@ -533,6 +535,7 @@ module.exports = function(grunt) {
         src: ['<%= config.app %>/images/spritesPreLaunch-1x/*.png'],
         destImg: '<%= config.app %>/images/spritesheetPreLaunch.png',
         destCSS: '<%= config.app %>/styles/_spritesheetPreLaunch.scss',
+        imgPath: '/images/spritesheetPreLaunch.png',
         algorithm: 'binary-tree',
         cssFormat: 'scss',
         padding: 1
@@ -541,6 +544,7 @@ module.exports = function(grunt) {
         src: ['<%= config.app %>/images/spritesPreLaunch-2x/*.png'],
         destImg: '<%= config.app %>/images/spritesheetPreLaunch-2x.png',
         destCSS: '<%= config.app %>/styles/_spritesheetPreLaunch-2x.scss',
+        imgPath: '/images/spritesheetPreLaunch-2x.png',
         algorithm: 'binary-tree',
         cssFormat: 'scss',
         padding: 2
