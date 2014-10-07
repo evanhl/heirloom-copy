@@ -21,6 +21,14 @@
 @import 'vars';
 @import 'fonts';
 
+@font-face {
+  font-family: 'Merriweather';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Merriweather Italic'), local('Merriweather-Italic'), url(http://fonts.gstatic.com/s/merriweather/v7/So5lHxHT37p2SS4-t60SlGfrnYWAzH6tTbHZfcsRIsM.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
 body {
   background: white;
   font-family: Brandon Text, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -61,6 +69,15 @@ video {
   background: rgba(0,0,0,0.50);
   width: 100%;
   height: 100%;
+}
+
+.first .container {
+  height: 56.2678063vw;
+  max-height: 100vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 section {
@@ -167,7 +184,7 @@ $social-icon-spacing: 25px;
 
 .hp-center {
   position: absolute;
-  top: 50vh;
+  top: 50%;
   left: 50%;
   margin-left: -$play_button-width / 2;
   margin-top: -$play_button-height / 2;
@@ -186,7 +203,7 @@ $social-icon-spacing: 25px;
   position: absolute;
   left: 50%;
   top: 700px;
-  top: 90vh;
+  top: 87.5%;
   margin-left: -$down_carrot_white-width / 2;
 }
 
@@ -199,11 +216,17 @@ $social-icon-spacing: 25px;
   position: absolute;
   width: 50%;
   margin: 0 25%;
-  top: 20vh;
+  top: 20%;
   text-align: center;
 }
 
 h1 {
   color: white;
   font-weight: 400;
+
+  em {
+    font-family: 'Merriweather', serif;
+    font-weight: 400;
+    font-size: 0.92em;
+  }
 }
