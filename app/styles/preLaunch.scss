@@ -69,7 +69,7 @@ body {
 
 .third {
   height: 56.2678063vw; /* 790 / 1404px*/
-  background: turquoise;
+  background: white;
 }
 
 video {
@@ -82,7 +82,7 @@ video {
   position: absolute;
   top: 0;
   left: 0;
-  background: rgba(0,0,0,0.50);
+  background: rgba(0,0,0,0.45);
   width: 100%;
   height: 100%;
 }
@@ -102,7 +102,7 @@ section {
 }
 
 nav.top-nav {
-  margin: 0 43px 0 32px;
+  margin: 8px 33px 0 22px;
 
   .left {
     float: left;
@@ -200,7 +200,7 @@ $social-icon-spacing: 25px;
 
 .hp-center {
   position: absolute;
-  top: 50%;
+  top: 56%;
   left: 50%;
   margin-left: -$play_button-width / 2;
   margin-top: -$play_button-height / 2;
@@ -238,7 +238,7 @@ $social-icon-spacing: 25px;
   position: absolute;
   width: 50%;
   margin: 0 25%;
-  top: 20%;
+  top: 25%;
   text-align: center;
 }
 
@@ -259,6 +259,7 @@ $social-icon-spacing: 25px;
 h1 {
   color: white;
   font-weight: 400;
+  font-size: 2.5em;
 
   em {
     font-family: 'Merriweather', serif;
