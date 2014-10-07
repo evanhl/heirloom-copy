@@ -29,7 +29,7 @@ body {
 
 .first {
   background: blue;
-  border-bottom: 1vh solid orange;
+  border-bottom: 1vh solid $highlight-color;
   margin: 0;
   padding: 0;
   position: relative;
@@ -39,7 +39,7 @@ body {
 
 .second {
   background: cyan;
-  border-bottom: 1vh solid orange;
+  border-bottom: 1vh solid $highlight-color;
   height: 56.2678063vw; /* 790 / 1404px*/
 }
 
@@ -163,4 +163,47 @@ $social-icon-spacing: 25px;
   &:hover {
     @include sprite-retina($notify_me_hover, $notify_me_hover-2x);
   }
+}
+
+.hp-center {
+  position: absolute;
+  top: 50vh;
+  left: 50%;
+  margin-left: -$play_button-width / 2;
+  margin-top: -$play_button-height / 2;
+}
+
+.hp-play {
+  display: inline-block;
+  @include sprite-retina($play_button, $play_button-2x);
+
+  &:hover {
+    @include sprite-retina($play_button_hover, $play_button_hover-2x);
+  }
+}
+
+.hp-bottom {
+  position: absolute;
+  left: 50%;
+  top: 700px;
+  top: 90vh;
+  margin-left: -$down_carrot_white-width / 2;
+}
+
+.hp-next {
+  display: inline-block;
+  @include sprite-retina($down_carrot_white, $down_carrot_white-2x);
+}
+
+.hp-copy {
+  position: absolute;
+  width: 50%;
+  margin: 0 25%;
+  top: 20vh;
+  text-align: center;
+}
+
+h1 {
+  color: white;
+  font-weight: 400;
 }
