@@ -50,24 +50,34 @@ body {
 }
 
 .first {
-  background: blue;
-  border-bottom: 1vh solid $highlight-color;
+  border-bottom: 2px solid $highlight-color;
   margin: 0;
   padding: 0;
   position: relative;
   overflow-y: hidden;
+  height: 550px;
   height: 56.2678063vw; // 790 / 1404px
+}
+
+.img-cont {
+  width: 100%;
+
+  img {
+    width: 100%;
+  }
 }
 
 .second {
   background-image: url(/images/homepage-product-bg.jpg);
   background-size: cover;
-  border-bottom: 1vh solid $highlight-color;
+  border-bottom: 2px solid $highlight-color;
+  height: 600px;
   height: 56.2678063vw; /* 790 / 1404px*/
   position: relative;
 }
 
 .third {
+  height: 600px;
   height: 56.2678063vw; /* 790 / 1404px*/
   background: white;
 }
@@ -76,18 +86,23 @@ video {
   margin: 0;
   padding: 0;
   border: 0;
+  width: 100%;
+  overflow: hidden;
 }
 
 .overlay {
   position: absolute;
   top: 0;
   left: 0;
+  background: black;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
   background: rgba(0,0,0,0.45);
   width: 100%;
   height: 100%;
 }
 
 .flex-height-cont {
+  height: 600px; // fallback
   height: 56.2678063vw;
   max-height: 100vh;
   width: 100%;
@@ -101,18 +116,17 @@ section {
   width: 100%;
 }
 
-nav.top-nav {
+.top-nav {
   margin: 8px 33px 0 22px;
+}
 
-  .left {
-    float: left;
-  }
+.left {
+  float: left;
+}
 
-  .right {
-    float: right;
-    margin-top: 24px;
-  }
-
+.right {
+  float: right;
+  margin-top: 24px;
 }
 
 .hp-tag {
@@ -219,7 +233,7 @@ $social-icon-spacing: 25px;
   position: absolute;
   left: 50%;
   top: 700px;
-  top: 87.5%;
+  top: 85%;
   margin-left: -$down_carrot_white-width / 2;
 }
 
@@ -236,8 +250,8 @@ $social-icon-spacing: 25px;
 
 .hp-copy {
   position: absolute;
-  width: 50%;
-  margin: 0 25%;
+  width: 60%;
+  margin: 0 20%;
   top: 25%;
   text-align: center;
 }

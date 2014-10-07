@@ -93,6 +93,7 @@ module.exports = function(grunt) {
               modRewrite(['!\\.html|\\.js|\\.svg|\\.css|\\.ico|\\.png|\\.jpg|\\.woff$ /index.html [L]']),
               connect.static('.tmp'),
               connect().use('/bower_components', connect.static('./bower_components')),
+              connect().use('/vendor', connect.static('./vendor')),
               connect.static(config.app)
             ];
           }
