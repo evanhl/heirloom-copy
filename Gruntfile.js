@@ -149,7 +149,8 @@ module.exports = function(grunt) {
         }]
       },
       server: '.tmp',
-      '1x_sprites': '<%= config.app %>/images/sprites-1x/*2x.png'
+      '1xSprites': '<%= config.app %>/images/sprites-1x/*2x.png',
+      '1xSpritesPreLaunch': '<%= config.app %>/images/spritesPreLaunch-1x/*2x.png'
     },
 
     // Make sure code styles are up to par and there are no obvious mistakes
@@ -402,7 +403,7 @@ module.exports = function(grunt) {
           'fonts/*.woff'
         ]
       },
-      '1x_sprites': {
+      '1xSprites': {
         expand: true,
         dot: true,
         cwd: '<%= config.app %>/images/',
@@ -410,6 +411,20 @@ module.exports = function(grunt) {
           'sprites-1x/*2x.png'
         ],
         dest: 'sprites-1x/',
+        rename: function (dest, src, opts) {
+          var newPath = opts.cwd + dest + src.substring(src.lastIndexOf('/') + 1).replace('-2x', '');
+          grunt.log.write(newPath + '\n');
+          return newPath;
+        }
+      },
+      '1xSpritesPreLaunch': {
+        expand: true,
+        dot: true,
+        cwd: '<%= config.app %>/images/',
+        src: [
+          'spritesPreLaunch-1x/*2x.png'
+        ],
+        dest: 'spritesPreLaunch-1x/',
         rename: function (dest, src, opts) {
           var newPath = opts.cwd + dest + src.substring(src.lastIndexOf('/') + 1).replace('-2x', '');
           grunt.log.write(newPath + '\n');
@@ -513,6 +528,22 @@ module.exports = function(grunt) {
         algorithm: 'binary-tree',
         cssFormat: 'scss',
         padding: 2
+      },
+      '1xPreLaunch': {
+        src: ['<%= config.app %>/images/spritesPreLaunch-1x/*.png'],
+        destImg: '<%= config.app %>/images/spritesheetPreLaunch.png',
+        destCSS: '<%= config.app %>/styles/_spritesheetPreLaunch.scss',
+        algorithm: 'binary-tree',
+        cssFormat: 'scss',
+        padding: 1
+      },
+      '2xPreLaunch': {
+        src: ['<%= config.app %>/images/spritesPreLaunch-2x/*.png'],
+        destImg: '<%= config.app %>/images/spritesheetPreLaunch-2x.png',
+        destCSS: '<%= config.app %>/styles/_spritesheetPreLaunch-2x.scss',
+        algorithm: 'binary-tree',
+        cssFormat: 'scss',
+        padding: 2
       }
     },
 
@@ -524,6 +555,14 @@ module.exports = function(grunt) {
         },
         src: '<%= config.app %>/images/sprites-2x/*.png',
         dest: '<%= config.app %>/images/sprites-1x/',
+      },
+      resizePreLaunch: {
+        options: {
+          width: '50%',
+          height: '50%'
+        },
+        src: '<%= config.app %>/images/spritesPreLaunch-2x/*.png',
+        dest: '<%= config.app %>/images/spritesPreLaunch-1x/',
       }
     },
 
@@ -575,8 +614,10 @@ module.exports = function(grunt) {
 
   grunt.registerTask('genSprites', [
     'image_resize',
-    'copy:1x_sprites',
-    'clean:1x_sprites',
+    'copy:1xSprites',
+    'clean:1xSprites',
+    'copy:1xSpritesPreLaunch',
+    'clean:1xSpritesPreLaunch',
     'sprite'
   ]);
 

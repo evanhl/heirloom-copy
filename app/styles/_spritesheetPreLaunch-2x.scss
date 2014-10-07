@@ -1,0 +1,167 @@
+/*
+SCSS variables are information about icon's compiled state, stored under its original file name
+
+.icon-home {
+  width: $icon-home-width;
+}
+
+The large array-like variables contain all information about a single icon
+$icon-home: x y offset_x offset_y width height total_width total_height image_path;
+*/
+$down_carrot_white-2x-x: 456px;
+$down_carrot_white-2x-y: 127px;
+$down_carrot_white-2x-offset-x: -456px;
+$down_carrot_white-2x-offset-y: -127px;
+$down_carrot_white-2x-width: 164px;
+$down_carrot_white-2x-height: 82px;
+$down_carrot_white-2x-total-width: 1008px;
+$down_carrot_white-2x-total-height: 294px;
+$down_carrot_white-2x-image: '../images/spritesheetPreLaunch-2x.png';
+$down_carrot_white-2x: 456px 127px -456px -127px 164px 82px 1008px 294px '../images/spritesheetPreLaunch-2x.png';
+$fb_logo-2x-x: 864px;
+$fb_logo-2x-y: 127px;
+$fb_logo-2x-offset-x: -864px;
+$fb_logo-2x-offset-y: -127px;
+$fb_logo-2x-width: 24px;
+$fb_logo-2x-height: 48px;
+$fb_logo-2x-total-width: 1008px;
+$fb_logo-2x-total-height: 294px;
+$fb_logo-2x-image: '../images/spritesheetPreLaunch-2x.png';
+$fb_logo-2x: 864px 127px -864px -127px 24px 48px 1008px 294px '../images/spritesheetPreLaunch-2x.png';
+$fb_logo_hover-2x-x: 890px;
+$fb_logo_hover-2x-y: 127px;
+$fb_logo_hover-2x-offset-x: -890px;
+$fb_logo_hover-2x-offset-y: -127px;
+$fb_logo_hover-2x-width: 24px;
+$fb_logo_hover-2x-height: 48px;
+$fb_logo_hover-2x-total-width: 1008px;
+$fb_logo_hover-2x-total-height: 294px;
+$fb_logo_hover-2x-image: '../images/spritesheetPreLaunch-2x.png';
+$fb_logo_hover-2x: 890px 127px -890px -127px 24px 48px 1008px 294px '../images/spritesheetPreLaunch-2x.png';
+$heirloom_logo_shadow-2x-x: 456px;
+$heirloom_logo_shadow-2x-y: 0px;
+$heirloom_logo_shadow-2x-offset-x: -456px;
+$heirloom_logo_shadow-2x-offset-y: 0px;
+$heirloom_logo_shadow-2x-width: 552px;
+$heirloom_logo_shadow-2x-height: 125px;
+$heirloom_logo_shadow-2x-total-width: 1008px;
+$heirloom_logo_shadow-2x-total-height: 294px;
+$heirloom_logo_shadow-2x-image: '../images/spritesheetPreLaunch-2x.png';
+$heirloom_logo_shadow-2x: 456px 0px -456px 0px 552px 125px 1008px 294px '../images/spritesheetPreLaunch-2x.png';
+$instagram_logo-2x-x: 962px;
+$instagram_logo-2x-y: 127px;
+$instagram_logo-2x-offset-x: -962px;
+$instagram_logo-2x-offset-y: -127px;
+$instagram_logo-2x-width: 44px;
+$instagram_logo-2x-height: 46px;
+$instagram_logo-2x-total-width: 1008px;
+$instagram_logo-2x-total-height: 294px;
+$instagram_logo-2x-image: '../images/spritesheetPreLaunch-2x.png';
+$instagram_logo-2x: 962px 127px -962px -127px 44px 46px 1008px 294px '../images/spritesheetPreLaunch-2x.png';
+$instagram_logo_hover-2x-x: 916px;
+$instagram_logo_hover-2x-y: 127px;
+$instagram_logo_hover-2x-offset-x: -916px;
+$instagram_logo_hover-2x-offset-y: -127px;
+$instagram_logo_hover-2x-width: 44px;
+$instagram_logo_hover-2x-height: 46px;
+$instagram_logo_hover-2x-total-width: 1008px;
+$instagram_logo_hover-2x-total-height: 294px;
+$instagram_logo_hover-2x-image: '../images/spritesheetPreLaunch-2x.png';
+$instagram_logo_hover-2x: 916px 127px -916px -127px 44px 46px 1008px 294px '../images/spritesheetPreLaunch-2x.png';
+$notify_me-2x-x: 622px;
+$notify_me-2x-y: 127px;
+$notify_me-2x-offset-x: -622px;
+$notify_me-2x-offset-y: -127px;
+$notify_me-2x-width: 240px;
+$notify_me-2x-height: 64px;
+$notify_me-2x-total-width: 1008px;
+$notify_me-2x-total-height: 294px;
+$notify_me-2x-image: '../images/spritesheetPreLaunch-2x.png';
+$notify_me-2x: 622px 127px -622px -127px 240px 64px 1008px 294px '../images/spritesheetPreLaunch-2x.png';
+$notify_me_hover-2x-x: 0px;
+$notify_me_hover-2x-y: 230px;
+$notify_me_hover-2x-offset-x: 0px;
+$notify_me_hover-2x-offset-y: -230px;
+$notify_me_hover-2x-width: 240px;
+$notify_me_hover-2x-height: 64px;
+$notify_me_hover-2x-total-width: 1008px;
+$notify_me_hover-2x-total-height: 294px;
+$notify_me_hover-2x-image: '../images/spritesheetPreLaunch-2x.png';
+$notify_me_hover-2x: 0px 230px 0px -230px 240px 64px 1008px 294px '../images/spritesheetPreLaunch-2x.png';
+$play_button-2x-x: 228px;
+$play_button-2x-y: 0px;
+$play_button-2x-offset-x: -228px;
+$play_button-2x-offset-y: 0px;
+$play_button-2x-width: 226px;
+$play_button-2x-height: 226px;
+$play_button-2x-total-width: 1008px;
+$play_button-2x-total-height: 294px;
+$play_button-2x-image: '../images/spritesheetPreLaunch-2x.png';
+$play_button-2x: 228px 0px -228px 0px 226px 226px 1008px 294px '../images/spritesheetPreLaunch-2x.png';
+$play_button_hover-2x-x: 0px;
+$play_button_hover-2x-y: 0px;
+$play_button_hover-2x-offset-x: 0px;
+$play_button_hover-2x-offset-y: 0px;
+$play_button_hover-2x-width: 226px;
+$play_button_hover-2x-height: 228px;
+$play_button_hover-2x-total-width: 1008px;
+$play_button_hover-2x-total-height: 294px;
+$play_button_hover-2x-image: '../images/spritesheetPreLaunch-2x.png';
+$play_button_hover-2x: 0px 0px 0px 0px 226px 228px 1008px 294px '../images/spritesheetPreLaunch-2x.png';
+$twitter_logo-2x-x: 242px;
+$twitter_logo-2x-y: 230px;
+$twitter_logo-2x-offset-x: -242px;
+$twitter_logo-2x-offset-y: -230px;
+$twitter_logo-2x-width: 54px;
+$twitter_logo-2x-height: 44px;
+$twitter_logo-2x-total-width: 1008px;
+$twitter_logo-2x-total-height: 294px;
+$twitter_logo-2x-image: '../images/spritesheetPreLaunch-2x.png';
+$twitter_logo-2x: 242px 230px -242px -230px 54px 44px 1008px 294px '../images/spritesheetPreLaunch-2x.png';
+$twitter_logo_hover-2x-x: 298px;
+$twitter_logo_hover-2x-y: 230px;
+$twitter_logo_hover-2x-offset-x: -298px;
+$twitter_logo_hover-2x-offset-y: -230px;
+$twitter_logo_hover-2x-width: 54px;
+$twitter_logo_hover-2x-height: 44px;
+$twitter_logo_hover-2x-total-width: 1008px;
+$twitter_logo_hover-2x-total-height: 294px;
+$twitter_logo_hover-2x-image: '../images/spritesheetPreLaunch-2x.png';
+$twitter_logo_hover-2x: 298px 230px -298px -230px 54px 44px 1008px 294px '../images/spritesheetPreLaunch-2x.png';
+
+/*
+The provided mixins are intended to be used with the array-like variables
+
+.icon-home {
+  @include sprite-width($icon-home);
+}
+
+.icon-email {
+  @include sprite($icon-email);
+}
+*/
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}

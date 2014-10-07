@@ -1,6 +1,30 @@
-html, body {
-  padding: 0;
-  margin: 0;
+@import 'normalize-scss/_normalize';
+
+@import 'spritesheetPreLaunch';
+@import 'spritesheetPreLaunch-2x';
+
+
+// lifted from https://github.com/Ensighten/spritesmith/issues/19
+@mixin sprite-background-size($sprite) {
+  background-size: nth($sprite, 7) nth($sprite, 8);
+}
+
+@mixin sprite-retina($sprite, $sprite2x) {
+  @include sprite($sprite);
+
+  @media only screen and (-webkit-min-device-pixel-ratio: 1.5), screen and (min-device-pixel-ratio: 1.5) {
+    @include sprite-image($sprite2x);
+    @include sprite-background-size($sprite);
+  }
+}
+
+@import 'vars';
+@import 'fonts';
+
+body {
+  background: white;
+  font-family: Brandon Text, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: $default-text-color;
 }
 
 .first {
@@ -11,6 +35,17 @@ html, body {
   position: relative;
   overflow-y: hidden;
   height: 56.2678063vw; // 790 / 1404px
+}
+
+.second {
+  background: cyan;
+  border-bottom: 1vh solid orange;
+  height: 56.2678063vw; /* 790 / 1404px*/
+}
+
+.third {
+  height: 56.2678063vw; /* 790 / 1404px*/
+  background: turquoise;
 }
 
 video {
@@ -28,18 +63,104 @@ video {
   height: 100%;
 }
 
-.second {
-  background: cyan;
-  border-bottom: 1vh solid orange;
-  height: 56.2678063vw; /* 790 / 1404px*/
-}
-
-.third {
-  height: 56.2678063vw; /* 790 / 1404px*/
-  background: turquoise;
-}
-
 section {
   box-sizing: border-box;
   width: 100%;
+}
+
+nav.top-nav {
+  margin: 0 43px 0 32px;
+
+  .left {
+    float: left;
+  }
+
+  .right {
+    float: right;
+    margin-top: 20px;
+  }
+
+}
+
+.hp-tag {
+  display: inline-block;
+  vertical-align: middle;
+  padding-top: 4px;
+  margin-right: 20px;
+
+  span {
+    color: white;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+}
+
+.hp-break {
+  width: 0;
+  height: 34px;
+  border-right: 1px solid rgba(255,255,255,0.85);
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.hp-logo {
+  margin-top: 11px;
+  @include sprite-retina($heirloom_logo_shadow, $heirloom_logo_shadow-2x);
+}
+
+$social-icon-width: 27px;
+$social-icon-spacing: 25px;
+
+.hp-social {
+  display: inline-block;
+  margin-left: $social-icon-spacing;
+
+  span {
+    vertical-align: middle;
+    display: inline-block;
+
+    opacity: 0.85;
+    transition: opacity 0.1s ease-in;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.hp-instagram {
+  @include sprite-retina($instagram_logo, $instagram_logo-2x);
+
+  margin-right: $social-icon-spacing + (($social-icon-width - $instagram_logo-width) / 2);
+  margin-left: (($social-icon-width - $instagram_logo-width) / 2);
+}
+
+.hp-twitter {
+  @include sprite-retina($twitter_logo, $twitter_logo-2x);
+
+  margin-right: $social-icon-spacing + (($social-icon-width - $twitter_logo-width) / 2);
+  margin-left: (($social-icon-width - $twitter_logo-width) / 2);
+}
+
+.hp-fb {
+  @include sprite-retina($fb_logo, $fb_logo-2x);
+
+  margin-right: $social-icon-spacing + (($social-icon-width - $fb_logo-width) / 2);
+  margin-left: (($social-icon-width - $fb_logo-width) / 2);
+}
+
+.hp-action {
+  display: inline-block;
+}
+
+.hp-notify {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 18px;
+  @include sprite-retina($notify_me, $notify_me-2x);
+
+  &:hover {
+    @include sprite-retina($notify_me_hover, $notify_me_hover-2x);
+  }
 }
