@@ -260,7 +260,7 @@ module.exports = function(grunt) {
         files: {
           src: [
             '<%= config.dist %>/scripts/{,*/}*.js',
-            '<%= config.dist %>/styles/{,*/}*.css'
+            '<%= config.dist %>/styles/{,*/}*.css',
             '<%= config.dist %>/*.{ico}'
             // '<%= config.dist %>/images/{,*/}*.*',
             // '<%= config.dist %>/styles/fonts/{,*/}*.*',
