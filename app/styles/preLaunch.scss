@@ -21,11 +21,25 @@
 @import 'vars';
 @import 'fonts';
 
+$video-height: 1404px;
+$video-width: 790px;
+$video-height-vw: #{$video-width / $video-height}px;
+
+$alt-text-color: rgb(55,53,54);
+
 @font-face {
   font-family: 'Merriweather';
   font-style: italic;
   font-weight: 400;
   src: local('Merriweather Italic'), local('Merriweather-Italic'), url(http://fonts.gstatic.com/s/merriweather/v7/So5lHxHT37p2SS4-t60SlGfrnYWAzH6tTbHZfcsRIsM.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+@font-face {
+  font-family: 'Merriweather';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Merriweather'), url(http://fonts.gstatic.com/s/merriweather/v7/RFda8w1V0eDZheqfcyQ4EBampu5_7CjHW5spxoeN3Vs.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
 }
 
@@ -46,9 +60,11 @@ body {
 }
 
 .second {
-  background: cyan;
+  background-image: url(/images/homepage-product-bg.jpg);
+  background-size: cover;
   border-bottom: 1vh solid $highlight-color;
   height: 56.2678063vw; /* 790 / 1404px*/
+  position: relative;
 }
 
 .third {
@@ -71,7 +87,7 @@ video {
   height: 100%;
 }
 
-.first .container {
+.flex-height-cont {
   height: 56.2678063vw;
   max-height: 100vh;
   width: 100%;
@@ -212,12 +228,32 @@ $social-icon-spacing: 25px;
   @include sprite-retina($down_carrot_white, $down_carrot_white-2x);
 }
 
+.hp-next-blk {
+  display: inline-block;
+  @include sprite-retina($down_carrot_black, $down_carrot_black-2x);
+
+}
+
 .hp-copy {
   position: absolute;
   width: 50%;
   margin: 0 25%;
   top: 20%;
   text-align: center;
+}
+
+.hp-phone-copy {
+  position: absolute;
+  left: 50%;
+  width: 50%;
+  top: 150px;
+
+  p {
+    font-family: 'Merriweather', serif;
+    width: 70%;
+    line-height: 1.5em;
+    color: $alt-text-color;
+  }
 }
 
 h1 {
@@ -229,4 +265,28 @@ h1 {
     font-weight: 400;
     font-size: 0.92em;
   }
+}
+
+h2 {
+  color: $alt-text-color;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+h4 {
+  color: $alt-text-color;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.hp-store-ios {
+  display: inline-block;
+  background-image: url(/images/Download_on_the_App_Store_Badge_US-UK_135x40.svg);
+  width: 135px;
+  height: 40px;
+}
+
+.hp-store-android {
+  display: inline-block;
+  @include sprite-retina($google_play, $google_play-2x);
 }
