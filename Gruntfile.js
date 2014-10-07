@@ -256,13 +256,19 @@ module.exports = function(grunt) {
 
     // Renames files for browser caching purposes
     rev: {
+      sprites: {
+        files: {
+          src: [
+            '<%= config.dist %>/images/sprite*.png'
+          ]
+        }
+      },
       dist: {
         files: {
           src: [
             '<%= config.dist %>/scripts/{,*/}*.js',
             '<%= config.dist %>/styles/{,*/}*.css',
-            '<%= config.dist %>/*.{ico}',
-            '<%= config.dist %>/images/sprite*.png',
+            '<%= config.dist %>/*.{ico}'
             // '<%= config.dist %>/images/{,*/}*.*',
             // '<%= config.dist %>/styles/fonts/{,*/}*.*',
             // '<%= config.dist %>/*.{png}'
@@ -641,8 +647,10 @@ module.exports = function(grunt) {
     'cssmin',
     'uglify',
     'copy:dist',
-    'rev',
-    'usemin',
+    'rev:sprites',
+    'usemin:css',
+    'rev:dist',
+    'usemin:html',
     'cdn:dist',
     'htmlmin',
   ]);
