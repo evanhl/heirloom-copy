@@ -23,8 +23,10 @@
 
 $video-height: 1404px;
 $video-width: 790px;
+$horiz-break-color: rgb(243,243,243);
 $video-height-vw: #{$video-width / $video-height}px;
 $tablet-size: "only screen and (max-width : 980px)";
+$input-border-color: rgb(225,228,228);
 
 $alt-text-color: rgb(55,53,54);
 
@@ -57,6 +59,10 @@ body {
   overflow-y: hidden;
   height: 550px;
   height: 56.2678063vw; // 790 / 1404px
+
+  .flex-height-cont {
+    height: 56.2678063vw;
+  }
 }
 
 .img-cont {
@@ -73,7 +79,7 @@ body {
   border-top: 2px solid $highlight-color;
   height: 600px;
   min-height: 600px;
-  height: 56.2678063vw; /* 790 / 1404px*/
+  height: 100vh; /* 790 / 1404px*/
   position: relative;
 
   .right-section {
@@ -83,6 +89,10 @@ body {
     width: 50%;
     top: 0;
     display: table;
+  }
+
+  .flex-height-cont {
+    height: 100vh;
   }
 }
 
@@ -129,17 +139,11 @@ video {
 .flex-height-cont {
   min-height: 400px;
   height: 600px; // fallback
-  height: 56.2678063vw;
   max-height: 100vh;
   width: 100%;
   position: absolute;
   top: 0;
   left: 0;
-}
-
-section {
-  box-sizing: border-box;
-  width: 100%;
 }
 
 .top-nav {
@@ -295,10 +299,63 @@ $social-icon-spacing: 25px;
 
 .hp-copy {
   position: absolute;
-  width: 60%;
-  margin: 0 20%;
+  width: 100%;
   top: 27%;
   text-align: center;
+}
+
+.hp-store-ios {
+  display: inline-block;
+  background-image: url(/images/Download_on_the_App_Store_Badge_US-UK_135x40.svg);
+  width: 135px;
+  height: 40px;
+}
+
+.hp-store-android {
+  display: inline-block;
+  @include sprite-retina($google_play, $google_play-2x);
+}
+
+.hp-footer-logo {
+  @include sprite-retina($footer_logo, $footer_logo-2x);
+  margin: 36px auto;
+}
+
+.hp-h-break {
+  width: 512px;
+  margin: 0 auto;
+
+  border-bottom: 2px solid $horiz-break-color;
+}
+
+.hp-notify-cont {
+  margin: 32px auto;
+  width: 515px;
+}
+
+input.hp-text {
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  width: 494px - 147px;
+  height: 38px;
+  padding-top: 4px;
+  padding-left: 18px;
+  border: 1px solid $input-border-color;
+  color: $alt-text-color;
+  vertical-align: top;
+}
+
+input.hp-submit {
+  width: 147px;
+  height: 44px;
+  vertical-align: top;
+  border: 0;
+  background: $highlight-color;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding-top: 8px;
 }
 
 h1 {
@@ -325,15 +382,5 @@ h4 {
   letter-spacing: 3px;
 }
 
-.hp-store-ios {
-  display: inline-block;
-  background-image: url(/images/Download_on_the_App_Store_Badge_US-UK_135x40.svg);
-  width: 135px;
-  height: 40px;
-}
 
-.hp-store-android {
-  display: inline-block;
-  @include sprite-retina($google_play, $google_play-2x);
-}
 
