@@ -118,11 +118,10 @@ body {
   width: 100%;
 
   p.description {
-    // font-family: 'Merriweather', serif;
     width: 70%;
+    max-width: 400px;
     line-height: 1.5em;
     color: $alt-text-color;
-    margin-bottom: 3em;
     font-size: 1.25em;
   }
 }
