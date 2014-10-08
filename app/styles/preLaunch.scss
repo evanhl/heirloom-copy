@@ -129,7 +129,7 @@ body {
 .third {
   border-top: 2px solid $highlight-color;
   height: 600px;
-  height: 56.2678063vw; /* 790 / 1404px*/
+  height: 1100vh;
   background: white;
 }
 
@@ -291,10 +291,22 @@ $social-icon-spacing: 25px;
   display: inline-block;
   vertical-align: middle;
   margin-left: 18px;
-  @include sprite-retina($notify_me, $notify_me-2x);
+  width: 126px;
+  height: 25px;
+  border-radius: 1px;
+  border: 0;
+  background: $highlight-color;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding-top: 9px;
+  text-align: center;
+  font-size: 0.8em;
+  line-height: 1.6em;
 
   &:hover {
-    @include sprite-retina($notify_me_hover, $notify_me_hover-2x);
+    background: $button-hover-color
   }
 }
 
