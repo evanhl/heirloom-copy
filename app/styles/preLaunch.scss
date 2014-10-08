@@ -26,27 +26,12 @@ $video-width: 790px;
 $horiz-break-color: rgb(243,243,243);
 $video-height-vw: #{$video-width / $video-height}px;
 $tablet-size: "only screen and (max-width : 980px)";
+$med-desktop-size: "only screen and (max-width : 1200px)";
 $input-border-color: rgb(225,228,228);
 
 $button-hover-color: rgb(206,67,39);
 $button-color-shadow: rgb(206,78,56);
 $alt-text-color: rgb(55,53,54);
-
-@font-face {
-  font-family: 'Merriweather';
-  font-style: italic;
-  font-weight: 400;
-  src: local('Merriweather Italic'), local('Merriweather-Italic'), url(http://fonts.gstatic.com/s/merriweather/v7/So5lHxHT37p2SS4-t60SlGfrnYWAzH6tTbHZfcsRIsM.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-}
-
-@font-face {
-  font-family: 'Merriweather';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Merriweather'), url(http://fonts.gstatic.com/s/merriweather/v7/RFda8w1V0eDZheqfcyQ4EBampu5_7CjHW5spxoeN3Vs.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-}
 
 body {
   background: white;
@@ -89,6 +74,11 @@ body {
     left: 0;
     width: 50%;
     top: 42.5%;
+
+    @media #{$med-desktop-size} {
+      left: 0;
+      width: 60%;
+    }
   }
 
   .right-section {
@@ -98,6 +88,11 @@ body {
     width: 50%;
     top: 0;
     display: table;
+
+    @media #{$med-desktop-size} {
+      left: 60%;
+      width: 40%;
+    }
   }
 
   .flex-height-cont {
@@ -123,11 +118,12 @@ body {
   width: 100%;
 
   p.description {
-    font-family: 'Merriweather', serif;
+    // font-family: 'Merriweather', serif;
     width: 70%;
     line-height: 1.5em;
     color: $alt-text-color;
     margin-bottom: 3em;
+    font-size: 1.25em;
   }
 }
 
