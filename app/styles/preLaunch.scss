@@ -29,6 +29,7 @@ $tablet-size: "only screen and (max-width : 980px)";
 $input-border-color: rgb(225,228,228);
 
 $button-hover-color: rgb(206,67,39);
+$button-color-shadow: rgb(206,78,56);
 $alt-text-color: rgb(55,53,54);
 
 @font-face {
@@ -350,6 +351,8 @@ input.hp-text {
 }
 
 input.hp-submit {
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
   width: 147px;
   height: 45px;
   vertical-align: top;
@@ -360,9 +363,14 @@ input.hp-submit {
   font-weight: 700;
   letter-spacing: 2px;
   padding-top: 8px;
+  box-shadow: inset 0px -2px 0 0 $button-color-shadow;
 
   &:hover {
     background: $button-hover-color
+  }
+
+  &.sent {
+    background: green;
   }
 }
 
@@ -376,10 +384,19 @@ input.hp-submit {
     letter-spacing: 2px;
     font-size: 0.875em;
   }
+
+  a {
+    text-decoration: none;
+  }
 }
 
 .hp-copyright {
   text-align: center;
+
+  a {
+    color: $alt-text-color;
+    font-weight: 600;
+  }
 }
 
 h1 {

@@ -78,17 +78,29 @@ Heirloom is a simple idea. Nearly everyone has print photographs. Heirloom bring
   <a name="third"></a>
   <div class="hp-footer-logo"></div>
   <div class="hp-h-break"></div>
-  <div class="hp-notify-cont">
-    <input type="text" class="hp-text" placeholder="Enter your email">{{!--
---}}<input type="submit" name="subscribe" value="Notify Me" class="hp-submit">
-  </div>
+
+
+  <form method="post" enctype="multipart/form-data" action="https://www.formstack.com/forms/index.php" id="email-form" class="validate" target="hidden-form">
+    <input type="hidden" name="form" value="1785407" />
+    <input type="hidden" name="viewkey" value="lwf2iI2KKY" />
+    <input type="hidden" name="hidden_fields" id="hidden_fields1785407" value="" />
+    <input type="hidden" name="_submit" value="1" />
+    <input type="hidden" name="incomplete" id="incomplete1785407" value="" />
+    <input type="hidden" name="style_version" value="3" />
+{{!--     <input type="email" id="field26584620" name="field26584620" class="required email"  value="" placeholder="Enter your email" required /> --}}
+      <div class="hp-notify-cont">
+        <input type="email" id="field26584620" name="field26584620" class="hp-text" placeholder="Enter your email" value="" required>{{!--
+    --}}<input type="submit" name="subscribe" {{bind-attr disabled=disabled}} {{bind-attr value=notifyButtonText}} {{bind-attr class=":hp-submit sent"}}>
+      </div>
+  </form>
   <div class="hp-h-break"></div>
   <div class="hp-footer-links">
-    <h4>Press</h4>
-    <h4>Contact</h4>
+    <a href="mailto:press@heirloom.net"><h4>Press</h4></a>
+    <a href="mailto:hello@heirloom.net"><h4>Contact</h4></a>
   </div>
 
   <div class="hp-copyright">
-    <span>Copyright &copy; 2014 <a href="mailto:hello@heirloom.net" target="_blank">Say Hello</a></span>
+    <span>Copyright &copy; 2014 <a href="mailto:hello@heirloom.net" target="_blank">Say Hello!</a></span>
   </div>
 </div>
+<iframe style="display:none" name="hidden-form" id="hidden-form"></iframe>
