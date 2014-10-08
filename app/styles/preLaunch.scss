@@ -73,26 +73,18 @@ body {
     position: absolute;
     left: 0;
     width: 50%;
-    top: 42.5%;
+    top: 45%;
 
-    @media #{$med-desktop-size} {
-      left: 0;
-      width: 60%;
-    }
   }
 
   .right-section {
     position: absolute;
-    height: 85%;
+    height: 90%;
     left: 50%;
     width: 50%;
     top: 0;
     display: table;
 
-    @media #{$med-desktop-size} {
-      left: 60%;
-      width: 40%;
-    }
   }
 
   .flex-height-cont {
@@ -103,7 +95,9 @@ body {
 .hp-phone-cont {
   height: 522px;
   width: 473px;
-  margin: -253px auto 0;
+  margin-top: -253px;
+  float: right;
+  padding-right: 18px;
 }
 
 .hp-phone {
@@ -116,20 +110,22 @@ body {
   display: table-cell;
   vertical-align: middle;
   width: 100%;
+  padding-left: 42px;
 
   p.description {
     width: 70%;
     max-width: 400px;
-    line-height: 1.75em;
+    line-height: 1.7em;
     color: $alt-text-color;
     font-size: 1.15em;
+    margin-bottom: 1.9em;
   }
 }
 
 .third {
   border-top: 2px solid $highlight-color;
-  height: 600px;
-  height: 100vh;
+  // height: 600px;
+  // height: 100vh;
   background: white;
 }
 
