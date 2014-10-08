@@ -28,6 +28,7 @@ $video-height-vw: #{$video-width / $video-height}px;
 $tablet-size: "only screen and (max-width : 980px)";
 $input-border-color: rgb(225,228,228);
 
+$button-hover-color: rgb(206,67,39);
 $alt-text-color: rgb(55,53,54);
 
 @font-face {
@@ -329,8 +330,8 @@ $social-icon-spacing: 25px;
 }
 
 .hp-notify-cont {
-  margin: 32px auto;
-  width: 515px;
+  margin: 32px 0;
+  text-align: center;
 }
 
 input.hp-text {
@@ -340,14 +341,17 @@ input.hp-text {
   height: 38px;
   padding-top: 4px;
   padding-left: 18px;
-  border: 1px solid $input-border-color;
+  border-left: 1px solid $input-border-color;
+  border-top: 1px solid $input-border-color;
+  border-bottom: 1px solid $input-border-color;
+  border-right: none;
   color: $alt-text-color;
   vertical-align: top;
 }
 
 input.hp-submit {
   width: 147px;
-  height: 44px;
+  height: 45px;
   vertical-align: top;
   border: 0;
   background: $highlight-color;
@@ -356,6 +360,26 @@ input.hp-submit {
   font-weight: 700;
   letter-spacing: 2px;
   padding-top: 8px;
+
+  &:hover {
+    background: $button-hover-color
+  }
+}
+
+.hp-footer-links {
+  text-align: center;
+  margin: 32px;
+
+  h4 {
+    display: inline;
+    margin: 0 30px;
+    letter-spacing: 2px;
+    font-size: 0.875em;
+  }
+}
+
+.hp-copyright {
+  text-align: center;
 }
 
 h1 {
