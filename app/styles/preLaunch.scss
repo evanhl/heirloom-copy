@@ -84,6 +84,13 @@ body {
   height: 100vh; /* 790 / 1404px*/
   position: relative;
 
+  .left-section {
+    position: absolute;
+    left: 0;
+    width: 50%;
+    top: 42.5%;
+  }
+
   .right-section {
     position: absolute;
     height: 85%;
@@ -96,6 +103,18 @@ body {
   .flex-height-cont {
     height: 100vh;
   }
+}
+
+.hp-phone-cont {
+  height: 522px;
+  width: 473px;
+  margin: -253px auto 0;
+}
+
+.hp-phone {
+  background-image: url(/images/phones_placeholder.png);
+  height: 522px;
+  width: 473px;
 }
 
 .hp-phone-copy {
