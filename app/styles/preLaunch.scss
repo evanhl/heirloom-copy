@@ -120,9 +120,9 @@ body {
   p.description {
     width: 70%;
     max-width: 400px;
-    line-height: 1.5em;
+    line-height: 1.75em;
     color: $alt-text-color;
-    font-size: 1.25em;
+    font-size: 1.15em;
   }
 }
 
@@ -232,6 +232,15 @@ $social-icon-spacing: 25px;
   }
 }
 
+.hp-footer-social {
+  text-align: center;
+  margin: 43px 0;
+
+  span {
+    display: inline-block;
+  }
+}
+
 .hp-instagram {
   @include sprite-retina($instagram_logo, $instagram_logo-2x);
 
@@ -251,6 +260,27 @@ $social-icon-spacing: 25px;
 
   margin-right: $social-icon-spacing + (($social-icon-width - $fb_logo-width) / 2);
   margin-left: (($social-icon-width - $fb_logo-width) / 2);
+}
+
+.hp-instagram-dark {
+  @include sprite-retina($instagram_logo_dark, $instagram_logo_dark-2x);
+
+  // margin-right: $social-icon-spacing + (($social-icon-width - $instagram_logo_dark-width) / 2);
+  margin-left: (($social-icon-width - $instagram_logo_dark-width) / 2);
+}
+
+.hp-twitter-dark {
+  @include sprite-retina($twitter_logo_dark, $twitter_logo_dark-2x);
+
+  margin-right: $social-icon-spacing + (($social-icon-width - $twitter_logo_dark-width) / 2);
+  margin-left: (($social-icon-width - $twitter_logo_dark-width) / 2);
+}
+
+.hp-fb-dark {
+  @include sprite-retina($fb_logo_dark, $fb_logo_dark-2x);
+
+  margin-right: $social-icon-spacing + (($social-icon-width - $fb_logo_dark-width) / 2);
+  margin-left: (($social-icon-width - $fb_logo_dark-width) / 2);
 }
 
 .hp-action {
@@ -334,7 +364,7 @@ $social-icon-spacing: 25px;
 
 .hp-footer-logo {
   @include sprite-retina($footer_logo, $footer_logo-2x);
-  margin: 36px auto;
+  margin: 60px auto;
 }
 
 .hp-h-break {
@@ -345,7 +375,7 @@ $social-icon-spacing: 25px;
 }
 
 .hp-notify-cont {
-  margin: 32px 0;
+  margin: 60px 0;
   text-align: center;
 }
 
@@ -390,7 +420,6 @@ input.hp-submit {
 
 .hp-footer-links {
   text-align: center;
-  margin: 32px;
 
   h4 {
     display: inline;
@@ -411,6 +440,10 @@ input.hp-submit {
     color: $alt-text-color;
     font-weight: 600;
   }
+}
+
+.hp-footer-social {
+
 }
 
 h1 {

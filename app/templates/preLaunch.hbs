@@ -81,8 +81,7 @@ Heirloom is a simple idea. Nearly everyone has print photographs. Heirloom bring
 
 <div class="third">
   <a name="third"></a>
-  <div class="hp-footer-logo"></div>
-  <div class="hp-h-break"></div>
+  {{!-- <div class="hp-h-break"></div> --}}
 
 
   <form method="post" enctype="multipart/form-data" action="https://www.formstack.com/forms/index.php" id="email-form" class="validate" target="hidden-form">
@@ -98,14 +97,20 @@ Heirloom is a simple idea. Nearly everyone has print photographs. Heirloom bring
     --}}<input type="submit" name="subscribe" {{bind-attr disabled=disabled}} {{bind-attr value=notifyButtonText}} {{bind-attr class=":hp-submit sent"}}>
       </div>
   </form>
-  <div class="hp-h-break"></div>
   <div class="hp-footer-links">
     <a href="mailto:press@heirloom.net"><h4>Press</h4></a>
     <a href="mailto:hello@heirloom.net"><h4>Contact</h4></a>
   </div>
 
+  <div class="hp-footer-social">
+    <a href="https://www.facebook.com/heirloomhq" target="_blank"><span class="hp-fb-dark"></span></a>
+    <a href="https://www.twitter.com/heirloomhq" target="_blank"><span class="hp-twitter-dark"></span></a>
+    <a href="http://www.instagram.com/heirloomhq" target="_blank"><span class="hp-instagram-dark"></span></a>
+  </div>
+
   <div class="hp-copyright">
     <span>Copyright &copy; 2014 <a href="mailto:hello@heirloom.net" target="_blank">Say Hello!</a></span>
   </div>
+  <a href="#first"><div class="hp-footer-logo"></div></a>
 </div>
 <iframe style="display:none" name="hidden-form" id="hidden-form"></iframe>
