@@ -127,8 +127,8 @@ background-size: auto 576px;
 }
 
 .hp-phone-cont {
-  height: 522px;
-  width: 473px;
+  height: 552px;
+  width: 485px;
   margin-top: -253px;
   float: right;
   padding-right: 18px;
@@ -137,6 +137,8 @@ background-size: auto 576px;
     float: none;
     margin: 30px auto;
     padding: 0;
+    height: initial;
+    width: initial;
   }
 }
 
@@ -158,9 +160,22 @@ background-size: auto 576px;
 
 
 .hp-phone {
-  background-image: url(/images/phones_placeholder.png);
-  height: 522px;
-  width: 473px;
+  background: url(/images/phones_homepage_smaller.png) no-repeat;
+  height: 552px;
+  width: 485px;
+
+  @media #{$tablet-size} {
+    background-size: 100% auto;
+    height: 552px * 0.8;
+    width: 485px * 0.8;
+    margin: 0 auto;
+  }
+
+  @media #{$phone-size} {
+    height: 552px * 0.6;
+    width: 485px * 0.6;
+    margin: 0 auto;
+  }
 }
 
 .hp-phone-copy {
@@ -180,7 +195,7 @@ background-size: auto 576px;
 
   @media #{$tablet-size} {
     float: none;
-    margin: 30px auto;
+    margin: 50px auto 30px;
     padding: 0;
     display: block;
     text-align: center;
@@ -283,7 +298,7 @@ video {
   @include sprite-retina($heirloom_logo_shadow, $heirloom_logo_shadow-2x);
 
   @media #{$tablet-size} {
-    margin: 50px auto;
+    margin: 30px auto;
     float: none;
   }
 
