@@ -104,7 +104,25 @@ background-size: auto 576px;
   }
 
   @media #{$tablet-size} {
-    display: none;
+    height: 1000px;
+    background-image: url(/images/product_background_small.jpg);
+
+    .flex-height-cont {
+      height: 1000px;
+    }
+
+    .left-section {
+      position: static;
+      width: 100%;
+      height: initial;
+    }
+
+    .right-section {
+      position: static;
+      width: 100%;
+      display: block;
+      height: initial;
+    }
   }
 }
 
@@ -114,7 +132,30 @@ background-size: auto 576px;
   margin-top: -253px;
   float: right;
   padding-right: 18px;
+
+  @media #{$tablet-size} {
+    float: none;
+    margin: 30px auto;
+    padding: 0;
+  }
 }
+
+.hp-app-info {
+  @media #{$tablet-size} {
+    display: none;
+  }
+}
+
+.hp-app-info-mobile {
+  display: none;
+
+  @media #{$tablet-size} {
+    text-align: center;
+    display: block;
+  }
+}
+
+
 
 .hp-phone {
   background-image: url(/images/phones_placeholder.png);
@@ -135,6 +176,18 @@ background-size: auto 576px;
     color: $alt-text-color;
     font-size: 1.15em;
     margin-bottom: 1.9em;
+  }
+
+  @media #{$tablet-size} {
+    float: none;
+    margin: 30px auto;
+    padding: 0;
+    display: block;
+    text-align: center;
+
+    p.description {
+      margin: 0 auto;
+    }
   }
 }
 
