@@ -523,6 +523,7 @@ $social-icon-spacing: 25px;
 .hp-store-android {
   display: inline-block;
   @include sprite-retina($google_play, $google_play-2x);
+  margin-left: 3px;
 }
 
 .hp-footer-logo {
@@ -541,7 +542,7 @@ $social-icon-spacing: 25px;
   margin: 60px auto 43px;
   padding: 0 3%;
   text-align: center;
-  max-width: 514px;
+  max-width: 580px;
 }
 
 input.hp-text {
@@ -600,7 +601,7 @@ input.hp-submit {
     display: inline;
     margin: 0 30px;
     letter-spacing: 2px;
-    font-size: 0.875em;
+    font-size: 1em;
   }
 
   a {
@@ -645,6 +646,7 @@ h4 {
   text-transform: uppercase;
   letter-spacing: 3px;
   font-weight: 700;
+  font-size: 1.2em;
 }
 
 
