@@ -1,5 +1,18 @@
 window.App = Ember.Application.create({});
 
+App.ApplicationController = Ember.Controller.extend({
+  actions: {
+    hideVideo: function () {
+      this.set('showVideo', false);
+    },
+
+    showVideo: function () {
+      this.set('showVideo', true);
+    }
+  }
+});
+
+
 App.ApplicationView = Ember.View.extend({
   templateName: 'preLaunch',
 
@@ -11,7 +24,6 @@ App.ApplicationView = Ember.View.extend({
     this.$('#email-form').on('submit', $.proxy(this.onSubmit, this));
     this.$('.hp-text').on('keypress', $.proxy(this.onKeyPress, this));
     this.$('.jump-to-notify').on('click', $.proxy(this.jumpToNotify, this));
-    this.$('.hp-play').on('click', $.proxy(this.onPlay, this));
   },
 
   willDestroyElement: function () {
@@ -19,7 +31,7 @@ App.ApplicationView = Ember.View.extend({
     this.$('iframe').off();
     this.$('#email-form').off();
     this.$('.jump-to-notify').off();
-    this.$('.hp-play').off();
+    this.$('a[href*=#]:not([href=#])').off();
   },
 
   iframeOnload: function () {
@@ -65,10 +77,6 @@ App.ApplicationView = Ember.View.extend({
         return false;
       }
     }
-  },
-
-  onPlay: function () {
-    this.controller.set('showVideo', true);
   }
 });
 

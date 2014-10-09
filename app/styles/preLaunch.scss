@@ -669,10 +669,12 @@ h4 {
   top: 0;
   left: 0;
   text-align: center;
+  display: table;
 }
 
 .video-cont-cont {
-  margin: auto;
+  display: table-cell;
+  vertical-align: middle;
 }
 
 .video-cont {
@@ -694,8 +696,16 @@ h4 {
     right: 0;
     width: 100%;
     height: 100%;
+    border: none;
+    margin: 0;
   }
 }
 
-
-
+.exit-video {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  z-index: 2;
+  cursor: pointer;
+  @include sprite-retina($exit_video, $exit_video-2x);
+}

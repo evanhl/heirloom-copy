@@ -38,7 +38,7 @@
     </div>
 
     <div class="hp-center">
-      <a href="javascript:void(0);"><span class="hp-play"></span></a>
+      <a href="javascript:void(0);" {{action 'showVideo'}}><span class="hp-play"></span></a>
     </div>
 
     <div class="hp-bottom">
@@ -131,13 +131,14 @@ Heirloom is a simple idea. Nearly everyone has print photographs. Heirloom bring
   <a href="#first"><div class="hp-footer-logo"></div></a>
 </div>
 {{#if showVideo}}
-  <div class="hp-lightbox">
-    <div class="video-cont">
-      <div class="hp-height-filler"></div>
-      <iframe
-      src="//www.youtube.com/embed/GLeVlBca5lg?autoplay=0">
-      </iframe>
+  <div class="hp-lightbox" {{action 'hideVideo' bubbles=false}}>
+    <div class="video-cont-cont">
+      <div class="video-cont">
+        <div class="hp-height-filler"></div>
+<iframe src="//www.youtube.com/embed/bEyou7qGw4Q?autoplay=1&amp;autohide=1&amp;border=0&amp;wmode=opaque&amp;hl=en&amp;cc_lang_pref=en&amp;enablejsapi=1&amp;feature=gp-o-o&amp;authuser=1" scrolling="auto" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"  id="widget2"></iframe>
+      </div>
     </div>
   </div>
+  <div class="exit-video" {{action 'hideVideo'}}></div>
 {{/if}}
 <iframe style="display:none" name="hidden-form" id="hidden-form"></iframe>
