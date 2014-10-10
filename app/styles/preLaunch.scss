@@ -55,6 +55,7 @@ body {
   width: 100%;
 
   .flex-height-cont {
+    height: 550px;
     height: 55vw; // 790 / 1404px - fudge for IE
 
     @media #{$tablet-size} {
