@@ -660,6 +660,7 @@ h4 {
 
 
 .hp-lightbox {
+  cursor: pointer;
   position: fixed;
   z-index: 1;
   width: 100%;
@@ -701,10 +702,12 @@ h4 {
 }
 
 .exit-video {
-  position: absolute;
+  position: fixed;
   top: 25px;
   right: 25px;
   z-index: 2;
   cursor: pointer;
   @include sprite-retina($exit_video, $exit_video-2x);
 }
+
+.noscroll { overflow: hidden; }
