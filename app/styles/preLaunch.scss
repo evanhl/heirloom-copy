@@ -51,11 +51,11 @@ body {
   position: relative;
   overflow-y: hidden;
   height: 550px;
-  height: 56.2678063vw; // 790 / 1404px
+  height: 55vw; // 790 / 1404px - fudge for IE
   width: 100%;
 
   .flex-height-cont {
-    height: 56.2678063vw;
+    height: 55vw; // 790 / 1404px - fudge for IE
 
     @media #{$tablet-size} {
       height: 500px;
@@ -120,14 +120,14 @@ background-size: auto 576px;
     .left-section {
       position: static;
       width: 100%;
-      height: initial;
+      height: auto;
     }
 
     .right-section {
       position: static;
       width: 100%;
       display: block;
-      height: initial;
+      height: auto;
     }
   }
 }
@@ -143,8 +143,8 @@ background-size: auto 576px;
     float: none;
     margin: 30px auto;
     padding: 0;
-    height: initial;
-    width: initial;
+    height: auto;
+    width: auto;
   }
 }
 
