@@ -41,7 +41,7 @@ input {
 
 body {
   background: white;
-  font-family: Brandon Text, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Brandon Text, "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: $default-text-color;
 }
 
@@ -524,9 +524,7 @@ $social-icon-spacing: 25px;
 
 .hp-store-ios {
   display: inline-block;
-  background-image: url(/images/Download_on_the_App_Store_Badge_US-UK_135x40.svg);
-  width: 135px;
-  height: 40px;
+  @include sprite-retina($app_store, $app_store-2x);
 }
 
 .hp-store-android {
