@@ -45,6 +45,7 @@ Ember.I18n.translations = {
 
   'fields.confirmPassword': 'Confirm password',
   'resetPassword.submit': 'Change my password',
+  'resetPassword.successMsg': 'Password successfully reset!',
 
   'errors.general': 'There\'s been an error. Try again.'
 };
