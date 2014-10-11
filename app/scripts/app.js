@@ -102,6 +102,8 @@ App.Router.map(function () {
   this.route('registration');
   this.route('signin');
   this.route('signout');
+  this.route('resetPassword', { path: 'reset_password/:token' });
+  this.route('resetPasswordSuccess', { path: 'reset_password/success' });
 });
 
 // TODO: remove temporary redirects once we remove fully qualified share and conversation_invitation URLs

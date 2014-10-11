@@ -15,7 +15,7 @@ Utils.apiCall = function (url, type, data, success, error) {
   var self = this;
   var dataToSend = data;
 
-  if (type === 'POST') {
+  if (type !== 'GET') {
     dataToSend = JSON.stringify(dataToSend);
   }
 

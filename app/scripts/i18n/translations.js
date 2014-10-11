@@ -41,5 +41,10 @@ Ember.I18n.translations = {
 
   'cancel': 'Cancel',
   'add': 'Add',
-  'create': 'Create'
+  'create': 'Create',
+
+  'fields.confirmPassword': 'Confirm password',
+  'resetPassword.submit': 'Change my password',
+
+  'errors.general': 'There\'s been an error. Try again.'
 };
