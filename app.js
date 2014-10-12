@@ -9,7 +9,13 @@ var indexFile = (process.env.WEB_ENV === "prelaunch") ? '/preLaunch.html' : '/in
 
 app.use(compress);
 app.use(function(req, res, next) {
-  if (!req.url.match(/\.js$|\.css$|\.svg$|\.png$|\.jpg$|\.html$|\.ico$|\.woff$/)) {
+  console.log(req.url);
+
+  if (req.url.match(/\/terms$/)) {
+    req.url = '/terms.html';
+  } else if (req.url.match(/\/privacy$/)) {
+    req.url = '/privacy.html';
+  } else if (!req.url.match(/\.js$|\.css$|\.svg$|\.png$|\.jpg$|\.html$|\.ico$|\.woff$/)) {
     req.url = indexFile;
   }
 
