@@ -505,7 +505,7 @@ button {
 }
 
 .nav-filler {
-  height: 73px;
+  height: $logo-size;
   width: 100%;
 }
 
@@ -538,7 +538,7 @@ button {
 
 .album-picker, .photo-picker-modal, .upload-modal {
   border-radius: 3px;
-  min-height: #{($album-width * 1.5) + (2 * $album-margin) + (73px * 2)};
+  min-height: #{($album-width * 1.5) + (2 * $album-margin) + ($logo-size * 2)};
   background: $bg-color-accent;
 }
 
@@ -558,8 +558,8 @@ button {
   position: absolute;
   width: 100%;
   border-bottom: 1px solid $subtle-highlight-color;
-  height: 73px;
-  line-height: 73px;
+  height: $logo-size;
+  line-height: $logo-size;
   padding: 0 $album-margin;
   vertical-align: middle;
   z-index: 5;
@@ -574,7 +574,7 @@ button {
   position: absolute;
   background: white;
   height: 76px;
-  top: 73px;
+  top: $logo-size;
   z-index: 5;
   width: 100%;
   padding: 0 $album-margin;
@@ -593,8 +593,8 @@ button {
   background: white;
   position: absolute;
   bottom: 0;
-  height: 73px;
-  line-height: 73px;
+  height: $logo-size;
+  line-height: $logo-size;
   z-index: 5;
   padding: 0 $album-margin;
 }

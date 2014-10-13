@@ -20,21 +20,24 @@
   margin-top: 20px;
 }
 
-.groupings-container {
-  margin: 0 #{73px - $photo-margin} 0 73px;
+.groupings-container, .albums-container {
+  margin: 0 #{$logo-size - $photo-margin} 0 $logo-size;
+}
+
+.albums-container {
+  .toolbar {
+    margin-bottom: 36px;
+    margin-right: $album-margin;
+  }
+}
+
+.photos-container {
+  margin: 0 auto;
+  padding: 0 #{$logo-size - $photo-margin} 0 $logo-size;
 
   .toolbar {
     margin-right: $photo-margin;
     margin-bottom: $photo-margin;
-  }
-}
-
-.albums-container {
-  margin: 0 #{73px - $album-margin} 0 73px;
-
-  .toolbar {
-    margin-bottom: 36px;
-    margin-right: $album-margin;
   }
 }
 
@@ -55,7 +58,7 @@
   width: 100%;
   z-index: 2;
   background: $bg-color-accent;
-  padding: 0 73px;
+  padding: 0 $logo-size;
 
   .num-selected {
     width: 220px;
