@@ -15,7 +15,7 @@ App.RegistrationController = Ember.ObjectController.extend(App.FbControllerMixin
         var sessionObj = Ember.Object.create(session.toJSON());
         App.set('auth.currentSession', sessionObj);
 
-        self.transitionToRoute('photoGroupings');
+        self.transitionToRoute('photos');
       }, function (response) {
         if (response.responseJSON && response.responseJSON instanceof Object) {
           self.set('error', response.responseJSON);

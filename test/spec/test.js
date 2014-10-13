@@ -50,8 +50,7 @@
           });
 
           $.mockjax({
-            url: 'https://api.hlstage.com/me/photo_groupings',
-            data: { grouped_by: 'created_at' },
+            url: 'https://api.hlstage.com/me/photos',
             responseText: []
           });
         });
@@ -174,8 +173,7 @@
           });
 
           $.mockjax({
-            url: 'https://api.hlstage.com/me/photo_groupings',
-            data: { grouped_by: 'created_at' },
+            url: 'https://api.hlstage.com/me/photos',
             responseText: []
           });
         });
