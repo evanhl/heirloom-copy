@@ -78,7 +78,7 @@ App.Router.reopen({
 });
 
 App.Router.map(function () {
-  this.resource('photoGroupings', { path: 'moments' }, function () {
+  this.resource('photos', { path: 'moments' }, function () {
     this.resource('photo', { path: ':photo_id' });
   });
 

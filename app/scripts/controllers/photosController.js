@@ -1,8 +1,12 @@
-App.PhotosController = App.BasePhotosController.extend({
-  batchActions: [
-    { name: 'Delete', action: 'removePhotos' },
-    { name: 'Add to Album', action: 'addToAlbum' }
-  ],
+App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMixin, Ember.Evented, App.SelectableMixin, {
+  needs: ['photo', 'albumPicker'],
+  photo: Ember.computed.alias("controllers.photo"),
+  albumPicker: Ember.computed.alias('controllers.albumPicker'),
+
+  init: function () {
+    this.get('albumPicker').on('didSelect', this, this.addPhotosToAlbum);
+    this._super();
+  },
 
   fetchPage: function (page, perPage) {
     var self = this;
@@ -17,43 +21,75 @@ App.PhotosController = App.BasePhotosController.extend({
     });
   },
 
+  reset: function () {
+    this.resetSelected();
+    this.set('model', []);
+    this._super();
+  },
+
+  clearSelected: function () {
+    // TODO: make callers of clearSelected use resetSelected instead
+    this.resetSelected();
+  },
+
+  addPhotosToAlbum: function (album) {
+    var self = this;
+    var adapter = App.Album.adapter;
+
+    adapter.postNested(album, {
+      photo_ids: this.get('selectedIds')
+    }, 'photos').then(function () {
+      // TODO: handle error
+      self.deselect();
+      album.reload();
+    });
+  },
+
+  deselect: function () {
+    this.trigger('deselect');
+    this.resetSelected();
+  },
+
   actions: {
-    removePhotos: function () {
-      var self = this;
-
-      this.get('selected').forEach(function (photo) {
-        photo.deleteRecord().then(function () {
-          // FIXME: this remove operation is O(n)
-          self.get('model').removeObject(photo);
-        });
-      });
-    },
-
     enlarge: function (id) {
       this.transitionToRoute('photo', id);
     },
 
-    addToAlbum: function () {
-      this.transitionToRoute('photos.addToAlbum');
+    select: function (photoController) {
+      var selected = photoController.get('selected');
+      var photoId = photoController.get('model.id');
+
+      this.toggleSelected(photoId, selected);
     },
 
-    addPhotosToAlbum: function (album) {
-      var self = this;
-      var adapter = App.Album.adapter;
-      var selectedIds = this.get('selected').map(function (photo) {
-        return photo.get('id');
-      });
+    cancel: function () {
+      this.deselect();
+    },
 
-      adapter.postNested(album, {
-        photo_ids: selectedIds
-      }, 'photos').then(function () {
-        self.get('selected').forEach(function (photo) {
-          photo.set('selected', false);
+    deletePhotos: function () {
+      var adapter = App.Photo.adapter;
+      var self = this;
+
+      adapter.batchDelete(App.Photo, this.get('selectedIds'), 'photo_ids').then(function (response) {
+        response.photo_ids.forEach(function (id) {
+          var photo = self.get('model').findBy('id', id);
+
+          if (photo) {
+            photo.destroy();
+            self.removeObject(photo);
+          }
         });
-        self.transitionToRoute('albumPhotos', album.get('id'));
-        album.reload();
+
+        self.deselect();
       });
+    },
+
+    addToAlbum: function () {
+      this.send('openModal', 'albumPicker');
+    },
+
+    upload: function () {
+      this.send('openModal', 'uploadModal');
     }
   }
 });
-

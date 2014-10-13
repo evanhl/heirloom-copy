@@ -1,8 +1,8 @@
 //= require basePhotoController
 App.PhotoController = App.BasePhotoController.extend({
-  needs: ['photoGroupings'],
-  photos: Ember.computed.alias('controllers.photoGroupings'),
-  photosModel: Ember.computed.alias('photos.compositeModel'),
+  needs: ['photos'],
+  photos: Ember.computed.alias('controllers.photos'),
+  photosModel: Ember.computed.alias('photos.model'),
 
   toPhoto: function (toId) {
     if (!toId) { return; }
@@ -12,7 +12,7 @@ App.PhotoController = App.BasePhotoController.extend({
 
   actions: {
     toCollection: function () {
-      this.transitionToRoute('photoGroupings');
+      this.transitionToRoute('photos');
     }
   }
 });

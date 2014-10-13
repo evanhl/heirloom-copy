@@ -1,5 +1,5 @@
-App.PhotoGroupingsView = Ember.View.extend({
-  resetController: function () {
-    this.controller.resetSelected();
-  }.on('willDestroyElement')
-});
+// App.PhotoGroupingsView = Ember.View.extend({
+//   resetController: function () {
+//     this.controller.resetSelected();
+//   }.on('willDestroyElement')
+// });

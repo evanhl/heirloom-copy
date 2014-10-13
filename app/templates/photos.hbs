@@ -1,7 +1,25 @@
+<div {{bind-attr class=":groupings-container isSelectionMode:selection-mode"}}>
+  <div class="toolbar">
+    <button class="take-action" {{action 'upload'}}>{{t 'upload'}}</button>
+  </div>
+  {{#if isSelectionMode}}
+    <div class="selection-toolbar">
+      <div class="left">
+        <div class="num-selected">
+          <span class="count-text">{{t "photos.selected" countBinding="selectedCount"}}</span>
+        </div>
+        <button class="take-action">Share</button>
+        <button class="secondary-action add-to-album" {{action 'addToAlbum' selectedIds}}>Album</button>
+      </div>
+      <div class="right">
+        <button class="secondary delete" {{action 'deletePhotos'}}></button>
+        <button class="secondary" {{action 'cancel'}}>{{t 'cancel'}}</button>
+      </div>
+    </div>
+  {{/if}}
+
+  {{#each}}{{render 'thumbPhoto' this}}{{/each}}
+
+  {{partial 'spinner'}}
+</div>
 {{outlet}}
-
-{{#each}}
-  {{render 'thumbPhoto' this}}
-{{/each}}
-
-{{partial 'spinner'}}
