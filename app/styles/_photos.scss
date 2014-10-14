@@ -20,11 +20,14 @@
   margin-top: 20px;
 }
 
-.groupings-container, .albums-container {
+.groupings-container {
   margin: 0 #{$logo-size - $photo-margin} 0 $logo-size;
 }
 
 .albums-container {
+  margin: 0 auto;
+  padding: 0 #{$logo-size - $album-margin} 0 $logo-size;
+
   .toolbar {
     margin-bottom: 36px;
     margin-right: $album-margin;

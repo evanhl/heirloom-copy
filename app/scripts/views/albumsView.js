@@ -1,5 +1,9 @@
 //= require ../utils/infiniteScroll
-App.AlbumsView = Ember.View.extend(InfiniteScroll.ViewMixin, {
+//= require ./autoWidthMixin
+App.AlbumsView = Ember.View.extend(InfiniteScroll.ViewMixin, App.AutoWidthMixin, {
+  containerSelector: '.albums-container',
+  itemClass: 'album',
+
   resetController: function () {
     this.controller.resetSelected();
   }.on('willDestroyElement')
