@@ -315,8 +315,8 @@ img.detail {
   &::before {
     content: '';
     position: absolute;
-    width: 186px;
-    height: 186px;
+    width: $photo-width;
+    height: $photo-width;
     top: 0;
     left: 0;
     border: 6px solid $highlight-color;
@@ -536,10 +536,23 @@ button {
   overflow: scroll;
 }
 
-.album-picker, .photo-picker-modal, .upload-modal {
+$picker-content-height: ($album-width * 1.25) + (2 * $album-margin);
+$upload-modal-content-height: ($photo-width * 2) + ($photo-margin) + ($album-margin * 2);
+
+.album-picker, .photo-picker-modal {
   border-radius: 3px;
-  min-height: #{($album-width * 1.5) + (2 * $album-margin) + ($logo-size * 2)};
+  min-height: #{$picker-content-height + ($logo-size * 2)};
   background: $bg-color-accent;
+}
+
+.upload-modal {
+  border-radius: 3px;
+  background: $bg-color-accent;
+  min-height: #{$upload-modal-content-height + ($logo-size * 2)};
+
+  .picker-content {
+    height: $upload-modal-content-height;
+  }
 }
 
 .photo-picker-modal {
@@ -548,9 +561,10 @@ button {
   }
 
   .picker-content {
-    height: #{($album-width * 1.5) + (2 * $album-margin) - 76px};
+    height: $picker-content-height - 149px + $logo-size;
   }
 }
+
 
 .top-bar {
   border-radius: 3px 3px 0 0;
@@ -600,7 +614,7 @@ button {
 }
 
 .picker-content {
-  height: #{($album-width * 1.5) + (2 * $album-margin)};
+  height: #{$picker-content-height};
   overflow-y: scroll;
   padding: $album-margin 0 0 $album-margin;
 }

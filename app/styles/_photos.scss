@@ -70,8 +70,8 @@
 }
 
 .photo {
-  width: 186px;
-  height: 186px;
+  width: $photo-width;
+  height: $photo-width;
   vertical-align: top;
   margin: 0 $photo-margin $photo-margin 0;
   display: inline-block;

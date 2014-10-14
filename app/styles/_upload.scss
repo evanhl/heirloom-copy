@@ -326,8 +326,8 @@
 
 .dropzone .fake-photo {
   display: inline-block;
-  width: 186px;
-  height: 186px;
+  width: $photo-width;
+  height: $photo-width;
   background: white;
   border: 2px dashed $subtle-highlight-color;
   vertical-align: top;
