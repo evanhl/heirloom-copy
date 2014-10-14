@@ -550,17 +550,17 @@ input.hp-text {
   border-bottom-left-radius: 2px;
   width: 65%;
   height: 45px;
-  padding-top: 4px;
-  padding-left: 18px;
+  padding: 0 0 0 18px;
   border-left: 1px solid $input-border-color;
   border-top: 1px solid $input-border-color;
   border-bottom: 1px solid $input-border-color;
   border-right: none;
   color: $alt-text-color;
-  vertical-align: top;
+  vertical-align: middle;
   box-sizing: border-box;
   -webkit-appearance: none;
   font-size: 1.25em;
+  line-height: 45px;
 }
 
 input.hp-submit {

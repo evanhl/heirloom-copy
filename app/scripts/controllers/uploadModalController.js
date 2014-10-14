@@ -39,6 +39,7 @@ App.UploadModalController = Ember.Controller.extend(Ember.Evented, {
       this.get('uploadToS3').createPhotoRecords(function () {
         self.set('waiting', false);
         self.send('closeModal');
+        self.trigger('didUpload');
       });
     }
   }
