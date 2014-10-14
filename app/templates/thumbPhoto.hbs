@@ -1,2 +1,4 @@
 <img {{bind-attr src=thumbVersion}} alt="">
-<div {{bind-attr class=":select selected"}} {{action select bubbles=false}}></div>
+{{#if isReady}}
+  <div {{bind-attr class=":select selected"}} {{action select bubbles=false}}></div>
+{{/if}}

@@ -78,7 +78,8 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
     });
   },
 
-  didUpload: function () {
+  didUpload: function (uploadedPhotoModels) {
+    this.unshiftObjects(uploadedPhotoModels);
     this.startFetchRecent();
   },
 

@@ -74,6 +74,12 @@
   display: inline-block;
   position: relative;
   cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+
+  &.processing {
+    opacity: 0.5;
+  }
 }
 
 .count-text {
