@@ -7,7 +7,7 @@ App.ThumbPhotoView = Ember.View.extend({
       return;
     }
 
-    if (this.enlargeDisabled) {
+    if (this.enlargeDisabled || this.get('controller.isSelectionMode')) {
       this.controller.send('select');
     } else {
       this.controller.send('enlarge');
