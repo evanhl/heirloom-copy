@@ -15,6 +15,10 @@ app.use(function(req, res, next) {
     req.url = '/terms.html';
   } else if (req.url.match(/\/privacy$/)) {
     req.url = '/privacy.html';
+  } else if (req.url.match(/\/reset_password/)) {
+    req.url = '/index.html';
+  } else if (req.url.match(/\/share/)) {
+    req.url = '/index.html';
   } else if (!req.url.match(/\.js$|\.css$|\.svg$|\.png$|\.jpg$|\.html$|\.ico$|\.woff$/)) {
     req.url = indexFile;
   }
