@@ -16,6 +16,11 @@ App.ShareView = Ember.View.extend({
     $('<meta>').
       attr('property', 'og:image').
       attr('content', photoLargeUrl).appendTo($('head'));
+
+    if (photoLargeUrl) {
+      // tells Prerender.io that it can commence snapshotting.
+      window.prerenderReady = true;
+    }
   }.observes('controller.photo'),
 
   removeMeta: function () {
