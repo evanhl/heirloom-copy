@@ -22,6 +22,8 @@ app.use(function(req, res, next) {
     req.url = '/index.html';
   } else if (req.url.match(/\/share/)) {
     req.url = '/index.html';
+  } else if (req.url.match(/\/s\//)) {
+    req.url = '/index.html';
   } else if (!req.url.match(/\.js$|\.css$|\.svg$|\.png$|\.jpg$|\.html$|\.ico$|\.woff$/)) {
     req.url = indexFile;
   }
