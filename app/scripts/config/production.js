@@ -1,5 +1,5 @@
 /*jshint -W079 */
 var HLConfig = {
-  HOSTNAME: 'https://api.alpha.heirloom.net',
-  GROUPS_DISABLED: true
+  HOSTNAME: 'https://api.heirloom.net',
+  GROUPS_DISABLED: false
 };

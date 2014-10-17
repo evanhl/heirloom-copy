@@ -11,7 +11,9 @@ app.use(compress);
 app.use(function(req, res, next) {
   console.log(req.url);
 
-  if (req.url.match(/\/terms$/)) {
+  if (req.url.match(/\/preview/)) {
+    req.url = '/index.html';
+  } else if (req.url.match(/\/terms$/)) {
     req.url = '/terms.html';
   } else if (req.url.match(/\/privacy$/)) {
     req.url = '/privacy.html';

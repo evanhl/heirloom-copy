@@ -74,7 +74,8 @@ App.set('facebook', Utils.Facebook.create());
 
 // Use HTML5 History API (pushState) to manage app URLs
 App.Router.reopen({
-  location: 'history'
+  location: 'history',
+  rootURL: HLConfig.rootURL || '/'
 });
 
 App.Router.map(function () {
