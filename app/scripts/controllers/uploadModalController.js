@@ -2,6 +2,10 @@ App.UploadModalController = Ember.Controller.extend(Ember.Evented, {
   totalFiles: Ember.computed.alias('uploadToS3.totalFiles'),
   successCount: Ember.computed.alias('uploadToS3.successfulUploads.length'),
   processingFiles: Ember.computed.alias('uploadToS3.processingFiles'),
+  anyUnsaved: function () {
+    return this.get('successCount') > 0 || this.get('processingFiles') > 0;
+  }.property('successCount', 'processingFiles'),
+
   waiting: false,
 
   disableAdd: function () {
@@ -24,12 +28,18 @@ App.UploadModalController = Ember.Controller.extend(Ember.Evented, {
   },
 
   destroyDropzone: function ($dropzoneEl) {
-    $dropzoneEl.get(0).dropzone.disable();
+    if ($dropzoneEl && $dropzoneEl.get(0) && $dropzoneEl.get(0).dropzone) {
+      $dropzoneEl.get(0).dropzone.disable();
+    }
   },
 
   actions: {
     close: function () {
-      this.send('closeModal');
+      var noneUnsaved = !this.get('anyUnsaved');
+
+      if (noneUnsaved || window.confirm(Em.I18n.t('upload.confirmClose'))) {
+        this.send('closeModal');
+      }
     },
 
     complete: function () {
@@ -39,6 +49,7 @@ App.UploadModalController = Ember.Controller.extend(Ember.Evented, {
       this.get('uploadToS3').createPhotoRecords(function () {
         self.set('waiting', false);
         self.send('closeModal');
+        self.trigger('didUpload', self.get('uploadToS3.successfulUploads').map(function (file) { return file.photoModel; }));
       });
     }
   }

@@ -101,6 +101,7 @@ App.Upload.UploadToS3 = Ember.Object.extend(Ember.Evented, {
   },
 
   onSuccess: function (file) {
+    file.createdAt = new Date();
     this.get('successfulUploads').pushObject(file);
   },
 
@@ -125,8 +126,15 @@ App.Upload.UploadToS3 = Ember.Object.extend(Ember.Evented, {
   createPhotoRecords: function (processedList) {
     var self = this;
     var promises = this.get('successfulUploads').map(function (file) {
+      file.dataUri = $(file.previewElement).find('img').attr('src');
+
       return new Ember.RSVP.Promise(function (resolve, reject) {
         Utils.apiCall(self.ENDPOINT, 'POST', { key: file.uploadedName }, function (data) {
+          file.photoModel = App.Photo.create({
+            id: data.id,
+            dataUri: file.dataUri,
+            created_at: file.created_at
+          });
           resolve();
         }, function () {
           reject();

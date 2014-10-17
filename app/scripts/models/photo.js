@@ -5,6 +5,11 @@ App.Photo = Ember.Model.extend({
   state: Ember.attr(),
   created_at: Ember.attr(Date),
   versions: Ember.attr(),
+  dataUri: null,
+
+  isReady: function () {
+    return this.get('state') === 'ready';
+  }.property('state'),
 
   versionForDimension: function (dim) {
     var versions = this.get('versions') || {};
@@ -14,7 +19,7 @@ App.Photo = Ember.Model.extend({
   },
 
   thumbVersion: function () {
-    return this.versionForDimension('xs') || this.get('mediumVersion');
+    return this.get('dataUri') || this.versionForDimension('xs') || this.get('mediumVersion');
   }.property('versions'),
 
   mediumVersion: function () {

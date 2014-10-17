@@ -1,6 +1,8 @@
 App.SelectableController = Ember.ObjectController.extend({
   selected: false,
 
+  isSelectionMode: Ember.computed.alias('parentController.isSelectionMode'),
+
   init: function () {
     this.get('parentController').on('deselect', this, this.deselect);
     this._super();

@@ -20,11 +20,14 @@
   margin-top: 20px;
 }
 
-.groupings-container, .albums-container {
+.groupings-container {
   margin: 0 #{$logo-size - $photo-margin} 0 $logo-size;
 }
 
 .albums-container {
+  margin: 0 auto;
+  padding: 0 #{$logo-size - $album-margin} 0 $logo-size;
+
   .toolbar {
     margin-bottom: 36px;
     margin-right: $album-margin;
@@ -67,13 +70,19 @@
 }
 
 .photo {
-  width: 186px;
-  height: 186px;
+  width: $photo-width;
+  height: $photo-width;
   vertical-align: top;
   margin: 0 $photo-margin $photo-margin 0;
   display: inline-block;
   position: relative;
   cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+
+  &.processing {
+    opacity: 0.5;
+  }
 }
 
 .count-text {

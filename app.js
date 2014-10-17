@@ -7,6 +7,7 @@ var port = process.env.PORT || 3000;
 var app = express();
 var indexFile = (process.env.WEB_ENV === "prelaunch") ? '/preLaunch.html' : '/index.html';
 
+app.use(require('prerender-node').set('prerenderToken', process.env.PRERENDER_TOKEN));
 app.use(compress);
 app.use(function(req, res, next) {
   console.log(req.url);

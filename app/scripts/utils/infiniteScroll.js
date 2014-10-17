@@ -49,6 +49,7 @@
           this.set('maxPage', this.get('page'));
         }
 
+        this.removeObjects(items);
         this.pushObjects(items);
         this.set('page', nextPage);
 
