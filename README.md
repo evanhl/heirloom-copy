@@ -8,8 +8,8 @@ Ember.js web application for Heirloom. Intended to be packaged and deployed to a
 - Run `brew install node`, which installs node and npm.
 - `git clone` this repo.
 - `cd` to repo dir.
-- Run `npm install -g grunt-cli`
-- Run `grunt serve` to build and run on `localhost:9000`
+- Run `npm install -g grunt-cli` (NOTE: You may need to run as `sudo`.)
+- Run `grunt serve` to build and run on `localhost:9000`. (NOTE: If you have errors starting up the server ensure that you don't have a `.tmp` folder in your directory. If you do `rm -r` it.)
 
 ## Environments
 
