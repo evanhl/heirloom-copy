@@ -33,9 +33,9 @@ App.MetaTagMixin = Ember.Mixin.create({
     $('head meta[property="og:description"]').remove();
     $('head meta[property="og:title"]').remove();
     $('head meta[name="description"]').remove();
-    $('head meta[property="twitter:description"]').remove();
-    $('head meta[property="twitter:image:src"]').remove();
-    $('head meta[property="twitter:title"]').remove();
+    $('head meta[name="twitter:description"]').remove();
+    $('head meta[name="twitter:image:src"]').remove();
+    $('head meta[name="twitter:title"]').remove();
   }.on('willDestroyElement'),
 
   addMetaTag: function (property, content) {
@@ -45,10 +45,10 @@ App.MetaTagMixin = Ember.Mixin.create({
       return;
     }
 
-    if (property.indexOf(':') === -1) {
-      htmlPropName = 'name';
-    } else {
+    if (property.indexOf('og:') === 0) {
       htmlPropName = 'property';
+    } else {
+      htmlPropName = 'name';
     }
 
     $('<meta>').
