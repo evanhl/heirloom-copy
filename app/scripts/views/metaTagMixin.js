@@ -6,6 +6,8 @@ App.MetaTagMixin = Ember.Mixin.create({
 
     this.removeMetaTags();
 
+    this.addMetaTag('twitter:card', this.get('metaTwitterCardType'));
+
     this.addMetaTag('og:title', this.get('metaTitle'));
     this.addMetaTag('twitter:title', this.get('metaTitle'));
 
@@ -36,6 +38,7 @@ App.MetaTagMixin = Ember.Mixin.create({
     $('head meta[name="twitter:description"]').remove();
     $('head meta[name="twitter:image:src"]').remove();
     $('head meta[name="twitter:title"]').remove();
+    $('head meta[name="twitter:card"]').remove();
   }.on('willDestroyElement'),
 
   addMetaTag: function (property, content) {

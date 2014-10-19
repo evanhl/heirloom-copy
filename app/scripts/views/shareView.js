@@ -3,6 +3,7 @@ App.ShareView = Ember.View.extend(App.MetaTagMixin, {
   metaDescription: 'Fast, beautiful scanning for all the moments we love.',
   metaImage: Ember.computed.alias('controller.photo.largeVersion'),
   metaTitle: 'Heirloom',
+  metaTwitterCardType: 'photo',
   metaWaitUntil: ['metaImage'],
 
   addBodyGradient: function () {
