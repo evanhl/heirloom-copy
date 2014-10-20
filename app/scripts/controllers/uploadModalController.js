@@ -27,6 +27,12 @@ App.UploadModalController = Ember.Controller.extend(Ember.Evented, {
     this.trigger('addFakePhoto');
   },
 
+  onTotalFilesChanged: function () {
+    if (this.get('totalFiles') === 0) {
+      this.trigger('removeFakePhoto');
+    }
+  }.observes('totalFiles'),
+
   destroyDropzone: function ($dropzoneEl) {
     if ($dropzoneEl && $dropzoneEl.get(0) && $dropzoneEl.get(0).dropzone) {
       $dropzoneEl.get(0).dropzone.disable();

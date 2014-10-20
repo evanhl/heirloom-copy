@@ -10,7 +10,9 @@ App.UploadModalView = Ember.View.extend({
     this.controller.initDropzone(this.$('.dropzone'));
 
     this.controller.off('addFakePhoto', this, this.addFakePhoto);
+    this.controller.off('removeFakePhoto', this, this.removeFakePhoto);
     this.controller.on('addFakePhoto', this, this.addFakePhoto);
+    this.controller.on('removeFakePhoto', this, this.removeFakePhoto);
   },
 
   addFakePhoto: function () {
@@ -23,6 +25,13 @@ App.UploadModalView = Ember.View.extend({
       });
       $el.children('.fake-photo').remove();
       $el.append($fakePhoto);
+    });
+  },
+
+  removeFakePhoto: function () {
+    Ember.run.next(this, function () {
+      var $el = this.$('.dropzone');
+      $el.children('.fake-photo').remove();
     });
   },
 
