@@ -1,8 +1,8 @@
 App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMixin, Ember.Evented, App.SelectableMixin, {
-  needs: ['photo', 'albumPicker', 'uploadModal'],
-  photo: Ember.computed.alias("controllers.photo"),
+  needs: ['albumPicker', 'uploadModal', 'albums'],
   albumPicker: Ember.computed.alias('controllers.albumPicker'),
   uploadModal: Ember.computed.alias('controllers.uploadModal'),
+  albums: Ember.computed.alias('controllers.albums'),
 
   sortProperties: ['created_at'],
   sortAscending: false,
@@ -140,6 +140,9 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
             photo.destroy();
             self.removeObject(photo);
           }
+
+          // Some albums might have update covers, but we don't know which ones, so unload them all
+          self.get('albums').reset();
         });
 
         self.deselect();
