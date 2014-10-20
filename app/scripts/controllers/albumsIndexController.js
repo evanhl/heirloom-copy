@@ -1,5 +1,5 @@
 //= require selectableMixin
-App.AlbumsController = Ember.ArrayController.extend(Ember.Evented, InfiniteScroll.ControllerMixin, App.SelectableMixin, {
+App.AlbumsIndexController = Ember.ArrayController.extend(Ember.Evented, InfiniteScroll.ControllerMixin, App.SelectableMixin, {
   needs: ['photoPickerModal'],
   photoPickerModal: Ember.computed.alias('controllers.photoPickerModal'),
 

@@ -1,0 +1,20 @@
+<div {{bind-attr class=":albums-container"}}>
+  <div class="toolbar">
+    <button class="take-action" {{action 'create'}}>{{t 'create'}}</button>
+  </div>
+  {{#if isSelectionMode}}
+    <div class="selection-toolbar">
+      <div class="right">
+        <button class="secondary delete" {{action 'deleteAlbums'}}></button>
+        <button class="secondary" {{action 'cancel'}}>{{t 'cancel'}}</button>
+      </div>
+    </div>
+  {{/if}}
+
+{{!-- The HTML comments below are to ensure no accidental spaces between inline-block elements --}}
+  {{#each}}<!--
+ -->{{#link-to 'albumPhotos' id}}{{render 'thumbAlbum' this enlargeDisabled=false}}{{/link-to}}<!--
+-->{{/each}}
+
+  {{partial 'spinner'}}
+</div>

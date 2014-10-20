@@ -1,5 +1,5 @@
 App.NavigationController = Ember.Controller.extend({
-  needs: ['photos', 'albums', 'conversations'],
+  needs: ['photos', 'albumsIndex', 'conversations'],
 
   username: function () {
     return App.get('auth.currentSession.username');
@@ -26,7 +26,7 @@ App.NavigationController = Ember.Controller.extend({
     // only invoke if server session has already expired
     this.transitionToRoute('signin');
     this.get('controllers.photos').reset();
-    this.get('controllers.albums').reset();
+    this.get('controllers.albumsIndex').reset();
     this.get('controllers.conversations').reset();
   },
 

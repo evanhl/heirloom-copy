@@ -1,6 +1,6 @@
 //= require ../utils/infiniteScroll
 //= require ./autoWidthMixin
-App.AlbumsView = Ember.View.extend(InfiniteScroll.ViewMixin, App.AutoWidthMixin, {
+App.AlbumsIndexView = Ember.View.extend(InfiniteScroll.ViewMixin, App.AutoWidthMixin, {
   containerSelector: '.albums-container',
   itemClass: 'album',
 

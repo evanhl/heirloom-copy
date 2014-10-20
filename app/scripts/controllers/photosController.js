@@ -1,8 +1,8 @@
 App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMixin, Ember.Evented, App.SelectableMixin, {
-  needs: ['albumPicker', 'uploadModal', 'albums'],
+  needs: ['albumPicker', 'uploadModal', 'albumsIndex'],
   albumPicker: Ember.computed.alias('controllers.albumPicker'),
   uploadModal: Ember.computed.alias('controllers.uploadModal'),
-  albums: Ember.computed.alias('controllers.albums'),
+  albums: Ember.computed.alias('controllers.albumsIndex'),
 
   sortProperties: ['created_at'],
   sortAscending: false,

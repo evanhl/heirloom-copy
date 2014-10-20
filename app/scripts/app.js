@@ -83,12 +83,14 @@ App.Router.map(function () {
     this.resource('photo', { path: ':photo_id' });
   });
 
-  this.resource('albums');
-  this.resource('album', { path: 'albums/:album_id' }, function () {
-    this.resource('albumPhotos', { path: 'photos' }, function () {
-      this.resource('albumPhoto', { path: ':photo_id' });
+  this.resource('albums', function () {
+    this.resource('album', { path: ':album_id' }, function () {
+      this.resource('albumPhotos', { path: 'photos' }, function () {
+        this.resource('albumPhoto', { path: ':photo_id' });
+      });
     });
   });
+
   this.resource('conversations', { path: 'groups' }, function () {
     this.route('create', { path: 'create' });
     this.resource('conversation', { path: ':conversation_id' }, function () {

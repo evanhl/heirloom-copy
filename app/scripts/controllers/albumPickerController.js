@@ -1,6 +1,6 @@
 App.AlbumPickerController = Ember.Controller.extend(App.SelectableMixin, Ember.Evented, {
-  needs: ['albums'],
-  albums: Ember.computed.alias('controllers.albums'),
+  needs: ['albumsIndex'],
+  albums: Ember.computed.alias('controllers.albumsIndex'),
   loadingMore: Ember.computed.alias('albums.loadingMore'),
   selected: Ember.computed.alias('albums.selected'),
 
