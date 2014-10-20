@@ -36,6 +36,9 @@ Ember.I18n.translations = {
 
   'photos.addToAlbum': 'Add to Album',
 
+  'photos.addedToAlbum.one': '{{count}} Photo was added to Album "{{albumName}}"',
+  'photos.addedToAlbum.other': '{{count}} Photos were added to Album "{{albumName}}"',
+
   'upload.modal.title': 'Upload Photos',
   'upload.modal.addButton': 'Add',
   'upload.confirmClose': 'You have unsaved uploads. Are you sure you want to close Uploads?',
