@@ -46,6 +46,7 @@ Ember.I18n.translations = {
   'cancel': 'Cancel',
   'add': 'Add',
   'create': 'Create',
+  'share': 'Share',
 
   'fields.confirmPassword': 'Confirm password',
   'resetPassword.submit': 'Change my password',

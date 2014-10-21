@@ -395,7 +395,7 @@ button {
   height: 40px;
   line-height: 40px;
 
-  border-radius: 3px;
+  border-radius: 2px;
   background: $subtle-highlight-color;
   color: $button-text-color;
   border: 0;
@@ -422,9 +422,19 @@ button {
 
   &.secondary-action {
     color: $highlight-color;
+  }
+
+  &.with-icon {
     padding: 0;
     line-height: 44px;
-    min-width: 170px;
+
+    &.large {
+      min-width: 170px;
+    }
+
+    &.medium {
+      min-width: 150px;
+    }
   }
 
   &.secondary {
@@ -483,16 +493,35 @@ button {
   }
 }
 
+.with-icon {
+  .icon {
+    display: inline-block;
+    border-right-width: 1px;
+    border-right-style: solid;
+    float: left;
+
+    &:after {
+      display: inline-block;
+      content: '';
+    }
+  }
+}
+
 .upload-icon {
-  display: inline-block;
-  border-right: 1px solid $subtle-highlight-color;
-  float: left;
+  border-right-color: $subtle-highlight-color;
 
   &:after {
-    display: inline-block;
-    content: '';
     margin: 10px 13px;
     @include sprite-retina($upload_icon, $upload_icon-2x);
+  }
+}
+
+.share-icon {
+  border-right-color: $highlight-color-accent;
+
+  &:after {
+    margin: 9px 9px 0px 12px;
+    @include sprite-retina($share_icon, $share_icon-2x);
   }
 }
 
