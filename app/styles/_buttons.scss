@@ -30,6 +30,10 @@ button {
     &:active, &:hover:enabled:active {
       background: $highlight-color-3;
     }
+
+    &:disabled {
+      background: $disabled-button-color;
+    }
   }
 
   &.secondary {
@@ -97,8 +101,6 @@ button {
   }
 
   &:disabled {
-    opacity: 0.3;
-
     &.waiting {
       animation: fadeinout 1.3s ease-in-out infinite;
     }
