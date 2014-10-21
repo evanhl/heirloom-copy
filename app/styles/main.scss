@@ -491,7 +491,7 @@ button {
   &:after {
     display: inline-block;
     content: '';
-    margin: 10px;
+    margin: 10px 13px;
     @include sprite-retina($upload_icon, $upload_icon-2x);
   }
 }

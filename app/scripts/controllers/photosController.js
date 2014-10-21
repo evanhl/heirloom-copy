@@ -10,6 +10,7 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
   SECS_BETWEEN_RETRIES: 5,
 
   retriesLeft: 0,
+  perPage: 40,
 
   init: function () {
     this.get('albumPicker').on('didSelect', this, this.addPhotosToAlbum);
