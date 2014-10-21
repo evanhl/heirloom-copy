@@ -23,8 +23,22 @@ button {
     background: $highlight-color;
     color: white;
 
-    &:hover:enabled, &:active {
-      background: $highlight-color-active;
+    &:hover:enabled {
+      background: $highlight-color-2;
+    }
+
+    &:active, &:hover:enabled:active {
+      background: $highlight-color-3;
+    }
+  }
+
+  &.secondary {
+    &:hover:enabled {
+      color: $highlight-color;
+    }
+
+    &:active, &:hover:enabled:active {
+      color: $highlight-color-2;
     }
   }
 
@@ -146,7 +160,7 @@ button:hover {
 
 button:active {
   &.secondary-action {
-    background: $highlight-color-active;
+    background: $highlight-color-2;
   }
 }
 
