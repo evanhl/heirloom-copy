@@ -172,6 +172,10 @@ $user-dropdown-height: 40px;
       .menu-item {
         display: block;
       }
+
+      .down-arrow {
+        @include sprite-retina($user_toggle_hover, $user_toggle_hover-2x);
+      }
     }
   }
 
@@ -208,7 +212,7 @@ $user-dropdown-height: 40px;
     right: 10px;
     transition: border-color 0.15s linear;
 
-    @include sprite-retina($user_toggle_icon, $user_toggle_icon-2x);
+    @include sprite-retina($user_toggle, $user_toggle-2x);
   }
 }
 
