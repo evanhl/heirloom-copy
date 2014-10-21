@@ -54,7 +54,7 @@
 .selection-toolbar {
   height: $logo-height;
   border-bottom: 1px solid $subtle-highlight-color;
-  line-height: $logo-height;
+  line-height: $logo-height + 3px; // fudge factor because buttons don't quite vertically center otherwise
   position: fixed;
   top: $logo-height;
   left: 0;
