@@ -2,7 +2,6 @@ App.AlbumPickerController = Ember.Controller.extend(App.SelectableMixin, Ember.E
   needs: ['albumsIndex'],
   albums: Ember.computed.alias('controllers.albumsIndex'),
   loadingMore: Ember.computed.alias('albums.loadingMore'),
-  selected: Ember.computed.alias('albums.selected'),
 
   fetchFirstPage: function () {
     if (this.get('albums.page') <= 0) {

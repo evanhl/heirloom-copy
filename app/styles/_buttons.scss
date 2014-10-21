@@ -19,10 +19,11 @@ button {
   transition: color 0.1s linear;
 
   &.take-action {
+    border: 1px solid rgba(0,0,0,0);
     background: $highlight-color;
     color: white;
 
-    &:hover, &:active {
+    &:hover:enabled, &:active {
       background: $highlight-color-active;
     }
   }
@@ -87,10 +88,6 @@ button {
     &.waiting {
       animation: fadeinout 1.3s ease-in-out infinite;
     }
-  }
-
-  &:hover:enabled {
-    opacity: 1
   }
 }
 
