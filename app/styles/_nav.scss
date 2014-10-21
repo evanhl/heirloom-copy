@@ -129,21 +129,23 @@
   }
 }
 
+$user-dropdown-height: 40px;
+
 .user-dropdown {
   display: block;
   margin-right: 3.7453%;
   margin-left: 32px;
   position: relative;
   float: right;
-  top: 20px;
+  top: 17px;
   width: 200px;
 
   .icon {
-    border-radius: 17px;
+    border-radius: $user-dropdown-height / 2;
     border: 1px solid $subtle-highlight-color;
     background: white;
-    width: 34px;
-    height: 34px;
+    width: $user-dropdown-height;
+    height: $user-dropdown-height;
     position: absolute;
     top: 0;
     z-index: 3;
@@ -152,7 +154,7 @@
       display: inline-block;
       width: 100%;
       text-align: center;
-      padding-top: 10px;
+      padding-top: ($user-dropdown-height - 14px) / 2;
       color: $highlight-color;
       font-weight: 700;
     }
@@ -162,16 +164,15 @@
     border: 1px solid $subtle-highlight-color;
     font-size: 14px;
     position: absolute;
-    left: 17px;
+    left: $user-dropdown-height / 2;
     background: white;
-    border-radius: 3px;
-    height: 34px;
+    height: $user-dropdown-height;
     transition: height 0.15s ease-in;
     overflow: hidden;
 
     &:hover {
       // This assumes 3 options. For dynamic height, we'll have to rely on JS animation.
-      height: 140px;
+      height: 146px;
 
       .username span {
         color: $highlight-color;
@@ -188,7 +189,7 @@
   }
 
   .username {
-    padding: 11px 40px 7px 29px;
+    padding: 14px 40px 10px 29px;
     width: 181px;
     white-space: nowrap;
     overflow: hidden;
@@ -216,7 +217,7 @@
   .down-arrow {
     display: inline-block;
     position: absolute;
-    top: 7px;
+    top: 10px;
     right: 8px;
     transition: border-color 0.15s linear;
 
