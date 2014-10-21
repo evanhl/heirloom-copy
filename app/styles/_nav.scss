@@ -10,7 +10,7 @@
 .full-nav {
   background: white;
   border-bottom: 1px $subtle-highlight-color solid;
-  height: $logo-size;
+  height: $logo-height;
 
   ul {
     float: left;
@@ -30,8 +30,8 @@
 
   .logo {
     border-right: 1px $subtle-highlight-color solid;
-    width: 95px;
-    height: $logo-size;
+    width: $logo-width;
+    height: $logo-height;
     float: left;
     background: url(/images/heirloom_logo.png) no-repeat;
     background-size: 36px auto;
@@ -63,7 +63,7 @@
     margin: 0;
     padding: 0;
     text-align: center;
-    line-height: $logo-size - 1px;
+    line-height: $logo-height - 1px;
   }
 
   li {
@@ -83,7 +83,7 @@
       letter-spacing: 2px;
       display: inline-block;
       // Brandon rides high. This makes up the difference.
-      padding-top: 3px;
+      padding-top: 2px;
       color: $subtle-highlight-color;
 
       &:hover {

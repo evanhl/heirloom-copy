@@ -506,7 +506,7 @@ button {
 }
 
 .nav-filler {
-  height: $logo-size;
+  height: $logo-height;
   width: 100%;
 }
 
@@ -547,14 +547,14 @@ $upload-modal-content-height: ($photo-width * 2) + ($photo-margin) + ($album-mar
 
 .album-picker, .photo-picker-modal {
   border-radius: 3px;
-  min-height: #{$picker-content-height + ($logo-size * 2)};
+  min-height: #{$picker-content-height + ($logo-height * 2)};
   background: $bg-color-accent;
 }
 
 .upload-modal {
   border-radius: 3px;
   background: $bg-color-accent;
-  min-height: #{$upload-modal-content-height + ($logo-size * 2)};
+  min-height: #{$upload-modal-content-height + ($logo-height * 2)};
 
   .picker-content {
     height: $upload-modal-content-height;
@@ -567,7 +567,7 @@ $upload-modal-content-height: ($photo-width * 2) + ($photo-margin) + ($album-mar
   }
 
   .picker-content {
-    height: $picker-content-height - 149px + $logo-size;
+    height: $picker-content-height - 149px + $logo-height;
   }
 }
 
@@ -578,8 +578,8 @@ $upload-modal-content-height: ($photo-width * 2) + ($photo-margin) + ($album-mar
   position: absolute;
   width: 100%;
   border-bottom: 1px solid $subtle-highlight-color;
-  height: $logo-size;
-  line-height: $logo-size;
+  height: $logo-height;
+  line-height: $logo-height;
   padding: 0 $album-margin;
   vertical-align: middle;
   z-index: 5;
@@ -594,7 +594,7 @@ $upload-modal-content-height: ($photo-width * 2) + ($photo-margin) + ($album-mar
   position: absolute;
   background: white;
   height: 76px;
-  top: $logo-size;
+  top: $logo-height;
   z-index: 5;
   width: 100%;
   padding: 0 $album-margin;
@@ -613,8 +613,8 @@ $upload-modal-content-height: ($photo-width * 2) + ($photo-margin) + ($album-mar
   background: white;
   position: absolute;
   bottom: 0;
-  height: $logo-size;
-  line-height: $logo-size;
+  height: $logo-height;
+  line-height: $logo-height;
   z-index: 5;
   padding: 0 $album-margin;
 }
