@@ -416,13 +416,15 @@ button {
   }
 
   &.secondary, &.secondary-action {
-    background: $alternate-button-color;
+    background: white;
     border: 1px solid $alternate-button-border-color;
-    line-height: 35px;
   }
 
   &.secondary-action {
     color: $highlight-color;
+    padding: 0;
+    line-height: 44px;
+    min-width: 170px;
   }
 
   &.secondary {
@@ -478,6 +480,19 @@ button {
 
   &:active:enabled {
     box-shadow: inset 0px 2px 5px 1px rgba(0, 0, 0, 0.12);
+  }
+}
+
+.upload-icon {
+  display: inline-block;
+  border-right: 1px solid $subtle-highlight-color;
+  float: left;
+
+  &:after {
+    display: inline-block;
+    content: '';
+    margin: 10px;
+    @include sprite-retina($upload_icon, $upload_icon-2x);
   }
 }
 

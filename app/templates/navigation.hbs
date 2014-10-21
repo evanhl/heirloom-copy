@@ -7,7 +7,7 @@
       {{#if groupsEnabled}}
         {{#link-to 'conversations' tagName='li' class='conversations'}}{{#link-to 'conversations'}}{{t 'conversations'}}{{/link-to}}{{/link-to}}
       {{/if}}
-      <button class="take-action right" {{action 'upload'}}>{{t 'upload'}}</button>
+      <button class="secondary-action right" {{action 'upload'}}><span class="upload-icon"></span>{{t 'upload'}}</button>
     </ul>
 
     <div class="user-dropdown">
