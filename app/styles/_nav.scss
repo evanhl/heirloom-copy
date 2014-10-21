@@ -181,10 +181,6 @@ $user-dropdown-height: 40px;
       .menu-item {
         display: block;
       }
-
-      .down-arrow {
-        @include sprite-retina($caret_button_red, $caret_button_red-2x);
-      }
     }
   }
 
@@ -217,11 +213,11 @@ $user-dropdown-height: 40px;
   .down-arrow {
     display: inline-block;
     position: absolute;
-    top: 10px;
-    right: 8px;
+    top: 9px;
+    right: 10px;
     transition: border-color 0.15s linear;
 
-    @include sprite-retina($caret_button_grey, $caret_button_grey-2x);
+    @include sprite-retina($user_toggle_icon, $user_toggle_icon-2x);
   }
 }
 
