@@ -7,6 +7,8 @@ Ember.I18n.translations = {
   'signout': 'Sign Out',
   'signup': 'Sign Up',
 
+  'album': 'Album',
+
   'signin.message': 'Welcome back.',
   'signin.login': 'Email/Username',
   'signin.password': 'Password',

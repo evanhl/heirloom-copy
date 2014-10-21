@@ -30,6 +30,7 @@ $topbar-bg-color: #eee;
 
 @import 'vars';
 @import 'fonts';
+@import 'buttons';
 @import 'spinner';
 @import 'nav';
 @import 'conversations';
@@ -388,141 +389,6 @@ img.detail {
 .thumb-photo {
   height: 150px;
   width: 150px;
-}
-
-button {
-  min-width: 130px;
-  height: 40px;
-  line-height: 40px;
-
-  border-radius: 2px;
-  background: $subtle-highlight-color;
-  color: $button-text-color;
-  border: 0;
-
-  opacity: 0.9;
-  outline: 0;
-
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 14px;
-  letter-spacing: 2px;
-
-  // padding: 2px 14px 3px;
-
-  &.take-action {
-    background: $highlight-color;
-    color: white;
-  }
-
-  &.secondary, &.secondary-action {
-    background: white;
-    border: 1px solid $alternate-button-border-color;
-  }
-
-  &.secondary-action {
-    color: $highlight-color;
-  }
-
-  &.with-icon {
-    padding: 0;
-    line-height: 44px;
-
-    &.large {
-      min-width: 170px;
-    }
-
-    &.medium {
-      min-width: 150px;
-    }
-  }
-
-  &.secondary {
-    color: $alternate-button-text-color;
-  }
-
-  &.delete {
-    &:before {
-      content: '\00a0';
-    }
-
-    &:after {
-      content: ''; // &nbsp;
-      position: absolute;
-      top: 5px;
-      left: 7px;
-      display: block;
-      @include sprite-retina($trashcan, $trashcan-2x);
-    }
-
-    position: relative;
-    min-width: 37px;
-  }
-
-  &.add-to-album {
-    min-width: 140px;
-
-    &:before {
-      content: ''; // &nbsp;
-      display: inline-block;
-      @include sprite-retina($add_to_album, $add_to_album-2x);
-      // margin-top: 6px;
-      margin-bottom: -5px;
-      margin-right: 9px;
-    }
-
-    position: relative;
-    // min-width: 37px;
-    // padding-left: 40px;
-  }
-
-  &:disabled {
-    opacity: 0.3;
-
-    &.waiting {
-      animation: fadeinout 1.3s ease-in-out infinite;
-    }
-  }
-
-  &:hover:enabled {
-    opacity: 1
-  }
-
-  &:active:enabled {
-    box-shadow: inset 0px 2px 5px 1px rgba(0, 0, 0, 0.12);
-  }
-}
-
-.with-icon {
-  .icon {
-    display: inline-block;
-    border-right-width: 1px;
-    border-right-style: solid;
-    float: left;
-
-    &:after {
-      display: inline-block;
-      content: '';
-    }
-  }
-}
-
-.upload-icon {
-  border-right-color: $subtle-highlight-color;
-
-  &:after {
-    margin: 10px 13px;
-    @include sprite-retina($upload_icon, $upload_icon-2x);
-  }
-}
-
-.share-icon {
-  border-right-color: $highlight-color-accent;
-
-  &:after {
-    margin: 9px 9px 0px 12px;
-    @include sprite-retina($share_icon, $share_icon-2x);
-  }
 }
 
 @keyframes fadeinout {

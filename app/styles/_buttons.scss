@@ -1,0 +1,163 @@
+button {
+  min-width: 130px;
+  height: 40px;
+  line-height: 40px;
+
+  border-radius: 2px;
+  background: $subtle-highlight-color;
+  color: $default-text-color;
+  border: 0;
+
+  outline: 0;
+
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 2px;
+
+  transition: background-color 0.1s linear;
+  transition: color 0.1s linear;
+
+  &.take-action {
+    background: $highlight-color;
+    color: white;
+
+    &:hover, &:active {
+      background: $highlight-color-active;
+    }
+  }
+
+  &.secondary, &.secondary-action {
+    background: white;
+    border: 1px solid $alternate-button-border-color;
+  }
+
+  &.secondary-action {
+    color: $highlight-color;
+  }
+
+  &.with-icon {
+    padding: 0;
+    line-height: 44px;
+
+    &.large {
+      min-width: 170px;
+    }
+
+    &.medium {
+      min-width: 150px;
+    }
+  }
+
+  &.delete {
+    &:before {
+      content: '\00a0';
+    }
+
+    &:after {
+      content: ''; // &nbsp;
+      position: absolute;
+      top: 5px;
+      left: 7px;
+      display: block;
+      @include sprite-retina($trashcan, $trashcan-2x);
+    }
+
+    position: relative;
+    min-width: 37px;
+  }
+
+  &.add-to-album {
+    min-width: 140px;
+
+    &:before {
+      content: '';
+      display: inline-block;
+      @include sprite-retina($add_to_album, $add_to_album-2x);
+      margin-bottom: -5px;
+      margin-right: 9px;
+    }
+
+    position: relative;
+  }
+
+  &:disabled {
+    opacity: 0.3;
+
+    &.waiting {
+      animation: fadeinout 1.3s ease-in-out infinite;
+    }
+  }
+
+  &:hover:enabled {
+    opacity: 1
+  }
+}
+
+.with-icon {
+  .icon {
+    display: inline-block;
+    border-right-width: 1px;
+    border-right-style: solid;
+    float: left;
+
+    &:after {
+      display: inline-block;
+      content: '';
+    }
+  }
+}
+
+.upload-icon {
+  border-right-color: $subtle-highlight-color;
+
+  &:after {
+    margin: 10px 13px;
+    @include sprite-retina($upload_icon, $upload_icon-2x);
+  }
+}
+
+.add-to-album-icon {
+  border-right-color: $highlight-color-accent;
+
+  &:after {
+    margin: 11px 12px 10px 13px;
+    @include sprite-retina($add_to_album, $add_to_album-2x);
+  }
+}
+
+button:hover, button:active {
+  &.secondary-action {
+    color: white;
+    border: 1px solid rgba(0,0,0,0);
+  }
+
+  .upload-icon {
+    border-right-color: $highlight-color-accent;
+
+    &:after {
+      @include sprite-retina($upload_hover_icon, $upload_hover_icon-2x);
+    }
+  }
+}
+
+button:hover {
+  &.secondary-action {
+    background: $highlight-color;
+  }
+}
+
+button:active {
+  &.secondary-action {
+    background: $highlight-color-active;
+  }
+}
+
+.share-icon {
+  border-right-color: $highlight-color-accent;
+
+  &:after {
+    margin: 9px 8px 0px 12px;
+    @include sprite-retina($share_icon, $share_icon-2x);
+  }
+}
