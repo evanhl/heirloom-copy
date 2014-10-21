@@ -10,7 +10,7 @@
     </ul>
 
     <div class="user-dropdown">
-      <div class="icon"></div>
+      <div class="icon"><span>{{initials}}</span></div>
       <div class="menu">
         <div class="username"><span>{{username}}</span></div>
         <div class="down-arrow"></div>
@@ -29,10 +29,6 @@
         <button class="secondary signin" {{action 'signin'}}>{{t 'signin'}}</button>
       </div>
     </ul>
-{{!--     {{else}}
-      <li class='signin'>{{#link-to 'signin'}}{{t 'signin'}}{{/link-to}}</li>
-      <li class='signup'>{{#link-to 'registration'}}{{t 'signup'}}{{/link-to}}</li>
-    {{/if}} --}}
   {{/if}}
 </nav>
 <div class="nav-filler"></div>

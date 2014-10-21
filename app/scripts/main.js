@@ -1,6 +1,7 @@
 //= require_tree utils
 
 //= require app
+//= require authorization
 
 //= require_tree adapters
 //= require_tree controllers
