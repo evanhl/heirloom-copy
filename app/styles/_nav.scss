@@ -13,18 +13,12 @@
   height: $logo-height;
 
   button {
-    margin: 20px 0;
+    margin: 18px 0;
   }
 
   ul {
     float: left;
     width: calc(100% - #{$right-col-user-dropdown-ideal-width + $main-col-horiz-padding});
-  }
-
-  @media screen and (min-width: $user-dropdown-breakpoint) {
-    ul {
-      width: $main-col-right-inner-edge;
-    }
   }
 
   li {
