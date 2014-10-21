@@ -45,6 +45,8 @@ Ember.I18n.translations = {
   'upload.modal.addButton': 'Add',
   'upload.confirmClose': 'You have unsaved uploads. Are you sure you want to close Uploads?',
 
+  'albums.create': 'Create New Album',
+
   'cancel': 'Cancel',
   'add': 'Add',
   'create': 'Create',

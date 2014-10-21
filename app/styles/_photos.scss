@@ -25,7 +25,7 @@
 }
 
 .albums-container {
-  margin: 0 auto;
+  margin: $album-margin auto 0;
   padding: 0 #{$logo-width - $album-margin} 0 $logo-width;
 
   .toolbar {
@@ -94,5 +94,62 @@
 
   .alternate {
     color: $default-text-color;
+  }
+}
+
+.create-new-album {
+  display: inline-block;
+  width: $album-width;
+  height: $album-width;
+  margin: 0 $album-margin $album-margin 0;
+  border: 4px solid $subtle-highlight-color;
+  vertical-align: top;
+  position: relative;
+  transition: border-color 0.05s linear;
+  cursor: pointer;
+
+  .caption {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    margin-top: 175px;
+    font-weight: 700;
+    color: $subtle-highlight-color;
+
+    transition: color 0.05s linear;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    margin-top: 0 - ($create_album-width / 2);
+    margin-left: 0 - ($create_album-height / 2);
+    top: $album-width / 2;
+    left: $album-width / 2;
+    @include sprite-retina($create_album, $create_album-2x);
+  }
+
+  &:hover {
+    border-color: $highlight-color;
+
+    &:after {
+      @include sprite-retina($create_album_hover, $create_album_hover-2x);
+    }
+
+    .caption {
+      color: $highlight-color;
+    }
+  }
+
+  &:active {
+    border-color: $highlight-color-2;
+
+    &:after {
+      @include sprite-retina($create_album_pressed, $create_album_pressed-2x)
+    }
+
+    .caption {
+      color: $highlight-color-2;
+    }
   }
 }
