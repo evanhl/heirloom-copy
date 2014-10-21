@@ -42,7 +42,9 @@
     }
   };
 
-  $(document).ready(function () {
+  // NOTE: `page:load` might not be necessary. Not sure how these pages behave with Ember and all that.
+  // Throwing here just-in-case. Remove if
+  $(document).on('ready page:load', function () {
     FAQ.init();
   });
 
