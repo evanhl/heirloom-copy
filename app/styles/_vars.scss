@@ -31,7 +31,6 @@ $left-col-width: ($left-col-max-width / $left-main-max-width) * 100%;
 $left-col-margin: ($main-col-horiz-padding / $left-main-max-width) * 100%;
 $left-col-outer-width: $left-col-width + $left-col-margin;
 
-$nav-height: 74px;
 $convo-extra-left-padding: 0;
 $convo-left-padding: $convo-padding + $convo-extra-left-padding - $convo-highlight-border-width;
 $post-left-margin: 75px;
@@ -44,4 +43,4 @@ $album-margin: 28px;
 $photo-width: 186px;
 $photo-margin: 16px;
 
-$logo-size: 73px;
+$logo-size: 77px;

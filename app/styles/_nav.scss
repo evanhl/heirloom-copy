@@ -3,7 +3,6 @@
   max-width: 1000px;
 
   li {
-    border-bottom: 5px $bg-color-accent solid;
     margin: 0 32px;
   }
 }
@@ -11,6 +10,7 @@
 .full-nav {
   background: white;
   border-bottom: 1px $subtle-highlight-color solid;
+  height: $logo-size;
 
   ul {
     float: left;
@@ -24,16 +24,14 @@
   }
 
   li {
-    border-bottom: 5px white solid;
-    float: right;
-    margin-left: (64px / $left-main-max-width) * 100%;
+    float: left;
+    margin-left: 95px;
   }
 
   .logo {
     border-right: 1px $subtle-highlight-color solid;
-    width: 36px;
-    height: 36px;
-    padding: 36px 36px 37px 36px;
+    width: 95px;
+    height: $logo-size;
     float: left;
     background: url(/images/heirloom_logo.png) no-repeat;
     background-size: 36px auto;
@@ -65,16 +63,13 @@
     margin: 0;
     padding: 0;
     text-align: center;
+    line-height: $logo-size - 1px;
   }
 
   li {
     display: inline-block;
-    padding: 28px 0 23px;
-
-    transition: border-bottom-color .25s ease-in-out;
 
     &.active {
-      border-bottom: 5px $highlight-color solid;
 
       a {
         color: $highlight-color;
@@ -82,16 +77,14 @@
     }
 
     a {
-      font-size: 14px;
       font-weight: bold;
-      line-height: 16px;
       text-transform: uppercase;
-      color: $default-text-color;
-      transition: color .25s ease-in-out;
+      transition: color 0.25s ease-in-out;
       letter-spacing: 2px;
-
-      // Enlarges hover/click target
-      padding: 25px;
+      display: inline-block;
+      // Brandon rides high. This makes up the difference.
+      padding-top: 3px;
+      color: $subtle-highlight-color;
 
       &:hover {
         color: $highlight-color;
