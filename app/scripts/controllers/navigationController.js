@@ -1,5 +1,12 @@
 App.NavigationController = Ember.Controller.extend({
-  needs: ['photos', 'albumsIndex', 'conversations'],
+  needs: ['photos', 'albumsIndex', 'conversations', 'uploadModal'],
+  uploadModal: Ember.computed.alias('controllers.uploadModal'),
+  photos: Ember.computed.alias('controllers.photos'),
+
+  init: function () {
+    this.get('uploadModal').on('didUpload', this, this.didUpload);
+    this._super();
+  },
 
   username: function () {
     return App.get('auth.currentSession.username');
@@ -34,6 +41,11 @@ App.NavigationController = Ember.Controller.extend({
     this.get('controllers.conversations').reset();
   },
 
+  didUpload: function (uploadedPhotoModels) {
+    this.get('photos').unshiftObjects(uploadedPhotoModels);
+    this.get('photos').startFetchRecent();
+  },
+
   actions: {
     signout: function () {
       var self = this;
@@ -54,5 +66,9 @@ App.NavigationController = Ember.Controller.extend({
     signin: function () {
       this.transitionToRoute('signin');
     },
+
+    upload: function () {
+      this.send('openModal', 'uploadModal');
+    }
   }
 });

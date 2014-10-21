@@ -35,7 +35,7 @@
 }
 
 .photos-container {
-  margin: 0 auto;
+  margin: $photo-margin auto 0;
   padding: 0 #{$logo-width - $photo-margin} 0 $logo-width;
 
   .toolbar {

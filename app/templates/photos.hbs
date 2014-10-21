@@ -1,7 +1,4 @@
 <div {{bind-attr class=":photos-container isSelectionMode:selection-mode"}}>
-  <div class="toolbar">
-    <button class="take-action" {{action 'upload'}}>{{t 'upload'}}</button>
-  </div>
   {{#if isSelectionMode}}
     <div class="selection-toolbar">
       <div class="left">
