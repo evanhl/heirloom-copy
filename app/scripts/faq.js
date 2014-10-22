@@ -1,41 +1,60 @@
 // $ = jQuery. window = this. undefined = undefined.
-(function ($, window, undefined) {
+(function ($, window, Markdown, undefined) {
   'use strict';
 
   var FAQ = {
     init: function () {
-      this.parseMarkdown();
-      this.insertHtmlOnPage();
-      this.cacheElements();
-      this.bindEventListeners();
+      this.fetchMarkdown();
     },
 
-    parseMarkdown: function () {
-      var faqMarkdown;
+    fetchMarkdown: function () {
+      var success;
 
-      fs.readFile('./app/markdown/faq.md', function (err, data) {
-        if (err) { throw err; }
-        faqMarkdown = data;
+      success = function (data) {
+        this.insertConvertedMarkdownOnPage(data);
+        this.cacheElements();
+        this.formatHtml();
+        this.bindEventListeners();
+      };
+
+      $.ajax({
+        url:      '/markdown/faq.markdown.html',
+        dataType: 'html',
+        success:  success.bind(this)
       });
-
-      this.faqHtml = markdown.toHTML(faqMarkdown);
     },
 
-    insertHtmlOnPage: function () {
-      $('[role="main"]').html(this.faqHtml);
+    insertConvertedMarkdownOnPage: function (data) {
+      var converter, html;
+
+      converter = new Markdown.Converter();
+      html      = converter.makeHtml(data);
+
+      $('#faq').html(html);
     },
 
     cacheElements: function () {
       this.elms = {
-        $h2: $('h2')
+        $faq: $('#faq'),
+        $h2:  $('h2')
       };
+    },
+
+    formatHtml: function () {
+      var wrapAnswers;
+
+      wrapAnswers = function () {
+        $(this).nextUntil('h2').wrapAll($('<div/>', { 'class': 'answer' }));
+      };
+
+      this.elms.$h2.each(wrapAnswers);
     },
 
     bindEventListeners: function () {
       var accordian;
 
       accordian = function (event) {
-        $(event.target).next('p').slideToggle('fast');
+        $(event.target).next('.answer').slideToggle('fast');
       };
 
       this.elms.$h2.on('click', accordian);
@@ -51,4 +70,4 @@
   // Makes app global for debugging purposes. Might want to remove before rolling live.
   window.FAQ = FAQ || {};
 
-}(jQuery, this));
+}(window.jQuery, this, window.Markdown));
