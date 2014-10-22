@@ -59,15 +59,22 @@
   top: $logo-height;
   left: 0;
   width: 100%;
-  z-index: 2;
+  z-index: 5;
   background: $bg-color-accent;
   padding: 0 $logo-height;
+  animation: slidedown 0.3s ease-in-out;
 
   .num-selected {
     width: 220px;
     display: inline-block;
   }
 }
+
+@keyframes slidedown {
+  0%      { transform: translateY(-$logo-height) }
+  100%    { transform: translateY(0) }
+}
+
 
 .photo {
   width: $photo-width;
