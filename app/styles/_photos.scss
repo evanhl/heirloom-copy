@@ -34,14 +34,14 @@
     }
 
     a {
-      color: $highlight-color;
+      color: $subtle-highlight-color;
 
       &:hover {
-        color: $highlight-color-2;
+        color: $highlight-color;
       }
 
       &:active {
-        color: $highlight-color-3;
+        color: $highlight-color-2;
       }
     }
   }
