@@ -356,7 +356,7 @@ img.detail {
   .count, .title {
     position: absolute;
     color: white;
-    z-index: 5;
+    z-index: 4;
     left: $album-padding;
     max-width: #{$album-width - ($album-padding * 2)};
     word-wrap: break-word;
@@ -418,6 +418,11 @@ img.detail {
 .nav-filler {
   height: $logo-height;
   width: 100%;
+  transition: height 300ms ease-in-out;
+
+  &.collapsed {
+    height: 0px;
+  }
 }
 
 .photo-picker, .album-picker, .photo-picker-modal, .upload-modal {
