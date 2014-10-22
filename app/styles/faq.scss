@@ -31,32 +31,32 @@ h2 {
  * Best to have relative breakpoints.
  */
 
-@media (min-width: 10em) {
-  body {
-    background: red;
-  }
-}
+/*
+ * 300px breakpoint
+ */
+@media all and (min-width: 18.75em) {}
 
-@media (min-width: 20em) {
-  body {
-    background: green;
-  }
-}
+/*
+ * 400px breakpoint
+ */
+@media all and (min-width: 25em) {}
 
-@media (min-width: 30em) {
-  body {
-    background: orange;
-  }
-}
+/*
+ * 600px breakpoint
+ */
+@media all and (min-width: 37.5em) {}
 
-@media (min-width: 40em) {
-  body {
-    background: pink;
-  }
-}
+/*
+ * 800px breakpoint
+ */
+@media all and (min-width: 50em) {}
 
-@media (min-width: 50em) {
-  body {
-    background: yellow;
-  }
-}
+/*
+ * 920px breakpoint
+ */
+@media all and (min-width: 57.5em) {}
+
+/*
+ * 1044px breakpoint
+ */
+@media all and (min-width: 65.25em) {}
