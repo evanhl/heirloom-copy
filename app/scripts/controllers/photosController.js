@@ -12,6 +12,8 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
   retriesLeft: 0,
   perPage: 40,
 
+  showShareMenu: false,
+
   init: function () {
     this.get('albumPicker').on('didSelect', this, this.addPhotosToAlbum);
     this._super();
@@ -109,6 +111,10 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
   actions: {
     enlarge: function (id) {
       this.transitionToRoute('photo', id);
+    },
+
+    toggleShare: function () {
+      this.toggleProperty('showShareMenu');
     },
 
     select: function (photoController) {

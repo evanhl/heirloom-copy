@@ -52,6 +52,10 @@ Ember.I18n.translations = {
   'create': 'Create',
   'share': 'Share',
 
+  'facebook': 'Facebook',
+  'twitter': 'Twitter',
+  'email': 'Email',
+
   'fields.confirmPassword': 'Confirm password',
   'resetPassword.submit': 'Change my password',
   'resetPassword.successMsg': 'Password successfully reset!',

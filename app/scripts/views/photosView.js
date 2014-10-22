@@ -8,10 +8,18 @@ App.PhotosView = Ember.View.extend(InfiniteScroll.ViewMixin, App.AutoWidthMixin,
   setupListeners: function () {
     this.proxyAddedPhotosToAlbum = $.proxy(this.onAddedPhotosToAlbum, this);
     this.get('controller').on('addedPhotosToAlbum', this.proxyAddedPhotosToAlbum);
+    $('body').on('click.offShareMenu', $.proxy(this.bodyClick, this));
   }.on('didInsertElement'),
+
+  bodyClick: function (e) {
+    if(!$(e.target).closest(this.$('.share-container')).length) {
+      this.set('controller.showShareMenu', false);
+    }
+  },
 
   clearSelected: function () {
     this.get('controller').resetSelected();
+    $('body').off('click.offShareMenu');
   }.on('willDestroyElement'),
 
   cleanupListeners: function () {
