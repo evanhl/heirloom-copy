@@ -2,6 +2,7 @@
 App.AlbumPhotosController = Ember.ArrayController.extend(Ember.Evented, InfiniteScroll.ControllerMixin, App.SelectableMixin, {
   needs: ['album'],
   album: Ember.computed.alias('controllers.album'),
+  albumName: Ember.computed.alias('album.name'),
 
   fetchPage: function (page, perPage) {
     var adapter = App.Album.adapter;

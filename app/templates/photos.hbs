@@ -1,4 +1,5 @@
 <div {{bind-attr class=":photos-container isSelectionMode:selection-mode"}}>
+  <div {{bind-attr class=":nav-filler isSelectionMode::collapsed"}}></div>
   {{#if isSelectionMode}}
     <div class="selection-toolbar">
       <div class="left">

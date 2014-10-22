@@ -1,23 +1,27 @@
-{{#if isSelectionMode}}
-	<div class="selection-toolbar">
-	  <div class="left">
-	    <div class="num-selected">
-	      <span class="count-text">{{t "photos.selected" countBinding="selectedCount"}}</span>
-	    </div>
-	    <button class="take-action">Share</button>
-	    <button class="secondary" {{action 'addToAlbum' selectedIds}}>Album</button>
-	  </div>
-	  <div class="right">
-	    <button class="secondary" {{action 'removePhotos'}}>Remove</button>
-	    <button class="secondary" {{action 'cancel'}}>{{t 'cancel'}}</button>
-	  </div>
-	</div>
-{{/if}}
+<div class="groupings-container">
+	<div {{bind-attr class=":nav-filler isSelectionMode::collapsed"}}></div>
+	<h2>{{#link-to 'albums'}}Albums{{/link-to}} &gt; {{albumName}}</h2>
+	{{#if isSelectionMode}}
+		<div class="selection-toolbar">
+		  <div class="left">
+		    <div class="num-selected">
+		      <span class="count-text">{{t "photos.selected" countBinding="selectedCount"}}</span>
+		    </div>
+		    <button class="take-action">Share</button>
+		    <button class="secondary" {{action 'addToAlbum' selectedIds}}>Album</button>
+		  </div>
+		  <div class="right">
+		    <button class="secondary" {{action 'removePhotos'}}>Remove</button>
+		    <button class="secondary" {{action 'cancel'}}>{{t 'cancel'}}</button>
+		  </div>
+		</div>
+	{{/if}}
 
-{{outlet}}
+	{{outlet}}
 
-{{#each}}
-  {{render 'thumbPhoto' this}}
-{{/each}}
+	{{#each}}
+	  {{render 'thumbPhoto' this}}
+	{{/each}}
 
-{{partial 'spinner'}}
+	{{partial 'spinner'}}
+</div>

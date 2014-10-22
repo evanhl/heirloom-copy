@@ -418,6 +418,10 @@ img.detail {
 .nav-filler {
   height: $logo-height;
   width: 100%;
+
+  &.collapsed {
+    height: 0px;
+  }
 }
 
 .photo-picker, .album-picker, .photo-picker-modal, .upload-modal {
