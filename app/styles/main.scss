@@ -30,6 +30,7 @@ $topbar-bg-color: #eee;
 
 @import 'vars';
 @import 'fonts';
+@import 'buttons';
 @import 'spinner';
 @import 'nav';
 @import 'conversations';
@@ -390,97 +391,6 @@ img.detail {
   width: 150px;
 }
 
-button {
-  min-width: 130px;
-  height: 36px;
-  line-height: 36px;
-
-  border-radius: 3px;
-  background: $subtle-highlight-color;
-  color: $button-text-color;
-  border: 0;
-
-  opacity: 0.9;
-  outline: 0;
-
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 14px;
-  letter-spacing: 2px;
-
-  // padding: 2px 14px 3px;
-
-  &.take-action {
-    background: $highlight-color;
-    color: white;
-  }
-
-  &.secondary, &.secondary-action {
-    background: $alternate-button-color;
-    border: 1px solid $alternate-button-border-color;
-    line-height: 35px;
-  }
-
-  &.secondary-action {
-    color: $highlight-color;
-  }
-
-  &.secondary {
-    color: $alternate-button-text-color;
-  }
-
-  &.delete {
-    &:before {
-      content: '\00a0';
-    }
-
-    &:after {
-      content: ''; // &nbsp;
-      position: absolute;
-      top: 5px;
-      left: 7px;
-      display: block;
-      @include sprite-retina($trashcan, $trashcan-2x);
-    }
-
-    position: relative;
-    min-width: 37px;
-  }
-
-  &.add-to-album {
-    min-width: 140px;
-
-    &:before {
-      content: ''; // &nbsp;
-      display: inline-block;
-      @include sprite-retina($add_to_album, $add_to_album-2x);
-      // margin-top: 6px;
-      margin-bottom: -5px;
-      margin-right: 9px;
-    }
-
-    position: relative;
-    // min-width: 37px;
-    // padding-left: 40px;
-  }
-
-  &:disabled {
-    opacity: 0.3;
-
-    &.waiting {
-      animation: fadeinout 1.3s ease-in-out infinite;
-    }
-  }
-
-  &:hover:enabled {
-    opacity: 1
-  }
-
-  &:active:enabled {
-    box-shadow: inset 0px 2px 5px 1px rgba(0, 0, 0, 0.12);
-  }
-}
-
 @keyframes fadeinout {
   0%      { opacity: 0.6; }
   50%     { opacity: 0.3; }
@@ -506,7 +416,7 @@ button {
 }
 
 .nav-filler {
-  height: $logo-size;
+  height: $logo-height;
   width: 100%;
 }
 
@@ -547,14 +457,14 @@ $upload-modal-content-height: ($photo-width * 2) + ($photo-margin) + ($album-mar
 
 .album-picker, .photo-picker-modal {
   border-radius: 3px;
-  min-height: #{$picker-content-height + ($logo-size * 2)};
+  min-height: #{$picker-content-height + ($logo-height * 2)};
   background: $bg-color-accent;
 }
 
 .upload-modal {
   border-radius: 3px;
   background: $bg-color-accent;
-  min-height: #{$upload-modal-content-height + ($logo-size * 2)};
+  min-height: #{$upload-modal-content-height + ($logo-height * 2)};
 
   .picker-content {
     height: $upload-modal-content-height;
@@ -567,7 +477,7 @@ $upload-modal-content-height: ($photo-width * 2) + ($photo-margin) + ($album-mar
   }
 
   .picker-content {
-    height: $picker-content-height - 149px + $logo-size;
+    height: $picker-content-height - 149px + $logo-height;
   }
 }
 
@@ -578,8 +488,8 @@ $upload-modal-content-height: ($photo-width * 2) + ($photo-margin) + ($album-mar
   position: absolute;
   width: 100%;
   border-bottom: 1px solid $subtle-highlight-color;
-  height: $logo-size;
-  line-height: $logo-size;
+  height: $logo-height;
+  line-height: $logo-height;
   padding: 0 $album-margin;
   vertical-align: middle;
   z-index: 5;
@@ -594,7 +504,7 @@ $upload-modal-content-height: ($photo-width * 2) + ($photo-margin) + ($album-mar
   position: absolute;
   background: white;
   height: 76px;
-  top: $logo-size;
+  top: $logo-height;
   z-index: 5;
   width: 100%;
   padding: 0 $album-margin;
@@ -613,8 +523,8 @@ $upload-modal-content-height: ($photo-width * 2) + ($photo-margin) + ($album-mar
   background: white;
   position: absolute;
   bottom: 0;
-  height: $logo-size;
-  line-height: $logo-size;
+  height: $logo-height;
+  line-height: $logo-height;
   z-index: 5;
   padding: 0 $album-margin;
 }

@@ -3,7 +3,6 @@
   max-width: 1000px;
 
   li {
-    border-bottom: 5px $bg-color-accent solid;
     margin: 0 32px;
   }
 }
@@ -11,29 +10,26 @@
 .full-nav {
   background: white;
   border-bottom: 1px $subtle-highlight-color solid;
+  height: $logo-height;
+
+  button {
+    margin: 18px 0;
+  }
 
   ul {
     float: left;
     width: calc(100% - #{$right-col-user-dropdown-ideal-width + $main-col-horiz-padding});
   }
 
-  @media screen and (min-width: $user-dropdown-breakpoint) {
-    ul {
-      width: $main-col-right-inner-edge;
-    }
-  }
-
   li {
-    border-bottom: 5px white solid;
-    float: right;
-    margin-left: (64px / $left-main-max-width) * 100%;
+    float: left;
+    margin-left: 95px;
   }
 
   .logo {
     border-right: 1px $subtle-highlight-color solid;
-    width: 36px;
-    height: 36px;
-    padding: 36px 36px 37px 36px;
+    width: $logo-width;
+    height: $logo-height;
     float: left;
     background: url(/images/heirloom_logo.png) no-repeat;
     background-size: 36px auto;
@@ -65,16 +61,13 @@
     margin: 0;
     padding: 0;
     text-align: center;
+    line-height: $logo-height - 1px;
   }
 
   li {
     display: inline-block;
-    padding: 28px 0 23px;
-
-    transition: border-bottom-color .25s ease-in-out;
 
     &.active {
-      border-bottom: 5px $highlight-color solid;
 
       a {
         color: $highlight-color;
@@ -82,16 +75,14 @@
     }
 
     a {
-      font-size: 14px;
       font-weight: bold;
-      line-height: 16px;
       text-transform: uppercase;
-      color: $default-text-color;
-      transition: color .25s ease-in-out;
+      transition: color 0.25s ease-in-out;
       letter-spacing: 2px;
-
-      // Enlarges hover/click target
-      padding: 25px;
+      display: inline-block;
+      // Brandon rides high. This makes up the difference.
+      padding-top: 2px;
+      color: $subtle-highlight-color;
 
       &:hover {
         color: $highlight-color;
@@ -129,21 +120,23 @@
   }
 }
 
+$user-dropdown-height: 40px;
+
 .user-dropdown {
   display: block;
   margin-right: 3.7453%;
   margin-left: 32px;
   position: relative;
   float: right;
-  top: 20px;
+  top: 18px;
   width: 200px;
 
   .icon {
-    border-radius: 17px;
+    border-radius: $user-dropdown-height / 2;
     border: 1px solid $subtle-highlight-color;
     background: white;
-    width: 34px;
-    height: 34px;
+    width: $user-dropdown-height;
+    height: $user-dropdown-height;
     position: absolute;
     top: 0;
     z-index: 3;
@@ -152,7 +145,7 @@
       display: inline-block;
       width: 100%;
       text-align: center;
-      padding-top: 10px;
+      padding-top: ($user-dropdown-height - 14px) / 2;
       color: $highlight-color;
       font-weight: 700;
     }
@@ -162,16 +155,15 @@
     border: 1px solid $subtle-highlight-color;
     font-size: 14px;
     position: absolute;
-    left: 17px;
+    left: $user-dropdown-height / 2;
     background: white;
-    border-radius: 3px;
-    height: 34px;
+    height: $user-dropdown-height;
     transition: height 0.15s ease-in;
     overflow: hidden;
 
     &:hover {
       // This assumes 3 options. For dynamic height, we'll have to rely on JS animation.
-      height: 140px;
+      height: 146px;
 
       .username span {
         color: $highlight-color;
@@ -182,13 +174,13 @@
       }
 
       .down-arrow {
-        @include sprite-retina($caret_button_red, $caret_button_red-2x);
+        @include sprite-retina($user_toggle_hover, $user_toggle_hover-2x);
       }
     }
   }
 
   .username {
-    padding: 11px 40px 7px 29px;
+    padding: 14px 40px 10px 29px;
     width: 181px;
     white-space: nowrap;
     overflow: hidden;
@@ -216,11 +208,11 @@
   .down-arrow {
     display: inline-block;
     position: absolute;
-    top: 7px;
-    right: 8px;
+    top: 9px;
+    right: 10px;
     transition: border-color 0.15s linear;
 
-    @include sprite-retina($caret_button_grey, $caret_button_grey-2x);
+    @include sprite-retina($user_toggle, $user_toggle-2x);
   }
 }
 

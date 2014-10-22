@@ -2,11 +2,12 @@
   {{#if isLoggedIn}}
     <ul>
       {{#link-to 'photos'}}<div class="logo"></div>{{/link-to}}
+      {{#link-to 'photos' tagName='li' class='photos'}}{{#link-to 'photos'}}{{t 'moments'}}{{/link-to}}{{/link-to}}
+      {{#link-to 'albums' tagName='li' class='albums'}}{{#link-to 'albums'}}{{t 'albums'}}{{/link-to}}{{/link-to}}
       {{#if groupsEnabled}}
         {{#link-to 'conversations' tagName='li' class='conversations'}}{{#link-to 'conversations'}}{{t 'conversations'}}{{/link-to}}{{/link-to}}
       {{/if}}
-      {{#link-to 'albums' tagName='li' class='albums'}}{{#link-to 'albums'}}{{t 'albums'}}{{/link-to}}{{/link-to}}
-      {{#link-to 'photos' tagName='li' class='photos'}}{{#link-to 'photos'}}{{t 'moments'}}{{/link-to}}{{/link-to}}
+      <button class="secondary-action with-icon large right" {{action 'upload'}}><span class="upload-icon icon"></span>{{t 'upload'}}</button>
     </ul>
 
     <div class="user-dropdown">

@@ -7,6 +7,8 @@ Ember.I18n.translations = {
   'signout': 'Sign Out',
   'signup': 'Sign Up',
 
+  'album': 'Album',
+
   'signin.message': 'Welcome back.',
   'signin.login': 'Email/Username',
   'signin.password': 'Password',
@@ -43,9 +45,12 @@ Ember.I18n.translations = {
   'upload.modal.addButton': 'Add',
   'upload.confirmClose': 'You have unsaved uploads. Are you sure you want to close Uploads?',
 
+  'albums.create': 'Create New Album',
+
   'cancel': 'Cancel',
   'add': 'Add',
   'create': 'Create',
+  'share': 'Share',
 
   'fields.confirmPassword': 'Confirm password',
   'resetPassword.submit': 'Change my password',

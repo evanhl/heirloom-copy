@@ -1,7 +1,4 @@
 <div {{bind-attr class=":albums-container"}}>
-  <div class="toolbar">
-    <button class="take-action" {{action 'create'}}>{{t 'create'}}</button>
-  </div>
   {{#if isSelectionMode}}
     <div class="selection-toolbar">
       <div class="right">
@@ -12,8 +9,11 @@
   {{/if}}
 
 {{!-- The HTML comments below are to ensure no accidental spaces between inline-block elements --}}
-  {{#each}}<!--
- -->{{#link-to 'albumPhotos' id}}{{render 'thumbAlbum' this enlargeDisabled=false}}{{/link-to}}<!--
+  <div class="create-new-album" {{action 'create'}}>
+    <span class="caption">{{t 'albums.create'}}</span>
+  </div>{{!--
+--}}{{#each}}<!--
+   -->{{#link-to 'albumPhotos' id}}{{render 'thumbAlbum' this enlargeDisabled=false}}{{/link-to}}<!--
 -->{{/each}}
 
   {{partial 'spinner'}}

@@ -1,15 +1,12 @@
 <div {{bind-attr class=":photos-container isSelectionMode:selection-mode"}}>
-  <div class="toolbar">
-    <button class="take-action" {{action 'upload'}}>{{t 'upload'}}</button>
-  </div>
   {{#if isSelectionMode}}
     <div class="selection-toolbar">
       <div class="left">
         <div class="num-selected">
           <span class="count-text">{{t "photos.selected" countBinding="selectedCount"}}</span>
         </div>
-        <button class="take-action">Share</button>
-        <button class="secondary-action add-to-album" {{action 'addToAlbum' selectedIds}}>Album</button>
+        <button class="take-action with-icon medium"><span class="share-icon icon"></span>{{t 'share'}}</button>
+        <button class="take-action with-icon medium" {{action 'addToAlbum' selectedIds}}><span class="add-to-album-icon icon"></span>{{t 'album'}}</button>
       </div>
       <div class="right">
         <button class="secondary delete" {{action 'deletePhotos'}}></button>

@@ -1,7 +1,6 @@
 App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMixin, Ember.Evented, App.SelectableMixin, {
-  needs: ['albumPicker', 'uploadModal', 'albumsIndex'],
+  needs: ['albumPicker', 'albumsIndex'],
   albumPicker: Ember.computed.alias('controllers.albumPicker'),
-  uploadModal: Ember.computed.alias('controllers.uploadModal'),
   albums: Ember.computed.alias('controllers.albumsIndex'),
 
   sortProperties: ['created_at'],
@@ -11,10 +10,10 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
   SECS_BETWEEN_RETRIES: 5,
 
   retriesLeft: 0,
+  perPage: 40,
 
   init: function () {
     this.get('albumPicker').on('didSelect', this, this.addPhotosToAlbum);
-    this.get('uploadModal').on('didUpload', this, this.didUpload);
     this._super();
   },
 
@@ -78,11 +77,6 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
       album.reload();
       self.trigger('addedPhotosToAlbum', album, photoCount);
     });
-  },
-
-  didUpload: function (uploadedPhotoModels) {
-    this.unshiftObjects(uploadedPhotoModels);
-    this.startFetchRecent();
   },
 
   startFetchRecent: function () {
@@ -151,10 +145,6 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
 
     addToAlbum: function () {
       this.send('openModal', 'albumPicker');
-    },
-
-    upload: function () {
-      this.send('openModal', 'uploadModal');
     }
   }
 });
