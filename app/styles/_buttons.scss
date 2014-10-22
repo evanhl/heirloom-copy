@@ -183,6 +183,10 @@ button:active {
 }
 
 .share-icon {
+  :disabled & {
+    border-right-color: $disabled-button-color-2;
+  }
+
   border-right-color: $highlight-color-accent;
 
   &:after {

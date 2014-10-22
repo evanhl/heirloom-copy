@@ -11,6 +11,10 @@ App.SelectableMixin = Ember.Mixin.create({
     return this.get('selectedCount') === 0;
   }.property('selectedCount'),
 
+  moreThanOneSelected: function () {
+    return this.get('selectedCount') > 1;
+  }.property('selectedCount'),
+
   isSelectionMode: function () {
     return this.get('selectedCount') > 0;
   }.property('selectedCount'),
