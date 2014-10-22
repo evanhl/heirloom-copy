@@ -1,5 +1,3 @@
-{{#if loadingMore}}
-<div class="spinner"></div>
-{{else}}
-<div class="spinner-placeholder"></div>
-{{/if}}
+<div class="spinner-cont">
+  <div {{bind-attr class=":spinner loadingMore::hidden"}}></div>
+</div>
