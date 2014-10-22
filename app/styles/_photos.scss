@@ -20,6 +20,38 @@
   margin-top: 20px;
 }
 
+.album-photos-container {
+  margin: 0 auto;
+  padding: 0 #{$logo-width - $photo-margin} 0 $logo-width;
+
+  .toolbar {
+    margin: 0 $photo-margin $photo-margin 0;
+    text-align: left;
+
+    h3 {
+      margin: 0;
+      padding-top: 2px;
+    }
+
+    a {
+      color: $highlight-color;
+
+      &:hover {
+        color: $highlight-color-2;
+      }
+
+      &:active {
+        color: $highlight-color-3;
+      }
+    }
+  }
+}
+
+.crumb-divider {
+  color: $subtle-highlight-color;
+  margin: 0 5px;
+}
+
 .groupings-container {
   margin: 0 #{$logo-width - $photo-margin} 0 $logo-width;
 }

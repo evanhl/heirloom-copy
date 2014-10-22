@@ -46,6 +46,7 @@ Ember.I18n.translations = {
   'upload.confirmClose': 'You have unsaved uploads. Are you sure you want to close Uploads?',
 
   'albums.create': 'Create New Album',
+  'albums.remove': 'Remove',
 
   'cancel': 'Cancel',
   'add': 'Add',
