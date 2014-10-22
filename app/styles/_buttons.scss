@@ -82,6 +82,21 @@ button {
       @include sprite-retina($trashcan, $trashcan-2x);
     }
 
+    &:hover {
+      background: $highlight-color;
+    }
+
+    &:active {
+      background: $highlight-color-2;
+    }
+    &:hover, &:active {
+      border: 1px solid rgba(0,0,0,0);
+
+      &:after {
+        @include sprite-retina($trashcan_hover_pressed, $trashcan_hover_pressed-2x);
+      }
+    }
+
     position: relative;
     min-width: 37px;
   }
