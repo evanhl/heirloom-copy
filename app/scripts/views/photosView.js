@@ -1,6 +1,7 @@
 //= require ../utils/infiniteScroll
+//= require ./retractSelToolbarMixin
 
-App.PhotosView = Ember.View.extend(InfiniteScroll.ViewMixin, App.AutoWidthMixin, {
+App.PhotosView = Ember.View.extend(InfiniteScroll.ViewMixin, App.AutoWidthMixin, App.RetractSelToolbarMixin, {
   scrollEl: 'body',
   containerSelector: '.photos-container',
   itemClass: 'photo',

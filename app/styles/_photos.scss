@@ -100,6 +100,11 @@
     width: 220px;
     display: inline-block;
   }
+
+  &.removing {
+    transform: translateY(-$logo-height);
+    animation: slideup 0.3s ease-in-out;
+  }
 }
 
 @keyframes slidedown {
@@ -107,6 +112,10 @@
   100%    { transform: translateY(0) }
 }
 
+@keyframes slideup {
+  0%      { transform: translateY(0) }
+  100%    { transform: translateY(-$logo-height) }
+}
 
 .photo {
   width: $photo-width;

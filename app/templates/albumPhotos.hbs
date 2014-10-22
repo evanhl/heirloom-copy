@@ -2,8 +2,8 @@
   <div class="toolbar">
     <h3>{{#link-to 'albums'}}Albums{{/link-to}} <span class="crumb-divider">&gt;</span> {{albumName}}</h3>
   </div>
-  {{#if isSelectionMode}}
-    <div class="selection-toolbar">
+  {{#if showToolbar}}
+    <div {{bind-attr class=":selection-toolbar removingToolbar:removing"}}>
       <div class="left">
         <div class="num-selected">
           <span class="count-text">{{t "photos.selected" countBinding="selectedCount"}}</span>

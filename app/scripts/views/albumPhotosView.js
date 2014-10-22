@@ -1,6 +1,8 @@
 //= require ../utils/infiniteScroll
 //= require ./autoWidthMixin
-App.AlbumPhotosView = Ember.View.extend(InfiniteScroll.ViewMixin, App.AutoWidthMixin, {
+//= require ./retractSelToolbarMixin
+
+App.AlbumPhotosView = Ember.View.extend(InfiniteScroll.ViewMixin, App.AutoWidthMixin, App.RetractSelToolbarMixin, {
   containerSelector: '.album-photos-container',
   itemClass: 'photo',
 
