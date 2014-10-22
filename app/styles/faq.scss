@@ -1,7 +1,62 @@
+/* =============================================================================
+   Global styles
+   ========================================================================== */
+
+header {
+  border: 1px solid rgb(216, 216, 216);
+  height: 72px;
+}
+
+[role="main"],
+header > div {
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 0 1em;
+}
+
 h2 {
   cursor: pointer;
 }
 
 .answer {
   display: none;
+}
+
+/* =============================================================================
+   Media query specific styles
+   ========================================================================== */
+
+/*
+ * NOTE: I'm using `em` here instead of pixel with because it's 2014 and everything is changing sizes all of the time.
+ * Best to have relative breakpoints.
+ */
+
+@media (min-width: 10em) {
+  body {
+    background: red;
+  }
+}
+
+@media (min-width: 20em) {
+  body {
+    background: green;
+  }
+}
+
+@media (min-width: 30em) {
+  body {
+    background: orange;
+  }
+}
+
+@media (min-width: 40em) {
+  body {
+    background: pink;
+  }
+}
+
+@media (min-width: 50em) {
+  body {
+    background: yellow;
+  }
 }
