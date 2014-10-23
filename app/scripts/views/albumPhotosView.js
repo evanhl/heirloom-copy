@@ -15,8 +15,9 @@ App.AlbumPhotosView = Ember.View.extend(InfiniteScroll.ViewMixin, App.AutoWidthM
     $('body').on('click.offShareMenu', $.proxy(this.bodyClick, this));
   }.on('didInsertElement'),
 
-  cleanupListeners: function () {
+  cleanup: function () {
     $('body').off('click.offShareMenu');
+    this.controller.reset();
   }.on('willDestroyElement'),
 
   bodyClick: function (e) {

@@ -3,7 +3,11 @@ App.ThumbAlbumView = Ember.View.extend({
   classNameBindings: ['controller.selected', 'controller.isSelectionMode:selection-mode'] ,
 
   click: function () {
-    if (this.enlargeDisabled) {
+    if (!this.get('controller.isReady')) {
+      return;
+    }
+
+    if (this.enlargeDisabled || this.get('controller.isSelectionMode')) {
       this.controller.send('select');
     } else {
       this.controller.send('enlarge');
