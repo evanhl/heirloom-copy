@@ -1,21 +1,46 @@
-App.RetractSelToolbarMixin = Ember.Mixin.create({
-  onSelectionModeChange: function () {
-    var self = this;
-    var $toolbar;
+(function () {
+  var getMixinParams = function (methodName, showToolbarProperty, removingToolbarProperty, modeProperty, toolbarSelector) {
+    var mixinParams = {};
 
-    if (this.get('controller.isSelectionMode')) {
-      this.set('controller.showToolbar', true);
-      this.set('controller.removingToolbar', false);
-    } else {
-      $toolbar = this.$('.selection-toolbar');
+    mixinParams[methodName] = function () {
+      var self = this;
+      var $toolbar;
 
-      if (!$toolbar) { return; }
+      if (this.get(modeProperty)) {
+        this.set(showToolbarProperty, true);
+        this.set(removingToolbarProperty, false);
+      } else {
+        $toolbar = this.$(toolbarSelector);
 
-      $toolbar.one('animationend oAnimationEnd webkitAnimationEnd', function () {
-        self.set('controller.removingToolbar', false);
-        self.set('controller.showToolbar', false);
-      });
-      this.set('controller.removingToolbar', true);
-    }
-  }.observes('controller.isSelectionMode')
-});
+        if (!$toolbar) { return; }
+
+        $toolbar.one('animationend oAnimationEnd webkitAnimationEnd', function () {
+          self.set(removingToolbarProperty, false);
+          self.set(showToolbarProperty, false);
+        });
+        this.set(removingToolbarProperty, true);
+      }
+    }.observes(modeProperty);
+
+    return mixinParams;
+  };
+
+
+  App.RetractSelToolbarMixin = Ember.Mixin.create(getMixinParams(
+    'onSelectionModeChange',
+    'controller.showToolbar',
+    'controller.removingToolbar',
+    'controller.isSelectionMode',
+    '.selection-toolbar'
+  ));
+
+  App.RetractChangeCoverToolbarMixin = Ember.Mixin.create(getMixinParams(
+    'onCcModeChange',
+    'controller.showCcToolbar',
+    'controller.removingCcToolbar',
+    'controller.isCcMode',
+    '.change-cover-toolbar'
+  ));
+})();
+
+

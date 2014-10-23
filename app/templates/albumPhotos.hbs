@@ -8,7 +8,7 @@
         <button class="secondary icon-only settings" {{action 'toggleSettingsMenu'}}></button>
         {{#if showSettingsMenu}}
           <ul class="triangle-border top">
-            <li>{{t 'albums.changeCover'}}</li>
+            <li {{action 'enterChangeCoverMode'}}>{{t 'albums.changeCover'}}</li>
             <li {{action 'deleteAlbum'}}>{{t 'albums.delete'}}</li>
           </ul>
         {{/if}}
@@ -16,20 +16,40 @@
       <button class="secondary-action with-icon large right" {{action 'addPhotos'}}><span class="upload-icon icon"></span>{{t 'photos'}}</button>
     </div>
   </div>
-  {{#if showToolbar}}
-    <div {{bind-attr class=":selection-toolbar removingToolbar:removing"}}>
+
+  {{#if showCcToolbar}}
+    <div {{bind-attr class=":change-cover-toolbar removingCcToolbar:removing"}}>
       <div class="left">
+        {{!-- FIXME: num-selected makes no sense as a class name here --}}
         <div class="num-selected">
-          <span class="count-text">{{t "photos.selected" countBinding="selectedCount"}}</span>
+          <span class="count-text">{{t 'albums.changeCover'}}</span>
         </div>
-        <button class="take-action">Share</button>
-        <button class="secondary" {{action 'addToAlbum' selectedIds}}>Album</button>
       </div>
       <div class="right">
-        <button class="secondary" {{action 'removePhotos'}}>{{t 'albums.remove'}}</button>
-        <button class="secondary" {{action 'cancel'}}>{{t 'cancel'}}</button>
+        <button class="take-action" {{action 'saveCoverPhoto'}} {{bind-attr disabled=noneSelected}}>{{t 'save'}}</button>
+        <button class="secondary" {{action 'cancelChangeCover'}}>{{t 'cancel'}}</button>
       </div>
     </div>
+
+  {{else}}
+    {{#if removingCcToolbar}}
+    {{else}}
+      {{#if showToolbar}}
+        <div {{bind-attr class=":selection-toolbar removingToolbar:removing"}}>
+          <div class="left">
+            <div class="num-selected">
+              <span class="count-text">{{t "photos.selected" countBinding="selectedCount"}}</span>
+            </div>
+            <button class="take-action">Share</button>
+            <button class="secondary" {{action 'addToAlbum' selectedIds}}>Album</button>
+          </div>
+          <div class="right">
+            <button class="secondary" {{action 'removePhotos'}}>{{t 'albums.remove'}}</button>
+            <button class="secondary" {{action 'cancel'}}>{{t 'cancel'}}</button>
+          </div>
+        </div>
+      {{/if}}
+    {{/if}}
   {{/if}}
 
   {{outlet}}

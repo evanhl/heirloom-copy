@@ -1,6 +1,6 @@
 App.ThumbPhotoView = Ember.View.extend({
   classNames: 'photo',
-  classNameBindings: ['controller.selected', 'controller.model.isReady::processing'],
+  classNameBindings: ['controller.selected', 'controller.isSelectionMode:selection-mode', 'controller.model.isReady::processing'],
 
   click: function () {
     if (!this.get('controller.isReady')) {

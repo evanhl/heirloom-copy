@@ -87,7 +87,7 @@
   text-align: right;
 }
 
-.selection-toolbar {
+.selection-toolbar, .change-cover-toolbar {
   height: $logo-height;
   border-bottom: 1px solid $subtle-highlight-color;
   line-height: $logo-height + 3px; // fudge factor because buttons don't quite vertically center otherwise

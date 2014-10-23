@@ -1,6 +1,6 @@
 App.ThumbAlbumView = Ember.View.extend({
   classNames: ['album', 'photo'],
-  classNameBindings: 'controller.selected',
+  classNameBindings: ['controller.selected', 'controller.isSelectionMode:selection-mode'] ,
 
   click: function () {
     if (this.enlargeDisabled) {

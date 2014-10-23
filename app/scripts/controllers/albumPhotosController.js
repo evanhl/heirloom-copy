@@ -23,6 +23,14 @@ App.AlbumPhotosController = Ember.ArrayController.extend(Ember.Evented, Infinite
     return adapter.findNestedQuery(this.get('album.model'), App.Photo, 'photos', records, params);
   },
 
+  isSelectionMode: function () {
+    return this.get('selectedCount') > 0 && !this.get('isCcMode');
+  }.property('selectedCount', 'isCcMode'),
+
+  areItemsSelectable: function () {
+    return this.get('selectedCount') > 0 || this.get('isCcMode');
+  }.property('selectedCount', 'isCcMode'),
+
   photosSelected: function (ids) {
     this.addPhotos(ids);
   },
@@ -53,6 +61,12 @@ App.AlbumPhotosController = Ember.ArrayController.extend(Ember.Evented, Infinite
   actions: {
     select: function (photoController) {
       var newValue = photoController.get('selected');
+
+      if (this.get('isCcMode')) {
+        this.deselect();
+        photoController.set('selected', newValue);
+      }
+
       this.toggleSelected(photoController.get('model.id'), newValue);
     },
 
@@ -94,6 +108,29 @@ App.AlbumPhotosController = Ember.ArrayController.extend(Ember.Evented, Infinite
 
     addPhotos: function () {
       this.send('openModal', 'albumPhotoPicker');
+    },
+
+    enterChangeCoverMode: function () {
+      this.set('isCcMode', true);
+      this.set('showSettingsMenu', false);
+    },
+
+    cancelChangeCover: function () {
+      this.deselect();
+      this.set('isCcMode', false);
+    },
+
+    saveCoverPhoto: function () {
+      var self = this;
+      var album = this.get('album.model');
+      var adapter = App.Album.adapter;
+      var coverPhotoId = this.get('selectedIds')[0];
+
+      adapter.patchRecord(album, { cover_photo_id: coverPhotoId }).then(function () {
+        // TODO: handle error
+        self.deselect();
+        self.set('isCcMode', false);
+      });
     }
   }
 });

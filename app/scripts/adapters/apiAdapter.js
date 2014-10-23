@@ -54,6 +54,17 @@ App.APIAdapter = Ember.RESTAdapter.extend({
     });
   },
 
+  patchRecord: function(record, data) {
+    var primaryKey = Ember.get(record.constructor, 'primaryKey'),
+        url = this.buildURL(record.constructor, record.get('id')),
+        self = this;
+
+    return this.ajax(url, data, "PATCH").then(function(data) {
+      self.didSaveRecord(record, data);
+      return record;
+    });
+  },
+
   createNestedRecord: function(parent, record, nestedUrl) {
     var primaryKey = Ember.get(parent.constructor, 'primaryKey'),
         url = this.buildURL(parent.constructor, parent.get('id')) + '/' + nestedUrl,

@@ -160,6 +160,7 @@ $user-dropdown-height: 40px;
     height: $user-dropdown-height;
     transition: height 0.15s ease-in;
     overflow: hidden;
+    border-radius: 2px;
 
     &:hover {
       // This assumes 3 options. For dynamic height, we'll have to rely on JS animation.

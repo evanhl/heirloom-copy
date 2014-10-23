@@ -55,6 +55,7 @@ Ember.I18n.translations = {
   'albums.namePlaceholder': 'Album Name...',
 
   'cancel': 'Cancel',
+  'save': 'Save',
   'add': 'Add',
   'create': 'Create',
   'share': 'Share',

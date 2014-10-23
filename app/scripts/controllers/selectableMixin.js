@@ -19,6 +19,8 @@ App.SelectableMixin = Ember.Mixin.create({
     return this.get('selectedCount') > 0;
   }.property('selectedCount'),
 
+  areItemsSelectable: Ember.computed.alias('isSelectionMode'),
+
   resetSelected: function () {
     this.set('selected', {});
   }.on('init'),
