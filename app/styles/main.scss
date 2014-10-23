@@ -438,7 +438,7 @@ img.detail {
   box-shadow: 0 2px 3px 0 rgba(0,0,0,0.25);
 }
 
-.photo-picker, .photo-picker-modal {
+.photo-picker {
   max-width: 1000px;
 }
 
@@ -477,12 +477,16 @@ $upload-modal-content-height: ($photo-width * 2) + ($photo-margin) + ($album-mar
 }
 
 .photo-picker-modal {
-  .nav-filler {
-    height: 149px;
-  }
+  max-width: 848px;
 
-  .picker-content {
-    height: $picker-content-height - 149px + $logo-height;
+  &.has-input {
+    .nav-filler {
+      height: ($logo-height * 2) - 1px;
+    }
+
+    .picker-content {
+      height: $picker-content-height - $logo-height + 1px;
+    }
   }
 }
 

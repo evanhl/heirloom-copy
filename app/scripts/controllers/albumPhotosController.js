@@ -1,10 +1,16 @@
 //= require selectableMixin
 App.AlbumPhotosController = Ember.ArrayController.extend(Ember.Evented, InfiniteScroll.ControllerMixin, App.SelectableMixin, {
-  needs: ['album'],
+  needs: ['album', 'albumPhotoPicker'],
   album: Ember.computed.alias('controllers.album'),
+  albumPhotoPicker: Ember.computed.alias('controllers.albumPhotoPicker'),
   albumName: Ember.computed.alias('album.name'),
 
   showSettingsMenu: false,
+
+  init: function () {
+    this.get('albumPhotoPicker').on('photosSelected', this, this.photosSelected);
+    this._super();
+  },
 
   fetchPage: function (page, perPage) {
     var adapter = App.Album.adapter;
@@ -15,6 +21,28 @@ App.AlbumPhotosController = Ember.ArrayController.extend(Ember.Evented, Infinite
     var records = Ember.RecordArray.create({ modelClass: App.Photo, _query: params, container: false });
 
     return adapter.findNestedQuery(this.get('album.model'), App.Photo, 'photos', records, params);
+  },
+
+  photosSelected: function (ids) {
+    this.addPhotos(ids);
+  },
+
+  addPhotos: function (ids) {
+    var self = this;
+    var adapter = App.Album.adapter;
+    var photoCount = ids.length;
+    var album = this.get('album.model');
+
+    adapter.postNested(album, {
+      photo_ids: ids
+    }, 'photos').then(function () {
+      // TODO: handle error
+      album.reload();
+      self.pushObjects(ids.map(function (id) {
+        return App.Photo.find(id);
+      }));
+      // self.trigger('addedPhotosToAlbum', album, photoCount);
+    });
   },
 
   deselect: function () {
@@ -54,6 +82,18 @@ App.AlbumPhotosController = Ember.ArrayController.extend(Ember.Evented, Infinite
 
     toggleSettingsMenu: function () {
       this.toggleProperty('showSettingsMenu');
+    },
+
+    deleteAlbum: function () {
+      var self = this;
+
+      this.get('album.model').deleteRecord().then(function () {
+        self.transitionToRoute('albums');
+      });
+    },
+
+    addPhotos: function () {
+      this.send('openModal', 'albumPhotoPicker');
     }
   }
 });

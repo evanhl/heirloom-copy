@@ -30,6 +30,7 @@ Ember.I18n.translations = {
   'post.likes.one': '{{count}} Like',
   'post.likes.other': '{{count}} Likes',
 
+  'photos': 'Photos',
   'photos.selected.one': '{{count}} Photo Selected',
   'photos.selected.other': '{{count}} Photos Selected',
 
@@ -37,6 +38,7 @@ Ember.I18n.translations = {
   'photos.count.other': '{{count}} Photos',
 
   'photos.addToAlbum': 'Add to Album',
+  'photos.addToNewAlbum': 'Add Photos to New Album',
 
   'photos.addedToAlbum.one': '{{count}} Photo was added to Album "{{albumName}}"',
   'photos.addedToAlbum.other': '{{count}} Photos were added to Album "{{albumName}}"',
@@ -49,6 +51,7 @@ Ember.I18n.translations = {
   'albums.remove': 'Remove',
   'albums.changeCover': 'Change Cover Photo',
   'albums.delete': 'Delete Album',
+  'albums.namePlaceholder': 'Album Name...',
 
   'cancel': 'Cancel',
   'add': 'Add',

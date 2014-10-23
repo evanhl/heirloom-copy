@@ -1,15 +1,15 @@
 {{#modal-dialog action="close"}}
   {{!-- TODO: reduce copypasta between this and albumPicker.hbs/uploadModal.hbs
   --}}
-  {{!-- TODO: remove inline style
-  --}}
-  <div class="photo-picker-modal" style="width: 848px;">
+  <div {{bind-attr class=":photo-picker-modal hasInput:has-input"}}>
     <div class="top-bar">
-      <h3>Add Photos to New Album</h3>
+      <h3>{{t 'photos.addToNewAlbum'}}</h3>
     </div>
-    <div class="sub-top-bar">
-      {{input value=name placeholder="Album Name..."}}
-    </div>
+    {{#if hasInput}}
+      <div class="sub-top-bar">
+        {{input value=name placeholder=(ts 'albums.namePlaceholder')}}
+      </div>
+    {{/if}}
     <div class="bottom-bar">
       <div class="left">
         <span class="count-text">{{t "photos.selected" countBinding="selectedCount"}}</span>

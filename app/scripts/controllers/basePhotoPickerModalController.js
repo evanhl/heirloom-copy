@@ -1,5 +1,5 @@
 //= require selectableMixin
-App.PhotoPickerModalController = Ember.Controller.extend(Ember.Evented, App.SelectableMixin, {
+App.BasePhotoPickerModalController = Ember.Controller.extend(Ember.Evented, App.SelectableMixin, {
   init: function () {
     this.reset();
   },
@@ -8,10 +8,6 @@ App.PhotoPickerModalController = Ember.Controller.extend(Ember.Evented, App.Sele
     this.set('selected', {});
     this.set('name', null);
   },
-
-  completeDisabled: function () {
-    return this.get('noneSelected') || !this.get('name');
-  }.property('noneSelected', 'name'),
 
   actions: {
     close: function () {

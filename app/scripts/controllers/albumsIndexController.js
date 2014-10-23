@@ -1,10 +1,10 @@
 //= require selectableMixin
 App.AlbumsIndexController = Ember.ArrayController.extend(Ember.Evented, InfiniteScroll.ControllerMixin, App.SelectableMixin, {
-  needs: ['photoPickerModal'],
-  photoPickerModal: Ember.computed.alias('controllers.photoPickerModal'),
+  needs: ['newAlbumPhotoPicker'],
+  newAlbumPhotoPicker: Ember.computed.alias('controllers.newAlbumPhotoPicker'),
 
   init: function () {
-    this.get('photoPickerModal').on('photosSelected', this, this.photosSelected);
+    this.get('newAlbumPhotoPicker').on('photosSelected', this, this.photosSelected);
     this._super();
   },
 
@@ -24,7 +24,7 @@ App.AlbumsIndexController = Ember.ArrayController.extend(Ember.Evented, Infinite
   create: function (ids) {
     var self = this;
     var album = {
-      name: this.get('photoPickerModal.name'),
+      name: this.get('newAlbumPhotoPicker.name'),
       photo_ids: ids
     };
     var record = App.Album.create(album);
@@ -50,7 +50,7 @@ App.AlbumsIndexController = Ember.ArrayController.extend(Ember.Evented, Infinite
 
   actions: {
     create: function () {
-      this.send('openModal', 'photoPickerModal');
+      this.send('openModal', 'newAlbumPhotoPicker');
     },
 
     select: function (albumController) {

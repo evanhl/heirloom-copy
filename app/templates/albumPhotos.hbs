@@ -9,10 +9,11 @@
         {{#if showSettingsMenu}}
           <ul class="triangle-border top">
             <li>{{t 'albums.changeCover'}}</li>
-            <li>{{t 'albums.delete'}}</li>
+            <li {{action 'deleteAlbum'}}>{{t 'albums.delete'}}</li>
           </ul>
         {{/if}}
       </div>
+      <button class="secondary-action with-icon large right" {{action 'addPhotos'}}><span class="upload-icon icon"></span>{{t 'photos'}}</button>
     </div>
   </div>
   {{#if showToolbar}}
