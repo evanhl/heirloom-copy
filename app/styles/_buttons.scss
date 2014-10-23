@@ -162,6 +162,15 @@ button {
   }
 }
 
+.add-photos-icon {
+  border-right-color: $subtle-highlight-color;
+
+  &:after {
+    margin: 10px 10px;
+    @include sprite-retina($add_photos, $add_photos-2x);
+  }
+}
+
 .upload-icon {
   border-right-color: $subtle-highlight-color;
 
@@ -191,6 +200,14 @@ button:hover, button:active {
 
     &:after {
       @include sprite-retina($upload_hover_icon, $upload_hover_icon-2x);
+    }
+  }
+
+  .add-photos-icon {
+    border-right-color: $highlight-color-accent;
+
+    &:after {
+      @include sprite-retina($add_photos_hover_pressed, $add_photos_hover_pressed-2x);
     }
   }
 }
