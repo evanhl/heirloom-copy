@@ -128,6 +128,7 @@ App.AlbumPhotosController = Ember.ArrayController.extend(Ember.Evented, Infinite
 
       adapter.patchRecord(album, { cover_photo_id: coverPhotoId }).then(function () {
         // TODO: handle error
+        self.trigger('toast', 'albums.savedCoverPhoto');
         self.deselect();
         self.set('isCcMode', false);
       });

@@ -53,6 +53,7 @@ Ember.I18n.translations = {
   'albums.changeCover': 'Change Cover Photo',
   'albums.delete': 'Delete Album',
   'albums.namePlaceholder': 'Album Name...',
+  'albums.savedCoverPhoto': 'Cover photo has been changed.',
 
   'cancel': 'Cancel',
   'save': 'Save',
