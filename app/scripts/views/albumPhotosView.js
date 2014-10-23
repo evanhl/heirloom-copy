@@ -8,5 +8,19 @@ App.AlbumPhotosView = Ember.View.extend(InfiniteScroll.ViewMixin, App.AutoWidthM
 
   clearSelected: function () {
     this.get('controller').resetSelected();
-  }.on('willDestroyElement')
+  }.on('willDestroyElement'),
+
+  setupListeners: function () {
+    $('body').on('click.offShareMenu', $.proxy(this.bodyClick, this));
+  }.on('didInsertElement'),
+
+  cleanupListeners: function () {
+    $('body').off('click.offShareMenu');
+  }.on('willDestroyElement'),
+
+  bodyClick: function (e) {
+    if(!$(e.target).closest(this.$('.settings-container')).length) {
+      this.set('controller.showSettingsMenu', false);
+    }
+  },
 });

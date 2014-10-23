@@ -20,11 +20,11 @@ App.PhotosView = Ember.View.extend(InfiniteScroll.ViewMixin, App.AutoWidthMixin,
 
   clearSelected: function () {
     this.get('controller').resetSelected();
-    $('body').off('click.offShareMenu');
   }.on('willDestroyElement'),
 
   cleanupListeners: function () {
     this.get('controller').off('addedPhotosToAlbum', this.proxyAddedPhotosToAlbum);
+    $('body').off('click.offShareMenu');
   }.on('willDestroyElement'),
 
   onAddedPhotosToAlbum: function (album, photosCount) {

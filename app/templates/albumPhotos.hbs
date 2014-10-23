@@ -4,7 +4,15 @@
       <h3>{{#link-to 'albums'}}Albums{{/link-to}} <span class="crumb-divider">&gt;</span> {{albumName}}</h3>
     </div>
     <div class="right">
-      <button class="secondary icon-only settings" {{action 'deletePhotos'}}></button>
+      <div class="settings-container">
+        <button class="secondary icon-only settings" {{action 'toggleSettingsMenu'}}></button>
+        {{#if showSettingsMenu}}
+          <ul class="triangle-border top">
+            <li>{{t 'albums.changeCover'}}</li>
+            <li>{{t 'albums.delete'}}</li>
+          </ul>
+        {{/if}}
+      </div>
     </div>
   </div>
   {{#if showToolbar}}

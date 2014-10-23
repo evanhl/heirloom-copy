@@ -4,6 +4,8 @@ App.AlbumPhotosController = Ember.ArrayController.extend(Ember.Evented, Infinite
   album: Ember.computed.alias('controllers.album'),
   albumName: Ember.computed.alias('album.name'),
 
+  showSettingsMenu: false,
+
   fetchPage: function (page, perPage) {
     var adapter = App.Album.adapter;
     var params = {
@@ -48,6 +50,10 @@ App.AlbumPhotosController = Ember.ArrayController.extend(Ember.Evented, Infinite
         self.get('model').removeObjects(selected);
         album.reload();
       });
+    },
+
+    toggleSettingsMenu: function () {
+      this.toggleProperty('showSettingsMenu');
     }
   }
 });

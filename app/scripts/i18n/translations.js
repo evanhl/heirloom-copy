@@ -47,6 +47,8 @@ Ember.I18n.translations = {
 
   'albums.create': 'Create New Album',
   'albums.remove': 'Remove',
+  'albums.changeCover': 'Change Cover Photo',
+  'albums.delete': 'Delete Album',
 
   'cancel': 'Cancel',
   'add': 'Add',
