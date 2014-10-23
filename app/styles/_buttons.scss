@@ -68,7 +68,7 @@ button {
     }
   }
 
-  &.delete {
+  &.icon-only {
     &:before {
       content: '\00a0';
     }
@@ -76,10 +76,7 @@ button {
     &:after {
       content: ''; // &nbsp;
       position: absolute;
-      top: 7px;
-      left: 7px;
       display: block;
-      @include sprite-retina($trashcan, $trashcan-2x);
     }
 
     &:hover {
@@ -89,16 +86,44 @@ button {
     &:active {
       background: $highlight-color-2;
     }
+
     &:hover, &:active {
       border: 1px solid rgba(0,0,0,0);
+    }
 
+    position: relative;
+  }
+
+  &.delete {
+    &:after {
+      top: 7px;
+      left: 7px;
+      @include sprite-retina($trashcan, $trashcan-2x);
+    }
+
+    &:hover, &:active {
       &:after {
         @include sprite-retina($trashcan_hover_pressed, $trashcan_hover_pressed-2x);
       }
     }
 
-    position: relative;
     min-width: 37px;
+  }
+
+  &.settings {
+    &:after {
+      top: 8px;
+      left: 7px;
+      @include sprite-retina($settings, $settings-2x);
+    }
+
+    &:hover, &:active {
+      &:after {
+        @include sprite-retina($settings_hover, $settings_hover-2x);
+      }
+    }
+
+    min-width: 39px;
   }
 
   &.add-to-album {

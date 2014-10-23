@@ -1,6 +1,11 @@
 <div class="album-photos-container">
   <div class="toolbar">
-    <h3>{{#link-to 'albums'}}Albums{{/link-to}} <span class="crumb-divider">&gt;</span> {{albumName}}</h3>
+    <div class="left">
+      <h3>{{#link-to 'albums'}}Albums{{/link-to}} <span class="crumb-divider">&gt;</span> {{albumName}}</h3>
+    </div>
+    <div class="right">
+      <button class="secondary icon-only settings" {{action 'deletePhotos'}}></button>
+    </div>
   </div>
   {{#if showToolbar}}
     <div {{bind-attr class=":selection-toolbar removingToolbar:removing"}}>
