@@ -2,6 +2,9 @@
   {{view App.ImageView image=firstState}}
   {{view App.ImageView image=secondState}}
 
+
+{{!--
+  we'll bring back the sidebar for 1.1.
   <div class="photo-sidebar">
     <div class="owner">
       <div class="icon"></div>
@@ -13,6 +16,7 @@
       <div class="description">{{description}}</div>
     {{/if}}
   </div>
+ --}}
 
   {{#if prevId}}
     <div class="left-arrow" {{action 'prevPhoto'}}></div>

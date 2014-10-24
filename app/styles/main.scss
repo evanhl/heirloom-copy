@@ -123,7 +123,8 @@ img.detail {
 
   bottom: 0;
   right: 0;
-  left: -25%;
+  // left: -25%; // v1.1
+  left: 0;
   top: 0;
 
   margin: auto;
@@ -239,13 +240,15 @@ img.detail {
       margin-left: -$caret_right-width / 2;
     }
 
-    right: 25%;
+    // right: 25%; // v1.1
+    right: 0;
   }
 
   .close {
     position: absolute;
     width: 5%;
-    right: 25%;
+    // right: 25%; // v1.1
+    right: 0;
     height: 5vw;
     vertical-align: middle;
     top: 0;
