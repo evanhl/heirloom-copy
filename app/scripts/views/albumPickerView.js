@@ -4,7 +4,7 @@ App.AlbumPickerView = Ember.View.extend({
   }.on('didInsertElement'),
 
   isCreateModeChanged: function () {
-    var $input;
+    var $input = this.$('input');
 
     if (this.get('controller.isCreateMode') && $input) {
       $input.focus();
