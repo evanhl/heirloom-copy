@@ -1,19 +1,24 @@
 {{#modal-dialog action="close"}}
-  <div class="album-picker">
+  <div {{bind-attr class=":album-picker isCreateMode:create-mode"}}>
     <div class="top-bar">
       <h3>{{t 'photos.addToAlbum'}}</h3>
+    </div>
+    <div class="sub-top-bar">
+      {{input value=albumName placeholder=(ts 'albums.namePlaceholder')}}
     </div>
     <div class="bottom-bar">
       <div class="right">
         <button class="secondary" {{action 'close'}}>{{t 'cancel'}}</button>
-        <button class="take-action" {{action 'complete'}} {{bind-attr disabled=noneSelected}}>{{t 'add'}}</button>
+        <button class="take-action" {{action 'complete'}} {{bind-attr disabled=cantComplete}}>{{t 'add'}}</button>
       </div>
     </div>
     <div class="nav-filler"></div>
 
     <div class="picker-content">
-      {{#each albums}}{{render 'thumbAlbum' this enlargeDisabled=true}}{{/each}}
+      <div {{bind-attr class=":create-new-album isCreateMode:selected"}} {{action 'toggleCreateMode'}}>
+        <span class="caption">{{t 'albums.create'}}</span>
+      </div>{{!--
+  --}}{{#each albums}}{{render 'thumbAlbum' this enlargeDisabled=true}}{{/each}}
     </div>
-    {{!-- <div class="nav-filler"></div> --}}
   </div>
 {{/modal-dialog}}

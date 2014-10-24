@@ -2,6 +2,7 @@ App.AlbumPickerController = Ember.Controller.extend(App.SelectableMixin, Ember.E
   needs: ['albumsIndex'],
   albums: Ember.computed.alias('controllers.albumsIndex'),
   loadingMore: Ember.computed.alias('albums.loadingMore'),
+  isCreateMode: false,
 
   fetchFirstPage: function () {
     if (this.get('albums.page') <= 0) {
@@ -19,7 +20,21 @@ App.AlbumPickerController = Ember.Controller.extend(App.SelectableMixin, Ember.E
     this.resetSelected();
   },
 
+  cantComplete: function () {
+    return this.get('noneSelected') && !this.get('albumName');
+  }.property('noneSelected', 'albumName'),
+
+  onCreateModeChange: function () {
+    if (this.get('isCreateMode')) {
+      this.deselect();
+    }
+  }.observes('isCreateMode'),
+
   actions: {
+    toggleCreateMode: function () {
+      this.toggleProperty('isCreateMode');
+    },
+
     getMore: function () {
       this.get('albums').send('getMore');
     },
@@ -29,6 +44,7 @@ App.AlbumPickerController = Ember.Controller.extend(App.SelectableMixin, Ember.E
       var albumId = albumController.get('model.id');
 
       this.deselect();
+      this.set('isCreateMode', false);
       this.toggleSelected(albumId, selected);
       albumController.set('selected', selected);
     },
@@ -38,13 +54,18 @@ App.AlbumPickerController = Ember.Controller.extend(App.SelectableMixin, Ember.E
       this.send('closeModal');
     },
 
-    // for now, this is only add to album, but there could
-    // be other action types later on.
     complete: function () {
-      var selectedAlbumId = parseInt(this.get('selectedIds')[0], 10);
-      var album = this.get('albums').findBy('id', selectedAlbumId);
+      var selectedAlbumId;
+      var album;
 
-      this.trigger('didSelect', album);
+      if (!this.get('isCreateMode')) {
+        selectedAlbumId = parseInt(this.get('selectedIds')[0], 10);
+        album = this.get('albums').findBy('id', selectedAlbumId);
+        this.trigger('didSelect', album);
+      } else {
+        this.trigger('didSelect', null, this.get('albumName'));
+      }
+
       this.resetSelected();
       this.send('closeModal');
     }

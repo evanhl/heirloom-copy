@@ -41,6 +41,8 @@ Ember.I18n.translations = {
   'photos.addToNewAlbum': 'Add Photos to New Album',
   'photos.addToExistingAlbum': 'Add Photos to Album',
 
+  'photos.createdAlbum.one': 'Created album "{{albumName}}" with {{count}} photo',
+  'photos.createdAlbum.other': 'Created album "{{albumName}}" with {{count}} photos',
   'photos.addedToAlbum.one': '{{count}} Photo was added to Album "{{albumName}}"',
   'photos.addedToAlbum.other': '{{count}} Photos were added to Album "{{albumName}}"',
 

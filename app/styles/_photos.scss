@@ -183,7 +183,7 @@
     @include sprite-retina($create_album, $create_album-2x);
   }
 
-  &:hover {
+  &:hover, &.selected {
     border-color: $highlight-color;
 
     &:after {

@@ -15,7 +15,7 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
   showShareMenu: false,
 
   init: function () {
-    this.get('albumPicker').on('didSelect', this, this.addPhotosToAlbum);
+    this.get('albumPicker').on('didSelect', this, this.didSelectAlbum);
     this._super();
   },
 
@@ -64,6 +64,33 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
   clearSelected: function () {
     // TODO: make callers of clearSelected use resetSelected instead
     this.resetSelected();
+  },
+
+  didSelectAlbum: function (album, albumName) {
+    if (album) {
+      this.addPhotosToAlbum(album);
+    } else {
+      this.createAlbum(albumName);
+    }
+  },
+
+  createAlbum: function (albumName) {
+    var self = this;
+    var photoCount = this.get('selectedIds.length');
+
+    var record = App.Album.create({
+      name: albumName,
+      photo_ids: this.get('selectedIds')
+    });
+
+    record.save().then(function (createdRecord) {
+      self.trigger('toast', 'photos.createdAlbum', {
+        albumName: albumName,
+        count: photoCount
+      });
+      self.deselect();
+      self.get('albums').reset();
+    });
   },
 
   addPhotosToAlbum: function (album) {

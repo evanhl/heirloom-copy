@@ -46,6 +46,27 @@ body {
   color: $default-text-color;
 }
 
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="date"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="month"]:focus,
+input[type="week"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="time"]:focus,
+input[type="url"]:focus,
+textarea:focus {
+  box-shadow: none;
+
+  &:focus {
+    box-shadow: none;
+  }
+}
+
 img {
   max-width: 100%;
 }
@@ -446,6 +467,26 @@ img.detail {
   max-width: ($album-width * 3) + ($album-margin * 4);
 }
 
+.album-picker {
+  .sub-top-bar {
+    transition: transform 0.3s ease-in-out;
+    transform: translateY(-76px);
+
+    input {
+      border: 2px solid $highlight-color;
+    }
+  }
+
+  &.create-mode {
+    .sub-top-bar {
+      transform: translateY(0);
+    }
+
+    .nav-filler {
+      height: $logo-height + 76px;
+    }
+  }
+}
 
 .upload-modal {
   max-width: 848px;
@@ -514,7 +555,7 @@ $upload-modal-content-height: ($photo-width * 2) + ($photo-margin) + ($album-mar
   background: white;
   height: 76px;
   top: $logo-height;
-  z-index: 5;
+  z-index: 4;
   width: 100%;
   padding: 0 $album-margin;
   border-bottom: 1px solid $subtle-highlight-color;
