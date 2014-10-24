@@ -8,6 +8,8 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
 
   MAX_RETRIES: 20,
   SECS_BETWEEN_RETRIES: 5,
+  TWITTER_SHARE_URL: 'https://www.twitter.com/intent/tweet?text=',
+  FB_SHARE_URL: 'https://www.facebook.com/sharer/sharer.php?u=',
 
   retriesLeft: 0,
   perPage: 40,
@@ -138,6 +140,23 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
     this.resetSelected();
   },
 
+  shareExternal: function (url) {
+    var async = false;
+    var data = {
+      type: 'photo',
+      id: this.get('selectedIds')[0],
+      locale: 'en'
+    };
+    var timeoutMs = 2000;
+
+    // blocking so we can still launch a pop-up
+    Utils.apiCall('/share', 'POST', data, function (data) {
+      window.open(url + data.url, 'share', 'width=550, height=450');
+    }, function () {
+      // TODO: handle error
+    }, async, timeoutMs);
+  },
+
   actions: {
     enlarge: function (id) {
       this.transitionToRoute('photo', id);
@@ -181,6 +200,16 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
 
     addToAlbum: function () {
       this.send('openModal', 'albumPicker');
+    },
+
+    twitterShare: function () {
+      this.shareExternal(this.TWITTER_SHARE_URL);
+      this.set('showShareMenu', false);
+    },
+
+    facebookShare: function () {
+      this.shareExternal(this.FB_SHARE_URL);
+      this.set('showShareMenu', false);
     }
   }
 });

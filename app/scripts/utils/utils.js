@@ -11,9 +11,17 @@
 }());
 
 // TODO: centralize API call logic
-Utils.apiCall = function (url, type, data, success, error) {
+Utils.apiCall = function (url, type, data, success, error, async, timeout) {
   var self = this;
   var dataToSend = data;
+
+  if (typeof async === "undefined") {
+    async = true;
+  }
+
+  if (typeof timeout === "undefined") {
+    timeout = 15000;
+  }
 
   if (type !== 'GET') {
     dataToSend = JSON.stringify(dataToSend);
@@ -24,6 +32,8 @@ Utils.apiCall = function (url, type, data, success, error) {
     type: type,
     dataType: 'json',
     data: dataToSend,
+    async: async,
+    timeout: timeout,
     contentType: 'application/json; charset=utf-8',
     success: success,
     error: error,

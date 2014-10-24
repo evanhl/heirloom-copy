@@ -10,9 +10,8 @@
           <button class="take-action with-icon medium" {{action 'toggleShare'}} {{bind-attr disabled="moreThanOneSelected"}}><span class="share-icon icon"></span>{{t 'share'}}</button>
           {{#if showShareMenu}}
             <ul class="triangle-border top">
-              <li>{{t 'facebook'}}</li>
-              <li>{{t 'twitter'}}</li>
-              <li>{{t 'email'}}</li>
+              <li {{action 'facebookShare'}}>{{t 'facebook'}}</li>
+              <li {{action 'twitterShare'}}>{{t 'twitter'}}</li>
             </ul>
           {{/if}}
         </div>
