@@ -8,12 +8,7 @@
         </div>
         <div class="share-container">
           <button class="take-action with-icon medium" {{action 'toggleShare'}} {{bind-attr disabled="moreThanOneSelected"}}><span class="share-icon icon"></span>{{t 'share'}}</button>
-          {{#if showShareMenu}}
-            <ul class="triangle-border top">
-              <li {{action 'facebookShare'}}><span class="fb-icon"></span>{{t 'facebook'}}</li>
-              <li {{action 'twitterShare'}}><span class="twit-icon"></span>{{t 'twitter'}}</li>
-            </ul>
-          {{/if}}
+          {{partial 'shareButton'}}
         </div>
         <button class="take-action with-icon medium" {{action 'addToAlbum' selectedIds}}><span class="add-to-album-icon icon"></span>{{t 'album'}}</button>
       </div>
