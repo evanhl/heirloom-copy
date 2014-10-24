@@ -141,3 +141,28 @@ body.alternate-bg {
   position: relative;
   display: inline-block;
 }
+
+.fb-icon, .twit-icon {
+  display: inline-block;
+  vertical-align: -4px;
+}
+
+.fb-icon {
+  margin-left: ((22px - $share_facebook-width) / 2);
+  margin-right: ((22px - $share_facebook-width) / 2) + 15px;
+  @include sprite-retina($share_facebook, $share_facebook-2x);
+
+  li:hover &, li:active & {
+    @include sprite-retina($share_facebook_hover, $share_facebook_hover-2x);
+  }
+}
+
+.twit-icon {
+  margin-left: ((22px - $share_twitter-width) / 2);
+  margin-right: ((22px - $share_twitter-width) / 2) + 15px;
+  @include sprite-retina($share_twitter, $share_twitter-2x);
+
+  li:hover &, li:active & {
+    @include sprite-retina($share_twitter_hover, $share_twitter_hover-2x);
+  }
+}
