@@ -1,5 +1,6 @@
 (function () {
-  var getMixinParams = function (methodName, showToolbarProperty, removingToolbarProperty, modeProperty, toolbarSelector) {
+  var getMixinParams = function (methodName, showToolbarProperty, removingToolbarProperty, modeProperty,
+                                 toolbarSelector, cleanupMethodName) {
     var mixinParams = {};
 
     mixinParams[methodName] = function () {
@@ -22,6 +23,11 @@
       }
     }.observes(modeProperty);
 
+    mixinParams[cleanupMethodName] = function () {
+      this.set(showToolbarProperty, false);
+      this.set(removingToolbarProperty, false);
+    }.on('willDestroyElement');
+
     return mixinParams;
   };
 
@@ -31,7 +37,8 @@
     'controller.showToolbar',
     'controller.removingToolbar',
     'controller.isSelectionMode',
-    '.selection-toolbar'
+    '.selection-toolbar',
+    'cleanupSelToolbar'
   ));
 
   App.RetractChangeCoverToolbarMixin = Ember.Mixin.create(getMixinParams(
@@ -39,7 +46,8 @@
     'controller.showCcToolbar',
     'controller.removingCcToolbar',
     'controller.isCcMode',
-    '.change-cover-toolbar'
+    '.change-cover-toolbar',
+    'cleanupCcToolbar'
   ));
 })();
 

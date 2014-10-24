@@ -17,12 +17,14 @@ App.AlbumPhotosView = Ember.View.extend(InfiniteScroll.ViewMixin, App.AutoWidthM
 
   cleanup: function () {
     $('body').off('click.offShareMenu');
-    this.controller.reset();
+    this.set('controller.isCcMode', false);
   }.on('willDestroyElement'),
 
   bodyClick: function (e) {
     if(!$(e.target).closest(this.$('.settings-container')).length) {
-      this.set('controller.showSettingsMenu', false);
+      if (this.get('controller')) {
+        this.set('controller.showSettingsMenu', false);
+      }
     }
   },
 });

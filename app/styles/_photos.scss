@@ -160,12 +160,14 @@
   // transition: border-color 0.05s linear;
   cursor: pointer;
 
+
   .caption {
     display: inline-block;
     width: 100%;
     text-align: center;
     margin-top: 175px;
-    font-weight: 700;
+    font-size: 19px;
+    font-weight: 600;
     color: $subtle-highlight-color;
 
     // transition: color 0.05s linear;

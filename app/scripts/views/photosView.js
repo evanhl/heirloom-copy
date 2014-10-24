@@ -13,7 +13,9 @@ App.PhotosView = Ember.View.extend(InfiniteScroll.ViewMixin, App.AutoWidthMixin,
 
   bodyClick: function (e) {
     if(!$(e.target).closest(this.$('.share-container')).length) {
-      this.set('controller.showShareMenu', false);
+      if (this.get('controller')) {
+        this.set('controller.showShareMenu', false);
+      }
     }
   },
 

@@ -23,15 +23,6 @@ App.AlbumPhotosController = Ember.ArrayController.extend(Ember.Evented, Infinite
     return adapter.findNestedQuery(this.get('album.model'), App.Photo, 'photos', records, params);
   },
 
-  reset: function () {
-    this.resetSelected();
-    this.set('showToolbar', false);
-    this.set('showCcToolbar', false);
-    this.set('removingToolbar', false);
-    this.set('removingCcToolbar', false);
-    this.set('isCcMode', false);
-  },
-
   isSelectionMode: function () {
     return this.get('selectedCount') > 0 && !this.get('isCcMode');
   }.property('selectedCount', 'isCcMode'),
