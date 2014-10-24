@@ -298,7 +298,7 @@ img.detail {
   }
 }
 
-.gallery-photo, .thumb-photo, .selection-mode .photo, .photo:hover, .photo.selection-mode {
+.gallery-photo, .thumb-photo, .selection-mode .photo, .photo:hover, .photo.selection-mode, .picker-content .photo {
   .select {
     @include sprite-retina($checkmark_hover, $checkmark_hover-2x);
 

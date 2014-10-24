@@ -49,6 +49,10 @@ App.AlbumsIndexController = Ember.ArrayController.extend(Ember.Evented, Infinite
   },
 
   actions: {
+    enlarge: function (id) {
+      this.transitionToRoute('albumPhotos', id);
+    },
+
     create: function () {
       this.send('openModal', 'newAlbumPhotoPicker');
     },

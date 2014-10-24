@@ -14,7 +14,7 @@
     <span class="caption">{{t 'albums.create'}}</span>
   </div>{{!--
 --}}{{#each}}<!--
-   -->{{#link-to 'albumPhotos' id}}{{render 'thumbAlbum' this enlargeDisabled=false}}{{/link-to}}<!--
+   -->{{render 'thumbAlbum' this enlargeDisabled=false}}<!--
 -->{{/each}}
 
   {{partial 'spinner'}}
