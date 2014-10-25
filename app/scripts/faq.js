@@ -1,8 +1,10 @@
-// $ = jQuery. window = this. undefined = undefined.
+// $ = jQuery. window = this. Markdown = this.Markdown, undefined = undefined.
 (function ($, window, Markdown, undefined) {
   'use strict';
 
   var FAQ = {
+    ANIMATIONSPEED: 'fast',
+
     init: function () {
       this.fetchMarkdown();
     },
@@ -107,8 +109,11 @@
     bindEventListeners: function () {
       var accordian, scrollToQuestion, scrollToTop;
 
-      accordian = function (event) {
-        $(event.target).next('.answer').slideToggle('fast');
+      accordian = function () {
+        var $this = $(this);
+
+        $this.toggleClass('expanded');
+        $this.next('.answer').slideToggle('fast');
       };
 
       // NOTE: The deeplinking works without JavaScript, however if the user has JavaScript we're going to
@@ -119,16 +124,18 @@
         var self, name, $anchor, yPosition;
 
         self      = event.data.namespace;
-        name      = $(event.target).attr('href').substring(1);
+        name      = $(this).attr('href').substring(1);
         $anchor   = self.elms.$titleAnchors.filter(function () { return $(this).attr('name') === name; });
-        yPosition = Math.floor($anchor.offset().top);
+        yPosition = Math.floor($anchor.offset().top - $('header').outerHeight(true) - 5);
 
-        self.elms.$bodyAndHtml.stop().animate({ scrollTop: yPosition }, 'fast');
+        self.elms.$bodyAndHtml.stop().animate({ scrollTop: yPosition }, self.ANIMATIONSPEED);
       };
 
       scrollToTop = function (event) {
         event.preventDefault();
-        event.data.namespace.elms.$bodyAndHtml.stop().animate({ scrollTop: 0 }, 'fast');
+        var self = event.data.namespace;
+
+        self.elms.$bodyAndHtml.stop().animate({ scrollTop: 0 }, self.ANIMATIONSPEED);
       };
 
       this.elms.$h2.on('click', accordian);
@@ -143,4 +150,4 @@
     FAQ.init();
   });
 
-}(window.jQuery, this, window.Markdown));
+}(window.jQuery, this, this.Markdown));

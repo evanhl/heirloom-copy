@@ -5,9 +5,9 @@
 /*
  * NOTE: In iOS versions 4 and below position fixed was not supported. In versions 5 & 6 it was supported, however
  * jQuery's scrollTo animation notoriously fucked it up often. Mobile Safari finally got it's shit together with
-  * iOS 7. Fixed position works correctly. If you're interested in supporting older browsers and a fixed header let
-  * me know and I'll show the Frankenstein code required to make it work. I have absolutely no idea about the history
-  * or status of fixed positioning support on Android or Windows phones. -- Jesse
+ * iOS 7. Fixed position works correctly. If you're interested in supporting older browsers and a fixed header let
+ * me know and I'll show the Frankenstein code required to make it work. I have absolutely no idea about the history
+ * or status of fixed positioning support on Android or Windows phones. -- Jesse
 */
 
 header {
@@ -36,8 +36,29 @@ header > div {
 
 h2 {
   cursor: pointer;
-}
 
+  &:before {
+    content: "+";
+    display: inline-block;
+    margin-right: 0.25em;
+
+    -webkit-transition: all 0.5s ease;
+       -moz-transition: all 0.5s ease;
+         -o-transition: all 0.5s ease;
+        -ms-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+  }
+
+  &.expanded {
+    &:before {
+      -webkit-transform: rotate(-45deg);
+         -moz-transform: rotate(-45deg);
+           -o-transform: rotate(-45deg);
+          -ms-transform: rotate(-45deg);
+              transform: rotate(-45deg);
+    }
+  }
+}
 
 .answer {
   display: none;
@@ -57,31 +78,31 @@ h2 {
  */
 
 /*
- * 300px breakpoint
+ * Approximately 300px breakpoint
  */
 @media all and (min-width: 18.75em) {}
 
 /*
- * 400px breakpoint
+ * Approximately 400px breakpoint
  */
 @media all and (min-width: 25em) {}
 
 /*
- * 600px breakpoint
+ * Approximately 600px breakpoint
  */
 @media all and (min-width: 37.5em) {}
 
 /*
- * 800px breakpoint
+ * Approximately 800px breakpoint
  */
 @media all and (min-width: 50em) {}
 
 /*
- * 920px breakpoint
+ * Approximately 920px breakpoint
  */
 @media all and (min-width: 57.5em) {}
 
 /*
- * 1044px breakpoint
+ * Approximately 1044px breakpoint
  */
 @media all and (min-width: 65.25em) {}
