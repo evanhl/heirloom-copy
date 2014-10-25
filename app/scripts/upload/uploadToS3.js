@@ -69,7 +69,9 @@ App.Upload.UploadToS3 = Ember.Object.extend(Ember.Evented, {
       addRemoveLinks: true,
       parallelUploads: 2,
       dictCancelUpload: "",
-      dictRemoveFile: ""
+      dictRemoveFile: "",
+      // TODO: add to I18n translations
+      dictDefaultMessage: 'Drag photos here<br><span class="sub">(or click)</span>'
     });
     dropzone = $dropzoneEl.get(0).dropzone;
 
