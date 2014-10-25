@@ -94,6 +94,14 @@
       this.elms.$faq.prepend($('<ul/>', { 'class': 'questions' }).html(lis));
       this.elms.$faq.prepend($('<a/>', { 'name': 'top' }));
       this.elms.$question = $('.question');
+
+      // The Markdown parser inserts dumb empty paragraphs. Hopefully I can remove this code soon once I
+      // figure out what's up, but for now manually removing.
+      $('p').each(function () {
+        if ($(this).is(':empty')) {
+          $(this).remove();
+        }
+      });
     },
 
     bindEventListeners: function () {

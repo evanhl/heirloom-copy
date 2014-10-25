@@ -18,8 +18,13 @@ h2 {
   cursor: pointer;
 }
 
+
 .answer {
   display: none;
+
+  p, ul {
+    margin-top: 0; /* Prevents collapsing margin on animation. */
+  }
 }
 
 /* =============================================================================
