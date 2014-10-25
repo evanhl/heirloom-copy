@@ -129,6 +129,7 @@
     }
   };
 
+
   // NOTE: `page:load` might not be necessary. Not sure how these pages behave with Ember and all that.
   // Throwing here just-in-case. Evan, remove if not needed.
   $(document).on('ready page:load', function () {
