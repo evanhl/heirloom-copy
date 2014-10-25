@@ -27,13 +27,18 @@
   }
 
   .logo {
+    &:after {
+      content: '';
+      @include sprite-retina($heirloom_icon, $heirloom_icon-2x);
+      display: block;
+      margin-left: ($logo-width - $heirloom_icon-width) / 2;
+      margin-top: ($logo-height - $heirloom_icon-height) / 2;
+    }
+
     border-right: 1px $subtle-highlight-color solid;
     width: $logo-width;
     height: $logo-height;
     float: left;
-    background: url(/images/heirloom_logo.png) no-repeat;
-    background-size: 36px auto;
-    background-position: center;
   }
 
   .not-logged-in {
