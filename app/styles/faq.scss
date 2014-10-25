@@ -2,16 +2,36 @@
    Global styles
    ========================================================================== */
 
+/*
+ * NOTE: In iOS versions 4 and below position fixed was not supported. In versions 5 & 6 it was supported, however
+ * jQuery's scrollTo animation notoriously fucked it up often. Mobile Safari finally got it's shit together with
+  * iOS 7. Fixed position works correctly. If you're interested in supporting older browsers and a fixed header let
+  * me know and I'll show the Frankenstein code required to make it work. I have absolutely no idea about the history
+  * or status of fixed positioning support on Android or Windows phones. -- Jesse
+*/
+
 header {
   border: 1px solid rgb(216, 216, 216);
   height: 72px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background: white;
 }
 
 [role="main"],
 header > div {
   margin: 0 auto;
   max-width: 960px;
+  padding: 1em;
+}
+
+header > div {
   padding: 0 1em;
+}
+
+[role="main"] {
+  margin-top: 72px;
 }
 
 h2 {
