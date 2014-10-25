@@ -279,9 +279,9 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
 
     /*
     This is a list of all available events you can register on a dropzone object.
-
+    
     You can register an event handler like this:
-
+    
         dropzone.on("dragEnter", function() { });
      */
 
@@ -1234,9 +1234,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
             canvas.width = resizeInfo.trgWidth;
             canvas.height = resizeInfo.trgHeight;
             drawImageIOSFix(ctx, img, (_ref = resizeInfo.srcX) != null ? _ref : 0, (_ref1 = resizeInfo.srcY) != null ? _ref1 : 0, resizeInfo.srcWidth, resizeInfo.srcHeight, (_ref2 = resizeInfo.trgX) != null ? _ref2 : 0, (_ref3 = resizeInfo.trgY) != null ? _ref3 : 0, resizeInfo.trgWidth, resizeInfo.trgHeight);
-            thumbnail = canvas.toDataURL("image/jpeg");
-            img = undefined;
-            canvase = undefined;
+            thumbnail = canvas.toDataURL("image/png");
             _this.emit("thumbnail", file, thumbnail);
             if (callback != null) {
               return callback();
@@ -1753,7 +1751,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
 
 
   /*
-
+  
   Bugfix for iOS 6 and 7
   Source: http://stackoverflow.com/questions/11929099/html5-canvas-drawimage-ratio-bug-ios
   based on the work of https://github.com/stomita/ios-imagefile-megapixel

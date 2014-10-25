@@ -1,0 +1,108 @@
+/* =============================================================================
+   Global styles
+   ========================================================================== */
+
+/*
+ * NOTE: In iOS versions 4 and below position fixed was not supported. In versions 5 & 6 it was supported, however
+ * jQuery's scrollTo animation notoriously fucked it up often. Mobile Safari finally got it's shit together with
+ * iOS 7. Fixed position works correctly. If you're interested in supporting older browsers and a fixed header let
+ * me know and I'll show the Frankenstein code required to make it work. I have absolutely no idea about the history
+ * or status of fixed positioning support on Android or Windows phones. -- Jesse
+*/
+
+header {
+  border: 1px solid rgb(216, 216, 216);
+  height: 72px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background: white;
+}
+
+[role="main"],
+header > div {
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 1em;
+}
+
+header > div {
+  padding: 0 1em;
+}
+
+[role="main"] {
+  margin-top: 72px;
+}
+
+h2 {
+  cursor: pointer;
+
+  &:before {
+    content: "+";
+    display: inline-block;
+    margin-right: 0.25em;
+
+    -webkit-transition: all 0.5s ease;
+       -moz-transition: all 0.5s ease;
+         -o-transition: all 0.5s ease;
+        -ms-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+  }
+
+  &.expanded {
+    &:before {
+      -webkit-transform: rotate(-45deg);
+         -moz-transform: rotate(-45deg);
+           -o-transform: rotate(-45deg);
+          -ms-transform: rotate(-45deg);
+              transform: rotate(-45deg);
+    }
+  }
+}
+
+.answer {
+  display: none;
+
+  p, ul {
+    margin-top: 0; /* Prevents collapsing margin on animation. */
+  }
+}
+
+/* =============================================================================
+   Media query specific styles
+   ========================================================================== */
+
+/*
+ * NOTE: I'm using `em` here instead of pixel with because it's 2014 and everything is changing sizes all of the time.
+ * Best to have relative breakpoints. Assuming 1em == 16px.
+ */
+
+/*
+ * Approximately 300px breakpoint
+ */
+@media all and (min-width: 18.75em) {}
+
+/*
+ * Approximately 400px breakpoint
+ */
+@media all and (min-width: 25em) {}
+
+/*
+ * Approximately 600px breakpoint
+ */
+@media all and (min-width: 37.5em) {}
+
+/*
+ * Approximately 800px breakpoint
+ */
+@media all and (min-width: 50em) {}
+
+/*
+ * Approximately 920px breakpoint
+ */
+@media all and (min-width: 57.5em) {}
+
+/*
+ * Approximately 1044px breakpoint
+ */
+@media all and (min-width: 65.25em) {}
