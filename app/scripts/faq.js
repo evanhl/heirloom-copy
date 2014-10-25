@@ -39,6 +39,7 @@
       this.elms = {
         $bodyAndHtml: $('html, body'),
         $faq:         $('#faq'),
+        $h1:          $('h1'),
         $h2:          $('h2')
       };
     },
@@ -93,7 +94,7 @@
       });
 
       // Creates the unorder list element to insert the question list into.
-      this.elms.$faq.prepend($('<ul/>', { 'class': 'questions' }).html(lis));
+      this.elms.$h1.after($('<ul/>', { 'class': 'questions' }).html(lis));
       this.elms.$faq.prepend($('<a/>', { 'name': 'top' }));
       this.elms.$question = $('.question');
 
