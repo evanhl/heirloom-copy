@@ -68,6 +68,8 @@ App.AlbumPhotosController = Ember.ArrayController.extend(Ember.Evented, Infinite
         photoController.set('selected', newValue);
       }
 
+      this.set('showShareMenu', false);
+
       this.toggleSelected(photoController.get('model.id'), newValue);
     },
 

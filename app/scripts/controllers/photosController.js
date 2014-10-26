@@ -146,6 +146,8 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
       var selected = photoController.get('selected');
       var photoId = photoController.get('model.id');
 
+      this.set('showShareMenu', false);
+
       this.toggleSelected(photoId, selected);
     },
 
