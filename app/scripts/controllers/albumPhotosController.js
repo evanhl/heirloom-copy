@@ -134,6 +134,7 @@ App.AlbumPhotosController = Ember.ArrayController.extend(Ember.Evented, Infinite
         self.trigger('toast', 'albums.savedCoverPhoto');
         self.deselect();
         self.set('isCcMode', false);
+        album.reload();
       });
     }
   }
