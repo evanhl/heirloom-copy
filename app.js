@@ -34,9 +34,14 @@ app.use(function(req, res, next) {
     req.url = indexFile;
   }
 
+  if (!req.url.match(/\.html$/)) {
+    res.set({
+      'Cache-Control': 'public, max-age=315360000' // 10 years
+    });
+  }
+
   res.set({
-    'Access-Control-Allow-Origin': '*',
-    'Cache-Control': 'public, max-age=315360000' // 10 years
+    'Access-Control-Allow-Origin': '*'
   });
 
   next();
