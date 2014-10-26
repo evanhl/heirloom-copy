@@ -1,13 +1,16 @@
-{{#if showShareMenu}}
-  <ul class="triangle-border top">
-    {{!-- TODO: eliminate copypasta between this and spinner.hbs --}}
-    {{#if shareLoading}}
-      <div class="spinner-cont">
-        <div {{bind-attr class=":spinner"}}></div>
-      </div>
-    {{else}}
-      <li {{action 'facebookShare'}}><span class="fb-icon"></span>{{t 'facebook'}}</li>
-      <li {{action 'twitterShare'}}><span class="twit-icon"></span>{{t 'twitter'}}</li>
-    {{/if}}
-  </ul>
-{{/if}}
+<div class="share-container">
+  <button class="take-action with-icon medium" {{action 'toggleShare'}} {{bind-attr disabled="moreThanOneSelected"}}><span class="share-icon icon"></span>{{t 'share'}}</button>
+  {{#if showShareMenu}}
+    <ul class="triangle-border top">
+      {{!-- TODO: eliminate copypasta between this and spinner.hbs --}}
+      {{#if shareLoading}}
+        <div class="spinner-cont">
+          <div {{bind-attr class=":spinner"}}></div>
+        </div>
+      {{else}}
+        <li {{action 'facebookShare'}}><span class="fb-icon"></span>{{t 'facebook'}}</li>
+        <li {{action 'twitterShare'}}><span class="twit-icon"></span>{{t 'twitter'}}</li>
+      {{/if}}
+    </ul>
+  {{/if}}
+</div>

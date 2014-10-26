@@ -1,4 +1,5 @@
-App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMixin, Ember.Evented, App.SelectableMixin, {
+//= require shareMixin
+App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMixin, Ember.Evented, App.SelectableMixin, App.ShareMixin, {
   needs: ['albumPicker', 'albumsIndex'],
   albumPicker: Ember.computed.alias('controllers.albumPicker'),
   albums: Ember.computed.alias('controllers.albumsIndex'),
@@ -8,13 +9,9 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
 
   MAX_RETRIES: 20,
   SECS_BETWEEN_RETRIES: 5,
-  TWITTER_SHARE_URL: 'https://www.twitter.com/intent/tweet?text=',
-  FB_SHARE_URL: 'https://www.facebook.com/sharer/sharer.php?u=',
 
   retriesLeft: 0,
   perPage: 40,
-
-  showShareMenu: false,
 
   init: function () {
     this.get('albumPicker').on('didSelect', this, this.didSelectAlbum);
@@ -140,51 +137,9 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
     this.resetSelected();
   },
 
-  shareExternal: function () {
-    var self = this;
-    var data = {
-      type: 'photo',
-      id: this.get('selectedIds')[0],
-      locale: 'en'
-    };
-
-    // blocking so we can still launch a pop-up
-    Utils.apiCall('/share', 'POST', data, function (data) {
-      self.set('shareText', data.body);
-      self.set('shareLoading', false);
-    }, function () {
-      // TODO: handle error
-    });
-  },
-
-  openFacebookShare: function () {
-    this.openSocialShare(this.FB_SHARE_URL);
-  },
-
-  openTwitterShare: function () {
-    this.openSocialShare(this.TWITTER_SHARE_URL);
-  },
-
-  openSocialShare: function (shareUrl) {
-    window.open(shareUrl + this.get('shareText'), 'share', 'width=550, height=450');
-  },
-
-  onShowShareMenuChange: function () {
-    if (this.get('showShareMenu')) {
-      this.set('shareLoading', true);
-      this.shareExternal();
-    } else {
-      this.set('shareText', null);
-    }
-  }.observes('showShareMenu'),
-
   actions: {
     enlarge: function (id) {
       this.transitionToRoute('photo', id);
-    },
-
-    toggleShare: function () {
-      this.toggleProperty('showShareMenu');
     },
 
     select: function (photoController) {
@@ -221,16 +176,6 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
 
     addToAlbum: function () {
       this.send('openModal', 'albumPicker');
-    },
-
-    twitterShare: function () {
-      this.openTwitterShare();
-      this.set('showShareMenu', false);
-    },
-
-    facebookShare: function () {
-      this.openFacebookShare();
-      this.set('showShareMenu', false);
     }
   }
 });

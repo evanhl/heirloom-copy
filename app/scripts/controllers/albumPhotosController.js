@@ -1,5 +1,6 @@
 //= require selectableMixin
-App.AlbumPhotosController = Ember.ArrayController.extend(Ember.Evented, InfiniteScroll.ControllerMixin, App.SelectableMixin, {
+//= require shareMixin
+App.AlbumPhotosController = Ember.ArrayController.extend(Ember.Evented, InfiniteScroll.ControllerMixin, App.SelectableMixin, App.ShareMixin, {
   needs: ['album', 'albumPhotoPicker'],
   album: Ember.computed.alias('controllers.album'),
   albumPhotoPicker: Ember.computed.alias('controllers.albumPhotoPicker'),

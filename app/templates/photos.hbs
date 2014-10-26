@@ -6,10 +6,7 @@
         <div class="num-selected">
           <span class="count-text">{{t "photos.selected" countBinding="selectedCount"}}</span>
         </div>
-        <div class="share-container">
-          <button class="take-action with-icon medium" {{action 'toggleShare'}} {{bind-attr disabled="moreThanOneSelected"}}><span class="share-icon icon"></span>{{t 'share'}}</button>
-          {{partial 'shareButton'}}
-        </div>
+        {{partial 'shareButton'}}
         <button class="take-action with-icon medium" {{action 'addToAlbum' selectedIds}}><span class="add-to-album-icon icon"></span>{{t 'album'}}</button>
       </div>
       <div class="right">

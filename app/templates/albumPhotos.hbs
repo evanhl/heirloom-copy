@@ -40,8 +40,7 @@
             <div class="num-selected">
               <span class="count-text">{{t "photos.selected" countBinding="selectedCount"}}</span>
             </div>
-            <button class="take-action">Share</button>
-            <button class="secondary" {{action 'addToAlbum' selectedIds}}>Album</button>
+            {{partial 'shareButton'}}
           </div>
           <div class="right">
             <button class="secondary" {{action 'removePhotos'}}>{{t 'albums.remove'}}</button>
