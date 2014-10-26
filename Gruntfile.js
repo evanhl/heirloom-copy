@@ -90,7 +90,7 @@ module.exports = function(grunt) {
           middleware: function(connect) {
             return [
               // supports single page app URLs
-              modRewrite(['!\\.html|\\.js|\\.svg|\\.css|\\.ico|\\.png|\\.jpg|\\.woff$ /index.html [L]']),
+              modRewrite(['!\\.html|\\.js|\\.svg|\\.css|\\.ico|\\.md|\\.png|\\.jpg|\\.woff$ /index.html [L]']),
               connect.static('.tmp'),
               connect().use('/bower_components', connect.static('./bower_components')),
               connect().use('/vendor', connect.static('./vendor')),
@@ -287,7 +287,7 @@ module.exports = function(grunt) {
         root: '.',
         dest: '<%= config.dist %>'
       },
-      html: ['<%= config.app %>/index.html', '<%= config.app %>/preLaunch.html']
+      html: ['<%= config.app %>/index.html', '<%= config.app %>/preLaunch.html', '<%= config.app %>/faq.html']
     },
 
     // Performs rewrites based on rev and the useminPrepare configuration
@@ -400,6 +400,7 @@ module.exports = function(grunt) {
             '*.{ico,png,txt}',
             '.htaccess',
             'images/{,*/}*.{webp,gif,jpeg,jpg,png}',
+            'markdown/{,*/}*.md',
             '{,*/}*.{gif,jpeg,jpg,png}',
             '{,*/}*.html',
             'styles/fonts/{,*/}*.*'

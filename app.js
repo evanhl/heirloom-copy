@@ -18,6 +18,8 @@ app.use(function(req, res, next) {
     req.url = '/terms.html';
   } else if (req.url.match(/\/privacy$/)) {
     req.url = '/privacy.html';
+  } else if (req.url.match(/\/faq$/)) {
+    req.url = '/faq.html';
   } else if (req.url.match(/\/reset_password/)) {
     req.url = '/index.html';
   } else if (req.url.match(/\/share/)) {
@@ -28,7 +30,7 @@ app.use(function(req, res, next) {
     req.url = '/index.html';
   } else if (req.url.match(/\/conversation_invitations\//)) {
     req.url = '/index.html';
-  } else if (!req.url.match(/\.js$|\.css$|\.svg$|\.png$|\.jpg$|\.html$|\.ico$|\.woff$/)) {
+  } else if (!req.url.match(/\.js$|\.css$|\.svg$|\.png$|\.jpg$|\.md$|\.html$|\.ico$|\.woff$/)) {
     req.url = indexFile;
   }
 

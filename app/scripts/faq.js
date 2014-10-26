@@ -20,7 +20,7 @@
       };
 
       $.ajax({
-        url:      '/markdown/faq.markdown.html',
+        url:      '/markdown/faq.md',
         dataType: 'html',
         success:  success.bind(this)
       });
