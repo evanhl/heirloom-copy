@@ -9,9 +9,8 @@ App.SigninController = Ember.Controller.extend(App.FbControllerMixin, {
       var record = App.Session.create(login);
       var self = this;
 
-      record.save().then(function (session) {
-        var sessionObj = Ember.Object.create(session.toJSON());
-        App.set('auth.currentSession', sessionObj);
+      record.save().then(function () {
+        App.set('auth.currentSession', record);
 
         self.transitionToRoute('photos');
 

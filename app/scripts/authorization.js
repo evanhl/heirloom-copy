@@ -22,7 +22,7 @@ App.Authorization = Ember.Object.extend({
     });
 
     if (this.get('currentSession')) {
-      localStorage.setItem('currentSession', JSON.stringify(this.get('currentSession').getJson()));
+      localStorage.setItem('currentSession', JSON.stringify(this.get('currentSession')._data));
     } else {
       localStorage.removeItem('currentSession');
     }
