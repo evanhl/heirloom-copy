@@ -12,6 +12,32 @@
   delete events.mouseenter;
 }());
 
+// Adapted from http://stackoverflow.com/a/10199338
+Ember.Object.reopen({
+  // allows us to get raw object from any Ember.Object so that we can serialize to localStorage
+  getJson: function () {
+    var v, ret = [];
+
+    for (var key in this) {
+      if (this.hasOwnProperty(key)) {
+        v = this[key];
+
+        if (v === 'toString') {
+          continue;
+        }
+
+        if (Ember.typeOf(v) === 'function') {
+          continue;
+        }
+
+        ret.push(key);
+      }
+    }
+
+    return this.getProperties.apply(this, ret);
+  }
+});
+
 // TODO: use deferReadiness for auth
 var App = Ember.Application.create({
 });
