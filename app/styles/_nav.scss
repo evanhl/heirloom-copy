@@ -13,17 +13,15 @@
   height: $logo-height;
 
   button {
-    margin: 18px 0;
+    display: none;
   }
 
   ul {
     float: left;
-    width: calc(100% - #{$right-col-user-dropdown-ideal-width + $main-col-horiz-padding});
   }
 
   li {
     float: left;
-    margin-left: 95px;
   }
 
   .logo {
@@ -70,7 +68,7 @@
   }
 
   li {
-    display: inline-block;
+    display: none;
 
     &.active {
 
@@ -129,7 +127,7 @@ $user-dropdown-height: 40px;
 
 .user-dropdown {
   display: block;
-  margin-right: 3.7453%;
+  margin-right: 20px;
   margin-left: 32px;
   position: relative;
   float: right;
@@ -168,8 +166,7 @@ $user-dropdown-height: 40px;
     border-radius: 2px;
 
     &:hover {
-      // This assumes 3 options. For dynamic height, we'll have to rely on JS animation.
-      height: 146px;
+      height: auto;
 
       .username span {
         color: $highlight-color;
@@ -182,6 +179,14 @@ $user-dropdown-height: 40px;
       .down-arrow {
         @include sprite-retina($user_toggle_hover, $user_toggle_hover-2x);
       }
+    }
+  }
+
+  .menu-item a {
+    color: $default-text-color;
+
+    &.active {
+      color: $highlight-color;
     }
   }
 
@@ -222,3 +227,30 @@ $user-dropdown-height: 40px;
   }
 }
 
+@media #{$breakpoint-mobile-2} {
+  .full-nav button {
+    margin: 18px 0 18px 0;
+    display: block;
+  }
+
+  .menu:hover .menu-item.mobile-only-2 {
+    display: none;
+  }
+}
+
+@media #{$breakpoint-desktop-1} {
+  .full-nav li {
+    margin-left: 65px;
+    display: inline-block;
+  }
+
+  .menu:hover .menu-item.mobile-only-1 {
+    display: none;
+  }
+}
+
+@media #{$breakpoint-desktop-2} {
+  .full-nav li {
+    margin-left: 95px;
+  }
+}

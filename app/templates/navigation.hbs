@@ -4,21 +4,24 @@
       {{#link-to 'photos'}}<div class="logo"></div>{{/link-to}}
       {{#link-to 'photos' tagName='li' class='photos'}}{{#link-to 'photos'}}{{t 'moments'}}{{/link-to}}{{/link-to}}
       {{#link-to 'albums' tagName='li' class='albums'}}{{#link-to 'albums'}}{{t 'albums'}}{{/link-to}}{{/link-to}}
-      {{#if groupsEnabled}}
-        {{#link-to 'conversations' tagName='li' class='conversations'}}{{#link-to 'conversations'}}{{t 'conversations'}}{{/link-to}}{{/link-to}}
-      {{/if}}
-      <button class="secondary-action with-icon large right" {{action 'upload'}}><span class="upload-icon icon"></span>{{t 'upload'}}</button>
+      {{#link-to 'conversations' tagName='li' class='conversations'}}{{#link-to 'conversations'}}{{t 'conversations'}}{{/link-to}}{{/link-to}}
     </ul>
 
-    <div class="user-dropdown">
-      <div class="icon"><span>{{initials}}</span></div>
-      <div class="menu">
-        <div class="username"><span>{{username}}</span></div>
-        <div class="down-arrow"></div>
-        <div class="menu-item"><span>Activity</span></div>
-        <div class="menu-item"><span>Settings</span></div>
-        <div class="menu-item signout" {{action 'signout'}}><span>Log Out</span></div>
+    <div class="right">
+      <div class="user-dropdown">
+        <div class="icon"><span>{{initials}}</span></div>
+        <div class="menu">
+          <div class="username"><span>{{username}}</span></div>
+          <div class="down-arrow"></div>
+          <div class="menu-item mobile-only-1">{{#link-to 'photos'}}<span>{{t 'moments'}}</span>{{/link-to}}</div>
+          <div class="menu-item mobile-only-1">{{#link-to 'albums'}}<span>{{t 'albums'}}</span>{{/link-to}}</div>
+          <div class="menu-item mobile-only-1">{{#link-to 'conversations'}}<span>{{t 'conversations'}}</span>{{/link-to}}</div>
+          <div class="menu-item mobile-only-2" {{action 'upload'}}><span>{{t 'upload'}}</span></div>
+          <div class="menu-item"><span>Settings</span></div>
+          <div class="menu-item signout" {{action 'signout'}}><span>Log Out</span></div>
+        </div>
       </div>
+      <button class="secondary-action with-icon large" {{action 'upload'}}><span class="upload-icon icon"></span>{{t 'upload'}}</button>
     </div>
   {{else}}
     <ul class="not-logged-in">
