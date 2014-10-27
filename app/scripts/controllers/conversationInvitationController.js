@@ -4,10 +4,16 @@ App.ConversationInvitationController = Ember.ObjectController.extend({
     var self = this;
     var invitation = this.get('model');
 
-    adapter.postNested(invitation, {}, 'accept').then(function () {
-      Ember.run.next(self, function () {
-        this.transitionToRoute('conversationPosts', self.get('model.conversation_id'));
-      });
+    invitation.one('didLoad', function () {
+      if (self.get('policy.can_accept')) {
+        adapter.postNested(invitation, {}, 'accept').then(function () {
+          Ember.run.next(self, function () {
+            self.transitionToRoute('conversationPosts', self.get('conversation_id'));
+          });
+        });
+      } else {
+        self.transitionToRoute('conversationPosts', self.get('conversation_id'));
+      }
     });
   }.observes('model')
 });
