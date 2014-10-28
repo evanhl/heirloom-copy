@@ -6,45 +6,25 @@
       </div>
 
       <div>
-        <div class="large-12">
-          {{input value=name placeholder=(ts 'signup.name') classBinding="error.name:error :name"}}
-          {{#each error.name}}
-            <small class="error">{{this}}</small>
-          {{/each}}
-        </div>
+        {{input value=name placeholder=(ts 'signup.name') classBinding="error.name:error :name"}}
       </div>
 
       <div>
-        <div class="large-12">
-          {{input value=email placeholder=(ts 'signup.email') classBinding="error.email:error :email"}}
-          {{#each error.email}}
-            <small class="error">{{this}}</small>
-          {{/each}}
-        </div>
+        {{input value=email placeholder=(ts 'signup.email') classBinding="error.email:error :email"}}
       </div>
 
       <div>
-        <div class="large-12">
-          {{input value=username placeholder=(ts 'signup.username') classBinding="error.username:error :username"}}
-          {{#each error.username}}
-            <small class="error">{{this}}</small>
-          {{/each}}
-        </div>
+        {{input value=username placeholder=(ts 'signup.username') classBinding="error.username:error :username"}}
       </div>
 
       <div>
-        <div class="large-12">
-          {{input type="password" value=password placeholder=(ts 'signup.password') classBinding="error.password:error :password"}}
-          {{#each error.password}}
-            <small class="error">{{this}}</small>
-          {{/each}}
-        </div>
+        {{input type="password" value=password placeholder=(ts 'signup.password') classBinding="error.password:error :password"}}
       </div>
 
 
       {{!-- TODO: remove inline style once we have proper mocks
       --}}
-      <div style="margin-bottom: 16px;">
+      <div>
         <button {{action 'signup' bubbles=false}} class="signup take-action">{{t 'signup.button.signup'}}</button>
       </div>
 

@@ -88,21 +88,6 @@
         });
       });
 
-      it('sign in and sign up link are not rendered', function () {
-        andThen(function () {
-          expect(find('nav .signin')[0]).to.not.exist;
-          expect(find('nav .signup')[0]).to.not.exist;
-        });
-      });
-
-      it('photos and albums link are rendered', function () {
-        andThen(function () {
-          expect(find('nav .photos')[0]).to.exist;
-          expect(find('nav .albums')[0]).to.exist;
-          expect(find('nav .signout')[0]).to.exist;
-        });
-      });
-
       it('user\'s username is rendered', function () {
         andThen(function () {
           expect(find('nav .username').text().trim()).to.equal('savion_brown');
@@ -132,13 +117,6 @@
         it('clears session from localStorage', function () {
           andThen(function () {
             expect(localStorage.getItem('currentSession')).to.be.null;
-          });
-        });
-
-        it('sign in and sign up link are rendered', function () {
-          andThen(function () {
-            expect(find('nav .signin')[0]).to.exist;
-            expect(find('nav .signup')[0]).to.exist;
           });
         });
 
@@ -210,13 +188,6 @@
 
           expect(session.authentication_token).to.equal('tuoo6XoHzTR3Npzp8xRw');
           expect(session.name).to.equal('Big Bird');
-        });
-      });
-
-      it('sign in and sign up link are not rendered', function () {
-        andThen(function () {
-          expect(find('nav .signin')[0]).to.not.exist;
-          expect(find('nav .signup')[0]).to.not.exist;
         });
       });
 

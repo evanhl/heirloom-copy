@@ -21,9 +21,7 @@
         {{input type="password" value=password placeholder=(ts 'signin.password') classBinding="error.password:error :password" }}
       </div>
 
-      {{!-- TODO: remove inline style once we have proper mocks
-      --}}
-      <div style="margin-bottom: 16px;">
+      <div>
         <button {{action 'signin' bubbles=false}} class="signin take-action">{{t 'signin.button.signin'}}</button>
       </div>
 
