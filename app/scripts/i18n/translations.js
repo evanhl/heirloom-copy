@@ -3,7 +3,7 @@ Ember.I18n.translations = {
   'moments': 'Moments',
   'upload': 'Upload',
   'conversations': 'Groups',
-  'signin': 'Log In',
+  'signin': 'Sign In',
   'signout': 'Sign Out',
   'signup': 'Sign Up',
 
@@ -56,6 +56,9 @@ Ember.I18n.translations = {
   'albums.delete': 'Delete Album',
   'albums.namePlaceholder': 'Album Name...',
   'albums.savedCoverPhoto': 'Cover photo has been changed.',
+
+  'invitation.body': ' has invited you to view and add photos in a private group on Heirloom',
+  'invitation.instruction': 'Sign up or sign in to join this group.',
 
   'cancel': 'Cancel',
   'save': 'Save',

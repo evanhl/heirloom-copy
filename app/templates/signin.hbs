@@ -1,44 +1,38 @@
-<div class="signin-container">
-  <div class="row">
-    <h2>{{t 'signin.message'}}</h2>
-  </div>
-
-  {{#if error.errors.base}}
-    <div class="row">
-      <div class="alert-box alert large-12">
-        {{error.errors.base}}
+<div class="wizard-container full-screen-mob">
+  <div class="wizard">
+    <div class="wizard-main">
+      <div>
+        <h2>{{t 'signin.message'}}</h2>
       </div>
-    </div>
-  {{/if}}
 
-  <div class="row">
-    <div class="large-12">
-      {{input value=login placeholder=(ts 'signin.login') classBinding="error.login:error :login" }}
-      {{#each error.login}}
-        <small class="error">{{this}}</small>
-      {{/each}}
+      {{#if error.errors.base}}
+        <div>
+          <div class="alert-box alert large-12">
+            {{error.errors.base}}
+          </div>
+        </div>
+      {{/if}}
+
+      <div>
+        {{input value=login placeholder=(ts 'signin.login') classBinding="error.login:error :login" }}
+      </div>
+
+      <div>
+        {{input type="password" value=password placeholder=(ts 'signin.password') classBinding="error.password:error :password" }}
+      </div>
+
+      {{!-- TODO: remove inline style once we have proper mocks
+      --}}
+      <div style="margin-bottom: 16px;">
+        <button {{action 'signin' bubbles=false}} class="signin take-action">{{t 'signin.button.signin'}}</button>
+      </div>
+
+      {{!--
+      {{#if isFbInit}}
+        <div>
+          <button {{action 'fbSignin'}}>{{t 'signin.button.facebook'}}</button>
+        </div>
+      {{/if}} --}}
     </div>
   </div>
-
-  <div class="row">
-    <div class="large-12">
-      {{input type="password" value=password placeholder=(ts 'signin.password') classBinding="error.password:error :password" }}
-      {{#each error.password}}
-        <small class="error">{{this}}</small>
-      {{/each}}
-    </div>
-  </div>
-
-  {{!-- TODO: remove inline style once we have proper mocks
-  --}}
-  <div class="row" style="margin-bottom: 16px;">
-    <button {{action 'signin' bubbles=false}} class="signin take-action">{{t 'signin.button.signin'}}</button>
-  </div>
-
-  {{!--
-  {{#if isFbInit}}
-    <div class="row">
-      <button {{action 'fbSignin'}}>{{t 'signin.button.facebook'}}</button>
-    </div>
-  {{/if}} --}}
 </div>

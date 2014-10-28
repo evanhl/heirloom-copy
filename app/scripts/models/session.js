@@ -7,16 +7,7 @@ App.Session = Ember.Model.extend({
   name: Ember.attr(),
   username: Ember.attr(),
   initials: function () {
-    var name = this.get('name') || '';
-    var firstInitials = name.split(' ').map(function (split) {
-      if (split && split[0])  {
-        return split[0];
-      } else {
-        return '';
-      }
-    });
-
-    return firstInitials[0] + (firstInitials[1] || '');
+    return Utils.getInitials(this.get('name'));
   }.property('name')
 });
 

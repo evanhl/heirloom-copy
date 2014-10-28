@@ -1,4 +1,14 @@
 App.ConversationInvitationController = Ember.ObjectController.extend({
+  initials: function () {
+    return Utils.getInitials(this.get('conversation_preview.owner.name'));
+  }.property('conversation_preview'),
+
+  invitee: Ember.computed.alias('conversation_preview.owner.name'),
+
+  isLoggedIn: function () {
+    return App.get('auth.isLoggedIn');
+  }.property('App.auth.isLoggedIn'),
+
   modelChanged: function () {
     var adapter = App.ConversationInvitation.adapter;
     var self = this;
@@ -11,9 +21,21 @@ App.ConversationInvitationController = Ember.ObjectController.extend({
             self.transitionToRoute('conversationPosts', self.get('conversation_id'));
           });
         });
-      } else {
+      } else if (this.get('isLoggedIn')) {
         self.transitionToRoute('conversationPosts', self.get('conversation_id'));
+      } else {
+        localStorage.setItem('invitationToken', self.get('token'));
       }
     });
-  }.observes('model')
+  }.observes('model'),
+
+  actions: {
+    signIn: function () {
+      this.transitionToRoute('signin');
+    },
+
+    signUp: function () {
+      this.transitionToRoute('registration');
+    }
+  }
 });

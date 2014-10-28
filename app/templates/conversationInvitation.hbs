@@ -1,0 +1,16 @@
+{{#if isLoggedIn}}
+{{else}}
+  <div class="wizard-container">
+    <div class="wizard">
+      <div class="wizard-main">
+        <div class="icon"><span>{{initials}}</span></div>
+        <p><span class="name">{{invitee}}</span>{{t 'invitation.body'}}</p>
+        <p>{{t 'invitation.instruction'}}</p>
+      </div>
+      <div class="wizard-button-filler"></div>
+      <div class="wizard-buttons">
+        <button {{action 'signIn'}}>{{t 'signin'}}</button><button {{action 'signUp'}}>{{t 'signup'}}</button>
+      </div>
+    </div>
+  </div>
+{{/if}}

@@ -1,0 +1,155 @@
+$wizard-icon-height: 68px;
+
+.wizard-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background: $bg-color-accent;
+
+  &:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    // margin-right: -0.25em;
+  }
+
+  &.full-screen-mob {
+    &:before {
+      content: none;
+    }
+  }
+
+  @media #{$breakpoint-mobile-2} {
+    &.full-screen-mob {
+      &:before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+.wizard {
+  background: white;
+  width: 90%;
+
+  display: inline-block;
+  vertical-align: middle;
+  margin: auto;
+  position: relative;
+
+  box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2);
+
+  .full-screen-mob & {
+    width: 100%;
+    min-height: 100%;
+
+    @media #{$breakpoint-mobile-2} {
+      min-height: inherit;
+    }
+  }
+
+  @media #{$breakpoint-mobile-2} {
+    max-width: 400px;
+  }
+
+  .icon {
+    border-radius: $wizard-icon-height / 2;
+    border: 1px solid $default-text-color;
+    background: white;
+    width: $wizard-icon-height;
+    height: $wizard-icon-height;
+    margin: 0 auto;
+
+    span {
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      padding-top: ($wizard-icon-height - 14px) / 2;
+      color: $highlight-color;
+      font-weight: 600;
+      font-size: 20px;
+    }
+  }
+
+  p {
+    line-height: 1.3em;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+
+    .name {
+      color: $highlight-color;
+    }
+  }
+
+  input {
+    border-radius: 2px;
+    text-align: center;
+    padding-top: 12px;
+    border-color: $default-text-color;
+  }
+
+  ::-webkit-input-placeholder {
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: $subtle-highlight-color;
+  }
+
+  ::-moz-placeholder {
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: $subtle-highlight-color;
+  }
+
+  :-ms-input-placeholder {
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: $subtle-highlight-color;
+  }
+}
+
+.wizard-button-filler {
+  height: 50px;
+}
+
+.wizard-buttons {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  button {
+    border-radius: 0;
+    height: 50px;
+    width: 50%;
+    margin: 0;
+    color: white;
+    line-height: 50px;
+    font-size: 18px;
+    font-weight: 600;
+
+    &:nth-child(1) {
+      background: $highlight-color-3;
+    }
+
+    &:nth-child(2) {
+      background: $highlight-color-4;
+    }
+  }
+}
+
+.wizard-main {
+  padding: 8%;
+
+  button {
+    width: 100%;
+  }
+}

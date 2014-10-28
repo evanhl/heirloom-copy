@@ -49,6 +49,20 @@ Utils.preloadImage = function (imgUrl) {
   $("<img />").attr("src", imgUrl);
 };
 
+Utils.getInitials = function (name) {
+  name = name || '';
+
+  var firstInitials = name.split(' ').map(function (split) {
+    if (split && split[0])  {
+      return split[0];
+    } else {
+      return '';
+    }
+  });
+
+  return firstInitials[0] + (firstInitials[1] || '');
+};
+
 
 Utils.Keys = {
   ENTER: 13,

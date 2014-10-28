@@ -1,4 +1,5 @@
-App.SigninView = Ember.View.extend({
+//= require hiddenNavMixin
+App.SigninView = Ember.View.extend(App.HiddenNavMixin, {
   classNames: ['backdrop'],
 
   didInsertElement: function () {
