@@ -10,12 +10,14 @@ Ember.I18n.translations = {
   'album': 'Album',
 
   'signin.message': 'Welcome back.',
+  'signin.message.hasInvitation': 'Please sign in to your Heirloom account on this page to join the group.',
   'signin.login': 'Email/Username',
   'signin.password': 'Password',
   'signin.button.signin': 'Sign In',
   'signin.button.facebook': 'Sign In with Facebook',
 
   'signup.message': 'Sign up and bring the past to the present, effortlessly.',
+  'signup.message.hasInvitation': 'Please sign up to join this group.',
   'signup.name': 'Name',
   'signup.email': 'Email',
   'signup.username': 'Username',

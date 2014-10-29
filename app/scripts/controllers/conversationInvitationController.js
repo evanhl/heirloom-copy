@@ -9,25 +9,33 @@ App.ConversationInvitationController = Ember.ObjectController.extend({
     return App.get('auth.isLoggedIn');
   }.property('App.auth.isLoggedIn'),
 
-  modelChanged: function () {
+  doInvitationSetup: function () {
+    var invitation = this.get('model');
+
+    if (invitation.get('isLoaded')) {
+      this.invitationLoaded();
+    } else {
+      invitation.one('didLoad', $.proxy(this.invitationLoaded, this));
+    }
+  },
+
+  invitationLoaded: function () {
     var adapter = App.ConversationInvitation.adapter;
     var self = this;
     var invitation = this.get('model');
 
-    invitation.one('didLoad', function () {
-      if (self.get('policy.can_accept')) {
-        adapter.postNested(invitation, {}, 'accept').then(function () {
-          Ember.run.next(self, function () {
-            self.transitionToRoute('conversationPosts', self.get('conversation_id'));
-          });
+    if (this.get('policy.can_accept')) {
+      adapter.postNested(invitation, {}, 'accept').then(function () {
+        Ember.run.next(self, function () {
+          this.transitionToRoute('conversationPosts', this.get('conversation_id'));
         });
-      } else if (this.get('isLoggedIn')) {
-        self.transitionToRoute('conversationPosts', self.get('conversation_id'));
-      } else {
-        localStorage.setItem('invitationToken', self.get('token'));
-      }
-    });
-  }.observes('model'),
+      });
+    } else if (this.get('isLoggedIn')) {
+      this.transitionToRoute('conversationPosts', this.get('conversation_id'));
+    } else {
+      App.set('invitationToken', this.get('token'));
+    }
+  },
 
   actions: {
     signIn: function () {

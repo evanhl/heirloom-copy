@@ -2,7 +2,13 @@
   <div class="wizard">
     <div class="wizard-main">
       <div>
-        <h2>{{t 'signup.message'}}</h2>
+        <p>
+          {{#if hasInvitation}}
+            {{t 'signup.message.hasInvitation'}}
+          {{else}}
+            {{t 'signup.message'}}
+          {{/if}}
+        </p>
       </div>
 
       <div>

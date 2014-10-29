@@ -3,6 +3,10 @@ App.SigninController = Ember.Controller.extend(App.FbControllerMixin, {
   password: null,
   error: {},
 
+  hasInvitation: function () {
+    return App.get("invitationToken");
+  }.property('App.invitationToken'),
+
   actions: {
     signin: function () {
       var login = this.getProperties(['login', 'password']);
@@ -12,7 +16,13 @@ App.SigninController = Ember.Controller.extend(App.FbControllerMixin, {
       record.save().then(function (session) {
         App.set('auth.currentSession', session);
 
-        self.transitionToRoute('photos');
+        if (App.get('invitationToken')) {
+          self.transitionToRoute('conversationInvitation', App.get('invitationToken'));
+        } else {
+          self.transitionToRoute('photos');
+        }
+
+        App.set('invitationToken', null);
 
         self.setProperties({
           login: null,
