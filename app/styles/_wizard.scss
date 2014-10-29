@@ -158,3 +158,32 @@ $wizard-icon-height: 68px;
     font-size: 16px;
   }
 }
+
+.invite-header {
+  border-bottom: 1px solid $subtle-highlight-color;
+  position: relative;
+
+  .logo {
+    margin: 25px auto;
+    @include sprite-retina($heirloom_icon_invite, $heirloom_icon_invite-2x);
+  }
+
+  .invite-header-label {
+    position: absolute;
+    bottom: -8px;
+    font-size: 16px;
+    padding: 0 20px;
+    width: 100%;
+  }
+
+  span {
+    font-size: 16px;
+    text-transform: uppercase;
+    color: $subtle-highlight-color;
+    font-weight: 700;
+    letter-spacing: 2px;
+    background: white;
+    padding: 0 20px;
+    margin: 0 auto;
+  }
+}

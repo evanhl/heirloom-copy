@@ -59,6 +59,7 @@ Ember.I18n.translations = {
   'albums.namePlaceholder': 'Album Name...',
   'albums.savedCoverPhoto': 'Cover photo has been changed.',
 
+  'invitation': 'Invitation',
   'invitation.body': ' has invited you to view and add photos in a private group on Heirloom',
   'invitation.instruction': 'Sign up or sign in to join this group.',
 
