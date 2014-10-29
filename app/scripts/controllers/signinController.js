@@ -3,13 +3,23 @@ App.SigninController = Ember.Controller.extend(App.FbControllerMixin, {
   password: null,
   error: {},
 
+  FIELDS: ['login', 'password'],
+
   hasInvitation: function () {
     return App.get("invitationToken");
   }.property('App.invitationToken'),
 
+  submitDisabled: function () {
+    var self = this;
+
+    return !this.FIELDS.every(function (fieldName) {
+      return self.get(fieldName);
+    });
+  }.property('login', 'password'),
+
   actions: {
     signin: function () {
-      var login = this.getProperties(['login', 'password']);
+      var login = this.getProperties(this.FIELDS);
       var record = App.Session.create(login);
       var self = this;
 

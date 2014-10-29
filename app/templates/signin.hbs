@@ -28,7 +28,7 @@
       </div>
 
       <div>
-        <button {{action 'signin' bubbles=false}} class="signin take-action">{{t 'signin.button.signin'}}</button>
+        <button {{action 'signin' bubbles=false}} class="signin take-action" {{bind-attr disabled=submitDisabled}}>{{t 'signin.button.signin'}}</button>
       </div>
 
       {{!--

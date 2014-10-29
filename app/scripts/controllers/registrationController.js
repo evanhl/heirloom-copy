@@ -5,13 +5,23 @@ App.RegistrationController = Ember.ObjectController.extend(App.FbControllerMixin
   password: null,
   error: {},
 
+  FIELDS: ['name', 'email', 'username', 'password'],
+
   hasInvitation: function () {
     return App.get("invitationToken");
   }.property('App.invitationToken'),
 
+  submitDisabled: function () {
+    var self = this;
+
+    return !this.FIELDS.every(function (fieldName) {
+      return self.get(fieldName);
+    });
+  }.property('name', 'email', 'username', 'password'),
+
   actions: {
     signup: function () {
-      var registration = this.getProperties(['name', 'email', 'username', 'password']);
+      var registration = this.getProperties(this.FIELDS);
       var record = App.Registration.create(registration);
       var self = this;
 

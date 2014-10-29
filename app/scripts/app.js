@@ -44,6 +44,7 @@ App.Router.map(function () {
     });
   });
   this.resource('conversationInvitation', { path: 'i/:conversation_invitation_id' });
+  this.resource('ci', { path: 'conversation_invitations/:id' });
 
   this.resource('share', { path: 'share/:share_id' });
   this.resource('s', { path: 's/:id' });
@@ -52,6 +53,12 @@ App.Router.map(function () {
   this.route('signout');
   this.route('resetPassword', { path: 'reset_password/:token' });
   this.route('resetPasswordSuccess', { path: 'reset_password/success' });
+});
+
+App.CiRoute = Ember.Route.extend({
+  beforeModel: function (transition) {
+    this.transitionTo('conversationInvitation', transition.params.ci.id);
+  }
 });
 
 App.SRoute = Ember.Route.extend({

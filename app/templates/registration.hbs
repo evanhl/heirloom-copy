@@ -31,7 +31,7 @@
       {{!-- TODO: remove inline style once we have proper mocks
       --}}
       <div>
-        <button {{action 'signup' bubbles=false}} class="signup take-action">{{t 'signup.button.signup'}}</button>
+        <button {{action 'signup' bubbles=false}} class="signup take-action" {{bind-attr disabled=submitDisabled}}>{{t 'signup.button.signup'}}</button>
       </div>
 
       {{!-- {{#if isFbInit}}
