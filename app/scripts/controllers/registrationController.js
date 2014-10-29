@@ -3,7 +3,7 @@ App.RegistrationController = Ember.ObjectController.extend(App.FbControllerMixin
   name: null,
   username: null,
   password: null,
-  error: {},
+  errors: {},
 
   FIELDS: ['name', 'email', 'username', 'password'],
 
@@ -25,6 +25,8 @@ App.RegistrationController = Ember.ObjectController.extend(App.FbControllerMixin
       var record = App.Registration.create(registration);
       var self = this;
 
+      this.set('errors', {});
+
       record.save().then(function (session) {
         App.set('auth.currentSession', session);
 
@@ -37,7 +39,7 @@ App.RegistrationController = Ember.ObjectController.extend(App.FbControllerMixin
         App.set('invitationToken', null);
       }, function (response) {
         if (response.responseJSON && response.responseJSON instanceof Object) {
-          self.set('error', response.responseJSON);
+          self.set('errors', response.responseJSON);
         }
       });
     },

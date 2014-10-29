@@ -1,0 +1,34 @@
+.toast {
+  position: fixed;
+  top: 77px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  text-align: center;
+  z-index: 5;
+
+  span {
+    padding: 12px 10px 9px;
+    border: 1px $subtle-highlight-color solid;
+    z-index: 10;
+    display: inline-block;
+    background: $bg-color-accent;
+    border-radius: 5px;
+    font-weight: 700;
+    margin: 19px;
+    color: $highlight-color;
+  }
+}
+
+
+p.hl-error {
+  color: $highlight-color;
+}
+
+input.hl-error {
+  border-color: $highlight-color;
+
+  &:focus {
+    border-color: $highlight-color;
+  }
+}

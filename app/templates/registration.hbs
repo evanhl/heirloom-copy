@@ -14,20 +14,30 @@
         </p>
       </div>
 
+      {{#if errors._messages.length}}
+        <div>
+          {{#each errors._messages}}
+            <p class="hl-error">
+              *{{this}}
+            </p>
+          {{/each}}
+        </div>
+      {{/if}}
+
       <div>
-        {{input value=name placeholder=(ts 'signup.name') classBinding="error.name:error :name"}}
+        {{input value=name placeholder=(ts 'signup.name') classBinding="errors.name:hl-error :name"}}
       </div>
 
       <div>
-        {{input value=email placeholder=(ts 'signup.email') classBinding="error.email:error :email"}}
+        {{input value=email placeholder=(ts 'signup.email') classBinding="errors.email:hl-error :email"}}
       </div>
 
       <div>
-        {{input value=username placeholder=(ts 'signup.username') classBinding="error.username:error :username"}}
+        {{input value=username placeholder=(ts 'signup.username') classBinding="errors.username:hl-error :username"}}
       </div>
 
       <div>
-        {{input type="password" value=password placeholder=(ts 'signup.password') classBinding="error.password:error :password"}}
+        {{input type="password" value=password placeholder=(ts 'signup.password') classBinding="errors.password:hl-error :password"}}
       </div>
 
 

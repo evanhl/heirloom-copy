@@ -14,11 +14,13 @@
         </p>
       </div>
 
-      {{#if error.errors.base}}
+      {{#if errors._messages.length}}
         <div>
-          <div class="alert-box alert large-12">
-            {{error.errors.base}}
-          </div>
+          {{#each errors._messages}}
+            <p class="hl-error">
+              *{{this}}
+            </p>
+          {{/each}}
         </div>
       {{/if}}
 

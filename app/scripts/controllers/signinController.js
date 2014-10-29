@@ -1,7 +1,7 @@
 App.SigninController = Ember.Controller.extend(App.FbControllerMixin, {
   login: null,
   password: null,
-  error: {},
+  errors: {},
 
   FIELDS: ['login', 'password'],
 
@@ -22,6 +22,7 @@ App.SigninController = Ember.Controller.extend(App.FbControllerMixin, {
       var login = this.getProperties(this.FIELDS);
       var record = App.Session.create(login);
       var self = this;
+      this.set('errors', {});
 
       record.save().then(function (session) {
         App.set('auth.currentSession', session);
@@ -41,7 +42,7 @@ App.SigninController = Ember.Controller.extend(App.FbControllerMixin, {
         });
       }, function (response) {
         if (response.responseJSON && response.responseJSON instanceof Object) {
-          self.set('error', response.responseJSON);
+          self.set('errors', response.responseJSON);
         }
       });
     },
