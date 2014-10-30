@@ -59,6 +59,12 @@ App.ConversationInvitationController = Ember.ObjectController.extend({
     }
   },
 
+  // TODO: find consistent way of implementing controller reset & destroy view events
+  cleanup: function () {
+    this.set('justSignedIn', false);
+    this.set('justSignedUp', false);
+  },
+
   actions: {
     signIn: function () {
       this.transitionToRoute('signin');

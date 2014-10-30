@@ -1,4 +1,6 @@
 App.SigninController = Ember.Controller.extend(App.FbControllerMixin, {
+  needs: ['conversationInvitation'],
+  conversationInvitation: Ember.computed.alias('controllers.conversationInvitation'),
   login: null,
   password: null,
   errors: {},
@@ -30,6 +32,7 @@ App.SigninController = Ember.Controller.extend(App.FbControllerMixin, {
         App.set('auth.currentSession', session);
 
         if (App.get('invitationToken')) {
+          self.set('conversationInvitation.justSignedIn', true);
           self.transitionToRoute('conversationInvitation', App.get('invitationToken'));
         } else {
           self.transitionToRoute('photos');

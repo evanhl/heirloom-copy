@@ -87,6 +87,19 @@ $wizard-icon-height: 68px;
     }
   }
 
+  a {
+    color: $highlight-color;
+    text-decoration: underline;
+
+    &:hover {
+      color: $highlight-color-2;
+    }
+
+    &:active {
+      color: $highlight-color-3;
+    }
+  }
+
   input {
     border-radius: 2px;
     text-align: center;

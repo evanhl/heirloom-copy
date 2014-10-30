@@ -3,7 +3,15 @@
     <div class="wizard-container">
       <div class="wizard">
         <div class="wizard-main">
-          <p>{{t 'invitation.cta.downloadPlug'}}</p>
+          <p>
+            {{#if justSignedIn}}
+              {{t 'invitation.cta.signInComplete'}}
+            {{/if}}
+            {{#if justSignedUp}}
+              {{t 'invitation.cta.signUpComplete'}}
+            {{/if}}
+            {{t 'invitation.cta.downloadPlug'}}
+          </p>
           {{#if isIos}}
             <a {{bind-attr href=iosStoreLink}}><div class="app-store"></div></a>
           {{/if}}

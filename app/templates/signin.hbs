@@ -36,6 +36,10 @@
         <button {{action 'signin' bubbles=false}} class="signin take-action" {{bind-attr disabled=submitDisabled}}>{{t 'signin.button.signin'}}</button>
       </div>
 
+      <div>
+        <p>{{t 'signin.signUpInstead'}} {{#link-to 'registration'}}{{t 'signup'}}{{/link-to}}</p>
+      </div>
+
       {{!--
       {{#if isFbInit}}
         <div>

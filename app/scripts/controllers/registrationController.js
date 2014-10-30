@@ -1,4 +1,7 @@
 App.RegistrationController = Ember.ObjectController.extend(App.FbControllerMixin, {
+  // TODO: reduce copypasta between this an SignInController
+  needs: ['conversationInvitation'],
+  conversationInvitation: Ember.computed.alias('controllers.conversationInvitation'),
   email: null,
   name: null,
   username: null,
@@ -33,6 +36,7 @@ App.RegistrationController = Ember.ObjectController.extend(App.FbControllerMixin
         App.set('auth.currentSession', session);
 
         if (App.get('invitationToken')) {
+          self.set('conversationInvitation.justSignedUp', true);
           self.transitionToRoute('conversationInvitation', App.get('invitationToken'));
         } else {
           self.transitionToRoute('photos');

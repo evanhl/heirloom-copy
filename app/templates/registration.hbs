@@ -40,11 +40,12 @@
         {{input type="password" value=password placeholder=(ts 'signup.password') classBinding="errors.password:hl-error :password"}}
       </div>
 
-
-      {{!-- TODO: remove inline style once we have proper mocks
-      --}}
       <div>
         <button {{action 'signup' bubbles=false}} class="signup take-action" {{bind-attr disabled=submitDisabled}}>{{t 'signup.button.signup'}}</button>
+      </div>
+
+      <div>
+        <p>{{t 'signup.signInInstead'}} {{#link-to 'signin'}}{{t 'signin'}}{{/link-to}}</p>
       </div>
 
       {{!-- {{#if isFbInit}}
