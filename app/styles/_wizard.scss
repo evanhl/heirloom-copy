@@ -41,6 +41,7 @@ $wizard-icon-height: 68px;
   vertical-align: middle;
   margin: auto;
   position: relative;
+  z-index: 1;
 
   box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2);
 
@@ -221,5 +222,15 @@ $wizard-icon-height: 68px;
 
   @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 512px), (min-resolution: 192dpi) and (min-width: 512px) {
     background-image: url(/images/video_placeholder_loading.jpg);
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
   }
 }
