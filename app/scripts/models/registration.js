@@ -1,9 +1,6 @@
-App.Registration = Ember.Model.extend({
-  name: Ember.attr(),
-  username: Ember.attr(),
-  email: Ember.attr(),
-  password: Ember.attr(),
-  authentication_token: Ember.attr()
+//= require session
+App.Registration = App.Session.extend({
+  email: Ember.attr()
 });
 
 App.Registration.url = 'registration';
