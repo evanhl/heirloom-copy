@@ -135,11 +135,12 @@
           $.mockjax({
             url: 'https://api.hlstage.com/registration',
             type: 'post',
+            // TODO: remove parameter order dependency
             data: JSON.stringify({
+              password: 'b1gb1rd',
               name: 'Big Bird',
               username: 'bigbird123',
-              email: 'abc@example.com',
-              password: 'b1gb1rd'
+              email: 'abc@example.com'
             }),
             responseText: {
               name: 'Big Bird',
