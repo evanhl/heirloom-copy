@@ -24,6 +24,8 @@ app.use(function(req, res, next) {
     req.url = '/index.html';
   } else if (req.url.match(/\/share/)) {
     req.url = '/index.html';
+  } else if (req.url.match(/\/groups/)) {
+    req.url = '/index.html';
   } else if (req.url.match(/\/s\//)) {
     req.url = '/index.html';
   } else if (req.url.match(/\/i\//)) {
