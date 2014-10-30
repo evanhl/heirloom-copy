@@ -108,9 +108,10 @@ $wizard-icon-height: 68px;
   input {
     border-radius: 2px;
     text-align: center;
-    padding: 25px 0 20px;
-    font-size: 16px;
     font-weight: 600;
+    padding: 6px 0px 0px;
+    height: 45px;
+
     &:not(.hl-error) {
       border-color: $default-text-color;
     }
@@ -226,7 +227,7 @@ $wizard-icon-height: 68px;
 
   &:after {
     content: '';
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
