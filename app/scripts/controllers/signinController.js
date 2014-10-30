@@ -43,7 +43,7 @@ App.SigninController = Ember.Controller.extend(App.FbControllerMixin, {
         self.setProperties({
           login: null,
           password: null,
-          error: null
+          errors: {}
         });
       }, function (response) {
         if (response.responseJSON && response.responseJSON instanceof Object) {

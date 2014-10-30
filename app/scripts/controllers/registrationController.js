@@ -42,6 +42,14 @@ App.RegistrationController = Ember.ObjectController.extend(App.FbControllerMixin
           self.transitionToRoute('photos');
         }
 
+        self.setProperties({
+          name: null,
+          email: null,
+          username: null,
+          password: null,
+          errors: {}
+        });
+
         App.set('invitationToken', null);
       }, function (response) {
         if (response.responseJSON && response.responseJSON instanceof Object) {
