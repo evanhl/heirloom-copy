@@ -214,3 +214,12 @@ $wizard-icon-height: 68px;
   display: inline-block;
   @include sprite-retina($app_store, $app_store-2x);
 }
+
+.intro-bg {
+  background-image: url(/images/video_placeholder_loading_small.jpg);
+  background-size: cover;
+
+  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 512px), (min-resolution: 192dpi) and (min-width: 512px) {
+    background-image: url(/images/video_placeholder_loading.jpg);
+  }
+}
