@@ -21,6 +21,8 @@ App.RegistrationController = Ember.ObjectController.extend(App.FbControllerMixin
 
   actions: {
     signup: function () {
+      if (this.get('submitDisabled')) { return; }
+
       var registration = this.getProperties(this.FIELDS);
       var record = App.Registration.create(registration);
       var self = this;

@@ -3,9 +3,15 @@
 
 // TODO: abstract localStorage so that classes don't have to directly interact with it
 App.Authorization = Ember.Object.extend({
-  currentSession: function () {
-    return (localStorage.getItem('currentSession') ? App.Session.create(JSON.parse(localStorage.getItem('currentSession'))) : null);
-  }.property(),
+  currentSession: null,
+
+  init: function () {
+    this._super();
+    if (localStorage.getItem('currentSession')) {
+      this.set('currentSession', App.Session.create(JSON.parse(localStorage.getItem('currentSession'))));
+    }
+  },
+
   authToken: Ember.computed.alias('currentSession.authentication_token'),
 
   isLoggedIn: function () {

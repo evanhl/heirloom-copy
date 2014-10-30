@@ -166,26 +166,34 @@ $wizard-icon-height: 68px;
   position: relative;
 
   .logo {
-    margin: 25px auto;
+    margin: 25px auto 22px;
     @include sprite-retina($heirloom_icon_invite, $heirloom_icon_invite-2x);
   }
 
   .invite-header-label {
     position: absolute;
-    bottom: -8px;
-    font-size: 16px;
-    padding: 0 20px;
+    bottom: -10px;
     width: 100%;
   }
 
   span {
-    font-size: 16px;
+    font-size: 18px;
     text-transform: uppercase;
     color: $subtle-highlight-color;
     font-weight: 700;
     letter-spacing: 2px;
     background: white;
-    padding: 0 20px;
+    padding: 0 12px;
     margin: 0 auto;
   }
+}
+
+.play-store {
+  display: inline-block;
+  @include sprite-retina($google_play, $google_play-2x);
+}
+
+.app-store {
+  display: inline-block;
+  @include sprite-retina($app_store, $app_store-2x);
 }

@@ -62,6 +62,10 @@ Ember.I18n.translations = {
   'invitation': 'Invitation',
   'invitation.body': ' has invited you to view and add photos in a private group on Heirloom',
   'invitation.instruction': 'Sign up or sign in to join this group.',
+  'invitation.cta.signUpComplete': 'Thank you or signing up with Heirloom!',
+  'invitation.cta.signInComplete': 'Thank you or signing in with Heirloom!',
+  'invitation.cta.downloadPlug': 'To view or add posts, download the app.',
+  'invitation.cta.desktopPlug': 'Or sign in at heirloom.net from your desktop computer.',
 
   'cancel': 'Cancel',
   'save': 'Save',

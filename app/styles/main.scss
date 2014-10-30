@@ -77,6 +77,11 @@ a {
   outline: 0;
 }
 
+// Hack to fix Ember's lack of support for action helpers in iOS
+[data-ember-action] {
+  cursor: pointer;
+}
+
 .noscroll { overflow: hidden; }
 
 .top-bar {

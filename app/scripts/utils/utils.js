@@ -63,6 +63,17 @@ Utils.getInitials = function (name) {
   return firstInitials[0] + (firstInitials[1] || '');
 };
 
+Utils.isAndroid = function () {
+  return /Android/i.test(navigator.userAgent);
+};
+
+Utils.isIos = function () {
+  return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+};
+
+Utils.IOS_STORE_LINK = 'https://itunes.apple.com/us/app/heirloom-for-all-moments-we/id931656673?ls=1&mt=8';
+Utils.ANDROID_STORE_LINK = 'https://play.google.com/store/apps/details?id=io.heirloom.app';
+
 
 Utils.Keys = {
   ENTER: 13,

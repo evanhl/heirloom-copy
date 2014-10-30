@@ -19,6 +19,26 @@ App.ConversationInvitationController = Ember.ObjectController.extend({
     }
   },
 
+  isAndroidOrIos: function () {
+    return Utils.isAndroid() || Utils.isIos();
+  }.property(),
+
+  isAndroid: function () {
+    return Utils.isAndroid();
+  }.property(),
+
+  isIos: function () {
+    return Utils.isIos();
+  }.property(),
+
+  iosStoreLink: function () {
+    return Utils.IOS_STORE_LINK;
+  }.property(),
+
+  androidStoreLink: function () {
+    return Utils.ANDROID_STORE_LINK;
+  }.property(),
+
   invitationLoaded: function () {
     var adapter = App.ConversationInvitation.adapter;
     var self = this;
@@ -31,7 +51,9 @@ App.ConversationInvitationController = Ember.ObjectController.extend({
         });
       });
     } else if (this.get('isLoggedIn')) {
-      this.transitionToRoute('conversationPosts', this.get('conversation_id'));
+      if (!this.get('isAndroidOrIos')) {
+        this.transitionToRoute('conversationPosts', this.get('conversation_id'));
+      }
     } else {
       App.set('invitationToken', this.get('token'));
     }
