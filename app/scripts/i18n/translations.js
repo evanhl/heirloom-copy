@@ -9,6 +9,7 @@ Ember.I18n.translations = {
 
   'album': 'Album',
 
+  'signin.learnMore': 'To learn morn about Heirloom <a href="/">click here</a>',
   'signin.message': 'Welcome back.',
   'signin.message.hasInvitation': 'Please sign in to your Heirloom account on this page to join the group.',
   'signin.login': 'Email/Username',

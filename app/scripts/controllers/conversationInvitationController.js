@@ -44,18 +44,22 @@ App.ConversationInvitationController = Ember.ObjectController.extend({
     var self = this;
     var invitation = this.get('model');
 
-    if (this.get('policy.can_accept')) {
+    if (this.get('isLoggedIn') && invitation.get('policy.can_accept')) {
       adapter.postNested(invitation, {}, 'accept').then(function () {
         Ember.run.next(self, function () {
-          this.transitionToRoute('conversationPosts', this.get('conversation_id'));
+          this.afterAccept();
         });
       });
     } else if (this.get('isLoggedIn')) {
-      if (!this.get('isAndroidOrIos')) {
-        this.transitionToRoute('conversationPosts', this.get('conversation_id'));
-      }
+      this.afterAccept();
     } else {
       App.set('invitationToken', this.get('token'));
+    }
+  },
+
+  afterAccept: function () {
+    if (!this.get('isAndroidOrIos')) {
+      this.transitionToRoute('conversationPosts', this.get('conversation_id'));
     }
   },
 
