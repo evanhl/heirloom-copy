@@ -85,6 +85,10 @@ $wizard-icon-height: 68px;
     .name {
       color: $highlight-color;
     }
+
+    &.footer-text {
+      font-size: 16px;
+    }
   }
 
   a {
