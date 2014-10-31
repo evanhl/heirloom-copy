@@ -44,7 +44,7 @@ App.ConversationInvitationController = Ember.ObjectController.extend({
     var self = this;
     var invitation = this.get('model');
 
-    if (invitation.isInvalid()) {
+    if (invitation.get('isInvalid')) {
       return;
     }
 

@@ -6,8 +6,8 @@ App.ConversationInvitation = Ember.Model.extend({
   state: Ember.attr(),
   policy: Ember.attr(),
   isInvalid: function () {
-    return !this.get('state');
-  }
+    return this.get('isLoaded') && !this.get('state');
+  }.property('isLoaded', 'state')
 });
 
 App.ConversationInvitation.url = 'conversation_invitations';
