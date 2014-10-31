@@ -11,7 +11,7 @@ App.ToastableMixin = Ember.Mixin.create({
   onToast: function (template, context) {
     var $span = $('<span></span>').text(Ember.I18n.t(template, context));
 
-    $('<div class="toast"></div>')
+    $('<div class="toast floater"></div>')
       .append($span)
       .hide()
       .appendTo(this.$()).fadeIn(600).delay(2000).fadeOut(600, function () {
