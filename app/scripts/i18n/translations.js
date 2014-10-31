@@ -9,7 +9,7 @@ Ember.I18n.translations = {
 
   'album': 'Album',
 
-  'signin.learnMore': 'To learn morn about Heirloom <a href="/">click here</a>',
+  'signin.learnMore': 'To learn more about Heirloom <a href="/">click here</a>',
   'signin.message': 'Welcome back.',
   'signin.message.hasInvitation': 'Please sign in to your Heirloom account on this page to join the group.',
   'signin.login': 'Email/Username',
@@ -66,9 +66,9 @@ Ember.I18n.translations = {
   'invitation': 'Invitation',
   'invitation.body': ' has invited you to view and add photos in a private group on Heirloom',
   'invitation.instruction': 'Sign up or sign in to join this group.',
-  'invitation.cta.signUpComplete': 'Thank you or signing up with Heirloom!',
-  'invitation.cta.signInComplete': 'Thank you or signing in with Heirloom!',
-  'invitation.cta.downloadPlug': 'To view or add posts, download the app.',
+  'invitation.cta.signUpComplete': 'You have successfully joined a private Heirloom group!',
+  'invitation.cta.signInComplete': 'You have successfully joined a private Heirloom group!',
+  'invitation.cta.downloadPlug': 'To view or add posts, launch the app. If you don\'t have the app, please click here to install Heirloom:',
   'invitation.cta.desktopPlug': 'Or sign in at heirloom.net from your desktop computer.',
 
   'cancel': 'Cancel',

@@ -3,6 +3,7 @@ App.ConversationInvitation = Ember.Model.extend({
   conversation_id: Ember.attr(Number),
   conversation_preview: Ember.attr(),
   token: Ember.attr(),
+  state: Ember.attr(),
   policy: Ember.attr()
 });
 
