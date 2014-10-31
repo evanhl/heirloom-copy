@@ -44,6 +44,10 @@ App.ConversationInvitationController = Ember.ObjectController.extend({
     var self = this;
     var invitation = this.get('model');
 
+    if (invitation.isInvalid()) {
+      return;
+    }
+
     if (this.get('isLoggedIn') && invitation.get('state') !== 'accepted') {
       adapter.postNested(invitation, {}, 'accept').then(function () {
         Ember.run.next(self, function () {

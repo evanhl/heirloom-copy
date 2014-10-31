@@ -1,27 +1,31 @@
 {{#if isLoggedIn}}
-  {{#if isAndroidOrIos}}
-    <div class="wizard-container intro-bg">
-      <div class="wizard">
-        <div class="wizard-main">
-          {{#if justSignedIn}}
-            <p><span class="name">{{t 'invitation.cta.signInComplete'}}</span></p>
+  <div class="wizard-container intro-bg">
+    <div class="wizard">
+      <div class="wizard-main">
+        {{#if isInvalid}}
+          <p>{{t 'invitation.invalid'}}</p>
+        {{else}}
+          {{#if isAndroidOrIos}}
+            {{#if justSignedIn}}
+              <p><span class="name">{{t 'invitation.cta.signInComplete'}}</span></p>
+            {{/if}}
+            {{#if justSignedUp}}
+              <p><span class="name">{{t 'invitation.cta.signUpComplete'}}</span></p>
+            {{/if}}
+            <p>{{t 'invitation.cta.downloadPlug'}}</p>
+            {{#if isIos}}
+              <a {{bind-attr href=iosStoreLink}}><div class="app-store"></div></a>
+            {{/if}}
+            {{#if isAndroid}}
+              <a {{bind-attr href=androidStoreLink}}><div class="play-store"></div></a>
+            {{/if}}
+            <p>{{t 'invitation.cta.desktopPlug'}}</p>
           {{/if}}
-          {{#if justSignedUp}}
-            <p><span class="name">{{t 'invitation.cta.signUpComplete'}}</span></p>
-          {{/if}}
-          <p>{{t 'invitation.cta.downloadPlug'}}</p>
-          {{#if isIos}}
-            <a {{bind-attr href=iosStoreLink}}><div class="app-store"></div></a>
-          {{/if}}
-          {{#if isAndroid}}
-            <a {{bind-attr href=androidStoreLink}}><div class="play-store"></div></a>
-          {{/if}}
-          <p>{{t 'invitation.cta.desktopPlug'}}</p>
-        </div>
-        <div class="wizard-tag">{{t 'signin.learnMore'}}</div>
+        {{/if}}
       </div>
+      <div class="wizard-tag">{{t 'signin.learnMore'}}</div>
     </div>
-  {{/if}}
+  </div>
 {{else}}
   <div class="wizard-container intro-bg">
     <div class="wizard">

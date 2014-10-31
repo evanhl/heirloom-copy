@@ -70,6 +70,7 @@ Ember.I18n.translations = {
   'invitation.cta.signInComplete': 'You have successfully joined a private Heirloom group!',
   'invitation.cta.downloadPlug': 'To view or add posts, launch the app. If you don\'t have the app, please click here to install Heirloom:',
   'invitation.cta.desktopPlug': 'Or sign in at heirloom.net from your desktop computer.',
+  'invitation.invalid': 'This invitation is not valid.',
 
   'cancel': 'Cancel',
   'save': 'Save',
