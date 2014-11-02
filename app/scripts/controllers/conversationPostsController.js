@@ -1,6 +1,7 @@
 App.ConversationPostsController = Ember.ArrayController.extend(Ember.Evented, InfiniteScroll.ControllerMixin, {
-  needs: ['conversation'],
+  needs: ['conversation', 'navigation'],
   conversation: Ember.computed.alias('controllers.conversation'),
+  navigation: Ember.computed.alias('controllers.navigation'),
   newPostMessage: null,
 
   fetchPage: function (page, perPage) {
@@ -12,6 +13,19 @@ App.ConversationPostsController = Ember.ArrayController.extend(Ember.Evented, In
     };
     var records = Ember.RecordArray.create({ modelClass: App.Post, _query: params, container: false });
 
+    if (page === 1) {
+      this.onFirstPage();
+    }
+
     return adapter.findNestedQuery(this.get('conversation.model'), App.Post, 'posts', records, params);
+  },
+
+  onFirstPage: function () {
+    var adapter = App.Conversation.adapter;
+    var self = this;
+
+    adapter.postNested(this.get('conversation.model'), {}, 'read').then(function () {
+      self.get('navigation').updateConversationsCount();
+    });
   }
 });

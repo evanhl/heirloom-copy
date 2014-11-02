@@ -13,7 +13,6 @@ App.NavigationController = Ember.Controller.extend({
 
   init: function () {
     this.get('uploadModal').on('didUpload', this, this.didUpload);
-    this.updateConversationsCount();
     this._super();
   },
 
@@ -32,8 +31,10 @@ App.NavigationController = Ember.Controller.extend({
   isLoggedInChanged: function () {
     if (!this.get('isLoggedIn')) {
       this.softSignOut();
+    } else {
+      this.onSignIn();
     }
-  }.observes('isLoggedIn'),
+  }.on('init').observes('isLoggedIn'),
 
   updateConversationsCount: function () {
     var self = this;
@@ -55,14 +56,23 @@ App.NavigationController = Ember.Controller.extend({
     // just the client side part of signing out
     // only invoke if server session has already expired
     this.transitionToRoute('signin');
+    this.reset();
     this.get('controllers.photos').reset();
     this.get('controllers.albumsIndex').reset();
     this.get('controllers.conversations').reset();
   },
 
+  onSignIn: function () {
+    this.updateConversationsCount();
+  },
+
   didUpload: function (uploadedPhotoModels) {
     this.get('photos').unshiftObjects(uploadedPhotoModels);
     this.get('photos').startFetchRecent();
+  },
+
+  reset: function () {
+    this.set('conversationsSummary', null);
   },
 
   actions: {
