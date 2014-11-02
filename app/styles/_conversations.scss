@@ -1,11 +1,7 @@
 
-a .convo {
-  color: $default-text-color;
-}
-
 a.active .convo {
-  border-left: $convo-highlight-border-width $highlight-color solid;
-  padding-left: $convo-left-padding;
+  background: $highlight-color;
+  color: white;
 }
 
 .post-message {
@@ -17,17 +13,26 @@ a.active .convo {
   height: $convo-height;
   background: white;
   padding: $convo-padding $convo-padding $convo-padding $convo-left-padding;
-  border-left: $convo-highlight-border-width white solid;
   border-bottom: 1px $subtle-highlight-color solid;
   border-right: 1px $subtle-highlight-color solid;
-  transition: border-left-color .25s ease-in-out;
+  color: $default-text-color;
 
   .icon {
     height: $convo-icon-size;
     width: $convo-icon-size;
     border-radius: $convo-icon-size / 2;
-    background: $subtle-highlight-color;
+    background: white;
+    border: 1px solid $subtle-highlight-color;
     float: left;
+
+    span {
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      padding-top: ($convo-icon-size - 14px) / 2;
+      color: $highlight-color;
+      font-weight: 700;
+    }
   }
 
   .details {
@@ -49,10 +54,6 @@ a.active .convo {
     overflow: hidden;
     text-overflow: ellipsis;
   }
-}
-
-.convo:hover {
-  border-left-color: $subtle-highlight-color;
 }
 
 .col-container {

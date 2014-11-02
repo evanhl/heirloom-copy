@@ -6,7 +6,7 @@
     {{#each}}
       {{#link-to 'conversationPosts' id}}
         <div class="convo">
-          <div class="icon"></div>
+          <div class="icon"><span>{{owner.initials}}</span></div>
           <div class="details">
             <div class="names">{{name}}</div>
             <div class="sub">{{t "conversation.members" countBinding="member_count"}}</div>
