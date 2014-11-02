@@ -2,6 +2,10 @@
 a.active .convo {
   background: $highlight-color;
   color: white;
+
+  .sub {
+    color: white;
+  }
 }
 
 .post-message {
@@ -12,10 +16,21 @@ a.active .convo {
   width: 100%;
   height: $convo-height;
   background: white;
-  padding: $convo-padding $convo-padding $convo-padding $convo-left-padding;
+  padding: $convo-padding $convo-right-padding $convo-padding $convo-padding;
   border-bottom: 1px $subtle-highlight-color solid;
   border-right: 1px $subtle-highlight-color solid;
   color: $default-text-color;
+  position: relative;
+
+  .dot {
+    position: absolute;
+    top: ($convo-height / 2) - ($convo-dot-size / 2);
+    height: $convo-dot-size;
+    width: $convo-dot-size;
+    background: $highlight-color;
+    border-radius: $convo-dot-size / 2;
+    right: $convo-padding;
+  }
 
   .icon {
     height: $convo-icon-size;
@@ -41,12 +56,16 @@ a.active .convo {
 
   .names {
     font-size: 18px;
+    font-weight: 600;
     margin-top: 6px;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
   }
 
   .sub {
     height: 20px;
+    // font-size: 14px;
+    font-weight: 600;
+    color: $subtle-highlight-color;
   }
 
   .names, .details {

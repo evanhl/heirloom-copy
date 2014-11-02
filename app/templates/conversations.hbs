@@ -6,10 +6,13 @@
     {{#each}}
       {{#link-to 'conversationPosts' id}}
         <div class="convo">
+          {{#if has_unread}}
+            <div class="dot"></div>
+          {{/if}}
           <div class="icon"><span>{{owner.initials}}</span></div>
           <div class="details">
             <div class="names">{{name}}</div>
-            <div class="sub">{{t "conversation.members" countBinding="member_count"}}</div>
+            <div class="sub">{{fromNow last_post_at}}</div>
           </div>
         </div>
       {{/link-to}}

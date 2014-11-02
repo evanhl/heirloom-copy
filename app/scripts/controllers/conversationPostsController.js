@@ -23,9 +23,11 @@ App.ConversationPostsController = Ember.ArrayController.extend(Ember.Evented, In
   onFirstPage: function () {
     var adapter = App.Conversation.adapter;
     var self = this;
+    var convo = this.get('conversation.model');
 
-    adapter.postNested(this.get('conversation.model'), {}, 'read').then(function () {
+    adapter.postNested(convo, {}, 'read').then(function () {
       self.get('navigation').updateConversationsCount();
+      convo.reload();
     });
   }
 });
