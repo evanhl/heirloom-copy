@@ -15,6 +15,13 @@
       </div>
     </div>
   {{/if}}
+  {{#if errors.length}}
+    <div {{bind-attr class=":toast-banner :toast-banner-error removingToolbar:removing-toolbar showToolbar:below-toolbar"}}>
+      {{#each errors}}
+        <p>{{this}}</p>
+      {{/each}}
+    </div>
+  {{/if}}
 
   {{#each}}{{render 'thumbPhoto' this}}{{/each}}
 

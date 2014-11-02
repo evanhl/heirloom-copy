@@ -49,6 +49,10 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
     });
   },
 
+  onFetchPageError: function () {
+    this.set('errors', [Ember.I18n.t('photos.failed')]);
+  },
+
   mergeObjects: function (items) {
     this.removeObjects(items);
     this.unshiftObjects(items);

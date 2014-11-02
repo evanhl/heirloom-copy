@@ -7,7 +7,7 @@
     z-index: 10;
     display: inline-block;
     background: $bg-color-accent;
-    border-radius: 5px;
+    border-radius: 2px;
     font-weight: 700;
     margin: 19px;
     color: $highlight-color;
@@ -31,7 +31,38 @@
   }
 }
 
+.toast-banner {
+  position: fixed;
+  top: $logo-height;
+  left: 0;
+  width: 100%;
+  z-index: 5;
+  transition: top 0.3s ease-in-out;
+  border-bottom: 1px solid;
+  text-align: center;
 
+  &.below-toolbar {
+    top: $logo-height * 2;
+
+    &.removing-toolbar {
+      top: $logo-height;
+    }
+  }
+
+  padding: 10px;
+
+
+  p {
+    font-weight: 600;
+    position: inline-block;
+  }
+}
+
+.toast-banner-error {
+  border-color: $alert-error-color;
+  background: $alert-error-bg;
+  color: $alert-error-color;
+}
 
 p.hl-error {
   color: $highlight-color;

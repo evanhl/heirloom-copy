@@ -20,6 +20,10 @@
       });
     },
 
+    onFetchPageError: function () {
+
+    },
+
     actions: {
       getMore: function () {
         var nextPage, perPage, self;
@@ -35,7 +39,11 @@
         this.set('loadingMore', true);
 
         this.fetchPage(nextPage, perPage).then(function (items) {
+          self.set('errors', []);
           self.send('gotMore', items, nextPage);
+        }).catch(function () {
+          self.onFetchPageError();
+          self.set('loadingMore', false);
         });
       },
 
