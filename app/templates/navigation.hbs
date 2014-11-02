@@ -4,7 +4,7 @@
       {{#link-to 'photos'}}<div class="logo"></div>{{/link-to}}
       {{#link-to 'photos' tagName='li' class='photos'}}{{#link-to 'photos'}}{{t 'moments'}}{{/link-to}}{{/link-to}}
       {{#link-to 'albums' tagName='li' class='albums'}}{{#link-to 'albums'}}{{t 'albums'}}{{/link-to}}{{/link-to}}
-      {{#link-to 'conversations' tagName='li' class='conversations'}}{{#link-to 'conversations'}}{{t 'conversations'}}{{/link-to}}{{/link-to}}
+      {{#link-to 'conversations' tagName='li' class='conversations'}}{{#link-to 'conversations'}}{{t 'conversations'}}{{#if conversationsUnreadCount}}<span class="badge">{{conversationsCount}}</span>{{/if}}{{/link-to}}{{/link-to}}
     </ul>
 
     <div class="right">

@@ -254,3 +254,16 @@ $user-dropdown-height: 40px;
     margin-left: 95px;
   }
 }
+
+.badge {
+  background: $highlight-color;
+  color: white;
+  font-size: 12px;
+  padding: 4px 5px 2px 7px;
+  border-radius: 10px;
+  min-width: 10px;
+  vertical-align: 2px;
+  margin-left: 15px;
+  font-weight: 600;
+}
+

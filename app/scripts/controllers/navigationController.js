@@ -3,8 +3,17 @@ App.NavigationController = Ember.Controller.extend({
   uploadModal: Ember.computed.alias('controllers.uploadModal'),
   photos: Ember.computed.alias('controllers.photos'),
 
+  conversationsUnreadCount: Ember.computed.alias('conversationsSummary.unread_count'),
+  conversationsCount: function () {
+    var count = this.get('conversationsSummary.unread_count');
+    var plus = this.get('conversationsSummary.unread_count_plus') ? '+' : '';
+
+    return count + plus;
+  }.property('conversationsSummary.unread_count', 'conversationsSummary.unread_count_plus'),
+
   init: function () {
     this.get('uploadModal').on('didUpload', this, this.didUpload);
+    this.updateConversationsCount();
     this._super();
   },
 
@@ -25,6 +34,16 @@ App.NavigationController = Ember.Controller.extend({
       this.softSignOut();
     }
   }.observes('isLoggedIn'),
+
+  updateConversationsCount: function () {
+    var self = this;
+
+    // The empty string argument causes Ember Model to parse the response as a single object instead of an array
+    App.ConversationsSummary.fetch('').then(function (summary) {
+      self.set('conversationsSummary', summary);
+      return summary;
+    });
+  },
 
   groupsEnabled: function () {
     return !HLConfig.GROUPS_DISABLED;
