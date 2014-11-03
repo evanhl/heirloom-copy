@@ -1,8 +1,13 @@
 <div class="col-container">
   <div class="left-col">
-    <div class="settings">
-      <button class="take-action" {{action 'create'}}>Create New Group</button>
-    </div>
+    {{#if createMode}}
+      <div class="convo highlighted">
+        <div class="icon"></div>
+        <div class="details">
+          <div class="names">{{t 'conversations.new'}}</div>
+        </div>
+      </div>
+    {{/if}}
     {{#each}}
       {{#link-to 'conversationPosts' id}}
         <div class="convo">
@@ -19,6 +24,9 @@
     {{/each}}
 
     {{partial 'spinner'}}
+    <div class="settings">
+      <button class="take-action with-icon medium" {{action 'create'}}><span class="add-to-album-icon icon"></span><span class="label">{{t 'conversations.create'}}<span></button>
+    </div>
   </div>
 
   <div class="main-col">

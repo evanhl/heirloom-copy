@@ -29,6 +29,8 @@ Ember.I18n.translations = {
   'signup.signInInstead': 'Already have an account?',
   'signup.boilerplate': 'By creating an account you agree to our <a href="/terms">Terms of Service</a> and <a href="/privacy">Privacy Policy</a>',
 
+  "conversations.create": "Create Group",
+  "conversations.new": "New Group",
   "conversation.members.one": "{{count}} Person",
   "conversation.members.other": "{{count}} People",
   'post.prompt': 'Write something...',

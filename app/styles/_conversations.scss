@@ -1,5 +1,4 @@
-
-a.active .convo {
+a.active .convo, .convo.highlighted {
   background: $highlight-color;
   color: white;
 
@@ -227,11 +226,16 @@ a.active .convo {
 }
 
 .settings {
+  position: fixed;
+  bottom: 0;
+  width: $left-col-width;
+  max-width: $left-col-max-width;
+  text-align: center;
   background: white;
-  text-align: right;
-  border-bottom: 1px solid $subtle-highlight-color;
+  border-right: 1px solid $subtle-highlight-color;
+
 
   button {
-    margin: 15px 0 15px 15px;
+    margin: 20px;
   }
 }

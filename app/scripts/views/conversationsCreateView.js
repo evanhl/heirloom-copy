@@ -1,5 +1,3 @@
-/* globals console */
-
 App.ConversationsCreateView = Ember.View.extend({
   RESULT_TEMPLATE: '<div class="icon"></div><div class="name">{{name}}</div><div class="sub">{{username}}</div>',
 
