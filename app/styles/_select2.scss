@@ -173,13 +173,6 @@ $contact-result-height: 88px;
 
 .select2-container-multi .select2-choices {
     background-color: #fff;
-      background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(1%, #eeeeee), color-stop(15%, #ffffff));
-      background-image: -webkit-linear-gradient(top, #eeeeee 1%, #ffffff 15%);
-      background-image: -moz-linear-gradient(top, #eeeeee 1%, #ffffff 15%);
-      background-image: -o-linear-gradient(top, #eeeeee 1%, #ffffff 15%);
-      background-image: -ms-linear-gradient(top, #eeeeee 1%, #ffffff 15%);
-      background-image: linear-gradient(top, #eeeeee 1%, #ffffff 15%);
-      border: 1px solid #aaa;
       margin: 0;
       padding: 0;
       cursor: text;
@@ -194,11 +187,13 @@ $contact-result-height: 88px;
 }
 
 .select2-container-multi .select2-choices {
-    min-height: 26px;
+    min-height: 88px;
+    border-bottom: 1px solid $subtle-highlight-color;
+    // necessary to fix off-by-one-pixel error in select2.js when recalculating input width
+    padding: 1px;
 }
 
 .select2-container-multi.select2-container-active .select2-choices {
-    border: 1px solid #5897fb;
     outline: none;
 }
 .select2-container-multi .select2-choices li {
@@ -215,9 +210,7 @@ $contact-result-height: 88px;
   color: #666;
   background: transparent;
   font-size: 100%;
-  height: 19px;
-  padding: 5px;
-  margin: 4px 0;
+  height: 35px;
   outline: 0;
   border: 0;
   box-shadow: none;

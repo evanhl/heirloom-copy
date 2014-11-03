@@ -427,19 +427,6 @@ img.detail {
   100%    { opacity: 0.6; }
 }
 
-// Styles for headroom.js (retractable sticky post creation widget)
-.headroom {
-    transition: transform 500ms linear;
-}
-
-.headroom--pinned {
-    transform: translateY(0%);
-}
-
-.headroom--unpinned {
-    transform: translateY(-110%);
-}
-
 // TODO: choose more meaningful name
 .sub-info {
   color: $highlight-color;

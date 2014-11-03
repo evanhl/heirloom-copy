@@ -26,21 +26,10 @@ $convo-padding: ($convo-height - $convo-icon-size) / 2;
 $convo-dot-size: 14px;
 $convo-right-padding: ($convo-padding * 2) + $convo-dot-size;
 
-$left-main-max-width: 1035px;
-$right-col-user-dropdown-ideal-width: 300px;
-$user-dropdown-breakpoint: $left-main-max-width + $right-col-user-dropdown-ideal-width;
-$main-col-max-width: 660px;
 $main-col-horiz-padding: 16px;
-$main-col-max-inner-width: $main-col-max-width - ($main-col-horiz-padding * 2);
-$main-col-right-inner-edge: $left-main-max-width - $main-col-horiz-padding;
-$left-col-max-width: $left-main-max-width - $main-col-max-width;
-$left-col-max-outer-width: $left-col-max-width + $main-col-horiz-padding;
 
-$main-col-width: ($main-col-max-width / $left-main-max-width) * 100%;
-$main-col-inner-width: ($main-col-max-inner-width / $left-main-max-width) * 100%;
-$left-col-width: ($left-col-max-width / $left-main-max-width) * 100%;
-$left-col-margin: ($main-col-horiz-padding / $left-main-max-width) * 100%;
-$left-col-outer-width: $left-col-width + $left-col-margin;
+$main-col-width: 67%;
+$left-col-width: 33%;
 
 $post-left-margin: 75px;
 $post-icon-size: $convo-icon-size;

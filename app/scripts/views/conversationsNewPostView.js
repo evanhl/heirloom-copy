@@ -63,14 +63,6 @@ App.ConversationsNewPostView = Ember.View.extend(InfiniteScroll.ViewMixin, {
     });
   }.on('didInsertElement'),
 
-  setupHeadroomForPost: function () {
-    this.$('.new-post').headroom();
-  }.on('didInsertElement'),
-
-  destroyHeadroomForPost: function () {
-    this.$('.new-post').headroom('destroy');
-  }.on('willDestroyElement'),
-
   setupWindowListener: function () {
     $(window).on('resize', this.resizeNavFiller);
   }.on('didInsertElement'),

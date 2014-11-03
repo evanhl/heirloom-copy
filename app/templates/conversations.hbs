@@ -1,5 +1,6 @@
 <div class="col-container">
   <div class="left-col">
+    <div class="nav-filler"></div>
     {{#if createMode}}
       <div class="convo highlighted">
         <div class="icon"></div>
@@ -24,13 +25,14 @@
     {{/each}}
 
     {{partial 'spinner'}}
-    <div class="settings">
-      <button class="take-action with-icon medium" {{action 'create'}}><span class="add-to-album-icon icon"></span><span class="label">{{t 'conversations.create'}}<span></button>
-    </div>
+  </div>
+  <div class="settings">
+    <button class="take-action with-icon medium" {{action 'create'}}><span class="add-to-album-icon icon"></span><span class="label">{{t 'conversations.create'}}</button>
   </div>
 
   <div class="main-col">
-      {{outlet}}
+    <div class="nav-filler"></div>
+    {{outlet}}
   </div>
 
 </div>

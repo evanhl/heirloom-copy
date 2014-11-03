@@ -17,7 +17,6 @@ a.active .convo, .convo.highlighted {
   background: white;
   padding: $convo-padding $convo-right-padding $convo-padding $convo-padding;
   border-bottom: 1px $subtle-highlight-color solid;
-  border-right: 1px $subtle-highlight-color solid;
   color: $default-text-color;
   position: relative;
 
@@ -74,33 +73,25 @@ a.active .convo, .convo.highlighted {
   }
 }
 
-.col-container {
-  background: $bg-color-accent;
-}
-
 .left-col {
   position: fixed;
   left: 0;
-  top: $logo-height;
+  top: 0;
+  border-right: 1px solid $subtle-highlight-color;
   width: $left-col-width;
-  max-width: $left-col-max-width;
-  background: $bg-color-accent;
-  height: calc(100vh - 74px);
+  height: 100%;
   overflow-y: scroll;
 }
 
 
 .main-col {
+  position: fixed;
+  top: 0;
   background: white;
   width: $main-col-width;
-  margin-left: $left-col-width;
-  padding: 0 $main-col-horiz-padding;
-  min-height: calc(100vh - 74px);
-
-  @media screen and (min-width: $left-main-max-width) {
-    width: $main-col-max-width;
-    margin-left: $left-col-max-width;
-  }
+  left: $left-col-width;
+  height: 100%;
+  overflow-y: scroll;
 }
 
 .post {
@@ -160,22 +151,6 @@ a.active .convo, .convo.highlighted {
   }
 }
 
-.main-col-widget {
-  position: fixed;
-  top: 74px;
-  left: 0;
-  z-index: 3;
-  width: $main-col-inner-width;
-  margin-left: $left-col-outer-width;
-
-
-  @media screen and (min-width: $left-main-max-width) {
-    width: $main-col-max-inner-width;
-    margin-left: $left-col-max-outer-width;
-  }
-
-}
-
 .new-post {
   margin-bottom: 5px;
   border-bottom: 1px $subtle-highlight-color solid;
@@ -229,7 +204,6 @@ a.active .convo, .convo.highlighted {
   position: fixed;
   bottom: 0;
   width: $left-col-width;
-  max-width: $left-col-max-width;
   text-align: center;
   background: white;
   border-right: 1px solid $subtle-highlight-color;
