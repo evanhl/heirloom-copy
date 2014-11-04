@@ -8,6 +8,7 @@ App.Conversation = Ember.Model.extend({
   last_post_at: Ember.attr(Date),
   created_at: Ember.attr(Date),
   updated_at: Ember.attr(Date),
+  contacts: Ember.attr(),
   member_count: 0
 });
 

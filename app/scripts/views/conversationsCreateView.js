@@ -3,8 +3,9 @@ App.ConversationsCreateView = Ember.View.extend({
 
   initMultiSelect: function () {
     var self = this;
+    var $contacts = this.$('.contacts');
 
-    this.$('.contacts').select2({
+    $contacts.select2({
       minimumInputLength: 1,
       multiple: true,
       ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
@@ -12,14 +13,13 @@ App.ConversationsCreateView = Ember.View.extend({
         dataType: 'json',
         data: function (term, page) {
           return {
-            q: term, // search term
-            global: "true"
+            q: term // search term
           };
         },
         results: function (data, page) {
           // parse the results into the format expected by Select2.
           // since we are using custom formatting functions we do not need to alter remote JSON data
-          return {results: data};
+          return { results: data };
         }
       },
       formatResult: function (result) {
@@ -29,12 +29,22 @@ App.ConversationsCreateView = Ember.View.extend({
       },
       formatSelection: function (selection) {
         return selection.name;
-      }
+      },
+      formatInputTooShort: function (foo) {
+        return '';
+      },
+      placeholder: Ember.I18n.t('conversations.new.placeholder')
     });
-    this.$('.select2-choices').prepend($('<li class="pre-label">To:</li>'));
+
+    this.$('.select2-choices').prepend($('<li class="pre-label"></li>').text(Ember.I18n.t('conversations.new.preLabel')));
+
+    $contacts.on('change', function () {
+      self.controller.set('selectedContacts', $(this).select2('val'));
+    });
   }.on('didInsertElement'),
 
   destroyMultiSelect: function () {
     this.$('.contacts').select2('destroy');
+    this.$('.contacts').off('change');
   }.on('willDestroyElement')
 });

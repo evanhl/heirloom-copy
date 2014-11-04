@@ -14,11 +14,25 @@ App.ConversationsNewPostController = Ember.ObjectController.extend(Ember.Evented
     this._super();
   },
 
+  parentControllerChanged: function () {
+    if (this.get('parentController')) {
+      this.get('parentController').on('didCreatePost', $.proxy(this.didCreatePost, this));
+    }
+  }.on('init').observes('parentController'),
+
   newPostPhotoIds: function () {
     return this.get('newPostPhotos').map(function (photo) {
       return photo.get('id');
     });
   },
+
+  postDisabled: function () {
+    var noMessage = !this.get('newPostMessage');
+    var noPhotos = !this.get('newPostPhotos') || this.get('newPostPhotos').length < 1;
+    var noContent = noPhotos && noMessage;
+
+    return noContent || this.get('parentController.postDisabled');
+  }.property('newPostMessage', 'newPostPhotos.[]', 'parentController.postDisabled'),
 
   clearPost: function () {
     this.setProperties({
@@ -27,25 +41,21 @@ App.ConversationsNewPostController = Ember.ObjectController.extend(Ember.Evented
     });
   }.observes('model').on('init'),
 
+  didCreatePost: function (post) {
+    this.get('conversationPosts').unshiftObject(post);
+    this.set('newPostMessage', null);
+    this.set('newPostPhotos', []);
+    this.trigger('clearNewPost');
+  },
+
   actions: {
     create: function () {
-      var adapter = App.Conversation.adapter;
-      var self = this;
-      var conversation = self.get('model');
       var postProps = {
         message: this.get('newPostMessage'),
         photo_ids: this.newPostPhotoIds()
       };
-      var post = App.Post.create(postProps);
 
-      adapter.createNestedRecord(conversation, post, 'posts').then(function () {
-        self.get('conversationPosts').unshiftObject(post);
-        self.set('newPostMessage', null);
-        self.set('newPostPhotos', []);
-        self.trigger('clearNewPost');
-      }, function () {
-        // TODO: handle failure
-      });
+      this.send('createPost', postProps);
     }
   }
 });

@@ -29,5 +29,20 @@ App.ConversationPostsController = Ember.ArrayController.extend(Ember.Evented, In
       self.get('navigation').updateConversationsCount();
       convo.reload();
     });
+  },
+
+  actions: {
+    createPost: function (options) {
+      var self = this;
+      var adapter = App.Conversation.adapter;
+      var post = App.Post.create(options);
+      var conversation = self.get('conversation.model');
+
+      adapter.createNestedRecord(conversation, post, 'posts').then(function () {
+        self.trigger('didCreatePost', post);
+      }, function () {
+        // TODO: handle failure
+      });
+    }
   }
 });

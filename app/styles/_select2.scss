@@ -15,10 +15,10 @@
   background: white;
 
   &.select2-search-choice-focus {
-    border-color: darken($highlight-color, 15%);
+    border-color: $highlight-color-2;
 
     &::after {
-      border-color: darken($highlight-color, 15%);
+      border-color: $highlight-color-2;
     }
   }
 
@@ -89,9 +89,6 @@ $contact-result-height: 88px;
 
 .select2-container .select2-drop {
   z-index: 999;
-
-  border-left: 1px solid $subtle-highlight-color;
-  border-right: 1px solid $subtle-highlight-color;
 }
 
 .select2-search-choice-close {
@@ -102,15 +99,8 @@ $contact-result-height: 88px;
   width: 12px;
   height: 13px;
   font-size: 1px;
-  background: url(/images/select2.png) right top no-repeat;
   outline: none;
 }
-
-
-
-
-
-
 
 // TODO: continue to prune unneeded styles below
 
@@ -136,6 +126,7 @@ $contact-result-height: 88px;
 .select2-container .select2-results .select2-no-results {
   background: #f4f4f4;
   display: list-item;
+  padding: 38px 0 0 32px
 }
 
 .select2-container .select2-results .select2-disabled {
@@ -190,7 +181,7 @@ $contact-result-height: 88px;
     min-height: 88px;
     border-bottom: 1px solid $subtle-highlight-color;
     // necessary to fix off-by-one-pixel error in select2.js when recalculating input width
-    padding: 28px 30px 0 30px;
+    padding: 25px 30px 0 30px;
     font-weight: 600;
 }
 
@@ -202,7 +193,7 @@ $contact-result-height: 88px;
   list-style: none;
 
   &.pre-label {
-    margin-top: 13px;
+    margin: 13px 5px 0 0;
   }
 }
 
@@ -224,7 +215,7 @@ $contact-result-height: 88px;
 }
 
 .select2-container-multi .select2-results {
-  margin: -1px 0 0;
+  margin: 0;
   padding: 0;
 }
 

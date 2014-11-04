@@ -152,12 +152,11 @@ a.active .convo, .convo.highlighted {
 }
 
 .new-post {
-  margin-bottom: 5px;
-  border-bottom: 1px $subtle-highlight-color solid;
-  border-left: 1px $subtle-highlight-color solid;
-  border-right: 1px $subtle-highlight-color solid;
-  box-shadow: 0px 1px 2px 0px rgba(219,219,219,0.5);
-  background: white;
+  position: fixed;
+  bottom: 0;
+  border-top: 1px $subtle-highlight-color solid;
+  background: $bg-color-accent-light;
+  width: $main-col-width;
 
   textarea {
     margin: 0;

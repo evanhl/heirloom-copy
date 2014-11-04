@@ -14,7 +14,7 @@
   --}}
   <div class="new-post-post">
     <button {{action 'openModal' 'photoPicker'}} class="add-photos" style="min-width: inherit;">+</button>
-    <button {{action 'create'}} class="take-action">Post</button>
+    <button {{action 'create'}} class="take-action" {{bind-attr disabled=postDisabled}}>Post</button>
     <div style="
       margin-left: 46px;
       margin-right: 140px;

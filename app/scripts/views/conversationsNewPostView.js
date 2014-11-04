@@ -23,7 +23,9 @@ App.ConversationsNewPostView = Ember.View.extend(InfiniteScroll.ViewMixin, {
     // autosize doesn't have a typing event to go off of
 
     Ember.run.next(this, function () {
-      this.$('textarea').trigger('autosize.resize');
+      if (this.$('textarea')) {
+        this.$('textarea').trigger('autosize.resize');
+      }
     });
   },
 
@@ -33,13 +35,13 @@ App.ConversationsNewPostView = Ember.View.extend(InfiniteScroll.ViewMixin, {
     var self = this;
 
     Ember.run.next(function () {
-      var $scrollEl = self.$scrollEl();
-      // FIXME: this view shouldn't be reaching outside of its scope
-      var $navFiller = self.$().parent().parent().find('.nav-filler');
-      var newPostHeight = self.$('.new-post').outerHeight();
-      var navFillerHeight = $navFiller.outerHeight();
+      // var $scrollEl = self.$scrollEl();
+      // // FIXME: this view shouldn't be reaching outside of its scope
+      // var $navFiller = self.$().parent().parent().find('.nav-filler');
+      // var newPostHeight = self.$('.new-post').outerHeight();
+      // var navFillerHeight = $navFiller.outerHeight();
 
-      $navFiller.css('height', newPostHeight);
+      // $navFiller.css('height', newPostHeight);
     });
   }.observes('controller.newPostPhotos.length'),
 
