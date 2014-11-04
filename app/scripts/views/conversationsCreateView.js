@@ -31,6 +31,7 @@ App.ConversationsCreateView = Ember.View.extend({
         return selection.name;
       }
     });
+    this.$('.select2-choices').prepend($('<li class="pre-label">To:</li>'));
   }.on('didInsertElement'),
 
   destroyMultiSelect: function () {
