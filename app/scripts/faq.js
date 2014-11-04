@@ -45,15 +45,18 @@
     },
 
     formatHtml: function () {
-      var wrapAnswers, appendBackToTopLinks, questionTitleInfo, prependNameAnchorsToH2s, lis;
-
-      lis = '';
+      var wrapAnswers, prependNameAnchorsToH2s;
 
       // Needed for accordian animation.
       wrapAnswers = function () {
         $(this).nextUntil('h2').wrapAll($('<div/>', { 'class': 'answer' }));
       };
 
+      /**
+       * This allows deeplinking to a FAQ. Useful for email and Twitter responses.
+       * Example: http://heirloom.net/faq.html#how-do-i-upload-a-photo?
+       * Feel free to kill this method if you swear you're never going to use deeplinking here (hint: you will).
+       */
       prependNameAnchorsToH2s = function () {
         var text  = $(this).text(),
             name  = text.replace(/\s+/g, '-').toLowerCase(),
@@ -64,6 +67,30 @@
 
         $('<a/>', attrs).insertBefore($(this));
       };
+
+      this.elms.$h2.each(function () {
+        wrapAnswers.call(this);
+        prependNameAnchorsToH2s.call(this);
+      });
+
+      // The Markdown parser inserts dumb empty paragraphs. Hopefully I can remove this code soon once I
+      // figure out what's up, but for now manually removing.
+      $('p').each(function () {
+        if ($(this).is(':empty')) {
+          $(this).remove();
+        }
+      });
+    },
+
+    /**
+     * Not currently called anywhere. If at a later date you Heirloom folks want to have an index at the top of your
+     * FAQ page complete with scrolling animations just call this method somewhere and add
+     * `this.elms.$question.on('click', { namespace: this }, scrollToQuestion);` to the event bindings.
+     */
+    createIndexLinks: function () {
+      var appendBackToTopLinks, questionTitleInfo, lis;
+
+      lis = '';
 
       appendBackToTopLinks = function () {
         $('.answer').append($('<a/>', { 'class': 'back-to-top', href: '#top', text: 'Back To Top' } ));
@@ -82,11 +109,6 @@
         });
       };
 
-      this.elms.$h2.each(function () {
-        wrapAnswers.call(this);
-        prependNameAnchorsToH2s.call(this);
-      });
-
       appendBackToTopLinks();
 
       $.each(questionTitleInfo.call(this), function () {
@@ -98,13 +120,6 @@
       this.elms.$faq.prepend($('<a/>', { 'name': 'top' }));
       this.elms.$question = $('.question');
 
-      // The Markdown parser inserts dumb empty paragraphs. Hopefully I can remove this code soon once I
-      // figure out what's up, but for now manually removing.
-      $('p').each(function () {
-        if ($(this).is(':empty')) {
-          $(this).remove();
-        }
-      });
     },
 
     bindEventListeners: function () {
@@ -140,7 +155,6 @@
       };
 
       this.elms.$h2.on('click', accordian);
-      this.elms.$question.on('click', { namespace: this }, scrollToQuestion);
       $('.back-to-top').on('click', { namespace: this }, scrollToTop);
     }
   };

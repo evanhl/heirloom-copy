@@ -40,38 +40,12 @@ header > div {
   margin-top: 72px;
 }
 
-h2 {
-  cursor: pointer;
-
-  &:before {
-    content: "+";
-    display: inline-block;
-    margin-right: 0.25em;
-
-    -webkit-transition: all 0.5s ease;
-       -moz-transition: all 0.5s ease;
-         -o-transition: all 0.5s ease;
-        -ms-transition: all 0.5s ease;
-            transition: all 0.5s ease;
-  }
-
-  &.expanded {
-    &:before {
-      -webkit-transform: rotate(-45deg);
-         -moz-transform: rotate(-45deg);
-           -o-transform: rotate(-45deg);
-          -ms-transform: rotate(-45deg);
-              transform: rotate(-45deg);
-    }
-  }
+li > ol > li > ol > li {
+  list-style-type: lower-alpha;
 }
 
-.answer {
-  display: none;
-
-  p, ul {
-    margin-top: 0; /* Prevents collapsing margin on animation. */
-  }
+li > ol > li > ol > li > ol > li{
+  list-style-type: lower-roman;
 }
 
 /* =============================================================================

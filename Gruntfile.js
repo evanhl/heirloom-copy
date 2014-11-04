@@ -287,7 +287,13 @@ module.exports = function(grunt) {
         root: '.',
         dest: '<%= config.dist %>'
       },
-      html: ['<%= config.app %>/index.html', '<%= config.app %>/preLaunch.html', '<%= config.app %>/faq.html']
+      html: [
+        '<%= config.app %>/index.html',
+        '<%= config.app %>/preLaunch.html',
+        '<%= config.app %>/faq.html',
+        '<%= config.app %>/privacy.html',
+        '<%= config.app %>/terms.html'
+      ]
     },
 
     // Performs rewrites based on rev and the useminPrepare configuration
