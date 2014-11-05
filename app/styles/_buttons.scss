@@ -1,7 +1,7 @@
 button {
   min-width: 130px;
-  height: 40px;
-  line-height: 40px;
+  height: $button-height;
+  line-height: $button-height;
 
   border-radius: 2px;
   background: $subtle-highlight-color;

@@ -1,8 +1,7 @@
-{{render 'conversations/newPost' conversation.model}}
-
 {{#each}}
   {{render 'conversationPost' this}}
 {{/each}}
 
 {{partial 'spinner'}}
+{{render 'conversations/newPost' conversation.model}}
 {{outlet}}

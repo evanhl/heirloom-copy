@@ -3,7 +3,7 @@ App.ConversationsNewPostView = Ember.View.extend(InfiniteScroll.ViewMixin, {
   scrollEl: 'body',
 
   init: function () {
-    this.resizeNavFiller = $.proxy(this.resizeNavFiller, this);
+    this.resizeFiller = $.proxy(this.resizeFiller, this);
     this._super();
   },
 
@@ -33,21 +33,16 @@ App.ConversationsNewPostView = Ember.View.extend(InfiniteScroll.ViewMixin, {
     });
   },
 
-  resizeNavFiller: function () {
+  resizeFiller: function () {
     if (!this.$()) { return; }
 
-    var self = this;
+    Ember.run.next(this, function () {
+      var $filler = $('.new-post-filler');
+      var $post = $('.new-post');
 
-    Ember.run.next(function () {
-      // var $scrollEl = self.$scrollEl();
-      // // FIXME: this view shouldn't be reaching outside of its scope
-      // var $navFiller = self.$().parent().parent().find('.nav-filler');
-      // var newPostHeight = self.$('.new-post').outerHeight();
-      // var navFillerHeight = $navFiller.outerHeight();
-
-      // $navFiller.css('height', newPostHeight);
+      $filler.css('height', $post.outerHeight());
     });
-  }.observes('controller.newPostPhotos.length'),
+  }.on('didInsertElement').observes('controller.newPostPhotos.length', 'controller.newPostAlbum'),
 
   hasPhotosOrAlbums: function () {
     return this.get('controller.newPostPhotos.length') || this.get('controller.newPostAlbum');
@@ -67,17 +62,17 @@ App.ConversationsNewPostView = Ember.View.extend(InfiniteScroll.ViewMixin, {
     this.$('textarea').focus(function () {
       $(this).autosize({
         callback: function () {
-          self.resizeNavFiller();
+          self.resizeFiller();
         }
       });
     });
   }.on('didInsertElement'),
 
   setupWindowListener: function () {
-    $(window).on('resize', this.resizeNavFiller);
+    $(window).on('resize', this.resizeFiller);
   }.on('didInsertElement'),
 
   destroyWindowListener: function () {
-    $(window).off('resize', this.resizeNavFiller);
+    $(window).off('resize', this.resizeFiller);
   }.on('willDestroyElement')
 });

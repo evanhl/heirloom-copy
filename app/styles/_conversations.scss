@@ -261,6 +261,7 @@ a.active .convo, .convo.highlighted {
   }
 }
 
+$settings-height: 80px;
 .settings {
   position: fixed;
   z-index: 2;
@@ -269,9 +270,19 @@ a.active .convo, .convo.highlighted {
   text-align: center;
   background: white;
   border-right: 1px solid $subtle-highlight-color;
-
+  height: $settings-height;
 
   button {
-    margin: 20px;
+    margin: ($settings-height - $button-height) / 2;
   }
+}
+
+.settings-filler {
+  height: $settings-height;
+  width: 100%;
+}
+
+.new-post-filler {
+  width: 100%;
+  height: 0;
 }
