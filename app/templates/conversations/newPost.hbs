@@ -1,26 +1,32 @@
 <div class="new-post">
-  {{#if newPostPhotos.length}}
-    <div class="new-post-photos">
-      {{#each photo in newPostPhotos}}
-        <div class="thumb-photo">
-          <img {{bind-attr src=photo.thumbVersion}}>
-        </div>
-      {{/each}}
-      <a href="javascript:void(0);" {{action 'openModal' 'photoPicker'}}><div class="fake-photo"></div></a>
-    </div>
-  {{/if}}
+
 
   {{!-- TODO: remove inline styles. bleh.
   --}}
   <div class="new-post-post">
-    <button {{action 'openModal' 'photoPicker'}} class="add-photos" style="min-width: inherit;">+</button>
-    <button {{action 'create'}} class="take-action" {{bind-attr disabled=postDisabled}}>Post</button>
-    <div style="
-      margin-left: 46px;
-      margin-right: 140px;
-      display: block;
-    ">
-      {{textarea placeholder=(ts 'post.prompt') value=newPostMessage class="newPostMessage"}}
+{{!--     <button {{action 'openModal' 'photoPicker'}} class="add-photos" style="min-width: inherit;">+</button> --}}
+{{!--     <button {{action 'create'}} class="take-action" {{bind-attr disabled=postDisabled}}>Post</button> --}}
+    {{#if view.hasPhotosOrAlbums}}
+      <div class="new-post-photos">
+        {{#each photo in newPostPhotos}}{{!--
+      --}}<div class="photo">
+            <img {{bind-attr src=photo.thumbVersion}}>
+          </div>{{!--
+    --}}{{/each}}
+        {{#if newPostAlbum}}
+          {{render 'thumbAlbum' newPostAlbum}}
+        {{/if}}
+      </div>
+    {{/if}}
+    {{textarea placeholder=(ts 'post.prompt') value=newPostMessage classBinding=":newPostMessage view.hasPhotosOrAlbums:has-photos"}}
+    <div class="new-post-footer">
+      <div class="left">
+        <a href="javascript:void();" {{action 'addPhotos'}} {{bind-attr class="addPhotosDisabled:disabled :link-button"}}>Add Moments</a>
+        <a href="javascript:void();" {{action 'addAlbum'}} {{bind-attr class="addAlbumDisabled:disabled :link-button :with-l-border"}}>Add Album</a>
+      </div>
+      <div class="right">
+        <a href="javascript:void();" {{action 'create'}} {{bind-attr class="postDisabled:disabled :link-button :with-l-border :take-action"}}>Post</a>
+      </div>
     </div>
   </div>
 </div>

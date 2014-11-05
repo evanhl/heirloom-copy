@@ -240,3 +240,43 @@ button:active {
     @include sprite-retina($share_icon, $share_icon-2x);
   }
 }
+
+.link-button {
+  color: $subtle-highlight-color;
+  font-weight: 600;
+
+  &:hover {
+    color: $highlight-color;
+  }
+
+  &:active {
+    color: $highlight-color-2;
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    color: $subtle-highlight-color;
+    pointer-events: none;
+    cursor: default;
+  }
+
+  &.take-action {
+    color: $highlight-color;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+
+    &:hover {
+      color: $highlight-color-2;
+    }
+
+    &:active {
+      color: $highlight-color-3;
+    }
+
+    &.disabled {
+      color: $subtle-highlight-color;
+      opacity: 1;
+    }
+  }
+}

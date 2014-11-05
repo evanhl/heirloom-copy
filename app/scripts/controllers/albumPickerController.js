@@ -4,6 +4,14 @@ App.AlbumPickerController = Ember.Controller.extend(App.SelectableMixin, Ember.E
   loadingMore: Ember.computed.alias('albums.loadingMore'),
   isCreateMode: false,
 
+  title: function () {
+    return Ember.I18n.t('photos.addToAlbum');
+  }.property(),
+
+  canCreateAlbum: function () {
+    return true;
+  }.property(),
+
   fetchFirstPage: function () {
     if (this.get('albums.page') <= 0) {
       this.send('getMore');

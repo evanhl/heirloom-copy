@@ -12,6 +12,10 @@ App.ConversationsNewPostView = Ember.View.extend(InfiniteScroll.ViewMixin, {
 
     var controller = this.get('controller');
 
+    if (controller.get('postDisabled')) {
+      return;
+    }
+
     if (e.keyCode === Utils.Keys.ENTER && (e.ctrlKey || e.metaKey)) {
       e.preventDefault();
       controller.send('create');
@@ -44,6 +48,10 @@ App.ConversationsNewPostView = Ember.View.extend(InfiniteScroll.ViewMixin, {
       // $navFiller.css('height', newPostHeight);
     });
   }.observes('controller.newPostPhotos.length'),
+
+  hasPhotosOrAlbums: function () {
+    return this.get('controller.newPostPhotos.length') || this.get('controller.newPostAlbum');
+  }.property('controller.newPostPhotos.[]', 'controller.newPostAlbum'),
 
   setupControllerListener: function () {
     this.get('controller').on('clearNewPost', this, this.manualAutosize);

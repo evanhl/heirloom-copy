@@ -62,9 +62,12 @@ input[type="time"],
 input[type="url"],
 textarea {
   box-shadow: none;
+  border-color: $subtle-highlight-color;
 
   &:focus {
     box-shadow: none;
+    background: white;
+    border-color: $subtle-highlight-color;
   }
 }
 

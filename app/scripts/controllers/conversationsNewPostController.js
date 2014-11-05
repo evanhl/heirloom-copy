@@ -1,16 +1,18 @@
 App.ConversationsNewPostController = Ember.ObjectController.extend(Ember.Evented, {
-  needs: ['conversationPosts', 'photoPicker'],
+  needs: ['conversationPosts', 'groupAlbumPicker', 'groupPhotoPicker'],
+  groupPhotoPicker: Ember.computed.alias('controllers.groupPhotoPicker'),
+  groupAlbumPicker: Ember.computed.alias('controllers.groupAlbumPicker'),
   conversationPosts: Ember.computed.alias('controllers.conversationPosts'),
-  photoPicker: Ember.computed.alias('controllers.photoPicker'),
   newPostMessage: null,
+  newPostAlbum: null,
   newPostPhotos: null,
 
   init: function () {
     var self = this;
-    this.get('photoPicker').on('photosAdded', function (addedPhotoIds) {
-      var addedPhotos = addedPhotoIds.map(function (id) { return App.Photo.find(id); });
-      self.get('newPostPhotos').pushObjects(addedPhotos);
-    });
+    // TODO: make these event names consistent
+    // TODO: these events can be handled via action bubbling instead of explicit reference to child modal controllers
+    this.get('groupAlbumPicker').on('didSelect', this, this.albumSelected);
+    this.get('groupPhotoPicker').on('photosSelected', this, this.photosSelected);
     this._super();
   },
 
@@ -26,13 +28,34 @@ App.ConversationsNewPostController = Ember.ObjectController.extend(Ember.Evented
     });
   },
 
+  albumSelected: function (album) {
+    this.set('newPostAlbum', album);
+  },
+
+  photosSelected: function (photoIds) {
+    var photos = photoIds.map(function (photoId) {
+      return App.Photo.find(photoId);
+    });
+
+    this.get('newPostPhotos').pushObjects(photos);
+  },
+
   postDisabled: function () {
     var noMessage = !this.get('newPostMessage');
     var noPhotos = !this.get('newPostPhotos') || this.get('newPostPhotos').length < 1;
-    var noContent = noPhotos && noMessage;
+    var noAlbum = !this.get('newPostAlbum');
+    var noContent = noPhotos && noMessage && noAlbum;
 
     return noContent || this.get('parentController.postDisabled');
-  }.property('newPostMessage', 'newPostPhotos.[]', 'parentController.postDisabled'),
+  }.property('newPostMessage', 'newPostPhotos.[]', 'newPostAlbum', 'parentController.postDisabled'),
+
+  addPhotosDisabled: function () {
+    return this.get('newPostAlbum');
+  }.property('newPostAlbum'),
+
+  addAlbumDisabled: function () {
+    return this.get('newPostPhotos.length') || this.get('newPostAlbum');
+  }.property('newPostPhotos.[]', 'newPostAlbum'),
 
   clearPost: function () {
     this.setProperties({
@@ -44,6 +67,7 @@ App.ConversationsNewPostController = Ember.ObjectController.extend(Ember.Evented
   didCreatePost: function (post) {
     this.get('conversationPosts').unshiftObject(post);
     this.set('newPostMessage', null);
+    this.set('newPostAlbum', null);
     this.set('newPostPhotos', []);
     this.trigger('clearNewPost');
   },
@@ -52,10 +76,19 @@ App.ConversationsNewPostController = Ember.ObjectController.extend(Ember.Evented
     create: function () {
       var postProps = {
         message: this.get('newPostMessage'),
-        photo_ids: this.newPostPhotoIds()
+        photo_ids: this.newPostPhotoIds(),
+        album_id: this.get('newPostAlbum.id')
       };
 
       this.send('createPost', postProps);
+    },
+
+    addAlbum: function () {
+      this.send('openModal', 'groupAlbumPicker');
+    },
+
+    addPhotos: function () {
+      this.send('openModal', 'groupPhotoPicker');
     }
   }
 });
