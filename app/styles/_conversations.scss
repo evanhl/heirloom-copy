@@ -120,8 +120,8 @@ a.active .convo, .convo.highlighted {
 }
 
 .post {
-  margin: 20px 25px;
-  padding-bottom: 10px;
+  margin: 20px 25px 0;
+  padding-bottom: 20px;
   border-bottom: 1px $subtle-highlight-color solid;
 
   .icon {
@@ -222,6 +222,10 @@ a.active .convo, .convo.highlighted {
     bottom: 20px;
     right: 0;
     width: 100%;
+
+    .right {
+      margin-top: 6px;
+    }
   }
 
   .link-button {
@@ -285,4 +289,26 @@ $settings-height: 80px;
 .new-post-filler {
   width: 100%;
   height: 0;
+}
+
+.add-moments-icon {
+  display: inline-block;
+  @include sprite-retina($moments_normal,$moments_normal-2x);
+  vertical-align: bottom;
+  margin-right: 10px;
+
+  a:hover & {
+    @include sprite-retina($moments_hover,$moments_hover-2x);
+  }
+}
+
+.add-album-icon {
+  display: inline-block;
+  @include sprite-retina($albums_normal,$albums_normal-2x);
+  vertical-align: bottom;
+  margin-right: 10px;
+
+  a:hover & {
+    @include sprite-retina($albums_hover,$albums_hover-2x);
+  }
 }

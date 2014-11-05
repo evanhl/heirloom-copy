@@ -12,8 +12,8 @@
     {{textarea placeholder=(ts 'post.prompt') value=newPostMessage classBinding=":newPostMessage view.hasPhotosOrAlbums:has-photos"}}
     <div class="new-post-footer">
       <div class="left">
-        <a href="javascript:void();" {{action 'addPhotos'}} {{bind-attr class="addPhotosDisabled:disabled :link-button"}}>{{t 'post.addPhotos'}}</a>
-        <a href="javascript:void();" {{action 'addAlbum'}} {{bind-attr class="addAlbumDisabled:disabled :link-button :with-l-border"}}>{{t 'post.addAlbum'}}</a>
+        <a href="javascript:void();" {{action 'addPhotos'}} {{bind-attr class="addPhotosDisabled:disabled :link-button"}}><span class="add-moments-icon"></span>{{t 'post.addPhotos'}}</a>
+        <a href="javascript:void();" {{action 'addAlbum'}} {{bind-attr class="addAlbumDisabled:disabled :link-button :with-l-border"}}><span class="add-album-icon"></span>{{t 'post.addAlbum'}}</a>
       </div>
       <div class="right">
         <a href="javascript:void();" {{action 'create'}} {{bind-attr class="postDisabled:disabled :link-button :with-l-border :take-action"}}>{{t 'post.doPost'}}</a>
