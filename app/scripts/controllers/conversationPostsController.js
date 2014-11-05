@@ -1,6 +1,7 @@
 App.ConversationPostsController = Ember.ArrayController.extend(Ember.Evented, InfiniteScroll.ControllerMixin, {
   needs: ['conversation', 'navigation'],
   conversation: Ember.computed.alias('controllers.conversation'),
+  conversationId: Ember.computed.alias('conversation.id'),
   navigation: Ember.computed.alias('controllers.navigation'),
   newPostMessage: null,
 
@@ -43,6 +44,10 @@ App.ConversationPostsController = Ember.ArrayController.extend(Ember.Evented, In
       }, function () {
         // TODO: handle failure
       });
+    },
+
+    enlarge: function (id) {
+      this.transitionToRoute('conversationPostPhoto', id);
     }
   }
 });

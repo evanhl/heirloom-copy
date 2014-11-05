@@ -40,7 +40,9 @@ App.Router.map(function () {
   this.resource('conversations', { path: 'groups' }, function () {
     this.route('create', { path: 'create' });
     this.resource('conversation', { path: ':conversation_id' }, function () {
-      this.resource('conversationPosts', { path: 'posts' });
+      this.resource('conversationPosts', { path: 'posts' }, function () {
+        this.resource('conversationPostPhoto', { path: 'photos/:photo_id' });
+      });
     });
   });
   this.resource('conversationInvitation', { path: 'i/:conversation_invitation_id' });
