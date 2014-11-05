@@ -60,7 +60,8 @@ App.ConversationsNewPostController = Ember.ObjectController.extend(Ember.Evented
   clearPost: function () {
     this.setProperties({
       newPostPhotos: [],
-      newPostMessage: null
+      newPostMessage: null,
+      newPostAlbum: null
     });
   }.observes('model').on('init'),
 
