@@ -20,6 +20,7 @@ App.ConversationPhotosController = Ember.ArrayController.extend(InfiniteScroll.C
   },
 
   conversationChanged: function () {
+    this.clear();
     this.reset();
     this.send('getMore');
   }.on('init').observes('conversation.model')

@@ -59,21 +59,21 @@ App.BasePhotoController = Ember.ObjectController.extend({
     if (index !== -1) {
       return index;
     }
-  }.property('photosModel.length', 'model'),
+  }.property('photosModel', 'photosModel.[]', 'model'),
 
   prevId: function () {
     return this.adjacentId(-1);
-  }.property('photosModel.length', 'id'),
+  }.property('photosModel', 'photosModel.[]', 'id'),
 
   nextId: function () {
     return this.adjacentId(1);
-  }.property('photosModel.length', 'id'),
+  }.property('photosModel', 'photosModel.[]', 'id'),
 
   nextNextImageUrl: function () {
     var photo = this.adjacentPhoto(2);
 
     return photo && photo.get('largeVersion');
-  }.property('photosModel.length', 'id'),
+  }.property('photosModel', 'photosModel.[]', 'id'),
 
   photosUntilEnd: function () {
     var photosLength = this.get('photosModel.length');
