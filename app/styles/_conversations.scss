@@ -100,7 +100,7 @@ a.active .convo, .convo.highlighted {
   float: left;
 }
 
-.convo, .post {
+.convo, .post, .select2-container {
   .icon {
     height: $convo-icon-size;
     width: $convo-icon-size;

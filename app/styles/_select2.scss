@@ -63,27 +63,36 @@ $contact-result-height: 88px;
 
   .select2-highlighted {
     background: $highlight-color;
-    color: #fff;
+
+    .name {
+      color: white;
+    }
+
+    .sub {
+      color: white;
+    }
   }
 }
 
 .select2-container {
   .name {
     font-size: 18px;
-    padding-top: 28px;
+    font-weight: 600;
+    padding-top: 31px;
   }
 
   .sub {
-    padding-top: 7px;
+    font-weight: 600;
+    color: $subtle-highlight-color;
+    padding-top: 8px;
   }
 
   .icon {
-    height: $convo-icon-size;
-    width: $convo-icon-size;
-    border-radius: $convo-icon-size / 2;
-    background: $subtle-highlight-color;
     float: left;
     margin: ($contact-result-height - $convo-icon-size) / 2;
+    span {
+      padding-top: 20px;
+    }
   }
 }
 

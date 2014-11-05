@@ -1,5 +1,5 @@
 App.ConversationsCreateView = Ember.View.extend({
-  RESULT_TEMPLATE: '<div class="icon"></div><div class="name">{{name}}</div><div class="sub">{{username}}</div>',
+  RESULT_TEMPLATE: '<div class="icon"><span>{{initials}}</span></div><div class="name">{{name}}</div><div class="sub">{{username}}</div>',
 
   initMultiSelect: function () {
     var self = this;
@@ -24,6 +24,7 @@ App.ConversationsCreateView = Ember.View.extend({
       },
       formatResult: function (result) {
         return self.RESULT_TEMPLATE
+          .replace('{{initials}}', Utils.getInitials(result.name))
           .replace('{{name}}', result.name)
           .replace('{{username}}', result.username);
       },
