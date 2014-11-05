@@ -2,13 +2,9 @@
   <div class="new-post-post">
     {{#if view.hasPhotosOrAlbums}}
       <div class="new-post-photos">
-        {{#each photo in newPostPhotos}}{{!--
-      --}}<div class="photo">
-            <img {{bind-attr src=photo.thumbVersion}}>
-          </div>{{!--
-    --}}{{/each}}
+        {{#each photo in newPostPhotos}}{{render 'thumbPhoto' photo unselectable=true removable=true}}{{/each}}
         {{#if newPostAlbum}}
-          {{render 'thumbAlbum' newPostAlbum}}
+          {{render 'thumbAlbum' newPostAlbum unselectable=true removable=true}}
         {{/if}}
       </div>
     {{/if}}

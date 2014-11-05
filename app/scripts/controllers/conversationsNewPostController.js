@@ -90,6 +90,14 @@ App.ConversationsNewPostController = Ember.ObjectController.extend(Ember.Evented
 
     addPhotos: function () {
       this.send('openModal', 'groupPhotoPicker');
+    },
+
+    removePhoto: function (photo) {
+      this.get('newPostPhotos').removeObject(photo);
+    },
+
+    removeAlbum: function (album) {
+      this.set('newPostAlbum', null);
     }
   }
 });
