@@ -2,7 +2,7 @@
 
 App.GroupAlbumPickerController = App.AlbumPickerController.extend({
   title: function () {
-    return 'Add Moments to Group';
+    return Ember.I18n.t('conversations.addAlbum');
   }.property(),
 
   canCreateAlbum: function () {

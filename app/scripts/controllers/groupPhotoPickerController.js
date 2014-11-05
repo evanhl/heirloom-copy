@@ -3,7 +3,7 @@
 App.GroupPhotoPickerController = App.BasePhotoPickerModalController.extend({
   hasInput: false,
   title: function () {
-    return 'baller';
+    return Ember.I18n.t('conversations.addPhotos');
   }.property(),
 
   completeDisabled: function () {
