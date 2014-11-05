@@ -1,11 +1,8 @@
-{{#each photos}}
-  <div class="large-photo">
-    <img {{bind-attr src=largeVersion}}>
-  </div>
-{{/each}}
-
+<div class="post-photos">
+{{#each photos}}<div class="post-photo"><img {{bind-attr src=mediumVersion}}></div>{{/each}}
+</div>
 <div class="post-body">
-  <div class="icon"></div>
+  <div class="icon"><span>{{owner.initials}}</span></div>
   <div class="post-author">{{owner.name}}</div>
   <div class="post-time">{{fromNow valueBinding="created_at"}}</div>
   <div class="post-text">

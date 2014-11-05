@@ -41,24 +41,6 @@ a.active .convo, .convo.highlighted {
     right: $convo-padding;
   }
 
-  .icon {
-    height: $convo-icon-size;
-    width: $convo-icon-size;
-    border-radius: $convo-icon-size / 2;
-    background: white;
-    border: 1px solid $subtle-highlight-color;
-    float: left;
-
-    span {
-      display: inline-block;
-      width: 100%;
-      text-align: center;
-      padding-top: ($convo-icon-size - 14px) / 2;
-      color: $highlight-color;
-      font-weight: 700;
-    }
-  }
-
   .details {
     margin-left: 69px;
   }
@@ -114,36 +96,63 @@ a.active .convo, .convo.highlighted {
   overflow-y: scroll;
 }
 
+.convo .icon {
+  float: left;
+}
+
+.convo, .post {
+  .icon {
+    height: $convo-icon-size;
+    width: $convo-icon-size;
+    border-radius: $convo-icon-size / 2;
+    background: white;
+    border: 1px solid $subtle-highlight-color;
+
+    span {
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      padding-top: ($convo-icon-size - 14px) / 2;
+      color: $highlight-color;
+      font-weight: 700;
+    }
+  }
+}
+
 .post {
+  margin: 20px 25px;
   padding-bottom: 10px;
   border-bottom: 1px $subtle-highlight-color solid;
 
   .icon {
-    height: $post-icon-size;
-    width: $post-icon-size;
-    border-radius: $post-icon-size / 2;
-    background: $subtle-highlight-color;
-    float: left;
-    margin-top: -7px;
-    margin-left: (0 - $post-left-margin + (($post-left-margin - $post-icon-size) / 2));
+    position: absolute;
+    left: -($convo-icon-size + 20px);
+  }
+
+  .post-photos {
+    margin-left: $convo-icon-size + 20px;
   }
 
   .post-body {
-    margin-left: $post-left-margin;
+    position: relative;
     min-height: 75px;
     margin-top: 20px;
+    margin-left: $convo-icon-size + 20px;
+    font-weight: 600;
   }
 
   .post-author {
-    margin-top: 7px;
-    font-size: 16px;
+    padding-top: 8px;
+    margin-bottom: 6px;
     color: $highlight-color;
-    font-weight: 500;
+    font-size: 18px;
+    font-weight: 600;
   }
 
   .post-time {
-    color: $button-text-color;
-    font-size: 12px;
+    color: $subtle-highlight-color;
+    height: 20px;
+    font-weight: 600;
     margin-top: 6px;
   }
 
@@ -155,8 +164,8 @@ a.active .convo, .convo.highlighted {
   }
 
   .post-text {
-    font-size: 14px;
-    margin-top: 10px;
+    font-size: 16px;
+    margin-top: 20px;
 
     p {
       margin: 0;
