@@ -22,6 +22,11 @@ App.ConversationPostsController = Ember.ArrayController.extend(Ember.Evented, In
   },
 
   onFirstPage: function () {
+    this.markAsRead();
+    this.fetchParticipants();
+  },
+
+  markAsRead: function () {
     var adapter = App.Conversation.adapter;
     var self = this;
     var convo = this.get('conversation.model');
@@ -31,6 +36,27 @@ App.ConversationPostsController = Ember.ArrayController.extend(Ember.Evented, In
       convo.reload();
     });
   },
+
+  fetchParticipants: function () {
+    var self = this;
+    var adapter = App.Conversation.adapter;
+    var records = Ember.RecordArray.create({ modelClass: App.ConversationInvitation, _query: {}, container: false });
+
+    return adapter.findNestedQuery(this.get('conversation.model'), App.ConversationInvitation, 'invitations', records, {}).then(function () {
+      var participants = records.map(function (invitation) {
+        return invitation.get('to');
+      }).compact();
+
+      /*globals console*/
+      console.log(participants);
+
+      self.set('participants', participants);
+    });
+  },
+
+  clearParticipants: function () {
+    this.set('participants', []);
+  }.observes('conversation.model'),
 
   actions: {
     createPost: function (options) {

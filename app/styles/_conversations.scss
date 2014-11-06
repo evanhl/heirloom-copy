@@ -100,7 +100,12 @@ a.active .convo, .convo.highlighted {
   float: left;
 }
 
-.convo, .post, .select2-container {
+.convo-members .icon {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.convo, .post, .select2-container, .convo-members {
   .icon {
     height: $convo-icon-size;
     width: $convo-icon-size;
@@ -117,6 +122,13 @@ a.active .convo, .convo.highlighted {
       font-weight: 700;
     }
   }
+}
+
+.convo-members {
+  height: $convo-height;
+  border-bottom: 1px solid $subtle-highlight-color;
+  width: 100%;
+  padding: ($convo-height - $convo-icon-size) / 2;
 }
 
 .post {

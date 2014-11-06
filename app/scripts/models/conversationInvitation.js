@@ -5,6 +5,7 @@ App.ConversationInvitation = Ember.Model.extend({
   token: Ember.attr(),
   state: Ember.attr(),
   policy: Ember.attr(),
+  to: Ember.belongsTo(App.Session, { key: 'to', embedded: true }),
   isInvalid: function () {
     return this.get('isLoaded') && !this.get('state');
   }.property('isLoaded', 'state')
