@@ -5,7 +5,9 @@
   <div class="icon"><span>{{owner.initials}}</span></div>
   <div class="post-author">{{owner.name}}</div>
   <div class="post-time">{{fromNow valueBinding="created_at"}}</div>
+  {{#if message}}
   <div class="post-text">
     {{multiline message}}
   </div>
+  {{/if}}
 </div>

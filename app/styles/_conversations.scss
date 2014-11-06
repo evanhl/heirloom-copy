@@ -5,6 +5,19 @@ a.active .convo, .convo.highlighted {
   .sub {
     color: white;
   }
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 100%;
+    border-bottom: 1px $subtle-highlight-color solid;
+  }
+
+  &:after {
+    margin-left: 0;
+  }
 }
 
 .post-message {
@@ -147,7 +160,6 @@ a.active .convo, .convo.highlighted {
 
   .post-body {
     position: relative;
-    min-height: 75px;
     margin-top: 20px;
     margin-left: $convo-icon-size + 20px;
     font-weight: 600;
@@ -181,7 +193,7 @@ a.active .convo, .convo.highlighted {
 
     p {
       margin: 0;
-      line-height: 16px;
+      line-height: 20px;
       white-space: pre-wrap;
       word-wrap: break-word;
     }
@@ -203,8 +215,9 @@ a.active .convo, .convo.highlighted {
   textarea {
     margin: 0;
     font-size: 16px;
+    line-height: 20px;
     padding: 15px 30px 50px 30px;
-    height: 120px;
+    height: 93px;
     border-radius: 2px;
     font-weight: 600;
     color: $default-text-color;
@@ -230,7 +243,7 @@ a.active .convo, .convo.highlighted {
 
   .new-post-footer {
     position: absolute;
-    padding: 10px 30px;
+    padding: 10px 30px 18px;
     bottom: 20px;
     right: 0;
     width: 100%;
