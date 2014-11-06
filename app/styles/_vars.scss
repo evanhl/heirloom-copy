@@ -29,8 +29,11 @@ $convo-right-padding: ($convo-padding * 2) + $convo-dot-size;
 
 $main-col-horiz-padding: 16px;
 
-$main-col-width: 67%;
 $left-col-width: 33%;
+$main-col-width: 100% - $left-col-width;
+
+$left-col-max-width: 400px;
+$left-col-fixed-breakpoint-width: $left-col-max-width * (100% / $left-col-width);
 
 $post-left-margin: 75px;
 $post-icon-size: $convo-icon-size;
@@ -52,3 +55,5 @@ $button-height: 40px;
 $breakpoint-desktop-1: "only screen and (min-width : 1024px)";
 $breakpoint-desktop-2: "only screen and (min-width : 1124px)";
 $breakpoint-mobile-2: "only screen and (min-width : 512px)";
+$breakpoint-mobile-2: "only screen and (min-width : 512px)";
+$left-col-fixed-breakpoint: "only screen and (min-width: #{$left-col-fixed-breakpoint-width})";

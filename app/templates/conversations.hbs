@@ -1,39 +1,41 @@
 <div class="col-container">
   <div class="left-col">
-    <div class="nav-filler"></div>
-    {{#if createMode}}
-      <div class="convo highlighted">
-        <div class="icon"></div>
-        <div class="details">
-          <div class="names">{{t 'conversations.new'}}</div>
-        </div>
-      </div>
-    {{/if}}
-    {{#each}}
-      {{#link-to 'conversationPosts' id}}
-        <div class="convo">
-          {{#if has_unread}}
-            <div class="dot"></div>
-          {{/if}}
-          <div class="icon"><span>{{owner.initials}}</span></div>
+    <div class="left-col-content">
+      {{#if createMode}}
+        <div class="convo highlighted">
+          <div class="icon"></div>
           <div class="details">
-            <div class="names">{{name}}</div>
-            <div class="sub">{{fromNow valueBinding="last_post_at"}}</div>
+            <div class="names">{{t 'conversations.new'}}</div>
           </div>
         </div>
-      {{/link-to}}
-    {{/each}}
+      {{/if}}
+      {{#each}}
+        {{#link-to 'conversationPosts' id}}
+          <div class="convo">
+            {{#if has_unread}}
+              <div class="dot"></div>
+            {{/if}}
+            <div class="icon"><span>{{owner.initials}}</span></div>
+            <div class="details">
+              <div class="names">{{name}}</div>
+              <div class="sub">{{fromNow valueBinding="last_post_at"}}</div>
+            </div>
+          </div>
+        {{/link-to}}
+      {{/each}}
 
-    {{partial 'spinner'}}
-  </div>
-  <div class="settings-filler"></div>
-  <div class="settings">
-    <button class="take-action with-icon medium" {{action 'create'}}><span class="add-to-album-icon icon"></span><span class="label">{{t 'conversations.create'}}</button>
+      {{partial 'spinner'}}
+    </div>
+
+    <div class="settings">
+      <button class="take-action with-icon medium" {{action 'create'}}><span class="add-to-album-icon icon"></span><span class="label">{{t 'conversations.create'}}</button>
+    </div>
   </div>
 
   <div class="main-col">
-    <div class="nav-filler"></div>
-    {{outlet}}
+    <div class="main-col-content">
+      {{outlet}}
+    </div>
   </div>
 
 </div>
