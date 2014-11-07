@@ -292,7 +292,8 @@ module.exports = function(grunt) {
         '<%= config.app %>/preLaunch.html',
         '<%= config.app %>/faq.html',
         '<%= config.app %>/privacy.html',
-        '<%= config.app %>/terms.html'
+        '<%= config.app %>/terms.html',
+        '<%= config.app %>/press.html'
       ]
     },
 
@@ -405,7 +406,7 @@ module.exports = function(grunt) {
           src: [
             '*.{ico,png,txt}',
             '.htaccess',
-            'images/{,*/}*.{webp,gif,jpeg,jpg,png}',
+            'images/**/*.{webp,gif,jpeg,jpg,png}',
             'markdown/{,*/}*.md',
             '{,*/}*.{gif,jpeg,jpg,png}',
             '{,*/}*.html',
