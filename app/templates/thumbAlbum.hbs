@@ -7,7 +7,7 @@
 {{/if}}
 
 {{#if view.removable}}
-  <div {{bind-attr class=":select"}} {{action removeAlbum model}}></div>
+  <div {{bind-attr class=":remove-photo-icon"}} {{action removeAlbum model}}></div>
 {{/if}}
 <div class="title">{{name}}</div>
 <div class="count">{{t "photos.count" countBinding="photo_count"}}</div>

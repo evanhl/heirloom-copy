@@ -329,6 +329,17 @@ img.detail {
       @include sprite-retina($checkmark_active, $checkmark_active-2x);
     }
   }
+
+  .remove-photo-icon {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 16px;
+    cursor: pointer;
+    display: none;
+    @include sprite-retina($delete_photo, $delete_photo-2x);
+  }
 }
 
 .gallery-photo, .thumb-photo, .selection-mode .photo, .photo:hover, .photo.selection-mode, .picker-content .photo {
@@ -338,6 +349,10 @@ img.detail {
     &:hover, &.selected {
       @include sprite-retina($checkmark_active, $checkmark_active-2x);
     }
+  }
+
+  .remove-photo-icon {
+    display: block;
   }
 }
 
