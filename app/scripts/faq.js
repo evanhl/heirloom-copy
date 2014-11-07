@@ -1,38 +1,20 @@
 // $ = jQuery. window = this. Markdown = this.Markdown, undefined = undefined.
-(function ($, window, Markdown, undefined) {
+(function ($, window, Markdown, MD, undefined) {
   'use strict';
 
-  var FAQ = {
+  var FAQ = $.extend(MD, {
     ANIMATIONSPEED: 'fast',
-
+    $el: $('#faq'),
+    filename: 'faq',
     init: function () {
       this.fetchMarkdown();
     },
 
-    fetchMarkdown: function () {
-      var success;
-
-      success = function (data) {
-        this.insertConvertedMarkdownOnPage(data);
-        this.cacheElements();
-        this.formatHtml();
-        this.bindEventListeners();
-      };
-
-      $.ajax({
-        url:      '/markdown/faq.md',
-        dataType: 'html',
-        success:  success.bind(this)
-      });
-    },
-
-    insertConvertedMarkdownOnPage: function (data) {
-      var converter, html;
-
-      converter = new Markdown.Converter();
-      html      = converter.makeHtml(data);
-
-      $('#faq').html(html);
+    success: function (data) {
+      this.insertConvertedMarkdownOnPage(data);
+      this.cacheElements();
+      this.formatHtml();
+      this.bindEventListeners();
     },
 
     cacheElements: function () {
@@ -157,7 +139,7 @@
       this.elms.$h2.on('click', accordian);
       $('.back-to-top').on('click', { namespace: this }, scrollToTop);
     }
-  };
+  });
 
   // NOTE: `page:load` might not be necessary. Not sure how these pages behave with Ember and all that.
   // Throwing here just-in-case. Evan, remove if not needed.
@@ -165,4 +147,4 @@
     FAQ.init();
   });
 
-}(window.jQuery, this, this.Markdown));
+}(window.jQuery, this, this.Markdown, this.MD));
