@@ -18,6 +18,8 @@ app.use(function(req, res, next) {
     req.url = '/terms.html';
   } else if (req.url.match(/\/privacy$/)) {
     req.url = '/privacy.html';
+  } else if (req.url.match(/\/press$/)) {
+    req.url = '/press.html';
   } else if (req.url.match(/\/faq$/)) {
     req.url = '/faq.html';
   } else if (req.url.match(/\/reset_password/)) {
