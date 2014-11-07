@@ -47,9 +47,6 @@ App.ConversationPostsController = Ember.ArrayController.extend(Ember.Evented, In
         return invitation.get('to');
       }).compact();
 
-      /*globals console*/
-      console.log(participants);
-
       self.set('participants', participants);
     });
   },

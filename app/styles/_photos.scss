@@ -123,7 +123,7 @@
 
 .photo, .post-photo {
   vertical-align: top;
-  margin: 0 $photo-margin $photo-margin 0;
+
   display: inline-block;
   position: relative;
   cursor: pointer;
@@ -138,11 +138,13 @@
 .photo {
   width: $photo-width;
   height: $photo-width;
+  margin: 0 $photo-margin $photo-margin 0;
 }
 
 .post-photo {
   width: $post-photo-width;
   height: $post-photo-width;
+  margin: 0 12px 12px 0;
 
   img {
     border-radius: 5px;

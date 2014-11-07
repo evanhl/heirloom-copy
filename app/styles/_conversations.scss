@@ -95,6 +95,7 @@ a.active .convo, .convo.highlighted {
   left: 0;
   top: 0;
   border-right: 1px solid $subtle-highlight-color;
+  background: white;
   width: $left-col-width;
   height: 100%;
   padding: $logo-height 0 $settings-height 0;
@@ -166,6 +167,11 @@ a.active .convo, .convo.highlighted {
   padding: ($convo-height - $convo-icon-size) / 2;
 }
 
+.new-group-icon {
+  @include sprite-retina($new_group_avatar, $new_group_avatar-2x);
+  float: left;
+}
+
 .post {
   margin: 20px 25px 0;
   padding-bottom: 20px;
@@ -211,6 +217,8 @@ a.active .convo, .convo.highlighted {
   .post-text {
     font-size: 16px;
     margin-top: 20px;
+    max-width: 600px;
+    margin-right: 20px;
 
     p {
       margin: 0;
@@ -370,5 +378,14 @@ a.active .convo, .convo.highlighted {
 
   a:hover & {
     @include sprite-retina($albums_hover,$albums_hover-2x);
+  }
+}
+
+.create-convo-icon {
+  border-right-color: $highlight-color-accent;
+
+  &:after {
+    margin: 8px 12px 10px 13px;
+    @include sprite-retina($create_group, $create_group-2x);
   }
 }
