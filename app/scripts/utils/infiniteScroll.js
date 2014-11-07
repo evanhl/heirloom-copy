@@ -1,5 +1,4 @@
 // Tweak of https://github.com/bantic/ember-infinite-scroll
-/*globals console*/
 
 (function (window, Ember, $) {
   var InfiniteScroll = {};

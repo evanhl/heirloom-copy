@@ -24,15 +24,23 @@ App.ConversationsCreateView = Ember.View.extend({
       },
       formatResult: function (result) {
         return self.RESULT_TEMPLATE
-          .replace('{{initials}}', Utils.getInitials(result.name))
-          .replace('{{name}}', result.name)
-          .replace('{{username}}', result.username);
+          .replace('{{initials}}', Utils.getInitials(result.name || ''))
+          .replace('{{name}}', result.name || '')
+          .replace('{{username}}', result.username || '');
       },
       formatSelection: function (selection) {
         return selection.name;
       },
       formatInputTooShort: function (foo) {
         return '';
+      },
+      createSearchChoice: function(term) {
+        if (Utils.isProbablyAValidEmail(term)) {
+          return {
+            name: term,
+            id: term
+          };
+        }
       },
       placeholder: Ember.I18n.t('conversations.new.placeholder')
     });

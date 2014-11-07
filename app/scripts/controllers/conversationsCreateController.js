@@ -25,9 +25,14 @@ App.ConversationsCreateController = Ember.Controller.extend(Ember.Evented, {
       var convo;
       var self = this;
       var contacts = this.get('selectedContacts').map(function (id) {
-        return { user_id: id };
+        if (Utils.isProbablyAValidEmail(id)) {
+          return { contact_method: 'email', contact_value: id };
+        } else {
+          return { user_id: id };
+        }
       });
 
+      // window.alert(JSON.stringify(contacts));
       convo = App.Conversation.create({
         contacts: contacts
       });

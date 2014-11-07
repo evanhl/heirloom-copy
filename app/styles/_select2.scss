@@ -39,12 +39,6 @@
 
 $contact-result-height: 88px;
 
-.select2-container-multi .select2-search-choice-close {
-  right: 10px;
-  top: 11px;
-  left: auto;
-}
-
 .select2-container .select2-results {
   max-height: $contact-result-height * 3;
   position: relative;
@@ -103,12 +97,11 @@ $contact-result-height: 88px;
 .select2-search-choice-close {
   display: block;
   position: absolute;
-  right: 3px;
-  top: 4px;
-  width: 12px;
-  height: 13px;
+  right: 9px;
+  top: 9px;
   font-size: 1px;
   outline: none;
+  @include sprite-retina($clear_contact, $clear_contact-2x);
 }
 
 // TODO: continue to prune unneeded styles below

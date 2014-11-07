@@ -69,7 +69,6 @@ a.active .convo, .convo.highlighted {
 
   .sub {
     height: 20px;
-    // font-size: 14px;
     font-weight: 600;
     color: $subtle-highlight-color;
   }
@@ -175,7 +174,7 @@ a.active .convo, .convo.highlighted {
 .post {
   margin: 20px 25px 0;
   padding-bottom: 20px;
-  border-bottom: 1px $subtle-highlight-color solid;
+  border-bottom: 1px $subtler-highlight-color solid;
 
   .icon {
     position: absolute;
