@@ -117,13 +117,14 @@
 $user-dropdown-height: 40px;
 
 .user-dropdown {
-  display: block;
+  display: inline-block;
   margin-right: 20px;
   margin-left: 32px;
   position: relative;
   float: right;
   top: 18px;
   width: 200px;
+  height: 40px;
 
   .icon {
     border-radius: $user-dropdown-height / 2;
@@ -221,7 +222,7 @@ $user-dropdown-height: 40px;
 @media #{$breakpoint-mobile-2} {
   .full-nav .upload-btn {
     margin: 18px 0 18px 0;
-    display: block;
+    display: inline-block;
   }
 
   .menu:hover .menu-item.mobile-only-2 {
