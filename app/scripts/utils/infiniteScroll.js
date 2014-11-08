@@ -95,10 +95,19 @@
     isScrolledToBottom: function () {
       var $scrollEl = this.$scrollEl();
       var distanceToViewportTop = $scrollEl.prop('scrollHeight') - $scrollEl.height();
-      var viewPortTop = $scrollEl.scrollTop();
+      var viewPortTop = this.getScrollTop($scrollEl);
 
       // instead of waiting til we hit the bottom, check if we are within 1000px
       return (viewPortTop >= distanceToViewportTop - 1000);
+    },
+
+    getScrollTop: function ($el) {
+      if ($el.prop('tagName') === 'BODY') {
+        this.$html = this.$html || $('html');
+        return $el.scrollTop() || this.$html.scrollTop();
+      } else {
+        return $el.scrollTop();
+      }
     }
   });
 
