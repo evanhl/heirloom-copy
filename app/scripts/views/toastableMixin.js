@@ -1,11 +1,10 @@
 App.ToastableMixin = Ember.Mixin.create({
   listenToToast: function () {
-    this.proxyToast = $.proxy(this.onToast, this);
-    this.get('controller').on('toast', this.proxyToast);
+    this.get('controller').on('toast', this, this.onToast);
   }.on('didInsertElement'),
 
   dontListenToToast: function () {
-    this.get('controller').off('toast', this.proxyToast);
+    this.get('controller').off('toast', this, this.onToast);
   }.on('willDestroyElement'),
 
   onToast: function (template, context) {

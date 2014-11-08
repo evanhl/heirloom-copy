@@ -1,4 +1,5 @@
 App.ConversationsCreateView = Ember.View.extend({
+  classNames: 'main-col-content',
   RESULT_TEMPLATE: '<div class="icon"><span>{{initials}}</span></div><div class="name">{{name}}</div><div class="sub">{{username}}</div>',
 
   initMultiSelect: function () {

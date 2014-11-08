@@ -42,19 +42,11 @@ App.ConversationsNewPostView = Ember.View.extend(InfiniteScroll.ViewMixin, {
 
       $filler.css('height', $post.outerHeight());
     });
-  }.on('didInsertElement').observes('controller.newPostPhotos.length', 'controller.newPostAlbum'),
+  }.observes('controller.newPostPhotos.length', 'controller.newPostAlbum'),
 
   hasPhotosOrAlbums: function () {
     return this.get('controller.newPostPhotos.length') || this.get('controller.newPostAlbum');
   }.property('controller.newPostPhotos.[]', 'controller.newPostAlbum'),
-
-  setupControllerListener: function () {
-    this.get('controller').on('clearNewPost', this, this.manualAutosize);
-  }.on('didInsertElement'),
-
-  clearControllerListener: function () {
-    this.get('controller').off('clearNewPost', this, this.manualAutosize);
-  }.on('willDestroyElement'),
 
   setupAutosizeTextarea: function () {
     var self = this;
@@ -66,13 +58,19 @@ App.ConversationsNewPostView = Ember.View.extend(InfiniteScroll.ViewMixin, {
         }
       });
     });
-  }.on('didInsertElement'),
+  },
 
-  setupWindowListener: function () {
+  didInsertElement: function () {
+    this.get('controller').on('clearNewPost', this, this.manualAutosize);
     $(window).on('resize', this.resizeFiller);
-  }.on('didInsertElement'),
+    this.setupAutosizeTextarea();
+    this.resizeFiller();
+    this.controller.attachPickerHandlers();
+  },
 
-  destroyWindowListener: function () {
+  willDestroyElement: function () {
+    this.get('controller').off('clearNewPost', this, this.manualAutosize);
     $(window).off('resize', this.resizeFiller);
-  }.on('willDestroyElement')
+    this.controller.detachPickerHandlers();
+  }
 });

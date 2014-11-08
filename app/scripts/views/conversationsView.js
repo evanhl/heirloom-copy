@@ -8,5 +8,19 @@ App.ConversationsView = Ember.View.extend(InfiniteScroll.ViewMixin, {
     if (e.keyCode === Utils.Keys.ENTER) {
       controller.send('create');
     }
+  },
+
+  didInsertElement: function () {
+    this.controller.on('enterCreateMode', this, this.scrollToTop);
+  },
+
+  willDestroyElement: function () {
+    this.controller.off('enterCreateMode', this, this.scrollToTop);
+  },
+
+  scrollToTop: function () {
+    this.$('.left-col-content').animate({
+      scrollTop: 0
+    });
   }
 });

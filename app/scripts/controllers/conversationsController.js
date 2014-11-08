@@ -1,4 +1,4 @@
-App.ConversationsController = Ember.ArrayController.extend(InfiniteScroll.ControllerMixin, {
+App.ConversationsController = Ember.ArrayController.extend(InfiniteScroll.ControllerMixin, Ember.Evented, {
   newConversationName: null,
 
   fetchPage: function (page, perPage) {
@@ -17,6 +17,7 @@ App.ConversationsController = Ember.ArrayController.extend(InfiniteScroll.Contro
 
   actions: {
     create: function () {
+      this.trigger('enterCreateMode');
       this.transitionToRoute('conversations.create');
     }
   }

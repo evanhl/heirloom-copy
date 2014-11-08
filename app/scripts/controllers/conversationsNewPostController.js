@@ -7,18 +7,22 @@ App.ConversationsNewPostController = Ember.ObjectController.extend(Ember.Evented
   newPostAlbum: null,
   newPostPhotos: null,
 
-  init: function () {
-    var self = this;
+  attachPickerHandlers: function () {
     // TODO: make these event names consistent
     // TODO: these events can be handled via action bubbling instead of explicit reference to child modal controllers
     this.get('groupAlbumPicker').on('didSelect', this, this.albumSelected);
     this.get('groupPhotoPicker').on('photosSelected', this, this.photosSelected);
-    this._super();
+  },
+
+  detachPickerHandlers: function () {
+    this.get('groupAlbumPicker').off('didSelect', this, this.albumSelected);
+    this.get('groupPhotoPicker').off('photosSelected', this, this.photosSelected);
   },
 
   parentControllerChanged: function () {
     if (this.get('parentController')) {
-      this.get('parentController').on('didCreatePost', $.proxy(this.didCreatePost, this));
+      this.get('parentController').off('didCreatePost', this, this.didCreatePost);
+      this.get('parentController').on('didCreatePost', this, this.didCreatePost);
     }
   }.on('init').observes('parentController'),
 
@@ -66,7 +70,6 @@ App.ConversationsNewPostController = Ember.ObjectController.extend(Ember.Evented
   }.observes('model').on('init'),
 
   didCreatePost: function (post) {
-    this.get('conversationPosts').unshiftObject(post);
     this.set('newPostMessage', null);
     this.set('newPostAlbum', null);
     this.set('newPostPhotos', []);

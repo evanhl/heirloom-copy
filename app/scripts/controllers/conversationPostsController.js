@@ -63,6 +63,7 @@ App.ConversationPostsController = Ember.ArrayController.extend(Ember.Evented, In
       var conversation = self.get('conversation.model');
 
       adapter.createNestedRecord(conversation, post, 'posts').then(function () {
+        self.unshiftObject(post);
         self.trigger('didCreatePost', post);
       }, function () {
         // TODO: handle failure

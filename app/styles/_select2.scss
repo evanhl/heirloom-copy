@@ -44,6 +44,8 @@ $contact-result-height: 88px;
   position: relative;
   overflow-x: hidden;
   overflow-y: auto;
+  z-index: 2;
+  background: white;
 
   li {
     height: $contact-result-height;

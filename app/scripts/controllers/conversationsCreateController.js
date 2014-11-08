@@ -15,6 +15,7 @@ App.ConversationsCreateController = Ember.Controller.extend(Ember.Evented, {
       self.trigger('didCreatePost', post);
       self.get('conversations').unshiftObject(convo);
       self.transitionToRoute('conversationPosts', convo.get('id'));
+      self.set('selectedContacts', []);
     }, function () {
       // TODO: handle failure
     });
@@ -32,7 +33,6 @@ App.ConversationsCreateController = Ember.Controller.extend(Ember.Evented, {
         }
       });
 
-      // window.alert(JSON.stringify(contacts));
       convo = App.Conversation.create({
         contacts: contacts
       });
