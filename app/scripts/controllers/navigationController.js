@@ -31,14 +31,12 @@ App.NavigationController = Ember.Controller.extend({
   /*globals console*/
   didLogIn: function () {
     if (this.get('isLoggedIn')) {
-      console.log('logging in');
       this.onSignIn();
     }
   }.on('init').observes('isLoggedIn'),
 
   didLogOut: function () {
     if (!this.get('isLoggedIn')) {
-      console.log('logging out');
       this.softSignOut();
     }
   }.observes('isLoggedIn'),

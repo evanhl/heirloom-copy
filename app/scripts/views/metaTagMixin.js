@@ -18,6 +18,8 @@ App.MetaTagMixin = Ember.Mixin.create({
     this.addMetaTag('description', this.get('metaDescription'));
     this.addMetaTag('twitter:description', this.get('metaDescription'));
 
+    this.addCanonicalTag(this.getCanonical());
+
     var isReady = this.get('metaWaitUntil').map(function (attr) {
       return this.get(attr);
     }, this).every(function (metaValue) {
@@ -30,7 +32,12 @@ App.MetaTagMixin = Ember.Mixin.create({
     }
   }.on('didInsertElement').observes('metaImage', 'metaDescription', 'metaTitle'),
 
+  getCanonical: function () {
+    return HLConfig.canonicalDomain + window.location.pathname;
+  },
+
   removeMetaTags: function () {
+    $('head link[rel="canonical"]').remove();
     $('head meta[property="og:image"]').remove();
     $('head meta[property="og:description"]').remove();
     $('head meta[property="og:title"]').remove();
@@ -38,6 +45,7 @@ App.MetaTagMixin = Ember.Mixin.create({
     $('head meta[name="twitter:description"]').remove();
     $('head meta[name="twitter:image:src"]').remove();
     $('head meta[name="twitter:title"]').remove();
+    $('head meta[name="twitter:card"]').remove();
     $('head meta[name="twitter:card"]').remove();
   }.on('willDestroyElement'),
 
@@ -57,6 +65,13 @@ App.MetaTagMixin = Ember.Mixin.create({
     $('<meta>').
       attr(htmlPropName, property).
       attr('content', content).
+      appendTo($('head'));
+  },
+
+  addCanonicalTag: function (url) {
+    $('<link>').
+      attr('href', url).
+      attr('rel', 'canonical').
       appendTo($('head'));
   }
 });

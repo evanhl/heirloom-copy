@@ -55,8 +55,6 @@ App.IndexView = Ember.View.extend(App.HiddenNavMixin, {
 
   // lifted from here: http://css-tricks.com/snippets/jquery/smooth-scrolling/
   smoothScrollAnchorLinks: function (e) {
-    /*globals console*/
-    console.log('foo');
     if (location.pathname.replace(/^\//,'') === this.pathname.replace(/^\//,'') && location.hostname === this.hostname) {
       var target = $(this.hash);
       target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
