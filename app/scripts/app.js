@@ -48,8 +48,8 @@ App.Router.map(function () {
   this.resource('conversationInvitation', { path: 'i/:conversation_invitation_id' });
   this.resource('ci', { path: 'conversation_invitations/:id' });
 
-  this.resource('share', { path: 'share/:share_id' });
-  this.resource('s', { path: 's/:id' });
+  this.resource('longShare', { path: 'share/:id' });
+  this.resource('share', { path: 's/:share_id' });
   this.route('registration');
   this.route('signin');
   this.route('signout');
@@ -63,9 +63,9 @@ App.CiRoute = Ember.Route.extend({
   }
 });
 
-App.SRoute = Ember.Route.extend({
+App.LongShareRoute = Ember.Route.extend({
   beforeModel: function (transition) {
-    this.transitionTo('share', transition.params.s.id);
+    this.transitionTo('share', transition.params.longShare.id);
   }
 });
 
