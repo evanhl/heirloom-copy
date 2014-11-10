@@ -1,4 +1,4 @@
-# Heirloom Product FAQs
+# Frequently Asked Questions
 
 ## How does photo scanning work?
 

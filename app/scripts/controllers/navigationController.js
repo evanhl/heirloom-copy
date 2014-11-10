@@ -28,13 +28,20 @@ App.NavigationController = Ember.Controller.extend({
     return App.get('auth.isLoggedIn');
   }.property('App.auth.isLoggedIn'),
 
-  isLoggedInChanged: function () {
-    if (!this.get('isLoggedIn')) {
-      this.softSignOut();
-    } else {
+  /*globals console*/
+  didLogIn: function () {
+    if (this.get('isLoggedIn')) {
+      console.log('logging in');
       this.onSignIn();
     }
   }.on('init').observes('isLoggedIn'),
+
+  didLogOut: function () {
+    if (!this.get('isLoggedIn')) {
+      console.log('logging out');
+      this.softSignOut();
+    }
+  }.observes('isLoggedIn'),
 
   updateConversationsCount: function () {
     var self = this;

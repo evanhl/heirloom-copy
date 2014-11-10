@@ -10,8 +10,8 @@
       this.fetchMarkdown();
     },
 
-    success: function (data) {
-      this.insertConvertedMarkdownOnPage(data);
+    success: function (index, data) {
+      this.insertConvertedMarkdownOnPage(index, data);
       this.cacheElements();
       this.formatHtml();
       this.bindEventListeners();
