@@ -1,6 +1,9 @@
 language: node_js
 node_js:
-  - "0.10"
+- '0.10'
 before_script:
-  - npm install -g grunt-cli
-  - npm rebuild phantomjs
+- npm install -g grunt-cli
+- npm rebuild phantomjs
+notifications:
+  slack:
+    secure: Ympxu/Y9VTXpZCoIX2CbErUsy2l8nOsrS9kEg177uxQkGmvaMbvy64laq6ENqLIVnfx5L12jF5HLD56nkBZZ4ckcqEH/84Rsg7hjcESFKuIQOXY0zK2aJwStYALXnV9szuPwx3n1B2O4C2iE6O3tYdcKJqievtXNS+65VpcbHtk=
