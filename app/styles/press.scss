@@ -122,23 +122,43 @@ section > div {
   background: #F9F8F6;
 }
 
-.video-contanier {
-  border: 5px solid gray;
-  content: 'PUT VIDEOS IN ME';
+// .video-container {
+//   border: 5px solid gray;
+//   display: inline-block;
+//   height: 200px;
+//   width: 49%;
+// }
+
+.press-vid {
+  border: 0;
   display: inline-block;
-  height: 200px;
+  position: relative;
   width: 49%;
 
-  &:before {
-    content: 'put videos in me put videos in me put videos in me put videos in me put videos in me put videos in me put videos in me put videos in me put videos in me put videos in me put videos in me put videos in me put videos in me put videos in me put videos in me put videos in me put videos in me put videos in me ';
+  &:after {
+    padding-top: (9 / 16) * 100%;
+    display: block;
+    content: '';
+  }
+
+  iframe {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 }
 
-.row-of-images {
-  margin: 5px 0;
 
-  img:not(:last-child) {
-    margin-right: 2px;
+.row-of-images {
+  margin: 1% 0;
+  font-size: 0;
+
+  :not(:last-child) img, img:not(:last-child) {
+    margin-right: 1%;
   }
 }
 
