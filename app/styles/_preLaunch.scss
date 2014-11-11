@@ -407,6 +407,10 @@ $social-icon-spacing: 25px;
   line-height: 16px;
   box-sizing: border-box;
 
+  &.hp-larger {
+    font-size: 1em;
+  }
+
   &:hover {
     background: $button-hover-color
   }
@@ -464,7 +468,7 @@ $social-icon-spacing: 25px;
   }
 }
 
-.hp-copy {
+.homepage .hp-copy {
   position: absolute;
   width: 100%;
   top: 56%;
@@ -477,7 +481,6 @@ $social-icon-spacing: 25px;
     display: table;
     height: 7.5em;
     margin-top: 0;
-
 
     h1 {
       padding-left: 30px;
@@ -573,7 +576,7 @@ input.hp-submit {
   }
 }
 
-.hp-footer-links {
+.homepage .hp-footer-links {
   text-align: center;
 
   h4 {

@@ -1,0 +1,101 @@
+<div class="first">
+  <a name="first"></a>
+  <video autoplay loop preload="auto" poster="https://www-heirloom-production-herokuapp-com.global.ssl.fastly.net/images/video_placeholder_loading_small.jpg">
+    <source src="https://d1g8wumrh1onzl.cloudfront.net/media/HLM_Long_Loop_422_h264_4mb_faststart_2.mp4" type="video/mp4">
+    <div class="img-cont">
+      <img src="/images/video_placeholder_web.jpg" title="">
+    </div>
+  </video>
+  <div class="overlay">
+  </div>
+
+  <div class="flex-height-cont">
+    <div class="top-nav">
+      <div class="hp-logo-cont">
+        <div class="hp-logo"></div>
+      </div>
+
+      <div class="hp-tag-cont">
+        <div class="hp-tag">
+          {{#link-to 'signin'}}<span>{{t 'signin'}}</span>{{/link-to}}
+        </div>
+        <div class="hp-break"></div>
+
+        <div class="hp-action">
+          {{#link-to 'registration'}}<span class="hp-notify hp-larger">{{t 'signup'}}</span>{{/link-to}}
+          {{!-- <a href="#third" class="jump-to-notify"><span class="hp-notify">Notify Me</span></a> --}}
+        </div>
+      </div>
+    </div>
+
+    <div class="hp-copy">
+      <h1>For all the moments we love.</h1>
+    </div>
+
+    <div class="hp-center">
+      <a href="javascript:void(0);" {{action 'showVideo'}}><span class="hp-play"></span></a>
+    </div>
+
+    <div class="hp-bottom">
+      <a href="#second"><span class="hp-next"></span></a>
+    </div>
+  </div>
+</div>
+
+<div class="second">
+  <a name="second"></a>
+  <div class="flex-height-cont">
+    <div class="right-section">
+      <div class="hp-phone-copy">
+        <h2>Your life in photos</h2>
+
+        <p class="description">
+Heirloom is a simple idea. Nearly everyone has paper photographs. Heirloom brings them to life. With the help of your smartphone camera, you can experience the joy of sharing those moments with friends and family.
+        </p>
+      </div>
+    </div>
+
+    <div class="left-section">
+      <div class="hp-phone-cont">
+        <div class="hp-phone"></div>
+      </div>
+    </div>
+
+    <div class="hp-bottom">
+      <a href="#third"><span class="hp-next-blk"></span></a>
+    </div>
+
+  </div>
+</div>
+
+<div class="third">
+  <a name="third"></a>
+  <div class="hp-notify-cont"></div>
+  <div class="hp-footer-links">
+    <a href="mailto:press@heirloom.net"><h4>Press</h4></a>
+    <a href="mailto:hello@heirloom.net"><h4>Contact</h4></a>
+  </div>
+
+  <div class="hp-footer-social">
+    <a href="https://www.facebook.com/heirloomhq" target="_blank"><span class="hp-fb-dark"></span></a>
+    <a href="https://www.twitter.com/heirloomhq" target="_blank"><span class="hp-twitter-dark"></span></a>
+    <a href="http://www.instagram.com/heirloomhq" target="_blank"><span class="hp-instagram-dark"></span></a>
+  </div>
+
+  <div class="hp-copyright">
+    <span>Copyright &copy; 2014 <a href="mailto:hello@heirloom.net" target="_blank">Say Hello!</a></span>
+  </div>
+  <a href="#first"><div class="hp-footer-logo"></div></a>
+</div>
+{{#if showVideo}}
+  <div class="hp-lightbox" {{action 'hideVideo'}}>
+    <div class="video-cont-cont">
+      <div class="video-cont">
+        <div class="hp-height-filler"></div>
+<iframe src="//www.youtube.com/embed/bEyou7qGw4Q?autoplay=1&rel=0" scrolling="auto" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"  id="widget2"></iframe>
+      </div>
+    </div>
+  </div>
+  <div class="exit-video" {{action 'hideVideo'}}></div>
+{{/if}}
+<iframe style="display:none" name="hidden-form" id="hidden-form"></iframe>

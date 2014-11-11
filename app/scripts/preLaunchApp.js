@@ -57,6 +57,7 @@ App.ApplicationView = Ember.View.extend({
     this.controller.set('disabled', true);
   },
 
+  // TODO: remove once we have excised the pre-launch notify button
   jumpToNotify: function (e) {
     var self = this;
 

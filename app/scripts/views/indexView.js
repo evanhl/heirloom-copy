@@ -1,6 +1,6 @@
 App.IndexView = Ember.View.extend(App.HiddenNavMixin, {
   classNames: ['homepage'],
-  templateName: 'preLaunch',
+  templateName: HLConfig.homeTemplate || 'homepage',
 
   didInsertElement: function () {
     this.controller.set('disabled', false);
