@@ -307,7 +307,7 @@ video {
   letter-spacing: 3px;
 }
 
-$social-icon-width: 27px;
+$social-icon-width: 30px;
 $social-icon-spacing: 25px;
 
 .hp-social {
@@ -368,6 +368,13 @@ $social-icon-spacing: 25px;
 
   // margin-right: $social-icon-spacing + (($social-icon-width - $instagram_logo_dark-width) / 2);
   margin-left: (($social-icon-width - $instagram_logo_dark-width) / 2);
+}
+
+.hp-youtube-dark {
+  @include sprite-retina($youtube_logo_dark, $youtube_logo_dark-2x);
+
+  margin-right: $social-icon-spacing + (($social-icon-width - $youtube_logo_dark-width) / 2);
+  margin-left: (($social-icon-width - $youtube_logo_dark-width) / 2);
 }
 
 .hp-twitter-dark {
