@@ -1,5 +1,6 @@
 App.ModalDialogComponent = Ember.Component.extend({
   classNames: ['lightbox'],
+  classNameBindings: ['transparent'],
   tagName: 'section',
 
   setFocus: function () {
@@ -16,7 +17,8 @@ App.ModalDialogComponent = Ember.Component.extend({
   }.on('willDestroyElement'),
 
   click: function (e) {
-    if (!$(e.target).is(this.$())) {
+    // FIXME: wizard-container here pertains only to photosEmpty.hbs. This component needn't know about it.
+    if (!$(e.target).is(this.$()) && !$(e.target).is(this.$('.wizard-container'))) {
       return;
     }
 

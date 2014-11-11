@@ -19,9 +19,18 @@
       });
     },
 
-    onFetchPageError: function () {
+    // no op implementation can be overridden
+    onFetchPageError: function () {},
 
+    // no op implementation can be overridden
+    handleEmptyState: function () {},
+
+    checkEmptyState: function () {
+      if (this.get('page') === 0) {
+        this.handleEmptyState();
+      }
     },
+
 
     actions: {
       getMore: function () {
@@ -33,7 +42,7 @@
         perPage    = this.get('perPage');
         self       = this;
 
-        if (this.get('maxPage') && nextPage > this.get('maxPage')) { return; }
+        if (typeof this.get('maxPage') === 'number' && nextPage > this.get('maxPage')) { return; }
 
         this.set('loadingMore', true);
 
@@ -54,11 +63,12 @@
 
         if (items.length === 0) {
           this.set('maxPage', this.get('page'));
+          this.checkEmptyState();
+        } else {
+          this.removeObjects(items);
+          this.pushObjects(items);
+          this.set('page', nextPage);
         }
-
-        this.removeObjects(items);
-        this.pushObjects(items);
-        this.set('page', nextPage);
 
         this.set('loadingMore', false);
       }

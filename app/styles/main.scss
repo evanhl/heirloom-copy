@@ -81,6 +81,10 @@ a {
   outline: 0;
 }
 
+h2.highlighted {
+  color: $highlight-color;
+}
+
 // Hack to fix Ember's lack of support for action helpers in iOS
 [data-ember-action] {
   cursor: pointer;
@@ -278,6 +282,10 @@ img.detail {
 
 .lightbox {
   background: $lightbox-color;
+
+  &.transparent {
+    background: none;
+  }
 }
 
 .opaque-lightbox {

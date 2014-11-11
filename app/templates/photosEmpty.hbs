@@ -1,0 +1,12 @@
+{{#modal-dialog action="closeModal" transparent=true}}
+  <div class="wizard-container">
+    <div class="wizard">
+      <div class="wizard-main">
+        <h2 class="highlighted">Welcome.<br>Your Moments live here.</h2>
+
+        <p>The photos you upload and capture in Heirloom will show up here.</p>
+        <button class="secondary-action with-icon large upload-btn" {{action 'openModal' 'uploadModal'}}><span class="upload-icon btn-icon"></span>{{t 'upload'}}</button>
+      </div>
+    </div>
+  </div>
+{{/modal-dialog}}

@@ -141,6 +141,17 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
     this.resetSelected();
   },
 
+  handleEmptyState: function () {
+    this.set('isEmptyState', true);
+    this.send('openModal', 'photosEmpty');
+  },
+
+  clearEmptyState: function () {
+    if (this.get('model.length') > 0) {
+      this.set('isEmptyState', false);
+    }
+  }.observes('model.length'),
+
   actions: {
     enlarge: function (id) {
       this.transitionToRoute('photo', id);

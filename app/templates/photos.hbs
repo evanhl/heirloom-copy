@@ -7,7 +7,7 @@
           <span class="count-text">{{t "photos.selected" countBinding="selectedCount"}}</span>
         </div>
         {{partial 'shareButton'}}
-        <button class="take-action with-icon medium" {{action 'addToAlbum' selectedIds}}><span class="add-to-album-icon icon"></span>{{t 'album'}}</button>
+        <button class="take-action with-icon medium" {{action 'addToAlbum' selectedIds}}><span class="add-to-album-icon btn-icon"></span>{{t 'album'}}</button>
       </div>
       <div class="right">
         <button class="secondary icon-only delete" {{action 'deletePhotos'}}></button>

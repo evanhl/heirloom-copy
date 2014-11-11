@@ -56,8 +56,15 @@
   }
 }
 
-body.alternate-bg {
+body.alternate-bg, body.photos-empty-bg {
   background: -webkit-linear-gradient(top, white 0%, $bg-color-accent 100%);
+}
+
+body.photos-empty-bg {
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(/images/moments_empty_small.jpg);
 }
 
 
