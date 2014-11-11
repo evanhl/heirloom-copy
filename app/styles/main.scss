@@ -644,3 +644,14 @@ textarea {
     margin-bottom: 30px;
   }
 }
+
+.logo-with-text {
+  height: 72px;
+  width: 206px;
+  background: url(/images/heirloom_logo.png) no-repeat;
+
+  @media only screen and (-webkit-min-device-pixel-ratio: 1.5), screen and (min-device-pixel-ratio: 1.5), screen and (min--moz-device-pixel-ratio: 1.5) {
+    background: url(/images/heirloom_logo@2x.png) no-repeat;
+    background-size: 206px 72px;
+  }
+}
