@@ -20,14 +20,22 @@
       content: '';
       @include sprite-retina($heirloom_icon, $heirloom_icon-2x);
       display: block;
-      margin-left: ($logo-width - $heirloom_icon-width) / 2;
+      margin-left: ($logo-width-mobile-1 - $heirloom_icon-width) / 2;
       margin-top: ($logo-height - $heirloom_icon-height) / 2;
     }
 
     border-right: 1px $subtle-highlight-color solid;
-    width: $logo-width;
+    width: $logo-width-mobile-1;
     height: $logo-height;
     float: left;
+
+    @media #{$breakpoint-mobile-2} {
+      width: $logo-width;
+
+      &:after {
+        margin-left: ($logo-width - $heirloom_icon-width) / 2;
+      }
+    }
   }
 
   .not-logged-in {
@@ -35,6 +43,10 @@
     line-height: 76px;
     vertical-align: middle;
     width: 100%;
+
+    .logo-with-text {
+      margin-top: 4px;
+    }
   }
 
   .full-logo {
@@ -118,13 +130,18 @@ $user-dropdown-height: 40px;
 
 .user-dropdown {
   display: inline-block;
-  margin-right: 20px;
-  margin-left: 32px;
+  margin-right: 10px;
+  margin-left: 10px;
   position: relative;
   float: right;
   top: 18px;
-  width: 200px;
+  width: 179px;
   height: 40px;
+
+  @media #{$breakpoint-desktop-1} {
+    margin-right: 20px;
+    margin-left: 32px;
+  }
 
   .icon {
     border-radius: $user-dropdown-height / 2;
@@ -184,7 +201,7 @@ $user-dropdown-height: 40px;
 
   .username {
     padding: 14px 40px 10px 29px;
-    width: 181px;
+    width: 160px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
