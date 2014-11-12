@@ -21,9 +21,8 @@
 
     // no op implementation can be overridden
     onFetchPageError: function () {},
-
-    // no op implementation can be overridden
     handleEmptyState: function () {},
+    tryFirstItemTransition: function () {},
 
     checkEmptyState: function () {
       if (this.get('page') === 0) {
@@ -31,6 +30,11 @@
       }
     },
 
+    checkFirstPage: function () {
+      if (this.get('page') === 1) {
+        this.tryFirstItemTransition();
+      }
+    },
 
     actions: {
       getMore: function () {
@@ -73,6 +77,7 @@
           this.removeObjects(items);
           this.pushObjects(items);
           this.set('page', nextPage);
+          this.checkFirstPage();
         }
 
         this.set('loadingMore', false);
@@ -133,6 +138,9 @@
     },
 
     setupController: function (controller, model) {
+      Ember.run.next(this, function () {
+        controller.tryFirstItemTransition();
+      });
       controller.send('getMore');
     }
   });

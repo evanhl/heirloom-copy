@@ -23,6 +23,12 @@ App.ConversationsController = Ember.ArrayController.extend(InfiniteScroll.Contro
     }
   },
 
+  tryFirstItemTransition: function () {
+    if (this.get('currentPath') === 'conversations.index' && this.get('length') > 0) {
+      this.transitionToRoute('conversationPosts.index', this.objectAt(0).get('id'));
+    }
+  },
+
   actions: {
     create: function () {
       this.trigger('enterCreateMode');
