@@ -42,7 +42,12 @@
         perPage    = this.get('perPage');
         self       = this;
 
-        if (typeof this.get('maxPage') === 'number' && nextPage > this.get('maxPage')) { return; }
+        if (typeof this.get('maxPage') === 'number' && nextPage > this.get('maxPage')) {
+          Ember.run.next(this, function () {
+            this.checkEmptyState();
+          });
+          return;
+        }
 
         this.set('loadingMore', true);
 
