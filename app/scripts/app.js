@@ -1,5 +1,5 @@
 /* jshint -W079 */
-/* globals CLDR */
+/* globals CLDR, ga */
 
 // Adapted from http://discuss.emberjs.com/t/emberconf-talk-disable-ember-eventhandlers-for-mobile/4877
 
@@ -21,7 +21,15 @@ App.set('facebook', Utils.Facebook.create());
 // Use HTML5 History API (pushState) to manage app URLs
 App.Router.reopen({
   location: 'history',
-  rootURL: HLConfig.rootURL || '/'
+  rootURL: HLConfig.rootURL || '/',
+  notifyGoogleAnalytics: function () {
+    if (!ga) { return; }
+
+    return ga('send', 'pageview', {
+        'page': this.get('url'),
+        'title': this.get('url')
+      });
+  }.on('didTransition')
 });
 
 App.Router.map(function () {
