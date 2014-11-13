@@ -75,6 +75,16 @@ Utils.isProbablyAValidEmail = function (email) {
   return /.+@.+\..+/i.test(email);
 };
 
+Utils.getClassWidth = function (className) {
+  var width;
+
+  var $dummyPhoto = $('<div></div>').addClass(className).hide();
+  width = $dummyPhoto.appendTo($('body')).outerWidth(true);
+  $dummyPhoto.remove();
+
+  return width;
+};
+
 Utils.IOS_STORE_LINK = 'https://itunes.apple.com/us/app/heirloom-for-all-moments-we/id931656673?ls=1&mt=8';
 Utils.ANDROID_STORE_LINK = 'https://play.google.com/store/apps/details?id=io.heirloom.app';
 

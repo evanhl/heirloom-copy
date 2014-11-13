@@ -15,9 +15,7 @@ App.AutoWidthMixin = Ember.Mixin.create({
     var $cont = this.$(this.get('containerSelector'));
     var contWidth, blockWidth, maxImgPerRow;
 
-    var $dummyPhoto = $('<div></div>').addClass(this.get('itemClass')).hide();
-    blockWidth = $dummyPhoto.appendTo($('body')).outerWidth(true);
-    $dummyPhoto.remove();
+    blockWidth = Utils.getClassWidth(this.get('itemClass'));
 
     $cont.css('width', 'auto');
     contWidth = $cont.width();
