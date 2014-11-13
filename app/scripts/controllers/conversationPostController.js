@@ -10,8 +10,10 @@ App.ConversationPostController = Ember.ObjectController.extend({
 
     if (leftoversLength === 2) {
       return 'mosaic-2';
-    } else if (leftoversLength >= 3) {
+    } else if (leftoversLength === 3) {
       return 'mosaic-3';
+    } else if (leftoversLength >= 4) {
+      return 'mosaic-4';
     }
   }.property('photos.length', 'photosLimit'),
 
@@ -30,6 +32,6 @@ App.ConversationPostController = Ember.ObjectController.extend({
   }.property('photos.[]', 'photosLimit'),
 
   mosaicPhotos: function () {
-    return this.get('photos').slice(this.get('photosLimit') - 1, this.get('photosLimit') + 2);
+    return this.get('photos').slice(this.get('photosLimit') - 1, this.get('photosLimit') + 3);
   }.property('photos.[]', 'photosLimit')
 });
