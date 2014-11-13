@@ -1,5 +1,5 @@
 /* jshint -W079 */
-/* globals CLDR, ga */
+/* globals CLDR */
 
 // Adapted from http://discuss.emberjs.com/t/emberconf-talk-disable-ember-eventhandlers-for-mobile/4877
 
@@ -23,9 +23,9 @@ App.Router.reopen({
   location: 'history',
   rootURL: HLConfig.rootURL || '/',
   notifyGoogleAnalytics: function () {
-    if (!ga) { return; }
+    if (!window.ga) { return; }
 
-    return ga('send', 'pageview', {
+    return window.ga('send', 'pageview', {
         'page': this.get('url'),
         'title': this.get('url')
       });
