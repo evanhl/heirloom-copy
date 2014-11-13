@@ -1,5 +1,16 @@
 <div class="post-photos">
-{{#each photos}}<div class="post-photo" {{action enlarge id}}><img {{bind-attr src=mediumVersion}} alt=""></div>{{/each}}
+{{#each fullPhotos}}
+  <div class="post-photo" {{action enlarge id}}>
+    <img {{bind-attr src=mediumVersion}} alt="">
+  </div>
+{{/each}}
+{{#if hasMosaic}}
+  <div {{bind-attr class=":post-photo mosaicClass"}} {{action enlarge mosaicPhotos.0.id}}>
+    {{#each mosaicPhotos}}
+      <img {{bind-attr src=mediumVersion}} alt="">
+    {{/each}}
+  </div>
+{{/if}}
 </div>
 <div class="post-body">
   <div class="icon"><span>{{owner.initials}}</span></div>
