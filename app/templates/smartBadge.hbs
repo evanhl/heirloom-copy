@@ -1,0 +1,6 @@
+{{#if isIos}}
+  <a {{bind-attr href=iosStoreLink}} target="_blank"><div class="app-store"></div></a>
+{{/if}}
+{{#if isAndroid}}
+  <a {{bind-attr href=androidStoreLink}} target="_blank"><div class="play-store"></div></a>
+{{/if}}

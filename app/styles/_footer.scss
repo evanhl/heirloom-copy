@@ -1,0 +1,44 @@
+.instagram-logo-gray {
+  @include sprite-retina($instagram_logo_gray, $instagram_logo_gray-2x);
+}
+
+.fb-logo-gray {
+  @include sprite-retina($fb_logo_gray, $fb_logo_gray-2x);
+}
+
+.twitter-logo-gray {
+  @include sprite-retina($twitter_logo_gray, $twitter_logo_gray-2x);
+}
+
+.youtube-logo-gray {
+  @include sprite-retina($youtube_logo_gray, $youtube_logo_gray-2x);
+}
+
+.social-icons {
+  display: inline-block;
+  padding: 20px 0;
+  border-top: 1px solid $subtler-highlight-color;
+  border-bottom: 1px solid $subtler-highlight-color;
+  margin: 40px 0 10px;
+
+  @media #{$breakpoint-mobile-2} {
+    border: 0;
+    margin-bottom: 0;
+  }
+}
+
+.social-icon {
+  display: inline-block;
+  margin: 0 15px;
+  vertical-align: middle;
+}
+
+.footer {
+  color: $subtle-highlight-color;
+  font-size: 14px;
+
+  a {
+    color: $default-text-color;
+    text-decoration: underline;
+  }
+}

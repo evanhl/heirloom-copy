@@ -5,10 +5,10 @@
 
   img {
     padding: 25px 0;
-    border-top: 1px solid $subtle-highlight-color;
-    border-bottom: 1px solid $subtle-highlight-color;
+    border-top: 1px solid $subtler-highlight-color;
+    border-bottom: 1px solid $subtler-highlight-color;
     max-width: 100%;
-    max-height: 600px;
+    max-height: 500px;
     display: table-cell;
     margin: 0 auto 40px;
   }
@@ -155,5 +155,21 @@ body.photos-empty-bg {
 
   li:hover &, li:active & {
     @include sprite-retina($share_twitter_hover, $share_twitter_hover-2x);
+  }
+}
+
+.rect-logo {
+  height: 103px;
+  width: 222px;
+  background: url(/images/heirloom_logo_mobile.png) no-repeat;
+  transform: scale(0.75);
+
+  @media only screen and (-webkit-min-device-pixel-ratio: 1.5), screen and (min-device-pixel-ratio: 1.5), screen and (min--moz-device-pixel-ratio: 1.5) {
+    background: url(/images/heirloom_logo_mobile@2x.png) no-repeat;
+    background-size: 222px 103px;
+  }
+
+  @media #{$breakpoint-mobile-2} {
+    display: none;
   }
 }

@@ -23,22 +23,6 @@ App.ConversationInvitationController = Ember.ObjectController.extend({
     return Utils.isAndroid() || Utils.isIos();
   }.property(),
 
-  isAndroid: function () {
-    return Utils.isAndroid();
-  }.property(),
-
-  isIos: function () {
-    return Utils.isIos();
-  }.property(),
-
-  iosStoreLink: function () {
-    return Utils.IOS_STORE_LINK;
-  }.property(),
-
-  androidStoreLink: function () {
-    return Utils.ANDROID_STORE_LINK;
-  }.property(),
-
   invitationLoaded: function () {
     var adapter = App.ConversationInvitation.adapter;
     var self = this;

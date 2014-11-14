@@ -2,13 +2,36 @@
   <div class="icon"><span>{{owner.initials}}</span></div>
   <p class="owner-tag"><span class="highlighted">{{owner.name}}</span> {{t 'share.photoMessage'}}</p>
   <img {{bind-attr src=photo.largeVersion}} alt="">
-  {{#if isLoggedIn}}
-  {{else}}
+  {{#if view.isSmallScreen}}
+    <p class="rect-logo"></p>
+  {{/if}}
+  {{#if view.showTagline}}
     <p class="tagline">
       {{t 'share.tagline'}}
     </p>
+  {{/if}}
+
+  {{#if isAndroidOrIos}}
     <p>
-      {{partial 'iosBadge'}}{{partial 'androidBadge'}}
+      {{render 'smartBadge'}}
+    </p>
+  {{else}}
+    {{#if isLoggedOut}}
+      <p>
+        {{render 'iosBadge'}}{{render 'androidBadge'}}
+      </p>
+    {{/if}}
+  {{/if}}
+
+  {{#if isLoggedOut}}
+    <div class="social-icons">
+      <a href="https://www.instagram.com/heirloomhq" target="_blank"><span class="instagram-logo-gray social-icon"></span></a>
+      <a href="https://www.facebook.com/heirloomhq" target="_blank"><span class="fb-logo-gray social-icon"></span></a>
+      <a href="https://www.twitter.com/heirloomhq" target="_blank"><span class="twitter-logo-gray social-icon"></span></a>
+      <a href="https://www.youtube.com/user/heirloomhq" target="_blank"><span class="youtube-logo-gray social-icon"></span></a>
+    </div>
+    <p class="footer">
+      <span>Copyright &copy; 2014 <a href="mailto:hello@heirloom.net" target="_blank">Say Hello!</a></span>
     </p>
   {{/if}}
 </div>

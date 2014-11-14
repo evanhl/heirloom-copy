@@ -4,10 +4,8 @@ App.HiddenNavMixin = Ember.Mixin.create({
   }.property(),
 
   hideNav: function () {
-    if (this.get('shouldHideNav')) {
-      App.set('hideNav', true);
-    }
-  }.on('didInsertElement'),
+    App.set('hideNav', this.get('shouldHideNav'));
+  }.on('didInsertElement').observes('shouldHideNav'),
 
   showNav: function () {
     App.set('hideNav', false);
