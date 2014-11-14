@@ -3,8 +3,8 @@
   'use strict';
 
   var Press = $.extend(MD, {
-    $els: [ $('.copy').children('p').eq(0), $('#press-releases').children('div').eq(0) ],
-    filenames: 'press press_releases'.split(' '),
+    $els: [ $('.copy').children('p').eq(0) ],
+    filenames: ['press'],
     init: function () {
       this.fetchMarkdown();
     }

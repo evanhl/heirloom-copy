@@ -79,6 +79,11 @@ section > div {
     padding-right: 5%;
     width: 70%;
   }
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
 }
 
 .hp-social {
@@ -125,6 +130,10 @@ section > div {
 .row-of-images {
   margin: 1% 0;
   font-size: 0;
+
+  h3 {
+    font-size: 1.2rem;
+  }
 
   :not(:last-child) img, img:not(:last-child) {
     margin-right: 1%;
