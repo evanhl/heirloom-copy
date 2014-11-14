@@ -140,11 +140,11 @@ a.active .convo, .convo.highlighted {
   margin-right: 5px;
 }
 
-.convo, .post, .select2-container, .convo-members {
+
+$share-icon-size: 80px;
+
+.share, .convo, .post, .select2-container, .convo-members {
   .icon {
-    height: $convo-icon-size;
-    width: $convo-icon-size;
-    border-radius: $convo-icon-size / 2;
     background: white;
     border: 1px solid $subtle-highlight-color;
 
@@ -152,9 +152,33 @@ a.active .convo, .convo.highlighted {
       display: inline-block;
       width: 100%;
       text-align: center;
-      padding-top: ($convo-icon-size - 14px) / 2;
       color: $highlight-color;
       font-weight: 700;
+    }
+  }
+}
+
+.convo, .post, .select2-container, .convo-members {
+  .icon {
+    height: $convo-icon-size;
+    width: $convo-icon-size;
+    border-radius: $convo-icon-size / 2;
+
+    span {
+      padding-top: ($convo-icon-size - 14px) / 2;
+    }
+  }
+}
+
+.share {
+  .icon {
+    height: $share-icon-size;
+    width: $share-icon-size;
+    border-radius: $share-icon-size / 2;
+
+    span {
+      font-size: 20px;
+      padding-top: ($share-icon-size - 16px) / 2;
     }
   }
 }

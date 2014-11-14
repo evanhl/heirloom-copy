@@ -1,9 +1,5 @@
 <div class="share">
+  <div class="icon"><span>{{owner.initials}}</span></div>
+  <p class="owner-tag"><span class="highlighted">{{owner.name}}</span> {{t 'share.photoMessage'}}</p>
   <img {{bind-attr src=photo.largeVersion}} alt="">
-  <div class="share-info">
-    <div class="icon"></div>
-    <div class="author">{{owner.name}}</div>
-    <div class="time">{{fromNow valueBinding="created_at"}}</div>
-    <div class="watermark">*Captured using HEIRLOOM</div>
-  </div>
 </div>

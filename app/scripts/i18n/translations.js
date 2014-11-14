@@ -83,6 +83,8 @@ Ember.I18n.translations = {
   'invitation.cta.desktopPlug': 'Or sign in at heirloom.net from your desktop computer.',
   'invitation.invalid': 'This invitation is not valid.',
 
+  'share.photoMessage': 'shared a photo with you.',
+
   'cancel': 'Cancel',
   'save': 'Save',
   'add': 'Add',

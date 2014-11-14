@@ -3,6 +3,15 @@
   box-shadow: 0px 2px 10px -1px rgba(0,0,0,0.15);
   height: $logo-height;
 
+  .divider {
+    display: inline-block;
+    height: $button-height;
+    width: 1px;
+    background: $subtle-highlight-color;
+    vertical-align: middle;
+    margin: 0 15px;
+  }
+
   .upload-btn {
     display: none;
   }
@@ -39,13 +48,25 @@
   }
 
   .not-logged-in {
-    padding: 0 54px;
-    line-height: 76px;
+    padding: 0 20px;
+    line-height: 77px;
     vertical-align: middle;
     width: 100%;
 
     .logo-with-text {
       margin-top: 4px;
+    }
+
+    button {
+      vertical-align: middle;
+    }
+
+    .right {
+      display: none;
+
+      @media #{$breakpoint-mobile-2} {
+        display: block;
+      }
     }
   }
 
