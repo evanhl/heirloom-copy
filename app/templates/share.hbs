@@ -2,4 +2,13 @@
   <div class="icon"><span>{{owner.initials}}</span></div>
   <p class="owner-tag"><span class="highlighted">{{owner.name}}</span> {{t 'share.photoMessage'}}</p>
   <img {{bind-attr src=photo.largeVersion}} alt="">
+  {{#if isLoggedIn}}
+  {{else}}
+    <p class="tagline">
+      {{t 'share.tagline'}}
+    </p>
+    <p>
+      {{partial 'iosBadge'}}{{partial 'androidBadge'}}
+    </p>
+  {{/if}}
 </div>

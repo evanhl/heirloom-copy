@@ -84,6 +84,7 @@ Ember.I18n.translations = {
   'invitation.invalid': 'This invitation is not valid.',
 
   'share.photoMessage': 'shared a photo with you.',
+  'share.tagline': 'Fast, beautiful scanning for all the moments we love. <a href="/">Learn More.</a>',
 
   'cancel': 'Cancel',
   'save': 'Save',

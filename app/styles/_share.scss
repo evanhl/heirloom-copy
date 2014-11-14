@@ -1,6 +1,7 @@
 .share {
   display: table;
   margin: 20px auto 0;
+  text-align: center;
 
   img {
     padding: 25px 0;
@@ -9,21 +10,36 @@
     max-width: 100%;
     max-height: 600px;
     display: table-cell;
+    margin: 0 auto 40px;
   }
 
   .icon {
     text-align: center;
-    margin: 0 auto 20px;
+    margin: 0 auto;
+  }
+
+  p {
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.3em;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .owner-tag {
-    text-align: center;
     font-size: 18px;
-    font-weight: 600;
+  }
+
+  .tagline {
+    max-width: 250px;
   }
 
   .highlighted {
     color: $highlight-color;
+  }
+
+  .app-badge {
+    margin: 0 5px;
   }
 }
 
