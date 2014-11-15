@@ -15,6 +15,10 @@ module.exports = {
     {
       splitters: ['<script '],
       rgx: new RegExp(/data-main=['"](?!\w*?:?\/\/)([^'"\{]+)['"].*\/?>/i)
+    },
+    {
+      splitters: ['<a '],
+      rgx: new RegExp(/(?:href)=['"](?!\w*?:?\/\/)([^'"\{]+\.(png|jpg))['"].*\/?>/i)
     }
   ],
   regcss: new RegExp(/url\(([^)]+)\)/ig),
