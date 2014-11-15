@@ -10,7 +10,7 @@
     }
   });
 
-  $(document).ready(function () {
+  $(function () {
     Press.init();
   });
 }(window.jQuery, this, this.MD));
