@@ -1,8 +1,9 @@
 //= require selectableMixin
 //= require shareMixin
 App.AlbumPhotosController = Ember.ArrayController.extend(Ember.Evented, InfiniteScroll.ControllerMixin, App.SelectableMixin, App.ShareMixin, {
-  needs: ['album', 'albumPhotoPicker'],
+  needs: ['album', 'albumsIndex', 'albumPhotoPicker'],
   album: Ember.computed.alias('controllers.album'),
+  albums: Ember.computed.alias('controllers.albumsIndex'),
   albumPhotoPicker: Ember.computed.alias('controllers.albumPhotoPicker'),
   albumName: Ember.computed.alias('album.name'),
 
@@ -103,8 +104,10 @@ App.AlbumPhotosController = Ember.ArrayController.extend(Ember.Evented, Infinite
 
     deleteAlbum: function () {
       var self = this;
+      var album = this.get('album.model');
 
-      this.get('album.model').deleteRecord().then(function () {
+      album.deleteRecord().then(function () {
+        self.get('albums').removeObject(album);
         self.transitionToRoute('albums');
       });
     },
