@@ -77,5 +77,11 @@ App.LongShareRoute = Ember.Route.extend({
   }
 });
 
+App.set('basil', new window.Basil({
+  namespace: 'heirloom',
+  storages: ['local', 'session', 'cookie'],
+  storage: 'local'
+}));
+
 CLDR.defaultLanguage = 'en-US';
 

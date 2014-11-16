@@ -14,7 +14,8 @@
     "jquery-autosize": "~1.18.9",
     "headroom.js": "~0.6.0",
     "moment": "~2.7.0",
-    "select2": "2.1"
+    "select2": "2.1",
+    "basil.js": "~0.3.4"
   },
   "overrides": {
     "picturefill": {

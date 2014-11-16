@@ -1,14 +1,26 @@
 //= require ./app
 //= require ./models/session
 
-// TODO: abstract localStorage so that classes don't have to directly interact with it
 App.Authorization = Ember.Object.extend({
   currentSession: null,
 
   init: function () {
+    var lsCurrentSession;
+    var basilCurrentSession;
+    var currentSession;
+
     this._super();
-    if (localStorage.getItem('currentSession')) {
-      this.set('currentSession', App.Session.create(JSON.parse(localStorage.getItem('currentSession'))));
+
+    // fallback to grandfather in users who signed in before basil
+    try {
+      lsCurrentSession = localStorage.getItem('currentSession');
+    } catch (err) {}
+
+    basilCurrentSession = App.get('basil').get('currentSession');
+    currentSession = basilCurrentSession || lsCurrentSession;
+
+    if (currentSession) {
+      this.set('currentSession', App.Session.create(JSON.parse(currentSession)));
     }
   },
 
@@ -28,9 +40,9 @@ App.Authorization = Ember.Object.extend({
     });
 
     if (this.get('currentSession')) {
-      localStorage.setItem('currentSession', JSON.stringify(this.get('currentSession').toJSON()));
+      App.get('basil').set('currentSession', JSON.stringify(this.get('currentSession').toJSON()));
     } else {
-      localStorage.removeItem('currentSession');
+      App.get('basil').remove('currentSession');
     }
 
   }.observes('currentSession').on('init')
