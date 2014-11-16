@@ -25,7 +25,7 @@
     tryFirstItemTransition: function () {},
 
     checkEmptyState: function () {
-      if (this.get('page') === 0) {
+      if (this.get('page') === 0 && this.get('length') === 0) {
         this.handleEmptyState();
       }
     },
@@ -37,8 +37,9 @@
     },
 
     actions: {
-      getMore: function () {
+      getMore: function (options) {
         var nextPage, perPage, self;
+        options = options || {};
 
         if (this.get('loadingMore')) { return; }
 
@@ -46,7 +47,12 @@
         perPage    = this.get('perPage');
         self       = this;
 
+        // RouteMixin sends the 'getMore' action on route transition, and we
+        // want to be able to render the empty state when the user switches between
+        // nav tabs (i.e. routes)
         if (typeof this.get('maxPage') === 'number' && nextPage > this.get('maxPage')) {
+          if (!options.fromRoute) { return; }
+
           Ember.run.next(this, function () {
             this.checkEmptyState();
           });
@@ -141,7 +147,7 @@
       Ember.run.next(this, function () {
         controller.tryFirstItemTransition();
       });
-      controller.send('getMore');
+      controller.send('getMore', { fromRoute: true });
     }
   });
 
