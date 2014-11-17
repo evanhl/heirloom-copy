@@ -620,6 +620,7 @@ input.hp-submit {
     text-transform: uppercase;
     letter-spacing: 3px;
     font-size: 1.9em;
+    line-height: 1.3em;
 
     @media #{$tablet-size} {
       margin-left: 5%;
