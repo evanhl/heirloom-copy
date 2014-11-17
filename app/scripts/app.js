@@ -59,6 +59,7 @@ App.Router.map(function () {
   this.resource('longShare', { path: 'share/:id' });
   this.resource('share', { path: 's/:share_id' });
   this.route('closeWindow');
+  this.route('home');
   this.route('registration');
   this.route('signin');
   this.route('signout');

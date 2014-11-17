@@ -9,7 +9,7 @@ Ember.I18n.translations = {
 
   'album': 'Album',
 
-  'signin.learnMore': 'To learn more about Heirloom <a href="/">click here</a>',
+  'signin.learnMore': 'To learn more about Heirloom <a href="/home">click here</a>',
   'signin.message': 'Welcome back.',
   'signin.message.hasInvitation': 'Please sign in to your Heirloom account on this page to join the group.',
   'signin.login': 'Email/Username',
@@ -84,7 +84,7 @@ Ember.I18n.translations = {
   'invitation.invalid': 'This invitation is not valid.',
 
   'share.photoMessage': 'shared a photo with you.',
-  'share.tagline': 'Fast, beautiful scanning for all the moments we love. <a href="/">Learn More.</a>',
+  'share.tagline': 'Fast, beautiful scanning for all the moments we love. <a href="/home">Learn More.</a>',
 
   'cancel': 'Cancel',
   'save': 'Save',
