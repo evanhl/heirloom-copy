@@ -1,6 +1,6 @@
 App.ShareMixin = Ember.Mixin.create({
   TWITTER_SHARE_URL: 'https://www.twitter.com/intent/tweet?text=',
-  FB_SHARE_URL: 'https://www.facebook.com/dialog/share?app_id=593382107427220&display=popup&redirect_uri=https://www.heirloom.net/closeWindow&href=',
+  FB_SHARE_URL: 'https://www.facebook.com/sharer/sharer.php?u=',
 
   showShareMenu: false,
 
