@@ -53,6 +53,11 @@
             url: 'https://api.hlstage.com/me/photos',
             responseText: []
           });
+
+          $.mockjax({
+            url: 'https://api.hlstage.com/me/conversations_summary',
+            responseText: []
+          });
         });
 
         visit('signin');
@@ -79,9 +84,9 @@
         });
       });
 
-      it('stores auth token and name in localStorage', function () {
+      it('stores auth token and name in Basil', function () {
         andThen(function () {
-          var session = JSON.parse(localStorage.getItem('currentSession'));
+          var session = JSON.parse(App.get('basil').get('currentSession'));
 
           expect(session.authentication_token).to.equal('tuoo6XoHzTR3Npzp8xRw');
           expect(session.name).to.equal('Alf Wintheiser Sr.');
@@ -114,9 +119,9 @@
           });
         });
 
-        it('clears session from localStorage', function () {
+        it('clears session from Basil', function () {
           andThen(function () {
-            expect(localStorage.getItem('currentSession')).to.be.null;
+            expect(App.get('basil').get('currentSession')).to.be.null;
           });
         });
 
@@ -183,9 +188,9 @@
         });
       });
 
-      it('stores auth token and name in localStorage', function () {
+      it('stores auth token and name in Basil', function () {
         andThen(function () {
-          var session = JSON.parse(localStorage.getItem('currentSession'));
+          var session = JSON.parse(App.get('basil').get('currentSession'));
 
           expect(session.authentication_token).to.equal('tuoo6XoHzTR3Npzp8xRw');
           expect(session.name).to.equal('Big Bird');
