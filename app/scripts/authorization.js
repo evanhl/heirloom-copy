@@ -43,6 +43,9 @@ App.Authorization = Ember.Object.extend({
       App.get('basil').set('currentSession', JSON.stringify(this.get('currentSession').toJSON()));
     } else {
       App.get('basil').remove('currentSession');
+      try {
+        localStorage.removeItem('currentSession');
+      } catch (err) {}
     }
 
   }.observes('currentSession').on('init')
