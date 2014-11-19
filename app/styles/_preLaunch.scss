@@ -622,12 +622,19 @@ input.hp-submit {
     color: $alt-text-color;
     text-transform: uppercase;
     letter-spacing: 3px;
-    font-size: 1.9em;
+    font-size: 1.7em;
     line-height: 1.3em;
+    max-width: 380px;
 
     @media #{$tablet-size} {
-      margin-left: 5%;
-      margin-right: 5%;
+      padding-left: 20px;
+      padding-right: 20px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media #{$breakpoint-mobile-2} {
+      font-size: 1.9em;
     }
   }
 
