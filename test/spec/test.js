@@ -18,22 +18,26 @@
     it('should have loaded Ember', function () {
       expect(Ember).to.exist;
     });
+
+    it('should have loaded Basil', function () {
+      expect(Basil).to.exist;
+    });
   });
 
   describe('Sign In', function () {
     this.timeout(4000);
     after(function () {
       // wrap in Ember run loop to eliminate race condition
-      andThen(function () {
+      // andThen(function () {
         App.reset();
         $.mockjaxClear();
-      });
+      // });
     });
 
     describe('on successful sign in', function () {
       before(function () {
         // wrap AJAX mocking in Ember run loop to eliminate race condition
-        andThen(function () {
+        // andThen(function () {
           // prevents facebook API from loading
           window.FB = {};
 
@@ -58,7 +62,7 @@
             url: 'https://api.hlstage.com/me/conversations_summary',
             responseText: []
           });
-        });
+        // });
 
         visit('signin');
         fillIn('.login', 'foo');
@@ -67,76 +71,76 @@
       });
 
       it('is logged in', function () {
-        andThen(function () {
+        // andThen(function () {
           expect(App.get('auth.isLoggedIn')).to.be.true;
-        });
+        // });
       });
 
       it('has the right auth token', function () {
-        andThen(function () {
+        // andThen(function () {
           expect(App.get('auth.authToken')).to.equal('tuoo6XoHzTR3Npzp8xRw');
-        });
+        // });
       });
 
       it('has the right session', function () {
-        andThen(function () {
+        // andThen(function () {
           expect(App.get('auth.currentSession.name')).to.equal('Alf Wintheiser Sr.');
-        });
+        // });
       });
 
       it('stores auth token and name in Basil', function () {
-        andThen(function () {
+        // andThen(function () {
           var session = JSON.parse(App.get('basil').get('currentSession'));
 
           expect(session.authentication_token).to.equal('tuoo6XoHzTR3Npzp8xRw');
           expect(session.name).to.equal('Alf Wintheiser Sr.');
-        });
+        // });
       });
 
       it('user\'s username is rendered', function () {
-        andThen(function () {
+        // andThen(function () {
           expect(find('nav .username').text().trim()).to.equal('savion_brown');
-        });
+        // });
       });
 
       describe('and subsequent sign out', function () {
         before(function () {
-          andThen(function () {
+          // andThen(function () {
             $.mockjax({
               type: 'delete',
               url: 'https://api.hlstage.com/session',
               responseText: null,
               status: 204
             });
-          });
+          // });
 
           click('nav .signout');
         });
 
         it('is logged out', function () {
-          andThen(function () {
+          // andThen(function () {
             expect(App.get('auth.isLoggedIn')).to.be.false;
-          });
+          // });
         });
 
         it('clears session from Basil', function () {
-          andThen(function () {
+          // andThen(function () {
             expect(App.get('basil').get('currentSession')).to.be.null;
-          });
+          // });
         });
 
         it('photos and albums link are not rendered', function () {
-          andThen(function () {
+          // andThen(function () {
             expect(find('nav .photos')[0]).to.not.exist;
             expect(find('nav .albums')[0]).to.not.exist;
-          });
+          // });
         });
       });
     });
 
     describe('Sign Up', function () {
       before(function () {
-        andThen(function () {
+        // andThen(function () {
           $.mockjax({
             url: 'https://api.hlstage.com/registration',
             type: 'post',
@@ -160,7 +164,7 @@
             url: 'https://api.hlstage.com/me/photos',
             responseText: []
           });
-        });
+        // });
 
         visit('registration');
         fillIn('.name', 'Big Bird');
@@ -171,46 +175,49 @@
       });
 
       it('is logged in', function () {
-        andThen(function () {
+        // andThen(function () {
           expect(App.get('auth.isLoggedIn')).to.be.true;
-        });
+        // });
       });
 
       it('has the right auth token', function () {
-        andThen(function () {
+        // andThen(function () {
           expect(App.get('auth.authToken')).to.equal('tuoo6XoHzTR3Npzp8xRw');
-        });
+        // });
       });
 
       it('has the right session', function () {
-        andThen(function () {
+        // andThen(function () {
           expect(App.get('auth.currentSession.name')).to.equal('Big Bird');
-        });
+        // });
       });
 
       it('stores auth token and name in Basil', function () {
-        andThen(function () {
+        // andThen(function () {
           var session = JSON.parse(App.get('basil').get('currentSession'));
 
           expect(session.authentication_token).to.equal('tuoo6XoHzTR3Npzp8xRw');
           expect(session.name).to.equal('Big Bird');
-        });
+        // });
       });
 
       it('photos and albums link are rendered', function () {
-        andThen(function () {
+        // andThen(function () {
           expect(find('nav .photos')[0]).to.exist;
           expect(find('nav .albums')[0]).to.exist;
           expect(find('nav .signout')[0]).to.exist;
-        });
+        // });
       });
 
       it('user\'s username is rendered', function () {
-        andThen(function () {
+        // andThen(function () {
           expect(find('nav .username').text().trim()).to.equal('bigbird123');
-        });
+        // });
       });
-
     });
+  });
+
+  describe('Sign In', function () {
+
   });
 })();
