@@ -6,11 +6,21 @@ App.ShareMixin = Ember.Mixin.create({
 
   shareExternal: function () {
     var self = this;
-    var data = {
-      type: 'photo',
-      id: this.get('selectedIds')[0],
-      locale: 'en'
-    };
+    var data;
+
+    if (this.get('selectedIds.length') > 1) {
+      data = {
+        type: 'photo_set',
+        ids: this.get('selectedIds'),
+        locale: 'en'
+      };
+    } else {
+      data = {
+        type: 'photo',
+        id: this.get('selectedIds')[0],
+        locale: 'en'
+      };
+    }
 
     // blocking so we can still launch a pop-up
     Utils.apiCall('/share', 'POST', data, function (data) {
