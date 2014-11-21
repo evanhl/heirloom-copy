@@ -7,6 +7,16 @@ App.ShareView = Ember.View.extend(App.MetaTagMixin, App.HiddenNavMixin, {
   metaWaitUntil: ['metaImage'],
   HIDE_NAV_WIDTH: 512,
 
+  shiftPhotos: function () {
+    var photoWidth = Utils.getClassWidth('photo');
+    var offset = this.get('controller.shiftRightIndex') * photoWidth;
+    var $photoCont = this.$('.shared-photo');
+
+    if (!$photoCont) { return; }
+
+    this.$('.shared-photo').animate({ scrollLeft: offset }, 500);
+  }.observes('controller.shiftRightIndex'),
+
   showTagline: function () {
     return this.get('isSmallScreen') || !this.get('controller.isLoggedIn');
   }.property('isSmallScreen', 'controller.isLoggedIn'),
@@ -17,8 +27,6 @@ App.ShareView = Ember.View.extend(App.MetaTagMixin, App.HiddenNavMixin, {
   }.property('viewportWidth'),
 
   setViewportWidth: function () {
-    /*globals console*/
-    console.log($(window).width());
     this.set('viewportWidth', $(window).width());
   },
 
@@ -30,5 +38,5 @@ App.ShareView = Ember.View.extend(App.MetaTagMixin, App.HiddenNavMixin, {
 
   teardownWidthListener: function () {
     $(window).off('resize', this.proxiedSetViewportWidth);
-  }.on('willDestroyElement'),
+  }.on('willDestroyElement')
 });

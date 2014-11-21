@@ -28,7 +28,6 @@ App.NavigationController = Ember.Controller.extend({
     return App.get('auth.isLoggedIn');
   }.property('App.auth.isLoggedIn'),
 
-  /*globals console*/
   didLogIn: function () {
     if (this.get('isLoggedIn')) {
       this.onSignIn();

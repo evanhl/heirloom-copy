@@ -1,7 +1,14 @@
 <div class="share">
   <div class="icon"><span>{{owner.initials}}</span></div>
-  <p class="owner-tag"><span class="highlighted">{{owner.name}}</span> {{t 'share.photoMessage'}}</p>
-  <img {{bind-attr src=photo.largeVersion}} alt="">
+
+  {{#if isPhoto}}
+    {{partial 'sharedPhoto'}}
+  {{/if}}
+
+  {{#if isPhotoSet}}
+    {{partial 'sharedPhotoSet'}}
+  {{/if}}
+
   {{#if view.isSmallScreen}}
     <p class="rect-logo"></p>
   {{/if}}

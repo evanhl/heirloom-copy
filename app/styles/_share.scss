@@ -1,17 +1,35 @@
-.share {
-  display: table;
-  margin: 20px auto 0;
-  text-align: center;
+$share-photo-padding: 25px;
+
+.shared-photo {
+  padding: $share-photo-padding 0;
+  border-top: 1px solid $subtler-highlight-color;
+  border-bottom: 1px solid $subtler-highlight-color;
+  display: inline-block;
+  margin: 0 auto 40px;
 
   img {
-    padding: 25px 0;
-    border-top: 1px solid $subtler-highlight-color;
-    border-bottom: 1px solid $subtler-highlight-color;
     max-width: 100%;
     max-height: 500px;
-    display: table-cell;
-    margin: 0 auto 40px;
   }
+
+  .photo {
+    margin-bottom: 0;
+  }
+
+  .photo:last-of-type {
+    margin: 0;
+  }
+
+  &.multi {
+    max-width: ($photo-width * 4) + ($photo-margin * 3);
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}
+
+.share {
+  margin: 20px auto 0;
+  text-align: center;
 
   .icon {
     text-align: center;
@@ -40,6 +58,43 @@
 
   .app-badge {
     margin: 0 5px;
+  }
+
+  .arrow-cont {
+    width: 50px;
+    display: inline-block;
+    height: ($share-photo-padding * 2) + $photo-width;
+    vertical-align: top;
+    position: relative;
+
+    &:hover .right-arrow {
+      @include sprite-retina($right_arrow_hover, $right_arrow_hover-2x);
+    }
+
+    &:hover .left-arrow {
+      @include sprite-retina($left_arrow_hover, $left_arrow_hover-2x);
+    }
+  }
+
+  .left-arrow, .right-arrow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+  }
+
+  .left-arrow {
+    @include sprite-retina($left_arrow, $left_arrow-2x);
+
+    .arrow-cont:hover & {
+      @include sprite-retina($left_arrow_hover, $left_arrow_hover-2x);
+    }
+  }
+
+  .right-arrow {
+    @include sprite-retina($right_arrow, $right_arrow-2x);
   }
 }
 
