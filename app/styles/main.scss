@@ -196,6 +196,14 @@ img.detail {
   }
 }
 
+.lightbox {
+  z-index: 50;
+}
+
+.opaque-lightbox {
+  z-index: 99;
+}
+
 .lightbox, .opaque-lightbox {
   width: auto;
   height: auto;
@@ -205,7 +213,6 @@ img.detail {
   top: 0;
   position: fixed;
   overflow: hidden;
-  z-index: 99;
 
   .left-arrow, .right-arrow {
     line-height: 100vh;

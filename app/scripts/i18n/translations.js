@@ -66,6 +66,8 @@ Ember.I18n.translations = {
   'upload.modal.title': 'Upload Photos',
   'upload.modal.addButton': 'Add',
   'upload.confirmClose': 'You have unsaved uploads. Are you sure you want to close Uploads?',
+  'upload.maxFilesReached': 'You can only upload {{maxFiles}} photos at a time.',
+  'upload.photoIsOverMaxFilesLimit': 'You cannot upload any more files in this batch.',
 
   'albums.create': 'Create New Album',
   'albums.remove': 'Remove',

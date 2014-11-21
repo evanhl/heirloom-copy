@@ -1,5 +1,8 @@
+//= require toastableMixin
+
 // TODO: clean up view on destroy
-App.UploadModalView = Ember.View.extend({
+App.UploadModalView = Ember.View.extend(App.ToastableMixin, {
+  toastClasses: 'in-modal toast-error',
   didInsertElement: function () {
     var self = this;
 
@@ -13,6 +16,11 @@ App.UploadModalView = Ember.View.extend({
     this.controller.off('removeFakePhoto', this, this.removeFakePhoto);
     this.controller.on('addFakePhoto', this, this.addFakePhoto);
     this.controller.on('removeFakePhoto', this, this.removeFakePhoto);
+    this.get('controller.uploadToS3').on('maxFilesReached', this, this.maxFilesReached);
+  },
+
+  maxFilesReached: function (maxFiles) {
+    this.get('controller').trigger('toast', 'upload.maxFilesReached', { maxFiles: maxFiles });
   },
 
   addFakePhoto: function () {

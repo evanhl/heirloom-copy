@@ -11,6 +11,7 @@ App.Upload.UploadToS3 = Ember.Object.extend(Ember.Evented, {
     'image/pjpeg': '.jpg',
     'image/png': '.png'
   },
+  MAX_FILES_PER_BATCH: 25,
 
   dropzoneEl: null,
   totalFiles: 0,
@@ -71,7 +72,10 @@ App.Upload.UploadToS3 = Ember.Object.extend(Ember.Evented, {
       dictCancelUpload: "",
       dictRemoveFile: "",
       // TODO: add to I18n translations
-      dictDefaultMessage: 'Drag photos here<br><span class="sub">(or click)</span>'
+      dictDefaultMessage: 'Drag photos here<br><span class="sub">(or click)</span>',
+      maxFiles: this.MAX_FILES_PER_BATCH,
+      maxfilesreached: $.proxy(this.maxFilesReached, this),
+      dictMaxFilesExceeded: Ember.I18n.t('upload.photoIsOverMaxFilesLimit')
     });
     dropzone = $dropzoneEl.get(0).dropzone;
 
@@ -81,6 +85,12 @@ App.Upload.UploadToS3 = Ember.Object.extend(Ember.Evented, {
     dropzone.on('addedfile', $.proxy(this.onAddedFile, this));
     dropzone.on('removedfile', $.proxy(this.onRemovedFile, this));
     dropzone.on('error', $.proxy(this.onError, this));
+  },
+
+  maxFilesReached: function (files) {
+    if (files && files.length === this.MAX_FILES_PER_BATCH) {
+      this.trigger('maxFilesReached', this.MAX_FILES_PER_BATCH);
+    }
   },
 
   onProcessing: function () {
