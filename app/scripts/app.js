@@ -57,7 +57,9 @@ App.Router.map(function () {
   this.resource('ci', { path: 'conversation_invitations/:id' });
 
   this.resource('longShare', { path: 'share/:id' });
-  this.resource('share', { path: 's/:share_id' });
+  this.resource('share', { path: 's/:share_id' }, function () {
+    this.resource('sharePhoto', { path: 'photos/:photo_id' });
+  });
   this.route('closeWindow');
   this.route('home');
   this.route('registration');

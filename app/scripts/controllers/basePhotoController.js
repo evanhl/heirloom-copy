@@ -46,8 +46,13 @@ App.BasePhotoController = Ember.ObjectController.extend({
 
   adjacentPhoto: function (offset) {
     var index = this.get('currentIndex');
+    var adjacentIndex = index + offset;
 
-    return this.get('photosModel').objectAt(index + offset);
+    if (adjacentIndex < 0 || adjacentIndex >= this.get('photosModel.length')) {
+      return null;
+    }
+
+    return this.get('photosModel').objectAt(adjacentIndex);
   },
 
   currentIndex: function () {

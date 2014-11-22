@@ -37,7 +37,7 @@ App.ShareController = Ember.ObjectController.extend(Ember.Evented, {
     },
 
     enlarge: function (id) {
-      // this.transitionToRoute('sharePhoto', id);
+      this.transitionToRoute('sharePhoto', this.get('id'), id);
     }
   }
 });
