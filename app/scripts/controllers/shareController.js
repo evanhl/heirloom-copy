@@ -1,7 +1,9 @@
 App.ShareController = Ember.ObjectController.extend(Ember.Evented, {
   shiftRightIndex: 0,
-  maxVisiblePhotos: 4,
-  shiftIncrement: 3,
+  numVisiblePhotos: 4,
+  shiftIncrement: function () {
+    return this.get('numVisiblePhotos') - 1;
+  }.property('numVisiblePhotos'),
 
   isLoggedIn: function () {
     return App.get('auth.isLoggedIn');
@@ -24,8 +26,8 @@ App.ShareController = Ember.ObjectController.extend(Ember.Evented, {
   },
 
   maxShiftIndex: function () {
-    return Math.max(0, this.get('photos.length') - this.get('maxVisiblePhotos'));
-  }.property('maxVisiblePhotos', 'photos.length'),
+    return Math.max(0, this.get('photos.length') - this.get('numVisiblePhotos'));
+  }.property('numVisiblePhotos', 'photos.length'),
 
   actions: {
     pageLeft: function () {

@@ -2,7 +2,7 @@
 <div class="arrow-cont" {{action 'pageLeft'}}>
   <div class="left-arrow"></div>
 </div>
-<div class="shared-photo multi">
+<div class="shared-photo multi" {{bind-attr style=view.photoContainerStyle}}>
   {{#each photos}}{{render 'thumbPhoto' this unselectable=true}}{{/each}}
 </div>
 <div class="arrow-cont" {{action 'pageRight'}}>

@@ -5,7 +5,9 @@ App.ShareView = Ember.View.extend(App.MetaTagMixin, App.HiddenNavMixin, {
   metaTitle: 'Heirloom | For all the moments we love',
   metaTwitterCardType: 'photo',
   metaWaitUntil: ['metaImage'],
+  photoContainerWidth: null,
   HIDE_NAV_WIDTH: 512,
+  MAX_VISIBLE_PHOTOS: 6,
 
   shiftPhotos: function () {
     var photoWidth = Utils.getClassWidth('photo');
@@ -28,7 +30,32 @@ App.ShareView = Ember.View.extend(App.MetaTagMixin, App.HiddenNavMixin, {
 
   setViewportWidth: function () {
     this.set('viewportWidth', $(window).width());
+    this.setNumVisiblePhotos();
   },
+
+  setNumVisiblePhotos: function () {
+    var photoWidth = Utils.getClassWidth('photo');
+    var ARROW_WIDTHS = 100;
+    var numVis = Math.floor((this.get('viewportWidth') - ARROW_WIDTHS) / photoWidth);
+
+    numVis = Math.min(numVis, this.MAX_VISIBLE_PHOTOS);
+    this.set('controller.numVisiblePhotos', numVis);
+    this.setPhotoContainerWidth(numVis, photoWidth);
+  },
+
+  setPhotoContainerWidth: function (numPhotos, photoWidth) {
+    this.set('photoContainerWidth', numPhotos * photoWidth);
+  },
+
+  photoContainerStyle: function () {
+    if (this.get('viewportWidth') <= this.HIDE_NAV_WIDTH) {
+      return null;
+    }
+
+    if (this.get('photoContainerWidth')) {
+      return 'max-width: ' + this.get('photoContainerWidth') + 'px';
+    }
+  }.property('photoContainerWidth', 'viewportWidth'),
 
   setupWidthListener: function () {
     this.setViewportWidth();

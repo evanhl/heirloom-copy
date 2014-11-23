@@ -1,29 +1,44 @@
 $share-photo-padding: 25px;
 
 .shared-photo {
-  padding: $share-photo-padding 0;
-  border-top: 1px solid $subtler-highlight-color;
-  border-bottom: 1px solid $subtler-highlight-color;
-  display: inline-block;
-  margin: 0 auto 40px;
-
-  img {
-    max-width: 100%;
-    max-height: 500px;
-  }
+  margin: 2%;
 
   .photo {
-    margin-bottom: 0;
+    width: 46%;
+    height: 46%;
+    margin: 1%;
   }
 
-  .photo:last-of-type {
-    margin: 0;
-  }
+  @media #{$breakpoint-mobile-2} {
+    padding: $share-photo-padding 0;
+    border-top: 1px solid $subtler-highlight-color;
+    border-bottom: 1px solid $subtler-highlight-color;
+    display: inline-block;
+    margin: 0 auto 40px;
 
-  &.multi {
-    max-width: ($photo-width * 4) + ($photo-margin * 3);
-    overflow: hidden;
-    white-space: nowrap;
+    img {
+      max-width: 100%;
+      max-height: 500px;
+    }
+
+    .photo {
+      margin-left: 0;
+      margin-top: 0;
+      margin-right: $photo-margin;
+      margin-bottom: 0;
+      width: $photo-width;
+      height: $photo-width;
+    }
+
+    .photo:last-of-type {
+      margin: 0;
+    }
+
+    &.multi {
+      max-width: ($photo-width * 4) + ($photo-margin * 3);
+      overflow: hidden;
+      white-space: nowrap;
+    }
   }
 }
 
@@ -61,18 +76,21 @@ $share-photo-padding: 25px;
   }
 
   .arrow-cont {
-    width: 50px;
-    display: inline-block;
-    height: ($share-photo-padding * 2) + $photo-width;
-    vertical-align: top;
-    position: relative;
+    display: none;
+    @media #{$breakpoint-mobile-2} {
+      width: 50px;
+      display: inline-block;
+      height: ($share-photo-padding * 2) + $photo-width;
+      vertical-align: top;
+      position: relative;
 
-    &:hover .right-arrow {
-      @include sprite-retina($right_arrow_hover, $right_arrow_hover-2x);
-    }
+      &:hover .right-arrow {
+        @include sprite-retina($right_arrow_hover, $right_arrow_hover-2x);
+      }
 
-    &:hover .left-arrow {
-      @include sprite-retina($left_arrow_hover, $left_arrow_hover-2x);
+      &:hover .left-arrow {
+        @include sprite-retina($left_arrow_hover, $left_arrow_hover-2x);
+      }
     }
   }
 
