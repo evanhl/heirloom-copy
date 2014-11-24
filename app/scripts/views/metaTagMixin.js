@@ -6,13 +6,10 @@ App.MetaTagMixin = Ember.Mixin.create({
 
     this.removeMetaTags();
 
-    this.addMetaTag('twitter:card', this.get('metaTwitterCardType'));
-
     this.addMetaTag('og:title', this.get('metaTitle'));
     this.addMetaTag('twitter:title', this.get('metaTitle'));
 
-    this.addMetaTag('og:image', this.get('metaImage'));
-    this.addMetaTag('twitter:image:src', this.get('metaImage'));
+    this.addImageTags();
 
     this.addMetaTag('og:description', this.get('metaDescription'));
     this.addMetaTag('description', this.get('metaDescription'));
@@ -30,7 +27,25 @@ App.MetaTagMixin = Ember.Mixin.create({
       // tells Prerender.io that it can commence snapshotting.
       window.prerenderReady = true;
     }
-  }.on('didInsertElement').observes('metaImage', 'metaDescription', 'metaTitle'),
+  }.on('didInsertElement').observes('metaImages', 'metaDescription', 'metaTitle'),
+
+  addImageTags: function () {
+    if (this.get('metaImages.length') === 1) {
+      this.addMetaTag('twitter:card', 'photo');
+      this.addMetaTag('og:image', this.get('metaImages').objectAt(0));
+      this.addMetaTag('twitter:image:src', this.get('metaImages').objectAt(0));
+
+    } else if (this.get('metaImages.length') > 1) {
+      this.addMetaTag('twitter:card', 'gallery');
+      this.get('metaImages').forEach(function (image, index) {
+        this.addMetaTag('og:image', image);
+        this.addMetaTag('twitter:image' + index, image);
+      }, this);
+
+    } else {
+      this.addMetaTag('twitter:card', 'summary');
+    }
+  },
 
   getCanonical: function () {
     return HLConfig.canonicalDomain + window.location.pathname;
@@ -45,7 +60,6 @@ App.MetaTagMixin = Ember.Mixin.create({
     $('head meta[name="twitter:description"]').remove();
     $('head meta[name="twitter:image:src"]').remove();
     $('head meta[name="twitter:title"]').remove();
-    $('head meta[name="twitter:card"]').remove();
     $('head meta[name="twitter:card"]').remove();
   }.on('willDestroyElement'),
 

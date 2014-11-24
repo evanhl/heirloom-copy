@@ -1,10 +1,18 @@
 //= require ./metaTagMixin
 App.ShareView = Ember.View.extend(App.MetaTagMixin, App.HiddenNavMixin, {
   metaDescription: 'Fast, beautiful scanning for all the moments we love.',
-  metaImage: Ember.computed.alias('controller.photo.largeVersion'),
+  metaImages: function () {
+    if (this.get('controller.photo')) {
+      return [this.get('controller.photo.largeVersion')];
+    } else if (this.get('controller.photos')) {
+      return this.get('controller.photos').slice(0, 4).map(function (photo) {
+        return photo.get('largeVersion');
+      });
+    }
+  }.property('controller.photo', 'controller.photos.[]'),
   metaTitle: 'Heirloom | For all the moments we love',
   metaTwitterCardType: 'photo',
-  metaWaitUntil: ['metaImage'],
+  metaWaitUntil: ['metaImages'],
   photoContainerWidth: null,
   HIDE_NAV_WIDTH: 512,
   MAX_VISIBLE_PHOTOS: 6,
