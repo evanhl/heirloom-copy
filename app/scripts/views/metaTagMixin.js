@@ -30,12 +30,20 @@ App.MetaTagMixin = Ember.Mixin.create({
   }.on('didInsertElement').observes('metaImages', 'metaDescription', 'metaTitle'),
 
   addImageTags: function () {
-    if (this.get('metaImages.length') === 1) {
-      this.addMetaTag('twitter:card', 'photo');
-      this.addMetaTag('og:image', this.get('metaImages').objectAt(0));
-      this.addMetaTag('twitter:image:src', this.get('metaImages').objectAt(0));
+    var numImages = this.get('metaImages.length');
 
-    } else if (this.get('metaImages.length') > 1) {
+    if (numImages >= 1 && numImages <= 3) {
+      this.addMetaTag('twitter:card', 'photo');
+
+      this.get('metaImages').forEach(function (image, index) {
+        if (index === 0) {
+          this.addMetaTag('twitter:image:src', image);
+        }
+
+        this.addMetaTag('og:image', image);
+      }, this);
+
+    } else if (numImages > 3) {
       this.addMetaTag('twitter:card', 'gallery');
       this.get('metaImages').forEach(function (image, index) {
         this.addMetaTag('og:image', image);

@@ -10,7 +10,15 @@ App.ShareView = Ember.View.extend(App.MetaTagMixin, App.HiddenNavMixin, {
       });
     }
   }.property('controller.photo', 'controller.photos.[]'),
-  metaTitle: 'Heirloom | For all the moments we love',
+  metaTitle: function () {
+    var ownerName = this.get('controller.owner.name');
+
+    if (this.get('controller.photo')) {
+      return ownerName + ' ' + Ember.I18n.t('share.photoMessage');
+    } else {
+      return ownerName + ' ' + Ember.I18n.t('share.photosMessage', { count: this.get('controller.photos.length') });
+    }
+  }.property('controller.photo', 'controller.photos.[]', 'controller.owner'),
   metaTwitterCardType: 'photo',
   metaWaitUntil: ['metaImages'],
   photoContainerWidth: null,
