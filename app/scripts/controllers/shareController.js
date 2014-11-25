@@ -17,6 +17,7 @@ App.ShareController = Ember.ObjectController.extend(Ember.Evented, {
     return Utils.isIos() || Utils.isAndroid();
   }.property(),
 
+  // TODO: move this logic into ShareView
   shiftPhotos: function (offset) {
     var newIndex = this.get('shiftRightIndex') + offset;
     newIndex = Math.max(0, newIndex);

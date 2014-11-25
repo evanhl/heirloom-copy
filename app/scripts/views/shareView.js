@@ -73,6 +73,23 @@ App.ShareView = Ember.View.extend(App.MetaTagMixin, App.HiddenNavMixin, {
     }
   }.property('photoContainerWidth', 'viewportWidth'),
 
+  fixOverflow: function () {
+    // Handles case when a viewport width change causes shiftRightIndex to be too high. For example, imagine
+    // there are 10 photos and 4 visible with a shiftRightIndex of 6. The viewport expands and there are now 5 visible.
+    // This implies 11 photo slots (5 + 6), but there are only 10 photos. So we reset the shiftRightIndex to 5.
+    if (this.get('controller.numVisiblePhotos') + this.get('controller.shiftRightIndex') > this.get('controller.photos.length')) {
+      this.set('controller.shiftRightIndex', Math.max(this.get('controller.photos.length') - this.get('controller.numVisiblePhotos'), 0));
+    }
+  }.observes('controller.numVisiblePhotos', 'controller.photos.length', 'controller.shiftRightIndex'),
+
+  rightArrowEnabled: function () {
+    return this.get('controller.shiftRightIndex') + this.get('controller.numVisiblePhotos') < this.get('controller.photos.length');
+  }.property('controller.shiftRightIndex', 'controller.numVisiblePhotos', 'controller.photos.length'),
+
+  leftArrowEnabled: function () {
+    return this.get('controller.shiftRightIndex') > 0;
+  }.property('controller.shiftRightIndex'),
+
   setupWidthListener: function () {
     this.setViewportWidth();
     this.proxiedSetViewportWidth = $.proxy(this.setViewportWidth, this);
