@@ -34,6 +34,8 @@ Ember.I18n.translations = {
   'forgotPassword.submit': 'Send Email',
   'forgotPassword.success': 'An email with a link to reset your password has been sent.',
 
+  'resetPassword.message': 'Reset Password',
+
   "conversations.new.preLabel": "To:",
   "conversations.new.placeholder": "Name or email",
   "conversations.create": "Create Group",

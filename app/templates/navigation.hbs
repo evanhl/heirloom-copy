@@ -1,38 +1,46 @@
 <nav class="full-nav">
-  {{#if isLoggedIn}}
-    <ul>
-      {{#link-to 'photos'}}<div class="logo"></div>{{/link-to}}
-      {{#link-to 'photos' tagName='li' class='photos'}}{{#link-to 'photos'}}{{t 'moments'}}{{/link-to}}{{/link-to}}
-      {{#link-to 'albums' tagName='li' class='albums'}}{{#link-to 'albums'}}{{t 'albums'}}{{/link-to}}{{/link-to}}
-      {{#link-to 'conversations' tagName='li' class='conversations'}}{{#link-to 'conversations'}}{{t 'conversations'}}{{#if conversationsUnreadCount}}<span class="badge">{{conversationsCount}}</span>{{/if}}{{/link-to}}{{/link-to}}
-    </ul>
-
-    <div class="right">
-      <div class="user-dropdown">
-        <div class="icon"><span>{{initials}}</span></div>
-        <div class="menu">
-          <div class="username"><span>{{username}}</span></div>
-          <div class="down-arrow"></div>
-          <div class="menu-item mobile-only-1">{{#link-to 'photos'}}<span>{{t 'moments'}}</span>{{/link-to}}</div>
-          <div class="menu-item mobile-only-1">{{#link-to 'albums'}}<span>{{t 'albums'}}</span>{{/link-to}}</div>
-          <div class="menu-item mobile-only-1">{{#link-to 'conversations'}}<span>{{t 'conversations'}}</span>{{/link-to}}</div>
-          <div class="menu-item mobile-only-2" {{action 'upload'}}><span>{{t 'upload'}}</span></div>
-          <div class="menu-item signout" {{action 'signout'}}><span>Log Out</span></div>
-        </div>
-      </div>
-      <button class="secondary-action with-icon large upload-btn" {{action 'upload'}}><span class="upload-icon btn-icon"></span>{{t 'upload'}}</button>
-    </div>
-  {{else}}
+  {{#if logoNavOnly}}
     <ul class="not-logged-in">
       <div class="left">
         <div class="logo-with-text"></div>
       </div>
-      <div class="right">
-        <button class="no-fill signin" {{action 'signin'}}>{{t 'signin'}}</button>
-        <div class="divider"></div>
-        <button class="take-action signup" {{action 'register'}}>{{t 'signup'}}</button>
-      </div>
     </ul>
+  {{else}}
+    {{#if isLoggedIn}}
+      <ul>
+        {{#link-to 'photos'}}<div class="logo"></div>{{/link-to}}
+        {{#link-to 'photos' tagName='li' class='photos'}}{{#link-to 'photos'}}{{t 'moments'}}{{/link-to}}{{/link-to}}
+        {{#link-to 'albums' tagName='li' class='albums'}}{{#link-to 'albums'}}{{t 'albums'}}{{/link-to}}{{/link-to}}
+        {{#link-to 'conversations' tagName='li' class='conversations'}}{{#link-to 'conversations'}}{{t 'conversations'}}{{#if conversationsUnreadCount}}<span class="badge">{{conversationsCount}}</span>{{/if}}{{/link-to}}{{/link-to}}
+      </ul>
+
+      <div class="right">
+        <div class="user-dropdown">
+          <div class="icon"><span>{{initials}}</span></div>
+          <div class="menu">
+            <div class="username"><span>{{username}}</span></div>
+            <div class="down-arrow"></div>
+            <div class="menu-item mobile-only-1">{{#link-to 'photos'}}<span>{{t 'moments'}}</span>{{/link-to}}</div>
+            <div class="menu-item mobile-only-1">{{#link-to 'albums'}}<span>{{t 'albums'}}</span>{{/link-to}}</div>
+            <div class="menu-item mobile-only-1">{{#link-to 'conversations'}}<span>{{t 'conversations'}}</span>{{/link-to}}</div>
+            <div class="menu-item mobile-only-2" {{action 'upload'}}><span>{{t 'upload'}}</span></div>
+            <div class="menu-item signout" {{action 'signout'}}><span>Log Out</span></div>
+          </div>
+        </div>
+        <button class="secondary-action with-icon large upload-btn" {{action 'upload'}}><span class="upload-icon btn-icon"></span>{{t 'upload'}}</button>
+      </div>
+    {{else}}
+      <ul class="not-logged-in">
+        <div class="left">
+          <div class="logo-with-text"></div>
+        </div>
+        <div class="right">
+          <button class="no-fill signin" {{action 'signin'}}>{{t 'signin'}}</button>
+          <div class="divider"></div>
+          <button class="take-action signup" {{action 'register'}}>{{t 'signup'}}</button>
+        </div>
+      </ul>
+    {{/if}}
   {{/if}}
 </nav>
 <div class="nav-filler"></div>

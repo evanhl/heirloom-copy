@@ -28,6 +28,10 @@ App.NavigationController = Ember.Controller.extend({
     return App.get('auth.isLoggedIn');
   }.property('App.auth.isLoggedIn'),
 
+  logoNavOnly: function () {
+    return App.get('logoNavOnly');
+  }.property('App.logoNavOnly'),
+
   didLogIn: function () {
     if (this.get('isLoggedIn')) {
       this.onSignIn();

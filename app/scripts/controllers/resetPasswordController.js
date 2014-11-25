@@ -17,11 +17,11 @@ App.ResetPasswordController = Ember.Controller.extend({
         self.transitionToRoute('resetPasswordSuccess');
       }, function (response) {
         // TODO: handle error
-        var messages;
+        var errors;
         try {
-          messages = response.responseJSON.errors._messages;
+          errors = response.responseJSON.errors;
         } catch (e) { }
-        self.set('errors', messages);
+        self.set('errors', errors);
       });
     }
   }
