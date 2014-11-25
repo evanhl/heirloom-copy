@@ -14,15 +14,7 @@
         </p>
       </div>
 
-      {{#if errors._messages.length}}
-        <div>
-          {{#each errors._messages}}
-            <p class="hl-error">
-              *{{this}}
-            </p>
-          {{/each}}
-        </div>
-      {{/if}}
+      {{partial 'formErrors'}}
 
       <div>
         {{input value=name placeholder=(ts 'signup.name') classBinding="errors.name:hl-error :name"}}

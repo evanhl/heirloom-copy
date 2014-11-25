@@ -14,15 +14,7 @@
         </p>
       </div>
 
-      {{#if errors._messages.length}}
-        <div>
-          {{#each errors._messages}}
-            <p class="hl-error">
-              *{{this}}
-            </p>
-          {{/each}}
-        </div>
-      {{/if}}
+      {{partial 'formErrors'}}
 
       <div>
         {{input type="email" value=login placeholder=(ts 'signin.login') classBinding="error.login:error :login" }}
@@ -37,6 +29,7 @@
       </div>
 
       <div>
+        <p class="footer-text">{{t 'signin.forgotPassword'}}</p>
         <p class="footer-text">{{t 'signin.signUpInstead'}} {{#link-to 'registration'}}{{t 'signup'}}{{/link-to}}</p>
       </div>
 

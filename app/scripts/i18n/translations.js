@@ -17,6 +17,7 @@ Ember.I18n.translations = {
   'signin.button.signin': 'Sign In',
   'signin.button.facebook': 'Sign In with Facebook',
   'signin.signUpInstead': 'Don\'t have an account?',
+  'signin.forgotPassword': 'Forgot password? <a href="/forgot_password">Reset it here</a>',
 
   'signup.message': 'Sign up and bring the past to the present, effortlessly.',
   'signup.message.hasInvitation': 'Please sign up to join this group.',
@@ -28,6 +29,10 @@ Ember.I18n.translations = {
   'signup.button.facebook': 'Sign Up with Facebook',
   'signup.signInInstead': 'Already have an account?',
   'signup.boilerplate': 'By creating an account you agree to our <a href="/terms">Terms of Service</a> and <a href="/privacy">Privacy Policy</a>',
+
+  'forgotPassword.message': 'Forgot Password',
+  'forgotPassword.submit': 'Send Email',
+  'forgotPassword.success': 'An email with a link to reset your password has been sent.',
 
   "conversations.new.preLabel": "To:",
   "conversations.new.placeholder": "Name or email",

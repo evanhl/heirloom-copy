@@ -65,6 +65,7 @@ App.Router.map(function () {
   this.route('registration');
   this.route('signin');
   this.route('signout');
+  this.route('forgotPassword', { path: 'forgot_password' });
   this.route('resetPassword', { path: 'reset_password/:token' });
   this.route('resetPasswordSuccess', { path: 'reset_password/success' });
 });

@@ -1,0 +1,9 @@
+{{#if errors._messages.length}}
+  <div>
+    {{#each errors._messages}}
+      <p class="hl-error">
+        *{{this}}
+      </p>
+    {{/each}}
+  </div>
+{{/if}}
