@@ -1,6 +1,12 @@
 App.ShareController = Ember.ObjectController.extend(Ember.Evented, {
   shiftRightIndex: 0,
   numVisiblePhotos: 4,
+  isAddSuccess: false,
+
+  canAdd: function () {
+    return this.get('photo.policy.can_add') && this.get('isLoggedIn');
+  }.property('photo.policy.can_add', 'isLoggedIn'),
+
   shiftIncrement: function () {
     return this.get('numVisiblePhotos') - 1;
   }.property('numVisiblePhotos'),
@@ -41,6 +47,18 @@ App.ShareController = Ember.ObjectController.extend(Ember.Evented, {
 
     enlarge: function (id) {
       this.transitionToRoute('sharePhoto', this.get('id'), id);
+    },
+
+    save: function () {
+      var adapter = App.Share.adapter;
+      var self = this;
+      var share = this.get('model');
+
+      adapter.postNested(share, {}, 'add').then(function () {
+        self.set('isAddSuccess', true);
+      }, function () {
+        // TODO: handle failure
+      });
     }
   }
 });

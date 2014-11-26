@@ -11,7 +11,17 @@
 
   {{#if view.isSmallScreen}}
     <p class="rect-logo"></p>
+  {{else}}
+    {{#if isAddSuccess}}
+      <p class="highlighted">{{t 'share.saveSuccess'}}</p>
+    {{else}}
+      {{#if canAdd}}
+        <p>{{t 'share.savePhotoMessage'}}</p>
+        <p><button class="take-action" {{action 'save'}}>{{t 'share.savePhoto'}}</button></p>
+      {{/if}}
+    {{/if}}
   {{/if}}
+
   {{#if view.showTagline}}
     <p class="tagline">
       {{t 'share.tagline'}}

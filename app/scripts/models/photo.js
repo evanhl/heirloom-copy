@@ -5,6 +5,7 @@ App.Photo = Ember.Model.extend({
   state: Ember.attr(),
   created_at: Ember.attr(Date),
   versions: Ember.attr(),
+  policy: Ember.attr(),
   dataUri: null,
 
   isReady: function () {
