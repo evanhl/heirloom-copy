@@ -12,9 +12,9 @@
 
 @import 'main';
 @import 'normalize-scss/_normalize';
-@import 'spritesheetPreLaunch';
-@import 'spritesheetPreLaunch-2x';
-@import 'preLaunch';
+@import 'spritesheetHomePage';
+@import 'spritesheetHomePage-2x';
+@import 'homepage';
 
 // lifted from https://github.com/Ensighten/spritesmith/issues/19
 @mixin sprite-background-size($sprite) {

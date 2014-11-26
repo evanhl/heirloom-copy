@@ -151,7 +151,7 @@ module.exports = function(grunt) {
       },
       server: '.tmp',
       '1xSprites': '<%= config.app %>/images/sprites-1x/*2x.png',
-      '1xSpritesPreLaunch': '<%= config.app %>/images/spritesPreLaunch-1x/*2x.png'
+      '1xSpritesHomePage': '<%= config.app %>/images/spritesHomePage-1x/*2x.png'
     },
 
     // Make sure code styles are up to par and there are no obvious mistakes
@@ -289,7 +289,6 @@ module.exports = function(grunt) {
       },
       html: [
         '<%= config.app %>/index.html',
-        '<%= config.app %>/preLaunch.html',
         '<%= config.app %>/faq.html',
         '<%= config.app %>/privacy.html',
         '<%= config.app %>/terms.html',
@@ -438,14 +437,14 @@ module.exports = function(grunt) {
           return newPath;
         }
       },
-      '1xSpritesPreLaunch': {
+      '1xSpritesHomePage': {
         expand: true,
         dot: true,
         cwd: '<%= config.app %>/images/',
         src: [
-          'spritesPreLaunch-1x/*2x.png'
+          'spritesHomePage-1x/*2x.png'
         ],
-        dest: 'spritesPreLaunch-1x/',
+        dest: 'spritesHomePage-1x/',
         rename: function (dest, src, opts) {
           var newPath = opts.cwd + dest + src.substring(src.lastIndexOf('/') + 1).replace('-2x', '');
           grunt.log.write(newPath + '\n');
@@ -523,13 +522,9 @@ module.exports = function(grunt) {
 
     // sprockets for JS dependency management
     directives: {
-      foo: {
+      main: {
         src: '<%= config.app %>/scripts/main.js',
         dest: '.tmp/mainWithoutConfig.js'
-      },
-      bar: {
-        src: '<%= config.app %>/scripts/preLaunch.js',
-        dest: '.tmp/preLaunch.js'
       }
     },
 
@@ -552,20 +547,20 @@ module.exports = function(grunt) {
         cssFormat: 'scss',
         padding: 2
       },
-      '1xPreLaunch': {
-        src: ['<%= config.app %>/images/spritesPreLaunch-1x/*.png'],
-        destImg: '<%= config.app %>/images/spritesheetPreLaunch.png',
-        destCSS: '<%= config.app %>/styles/_spritesheetPreLaunch.scss',
-        imgPath: '/images/spritesheetPreLaunch.png',
+      '1xHomePage': {
+        src: ['<%= config.app %>/images/spritesHomePage-1x/*.png'],
+        destImg: '<%= config.app %>/images/spritesheetHomePage.png',
+        destCSS: '<%= config.app %>/styles/_spritesheetHomePage.scss',
+        imgPath: '/images/spritesheetHomePage.png',
         algorithm: 'binary-tree',
         cssFormat: 'scss',
         padding: 1
       },
-      '2xPreLaunch': {
-        src: ['<%= config.app %>/images/spritesPreLaunch-2x/*.png'],
-        destImg: '<%= config.app %>/images/spritesheetPreLaunch-2x.png',
-        destCSS: '<%= config.app %>/styles/_spritesheetPreLaunch-2x.scss',
-        imgPath: '/images/spritesheetPreLaunch-2x.png',
+      '2xHomePage': {
+        src: ['<%= config.app %>/images/spritesHomePage-2x/*.png'],
+        destImg: '<%= config.app %>/images/spritesheetHomePage-2x.png',
+        destCSS: '<%= config.app %>/styles/_spritesheetHomePage-2x.scss',
+        imgPath: '/images/spritesheetHomePage-2x.png',
         algorithm: 'binary-tree',
         cssFormat: 'scss',
         padding: 2
@@ -581,13 +576,13 @@ module.exports = function(grunt) {
         src: '<%= config.app %>/images/sprites-2x/*.png',
         dest: '<%= config.app %>/images/sprites-1x/',
       },
-      resizePreLaunch: {
+      resizeHomePage: {
         options: {
           width: '50%',
           height: '50%'
         },
-        src: '<%= config.app %>/images/spritesPreLaunch-2x/*.png',
-        dest: '<%= config.app %>/images/spritesPreLaunch-1x/',
+        src: '<%= config.app %>/images/spritesHomePage-2x/*.png',
+        dest: '<%= config.app %>/images/spritesHomePage-1x/',
       }
     },
 
@@ -641,8 +636,8 @@ module.exports = function(grunt) {
     'image_resize',
     'copy:1xSprites',
     'clean:1xSprites',
-    'copy:1xSpritesPreLaunch',
-    'clean:1xSpritesPreLaunch',
+    'copy:1xSpritesHomePage',
+    'clean:1xSpritesHomePage',
     'sprite'
   ]);
 
