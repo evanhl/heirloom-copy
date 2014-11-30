@@ -1,5 +1,5 @@
-<div class="first">
-  <a name="first"></a>
+<div class="hp-intro">
+  <a name="intro"></a>
   <video autoplay loop preload="auto" poster="https://www-heirloom-production-herokuapp-com.global.ssl.fastly.net/images/video_placeholder_loading_small.jpg">
     <source src="https://d1g8wumrh1onzl.cloudfront.net/media/HLM_Long_Loop_422_h264_4mb_faststart_2.mp4" type="video/mp4">
     <div class="img-cont">
@@ -23,7 +23,6 @@
 
         <div class="hp-action">
           {{#link-to 'registration'}}<span class="hp-notify hp-larger">{{t 'signup'}}</span>{{/link-to}}
-          {{!-- <a href="#third" class="jump-to-notify"><span class="hp-notify">Notify Me</span></a> --}}
         </div>
       </div>
     </div>
@@ -37,13 +36,13 @@
     </div>
 
     <div class="hp-bottom">
-      <a href="#second"><span class="hp-next"></span></a>
+      <a href="#product"><span class="hp-next"></span></a>
     </div>
   </div>
 </div>
 
-<div class="second">
-  <a name="second"></a>
+<div class="hp-product">
+  <a name="product"></a>
   <div class="flex-height-cont">
     <div class="right-section">
       <div class="hp-phone-copy">
@@ -63,14 +62,29 @@ Heirloom enables you to easily and beautifully digitize your paper photos. With 
     </div>
 
     <div class="hp-bottom">
-      <a href="#third"><span class="hp-next-blk"></span></a>
+      <a href="#story"><span class="hp-next-blk"></span></a>
     </div>
 
   </div>
 </div>
 
-<div class="third">
-  <a name="third"></a>
+<div class="hp-story">
+  <a name="story"></a>
+  <div class="hp-section-top">
+    <h2>Discover the past</h2>
+    <p class="description">Heirloom joined Andrew on his trip to Zakynthos, Greece. There he spent some time finding pieces of his past.</p>
+    <p class="description">Watch the Video</p>
+  </div>
+  <div class="hp-center">
+    <a href="javascript:void(0);" {{action 'showStoryVideo'}}><span class="hp-play"></span></a>
+  </div>
+  <div class="hp-bottom">
+    <a href="#footer"><span class="hp-next"></span></a>
+  </div>
+</div>
+
+<div class="hp-footer">
+  <a name="footer"></a>
   <div class="hp-notify-cont"></div>
   <div class="hp-footer-links">
     <a href="/press"><h4>Press</h4></a>
@@ -86,7 +100,7 @@ Heirloom enables you to easily and beautifully digitize your paper photos. With 
   <div class="hp-copyright">
     <span>Copyright &copy; 2014 <a href="mailto:hello@heirloom.net" target="_blank">Say Hello!</a></span>
   </div>
-  <a href="#first"><div class="hp-footer-logo"></div></a>
+  <a href="#intro"><div class="hp-footer-logo"></div></a>
   <div class="shoutouts"><a href="https://mixpanel.com/f/partner"><img src="//cdn.mxpnl.com/site_media/images/partner/badge_light.png" alt="Mobile Analytics" /></a></div>
 </div>
 {{#if showVideo}}
@@ -94,7 +108,18 @@ Heirloom enables you to easily and beautifully digitize your paper photos. With 
     <div class="video-cont-cont">
       <div class="video-cont">
         <div class="hp-height-filler"></div>
-<iframe src="//www.youtube.com/embed/zrGh1kg_vV4?autoplay=1&rel=0" scrolling="auto" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"  id="widget2"></iframe>
+  <iframe src="//www.youtube.com/embed/zrGh1kg_vV4?autoplay=1&rel=0" scrolling="auto" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"  id="widget2"></iframe>
+      </div>
+    </div>
+  </div>
+  <div class="exit-video" {{action 'hideVideo'}}></div>
+{{/if}}
+{{#if showStoryVideo}}
+  <div class="hp-lightbox" {{action 'hideVideo'}}>
+    <div class="video-cont-cont">
+      <div class="video-cont">
+        <div class="hp-height-filler"></div>
+  <iframe src="//www.youtube.com/embed/cOi9EEqE_JU?autoplay=1&rel=0" scrolling="auto" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"  id="widget2"></iframe>
       </div>
     </div>
   </div>

@@ -19,7 +19,7 @@ $alt-text-color: rgb(55,53,54);
   box-shadow: none;
 }
 
-.first {
+.hp-intro {
   margin: 0;
   padding: 0;
   position: relative;
@@ -52,15 +52,76 @@ background-size: auto 576px;
   }
 }
 
-.second {
-  width: 100%;
-  background-image: url(/images/homepage-product-bg.jpg);
+.hp-story {
+  background-image: url(/images/greece_mobile.jpg);
   background-size: cover;
-  border-top: 2px solid $highlight-color;
+  background-position: 50% 50%;
+
+  @media #{$breakpoint-mobile-2} {
+    background-image: url(/images/greece_placeholder_small.jpg);
+  }
+
+  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 1024px), (min-resolution: 192dpi) and (min-width: 1024px) {
+    background-image: url(/images/greece_placeholder_large.jpg);
+  }
+
+
+  h2, p.description {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    max-width: 440px;
+  }
+
+  h2 {
+    color: white;
+    text-align: center;
+  }
+
+  p.description {
+    color: white;
+    text-align: center;
+  }
+
+  .hp-section-top {
+    position: absolute;
+    bottom: 50%;
+    margin-bottom: 20px;
+    left: 0;
+    right: 0;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+  }
+}
+
+.hp-story, .hp-product {
   height: 600px;
   min-height: 600px;
   height: 100vh; /* 790 / 1404px*/
   position: relative;
+  border-top: 2px solid $highlight-color;
+}
+
+.hp-product {
+  width: 100%;
+  background-image: url(/images/homepage-product-bg.jpg);
+  background-size: cover;
+
+  h2 {
+    color: $alt-text-color;
+    max-width: 380px;
+  }
 
   .left-section {
     position: absolute;
@@ -142,6 +203,11 @@ background-size: auto 576px;
   }
 }
 
+.homepage p.description {
+  font-size: 1.25em;
+  line-height: 1.6em;
+}
+
 .hp-phone-copy {
   display: table-cell;
   vertical-align: middle;
@@ -151,9 +217,7 @@ background-size: auto 576px;
   p.description {
     width: 70%;
     max-width: 410px;
-    line-height: 1.6em;
     color: $alt-text-color;
-    font-size: 1.25em;
     margin-bottom: 1.9em;
   }
 
@@ -176,7 +240,7 @@ background-size: auto 576px;
   }
 }
 
-.third {
+.hp-footer {
   width: 100%;
   border-top: 2px solid $highlight-color;
   background: white;
@@ -619,12 +683,11 @@ input.hp-submit {
   }
 
   h2 {
-    color: $alt-text-color;
     text-transform: uppercase;
     letter-spacing: 3px;
     font-size: 1.7em;
     line-height: 1.3em;
-    max-width: 380px;
+    font-weight: 600;
 
     @media #{$tablet-size} {
       padding-left: 20px;
@@ -634,7 +697,7 @@ input.hp-submit {
     }
 
     @media #{$breakpoint-mobile-2} {
-      font-size: 1.9em;
+      font-size: 2em;
     }
   }
 
