@@ -61,7 +61,7 @@ module.exports = function(grunt) {
       },
       templates: {
         files: ['<%= config.app %>/templates/**/*.hbs'],
-        tasks: ['emberTemplates']
+        tasks: ['compileTemplates']
       },
       livereload: {
         options: {
@@ -423,6 +423,16 @@ module.exports = function(grunt) {
           'fonts/*.woff'
         ]
       },
+      // copy the templates so that we can CDN-ize any static resource URLs before they are compiled into a JS file
+      templates: {
+        expand: true,
+        dot: true,
+        cwd: '<%= config.app %>/templates',
+        dest: '.tmp/templates/',
+        src: [
+          '**/*.hbs'
+        ]
+      },
       '1xSprites': {
         expand: true,
         dot: true,
@@ -456,19 +466,19 @@ module.exports = function(grunt) {
     // Run some tasks in parallel to speed up build process
     concurrent: {
       server: [
-        'emberTemplates',
+        'compileTemplates',
         'resolveDependencies',
         'sass:server',
         'copy:styles'
       ],
       test: [
-        'emberTemplates',
+        'compileTemplates',
         'resolveDependencies',
         'sass:server',
         'copy:styles'
       ],
       dist: [
-        'emberTemplates',
+        'compileTemplates',
         'resolveDependencies',
         'sass',
         'copy:styles',
@@ -593,6 +603,9 @@ module.exports = function(grunt) {
       },
       dist: {
         src: ['<%= config.dist %>/*.html', '<%= config.dist %>/styles/**/*.css']
+      },
+      templates: {
+        src: ['.tmp/templates/**/*.hbs']
       }
     }
   });
@@ -644,6 +657,12 @@ module.exports = function(grunt) {
   grunt.registerTask('resolveDependencies', [
     'directives',
     'concat:config'
+  ]);
+
+  grunt.registerTask('compileTemplates', [
+    'copy:templates',
+    'cdn:templates',
+    'emberTemplates'
   ]);
 
   grunt.registerTask('build', [
