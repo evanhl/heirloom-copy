@@ -1,6 +1,8 @@
+//= require user
+
 App.Post = Ember.Model.extend({
   id: Ember.attr(Number),
-  owner: Ember.belongsTo(App.Session, { key: 'owner', embedded: true }),
+  owner: Ember.belongsTo(App.User, { key: 'owner', embedded: true }),
   message: Ember.attr(),
   photos: Ember.hasMany('App.PostPhoto', { key: 'photos', embedded: true }),
   photo_ids: Ember.attr(),

@@ -1,7 +1,9 @@
+//= require user
+
 App.Conversation = Ember.Model.extend({
   id: Ember.attr(Number),
   name: Ember.attr(),
-  owner: Ember.belongsTo(App.Session, { key: 'owner', embedded: true }),
+  owner: Ember.belongsTo(App.User, { key: 'owner', embedded: true }),
   is_owner: Ember.attr(Boolean),
   policy: Ember.attr(),
   has_unread: Ember.attr(Boolean),

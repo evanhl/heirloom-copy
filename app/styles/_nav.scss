@@ -164,15 +164,19 @@ $user-dropdown-height: 40px;
     margin-left: 32px;
   }
 
-  .icon {
+  .icon, .avatar {
     border-radius: $user-dropdown-height / 2;
-    border: 1px solid $subtle-highlight-color;
-    background: white;
     width: $user-dropdown-height;
     height: $user-dropdown-height;
     position: absolute;
     top: 0;
     z-index: 3;
+    border: 1px solid $subtle-highlight-color;
+    overflow: hidden;
+  }
+
+  .icon {
+    background: white;
 
     span {
       display: inline-block;

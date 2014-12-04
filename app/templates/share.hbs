@@ -1,5 +1,5 @@
 <div class="share">
-  <div class="icon"><span>{{owner.initials}}</span></div>
+  {{render 'userIcon' owner iconSize="xs"}}
 
   {{#if isPhoto}}
     {{partial 'sharedPhoto'}}

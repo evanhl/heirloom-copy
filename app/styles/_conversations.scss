@@ -131,13 +131,17 @@ a.active .convo, .convo.highlighted {
   overflow-y: scroll;
 }
 
-.convo .icon {
-  float: left;
+.convo {
+  .icon, .avatar {
+    float: left;
+  }
 }
 
-.convo-members .icon {
-  display: inline-block;
-  margin-right: 5px;
+.convo-members {
+  .icon, .avatar {
+    display: inline-block;
+    margin-right: 5px;
+  }
 }
 
 
@@ -159,10 +163,11 @@ $share-icon-size: 80px;
 }
 
 .convo, .post, .select2-container, .convo-members {
-  .icon {
+  .icon, .avatar {
     height: $convo-icon-size;
     width: $convo-icon-size;
     border-radius: $convo-icon-size / 2;
+    overflow: hidden;
 
     span {
       padding-top: ($convo-icon-size - 14px) / 2;
@@ -200,7 +205,7 @@ $share-icon-size: 80px;
   padding-bottom: 20px;
   border-bottom: 1px $subtler-highlight-color solid;
 
-  .icon {
+  .icon, .avatar {
     position: absolute;
     left: -($convo-icon-size + 20px);
   }

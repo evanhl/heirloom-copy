@@ -24,6 +24,10 @@ App.NavigationController = Ember.Controller.extend({
     return App.get('auth.currentSession.initials');
   }.property('App.auth.currentSession.initials'),
 
+  currentSession: function () {
+    return App.get('auth.currentSession');
+  }.property('App.auth.currentSession'),
+
   isLoggedIn: function () {
     return App.get('auth.isLoggedIn');
   }.property('App.auth.isLoggedIn'),

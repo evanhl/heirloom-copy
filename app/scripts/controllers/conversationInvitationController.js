@@ -1,8 +1,4 @@
 App.ConversationInvitationController = Ember.ObjectController.extend({
-  initials: function () {
-    return Utils.getInitials(this.get('conversation_preview.owner.name'));
-  }.property('conversation_preview'),
-
   invitee: Ember.computed.alias('conversation_preview.owner.name'),
 
   isLoggedIn: function () {

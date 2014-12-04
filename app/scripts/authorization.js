@@ -8,6 +8,8 @@ App.Authorization = Ember.Object.extend({
     var lsCurrentSession;
     var basilCurrentSession;
     var currentSession;
+    var sessionModel;
+    var self = this;
 
     this._super();
 
@@ -20,7 +22,15 @@ App.Authorization = Ember.Object.extend({
     currentSession = basilCurrentSession || lsCurrentSession;
 
     if (currentSession) {
-      this.set('currentSession', App.Session.create(JSON.parse(currentSession)));
+      sessionModel = App.Session.createFromJson(JSON.parse(currentSession));
+      this.set('currentSession', sessionModel);
+      this.setupHeaders();
+
+      if (!this.get('currentSession.avatar_photo')) {
+        this.get('currentSession').reload().then(function () {
+          self.persistSession();
+        });
+      }
     }
   },
 
@@ -30,7 +40,7 @@ App.Authorization = Ember.Object.extend({
     return !!this.get('authToken');
   }.property('authToken'),
 
-  currentSessionChanged: function () {
+  setupHeaders: function () {
     var self = this;
 
     Ember.$.ajaxPrefilter(function(options, originalOptions, jqXhr) {
@@ -38,7 +48,14 @@ App.Authorization = Ember.Object.extend({
         jqXhr.setRequestHeader("X-User-Token", self.get('authToken'));
       }
     });
+  },
 
+  currentSessionChanged: function () {
+    this.setupHeaders();
+    this.persistSession();
+  }.observes('currentSession').on('init'),
+
+  persistSession: function () {
     if (this.get('currentSession')) {
       App.get('basil').set('currentSession', JSON.stringify(this.get('currentSession').toJSON()));
     } else {
@@ -47,8 +64,7 @@ App.Authorization = Ember.Object.extend({
         localStorage.removeItem('currentSession');
       } catch (err) {}
     }
-
-  }.observes('currentSession').on('init')
+  }
 });
 
 App.set('auth', App.Authorization.create());

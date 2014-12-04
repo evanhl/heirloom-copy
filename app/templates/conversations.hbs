@@ -15,7 +15,7 @@
             {{#if has_unread}}
               <div class="dot"></div>
             {{/if}}
-            <div class="icon"><span>{{owner.initials}}</span></div>
+            {{render 'userIcon' owner}}
             <div class="details">
               <div class="names">{{name}}</div>
               <div class="sub">{{fromNow valueBinding="last_post_at"}}</div>

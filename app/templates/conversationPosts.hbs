@@ -1,8 +1,6 @@
 <div class="convo-members">
   {{#each participants}}
-    <div class="icon" {{bind-attr title=name}} {{bind-attr alt=name}}>
-      <span>{{initials}}</span>
-    </div>
+    {{render 'userIcon' this}}
   {{/each}}
 </div>
 

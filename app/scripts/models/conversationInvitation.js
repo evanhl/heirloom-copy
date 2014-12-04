@@ -1,3 +1,5 @@
+//= require user
+
 App.ConversationInvitation = Ember.Model.extend({
   id: Ember.computed.alias('token'),
   conversation_id: Ember.attr(Number),
@@ -5,7 +7,8 @@ App.ConversationInvitation = Ember.Model.extend({
   token: Ember.attr(),
   state: Ember.attr(),
   policy: Ember.attr(),
-  to: Ember.belongsTo(App.Session, { key: 'to', embedded: true }),
+  to: Ember.belongsTo(App.User, { key: 'to', embedded: true }),
+  from: Ember.belongsTo(App.User, { key: 'from', embedded: true }),
   isInvalid: function () {
     return this.get('isLoaded') && !this.get('state');
   }.property('isLoaded', 'state')

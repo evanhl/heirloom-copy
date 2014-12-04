@@ -1,0 +1,1 @@
+App.UserIconController = Ember.ObjectController.extend();

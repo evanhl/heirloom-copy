@@ -13,7 +13,7 @@
 {{/if}}
 </div>
 <div class="post-body">
-  <div class="icon"><span>{{owner.initials}}</span></div>
+  {{render 'userIcon' owner}}
   <div class="post-author">{{owner.name}}</div>
   <div class="post-time">{{fromNow valueBinding="created_at"}}</div>
   {{#if message}}
