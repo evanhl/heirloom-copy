@@ -43,9 +43,7 @@ App.ConversationPostsController = Ember.ArrayController.extend(Ember.Evented, In
     var records = Ember.RecordArray.create({ modelClass: App.ConversationInvitation, _query: {}, container: false });
 
     return adapter.findNestedQuery(this.get('conversation.model'), App.ConversationInvitation, 'invitations', records, {}).then(function () {
-      var participants = records.map(function (invitation) {
-        return invitation.get('to');
-      }).compact();
+      var participants = records.mapBy('recipient').compact();
 
       self.set('participants', participants);
     });
