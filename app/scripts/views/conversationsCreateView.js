@@ -1,6 +1,10 @@
 App.ConversationsCreateView = Ember.View.extend({
   classNames: 'main-col-content',
-  RESULT_TEMPLATE: '<div class="icon"><span>{{initials}}</span></div><div class="name">{{name}}</div><div class="sub">{{username}}</div>',
+  // Maybe one day Ember will support manually rendering a template to a string.
+  // See this discussion thread: http://discuss.emberjs.com/t/how-to-render-a-template-to-a-string/6136/6
+  ICON_TEMPLATE: '<div class="icon"><span>{{initials}}</span>',
+  AVATAR_TEMPLATE: '<div class="avatar"><img src="{{avatarUrl}}"></div>',
+  NAME_TEMPLATE: '</div><div class="name">{{name}}</div><div class="sub">{{username}}</div>',
 
   initMultiSelect: function () {
     var self = this;
@@ -23,11 +27,8 @@ App.ConversationsCreateView = Ember.View.extend({
           return { results: data };
         }
       },
-      formatResult: function (result) {
-        return self.RESULT_TEMPLATE
-          .replace('{{initials}}', Utils.getInitials(result.name || ''))
-          .replace('{{name}}', result.name || '')
-          .replace('{{username}}', result.username || '');
+      formatResult: function (contact) {
+        return self.genContactHtml(contact);
       },
       formatSelection: function (selection) {
         return selection.name;
@@ -52,6 +53,25 @@ App.ConversationsCreateView = Ember.View.extend({
       self.controller.set('selectedContacts', $(this).select2('val'));
     });
   }.on('didInsertElement'),
+
+  genContactHtml: function (contact) {
+    var iconHtml;
+    var nameHtml;
+
+    if (contact.avatar_photo && contact.avatar_photo.versions && contact.avatar_photo.versions.xxs) {
+      iconHtml = this.AVATAR_TEMPLATE
+        .replace('{{avatarUrl}}', contact.avatar_photo.versions.xxs.url);
+    } else {
+      iconHtml = this.ICON_TEMPLATE
+        .replace('{{initials}}', Utils.getInitials(contact.name || ''));
+    }
+
+    nameHtml = this.NAME_TEMPLATE
+      .replace('{{name}}', contact.name || '')
+      .replace('{{username}}', contact.username || '');
+
+    return iconHtml + nameHtml;
+  },
 
   destroyMultiSelect: function () {
     this.$('.contacts').select2('destroy');
