@@ -51,13 +51,17 @@
       App.setupForTesting();
       App.injectTestHelpers();
 
-      function stubEndpointForHttpRequest(url, json) {
-        $.mockjax({
-          url: url,
-          dataType: 'json',
-          responseText: json
-        });
-      }
+      // handles session reload within authorization.js
+      $.mockjax({
+        url: 'https://api.hlstage.com/me',
+        responseText: {
+          'id': 11022,
+          'username': 'savion_brown',
+          'name': 'Alf Wintheiser Sr.',
+          'email': 'jayne@dooley.info',
+          'authentication_token': 'tuoo6XoHzTR3Npzp8xRw'
+        }
+      });
 
       $.mockjaxSettings.logging = false;
       $.mockjaxSettings.responseTime = 0;

@@ -39,7 +39,8 @@
 
           $.mockjax({
             url: 'https://api.hlstage.com/session',
-            data: JSON.stringify({ login: 'foo', password: 'bar' }),
+            data: JSON.stringify({ login: 'foo', password: 'bar', avatar_photo: null }),
+            type: 'POST',
             responseText: {
               'id': 11022,
               'username': 'savion_brown',
@@ -142,10 +143,11 @@
             type: 'post',
             // TODO: remove parameter order dependency
             data: JSON.stringify({
-              password: 'b1gb1rd',
               name: 'Big Bird',
               username: 'bigbird123',
-              email: 'abc@example.com'
+              password: 'b1gb1rd',
+              email: 'abc@example.com',
+              avatar_photo: null
             }),
             responseText: {
               name: 'Big Bird',
@@ -158,6 +160,11 @@
 
           $.mockjax({
             url: 'https://api.hlstage.com/me/photos',
+            responseText: []
+          });
+
+          $.mockjax({
+            url: 'https://api.hlstage.com/me/conversations_summary',
             responseText: []
           });
         });
