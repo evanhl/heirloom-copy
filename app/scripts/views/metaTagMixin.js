@@ -12,6 +12,7 @@ App.MetaTagMixin = Ember.Mixin.create({
     this.addImageTags();
 
     this.addMetaTag('og:description', this.get('metaDescription'));
+    this.addMetaTag('og:type', this.get('heirloomapp:photo'));
     this.addMetaTag('description', this.get('metaDescription'));
     this.addMetaTag('twitter:description', this.get('metaDescription'));
 
