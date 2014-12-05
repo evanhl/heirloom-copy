@@ -176,7 +176,7 @@ $share-icon-size: 80px;
 }
 
 .share {
-  .icon {
+  .icon, .avatar {
     height: $share-icon-size;
     width: $share-icon-size;
     border-radius: $share-icon-size / 2;

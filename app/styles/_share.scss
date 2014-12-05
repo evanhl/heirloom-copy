@@ -46,9 +46,10 @@ $share-photo-padding: 25px;
   margin: 20px auto 0;
   text-align: center;
 
-  .icon {
+  .icon, .avatar {
     text-align: center;
     margin: 0 auto;
+    overflow: hidden;
   }
 
   p {
