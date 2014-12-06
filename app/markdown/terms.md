@@ -1,3 +1,17 @@
+# Update Regarding Privacy Concerns
+
+**Update: December 6, 2014**
+
+Welcome to Heirloom. We are committed to being open and transparent with our users. We’re currently in the process of rewriting our End User agreement into plain English so that it’s easier to understand. The rewritten agreement will also include better and clearer protections for users. In the meantime, we’ve included some of the most important principles in our End User License Agreement here. Feel free to read the longer version when you’re done and email us at [feedback@heirloom.net](mailto:feedback@heirloom.net) if you have any questions.
+
+1. We will never sell your data to any third party for any reason.
+2. We will never republish your content without your explicit permission for any purpose.
+3. We do track user behavior, but it is anonymous and not connected to any personally identifiable information. We use this only to understand how users are using the product so that we can make improvements.
+4. We ask for access to your camera and photos so you can scan, upload, and save photos.
+5. We ask for access to your contacts so you can share in private groups on Heirloom. We will never contact anyone in your address book without your explicit permission.
+
+Thanks for using Heirloom.
+
 # END USER LICENSE AGREEMENT AND TERMS OF SERVICE
 
 **Last Updated: September 26, 2014**
