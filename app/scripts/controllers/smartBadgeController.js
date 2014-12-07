@@ -5,13 +5,5 @@ App.SmartBadgeController = Ember.Controller.extend({
 
   isIos: function () {
     return Utils.isIos();
-  }.property(),
-
-  iosStoreLink: function () {
-    return Utils.IOS_STORE_LINK;
-  }.property(),
-
-  androidStoreLink: function () {
-    return Utils.ANDROID_STORE_LINK;
-  }.property(),
+  }.property()
 });

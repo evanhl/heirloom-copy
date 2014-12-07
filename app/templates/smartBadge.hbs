@@ -1,6 +1,6 @@
 {{#if isIos}}
-  <a {{bind-attr href=iosStoreLink}} target="_blank"><span class="app-store"></span></a>
+  {{render 'iosBadge'}}
 {{/if}}
 {{#if isAndroid}}
-  <a {{bind-attr href=androidStoreLink}} target="_blank"><span class="play-store"></span></a>
+  {{render 'androidBadge'}}
 {{/if}}
