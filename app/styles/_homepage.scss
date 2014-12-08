@@ -53,6 +53,9 @@ background-size: auto 576px;
 }
 
 .hp-story {
+  height: 700px;
+  min-height: 700px;
+  height: 100vh;
   background-image: url(/images/greece_mobile.jpg);
   background-size: cover;
   background-position: 50% 50%;
@@ -86,7 +89,7 @@ background-size: auto 576px;
 
   .hp-section-top {
     position: absolute;
-    bottom: 50%;
+    bottom: 54%;
     margin-bottom: 20px;
     left: 0;
     right: 0;
@@ -103,17 +106,25 @@ background-size: auto 576px;
     height: 100%;
     background: rgba(0,0,0,0.5);
   }
+
+  .hp-center {
+    top: 53%;
+  }
+
+  @media #{$tablet-size} {
+    height: 700px;
+  }
 }
 
 .hp-story, .hp-product {
-  height: 600px;
-  min-height: 600px;
-  height: 100vh; /* 790 / 1404px*/
   position: relative;
   border-top: 2px solid $highlight-color;
 }
 
 .hp-product {
+  height: 600px;
+  min-height: 600px;
+  height: 100vh;
   width: 100%;
   background-image: url(/images/homepage-product-bg.jpg);
   background-size: cover;
@@ -146,11 +157,11 @@ background-size: auto 576px;
   }
 
   @media #{$tablet-size} {
-    height: 900px;
+    height: 950px;
     background-image: url(/images/product_background_small.jpg);
 
     .flex-height-cont {
-      height: 900px;
+      height: 950px;
     }
 
     .left-section {
@@ -205,7 +216,7 @@ background-size: auto 576px;
 
 .homepage p.description {
   font-size: 1.25em;
-  line-height: 1.6em;
+  line-height: 1.5em;
 }
 
 .hp-phone-copy {
@@ -216,7 +227,7 @@ background-size: auto 576px;
 
   p.description {
     width: 70%;
-    max-width: 410px;
+    max-width: 430px;
     color: $alt-text-color;
     margin-bottom: 1.9em;
   }
@@ -563,6 +574,12 @@ $social-icon-spacing: 25px;
   }
 }
 
+.homepage {
+  .app-badge:first-of-type {
+    margin-right: 5px;
+  }
+}
+
 .hp-store-ios {
   display: inline-block;
   @include sprite-retina($app_store, $app_store-2x);
@@ -769,7 +786,7 @@ input.hp-submit {
 }
 
 .shoutouts {
-  margin: 20px;
+  padding: 20px;
   text-align: center;
 }
 
