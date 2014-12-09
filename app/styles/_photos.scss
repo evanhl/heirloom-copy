@@ -72,11 +72,15 @@
 
 .photos-container {
   margin: $photo-margin auto 0;
-  padding: 0 #{$logo-width - $photo-margin} 0 $logo-width;
+  padding: 0 0 0 $photo-margin;
 
   .toolbar {
     margin-right: $photo-margin;
     margin-bottom: $photo-margin;
+  }
+
+  @media #{$breakpoint-desktop-1} {
+    padding: 0 #{$logo-width - $photo-margin} 0 $logo-width;
   }
 }
 
@@ -97,8 +101,12 @@
   width: 100%;
   z-index: 5;
   background: $bg-color-accent;
-  padding: 0 $logo-width;
   animation: slidedown 0.3s ease-in-out;
+  padding: 0 $photo-margin;
+
+  @media #{$breakpoint-desktop-1} {
+    padding: 0 $logo-width;
+  }
 
   .num-selected {
     width: 220px;
@@ -136,9 +144,14 @@
 }
 
 .photo {
-  width: $photo-width;
-  height: $photo-width;
+  width: 170px;
+  height: 170px;
   margin: 0 $photo-margin $photo-margin 0;
+
+  @media #{$breakpoint-desktop-1} {
+    width: $photo-width;
+    height: $photo-width;
+  }
 }
 
 .post-photo {

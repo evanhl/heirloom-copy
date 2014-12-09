@@ -17,7 +17,7 @@
       <div class="right">
         <div class="user-dropdown">
           {{render 'userIcon' currentSession}}
-          <div class="menu">
+          <div {{bind-attr class=":menu view.isMenuOpen:menu-open"}}>
             <div class="username"><span>{{username}}</span></div>
             <div class="down-arrow"></div>
             <div class="menu-item mobile-only-1">{{#link-to 'photos'}}<span>{{t 'moments'}}</span>{{/link-to}}</div>

@@ -208,7 +208,7 @@ $user-dropdown-height: 40px;
     overflow: hidden;
     border-radius: 2px;
 
-    &:hover {
+    &:hover:not(.menu-open), &.menu-open:not(:hover) {
       height: auto;
 
       .username span {
@@ -234,6 +234,7 @@ $user-dropdown-height: 40px;
   }
 
   .username {
+    cursor: pointer;
     padding: 14px 40px 10px 29px;
     width: 160px;
     white-space: nowrap;
@@ -276,8 +277,10 @@ $user-dropdown-height: 40px;
     display: inline-block;
   }
 
-  .menu:hover .menu-item.mobile-only-2 {
-    display: none;
+  .menu:hover:not(.menu-open), .menu.menu-open:not(:hover) {
+    .menu-item.mobile-only-2 {
+      display: none;
+    }
   }
 }
 
@@ -287,8 +290,10 @@ $user-dropdown-height: 40px;
     display: inline-block;
   }
 
-  .menu:hover .menu-item.mobile-only-1 {
-    display: none;
+  .menu:hover:not(.menu-open), .menu.menu-open:not(:hover) {
+    .menu-item.mobile-only-1 {
+      display: none;
+    }
   }
 }
 
