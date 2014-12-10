@@ -3,5 +3,12 @@ App.ConversationPostPhotoRoute = Ember.Route.extend({
     var photoId = params.photo_id.split('-')[1];
 
     return App.PostPhoto.find(params.photo_id);
+  },
+
+  renderTemplate: function () {
+    this.render({
+      into: 'application',
+      outlet: 'modal'
+    });
   }
 });

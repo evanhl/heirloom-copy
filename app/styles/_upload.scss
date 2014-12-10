@@ -327,8 +327,14 @@
 
 .dropzone .fake-photo {
   display: inline-block;
-  width: $photo-width;
-  height: $photo-width;
+  width: $photo-width-small;
+  height: $photo-width-small;
+
+  @media #{$breakpoint-desktop-1} {
+    width: $photo-width;
+    height: $photo-width;
+  }
+
   background: white;
   border: 2px dashed $subtle-highlight-color;
   vertical-align: top;
@@ -340,10 +346,11 @@
     content: '';
     position: absolute;
     @include sprite-retina($new_album_plus, $new_album_plus-2x);
-    top: 93px;
-    left: 93px;
-    margin-top: -$new_album_plus-height / 2;
-    margin-left: -$new_album_plus-width / 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
   }
 }
 

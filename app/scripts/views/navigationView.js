@@ -1,5 +1,12 @@
 App.NavigationView = Ember.View.extend({
-  isMenuOpen: false,
+  isMenuOpen: undefined,
+  menuClass: function () {
+    if (this.get('isMenuOpen') === true) {
+      return 'menu-open';
+    } else if (this.get('isMenuOpen') === false) {
+      return 'menu-closed';
+    }
+  }.property('isMenuOpen'),
 
   init: function () {
     this.usernameClick = $.proxy(this.usernameClick, this);
@@ -25,8 +32,8 @@ App.NavigationView = Ember.View.extend({
   },
 
   bodyClick: function (e) {
-    if(!$(e.target).closest(this.$('.menu')).length) {
-      if (this.get('controller')) {
+    if(!$(e.target).closest(this.$('.username,.down-arrow')).length) {
+      if (this.get('controller') && this.get('isMenuOpen') === true) {
         this.set('isMenuOpen', false);
       }
     }

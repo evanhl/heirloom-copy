@@ -4,28 +4,30 @@ App.FromNowView = Ember.View.extend({
 
   template: Ember.Handlebars.compile('{{view.output}}'),
 
-  REFRESH_MS: 30 * 1000,
+  // REFRESH_MS: 30 * 1000,
 
   output: function() {
     return moment(this.get('value')).fromNow();
   }.property('value'),
 
-  tick: function() {
-    var nextTick = Ember.run.later(this, function() {
-      this.notifyPropertyChange('value');
-      this.tick();
-    }, this.REFRESH_MS);
-    this.set('nextTick', nextTick);
-  },
+  // This seems to cause performance issues on iPad
 
-  didInsertElement: function() {
-    this.tick();
-  },
+  // tick: function() {
+  //   var nextTick = Ember.run.later(this, function() {
+  //     this.notifyPropertyChange('value');
+  //     this.tick();
+  //   }, this.REFRESH_MS);
+  //   this.set('nextTick', nextTick);
+  // },
 
-  willDestroyElement: function() {
-    var nextTick = this.get('nextTick');
-    Ember.run.cancel(nextTick);
-  }
+  // didInsertElement: function() {
+  //   this.tick();
+  // },
+
+  // willDestroyElement: function() {
+  //   var nextTick = this.get('nextTick');
+  //   Ember.run.cancel(nextTick);
+  // }
 });
 
 Ember.Handlebars.helper('fromNow', App.FromNowView);

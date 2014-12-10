@@ -90,3 +90,8 @@ App.set('basil', new window.Basil({
 
 CLDR.defaultLanguage = 'en-US';
 
+// fix for iPad viewport height issue.
+// http://stackoverflow.com/questions/19012135/ios-7-ipad-safari-landscape-innerheight-outerheight-layout-issue
+if (navigator.userAgent.match(/iPad;.*CPU.*OS 7_\d/i)) {
+  $('html').addClass('ipad ios7');
+}

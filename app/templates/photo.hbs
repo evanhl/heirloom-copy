@@ -1,28 +1,27 @@
-<section class="opaque-lightbox">
-  {{view App.ImageView image=firstState}}
-  {{view App.ImageView image=secondState}}
+
+{{view App.ImageView image=firstState}}
+{{view App.ImageView image=secondState}}
 
 
 {{!--
-  we'll bring back the sidebar for 1.1.
-  <div class="photo-sidebar">
-    <div class="owner">
-      <div class="icon"></div>
-      <div class="name">{{userName}}</div>
-      <div class="date">{{prettyDay created_at}}</div>
-      <div style="clear: both;"></div>
-    </div>
-    {{#if description}}
-      <div class="description">{{description}}</div>
-    {{/if}}
+we'll bring back the sidebar for 1.1.
+<div class="photo-sidebar">
+  <div class="owner">
+    <div class="icon"></div>
+    <div class="name">{{userName}}</div>
+    <div class="date">{{prettyDay created_at}}</div>
+    <div style="clear: both;"></div>
   </div>
- --}}
+  {{#if description}}
+    <div class="description">{{description}}</div>
+  {{/if}}
+</div>
+--}}
 
-  {{#if prevId}}
-    <div class="left-arrow" {{action 'prevPhoto'}}></div>
-  {{/if}}
-  {{#if nextId}}
-    <div class="right-arrow" {{action 'nextPhoto'}}></div>
-  {{/if}}
-  <div class="close" {{action 'toCollection'}}></div>
-</section>
+{{#if prevId}}
+  <div class="left-arrow" {{action 'prevPhoto'}}></div>
+{{/if}}
+{{#if nextId}}
+  <div class="right-arrow" {{action 'nextPhoto'}}></div>
+{{/if}}
+<div class="close" {{action 'toCollection'}}></div>

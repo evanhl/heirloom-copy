@@ -315,7 +315,6 @@ img.detail {
 .album {
   position: relative;
   background-color: $subtle-highlight-color;
-  height: 100px;
   background-size: 100% auto;
   background-position: 50%;
   transition: opacity .1s ease-in-out;
@@ -371,7 +370,7 @@ img.detail {
   }
 }
 
-.gallery-photo, .thumb-photo, .selection-mode .photo, .photo:hover, .photo.selection-mode, .picker-content .photo, .photo {
+.gallery-photo, .thumb-photo, .selection-mode .photo, .photo:hover, .photo.selection-mode, .picker-content .photo, .has-touch .photo {
   .select {
     @include sprite-retina($checkmark_hover, $checkmark_hover-2x);
 
@@ -408,32 +407,20 @@ img.detail {
   }
 }
 
-@media #{$breakpoint-desktop-1} {
-  .photo {
-    .select {
-      background: none;
-    }
-  }
-}
-
 .album {
-  width: $album-width;
-  height: $album-width;
-  margin: 0 $album-margin $album-margin 0;
-
   &::after {
     content: '';
     box-shadow: inset 0px -86px 44px -30px rgba(0, 0, 0, 0.75);
-    height: $album-width;
-    width: $album-width;
+    height: 100%;
+    width: 100%;
     display: block;
     position: absolute;
-    top: 0;
+    bottom: 0;
   }
 
   &::before {
-    width: $album-width;
-    height: $album-width;
+    width: 100%;
+    height: 100%;
   }
 
 
@@ -538,8 +525,10 @@ img.detail {
   }
 }
 
+$picker-width: 848px;
+
 .upload-modal {
-  max-width: 848px;
+  max-width: $picker-width;
 }
 
 .photo-picker {
@@ -567,8 +556,14 @@ $upload-modal-content-height: ($photo-width * 2) + ($photo-margin) + ($album-mar
   }
 }
 
+$picker-photo-margin: 100% * ($photo-margin / ($picker-width - $album-margin));
 .photo-picker-modal {
-  max-width: 848px;
+  max-width: $picker-width;
+
+  .photo {
+    width: ($photo-width / ($picker-width - $album-margin)) * 100%;
+    margin: 0 $picker-photo-margin $picker-photo-margin 0;
+  }
 
   &.has-input {
     .nav-filler {
@@ -632,7 +627,8 @@ $upload-modal-content-height: ($photo-width * 2) + ($photo-margin) + ($album-mar
 .picker-content {
   height: #{$picker-content-height};
   overflow-y: scroll;
-  padding: $album-margin 0 0 $album-margin;
+  -webkit-overflow-scrolling: touch;
+  padding: (100% * ($album-margin / $picker-width)) 0 0 (100% * ($album-margin / $picker-width));
 }
 
 textarea {
@@ -690,3 +686,4 @@ textarea {
     background-size: 206px 72px;
   }
 }
+
