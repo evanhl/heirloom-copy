@@ -38,6 +38,11 @@ App.AlbumPickerController = Ember.Controller.extend(App.SelectableMixin, Ember.E
     }
   }.observes('isCreateMode'),
 
+  reset: function () {
+    this.set('isCreateMode', false);
+    this.set('albumName', null);
+  },
+
   actions: {
     toggleCreateMode: function () {
       this.toggleProperty('isCreateMode');

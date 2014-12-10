@@ -93,6 +93,7 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
       });
       self.deselect();
       self.get('albums').reset();
+      self.get('albumPicker').reset();
     });
   },
 
