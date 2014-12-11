@@ -8,8 +8,10 @@ var port = process.env.PORT || 3000;
 var app = express();
 
 app.use(function(req, res, next) {
-  // This tells New Relic that this is a prerender transaction and should be categorized accordingly
-  newrelic.setTransactionName('Prerender');
+  if (prerender.shouldShowPrerenderedPage(req)) {
+    // This tells New Relic that this is a prerender transaction and should be categorized accordingly
+    newrelic.setTransactionName('Prerender');
+  }
   next();
 });
 app.use(prerender);
