@@ -3,10 +3,16 @@
 var newrelic = require('newrelic');
 var express = require('express');
 var compress = require('compression')();
+var prerender = require('prerender-node').set('prerenderToken', process.env.PRERENDER_TOKEN);
 var port = process.env.PORT || 3000;
 var app = express();
 
-app.use(require('prerender-node').set('prerenderToken', process.env.PRERENDER_TOKEN));
+app.use(function(req, res, next) {
+  // This tells New Relic that this is a prerender transaction and should be categorized accordingly
+  newrelic.setTransactionName('Prerender');
+  next();
+});
+app.use(prerender);
 app.use(compress);
 app.use(function(req, res, next) {
   if (req.url.match(/\/terms$/)) {
