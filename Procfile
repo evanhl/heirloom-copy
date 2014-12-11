@@ -1,1 +1,1 @@
-web: npm install -g grunt-cli; grunt build; node app.js
+web: sh server.sh
