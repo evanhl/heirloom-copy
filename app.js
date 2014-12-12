@@ -7,21 +7,6 @@ var prerender = require('prerender-node').set('prerenderToken', process.env.PRER
 var port = process.env.PORT || 3000;
 var app = express();
 
-
-app.use(function(req, res, next) {
-  if (process.env.WEB_ENV !== 'production') {
-    next();
-    return;
-  }
-
-  // redirect to https in Heroku production environments
-  if (req.header('x-forwarded-proto') !== 'https') {
-    res.redirect("https://" + req.header('host') + req.url);
-  } else {
-    next();
-  }
-});
-
 app.use(function(req, res, next) {
   if (prerender.shouldShowPrerenderedPage(req)) {
     // This tells New Relic that this is a prerender transaction and should be categorized accordingly
