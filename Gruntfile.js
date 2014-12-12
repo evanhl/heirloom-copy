@@ -519,13 +519,13 @@ module.exports = function(grunt) {
     emberTemplates: {
       compile: {
         options: {
-          templateBasePath: '<%= config.app %>/templates/',
+          templateBasePath: '.tmp/templates/',
           templateName: function(name) {
             return name.replace('_', '/');
           }
         },
         files: {
-          ".tmp/templates.js": "<%= config.app %>/templates/**/*.hbs"
+          ".tmp/templates.js": ".tmp/templates/**/*.hbs"
         }
       }
     },
