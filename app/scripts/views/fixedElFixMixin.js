@@ -4,7 +4,7 @@
 App.FixedElFixMixin = Ember.Mixin.create({
   doIosFixedElFix: function () {
     Ember.run.scheduleOnce('afterRender', this, function () {
-      this.$('input').on('blur', function(){
+      this.$('input,textarea').on('blur', function(){
         $(window).scrollTop(0);
       });
     });

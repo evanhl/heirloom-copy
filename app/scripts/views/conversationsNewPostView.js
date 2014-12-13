@@ -1,5 +1,6 @@
 //= require ../utils/infiniteScroll
-App.ConversationsNewPostView = Ember.View.extend(InfiniteScroll.ViewMixin, {
+//= require fixedElFixMixin
+App.ConversationsNewPostView = Ember.View.extend(InfiniteScroll.ViewMixin, App.FixedElFixMixin, {
   scrollEl: 'body',
 
   init: function () {
