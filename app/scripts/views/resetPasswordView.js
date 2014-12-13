@@ -1,4 +1,5 @@
 //= require logoNavOnlyMixin
-App.ResetPasswordView = Ember.View.extend(App.LogoNavOnlyMixin, {
+//= require fixedElFixMixin
+App.ResetPasswordView = Ember.View.extend(App.LogoNavOnlyMixin, App.FixedElFixMixin, {
 
 });

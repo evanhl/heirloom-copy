@@ -25,6 +25,10 @@ App.ModalDialogComponent = Ember.Component.extend({
     this.sendAction();
   },
 
+  touchEnd: function (e) {
+    return this.click(e);
+  },
+
   keyDown: function (e) {
     if (e.keyCode === Utils.Keys.ESC) {
       this.sendAction();

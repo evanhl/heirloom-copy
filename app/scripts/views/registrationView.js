@@ -1,5 +1,6 @@
 //= require hiddenNavMixin
-App.RegistrationView = Ember.View.extend(App.HiddenNavMixin, {
+//= require fixedElFixMixin
+App.RegistrationView = Ember.View.extend(App.HiddenNavMixin, App.FixedElFixMixin, {
   classNames: ['backdrop'],
 
   didInsertElement: function () {
