@@ -6,6 +6,7 @@ App.ConversationsNewPostController = Ember.ObjectController.extend(Ember.Evented
   newPostMessage: null,
   newPostAlbum: null,
   newPostPhotos: null,
+  waiting: false,
 
   attachPickerHandlers: function () {
     // TODO: make these event names consistent
@@ -50,8 +51,8 @@ App.ConversationsNewPostController = Ember.ObjectController.extend(Ember.Evented
     var noAlbum = !this.get('newPostAlbum');
     var noContent = noPhotos && noMessage && noAlbum;
 
-    return noContent || this.get('parentController.postDisabled');
-  }.property('newPostMessage', 'newPostPhotos.[]', 'newPostAlbum', 'parentController.postDisabled'),
+    return noContent || this.get('parentController.postDisabled') || this.get('waiting');
+  }.property('newPostMessage', 'newPostPhotos.[]', 'newPostAlbum', 'parentController.postDisabled', 'waiting'),
 
   addPhotosDisabled: function () {
     return this.get('newPostAlbum');
@@ -73,6 +74,7 @@ App.ConversationsNewPostController = Ember.ObjectController.extend(Ember.Evented
     this.set('newPostMessage', null);
     this.set('newPostAlbum', null);
     this.set('newPostPhotos', []);
+    this.set('waiting', false);
     this.trigger('clearNewPost');
   },
 
@@ -83,6 +85,8 @@ App.ConversationsNewPostController = Ember.ObjectController.extend(Ember.Evented
         photo_ids: this.newPostPhotoIds(),
         album_id: this.get('newPostAlbum.id')
       };
+
+      this.set('waiting', true);
 
       this.send('createPost', postProps);
     },

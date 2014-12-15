@@ -266,6 +266,10 @@ button:active {
     color: $subtle-highlight-color;
     pointer-events: none;
     cursor: default;
+
+    &.waiting {
+      animation: fadeinout 1.3s ease-in-out infinite;
+    }
   }
 
   &.take-action {
