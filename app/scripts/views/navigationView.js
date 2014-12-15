@@ -18,7 +18,7 @@ App.NavigationView = Ember.View.extend({
     var self = this;
 
     this.$('.username').on('touchend', this.usernameClick);
-    $('body').click(this.bodyClick);
+    $('body').on('touchend', this.bodyClick);
   }.on('didInsertElement'),
 
   teardownHandlers: function () {
@@ -28,11 +28,11 @@ App.NavigationView = Ember.View.extend({
       $username.off('touchend', this.usernameClick);
     }
 
-    $('body').off('click', this.bodyClick);
+    $('body').off('touchend', this.bodyClick);
   },
 
   bodyClick: function (e) {
-    if(!$(e.target).closest(this.$('.username,.down-arrow')).length) {
+    if(!$(e.target).closest(this.$('.user-dropdown')).length) {
       if (this.get('controller') && this.get('isMenuOpen') === true) {
         this.set('isMenuOpen', false);
       }
