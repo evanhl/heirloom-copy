@@ -191,7 +191,7 @@ $user-dropdown-height: 40px;
       display: inline-block;
       width: 100%;
       text-align: center;
-      padding-top: ($user-dropdown-height - 14px) / 2;
+      padding-top: ($user-dropdown-height - 16px) / 2;
       color: $highlight-color;
       font-weight: 700;
     }
@@ -234,7 +234,7 @@ $user-dropdown-height: 40px;
   }
 
   .username {
-    padding: 14px 40px 10px 29px;
+    padding: 13px 40px 6px 29px;
     width: 160px;
     white-space: nowrap;
     overflow: hidden;
@@ -251,7 +251,7 @@ $user-dropdown-height: 40px;
     border-top: 1px solid $subtle-highlight-color;
     margin-left: 29px;
     text-align: left;
-    padding: 14px 0 10px;
+    padding: 11px 0 7px;
     transition: color 0.1s linear;
 
     &:hover {
@@ -306,8 +306,8 @@ $user-dropdown-height: 40px;
   background: $highlight-color;
   color: white;
   font-size: 12px;
-  padding: 4px 7px 2px 7px;
-  border-radius: 10px;
+  padding: 7px 9px 5px 11px;
+  border-radius: 12px;
   min-width: 10px;
   vertical-align: 2px;
   margin-left: 15px;

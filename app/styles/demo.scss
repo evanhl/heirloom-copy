@@ -1,0 +1,24 @@
+@import 'bourbon/app/assets/stylesheets/_bourbon';
+@import 'neat/app/assets/stylesheets/_neat';
+
+.wrapper {
+  @include outer-container;
+
+  margin-bottom: 1.5em;
+
+  .primary {
+    @include span-columns(8);
+
+    background: orange;
+    padding: 1em;
+    height: 20em;
+  }
+
+  .secondary {
+    @include span-columns(4);
+
+    background: skyblue;
+    padding: 1em;
+    height: 20em;
+  }
+}

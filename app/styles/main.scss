@@ -2,14 +2,7 @@
 @import 'neat/app/assets/stylesheets/_neat';
 @import 'normalize-scss/_normalize';
 
-// $include-html-classes: false;
-$include-html-button-classes: false;
 $topbar-bg-color: #eee;
-
-@import 'foundation/scss/foundation/components/alert-boxes';
-@import 'foundation/scss/foundation/components/grid';
-@import 'foundation/scss/foundation/components/forms';
-// @import 'foundation/scss/foundation/components/top-bar';
 
 @import 'spritesheet';
 @import 'spritesheet-2x';
@@ -49,6 +42,10 @@ body {
   color: $default-text-color;
 }
 
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
 input[type="text"],
 input[type="password"],
 input[type="date"],
@@ -64,12 +61,17 @@ input[type="time"],
 input[type="url"],
 textarea {
   box-shadow: none;
-  border-color: $subtle-highlight-color;
+  margin: 0 0 1rem 0;
+  font-size: 0.875rem;
+  transition: border-color 0.15s ease-in-out;
+  width: 100%;
+  border: 1px solid $subtle-highlight-color;
 
   &:focus {
     box-shadow: none;
     background: white;
-    border-color: $subtle-highlight-color;
+    border-color: $subtler-highlight-color;
+    outline: 0;
   }
 }
 
@@ -99,28 +101,6 @@ h2.highlighted {
     a.active {
       color: #666;
     }
-  }
-}
-
-.wrapper {
-  @include outer-container;
-
-  margin-bottom: 1.5em;
-
-  .primary {
-    @include span-columns(8);
-
-    background: orange;
-    padding: 1em;
-    height: 20em;
-  }
-
-  .secondary {
-    @include span-columns(4);
-
-    background: skyblue;
-    padding: 1em;
-    height: 20em;
   }
 }
 
@@ -607,6 +587,8 @@ $picker-photo-margin: 100% * ($photo-margin / ($picker-width - $album-margin));
 
   input {
     margin-top: 19px;
+    height: 38px;
+    padding: 14px 10px 10px 10px;
   }
 }
 

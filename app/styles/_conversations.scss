@@ -66,7 +66,6 @@ a.active .convo, .convo.highlighted {
     font-size: 18px;
     font-weight: 600;
     margin-top: 6px;
-    margin-bottom: 6px;
   }
 
   .sub {
@@ -186,7 +185,7 @@ $share-icon-size: 80px;
     overflow: hidden;
 
     span {
-      padding-top: ($convo-icon-size - 14px) / 2;
+      padding-top: ($convo-icon-size - 16px) / 2;
     }
   }
 }
@@ -199,7 +198,7 @@ $share-icon-size: 80px;
 
     span {
       font-size: 20px;
-      padding-top: ($share-icon-size - 16px) / 2;
+      padding-top: ($share-icon-size - 20px) / 2;
     }
   }
 }
