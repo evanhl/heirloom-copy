@@ -150,6 +150,10 @@ $user-dropdown-height: 40px;
     border: 1px solid $subtle-highlight-color;
   }
 
+  .icon span {
+    padding-top: ($user-dropdown-height - 16px) / 2;
+  }
+
   .menu {
     border: 1px solid $subtle-highlight-color;
     font-size: 14px;
