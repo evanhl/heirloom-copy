@@ -11,6 +11,9 @@
 .full-nav {
   box-shadow: 0px 2px 10px -1px rgba(0,0,0,0.15);
   height: $logo-height;
+  width: 100%;
+  position: fixed;
+  z-index: 6;
 
   .divider {
     display: inline-block;
@@ -85,13 +88,6 @@
     background-size: 76px 190px;
     background: url(/images/regwall_logo.png) no-repeat;
   }
-}
-
-.full-nav {
-
-  position: fixed;
-  z-index: 6;
-  width: 100%;
 
   ul {
     margin: 0;
@@ -127,34 +123,6 @@
   }
 }
 
-// footer for photo picker
-.footer-nav {
-  border-top: 1px solid $subtle-highlight-color;
-  background: white;
-  position: fixed;
-  z-index: 5;
-  width: 100%;
-  max-width: 1000px;
-  margin-top: 578px;
-  height: 72px;
-  padding-left: 60px;
-  padding-right: 20px;
-
-  .sub-info {
-    line-height: 72px;
-    height: 72px;
-  }
-
-  button {
-    float: right;
-
-    margin: 18px 6px;
-
-    &:active:enabled {
-      margin-top: 19px;
-    }
-  }
-}
 
 $user-dropdown-height: 40px;
 
@@ -174,27 +142,12 @@ $user-dropdown-height: 40px;
   }
 
   .icon, .avatar {
-    border-radius: $user-dropdown-height / 2;
     width: $user-dropdown-height;
     height: $user-dropdown-height;
     position: absolute;
     top: 0;
     z-index: 3;
     border: 1px solid $subtle-highlight-color;
-    overflow: hidden;
-  }
-
-  .icon {
-    background: white;
-
-    span {
-      display: inline-block;
-      width: 100%;
-      text-align: center;
-      padding-top: ($user-dropdown-height - 16px) / 2;
-      color: $highlight-color;
-      font-weight: 700;
-    }
   }
 
   .menu {
@@ -204,7 +157,6 @@ $user-dropdown-height: 40px;
     left: $user-dropdown-height / 2;
     background: white;
     height: $user-dropdown-height;
-    // transition: height 0.15s ease-in;
     overflow: hidden;
     border-radius: 2px;
 
@@ -314,3 +266,13 @@ $user-dropdown-height: 40px;
   font-weight: 600;
 }
 
+.logo-with-text {
+  height: 72px;
+  width: 206px;
+  background: url(/images/heirloom_logo_2.png) no-repeat;
+
+  @media only screen and (-webkit-min-device-pixel-ratio: 1.5), screen and (min-device-pixel-ratio: 1.5), screen and (min--moz-device-pixel-ratio: 1.5) {
+    background: url(/images/heirloom_logo@2x.png) no-repeat;
+    background-size: 206px 72px;
+  }
+}

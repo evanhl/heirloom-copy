@@ -22,9 +22,9 @@ $alert-error-bg: rgb(255,239,235);
 $alert-error-color: $highlight-color-4;
 
 $convo-height: 88px;
-$convo-icon-size: 50px;
+$default-avatar-size: 50px;
 $convo-highlight-border-width: 5px;
-$convo-padding: ($convo-height - $convo-icon-size) / 2;
+$convo-padding: ($convo-height - $default-avatar-size) / 2;
 $convo-dot-size: 14px;
 $convo-right-padding: ($convo-padding * 2) + $convo-dot-size;
 
@@ -37,7 +37,7 @@ $left-col-max-width: 400px;
 $left-col-fixed-breakpoint-width: $left-col-max-width * (100% / $left-col-width);
 
 $post-left-margin: 75px;
-$post-icon-size: $convo-icon-size;
+$post-icon-size: $default-avatar-size;
 
 $album-width: 236px;
 $album-padding: 20px;

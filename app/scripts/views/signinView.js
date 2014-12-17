@@ -2,8 +2,6 @@
 //= require fixedElFixMixin
 
 App.SigninView = Ember.View.extend(App.HiddenNavMixin, App.FixedElFixMixin, {
-  classNames: ['backdrop'],
-
   didInsertElement: function () {
     this.$().find('input:first').focus();
   },

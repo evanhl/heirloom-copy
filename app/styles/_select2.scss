@@ -85,7 +85,7 @@ $contact-result-height: 88px;
 
   .icon, .avatar {
     float: left;
-    margin: ($contact-result-height - $convo-icon-size) / 2;
+    margin: ($contact-result-height - $default-avatar-size) / 2;
     span {
       padding-top: 20px;
     }

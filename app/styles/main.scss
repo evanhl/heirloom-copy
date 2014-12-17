@@ -22,19 +22,6 @@ $topbar-bg-color: #eee;
 }
 
 @import 'vars';
-@import 'fonts';
-@import 'buttons';
-@import 'spinner';
-@import 'nav';
-@import 'conversations';
-@import 'photos';
-@import 'select2';
-@import 'share';
-@import 'alerts';
-@import 'upload';
-@import 'wizard';
-@import 'homepage';
-@import 'footer';
 
 body {
   background: white;
@@ -94,6 +81,22 @@ h2.highlighted {
   cursor: pointer;
 }
 
+@import 'alerts';
+@import 'buttons';
+@import 'conversations';
+@import 'fonts';
+@import 'footer';
+@import 'homepage';
+@import 'modal';
+@import 'nav';
+@import 'photos';
+@import 'select2';
+@import 'share';
+@import 'singlePhoto';
+@import 'spinner';
+@import 'upload';
+@import 'wizard';
+
 .noscroll { overflow: hidden; }
 
 .top-bar {
@@ -111,77 +114,18 @@ h2.highlighted {
   padding: 0.2em 0;
 }
 
-img.detail {
-  position: absolute;
-
-  max-height: 90%;
-  max-width: 80%;
-
-  bottom: 0;
-  right: 0;
-  // left: -25%; // v1.1
-  left: 0;
-  top: 0;
-
-  margin: auto;
-
-  opacity: 0;
-  width: 0;
-  transition: opacity .25s ease-in-out;
-}
-
-.photo-sidebar {
-  position: absolute;
-  width: 25%;
-  height: 100%;
-
-  background: $bg-color-accent;
-  right: 0;
-  top: 0;
-
-  padding-left: 2.5%;
-
-  .description {
-    padding: 6% 10% 6% 0%;
-    border-bottom: 1px solid $subtle-highlight-color;
-    line-height: 18px;
-  }
-
-  .owner {
-    padding: 6% 10% 6% 0%;
-    border-bottom: 1px solid $subtle-highlight-color;
-  }
-
-  .name {
-    margin-left: 60px;
-    margin-top: 9px;
-    font-weight: 600;
-    font-size: 18px;
-    color: $highlight-color;
-  }
-
-  .date {
-    margin-left: 60px;
-    margin-top: 4px;
-    font-weight: 600;
-    font-size: 14px;
-  }
-
-  .icon {
-    height: $convo-icon-size;
-    width: $convo-icon-size;
-    border-radius: $convo-icon-size / 2;
-    background: $subtle-highlight-color;
-    float: left;
-  }
-}
-
 .lightbox {
   z-index: 50;
+  background: $lightbox-color;
+
+  &.transparent {
+    background: none;
+  }
 }
 
 .opaque-lightbox {
   z-index: 99;
+  background: $opaque-lightbox-color;
 }
 
 .lightbox, .opaque-lightbox {
@@ -193,264 +137,12 @@ img.detail {
   top: 0;
   position: fixed;
   overflow: hidden;
-
-  .left-arrow, .right-arrow {
-    line-height: 100vh;
-    font-size: 5vw;
-  }
-
-  .left-arrow, .right-arrow {
-    height: 100%;
-    width: 5%;
-    bottom: 0;
-    position: absolute;
-  }
-
-  .left-arrow, .right-arrow, .close {
-    opacity: 0.85;
-    transition: opacity 0.15s;
-    cursor: pointer;
-
-    &:hover {
-      opacity: 1;
-    }
-  }
-
-  .left-arrow {
-    &::after {
-      content: '';
-      position: absolute;
-      display: block;
-      @include sprite-retina($caret_left, $caret_left-2x);
-      top: 50%;
-      left: 50%;
-      margin-top: -$caret_left-height / 2;
-      margin-left: -$caret_left-width / 2;
-    }
-
-    left: 2.5%;
-
-    @media #{$breakpoint-mobile-2} {
-      left: 0;
-    }
-  }
-
-  .right-arrow {
-    &::after {
-      content: '';
-      position: absolute;
-      display: block;
-      @include sprite-retina($caret_right, $caret_right-2x);
-      top: 50%;
-      left: 50%;
-      margin-top: -$caret_right-height / 2;
-      margin-left: -$caret_right-width / 2;
-    }
-
-    right: 2.5%;
-
-    @media #{$breakpoint-mobile-2} {
-      right: 0;
-    }
-  }
-
-  .close {
-    position: absolute;
-    width: 5%;
-    height: 5vw;
-    vertical-align: middle;
-    right: 2.5%;
-    top: 2.5%;
-
-    @media #{$breakpoint-mobile-2} {
-      right: 0;
-      top: 0;
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      display: block;
-      @include sprite-retina($escape_photoview, $escape_photoview-2x);
-      margin-left: -$escape_photoview-width / 2;
-      margin-top: -$escape_photoview-height / 2;
-      left: 50%;
-      top: 50%;
-    }
-  }
-}
-
-.lightbox {
-  background: $lightbox-color;
-
-  &.transparent {
-    background: none;
-  }
-}
-
-.opaque-lightbox {
-  background: $opaque-lightbox-color;
-}
-
-.album {
-  position: relative;
-  background-color: $subtle-highlight-color;
-  background-size: 100% auto;
-  background-position: 50%;
-  transition: opacity .1s ease-in-out;
-  vertical-align: top;
-
-  &:hover {
-    opacity: 1;
-  }
-}
-
-
-.large-photo {
-  img {
-    max-height: 400px;
-  }
-}
-
-.gallery-photo, .thumb-photo {
-  height: 200px;
-  width: 200px;
-  margin: 2em 0 0 2em;
-
-  display: inline-block;
-  vertical-align: top;
-
-  overflow: hidden;
-}
-
-.gallery-photo, .thumb-photo, .photo {
-  .select {
-    width: 36px;
-    height: 36px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 16px;
-    cursor: pointer;
-
-    &:hover, &.selected {
-      @include sprite-retina($checkmark_active, $checkmark_active-2x);
-    }
-  }
-
-  .remove-photo-icon {
-    z-index: 1;
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: 16px;
-    cursor: pointer;
-    display: none;
-    @include sprite-retina($delete_photo, $delete_photo-2x);
-  }
-}
-
-.gallery-photo, .thumb-photo, .selection-mode .photo, .photo:hover, .photo.selection-mode, .picker-content .photo, .has-touch .photo {
-  .select {
-    @include sprite-retina($checkmark_hover, $checkmark_hover-2x);
-
-    &:hover, &.selected {
-      @include sprite-retina($checkmark_active, $checkmark_active-2x);
-    }
-  }
-
-  .remove-photo-icon {
-    display: block;
-  }
-}
-
-.photo {
-  .select {
-    z-index: 1;
-  }
-
-  &::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    border: 6px solid $highlight-color;
-    transition: opacity 0.15s linear;
-    opacity: 0;
-    z-index: 1;
-  }
-
-  &.selected::before {
-    opacity: 1;
-  }
-}
-
-.album {
-  &::after {
-    content: '';
-    box-shadow: inset 0px -86px 44px -30px rgba(0, 0, 0, 0.75);
-    height: 100%;
-    width: 100%;
-    display: block;
-    position: absolute;
-    bottom: 0;
-  }
-
-  &::before {
-    width: 100%;
-    height: 100%;
-  }
-
-
-  .count, .title {
-    position: absolute;
-    color: white;
-    z-index: 4;
-    left: $album-padding;
-    max-width: #{$album-width - ($album-padding * 2)};
-    word-wrap: break-word;
-    font-weight: 600;
-  }
-
-  .title {
-    bottom: 40px;
-    font-size: 20px;
-  }
-
-  .count {
-    bottom: 20px;
-    font-size: 14px;
-
-    &:before {
-      content: '';
-      display: inline-block;
-      @include sprite-retina($album_icon, $album_icon-2x);
-      margin-bottom: -3px;
-      margin-right: 5px;
-    }
-  }
-}
-
-.gallery-photo {
-  cursor: pointer;
-}
-
-.thumb-photo {
-  height: 150px;
-  width: 150px;
 }
 
 @keyframes fadeinout {
   0%      { opacity: 0.6; }
   50%     { opacity: 0.3; }
   100%    { opacity: 0.6; }
-}
-
-// TODO: choose more meaningful name
-.sub-info {
-  color: $highlight-color;
 }
 
 .nav-filler {
@@ -463,159 +155,9 @@ img.detail {
   }
 }
 
-.photo-picker, .album-picker, .photo-picker-modal, .upload-modal {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  top: 0;
-  margin: auto;
-  height: 50%;
-  width: 100%;
-
-  box-shadow: 0 2px 3px 0 rgba(0,0,0,0.25);
-}
-
-.photo-picker {
-  max-width: 1000px;
-}
-
-.album-picker {
-  max-width: ($album-width * 3) + ($album-margin * 4);
-}
-
-.album-picker {
-  .sub-top-bar {
-    transition: transform 0.3s ease-in-out;
-    transform: translateY(-76px);
-
-    input {
-      border: 2px solid $highlight-color;
-    }
-  }
-
-  &.create-mode {
-    .sub-top-bar {
-      transform: translateY(0);
-    }
-
-    .nav-filler {
-      height: $logo-height + 76px;
-    }
-  }
-}
-
-$picker-width: 848px;
-
-.upload-modal {
-  max-width: $picker-width;
-}
-
-.photo-picker {
-  min-height: 650px;
-  background: white;
-  overflow: scroll;
-}
-
-$picker-content-height: ($album-width * 1.5) + (2 * $album-margin);
-$upload-modal-content-height: ($photo-width * 2) + ($photo-margin) + ($album-margin * 2);
-
-.album-picker, .photo-picker-modal {
-  border-radius: 3px;
-  min-height: #{$picker-content-height + ($logo-height * 2)};
-  background: $bg-color-accent;
-}
-
-.upload-modal {
-  border-radius: 3px;
-  background: $bg-color-accent;
-  min-height: #{$upload-modal-content-height + ($logo-height * 2)};
-
-  .picker-content {
-    height: $upload-modal-content-height;
-  }
-}
-
-$picker-photo-margin: 100% * ($photo-margin / ($picker-width - $album-margin));
-.photo-picker-modal {
-  max-width: $picker-width;
-
-  .photo {
-    width: ($photo-width / ($picker-width - $album-margin)) * 100%;
-    margin: 0 $picker-photo-margin $picker-photo-margin 0;
-  }
-
-  &.has-input {
-    .nav-filler {
-      height: ($logo-height * 2) - 1px;
-    }
-
-    .picker-content {
-      height: $picker-content-height - $logo-height + 1px;
-    }
-  }
-}
-
-
-.top-bar {
-  border-radius: 3px 3px 0 0;
-  background: white;
-  position: absolute;
-  width: 100%;
-  border-bottom: 1px solid $subtle-highlight-color;
-  height: $logo-height;
-  line-height: $logo-height;
-  padding: 0 $album-margin;
-  vertical-align: middle;
-  z-index: 5;
-
-  h3 {
-    // FIXME: this is hack. Brandon font rides high.
-    margin: 4px 0 0 0 ;
-  }
-}
-
-.sub-top-bar {
-  position: absolute;
-  background: white;
-  height: 76px;
-  top: $logo-height;
-  z-index: 4;
-  width: 100%;
-  padding: 0 $album-margin;
-  border-bottom: 1px solid $subtle-highlight-color;
-
-  input {
-    margin-top: 19px;
-    height: 38px;
-    padding: 14px 10px 10px 10px;
-  }
-}
-
-// TODO: Fix dupe with .top-bar
-.bottom-bar {
-  border-radius: 0 0 3px 3px;
-  border-top: 1px solid $subtle-highlight-color;
-  width: 100%;
-  background: white;
-  position: absolute;
-  bottom: 0;
-  height: $logo-height;
-  line-height: $logo-height;
-  z-index: 5;
-  padding: 0 $album-margin;
-}
-
-.picker-content {
-  height: #{$picker-content-height};
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-  padding: (100% * ($album-margin / $picker-width)) 0 0 (100% * ($album-margin / $picker-width));
-}
 
 textarea {
   resize: none;
-  min-height: 36px;
 }
 
 .left {
@@ -626,46 +168,23 @@ textarea {
   float: right;
 }
 
-.backdrop {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url(/images/regwall_image_small.jpg);
+.icon, .avatar {
+  border-radius: 50%;
+  overflow: hidden;
+  height: $default-avatar-size;
+  width: $default-avatar-size;
 }
 
-.signin-container {
-  padding: 40px 78px;
-  position: absolute;
-  top: 144px;
+.icon {
   background: white;
-  width: 512px;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  text-align: center;
+  border: 1px solid $subtle-highlight-color;
 
-  button {
-    margin-top: 20px;
-  }
-
-  h2 {
-    margin-bottom: 30px;
+  span {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    color: $highlight-color;
+    font-weight: 700;
+    padding-top: ($default-avatar-size - 16px) / 2;
   }
 }
-
-.logo-with-text {
-  height: 72px;
-  width: 206px;
-  background: url(/images/heirloom_logo_2.png) no-repeat;
-
-  @media only screen and (-webkit-min-device-pixel-ratio: 1.5), screen and (min-device-pixel-ratio: 1.5), screen and (min--moz-device-pixel-ratio: 1.5) {
-    background: url(/images/heirloom_logo@2x.png) no-repeat;
-    background-size: 206px 72px;
-  }
-}
-

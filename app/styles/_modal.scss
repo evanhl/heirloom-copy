@@ -1,0 +1,149 @@
+$picker-width: 848px;
+$picker-content-height: ($album-width * 1.5) + (2 * $album-margin);
+$upload-modal-content-height: ($photo-width * 2) + ($photo-margin) + ($album-margin * 2);
+$picker-photo-margin: 100% * ($photo-margin / ($picker-width - $album-margin));
+
+
+.top-bar {
+  border-radius: 3px 3px 0 0;
+  background: white;
+  position: absolute;
+  width: 100%;
+  border-bottom: 1px solid $subtle-highlight-color;
+  height: $logo-height;
+  line-height: $logo-height;
+  padding: 0 $album-margin;
+  vertical-align: middle;
+  z-index: 5;
+
+  h3 {
+    // FIXME: this is hack. Brandon font rides high.
+    margin: 4px 0 0 0 ;
+  }
+}
+
+.sub-top-bar {
+  position: absolute;
+  background: white;
+  height: 76px;
+  top: $logo-height;
+  z-index: 4;
+  width: 100%;
+  padding: 0 $album-margin;
+  border-bottom: 1px solid $subtle-highlight-color;
+
+  input {
+    margin-top: 19px;
+    height: 38px;
+    padding: 14px 10px 10px 10px;
+  }
+}
+
+// TODO: Fix dupe with .top-bar
+.bottom-bar {
+  border-radius: 0 0 3px 3px;
+  border-top: 1px solid $subtle-highlight-color;
+  width: 100%;
+  background: white;
+  position: absolute;
+  bottom: 0;
+  height: $logo-height;
+  line-height: $logo-height;
+  z-index: 5;
+  padding: 0 $album-margin;
+}
+
+
+.photo-picker, .album-picker, .photo-picker-modal, .upload-modal {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+  margin: auto;
+  height: 50%;
+  width: 100%;
+
+  box-shadow: 0 2px 3px 0 rgba(0,0,0,0.25);
+}
+
+.photo-picker {
+  max-width: 1000px;
+}
+
+.album-picker {
+  max-width: ($album-width * 3) + ($album-margin * 4);
+}
+
+.album-picker {
+  .sub-top-bar {
+    transition: transform 0.3s ease-in-out;
+    transform: translateY(-76px);
+
+    input {
+      border: 2px solid $highlight-color;
+    }
+  }
+
+  &.create-mode {
+    .sub-top-bar {
+      transform: translateY(0);
+    }
+
+    .nav-filler {
+      height: $logo-height + 76px;
+    }
+  }
+}
+
+.upload-modal {
+  max-width: $picker-width;
+}
+
+.photo-picker {
+  min-height: 650px;
+  background: white;
+  overflow: scroll;
+}
+
+.album-picker, .photo-picker-modal {
+  border-radius: 3px;
+  min-height: #{$picker-content-height + ($logo-height * 2)};
+  background: $bg-color-accent;
+}
+
+.upload-modal {
+  border-radius: 3px;
+  background: $bg-color-accent;
+  min-height: #{$upload-modal-content-height + ($logo-height * 2)};
+
+  .picker-content {
+    height: $upload-modal-content-height;
+  }
+}
+
+.photo-picker-modal {
+  max-width: $picker-width;
+
+  .photo {
+    width: ($photo-width / ($picker-width - $album-margin)) * 100%;
+    margin: 0 $picker-photo-margin $picker-photo-margin 0;
+  }
+
+  &.has-input {
+    .nav-filler {
+      height: ($logo-height * 2) - 1px;
+    }
+
+    .picker-content {
+      height: $picker-content-height - $logo-height + 1px;
+    }
+  }
+}
+
+.picker-content {
+  height: #{$picker-content-height};
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  padding: (100% * ($album-margin / $picker-width)) 0 0 (100% * ($album-margin / $picker-width));
+}
