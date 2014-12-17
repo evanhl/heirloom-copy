@@ -1,6 +1,7 @@
 //= require avatarPhoto
+//= require apiModel
 
-App.User = Ember.Model.extend({
+App.User = App.ApiModel.extend({
   id: Ember.attr(),
   name: Ember.attr(),
   username: Ember.attr(),

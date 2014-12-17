@@ -1,6 +1,7 @@
 //= require user
+//= require apiModel
 
-App.Post = Ember.Model.extend({
+App.Post = App.ApiModel.extend({
   id: Ember.attr(Number),
   owner: Ember.belongsTo(App.User, { key: 'owner', embedded: true }),
   message: Ember.attr(),

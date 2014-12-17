@@ -1,4 +1,6 @@
-App.Identity = Ember.Model.extend({
+//= require apiModel
+
+App.Identity = App.ApiModel.extend({
   provider: Ember.attr(),
   token: Ember.attr()
 });

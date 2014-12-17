@@ -1,4 +1,6 @@
-App.ConversationsSummary = Ember.Model.extend({
+//= require apiModel
+
+App.ConversationsSummary = App.ApiModel.extend({
   unread_count: Ember.attr(Number),
   unread_count_plus: Ember.attr(Boolean)
 });

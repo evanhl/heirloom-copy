@@ -99,12 +99,9 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
 
   addPhotosToAlbum: function (album) {
     var self = this;
-    var adapter = App.Album.adapter;
     var photoCount = this.get('selectedIds.length');
 
-    adapter.postNested(album, {
-      photo_ids: this.get('selectedIds')
-    }, 'photos').then(function () {
+    album.addPhotos(this.get('selectedIds')).then(function () {
       // TODO: handle error
       self.deselect();
       album.reload();

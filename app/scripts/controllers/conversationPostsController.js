@@ -27,11 +27,10 @@ App.ConversationPostsController = Ember.ArrayController.extend(Ember.Evented, In
   },
 
   markAsRead: function () {
-    var adapter = App.Conversation.adapter;
     var self = this;
     var convo = this.get('conversation.model');
 
-    adapter.postNested(convo, {}, 'read').then(function () {
+    convo.markAsRead().then(function () {
       self.get('navigation').updateConversationsCount();
       convo.reload();
     });

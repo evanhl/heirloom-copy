@@ -1,9 +1,0 @@
-<div class="small-8 small-offset-4 columns">{{input value=newComment placeholder=(ts 'comments.prompt') class='newComment'}}</div>
-
-{{controller.model}}
-
-{{#each controller.model}}
-  <div class="small-8 small-offset-4 columns convo">
-    <span>{{owner.name}}: {{message}}</span>
-  </div>
-{{/each}}

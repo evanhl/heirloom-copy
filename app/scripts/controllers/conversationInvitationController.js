@@ -20,7 +20,6 @@ App.ConversationInvitationController = Ember.ObjectController.extend({
   }.property(),
 
   invitationLoaded: function () {
-    var adapter = App.ConversationInvitation.adapter;
     var self = this;
     var invitation = this.get('model');
 
@@ -29,7 +28,7 @@ App.ConversationInvitationController = Ember.ObjectController.extend({
     }
 
     if (this.get('isLoggedIn') && invitation.get('state') !== 'accepted') {
-      adapter.postNested(invitation, {}, 'accept').then(function () {
+      invitation.accept().then(function () {
         Ember.run.next(self, function () {
           this.afterAccept();
         });

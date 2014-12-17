@@ -1,6 +1,7 @@
 //= require user
+//= require apiModel
 
-App.Share = Ember.Model.extend({
+App.Share = App.ApiModel.extend({
   type: Ember.attr(),
   owner: Ember.belongsTo(App.User, { key: 'owner', embedded: true }),
   created_at: Ember.attr(Date),
@@ -11,7 +12,12 @@ App.Share = Ember.Model.extend({
   }.property('type'),
   isPhoto: function () {
     return this.get('type') === 'photo';
-  }.property('type')
+  }.property('type'),
+
+  // gives a copy of the shared resource to the recipient
+  add: function () {
+    return this.postNested('add');
+  }
 });
 
 App.Share.url = 'share';

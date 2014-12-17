@@ -1,6 +1,7 @@
+//= require apiModel
 //= require user
 
-App.Conversation = Ember.Model.extend({
+App.Conversation = App.ApiModel.extend({
   id: Ember.attr(Number),
   name: Ember.attr(),
   owner: Ember.belongsTo(App.User, { key: 'owner', embedded: true }),
@@ -11,7 +12,11 @@ App.Conversation = Ember.Model.extend({
   created_at: Ember.attr(Date),
   updated_at: Ember.attr(Date),
   contacts: Ember.attr(),
-  member_count: 0
+  member_count: 0,
+
+  markAsRead: function () {
+    return this.postNested('read');
+  }
 });
 
 App.Conversation.url = 'conversations';

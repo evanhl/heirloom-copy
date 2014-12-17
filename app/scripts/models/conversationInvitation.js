@@ -1,6 +1,7 @@
+//= require apiModel
 //= require user
 
-App.ConversationInvitation = Ember.Model.extend({
+App.ConversationInvitation = App.ApiModel.extend({
   id: Ember.computed.alias('token'),
   name: Ember.attr(),
   contact_value: Ember.attr(),
@@ -21,7 +22,11 @@ App.ConversationInvitation = Ember.Model.extend({
     } else {
       return App.PendingRecipient.create({ name: this.get('name') || this.get('contact_value') });
     }
-  }.property('to', 'contact_value')
+  }.property('to', 'contact_value'),
+
+  accept: function () {
+    return this.postNested('accept');
+  }
 });
 
 App.PendingRecipient = Ember.Object.extend({

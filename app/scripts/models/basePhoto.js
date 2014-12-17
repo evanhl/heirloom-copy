@@ -1,4 +1,6 @@
-App.BasePhoto = Ember.Model.extend({
+//= require apiModel
+
+App.BasePhoto = App.ApiModel.extend({
   id: Ember.attr(Number),
   description: Ember.attr(String),
   source: Ember.attr(),

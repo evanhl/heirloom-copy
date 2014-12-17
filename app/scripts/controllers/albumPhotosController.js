@@ -39,19 +39,14 @@ App.AlbumPhotosController = Ember.ArrayController.extend(Ember.Evented, Infinite
 
   addPhotos: function (ids) {
     var self = this;
-    var adapter = App.Album.adapter;
-    var photoCount = ids.length;
     var album = this.get('album.model');
 
-    adapter.postNested(album, {
-      photo_ids: ids
-    }, 'photos').then(function () {
+    album.addPhotos(ids).then(function () {
       // TODO: handle error
       album.reload();
       self.pushObjects(ids.map(function (id) {
         return App.Photo.find(id);
       }));
-      // self.trigger('addedPhotosToAlbum', album, photoCount);
     });
   },
 
@@ -83,15 +78,12 @@ App.AlbumPhotosController = Ember.ArrayController.extend(Ember.Evented, Infinite
     },
 
     removePhotos: function () {
-      var adapter = App.Album.adapter;
       var self = this;
       var album = self.get('album.model');
       var selectedIds = this.get('selectedIds');
       var selected = selectedIds.map(function (id) { return App.Photo.find(id); });
 
-      adapter.postNested(album, {
-        photo_ids: selectedIds
-      }, 'photos/delete').then(function () {
+      album.removePhotos(selectedIds).then(function () {
         self.deselect();
         self.get('model').removeObjects(selected);
         album.reload();

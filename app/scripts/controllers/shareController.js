@@ -50,11 +50,10 @@ App.ShareController = Ember.ObjectController.extend(Ember.Evented, {
     },
 
     save: function () {
-      var adapter = App.Share.adapter;
       var self = this;
       var share = this.get('model');
 
-      adapter.postNested(share, {}, 'add').then(function () {
+      share.add().then(function () {
         self.set('isAddSuccess', true);
       }, function () {
         // TODO: handle failure

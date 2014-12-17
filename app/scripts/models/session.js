@@ -1,3 +1,4 @@
+//= require apiModel
 //= require ../adapters/apiAdapter
 //= require photo
 //= require user

@@ -1,4 +1,4 @@
-// App.PhotoGrouping = Ember.Model.extend({
+// App.PhotoGrouping = App.ApiModel.extend({
 //   remaining: Ember.attr(Number),
 //   name: Ember.attr(String),
 //   photos: Ember.hasMany('App.Photo', { key: 'photos', embedded: true })
