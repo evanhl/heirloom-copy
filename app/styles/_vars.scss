@@ -44,6 +44,7 @@ $album-padding: 20px;
 $album-margin: 28px;
 $album-width-small: 216px;
 
+// NOTE: 186px and 16px are used as a constants in JS. If you change these, change those.
 $photo-width: 186px;
 $photo-margin: 16px;
 $photo-width-small: 170px;

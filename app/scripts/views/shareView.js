@@ -26,8 +26,7 @@ App.ShareView = Ember.View.extend(App.MetaTagMixin, App.HiddenNavMixin, {
   MAX_VISIBLE_PHOTOS: 6,
 
   shiftPhotos: function () {
-    var photoWidth = Utils.getClassWidth('photo');
-    var offset = this.get('controller.shiftRightIndex') * photoWidth;
+    var offset = this.get('controller.shiftRightIndex') * this.get('photoOuterWidth');
     var $photoCont = this.$('.shared-photo');
 
     if (!$photoCont) { return; }
@@ -49,18 +48,25 @@ App.ShareView = Ember.View.extend(App.MetaTagMixin, App.HiddenNavMixin, {
     this.setNumVisiblePhotos();
   },
 
+  photoOuterWidth: function () {
+    return Utils.PHOTO_WIDTH + Utils.PHOTO_MARGIN;
+  }.property(),
+
+  photoMargin: function () {
+    return Utils.PHOTO_MARGIN;
+  }.property(),
+
   setNumVisiblePhotos: function () {
-    var photoWidth = Utils.getClassWidth('photo');
     var ARROW_WIDTHS = 100;
-    var numVis = Math.floor((this.get('viewportWidth') - ARROW_WIDTHS) / photoWidth);
+    var numVis = Math.floor((this.get('viewportWidth') - ARROW_WIDTHS) / this.get('photoOuterWidth'));
 
     numVis = Math.min(numVis, this.MAX_VISIBLE_PHOTOS);
     this.set('controller.numVisiblePhotos', numVis);
-    this.setPhotoContainerWidth(numVis, photoWidth);
+    this.setPhotoContainerWidth(numVis, this.get('photoOuterWidth'), this.get('photoMargin'));
   },
 
-  setPhotoContainerWidth: function (numPhotos, photoWidth) {
-    this.set('photoContainerWidth', numPhotos * photoWidth);
+  setPhotoContainerWidth: function (numPhotos, photoOuterWidth, photoMargin) {
+    this.set('photoContainerWidth', (numPhotos * photoOuterWidth) - photoMargin);
   },
 
   photoContainerStyle: function () {
