@@ -6,19 +6,11 @@ App.ConversationPostsController = Ember.ArrayController.extend(Ember.Evented, In
   newPostMessage: null,
 
   fetchPage: function (page, perPage) {
-    // TODO: remove copypasta with AlbumPhotosController
-    var adapter = App.Post.adapter;
-    var params = {
-      page: page,
-      per_page: perPage
-    };
-    var records = Ember.RecordArray.create({ modelClass: App.Post, _query: params, container: false });
-
     if (page === 1) {
       this.onFirstPage();
     }
 
-    return adapter.findNestedQuery(this.get('conversation.model'), App.Post, 'posts', records, params);
+    return this.get('conversation.model').fetchPostsPage(page, perPage);
   },
 
   onFirstPage: function () {
@@ -38,11 +30,9 @@ App.ConversationPostsController = Ember.ArrayController.extend(Ember.Evented, In
 
   fetchParticipants: function () {
     var self = this;
-    var adapter = App.Conversation.adapter;
-    var records = Ember.RecordArray.create({ modelClass: App.ConversationInvitation, _query: {}, container: false });
 
-    return adapter.findNestedQuery(this.get('conversation.model'), App.ConversationInvitation, 'invitations', records, {}).then(function () {
-      var participants = records.mapBy('recipient').compact();
+    this.get('conversation.model').fetchInvitations().then(function (invitations) {
+      var participants = invitations.mapBy('recipient').compact();
 
       self.set('participants', participants);
     });

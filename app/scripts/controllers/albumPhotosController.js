@@ -15,14 +15,7 @@ App.AlbumPhotosController = Ember.ArrayController.extend(Ember.Evented, Infinite
   },
 
   fetchPage: function (page, perPage) {
-    var adapter = App.Album.adapter;
-    var params = {
-      page: page,
-      per_page: perPage
-    };
-    var records = Ember.RecordArray.create({ modelClass: App.Photo, _query: params, container: false });
-
-    return adapter.findNestedQuery(this.get('album.model'), App.Photo, 'photos', records, params);
+    return this.get('album.model').fetchPhotosPage(page, perPage);
   },
 
   isSelectionMode: function () {

@@ -13,6 +13,15 @@ App.Album = App.ApiModel.extend({
 
   removePhotos: function (photoIds) {
     return this.postNested('photos/delete', { photo_ids: photoIds });
+  },
+
+  fetchPhotosPage: function (page, perPage) {
+    var params = {
+      page: page,
+      per_page: perPage
+    };
+
+    return this.findNestedQuery(App.Photo, 'photos', params);
   }
 });
 

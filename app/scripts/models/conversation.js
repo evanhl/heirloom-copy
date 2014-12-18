@@ -16,6 +16,19 @@ App.Conversation = App.ApiModel.extend({
 
   markAsRead: function () {
     return this.postNested('read');
+  },
+
+  fetchPostsPage: function (page, perPage) {
+    var params = {
+      page: page,
+      per_page: perPage
+    };
+
+    return this.findNestedQuery(App.Post, 'posts', params);
+  },
+
+  fetchInvitations: function () {
+    return this.findNestedQuery(App.ConversationInvitation, 'invitations');
   }
 });
 
