@@ -190,6 +190,35 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
 
     addToAlbum: function () {
       this.send('openModal', 'albumPicker');
+    },
+
+    addToDropbox: function () {
+      var dropboxOpts = {};
+
+      dropboxOpts.files = this.get('selectedIds').map(function (photoId) {
+        return {
+          url: App.Photo.find(photoId).get('fullVersion'),
+          filename: photoId + '.jpg'
+        };
+      });
+
+      dropboxOpts.success = function () {
+
+      };
+
+      dropboxOpts.progress = function () {
+
+      };
+
+      dropboxOpts.cancel = function () {
+
+      };
+
+      dropboxOpts.error = function () {
+
+      };
+
+      Dropbox.save(dropboxOpts);
     }
   }
 });
