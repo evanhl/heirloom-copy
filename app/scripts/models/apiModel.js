@@ -16,5 +16,11 @@ App.ApiModel = Ember.Model.extend({
     var adapter = this.constructor.adapter;
 
     return adapter.createNestedRecord(this, nestedModel, route);
+  },
+
+  patch: function (data) {
+    var adapter = this.constructor.adapter;
+
+    return adapter.patchRecord(this, data);
   }
 });
