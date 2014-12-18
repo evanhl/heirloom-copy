@@ -14,6 +14,12 @@ App.Photo = App.BasePhoto.extend({
   }.property('versions')
 });
 
+App.Photo.reopenClass({
+  batchDelete: function (photoIds) {
+    return this.adapter.batchDelete(this, photoIds, 'photo_ids');
+  }
+});
+
 App.Photo.url = 'photos';
 App.Photo.adapter = App.APIAdapter.create({
   userNamespaced: true

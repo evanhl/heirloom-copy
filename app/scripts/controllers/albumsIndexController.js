@@ -77,7 +77,7 @@ App.AlbumsIndexController = Ember.ArrayController.extend(Ember.Evented, Infinite
       var adapter = App.Album.adapter;
       var self = this;
 
-      adapter.batchDelete(App.Album, this.get('selectedIds'), 'album_ids').then(function (response) {
+      App.Album.batchDelete(this.get('selectedIds')).then(function (response) {
         response.album_ids.forEach(function (id) {
           var album = self.findBy('id', id);
           self.removeObject(album);

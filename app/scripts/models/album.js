@@ -25,6 +25,12 @@ App.Album = App.ApiModel.extend({
   }
 });
 
+App.Album.reopenClass({
+  batchDelete: function (albumIds) {
+    return this.adapter.batchDelete(this, albumIds, 'album_ids');
+  }
+});
+
 App.Album.url = 'albums';
 App.Album.adapter = App.APIAdapter.create({
   userNamespaced: true

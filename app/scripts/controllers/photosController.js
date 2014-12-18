@@ -169,10 +169,9 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
     },
 
     deletePhotos: function () {
-      var adapter = App.Photo.adapter;
       var self = this;
 
-      adapter.batchDelete(App.Photo, this.get('selectedIds'), 'photo_ids').then(function (response) {
+      App.Photo.batchDelete(this.get('selectedIds')).then(function (response) {
         response.photo_ids.forEach(function (id) {
           var photo = self.get('model').findBy('id', id);
 
