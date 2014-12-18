@@ -8,10 +8,9 @@ App.ConversationsCreateController = Ember.Controller.extend(Ember.Evented, {
 
   createFirstPost: function (convo, postOptions) {
     var self = this;
-    var adapter = App.Conversation.adapter;
     var post = App.Post.create(postOptions);
 
-    adapter.createNestedRecord(convo, post, 'posts').then(function () {
+    convo.createPost(post).then(function () {
       self.trigger('didCreatePost', post);
       self.get('conversations').unshiftObject(convo);
       self.transitionToRoute('conversationPosts', convo.get('id'));

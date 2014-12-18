@@ -29,6 +29,10 @@ App.Conversation = App.ApiModel.extend({
 
   fetchInvitations: function () {
     return this.findNestedQuery(App.ConversationInvitation, 'invitations');
+  },
+
+  createPost: function (postModel) {
+    return this.createNestedRecord('posts', postModel);
   }
 });
 

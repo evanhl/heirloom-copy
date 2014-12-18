@@ -10,5 +10,11 @@ App.ApiModel = Ember.Model.extend({
     var records = Ember.RecordArray.create({ modelClass: nestedModelClass, _query: data, container: false });
 
     return adapter.findNestedQuery(this, nestedModelClass, route, records, data || {});
+  },
+
+  createNestedRecord: function (route, nestedModel) {
+    var adapter = this.constructor.adapter;
+
+    return adapter.createNestedRecord(this, nestedModel, route);
   }
 });
