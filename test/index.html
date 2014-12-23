@@ -31,26 +31,8 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-    <!-- build:js({app,.tmp}) /scripts/main.js -->
-    <script src="/main.js"></script>
-    <script src="/templates.js"></script>
-    <!-- endbuild -->
-
-    <script src="bower_components/mocha/mocha.js"></script>
-    <script src="bower_components/chai/chai.js"></script>
-    <script src="bower_components/ember-mocha-adapter/adapter.js"></script>
     <script src="bower_components/jquery-mockjax/jquery.mockjax.js"></script>
     <script>
-      var assert = chai.assert;
-      var expect = chai.expect;
-      var should = chai.should();
-
-      Ember.testing = true;
-
-      App.rootElement = '#ember-fixture';
-      App.setupForTesting();
-      App.injectTestHelpers();
-
       // handles session reload within authorization.js
       $.mockjax({
         url: 'https://api.hlstage.com/me',
@@ -63,8 +45,28 @@
         }
       });
 
-      $.mockjaxSettings.logging = false;
+      $.mockjaxSettings.logging = true;
       $.mockjaxSettings.responseTime = 0;
+    </script>
+
+    <!-- build:js({app,.tmp}) /scripts/main.js -->
+    <script src="/main.js"></script>
+    <script src="/templates.js"></script>
+    <!-- endbuild -->
+
+    <script src="bower_components/mocha/mocha.js"></script>
+    <script src="bower_components/chai/chai.js"></script>
+    <script src="bower_components/ember-mocha-adapter/adapter.js"></script>
+    <script>
+      var assert = chai.assert;
+      var expect = chai.expect;
+      var should = chai.should();
+
+      Ember.testing = true;
+
+      App.rootElement = '#ember-fixture';
+      App.setupForTesting();
+      App.injectTestHelpers();
 
       getCurrentRoute = function () {
         var router = App.__container__.lookup("router:main"); //get the main router

@@ -646,6 +646,12 @@ module.exports = function(grunt) {
     ]);
   });
 
+  grunt.registerTask('testServer', [
+    'clean:server',
+    'concurrent:test',
+    'connect:testServer'
+  ]);
+
   grunt.registerTask('genSprites', [
     'image_resize',
     'copy:1xSprites',
