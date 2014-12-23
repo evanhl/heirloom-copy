@@ -44,7 +44,7 @@
 
       ApiMock.genUniqId = function () {
         return counter++;
-      }
+      };
     })();
 
     ApiMock.PHOTO_VERSIONS = ['full', 'n', 's', 'xs'];

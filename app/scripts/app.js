@@ -1,5 +1,4 @@
 /* jshint -W079 */
-/* globals CLDR */
 
 // Adapted from http://discuss.emberjs.com/t/emberconf-talk-disable-ember-eventhandlers-for-mobile/4877
 
@@ -88,7 +87,7 @@ App.set('basil', new window.Basil({
   storage: 'local'
 }));
 
-CLDR.defaultLanguage = 'en-US';
+Em.I18n.locale = 'en';
 
 // fix for iPad viewport height issue.
 // http://stackoverflow.com/questions/19012135/ios-7-ipad-safari-landscape-innerheight-outerheight-layout-issue
