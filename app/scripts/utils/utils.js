@@ -12,25 +12,40 @@
 
 // TODO: centralize API call logic
 Utils.apiCall = function (url, type, data, success, error) {
+  Utils.ajaxJson(
+    HLConfig.HOSTNAME + url,
+    type,
+    data,
+    success,
+    error,
+    {
+      beforeSend: function setHeader (xhr) {
+        xhr.setRequestHeader('X-User-Token', App.get('auth.authToken'));
+      }
+    }
+  );
+};
+
+Utils.ajaxJson = function (url, type, data, success, error, opts) {
   var self = this;
   var dataToSend = data;
+  var ajaxOpts;
 
   if (type !== 'GET') {
     dataToSend = JSON.stringify(dataToSend);
   }
 
-  $.ajax({
-    url: HLConfig.HOSTNAME + url,
+  ajaxOpts = $.extend({
+    url: url,
     type: type,
     dataType: 'json',
     data: dataToSend,
     contentType: 'application/json; charset=utf-8',
     success: success,
-    error: error,
-    beforeSend: function setHeader (xhr) {
-      xhr.setRequestHeader('X-User-Token', App.get('auth.authToken'));
-    }
-  });
+    error: error
+  }, opts || {});
+
+  $.ajax(ajaxOpts);
 };
 
 Utils.findIndexOf = function (arr, filter) {

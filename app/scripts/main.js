@@ -11,4 +11,5 @@
 //= require_tree upload
 //= require_tree views
 //= require_tree components
+//= require_tree services
 

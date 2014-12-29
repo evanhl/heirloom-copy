@@ -44,7 +44,8 @@ App.Authorization = Ember.Object.extend({
     var self = this;
 
     Ember.$.ajaxPrefilter(function(options, originalOptions, jqXhr) {
-      if (self.get('authToken')) {
+      var isApiRequest = options.url.indexOf(HLConfig.HOSTNAME) !== -1;
+      if (self.get('authToken') && isApiRequest) {
         jqXhr.setRequestHeader("X-User-Token", self.get('authToken'));
       }
     });

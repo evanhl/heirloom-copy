@@ -150,6 +150,20 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
     }
   }.observes('model.length'),
 
+  // TODO: move to modal
+  doZipDownload: function () {
+    var assembly;
+    var urls = this.get('selectedIds').map(function (photoId) {
+      return App.Photo.find(photoId).get('fullVersion');
+    });
+
+    assembly = App.ZipAssembly.create({
+      urls: urls
+    });
+
+    this.set('zipAssembly', assembly);
+  },
+
   actions: {
     enlarge: function (id) {
       this.transitionToRoute('photo', id);
@@ -190,6 +204,10 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
 
     addToAlbum: function () {
       this.send('openModal', 'albumPicker');
+    },
+
+    zipDownload: function () {
+      this.doZipDownload();
     }
   }
 });

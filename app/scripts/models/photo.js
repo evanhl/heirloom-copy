@@ -11,6 +11,10 @@ App.Photo = App.BasePhoto.extend({
 
   largeVersion: function () {
     return this.versionForDimension('n');
+  }.property('versions'),
+
+  fullVersion: function () {
+    return this.versionForDimension('full');
   }.property('versions')
 });
 
