@@ -1,0 +1,19 @@
+{{#modal-dialog action="close"}}
+  <div {{bind-attr class=":album-picker"}}>
+    <div class="top-bar">
+      <h3>Zip Download</h3>
+    </div>
+    <div class="bottom-bar">
+      <div class="right">
+        <button class="secondary" {{action 'close'}}>{{t 'cancel'}}</button>
+        <button class="take-action" {{action 'complete'}} {{bind-attr disabled=downloadDisabled}}>Download</button>
+      </div>
+    </div>
+    <div class="nav-filler"></div>
+
+    <div class="picker-content">
+      {{zipAssembly.state}}
+      <a {{bind-attr href=zipAssembly.zipUrl}}>{{zipAssembly.zipUrl}}</a>
+    </div>
+  </div>
+{{/modal-dialog}}

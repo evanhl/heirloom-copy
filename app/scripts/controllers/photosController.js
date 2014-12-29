@@ -162,6 +162,7 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
     });
 
     this.set('zipAssembly', assembly);
+    this.send('openModal', 'zipDownloadModal', assembly);
   },
 
   actions: {

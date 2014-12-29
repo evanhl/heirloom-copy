@@ -105,6 +105,16 @@ Utils.hasTouch = function () {
   return 'ontouchstart' in window;
 };
 
+Utils.bindMethods = function (obj, methods) {
+  if (typeof methods === "string") {
+    methods = [methods];
+  }
+
+  methods.forEach(function (method) {
+    obj[method] = $.proxy(obj[method], obj);
+  });
+};
+
 Utils.IOS_STORE_LINK = 'https://itunes.apple.com/us/app/heirloom-for-all-moments-we/id931656673';
 Utils.ANDROID_STORE_LINK = 'https://play.google.com/store/apps/details?id=io.heirloom.app';
 
