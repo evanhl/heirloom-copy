@@ -2,9 +2,10 @@
 //= require ../utils/utils
 
 App.ZipAssembly = Ember.Object.extend(Ember.Evented, {
-  STATUS_INTERVAL: 1000,
+  STATUS_INTERVAL: 750,
   urls: null,
   state: 'init',
+  currentStage: 0,
 
   isDone: function () {
     return this.get('state') === 'done';
@@ -16,6 +17,7 @@ App.ZipAssembly = Ember.Object.extend(Ember.Evented, {
     Utils.bindMethods(this, ['onInitSuccess', 'onInitError', 'checkStatus', 'parseStatus']);
 
     Utils.Transloadit.createZip(this.get('urls'), this.onInitSuccess, this.onInitError);
+    this.set('numStages', Utils.Transloadit.getNumStages());
   },
 
   // TODO: set max wait time
@@ -32,8 +34,8 @@ App.ZipAssembly = Ember.Object.extend(Ember.Evented, {
   },
 
   onInitError: function (response) {
-    if (response && response.error) {
-      this.handleError(response.error);
+    if (response && response.responseJSON && response.responseJSON.error) {
+      this.handleError(response.responseJSON.error);
     } else {
       this.handleError();
     }
@@ -50,10 +52,12 @@ App.ZipAssembly = Ember.Object.extend(Ember.Evented, {
       this.handleError(response.error);
     } else if (response.ok === "ASSEMBLY_COMPLETED") {
       this.set('state', 'done');
-      this.set('zipUrl', response.results.zip[0].ssl_url);
+      this.set('zipUrl', Utils.Transloadit.getZipUrl(response));
+      this.set('currentStage', Utils.Transloadit.getStageNumber(response));
       this.clearHandle();
     } else if (response.ok === "ASSEMBLY_EXECUTING") {
       this.set('state', 'progressing');
+      this.set('currentStage', Utils.Transloadit.getStageNumber(response));
     }
   },
 

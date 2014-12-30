@@ -13,7 +13,9 @@
 
     <div class="picker-content">
       {{zipAssembly.state}}
-      <a {{bind-attr href=zipAssembly.zipUrl}}>{{zipAssembly.zipUrl}}</a>
+      {{zipAssembly.error}}
+      <div>{{zipAssembly.currentStage}} / {{zipAssembly.numStages}}</div>
+      <div><a {{bind-attr href=zipAssembly.zipUrl}}>{{zipAssembly.zipUrl}}</a></div>
     </div>
   </div>
 {{/modal-dialog}}
