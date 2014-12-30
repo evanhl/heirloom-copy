@@ -155,6 +155,15 @@ module.exports = function(grunt) {
       '1xSpritesHomePage': '<%= config.app %>/images/spritesHomePage-1x/*2x.png'
     },
 
+    mkdir: {
+      tmp: {
+        options: {
+          mode: 755,
+          create: ['.tmp']
+        }
+      }
+    },
+
     // Make sure code styles are up to par and there are no obvious mistakes
     jshint: {
       options: {
@@ -672,8 +681,13 @@ module.exports = function(grunt) {
     'emberTemplates'
   ]);
 
-  grunt.registerTask('build', [
+  grunt.registerTask('cleanDist', [
     'clean:dist',
+    'mkdir:tmp'
+  ]);
+
+  grunt.registerTask('build', [
+    'cleanDist',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
