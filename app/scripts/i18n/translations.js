@@ -99,6 +99,10 @@ Ember.I18n.translations = {
   'share.savePhotoMessage': 'Save this photo to your Moments.',
   'share.saveSuccess': 'This photo has been added to your Moments.',
 
+  'zip.title': 'Zip Download',
+  'zip.button': 'Zip Download',
+  'zip.download': 'Download',
+
   'cancel': 'Cancel',
   'save': 'Save',
   'add': 'Add',

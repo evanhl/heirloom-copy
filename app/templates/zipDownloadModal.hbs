@@ -1,12 +1,12 @@
 {{#modal-dialog action="close"}}
   <div {{bind-attr class=":album-picker"}}>
     <div class="top-bar">
-      <h3>Zip Download</h3>
+      <h3>{{t 'zip.title'}}</h3>
     </div>
     <div class="bottom-bar">
       <div class="right">
         <button class="secondary" {{action 'close'}}>{{t 'cancel'}}</button>
-        <button class="take-action" {{action 'complete'}} {{bind-attr disabled=downloadDisabled}}>Download</button>
+        <button class="take-action" {{action 'complete'}} {{bind-attr disabled=downloadDisabled}}>{{t 'zip.download'}}</button>
       </div>
     </div>
     <div class="nav-filler"></div>

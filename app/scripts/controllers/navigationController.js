@@ -58,10 +58,6 @@ App.NavigationController = Ember.Controller.extend({
     });
   },
 
-  groupsEnabled: function () {
-    return !HLConfig.GROUPS_DISABLED;
-  }.property(),
-
   // TODO: signin transition could be abrupt if token is expired remotely with no user action
   // implement warning banner, e.g. "You've been unexpectedly logged out"
   softSignOut: function () {

@@ -4,7 +4,7 @@ Utils.Transloadit = {
   HOST: 'https://api2.transloadit.com',
   // TODO: use signature-based auth
   AUTH_KEY: 'b6f68d408ae611e49fa1451ce8c8c2d1',
-  ZIP_TEMPLATE_ID: '8f97f7108af111e4a34505ff6b8197c8',
+  ZIP_TEMPLATE_ID: HLConfig.zipTemplateId,
   STAGES: ['download:::original', 'zip::download', 'upload::zip'],
 
   createZip: function (urls, success, error) {
@@ -32,6 +32,10 @@ Utils.Transloadit = {
 
     try {
       url = response.results.zip[0].ssl_url;
+
+      if (HLConfig.zipHost) {
+        url = HLConfig.zipHost + Utils.getPathName(url);
+      }
     } catch (e) {}
 
     return url;

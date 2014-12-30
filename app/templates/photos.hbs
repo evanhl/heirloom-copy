@@ -8,7 +8,7 @@
         </div>
         {{partial 'shareButton'}}
         <button class="take-action with-icon medium" {{action 'addToAlbum' selectedIds}}><span class="add-to-album-icon btn-icon"></span>{{t 'album'}}</button>
-        <button class="take-action with-icon medium" {{action 'zipDownload' selectedIds}}><span class="add-to-album-icon btn-icon"></span>Zip Download</button>
+        <button class="take-action with-icon medium" {{action 'zipDownload' selectedIds}}><span class="add-to-album-icon btn-icon"></span>{{t 'zip.button'}}</button>
       </div>
       <div class="right">
         <button class="secondary icon-only delete" {{action 'deletePhotos'}}></button>
