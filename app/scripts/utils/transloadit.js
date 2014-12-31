@@ -2,25 +2,21 @@
 
 Utils.Transloadit = {
   HOST: 'https://api2.transloadit.com',
-  // TODO: use signature-based auth
-  AUTH_KEY: 'b6f68d408ae611e49fa1451ce8c8c2d1',
   ZIP_TEMPLATE_ID: HLConfig.zipTemplateId,
   STAGES: ['download:::original', 'zip::download', 'upload::zip'],
 
   createZip: function (urls, success, error) {
+    var self = this;
     var data = {
-      params: JSON.stringify({
-        auth: {
-          key: this.AUTH_KEY
-        },
-        template_id: this.ZIP_TEMPLATE_ID,
-        fields: {
-          fileUrls: urls.join('|')
-        }
-      })
+      template_id: this.ZIP_TEMPLATE_ID,
+      fields: {
+        fileUrls: urls.join('|')
+      }
     };
 
-    Utils.ajaxJson(this.HOST + '/assemblies', 'POST', data, success, error);
+    Utils.apiCall('/transloadit_signature', 'GET', data, function (response) {
+      Utils.ajaxJson(self.HOST + '/assemblies', 'POST', response, success, error);
+    }, error);
   },
 
   checkZipStatus: function (assemblyUrl, success) {
