@@ -5,8 +5,11 @@ if [ -d "./dist" ]; then
   node app.js
 else
   echo "No dist detected. Building app..."
-  npm install -g grunt-cli
-  grunt build
-  echo "Starting Node.js..."
-  node app.js
+  npm install -g grunt-cli && grunt build
+  if [ "$?" = "0" ]; then
+    echo "Starting Node.js..."
+    node app.js
+  else
+  	exit 1
+  fi
 fi
