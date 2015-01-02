@@ -103,6 +103,11 @@ Ember.I18n.translations = {
   'zip.button': 'Zip Download',
   'zip.download': 'Download',
 
+  'zip.done': 'Your zip file has been created!',
+  'zip.zipping.one': 'Zipping {{count}} file. This might take some time.',
+  'zip.zipping.other': 'Zipping {{count}} files. This might take some time.',
+  'zip.error': 'Error while creating zip file. ',
+
   'cancel': 'Cancel',
   'save': 'Save',
   'add': 'Add',

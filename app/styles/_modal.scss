@@ -54,7 +54,7 @@ $picker-photo-margin: 100% * ($photo-margin / ($picker-width - $album-margin));
 }
 
 
-.photo-picker, .album-picker, .photo-picker-modal, .upload-modal {
+.photo-picker, .album-picker, .photo-picker-modal, .upload-modal, .zip-modal {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -65,6 +65,10 @@ $picker-photo-margin: 100% * ($photo-margin / ($picker-width - $album-margin));
   width: 100%;
 
   box-shadow: 0 2px 3px 0 rgba(0,0,0,0.25);
+}
+
+.zip-modal {
+  max-width: 500px;
 }
 
 .photo-picker {
@@ -141,7 +145,51 @@ $picker-photo-margin: 100% * ($photo-margin / ($picker-width - $album-margin));
   }
 }
 
+$zip-content-height: 250px;
+.zip-modal {
+  border-radius: 3px;
+  height: $zip-content-height + ($logo-height * 2);
+  background: $subtle-highlight-color;
+
+  .bottom-bar {
+    padding: 0 18px;
+
+    button {
+      vertical-align: middle;
+    }
+  }
+
+  .picker-content {
+    padding: 0;
+    display: table;
+    width: 100%;
+    height: $zip-content-height;
+  }
+
+  h3 {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+
+    &.error {
+      color: $highlight-color-4;
+    }
+  }
+
+
+  .progress {
+    height: 4px;
+    width: 0%;
+    background: $highlight-color;
+    transition: width 0.3s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
 .picker-content {
+  position: relative;
   height: #{$picker-content-height};
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;

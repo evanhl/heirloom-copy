@@ -1,21 +1,34 @@
 {{#modal-dialog action="close"}}
-  <div {{bind-attr class=":album-picker"}}>
+  <div {{bind-attr class=":zip-modal"}}>
     <div class="top-bar">
       <h3>{{t 'zip.title'}}</h3>
     </div>
     <div class="bottom-bar">
       <div class="right">
         <button class="secondary" {{action 'close'}}>{{t 'cancel'}}</button>
-        <button class="take-action" {{action 'complete'}} {{bind-attr disabled=downloadDisabled}}>{{t 'zip.download'}}</button>
+        <button class="take-action" {{bind-attr disabled=downloadDisabled}}>{{t 'zip.download'}}</button>
       </div>
     </div>
     <div class="nav-filler"></div>
 
+    <iframe class="zip-dl" style="display:none;"></iframe>
+
     <div class="picker-content">
-      {{zipAssembly.state}}
-      {{zipAssembly.error}}
-      <div>{{zipAssembly.currentStage}} / {{zipAssembly.numStages}}</div>
-      <div><a {{bind-attr href=zipAssembly.zipUrl}}>{{zipAssembly.zipUrl}}</a></div>
+      <div class="progress" {{bind-attr style=progressStyle}}></div>
+
+      <h3 {{bind-attr class="zipAssembly.error:error"}}>
+        {{#if isZipping}}
+          {{t 'zip.zipping' countBinding=zipAssembly.urls.length}}
+        {{/if}}
+
+        {{#if isDone}}
+          {{t 'zip.done'}}
+        {{/if}}
+
+        {{#if zipAssembly.error}}
+          {{t 'zip.error'}} {{zipAssembly.error}}
+        {{/if}}
+      </h3>
     </div>
   </div>
 {{/modal-dialog}}

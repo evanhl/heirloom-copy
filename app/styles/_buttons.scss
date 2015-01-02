@@ -64,7 +64,7 @@ button {
   }
 
   &.with-icon {
-    padding: 0;
+    padding: 0 10px 0 0;
     line-height: 44px;
 
     &.large {
@@ -166,6 +166,7 @@ button {
     border-right-style: solid;
     float: left;
     height: 38px;
+    margin-right: 10px;
 
     &:after {
       display: inline-block;

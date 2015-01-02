@@ -150,7 +150,6 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
     }
   }.observes('model.length'),
 
-  // TODO: move to modal
   doZipDownload: function () {
     var assembly;
     var urls = this.get('selectedIds').map(function (photoId) {
