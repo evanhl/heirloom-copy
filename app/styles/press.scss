@@ -16,6 +16,10 @@
 @import 'spritesheetHomePage-2x';
 @import 'homepage';
 
+$slick-dot-size: 16px;
+$slick-loader-path: '/images/slick/';
+@import 'slick.js/slick/slick.scss';
+
 // lifted from https://github.com/Ensighten/spritesmith/issues/19
 @mixin sprite-background-size($sprite) {
   background-size: nth($sprite, 7) nth($sprite, 8);
@@ -45,6 +49,7 @@ header {
   width: 100%;
   top: 0;
   background: white;
+  z-index: 100;
 }
 
 section {
@@ -143,6 +148,36 @@ section > div {
 
 .press-social {
   padding-top: 2em;
+}
+
+
+
+.articles .article {
+  background: white;
+  min-height: 300px;
+
+  h3 {
+    width: 69%;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 5%;
+    text-align: center;
+
+    .attrib {
+      color: $subtle-highlight-color;
+    }
+  }
+
+  .press-logo {
+    padding: 5%;
+    width: 29%;
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.clearfix {
+  overflow: auto;
 }
 
 /* =============================================================================

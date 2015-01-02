@@ -91,7 +91,7 @@ module.exports = function(grunt) {
           middleware: function(connect) {
             return [
               // supports single page app URLs
-              modRewrite(['!\\.html|\\.js|\\.svg|\\.css|\\.ico|\\.md|\\.png|\\.jpg|\\.woff$ /index.html [L]']),
+              modRewrite(['!\\.html|\\.js|\\.svg|\\.css|\\.ico|\\.md|\\.png|\\.jpg|\\.woff|\\.gif$ /index.html [L]']),
               connect.static('.tmp'),
               connect().use('/bower_components', connect.static('./bower_components')),
               connect().use('/vendor', connect.static('./vendor')),
