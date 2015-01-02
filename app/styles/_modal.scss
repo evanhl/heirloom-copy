@@ -149,7 +149,7 @@ $zip-content-height: 250px;
 .zip-modal {
   border-radius: 3px;
   height: $zip-content-height + ($logo-height * 2);
-  background: $subtle-highlight-color;
+  background: $bg-color-accent;
 
   .bottom-bar {
     padding: 0 18px;
