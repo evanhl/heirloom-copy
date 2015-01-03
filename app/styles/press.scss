@@ -151,16 +151,27 @@ section > div {
 }
 
 
-
-.articles .article {
+.articles {
   background: white;
-  min-height: 300px;
+}
+.articles .article {
+  // background: white;
+  // min-height: 300px;
+  text-align: center;
+  float: none;
+  display: inline-block;
+  vertical-align: middle;
+
+  a {
+    color: inherit;
+  }
 
   h3 {
-    width: 69%;
+    width: 100%;
     display: inline-block;
     vertical-align: middle;
     padding: 5%;
+    margin: 0;
     text-align: center;
 
     .attrib {
@@ -170,9 +181,10 @@ section > div {
 
   .press-logo {
     padding: 5%;
-    width: 29%;
+    width: 50%;
     display: inline-block;
     vertical-align: middle;
+    text-align: center;
   }
 }
 
@@ -202,7 +214,17 @@ section > div {
 /*
  * Approximately 600px breakpoint
  */
-@media all and (min-width: 37.5em) {}
+@media all and (min-width: 37.5em) {
+  .articles .article {
+    h3 {
+      width: 69%;
+    }
+
+    .press-logo {
+      width: 29%;
+    }
+  }
+}
 
 /*
  * Approximately 800px breakpoint
