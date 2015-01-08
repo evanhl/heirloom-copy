@@ -23,9 +23,29 @@ App.ZipDownloadModalController = Ember.ObjectController.extend({
     return !this.get('zipAssembly.isDone');
   }.property('zipAssembly.isDone'),
 
+  cancelButtonText: function () {
+    if (this.get('mustConfirmCancel')) {
+      return Ember.I18n.t('cancel');
+    } else {
+      return Ember.I18n.t('close');
+    }
+  }.property('mustConfirmCancel'),
+
+  mustConfirmCancel: function () {
+    return !this.get('zipAssembly.didDownload') && !this.get('zipAssembly.isError');
+  }.property('zipAssembly.didDownload', 'zipAssembly.isError'),
+
   actions: {
     close: function () {
-      this.send('closeModal');
+      var userConfirmed = true;
+
+      if (this.get('mustConfirmCancel')) {
+        userConfirmed = window.confirm(Em.I18n.t('zip.confirmClose'));
+      }
+
+      if (userConfirmed) {
+        this.send('closeModal');
+      }
     }
   }
 });

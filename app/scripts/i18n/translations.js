@@ -100,15 +100,17 @@ Ember.I18n.translations = {
   'share.saveSuccess': 'This photo has been added to your Moments.',
 
   'zip.title': 'Zip Download',
-  'zip.button': 'Zip Download',
+  'zip.button': 'Download',
   'zip.download': 'Download',
 
   'zip.done': 'Your zip file has been created!',
   'zip.zipping.one': 'Zipping {{count}} file. This might take some time.',
   'zip.zipping.other': 'Zipping {{count}} files. This might take some time.',
   'zip.error': 'Error while creating zip file. ',
+  'zip.confirmClose': 'You haven\'t downloaded the file yet. Are you sure you want to close Zip Download?',
 
   'cancel': 'Cancel',
+  'close': 'Close',
   'save': 'Save',
   'add': 'Add',
   'create': 'Create',

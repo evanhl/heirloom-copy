@@ -6,9 +6,14 @@ App.ZipAssembly = Ember.Object.extend(Ember.Evented, {
   urls: null,
   state: 'init',
   currentStage: 0,
+  didDownload: false,
 
   isDone: function () {
     return this.get('state') === 'done';
+  }.property('state'),
+
+  isError: function () {
+    return this.get('state') === 'error';
   }.property('state'),
 
   init: function () {
