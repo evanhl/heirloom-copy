@@ -7,6 +7,21 @@ var prerender = require('prerender-node').set('prerenderToken', process.env.PRER
 var port = process.env.PORT || 3000;
 var app = express();
 
+
+app.use(function(req, res, next) {
+  if (process.env.WEB_ENV !== 'production') {
+    next();
+    return;
+  }
+
+  // redirect to https in Heroku production environments
+  if (req.header('x-forwarded-proto') !== 'https') {
+    res.redirect("https://" + req.header('host') + req.url);
+  } else {
+    next();
+  }
+});
+
 app.use(function(req, res, next) {
   if (prerender.shouldShowPrerenderedPage(req)) {
     // This tells New Relic that this is a prerender transaction and should be categorized accordingly
@@ -25,7 +40,7 @@ app.use(function(req, res, next) {
     req.url = '/press.html';
   } else if (req.url.match(/\/faq$/)) {
     req.url = '/faq.html';
-  } else if (!req.url.match(/\.js$|\.css$|\.svg$|\.png$|\.jpg$|\.md$|\.html$|\.ico$|\.woff$/)) {
+  } else if (!req.url.match(/\.js$|\.css$|\.gif$|\.svg$|\.png$|\.jpg$|\.md$|\.html$|\.ico$|\.woff$/)) {
     req.url = '/index.html';
   }
 

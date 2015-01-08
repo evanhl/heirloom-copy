@@ -7,6 +7,17 @@
     filenames: ['press'],
     init: function () {
       this.fetchMarkdown();
+      this.initSlick();
+    },
+
+    initSlick: function () {
+      $('.articles').slick({
+        dots: true,
+        arrows: false,
+        autoplay: true,
+        autoplaySpeed: 5000,
+        speed: 600
+      });
     }
   });
 

@@ -48,14 +48,36 @@ Utils.ajaxJson = function (url, type, data, success, error, opts) {
   $.ajax(ajaxOpts);
 };
 
-Utils.findIndexOf = function (arr, filter) {
+// Finds the closest element in the array matching a filter starting at startingOffset
+// This is a more efficient way to find the array offset of an element after a route change,
+// which typically only advances by one in either direction.
+Utils.findNearby = function (arr, filter, startingOffset) {
   var foundIndex = -1;
+  var i;
+  var distance = 0;
+  var arrLength = arr.get('length');
 
-  arr.forEach(function (item, index) {
-    if (filter(item)) {
-      foundIndex = index;
+  startingOffset = startingOffset || -1;
+  i = startingOffset;
+
+  while ((i - distance) >= 0 || (i + distance) < arrLength) {
+    distance++;
+
+    if ((i - distance) >= 0) {
+      if (filter(arr.objectAt(i - distance))) {
+        foundIndex = i - distance;
+        break;
+      }
     }
-  });
+
+    if ((i + distance) < arrLength) {
+      if (filter(arr.objectAt(i + distance))) {
+        foundIndex = i + distance;
+        break;
+      }
+    }
+  }
+
   return foundIndex;
 };
 

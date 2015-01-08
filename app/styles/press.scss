@@ -16,6 +16,10 @@
 @import 'spritesheetHomePage-2x';
 @import 'homepage';
 
+$slick-dot-size: 16px;
+$slick-loader-path: '/images/slick/';
+@import 'slick.js/slick/slick.scss';
+
 // lifted from https://github.com/Ensighten/spritesmith/issues/19
 @mixin sprite-background-size($sprite) {
   background-size: nth($sprite, 7) nth($sprite, 8);
@@ -45,6 +49,7 @@ header {
   width: 100%;
   top: 0;
   background: white;
+  z-index: 100;
 }
 
 section {
@@ -145,6 +150,49 @@ section > div {
   padding-top: 2em;
 }
 
+
+.articles {
+  background: white;
+}
+.articles .article {
+  // background: white;
+  // min-height: 300px;
+  text-align: center;
+  float: none;
+  display: inline-block;
+  vertical-align: middle;
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+  }
+
+  h3 {
+    width: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 5%;
+    margin: 0;
+    text-align: center;
+
+    .attrib {
+      color: $subtle-highlight-color;
+    }
+  }
+
+  .press-logo {
+    padding: 5%;
+    width: 50%;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+  }
+}
+
+.clearfix {
+  overflow: auto;
+}
+
 /* =============================================================================
    Media query specific styles
    ========================================================================== */
@@ -167,7 +215,17 @@ section > div {
 /*
  * Approximately 600px breakpoint
  */
-@media all and (min-width: 37.5em) {}
+@media all and (min-width: 37.5em) {
+  .articles .article {
+    h3 {
+      width: 69%;
+    }
+
+    .press-logo {
+      width: 29%;
+    }
+  }
+}
 
 /*
  * Approximately 800px breakpoint

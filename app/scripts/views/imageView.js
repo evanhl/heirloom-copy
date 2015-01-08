@@ -50,6 +50,7 @@ App.ImageView = Ember.View.extend({
     }).attr('src', src);
   },
 
+  // TODO: consider doing animations with velocity.js to more reliably handle interrupted transitions
   didInsertElement: function () {
     this.$().on('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function () {
       if (parseFloat($(this).css('opacity')) === 0) {
