@@ -1,6 +1,7 @@
 App.BasePhotoController = Ember.ObjectController.extend({
   loadingImg: false,
   firstSlot: false,
+  lastIndex: null,
 
   init: function () {
     this._super();
@@ -37,7 +38,6 @@ App.BasePhotoController = Ember.ObjectController.extend({
     return state;
   }.property('firstSlot'),
 
-  // FIXME: add cached array position so this isn't O(n)
   adjacentId: function (offset) {
     var photo = this.adjacentPhoto(offset);
 
@@ -57,14 +57,19 @@ App.BasePhotoController = Ember.ObjectController.extend({
 
   currentIndex: function () {
     var photoId = this.get('model.id');
-    var index = Utils.findIndexOf(this.get('photosModel'), function (photo) {
+    var index = Utils.findNearby(this.get('photosModel'), function (photo) {
       return photo.get('id') === photoId;
-    });
+    }, this.get('lastIndex'));
 
     if (index !== -1) {
       return index;
     }
   }.property('photosModel', 'photosModel.[]', 'model'),
+
+  // We can't access currentIndex from within currentIndex, so this stores the last value instead.
+  setLastIndex: function () {
+    this.set('lastIndex', this.get('currentIndex'));
+  }.observes('currentIndex'),
 
   prevId: function () {
     return this.adjacentId(-1);
