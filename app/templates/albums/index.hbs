@@ -13,8 +13,8 @@
   <div class="create-new-album" {{action 'create'}}>
     <span class="caption">{{t 'albums.create'}}</span>
   </div>{{!--
---}}{{#each}}<!--
-   -->{{render 'thumbAlbum' this enlargeDisabled=false}}<!--
+--}}{{#each album in this}}<!--
+   -->{{render 'thumbAlbum' album enlargeDisabled=false}}<!--
 -->{{/each}}
 
   {{partial 'spinner'}}

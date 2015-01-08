@@ -9,16 +9,16 @@
           </div>
         </div>
       {{/if}}
-      {{#each}}
-        {{#link-to 'conversationPosts' id}}
+      {{#each convo in this}}
+        {{#link-to 'conversationPosts' convo}}
           <div class="convo">
-            {{#if has_unread}}
+            {{#if convo.has_unread}}
               <div class="dot"></div>
             {{/if}}
-            {{render 'userIcon' owner}}
+            {{render 'userIcon' convo.owner}}
             <div class="details">
-              <div class="names">{{name}}</div>
-              <div class="sub">{{fromNow valueBinding="last_post_at"}}</div>
+              <div class="names">{{convo.name}}</div>
+              <div class="sub">{{fromNow valueBinding="convo.last_post_at"}}</div>
             </div>
           </div>
         {{/link-to}}
