@@ -7,6 +7,8 @@ App.SigninController = Ember.Controller.extend(App.FbControllerMixin, {
 
   FIELDS: ['login', 'password'],
 
+  // TODO: It feels like the invitation flow should have a derived controller and separate route
+  // invitationToken could be stored on the route instead of as a global App property
   hasInvitation: function () {
     return App.get("invitationToken");
   }.property('App.invitationToken'),
