@@ -1,8 +1,14 @@
-## Ember.I18n
+## Ember-I18n
 
 Internationalization for Ember
 
 ### Requirements
+
+Ember-I18n requires
+
+ * Ember v1.x
+ * Handlebars-runtime v1.x - v2.x
+ * jQuery v1.7 - v2.x
 
 Set `Ember.I18n.translations` to an object containing your translation
 information. If the values of `Ember.I18n.translations` are `Function`s,
@@ -13,9 +19,9 @@ translations, you'll need to include the full Handlebars, not just
 `handlebars-runtime.js` in your application.)
 
 If you want to support inflection based on `count`, you will
-also need to include the
-[CLDR.js pluralization library](https://github.com/jamesarosen/CLDR.js)
-and set `CLDR.defaultLanguage` to the current locale code (e.g. "de").
+also need to include Ember-I18n's pluralization support (`lib/i18n-plurals.js`)
+*after* the Ember-I18n core (`lib/i18n.js`) itself and set `Ember.I18n.locale`
+to the current locale code (e.g. "de").
 
 ### Examples
 
@@ -30,37 +36,44 @@ Em.I18n.translations = {
   'button.add_user.disabled': 'Saving...'
 };
 ```
+
 #### A simple translation:
 ```html
 <h2>{{t "user.edit.title"}}</h2>
 ```
 yields
 ```html
-<h2><span id="i18n-123">Edit User</span></h2>
+<h2>
+  <script id="metamorph-28-start"></script>
+  Edit User
+  <script id="metamorph-28-end"></script>
+</h2>
 ```
-#### Remove the `span` by specifying a `tagName`:
-```html
-{{t "user.edit.title" tagName="h2"}}
-```
-yields
-```html
-<h2 id="i18n-123">Edit User</h2>
-```
+
 #### Set interpolated values directly:
 ```html
 <h2>{{t "user.followers.title" count="2"}}</h2>
 ```
 yields
 ```html
-<h2><span id="i18n-123">All 2 Followers</span></h2>
+<h2>
+  <script id="metamorph-28-start"></script>
+  All 2 Followers
+  <script id="metamorph-28-end"></script>
+</h2>
 ```
+
 #### Bind interpolated values:
 ```html
 <h2>{{t "user.followers.title" countBinding="user.followers.count"}}</h2>
 ```
 yields
 ```html
-<h2><span id="i18n-123">All 2 Followers</span></h2>
+<h2>
+  <script id="metamorph-28-start"></script>
+  All 2 Followers
+  <script id="metamorph-28-end"></script>
+</h2>
 ```
 if `user.getPath('followers.count')` returns `2`.
 
@@ -91,7 +104,9 @@ Add the mixin `Em.Button.reopen(Em.I18n.TranslateableAttributes)` and use like t
 yields
 ```html
 <button title="Add a user">
+  <script id="metamorph-28-start"></script>
   Add
+  <script id="metamorph-28-end"></script>
 </button>
 ```
 
@@ -104,7 +119,9 @@ yields
 yields
 ```html
 <a title="Add a user" data-disable-with="Saving...">
+  <script id="metamorph-28-start"></script>
   Add
+  <script id="metamorph-28-end"></script>
 </a>
 ```
 #### Nested Translation Syntax:

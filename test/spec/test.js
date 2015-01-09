@@ -269,6 +269,12 @@
         expect(find('.photos-container')).to.exist;
         expect(find('.photo').size()).to.equal(40);
       });
+
+
+      it('shows selection toolbar on select', function () {
+        click('.photos-container .photo:eq(0) .select');
+        expect(find('.photos-container .selection-toolbar')).to.exist;
+      });
     });
   });
 })();

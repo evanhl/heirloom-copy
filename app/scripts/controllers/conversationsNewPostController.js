@@ -27,6 +27,14 @@ App.ConversationsNewPostController = Ember.ObjectController.extend(Ember.Evented
     }
   }.on('init').observes('parentController'),
 
+  willDestroy: function () {
+    if (this.get('parentController')) {
+      this.get('parentController').off('didCreatePost', this, this.didCreatePost);
+    }
+
+    this._super();
+  },
+
   newPostPhotoIds: function () {
     return this.get('newPostPhotos').map(function (photo) {
       return photo.get('id');

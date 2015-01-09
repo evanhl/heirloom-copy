@@ -2,10 +2,10 @@
 {{#if isReady}}
   {{#if view.unselectable}}
   {{else}}
-    <div {{bind-attr class=":select selected"}} {{action select bubbles=false}}></div>
+    <div {{bind-attr class=":select selected"}} {{action 'select' bubbles=false}}></div>
   {{/if}}
 
   {{#if view.removable}}
-    <div {{bind-attr class=":remove-photo-icon"}} {{action removePhoto model}}></div>
+    <div {{bind-attr class=":remove-photo-icon"}} {{action 'removePhoto' model}}></div>
   {{/if}}
 {{/if}}

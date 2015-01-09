@@ -1,15 +1,14 @@
 {
   "name": "ember-i18n",
-  "version": "2.0.0",
+  "version": "3.0.0-beta2",
   "description": "I18n support for Ember.js",
   "main": [
     "lib/i18n.js"
   ],
   "dependencies": {
-    "cldr": "^1.0",
     "jquery": ">=1.7 <3",
-    "handlebars": "^1.0",
-    "ember": "^1.0"
+    "handlebars": ">=1.0 <3",
+    "ember": "~1"
   },
   "scripts": {
     "test": "rake"
@@ -34,14 +33,14 @@
     "Makefile"
   ],
   "homepage": "https://github.com/jamesarosen/ember-i18n",
-  "_release": "2.0.0",
+  "_release": "3.0.0-beta2",
   "_resolution": {
     "type": "version",
-    "tag": "v2.0.0",
-    "commit": "529d4223bf36d7c7b5ca5055f32e0f9d44382423"
+    "tag": "v3.0.0-beta2",
+    "commit": "094e6a4f26b08916b2192682c55d3f9c6e6eb241"
   },
   "_source": "git://github.com/jamesarosen/ember-i18n.git",
-  "_target": "~2.0.0",
+  "_target": "3.0.0-beta2",
   "_originalSource": "ember-i18n",
   "_direct": true
 }

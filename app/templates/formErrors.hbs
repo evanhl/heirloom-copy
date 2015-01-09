@@ -1,8 +1,8 @@
 {{#if errors._messages.length}}
   <div>
-    {{#each errors._messages}}
+    {{#each msg in errors._messages}}
       <p class="hl-error">
-        *{{this}}
+        *{{msg}}
       </p>
     {{/each}}
   </div>
