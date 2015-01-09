@@ -1,11 +1,11 @@
 <div class="post-photos">
 {{#each photo in fullPhotos}}
-  <div class="post-photo" {{action enlarge photo.id}}>
+  <div class="post-photo" {{action 'enlarge' photo.id}}>
     <img {{bind-attr src=photo.mediumVersion}} alt="">
   </div>
 {{/each}}
 {{#if hasMosaic}}
-  <div {{bind-attr class=":post-photo mosaicClass"}} {{action enlarge mosaicPhotos.0.id}}>
+  <div {{bind-attr class=":post-photo mosaicClass"}} {{action 'enlarge' mosaicPhotos.0.id}}>
     {{#each photo in mosaicPhotos}}
       <img {{bind-attr src=photo.mediumVersion}} alt="">
     {{/each}}
