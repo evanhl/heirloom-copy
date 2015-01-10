@@ -24,7 +24,8 @@
             <div class="menu-item mobile-only-1">{{#link-to 'albums'}}<span>{{t 'albums'}}</span>{{/link-to}}</div>
             <div class="menu-item mobile-only-1">{{#link-to 'conversations'}}<span>{{t 'conversations'}}</span>{{/link-to}}</div>
             <div class="menu-item mobile-only-2" {{action 'upload'}}><span>{{t 'upload'}}</span></div>
-            <div class="menu-item signout" {{action 'signout'}}><span>Log Out</span></div>
+            <div class="menu-item" {{action 'settings'}}><span>{{t 'settings'}}</span></div>
+            <div class="menu-item signout" {{action 'signout'}}><span>{{t 'logout'}}</span></div>
           </div>
         </div>
         <button class="secondary-action with-icon large upload-btn" {{action 'upload'}}><span class="upload-icon btn-icon"></span>{{t 'upload'}}</button>

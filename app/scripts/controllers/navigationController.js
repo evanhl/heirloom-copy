@@ -104,6 +104,10 @@ App.NavigationController = Ember.Controller.extend({
       this.transitionToRoute('registration');
     },
 
+    settings: function () {
+      this.send('openModal', 'settings');
+    },
+
     signin: function () {
       this.transitionToRoute('signin');
     },

@@ -1,0 +1,35 @@
+{{#modal-dialog action="close"}}
+  {{!-- TODO: reduce copypasta between this and albumPicker.hbs
+  --}}
+  <div class="settings-modal">
+    <div class="top-bar">
+      <h3>{{t 'settings.title'}}</h3>
+    </div>
+
+    <form class="modal-form">
+      <div class="form-group">
+        <label>{{t 'signup.name'}}</label>
+        {{input type="text" value=login classBinding="error.login:error :login" }}
+      </div>
+      <div class="form-group">
+        <label>{{t 'emailAddress'}}</label>
+        {{input type="email" value=login2 classBinding="error.login:error :login" }}
+      </div>
+      <div class="form-group">
+        <label>{{t 'signup.username'}}</label>
+        {{input type="text" value=login3 classBinding="error.login:error :login" }}
+      </div>
+      <div class="form-group">
+        <label>{{t 'signup.password'}}</label>
+        {{input type="password" value=login4 classBinding="error.login:error :login" }}
+      </div>
+    </form>
+
+    <div class="bottom-bar">
+      <div class="right">
+        <button class="secondary" {{action 'close'}}>{{t 'cancel'}}</button>
+        <button {{bind-attr class=":take-action waiting"}} {{bind-attr disabled=disableAdd}} {{action 'complete'}}>{{t 'save'}}</button>
+      </div>
+    </div>
+  </div>
+{{/modal-dialog}}

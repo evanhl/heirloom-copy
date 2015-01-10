@@ -17,6 +17,7 @@ $alternate-button-text-color: rgb(153,148,162);
 $opaque-lightbox-color: rgb(55,53,54);
 $disabled-button-color: rgb(211,211,211);
 $disabled-button-color-2: rgb(219,219,219);
+$form-label-color: rgb(153,153,153);
 
 $alert-error-bg: rgb(255,239,235);
 $alert-error-color: $highlight-color-4;
@@ -61,3 +62,13 @@ $breakpoint-desktop-1: "only screen and (min-width : 1024px)";
 $breakpoint-desktop-2: "only screen and (min-width : 1124px)";
 $breakpoint-mobile-2: "only screen and (min-width : 512px)";
 $left-col-fixed-breakpoint: "only screen and (min-width: #{$left-col-fixed-breakpoint-width})";
+
+@mixin subtle-gradient {
+  /* autoprefixer: off */
+  background: white;
+  background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(250,250,250,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(100%, rgba(250,250,250,1)));
+  background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(250,250,250,1) 100%);
+  background: -o-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(250,250,250,1) 100%);
+  background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(250,250,250,1) 100%);
+}

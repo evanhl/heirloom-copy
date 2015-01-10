@@ -99,15 +99,20 @@ Ember.I18n.translations = {
   'share.savePhotoMessage': 'Save this photo to your Moments.',
   'share.saveSuccess': 'This photo has been added to your Moments.',
 
-  'cancel': 'Cancel',
-  'save': 'Save',
+  'settings.title': 'Profile Settings',
+
   'add': 'Add',
+  'cancel': 'Cancel',
   'create': 'Create',
+  'logout': 'Log Out',
+  'save': 'Save',
+  'settings': 'Settings',
   'share': 'Share',
 
   'facebook': 'Facebook',
   'twitter': 'Twitter',
   'email': 'Email',
+  'emailAddress': 'Email Address',
 
   'fields.confirmPassword': 'Confirm password',
   'resetPassword.submit': 'Change my password',

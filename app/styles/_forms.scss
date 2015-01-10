@@ -1,0 +1,23 @@
+.modal-form {
+  padding: 4% 4% 2% 4%;
+
+  input {
+    font-size: 1em;
+    height: 45px;
+    border-radius: 4px;
+    padding: 13px 15px 9px 15px;
+    font-weight: 600;
+    margin-top: 7px;
+    margin-bottom: 22px;
+  }
+
+  label {
+    color: $button-text-color;
+    font-weight: 600;
+    margin-left: 6px;
+  }
+}
+
+.form-group {
+
+}
