@@ -8,20 +8,20 @@
 
     <form class="modal-form">
       <div class="form-group">
-        <label>{{t 'signup.name'}}</label>
-        {{input type="text" value=login classBinding="error.login:error :login" }}
+        <label>{{t 'firstLastName'}}</label>
+        {{input type="text" value=userName classBinding="error.login:error :login" }}
       </div>
       <div class="form-group">
         <label>{{t 'emailAddress'}}</label>
-        {{input type="email" value=login2 classBinding="error.login:error :login" }}
+        {{input type="email" value=userEmail classBinding="error.login:error :login" }}
       </div>
       <div class="form-group">
         <label>{{t 'signup.username'}}</label>
-        {{input type="text" value=login3 classBinding="error.login:error :login" }}
+        {{input type="text" value=userUsername classBinding="error.login:error :login" }}
       </div>
       <div class="form-group">
         <label>{{t 'signup.password'}}</label>
-        {{input type="password" value=login4 classBinding="error.login:error :login" }}
+        {{input type="password" value=userPassword classBinding="error.login:error :login" }}
       </div>
     </form>
 

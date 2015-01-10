@@ -112,7 +112,9 @@ Ember.I18n.translations = {
   'facebook': 'Facebook',
   'twitter': 'Twitter',
   'email': 'Email',
+
   'emailAddress': 'Email Address',
+  'firstLastName': 'First & Last Name',
 
   'fields.confirmPassword': 'Confirm password',
   'resetPassword.submit': 'Change my password',
