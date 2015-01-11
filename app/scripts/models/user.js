@@ -11,3 +11,18 @@ App.User = App.ApiModel.extend({
     return Utils.getInitials(this.get('name'));
   }.property('name')
 });
+
+App.User.reopenClass({
+  fromSession: function (session) {
+    return this.create({
+      name: session.get('name'),
+      username: session.get('username'),
+      email: session.get('email')
+    });
+  }
+});
+
+App.User.url = 'me';
+App.User.adapter = App.APIAdapter.create({
+  userNamespaced: false
+});

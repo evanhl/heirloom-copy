@@ -53,7 +53,13 @@ App.Authorization = Ember.Object.extend({
   currentSessionChanged: function () {
     this.setupHeaders();
     this.persistSession();
-  }.observes('currentSession').on('init'),
+  }.observes(
+    'currentSession',
+    'currentSession.username',
+    'currentSession.name',
+    'currentSession.email',
+    'currentSession.authentication_token'
+  ).on('init'),
 
   persistSession: function () {
     if (this.get('currentSession')) {
