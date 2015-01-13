@@ -5,7 +5,7 @@
   {{/if}}
 </div>
 <div class="shared-photo multi" {{bind-attr style=view.photoContainerStyle}}>
-  {{#each photos}}{{render 'thumbPhoto' this unselectable=true}}{{/each}}
+  {{#each photo in photos}}{{render 'thumbPhoto' photo unselectable=true}}{{/each}}
 </div>
 <div class="arrow-cont" {{action 'pageRight'}}>
   {{#if view.rightArrowEnabled}}

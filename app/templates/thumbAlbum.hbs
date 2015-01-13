@@ -3,11 +3,11 @@
 {{/if}}
 {{#if view.unselectable}}
 {{else}}
-  <div {{bind-attr class=":select selected"}} {{action select bubbles=false}}></div>
+  <div {{bind-attr class=":select selected"}} {{action 'select' bubbles=false}}></div>
 {{/if}}
 
 {{#if view.removable}}
-  <div {{bind-attr class=":remove-photo-icon"}} {{action removeAlbum model}}></div>
+  <div {{bind-attr class=":remove-photo-icon"}} {{action 'removeAlbum' model}}></div>
 {{/if}}
 <div class="title">{{name}}</div>
 <div class="count">{{t "photos.count" countBinding="photo_count"}}</div>

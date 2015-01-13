@@ -22,7 +22,7 @@
           <span class="caption">{{t 'albums.create'}}</span>
         </div>{{!--
   --}}{{/if}}{{!--
-  --}}{{#each albums}}{{render 'thumbAlbum' this enlargeDisabled=true}}{{/each}}
+  --}}{{#each album in albums}}{{render 'thumbAlbum' album enlargeDisabled=true}}{{/each}}
     </div>
   </div>
 {{/modal-dialog}}

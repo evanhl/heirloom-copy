@@ -1,20 +1,12 @@
 (function(window) {
-  var I18n, assert, findTemplate, get, set, isBinding, lookupKey, pluralForm,
-      PlainHandlebars, EmHandlebars, keyExists, compileTemplate;
+  var I18n, assert, findTemplate, get, set, lookupKey,
+      PlainHandlebars, EmHandlebars, keyExists;
 
   PlainHandlebars = window.Handlebars;
   EmHandlebars = Ember.Handlebars;
-  get = EmHandlebars.get;
+  get = Ember.get;
   set = Ember.set;
   assert = Ember.assert;
-
-  function warn(msg) { Ember.Logger.warn(msg); }
-
-  if (typeof CLDR !== "undefined" && CLDR !== null) pluralForm = CLDR.pluralForm;
-
-  if (pluralForm == null) {
-    warn("CLDR.pluralForm not found. Ember.I18n will not support count-based inflection.");
-  }
 
   lookupKey = function(key, hash) {
     var firstKey, idx, remainingKeys;
@@ -35,14 +27,13 @@
 
     if (setOnMissing) {
       if (result == null) {
-        result = I18n.translations[key] = function() { return "Missing translation: " + key; };
+        result = I18n.translations[key] = function() { return I18n.missingMessage(key); };
         result._isMissing = true;
-        warn("Missing translation: " + key);
-        I18n[(typeof I18n.trigger === 'function' ? 'trigger' : 'fire')]('missing', key); //Support 0.9 style .fire
+        I18n.trigger('missing', key);
       }
     }
 
-    if ((result != null) && !jQuery.isFunction(result)) {
+    if ((result != null) && !Ember.$.isFunction(result)) {
       result = I18n.translations[key] = I18n.compile(result);
     }
 
@@ -61,24 +52,23 @@
     for (var key in object) {
       isTranslatedAttributeMatch = key.match(isTranslatedAttribute);
       if (isTranslatedAttributeMatch) {
-        fn.call(object, isTranslatedAttributeMatch[1], I18n.t(object[key]));
+        var translation = object[key] == null ? null : I18n.t(object[key]);
+        fn.call(object, isTranslatedAttributeMatch[1], translation);
       }
     }
   }
 
-  compileTemplate = (function() {
-    if (typeof PlainHandlebars.compile === 'function') {
-      return function compileWithHandlebars(template) {
-        return PlainHandlebars.compile(template);
-      };
-    } else {
-      return function cannotCompileTemplate() {
-        throw new Ember.Error('The default Ember.I18n.compile function requires the full Handlebars. Either include the full Handlebars or override Ember.I18n.compile.');
-      };
-    }
-  }());
+  function compileTemplate(template) {
+    return function(data) {
+      return template.replace(/\{\{(.*?)\}\}/g, function(i, match) {
+        return data[match];
+      });
+    };
+  }
 
   I18n = Ember.Evented.apply({
+    pluralForm: undefined,
+
     compile: compileTemplate,
 
     translations: {},
@@ -92,8 +82,8 @@
 
     template: function(key, count) {
       var interpolatedKey, result, suffix;
-      if ((count != null) && (pluralForm != null)) {
-        suffix = pluralForm(count);
+      if ((count != null) && (I18n.pluralForm != null)) {
+        suffix = I18n.pluralForm(count);
         interpolatedKey = "%@.%@".fmt(key, suffix);
         result = findTemplate(interpolatedKey, false);
       }
@@ -103,11 +93,15 @@
     t: function(key, context) {
       var template;
       if (context == null) context = {};
-      template = I18n.template(key, context.count);
+      template = I18n.template(key, get(context, 'count'));
       return template(context);
     },
 
     exists: keyExists,
+
+    missingMessage: function(key) {
+      return "Missing translation: " + key;
+    },
 
     TranslateableProperties: Ember.Mixin.create({
       init: function() {
@@ -136,63 +130,8 @@
 
   Ember.I18n = I18n;
 
-  isBinding = /(.+)Binding$/;
-
-  // CRUFT: in v2, which requires Ember 1.0+, Ember.uuid will always be
-  //        available, so this function can be cleaned up.
-  var uniqueElementId = (function(){
-    var id = Ember.uuid || 0;
-    return function() {
-      var elementId = 'i18n-' + id++;
-      return elementId;
-    };
-  })();
-
-  EmHandlebars.registerHelper('t', function(key, options) {
-    var attrs, context, data, elementID, result, tagName, view;
-    context = this;
-    attrs = options.hash;
-    data = options.data;
-    view = data.view;
-    tagName = attrs.tagName || 'span';
-    delete attrs.tagName;
-    elementID = uniqueElementId();
-
-    Ember.keys(attrs).forEach(function(property) {
-      var bindPath, currentValue, invoker, isBindingMatch, normalized, normalizedPath, observer, propertyName, root, _ref;
-      isBindingMatch = property.match(isBinding);
-
-      if (isBindingMatch) {
-        propertyName = isBindingMatch[1];
-        bindPath = attrs[property];
-        currentValue = get(context, bindPath, options);
-        attrs[propertyName] = currentValue;
-        invoker = null;
-        normalized = EmHandlebars.normalizePath(context, bindPath, data);
-        _ref = [normalized.root, normalized.path], root = _ref[0], normalizedPath = _ref[1];
-
-        observer = function() {
-          var elem, newValue;
-          if (view.$() == null) {
-            Ember.removeObserver(root, normalizedPath, invoker);
-            return;
-          }
-          newValue = get(context, bindPath, options);
-          elem = view.$("#" + elementID);
-          attrs[propertyName] = newValue;
-          return elem.html(I18n.t(key, attrs));
-        };
-
-        invoker = function() {
-          Ember.run.scheduleOnce('afterRender', observer);
-        };
-
-        return Ember.addObserver(root, normalizedPath, invoker);
-      }
-    });
-
-    result = '<%@ id="%@">%@</%@>'.fmt(tagName, elementID, I18n.t(key, attrs), tagName);
-    return new EmHandlebars.SafeString(result);
+  EmHandlebars.registerBoundHelper('t', function(key, options) {
+    return new PlainHandlebars.SafeString(I18n.t(key, options.hash));
   });
 
   var attrHelperFunction = function(options) {

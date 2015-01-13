@@ -1,3 +1,71 @@
+## 3.0.0 (In Beta)
+
+ * Drop support for `CLDR.js` in favor of the included
+   `i18n-plurals.js`
+ * Always use custom compiler; drop support for
+   I18N_COMPILE_WITHOUT_HANDLEBARS; drop support for using
+   the Handlebars compiler if full Handlebars is available.
+ * `{{t}}` helper obeys Ember-1-style argument quoting;
+   unquoted arguments, including the key itself, are bound
+   references
+ * `{{t}}` helper no longer supports passing a `tagName`
+ * Drop support for `I18N_TRANSLATE_HELPER_SPAN` flag
+
+## 2.9.0 2014-10-20
+
+ * Ember-I18n 2.9+ is not compatible with Ember 1.9+
+ * Use `Ember.$.isFunction` instead of `jQuery.isFunction`
+ * Deprecate use of `tagName` in the `{{t}}` helper
+ * Implement pluralization logic in this project and remove
+   dependency on CLDR.js
+ * Expose `I18n.missingMessage` for customising the
+   "missing translation" message
+ * `Makefile` ensures the environment has `node`, `npm`,
+   and `phantomjs`
+
+## 2.2.2 2014-09-16
+
+ * Use internal UUID generation, since implementations differ
+   across Ember versions
+ * Select template compiler on first use so
+   `Ember.ENV.I18N_COMPILE_WITHOUT_HANDLEBARS` is sure to have
+   been set properly.
+ * Fix TranslateableAttributes tests on Ember Canary
+ * Better messaging during the build process
+
+## 2.2.1 2014-08-17
+
+ * Fixed overeager warnings related to I18N_COMPILE_WITHOUT_HANDLEBARS
+   and unquoted key arguments to the `{{t}}` helper.
+
+## 2.2.0 2014-08-16
+
+ * The `{{t}}` helper now warns if passed an unquoted key argument.
+   It still uses unquoted arguments as string literals, but this
+   behavior will change in the next major release.
+ * Removed deprecation warning for those who've opt-in to
+   `I18N_COMPILE_WITHOUT_HANDLEBARS`
+ * Fixed a typo in the warning message for
+   `I18N_COMPILE_WITHOUT_HANDLEBARS`
+ * Remove check for `Ember.I18n.fire` as that was only
+   necessary on Ember 0.9, which this library no longer supports.
+ * Don't warn on missing translations. Clients that want to be notified
+   can subscribe to the `missing` event on `Ember.I18n`.
+ * `compileWithHandlebars` uses saved-off `warn` helper (which
+   uses `Ember.Logger.warn` rather than `Ember.warn`).
+ * Run separate Travis builds for each dependency set.
+ * Add Sinon as a test dependency and use its spies in specs.
+
+## 2.1.0 2014-08-08
+
+ * Use `Ember.uuid` to generate unique IDs
+ * Add a Handlebars-less compiler; enable with
+   `Ember.ENV.I18N_COMPILE_WITHOUT_HANDLEBARS = true;`
+ * `{{t}}` helper uses Metamorph tags.
+ * `{{t}}` helper: allow turning off the default `<span>`
+   tag; enable with
+   `Ember.FEATURES.I18N_TRANSLATE_HELPER_SPAN = false;`
+
 ## 2.0.0 2014-05-28
 
  * Drop support for Ember 0.x.

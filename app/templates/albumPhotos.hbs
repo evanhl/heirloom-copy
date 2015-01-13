@@ -53,7 +53,7 @@
 
   {{outlet}}
 
-  {{#each}}{{render 'thumbPhoto' this}}{{/each}}
+  {{#each photo in this}}{{render 'thumbPhoto' photo}}{{/each}}
 
   {{partial 'spinner'}}
 </div>

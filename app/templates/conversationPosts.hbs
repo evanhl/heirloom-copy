@@ -1,11 +1,11 @@
 <div class="convo-members">
-  {{#each participants}}
-    {{render 'userIcon' this}}
+  {{#each participant in participants}}
+    {{render 'userIcon' participant}}
   {{/each}}
 </div>
 
-{{#each}}
-  {{render 'conversationPost' this}}
+{{#each post in this}}
+  {{render 'conversationPost' post}}
 {{/each}}
 
 {{partial 'spinner'}}

@@ -234,7 +234,9 @@ $wizard-icon-height: 68px;
   background-image: url(/images/video_placeholder_loading_small.jpg);
   background-size: cover;
 
-  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 512px), (min-resolution: 192dpi) and (min-width: 512px) {
+  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 512px),
+         (min-resolution: 192dpi) and (min-width: 512px),
+         (min-resolution: 2dppx) and (min-width: 512px) {
     background-image: url(/images/video_placeholder_loading.jpg);
   }
 
