@@ -130,7 +130,7 @@ $picker-photo-margin: 100% * ($photo-margin / ($picker-width - $album-margin));
     margin-bottom: $logo-height;
     overflow-y: scroll;
     max-height: 500px;
-    max-height: calc(90vh - #{$logo-height * 2});
+    max-height: calc(95vh - #{$logo-height * 2});
     overflow-y: scroll;
   }
 }
