@@ -58,12 +58,7 @@ $picker-photo-margin: 100% * ($photo-margin / ($picker-width - $album-margin));
   }
 }
 
-
-<<<<<<< HEAD
-.photo-picker, .album-picker, .photo-picker-modal, .upload-modal, .zip-modal {
-=======
-.photo-picker, .album-picker, .photo-picker-modal, .upload-modal, .settings-modal {
->>>>>>> settings_dialog
+.photo-picker, .album-picker, .photo-picker-modal, .upload-modal, .zip-modal, .settings-modal {
   position: absolute;
   bottom: 0;
   right: 0;
