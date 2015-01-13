@@ -8,16 +8,16 @@
 
     <form class="modal-form">
       <div class="form-group">
-        <label>{{t 'firstLastName'}}</label>
-        {{input type="text" value=user.name classBinding=":form-line error.login:error :login" }}
+        {{#form-label error=errors.name label=(ts 'firstLastName')}}{{/form-label}}
+        {{input type="text" value=user.name classBinding=":form-line errors.name:error" }}
       </div>
       <div class="form-group">
-        <label>{{t 'emailAddress'}}</label>
-        {{input type="email" value=user.email classBinding=":form-line error.login:error :login" }}
+        {{#form-label error=errors.email label=(ts 'emailAddress')}}{{/form-label}}
+        {{input type="email" value=user.email classBinding=":form-line errors.email:error" }}
       </div>
       <div class="form-group">
-        <label>{{t 'signup.username'}}</label>
-        {{input type="text" value=user.username classBinding=":form-line error.login:error :login" }}
+        {{#form-label error=errors.username label=(ts 'signup.username')}}{{/form-label}}
+        {{input type="text" value=user.username classBinding=":form-line errors.username:error" }}
       </div>
       <div class="form-group">
         <label>{{t 'signup.password'}}</label>

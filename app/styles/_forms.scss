@@ -7,6 +7,10 @@
     border-radius: 3px;
     padding: 13px 15px 9px 15px;
     font-weight: 600;
+
+    &.error {
+      border-color: $highlight-color;
+    }
   }
 
   .form-line {
@@ -28,6 +32,10 @@
     color: $button-text-color;
     font-weight: 600;
     margin-left: 6px;
+
+    &.error {
+      color: $highlight-color;
+    }
   }
 }
 

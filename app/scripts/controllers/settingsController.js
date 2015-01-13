@@ -35,9 +35,14 @@ App.SettingsController = Ember.Controller.extend({
       var self = this;
       var user = this.get('user');
 
+      this.set('waiting', true);
       user.patch(user.toJSON()).then(function () {
         self.get('app.auth.currentSession').reload();
+        self.set('waiting', false);
         self.send('closeModal');
+      }, function (response) {
+        self.set('errors', Utils.parseErrorResponse(response));
+        self.set('waiting', false);
       });
     },
 
