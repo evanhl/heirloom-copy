@@ -1,11 +1,9 @@
 App.SettingsController = Ember.ObjectController.extend({
+  model: function () {
+    return {};
+  }.property(),
+
   passwordSuccess: Ember.computed.alias('model.passwordSuccess'),
-
-  init: function () {
-    this.get('app.auth.currentSession');
-    this._super();
-  },
-
   currentSession: Ember.computed.alias('app.auth.currentSession'),
   avatarUrl: Ember.computed.alias('currentSession.avatar_photo.xsVersion'),
 

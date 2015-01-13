@@ -26,11 +26,9 @@ App.Authorization = Ember.Object.extend({
       this.set('currentSession', sessionModel);
       this.setupHeaders();
 
-      if (!this.get('currentSession.avatar_photo')) {
-        this.get('currentSession').reload().then(function () {
-          self.persistSession();
-        });
-      }
+      this.get('currentSession').reload().then(function () {
+        self.persistSession();
+      });
     }
   },
 
