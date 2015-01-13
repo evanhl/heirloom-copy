@@ -105,6 +105,7 @@ Ember.I18n.translations = {
   'changePassword.title': 'Change Password',
   'changePassword.new': 'New Password',
   'changePassword.new2': 'New Password, again',
+  'changePassword.success': 'Your password was successfully changed.',
 
   'add': 'Add',
   'cancel': 'Cancel',

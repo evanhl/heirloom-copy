@@ -17,9 +17,9 @@ App.ChangePasswordController = Ember.Controller.extend({
   },
 
   actions: {
-    close: function () {
+    close: function (passwordSuccess) {
       this.reset();
-      this.send('openModal', 'settings');
+      this.send('openModal', 'settings', { passwordSuccess: passwordSuccess });
     },
 
     changePassword: function () {
@@ -35,7 +35,7 @@ App.ChangePasswordController = Ember.Controller.extend({
       this.set('waiting', true);
       this.set('errors', null);
       registration.patch(this.getProperties(['password'])).then(function () {
-        self.send('close');
+        self.send('close', true);
         self.set('waiting', false);
       }, function (response) {
         self.set('errors', Utils.parseErrorResponse(response));

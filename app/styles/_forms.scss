@@ -1,5 +1,12 @@
 .modal-form {
-  padding: 4% 4% 0 4%;
+  .form-container {
+    padding: 4% 4% 0 4%;
+  }
+
+  .toast-banner {
+    position: static;
+    border: 1px solid;
+  }
 
   input {
     font-size: 1em;

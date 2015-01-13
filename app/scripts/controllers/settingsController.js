@@ -1,4 +1,6 @@
-App.SettingsController = Ember.Controller.extend({
+App.SettingsController = Ember.ObjectController.extend({
+  passwordSuccess: Ember.computed.alias('model.passwordSuccess'),
+
   init: function () {
     this.get('app.auth.currentSession');
     this._super();
@@ -17,6 +19,7 @@ App.SettingsController = Ember.Controller.extend({
 
   reset: function () {
     this.notifyPropertyChange('dummy');
+    this.set('passwordSuccess', false);
   },
 
   saveDisabled: function () {

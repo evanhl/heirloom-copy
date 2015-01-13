@@ -52,7 +52,7 @@
     }
   }
 
-  padding: 10px;
+  padding: 12px 10px 10px;
 
 
   p {
@@ -65,6 +65,12 @@
   border-color: $alert-error-color;
   background: $alert-error-bg;
   color: $alert-error-color;
+}
+
+.toast-banner-success {
+  border-color: $alert-success-color;
+  background: $alert-success-bg;
+  color: $alert-success-color;
 }
 
 p.hl-error {
