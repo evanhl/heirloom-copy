@@ -103,7 +103,6 @@ Ember.I18n.translations = {
   'settings.changePasswordButton': 'Change',
 
   'changePassword.title': 'Change Password',
-  'changePassword.old': 'Old Password',
   'changePassword.new': 'New Password',
   'changePassword.new2': 'New Password, again',
 

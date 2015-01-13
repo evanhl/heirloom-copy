@@ -4,15 +4,22 @@ App.SettingsController = Ember.Controller.extend({
     this._super();
   },
 
+  currentSession: Ember.computed.alias('app.auth.currentSession'),
+  avatarUrl: Ember.computed.alias('currentSession.avatar_photo.xsVersion'),
+
   app: function () {
     return App;
   }.property(),
 
   user: function () {
-    return App.User.fromSession(this.get('app.auth.currentSession'));
-  }.property('app.auth.currentSession'),
+    return App.User.fromSession(this.get('currentSession'));
+  }.property('app.auth.currentSession', 'dummy'),
 
-  disableSave: function () {
+  reset: function () {
+    this.notifyPropertyChange('dummy');
+  },
+
+  saveDisabled: function () {
     return !this.get('user.isDirty');
   }.property('user.isDirty'),
 
@@ -28,12 +35,19 @@ App.SettingsController = Ember.Controller.extend({
         }
       }
 
+      this.reset();
       this.send('closeModal');
     },
 
     save: function () {
       var self = this;
-      var user = this.get('user');
+      var user;
+
+      if (this.get('saveDisabled')) {
+        return;
+      }
+
+      user = this.get('user');
 
       this.set('waiting', true);
       user.patch(user.toJSON()).then(function () {
