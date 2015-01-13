@@ -96,7 +96,7 @@
   }
 
   .num-selected {
-    width: 220px;
+    width: 175px;
     display: inline-block;
   }
 
@@ -212,10 +212,7 @@
 
 .count-text {
   color: $default-text-color;
-  text-transform: uppercase;
   font-weight: bold;
-  font-size: 14px;
-  letter-spacing: 2px;
 
   .alternate {
     color: $default-text-color;

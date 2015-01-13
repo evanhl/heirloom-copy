@@ -109,16 +109,29 @@ Ember.I18n.translations = {
   'zip.error': 'Error while creating zip file. ',
   'zip.confirmClose': 'You haven\'t downloaded the file yet. Are you sure you want to close Zip Download?',
 
-  'cancel': 'Cancel',
-  'close': 'Close',
-  'save': 'Save',
+
+  'settings.title': 'Profile Settings',
+  'settings.changePasswordButton': 'Change',
+
+  'changePassword.title': 'Change Password',
+  'changePassword.new': 'New Password',
+  'changePassword.new2': 'New Password, again',
+  'changePassword.success': 'Your password was successfully changed.',
+
   'add': 'Add',
+  'cancel': 'Cancel',
   'create': 'Create',
+  'logout': 'Log Out',
+  'save': 'Save',
+  'settings': 'Settings',
   'share': 'Share',
 
   'facebook': 'Facebook',
   'twitter': 'Twitter',
   'email': 'Email',
+
+  'emailAddress': 'Email Address',
+  'firstLastName': 'First & Last Name',
 
   'fields.confirmPassword': 'Confirm password',
   'resetPassword.submit': 'Change my password',

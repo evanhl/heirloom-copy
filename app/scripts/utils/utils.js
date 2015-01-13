@@ -141,6 +141,10 @@ Utils.getPathName = function (url) {
   return url.match(/\w+\:\/\/[^\/]+\/(.*)/)[1];
 };
 
+Utils.parseErrorResponse = function (response) {
+  return response && response.responseJSON;
+};
+
 Utils.IOS_STORE_LINK = 'https://itunes.apple.com/us/app/heirloom-for-all-moments-we/id931656673';
 Utils.ANDROID_STORE_LINK = 'https://play.google.com/store/apps/details?id=io.heirloom.app';
 

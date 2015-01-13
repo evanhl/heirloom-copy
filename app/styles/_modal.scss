@@ -1,4 +1,5 @@
 $picker-width: 848px;
+$settings-width: 700px;
 $picker-content-height: ($album-width * 1.5) + (2 * $album-margin);
 $upload-modal-content-height: ($photo-width * 2) + ($photo-margin) + ($album-margin * 2);
 $picker-photo-margin: 100% * ($photo-margin / ($picker-width - $album-margin));
@@ -6,7 +7,7 @@ $picker-photo-margin: 100% * ($photo-margin / ($picker-width - $album-margin));
 
 .top-bar {
   border-radius: 3px 3px 0 0;
-  background: white;
+  @include subtle-gradient;
   position: absolute;
   width: 100%;
   border-bottom: 1px solid $subtle-highlight-color;
@@ -51,10 +52,18 @@ $picker-photo-margin: 100% * ($photo-margin / ($picker-width - $album-margin));
   line-height: $logo-height;
   z-index: 5;
   padding: 0 $album-margin;
+
+  button {
+    vertical-align: middle;
+  }
 }
 
 
+<<<<<<< HEAD
 .photo-picker, .album-picker, .photo-picker-modal, .upload-modal, .zip-modal {
+=======
+.photo-picker, .album-picker, .photo-picker-modal, .upload-modal, .settings-modal {
+>>>>>>> settings_dialog
   position: absolute;
   bottom: 0;
   right: 0;
@@ -100,10 +109,6 @@ $picker-photo-margin: 100% * ($photo-margin / ($picker-width - $album-margin));
   }
 }
 
-.upload-modal {
-  max-width: $picker-width;
-}
-
 .photo-picker {
   min-height: 650px;
   background: white;
@@ -116,7 +121,32 @@ $picker-photo-margin: 100% * ($photo-margin / ($picker-width - $album-margin));
   background: $bg-color-accent;
 }
 
+// TODO: consider using transform positioning in other modals so we don't have to override (e.g. "bottom: auto;")
+.settings-modal {
+  max-width: $settings-width;
+  border-radius: 3px;
+  height: auto;
+  background: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  bottom: auto;
+  right: auto;
+
+  .modal-form {
+    margin-top: $logo-height;
+    margin-bottom: $logo-height;
+    overflow-y: scroll;
+    max-height: 500px;
+    max-height: calc(95vh - #{$logo-height * 2});
+    overflow-y: scroll;
+  }
+}
+
+
+
 .upload-modal {
+  max-width: $picker-width;
   border-radius: 3px;
   background: $bg-color-accent;
   min-height: #{$upload-modal-content-height + ($logo-height * 2)};

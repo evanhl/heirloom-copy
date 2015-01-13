@@ -60,6 +60,10 @@ textarea {
     border-color: $subtler-highlight-color;
     outline: 0;
   }
+
+  &:disabled {
+    color: $disabled-button-color;
+  }
 }
 
 img {
@@ -84,6 +88,7 @@ h2.highlighted {
 @import 'alerts';
 @import 'buttons';
 @import 'conversations';
+@import 'forms';
 @import 'fonts';
 @import 'footer';
 @import 'homepage';
@@ -192,3 +197,26 @@ textarea {
     padding-top: ($default-avatar-size - 16px) / 2;
   }
 }
+
+.large-avatar {
+  position: relative;
+  border-radius: 50%;
+  width: $settings-avatar-width + 12px;
+  height: $settings-avatar-width + 12px;
+  margin: 0 auto 20px;
+  border: 1px $subtle-highlight-color solid;
+
+  img, .avatar-placeholder {
+    position: absolute;
+    border-radius: 50%;
+    width: $settings-avatar-width;
+    height: $settings-avatar-width;
+    top: 5px;
+    left: 5px;
+  }
+
+  .avatar-placeholder {
+    background: $subtler-highlight-color;
+  }
+}
+$form-label-color: rgb(153,153,153);
