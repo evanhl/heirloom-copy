@@ -9,19 +9,24 @@
     <form class="modal-form">
       <div class="form-group">
         <label>{{t 'firstLastName'}}</label>
-        {{input type="text" value=user.name classBinding="error.login:error :login" }}
+        {{input type="text" value=user.name classBinding=":form-line error.login:error :login" }}
       </div>
       <div class="form-group">
         <label>{{t 'emailAddress'}}</label>
-        {{input type="email" value=user.email classBinding="error.login:error :login" }}
+        {{input type="email" value=user.email classBinding=":form-line error.login:error :login" }}
       </div>
       <div class="form-group">
         <label>{{t 'signup.username'}}</label>
-        {{input type="text" value=user.username classBinding="error.login:error :login" }}
+        {{input type="text" value=user.username classBinding=":form-line error.login:error :login" }}
       </div>
       <div class="form-group">
         <label>{{t 'signup.password'}}</label>
-        {{input type="password" value="dummyvalue" classBinding="error.login:error :login" disabled=true}}
+        <div class="clearfix form-line">
+          <button class="secondary right-btn" {{action 'changePassword'}}>{{t 'settings.changePasswordButton'}}</button>
+          <div class="" style="overflow: hidden;">
+            {{input type="password" value="dummyvalue" classBinding="error.login:error :login" disabled=true styleBinding="margin: 0;"}}
+          </div>
+        </div>
       </div>
     </form>
 

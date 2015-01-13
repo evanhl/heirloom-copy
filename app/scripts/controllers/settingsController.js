@@ -16,10 +16,6 @@ App.SettingsController = Ember.Controller.extend({
     return !this.get('user.isDirty');
   }.property('user.isDirty'),
 
-  userName: Ember.computed.alias('app.auth.currentSession.name'),
-  userUsername: Ember.computed.alias('app.auth.currentSession.username'),
-  userEmail: Ember.computed.alias('app.auth.currentSession.email'),
-
   actions: {
     close: function () {
       var didConfirm;
@@ -43,6 +39,10 @@ App.SettingsController = Ember.Controller.extend({
         self.get('app.auth.currentSession').reload();
         self.send('closeModal');
       });
+    },
+
+    changePassword: function () {
+      this.send('openModal', 'changePassword');
     }
   }
 });

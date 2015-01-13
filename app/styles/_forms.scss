@@ -3,12 +3,25 @@
 
   input {
     font-size: 1em;
-    height: 45px;
-    border-radius: 4px;
+    height: 40px;
+    border-radius: 3px;
     padding: 13px 15px 9px 15px;
     font-weight: 600;
+  }
+
+  .form-line {
     margin-top: 7px;
     margin-bottom: 22px;
+
+    button {
+      border-radius: 3px;
+
+      &.right-btn {
+        margin-left: 10px;
+        float: right;
+        display: block;
+      }
+    }
   }
 
   label {

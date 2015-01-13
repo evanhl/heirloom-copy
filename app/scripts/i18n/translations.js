@@ -100,6 +100,12 @@ Ember.I18n.translations = {
   'share.saveSuccess': 'This photo has been added to your Moments.',
 
   'settings.title': 'Profile Settings',
+  'settings.changePasswordButton': 'Change',
+
+  'changePassword.title': 'Change Password',
+  'changePassword.old': 'Old Password',
+  'changePassword.new': 'New Password',
+  'changePassword.new2': 'New Password, again',
 
   'add': 'Add',
   'cancel': 'Cancel',

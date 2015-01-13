@@ -60,6 +60,10 @@ textarea {
     border-color: $subtler-highlight-color;
     outline: 0;
   }
+
+  &:disabled {
+    color: $disabled-button-color;
+  }
 }
 
 img {
