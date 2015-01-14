@@ -406,7 +406,7 @@ $social-icon-spacing: 25px;
 
 .hp-footer-social {
   text-align: center;
-  margin: 43px 0;
+  margin: 30px 0 43px;
 
   span {
     display: inline-block;
@@ -595,7 +595,7 @@ $social-icon-spacing: 25px;
 
 .hp-footer-logo {
   @include sprite-retina($footer_logo, $footer_logo-2x);
-  margin: 60px auto;
+  margin: 43px auto;
 }
 
 .hp-h-break {
@@ -603,13 +603,6 @@ $social-icon-spacing: 25px;
   margin: 0 auto;
 
   border-bottom: 2px solid $horiz-break-color;
-}
-
-.hp-notify-cont {
-  margin: 60px auto 43px;
-  padding: 0 3%;
-  text-align: center;
-  max-width: 580px;
 }
 
 input.hp-text {
@@ -668,6 +661,8 @@ input.hp-submit {
 
 .homepage .hp-footer-links {
   text-align: center;
+  line-height: 60px;
+  margin: 30px 0;
 
   h4 {
     display: inline;
