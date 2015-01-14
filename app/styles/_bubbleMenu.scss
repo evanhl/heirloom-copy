@@ -5,7 +5,7 @@
 }
 
 // h/t to http://nicolasgallagher.com/pure-css-speech-bubbles/demo/
-.triangle-border {
+.bubble-menu {
   .settings-container & {
     left: -171px;
   }
@@ -58,7 +58,7 @@
   }
 }
 
-.triangle-border:before {
+.bubble-menu:before {
   content: "";
   position: absolute;
   bottom: -20px;
@@ -70,7 +70,7 @@
   width: 0;
 }
 
-.triangle-border.top:after {
+.bubble-menu.top:after {
   top: -13px;
   bottom: auto;
   left: auto;
@@ -78,7 +78,7 @@
   border-width: 0 13px 13px;
 }
 
-.triangle-border:after {
+.bubble-menu:after {
   content: "";
   position: absolute;
   bottom: -13px;

@@ -7,7 +7,7 @@
       <div class="settings-container">
         <button class="secondary icon-only settings-icon" {{action 'toggleSettingsMenu'}}></button>
         {{#if showSettingsMenu}}
-          <ul class="triangle-border top">
+          <ul class="bubble-menu top">
             <li {{action 'enterChangeCoverMode'}}>{{t 'albums.changeCover'}}</li>
             <li {{action 'deleteAlbum'}}>{{t 'albums.delete'}}</li>
           </ul>

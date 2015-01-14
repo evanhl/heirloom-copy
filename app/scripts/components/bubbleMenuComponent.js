@@ -2,7 +2,7 @@
 
 App.BubbleMenuComponent = Ember.Component.extend(App.RegisterableMixin, {
   tagName: 'ul',
-  classNameBindings: [':triangle-border', ':top', 'hidden'],
+  classNameBindings: [':bubble-menu', ':top', 'hidden'],
   showMenu: false,
   registerAs: null,
 
