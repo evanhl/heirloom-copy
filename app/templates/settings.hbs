@@ -14,12 +14,8 @@
       {{/if}}
       <div class="form-container">
         <div class="form-group">
-          <div class="large-avatar">
-            {{#if avatarUrl}}
-              <img {{bind-attr src=avatarUrl}} alt="">
-            {{else}}
-              <div class="avatar-placeholder"></div>
-            {{/if}}
+          <div class="large-avatar-cont">
+            {{render 'userIcon' currentSession iconSize="xs"}}
           </div>
         </div>
         <div class="form-group">
@@ -36,9 +32,9 @@
         </div>
         <div class="form-group">
           <label>{{t 'signup.password'}}</label>
-          <div class="clearfix form-line">
+          <div class="form-line">
             <button class="secondary right-btn" {{action 'changePassword'}}>{{t 'settings.changePasswordButton'}}</button>
-            <div class="" style="overflow: hidden;">
+            <div class="form-multi-cont">
               {{input type="password" value="dummyvalue" classBinding="error.login:error" disabled=true styleBinding="margin: 0;"}}
             </div>
           </div>
