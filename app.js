@@ -34,6 +34,9 @@ app.use(compress);
 app.use(function(req, res, next) {
   if (req.url.match(/\/terms$/)) {
     req.url = '/terms.html';
+  } else if (req.url.match(/\/jobs$/)) {
+    res.redirect('https://jobs.lever.co/heirloom');
+    return;
   } else if (req.url.match(/\/privacy$/)) {
     req.url = '/privacy.html';
   } else if (req.url.match(/\/press$/)) {
