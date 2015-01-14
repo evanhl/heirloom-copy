@@ -19,8 +19,8 @@ Utils.Transloadit = {
     }, error);
   },
 
-  checkZipStatus: function (assemblyUrl, success) {
-    Utils.ajaxJson(assemblyUrl, 'GET', {}, success);
+  checkZipStatus: function (assemblyUrl, success, error) {
+    Utils.ajaxJson(assemblyUrl, 'GET', {}, success, error);
   },
 
   getZipUrl: function (response) {

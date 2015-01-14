@@ -3,9 +3,11 @@
 
 App.ZipAssembly = Ember.Object.extend(Ember.Evented, {
   STATUS_INTERVAL: 750,
+  MAX_STATUS_ERRORS: 4,
   urls: null,
   state: 'init',
   currentStage: 0,
+  statusErrorCount: 0,
   didDownload: false,
 
   isDone: function () {
@@ -19,7 +21,7 @@ App.ZipAssembly = Ember.Object.extend(Ember.Evented, {
   init: function () {
     this._super();
 
-    Utils.bindMethods(this, ['onInitSuccess', 'onInitError', 'checkStatus', 'parseStatus']);
+    Utils.bindMethods(this, ['onInitSuccess', 'onInitError', 'checkStatus', 'parseStatus', 'handleStatusError']);
 
     Utils.Transloadit.createZip(this.get('urls'), this.onInitSuccess, this.onInitError);
     this.set('numStages', Utils.Transloadit.getNumStages());
@@ -49,7 +51,15 @@ App.ZipAssembly = Ember.Object.extend(Ember.Evented, {
   checkStatus: function () {
     var self = this;
 
-    Utils.Transloadit.checkZipStatus(self.get('assemblyUrl'), this.parseStatus);
+    Utils.Transloadit.checkZipStatus(self.get('assemblyUrl'), this.parseStatus, this.handleStatusError);
+  },
+
+  handleStatusError: function () {
+    this.set('statusErrorCount', this.get('statusErrorCount') + 1);
+
+    if (this.get('statusErrorCount') >= this.MAX_STATUS_ERRORS) {
+      this.handleError();
+    }
   },
 
   parseStatus: function (response) {
@@ -75,5 +85,10 @@ App.ZipAssembly = Ember.Object.extend(Ember.Evented, {
   clearHandle: function () {
     clearInterval(this.get('intervalHandle'));
     this.set('intervalHandle', null);
+  },
+
+  cancel: function () {
+    // TODO: abort the job on Transloadit
+    this.clearHandle();
   }
 });

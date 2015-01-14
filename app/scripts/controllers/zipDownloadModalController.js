@@ -44,6 +44,7 @@ App.ZipDownloadModalController = Ember.ObjectController.extend({
       }
 
       if (userConfirmed) {
+        this.get('zipAssembly').cancel();
         this.send('closeModal');
       }
     }
