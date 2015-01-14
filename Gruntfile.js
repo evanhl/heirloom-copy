@@ -158,7 +158,7 @@ module.exports = function(grunt) {
     mkdir: {
       tmp: {
         options: {
-          mode: 755,
+          mode: parseInt('0755', 8),
           create: ['.tmp']
         }
       }
