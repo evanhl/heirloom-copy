@@ -177,8 +177,8 @@
           data: JSON.stringify({
             name: 'Big Bird',
             username: 'bigbird123',
-            password: 'b1gb1rd',
             email: 'abc@example.com',
+            password: 'b1gb1rd',
             avatar_photo: null
           }),
           responseText: {
