@@ -1,17 +1,22 @@
 <div {{bind-attr class=":photos-container isSelectionMode:selection-mode"}}>
   <div {{bind-attr class=":nav-filler isSelectionMode::collapsed"}}></div>
   {{#if showToolbar}}
-    <div {{bind-attr class=":selection-toolbar removingToolbar:removing"}}>
+    <div {{bind-attr class=":selection-toolbar :alt-toolbar removingToolbar:removing"}}>
       <div class="left">
+
         <div class="num-selected">
           <span class="count-text">{{t "photos.selected" countBinding="selectedCount"}}</span>
         </div>
-        {{partial 'shareButton'}}
-        <button class="take-action with-icon medium" {{action 'addToAlbum' selectedIds}}><span class="add-to-album-icon btn-icon"></span>{{t 'album'}}</button>
-        <button class="take-action with-icon medium" {{action 'zipDownload' selectedIds}}><span class="add-to-album-icon btn-icon"></span>{{t 'zip.button'}}</button>
+        {{#toolbar-item extraClasses="share-container" iconClass="toolbar-share-icon" label=(ts 'share') action="toggleShare"}}
+          {{partial 'shareMenu'}}
+        {{/toolbar-item}}
+        <div class="toolbar-divider"></div>
+        {{#toolbar-item iconClass="toolbar-album-icon" label=(ts 'photos.addToAlbum') action="addToAlbum" param="selectedIds"}}{{/toolbar-item}}
+        <div class="toolbar-divider"></div>
+        {{#toolbar-item iconClass="toolbar-download-icon" label=(ts 'zip.button')}}{{/toolbar-item}}
       </div>
       <div class="right">
-        <button class="secondary icon-only delete" {{action 'deletePhotos'}}></button>
+        {{#toolbar-item iconClass="toolbar-trash-icon" label=(ts 'delete') action="deletePhotos"}}{{/toolbar-item}}
         <button class="secondary" {{action 'cancel'}}>{{t 'cancel'}}</button>
       </div>
     </div>

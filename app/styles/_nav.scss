@@ -3,7 +3,8 @@
 }
 
 .full-nav {
-  box-shadow: 0px 2px 10px -1px rgba(0,0,0,0.15);
+  // box-shadow: 0px 2px 10px -1px rgba(0,0,0,0.15);
+  border-bottom: 1px $subtle-highlight-color solid;
   height: $logo-height;
   width: 100%;
   position: fixed;
@@ -16,6 +17,10 @@
     background: $subtle-highlight-color;
     vertical-align: middle;
     margin: 0 15px;
+  }
+
+  button {
+    background: rgba(255,255,255,0);
   }
 
   .upload-btn {
@@ -153,13 +158,13 @@ $user-dropdown-height: 40px;
     font-size: 14px;
     position: absolute;
     left: $user-dropdown-height / 2;
-    background: white;
     height: $user-dropdown-height;
     overflow: hidden;
     border-radius: 2px;
 
     &:hover:not(.menu-closed), &.menu-open {
       height: auto;
+      box-shadow: 0px 2px 10px -1px rgba(0,0,0,0.15);
 
       .username span {
         color: $highlight-color;
@@ -198,10 +203,10 @@ $user-dropdown-height: 40px;
   }
 
   .menu-item {
+    background: white;
     border-top: 1px solid $subtle-highlight-color;
-    margin-left: 29px;
     text-align: left;
-    padding: 11px 0 7px;
+    padding: 11px 0 7px 29px;
     transition: color 0.1s linear;
 
     &:hover {

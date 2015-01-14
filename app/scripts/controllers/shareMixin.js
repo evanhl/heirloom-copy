@@ -22,7 +22,6 @@ App.ShareMixin = Ember.Mixin.create({
       };
     }
 
-    // blocking so we can still launch a pop-up
     Utils.apiCall('/share', 'POST', data, function (data) {
       self.set('shareText', data.body);
       self.set('shareLoading', false);

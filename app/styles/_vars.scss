@@ -72,9 +72,19 @@ $left-col-fixed-breakpoint: "only screen and (min-width: #{$left-col-fixed-break
 @mixin subtle-gradient {
   /* autoprefixer: off */
   background: white;
-  background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(250,250,250,1) 100%);
-  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(100%, rgba(250,250,250,1)));
-  background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(250,250,250,1) 100%);
-  background: -o-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(250,250,250,1) 100%);
-  background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(250,250,250,1) 100%);
+  background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(251,251,251,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(100%, rgba(251,251,251,1)));
+  background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(251,251,251,1) 100%);
+  background: -o-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(251,251,251,1) 100%);
+  background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(251,251,251,1) 100%);
+}
+
+@mixin subtle-gradient-2 {
+  /* autoprefixer: off */
+  background: white;
+  background: -moz-linear-gradient(top, rgba(251,251,251,1) 0%, rgba(249,249,249,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(251,251,251,1)), color-stop(100%, rgba(249,249,249,1)));
+  background: -webkit-linear-gradient(top, rgba(251,251,251,1) 0%, rgba(249,249,249,1) 100%);
+  background: -o-linear-gradient(top, rgba(251,251,251,1) 0%, rgba(249,249,249,1) 100%);
+  background: -ms-linear-gradient(top, rgba(251,251,251,1) 0%, rgba(249,249,249,1) 100%);
 }

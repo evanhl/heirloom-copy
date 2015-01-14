@@ -121,6 +121,7 @@ Ember.I18n.translations = {
   'add': 'Add',
   'cancel': 'Cancel',
   'create': 'Create',
+  'delete': 'Delete',
   'logout': 'Log Out',
   'save': 'Save',
   'settings': 'Settings',

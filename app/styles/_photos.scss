@@ -104,6 +104,14 @@
     transform: translateY(-$logo-height);
     animation: slideup 0.3s ease-in-out;
   }
+
+  button {
+    vertical-align: middle;
+  }
+}
+
+.alt-toolbar {
+  @include subtle-gradient-2;
 }
 
 @keyframes slidedown {
