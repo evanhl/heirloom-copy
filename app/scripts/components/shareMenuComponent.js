@@ -1,10 +1,8 @@
-// FIXME: replace with ShareMenu component
-App.ShareMixin = Ember.Mixin.create({
+//= require registerableMixin
+
+App.ShareMenuComponent = Ember.Component.extend(App.RegisterableMixin, {
   TWITTER_SHARE_URL: 'https://www.twitter.com/intent/tweet?text=',
   FB_SHARE_URL: 'https://www.facebook.com/dialog/share?app_id=593382107427220&display=popup&redirect_uri=https://www.heirloom.net/closeWindow&href=',
-
-  showShareMenu: false,
-  shareMenu: null,
 
   shareExternal: function () {
     var self = this;
@@ -53,19 +51,27 @@ App.ShareMixin = Ember.Mixin.create({
     }
   }.observes('showShareMenu'),
 
-  actions: {
-    toggleShare: function () {
-      this.toggleProperty('showShareMenu');
-    },
+  close: function () {
+    if (this.get('bubbleMenu')) {
+      this.get('bubbleMenu').close();
+    }
+  },
 
+  toggle: function () {
+    if (this.get('bubbleMenu')) {
+      this.get('bubbleMenu').toggle();
+    }
+  },
+
+  actions: {
     twitterShare: function () {
       this.openTwitterShare();
-      this.set('showShareMenu', false);
+      this.close();
     },
 
     facebookShare: function () {
       this.openFacebookShare();
-      this.set('showShareMenu', false);
+      this.close();
     }
   }
 });

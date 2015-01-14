@@ -1,0 +1,11 @@
+{{#bubble-menu registerAs=bubbleMenu showMenu=showShareMenu}}
+  {{!-- TODO: eliminate copypasta between this and spinner.hbs --}}
+  {{#if shareLoading}}
+    <div class="spinner-cont">
+      <div {{bind-attr class=":spinner"}}></div>
+    </div>
+  {{else}}
+    <li {{action 'facebookShare'}}><span class="fb-icon"></span>{{t 'facebook'}}</li>
+    <li {{action 'twitterShare'}}><span class="twit-icon"></span>{{t 'twitter'}}</li>
+  {{/if}}
+{{/bubble-menu}}

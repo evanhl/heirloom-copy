@@ -7,13 +7,23 @@
         <div class="num-selected">
           <span class="count-text">{{t "photos.selected" countBinding="selectedCount"}}</span>
         </div>
-        {{#toolbar-item extraClasses="share-container" iconClass="toolbar-share-icon" label=(ts 'share') action="toggleShare"}}
-          {{partial 'shareMenu'}}
-        {{/toolbar-item}}
+
+        <div class="bubble-menu-cont">
+          {{#toolbar-item iconClass="toolbar-share-icon" label=(ts 'share') action="toggleShare"}}{{/toolbar-item}}
+          {{#share-menu registerAs=shareMenu selectedIds=selectedIds}}{{/share-menu}}
+        </div>
+
         <div class="toolbar-divider"></div>
+
         {{#toolbar-item iconClass="toolbar-album-icon" label=(ts 'photos.addToAlbum') action="addToAlbum" param="selectedIds"}}{{/toolbar-item}}
+
         <div class="toolbar-divider"></div>
-        {{#toolbar-item iconClass="toolbar-download-icon" label=(ts 'zip.button')}}{{/toolbar-item}}
+
+        <div class="bubble-menu-cont">
+          {{#toolbar-item iconClass="toolbar-download-icon" label=(ts 'download') action="toggleDownload"}}{{/toolbar-item}}
+          {{#download-menu registerAs=downloadMenu selectedIds=selectedIds zipDownload="zipDownload"}}{{/download-menu}}
+        </div>
+
       </div>
       <div class="right">
         {{#toolbar-item iconClass="toolbar-trash-icon" label=(ts 'delete') action="deletePhotos"}}{{/toolbar-item}}

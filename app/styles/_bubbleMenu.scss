@@ -1,20 +1,25 @@
 
+.bubble-menu-cont {
+  display: inline-block;
+  position: relative;
+}
+
 // h/t to http://nicolasgallagher.com/pure-css-speech-bubbles/demo/
 .triangle-border {
   .settings-container & {
     left: -171px;
   }
 
-  .toolbar-item & {
+  .bubble-menu-cont & {
     left: -50px;
 
     &.top {
       &:before {
-        right: 171px;
+        right: 151px;
       }
 
       &:after {
-        right: 173px;
+        right: 153px;
       }
     }
   }

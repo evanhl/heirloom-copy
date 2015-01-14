@@ -1,5 +1,5 @@
 //= require shareMixin
-App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMixin, Ember.Evented, App.SelectableMixin, App.ShareMixin, {
+App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMixin, Ember.Evented, App.SelectableMixin, {
   needs: ['albumPicker', 'albumsIndex'],
   albumPicker: Ember.computed.alias('controllers.albumPicker'),
   albums: Ember.computed.alias('controllers.albumsIndex'),
@@ -164,6 +164,12 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
     this.send('openModal', 'zipDownloadModal', assembly);
   },
 
+  closeShareMenu: function () {
+    if (this.get('shareMenu')) {
+      this.get('shareMenu').close();
+    }
+  },
+
   actions: {
     enlarge: function (id) {
       this.transitionToRoute('photo', id);
@@ -173,7 +179,7 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
       var selected = photoController.get('selected');
       var photoId = photoController.get('model.id');
 
-      this.set('showShareMenu', false);
+      this.closeShareMenu();
 
       this.toggleSelected(photoId, selected);
     },
@@ -208,6 +214,14 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
 
     zipDownload: function () {
       this.doZipDownload();
+    },
+
+    toggleShare: function () {
+      this.get('shareMenu').toggle();
+    },
+
+    toggleDownload: function () {
+      this.get('downloadMenu').toggle();
     }
   }
 });

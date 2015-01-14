@@ -1,20 +1,9 @@
 .toolbar-item {
+  display: inline-block;
   position: relative;
   font-weight: bold;
   font-size: 16px;
   margin: 0 20px;
-
-  &:first-of-type {
-    margin-left: 0;
-  }
-
-  &:last-of-type {
-    margin-right: 0;
-  }
-
-  &:first-of-type:last-of-type {
-    margin: 0 20px;
-  }
 
   &:hover {
     .toolbar-item-text {
@@ -23,10 +12,13 @@
   }
 }
 
+
+
 .toolbar-icon {
   vertical-align: middle;
   display: inline-block;
   margin-right: 6px;
+  cursor: pointer;
 }
 
 .toolbar-divider {
@@ -38,7 +30,9 @@
 }
 
 .toolbar-item-text {
+  color: $highlight-color;
   vertical-align: -2px;
+  cursor: pointer;
 }
 
 .toolbar-share-icon {
@@ -55,4 +49,14 @@
 
 .toolbar-download-icon {
   @include sprite-retina($zip_hover, $zip_hover-2x);
+}
+
+.toolbar-zip-icon {
+  @include sprite-retina($zip_normal, $zip_normal-2x);
+  margin-right: 15px;
+  margin-bottom: 4px;
+
+  li:hover & {
+    @include sprite-retina($zip_hover, $zip_hover-2x);
+  }
 }
