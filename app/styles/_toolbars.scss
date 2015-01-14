@@ -36,19 +36,35 @@
 }
 
 .toolbar-share-icon {
-  @include sprite-retina($zip_hover, $zip_hover-2x);
+  @include sprite-retina($share, $share-2x);
+
+  .toolbar-item:hover & {
+    @include sprite-retina($share_hover, $share_hover-2x);
+  }
 }
 
 .toolbar-album-icon {
-  @include sprite-retina($zip_hover, $zip_hover-2x);
+  @include sprite-retina($add_album, $add_album-2x);
+
+  .toolbar-item:hover & {
+    @include sprite-retina($add_album_hover, $add_album_hover-2x);
+  }
 }
 
 .toolbar-trash-icon {
-  @include sprite-retina($trashcan, $trashcan-2x);
+  @include sprite-retina($trash, $trash-2x);
+
+  .toolbar-item:hover & {
+    @include sprite-retina($trash_hover, $trash_hover-2x);
+  }
 }
 
 .toolbar-download-icon {
-  @include sprite-retina($zip_hover, $zip_hover-2x);
+  @include sprite-retina($download, $download-2x);
+
+  .toolbar-item:hover & {
+    @include sprite-retina($download_hover, $download_hover-2x);
+  }
 }
 
 .toolbar-zip-icon {
