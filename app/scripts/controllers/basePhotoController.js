@@ -1,7 +1,6 @@
 App.BasePhotoController = Ember.ObjectController.extend({
   loadingImg: false,
   firstSlot: false,
-  lastIndex: null,
 
   init: function () {
     this._super();
@@ -55,21 +54,21 @@ App.BasePhotoController = Ember.ObjectController.extend({
     return this.get('photosModel').objectAt(adjacentIndex);
   },
 
+  // TODO: find better traversal solution.
+  // This Stack post describes the problem: http://stackoverflow.com/questions/15072718/
   currentIndex: function () {
     var photoId = this.get('model.id');
-    var index = Utils.findNearby(this.get('photosModel'), function (photo) {
+
+    var index = Utils.findIndexOf(this.get('photosModel'), function (photo) {
       return photo.get('id') === photoId;
-    }, this.get('lastIndex'));
+    });
+
+    window.console.log('pm.length', this.get('photosModel.length'), 'index', index);
 
     if (index !== -1) {
       return index;
     }
   }.property('photosModel', 'photosModel.[]', 'model'),
-
-  // We can't access currentIndex from within currentIndex, so this stores the last value instead.
-  setLastIndex: function () {
-    this.set('lastIndex', this.get('currentIndex'));
-  }.observes('currentIndex'),
 
   prevId: function () {
     return this.adjacentId(-1);

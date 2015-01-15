@@ -5,14 +5,14 @@ App.ConversationPhotosController = Ember.Controller.extend({
   photos: function () {
     var photos = Ember.A();
 
-    this.get('conversationPosts').forEach(function (post) {
+    this.get('conversationPosts.model').forEach(function (post) {
       post.get('photos').forEach(function (postPhoto) {
         photos.pushObject(postPhoto);
       });
     });
 
     return photos;
-  }.property('conversationPosts', 'conversationPosts.model.[]'),
+  }.property('conversationPosts.model', 'conversationPosts.model.[]'),
 
   actions: {
     getMore: function () {
