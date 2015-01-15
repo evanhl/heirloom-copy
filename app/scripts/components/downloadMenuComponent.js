@@ -15,6 +15,11 @@ App.DownloadMenuComponent = Ember.Component.extend(App.RegisterableMixin, {
     zipDownload: function () {
       this.sendAction('zipDownload');
       this.close();
+    },
+
+    dropboxDownload: function () {
+      this.sendAction('dropboxDownload');
+      this.close();
     }
   }
 });

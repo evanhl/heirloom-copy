@@ -101,6 +101,9 @@ Ember.I18n.translations = {
 
   'download': 'Download',
 
+  'dropbox.button': 'Save to Dropbox',
+  'dropbox.error': 'Could not open Dropbox. Please try again.',
+
   'zip.title': 'Zip Download',
   'zip.button': 'Download Zip File',
   'zip.download': 'Download',

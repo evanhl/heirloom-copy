@@ -67,9 +67,23 @@
   }
 }
 
+.toolbar-dropbox-icon {
+  @include sprite-retina($dropbox_normal, $dropbox_normal-2x);
+  margin-right: 15px;
+  margin-bottom: 4px;
+
+  li:hover & {
+    @include sprite-retina($dropbox_hover, $dropbox_hover-2x);
+  }
+}
+
+li:hover .dropbox-label {
+  color: rgb(22,129,226);
+}
+
 .toolbar-zip-icon {
   @include sprite-retina($zip_normal, $zip_normal-2x);
-  margin-right: 15px;
+  margin-right: 20px;
   margin-bottom: 4px;
 
   li:hover & {

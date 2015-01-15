@@ -170,6 +170,12 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
     }
   },
 
+  onSelectionMode: function () {
+    if (this.get('isSelectionMode')) {
+      App.DropboxLoader.create().load();
+    }
+  }.observes('isSelectionMode'),
+
   actions: {
     enlarge: function (id) {
       this.transitionToRoute('photo', id);
@@ -210,6 +216,20 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
 
     addToAlbum: function () {
       this.send('openModal', 'albumPicker');
+    },
+
+    dropboxDownload: function () {
+      var self = this;
+      var urls = this.get('selectedIds').map(function (photoId) {
+        return {
+          url: App.Photo.find(photoId).get('fullVersion'),
+          filename: photoId + '.jpg'
+        };
+      });
+
+      App.DropboxLauncher.launch(urls, function () {
+        self.trigger('toast', 'dropbox.error', null, 'toast-error');
+      });
     },
 
     zipDownload: function () {
