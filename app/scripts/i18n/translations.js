@@ -95,6 +95,7 @@ Ember.I18n.translations = {
   'share.photoMessage': 'shared a photo',
   'share.photosMessage.other': 'shared {{count}} photos',
   'share.tagline': 'Fast, beautiful scanning for all the moments we love. <a href="/home">Learn More.</a>',
+  'share.linkGenerateFailed': 'We weren\'t able to generate a share link.',
   'share.savePhoto': 'Save Photo',
   'share.savePhotoMessage': 'Save this photo to your Moments.',
   'share.saveSuccess': 'This photo has been added to your Moments.',

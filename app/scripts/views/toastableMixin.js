@@ -1,14 +1,14 @@
 App.ToastableMixin = Ember.Mixin.create({
   toastClasses: '',
   listenToToast: function () {
-    this.get('controller').on('toast', this, this.onToast);
+    this.get('controller').on('toast', this, this.doToast);
   }.on('didInsertElement'),
 
   dontListenToToast: function () {
-    this.get('controller').off('toast', this, this.onToast);
+    this.get('controller').off('toast', this, this.doToast);
   }.on('willDestroyElement'),
 
-  onToast: function (template, context, toastClasses) {
+  doToast: function (template, context, toastClasses) {
     var $span = $('<span></span>').text(Ember.I18n.t(template, context));
 
     $('<div class="toast floater"></div>')

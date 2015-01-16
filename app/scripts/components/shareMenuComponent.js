@@ -1,6 +1,7 @@
 //= require registerableMixin
+//= require ../views/toastableMixin
 
-App.ShareMenuComponent = Ember.Component.extend(App.RegisterableMixin, {
+App.ShareMenuComponent = Ember.Component.extend(App.RegisterableMixin, App.ToastableMixin, {
   TWITTER_SHARE_URL: 'https://www.twitter.com/intent/tweet?text=',
   FB_SHARE_URL: 'https://www.facebook.com/dialog/share?app_id=593382107427220&display=popup&redirect_uri=https://www.heirloom.net/closeWindow&href=',
 
@@ -26,7 +27,8 @@ App.ShareMenuComponent = Ember.Component.extend(App.RegisterableMixin, {
       self.set('shareText', data.body);
       self.set('shareLoading', false);
     }, function () {
-      // TODO: handle error
+      self.close();
+      self.doToast('share.linkGenerateFailed', null, 'toast-error');
     });
   },
 
