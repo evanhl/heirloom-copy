@@ -25,6 +25,8 @@ App.SigninController = Ember.Controller.extend(App.FbControllerMixin, {
     signin: function () {
       if (this.get('submitDisabled')) { return; }
 
+      App.get('analytics').trackEvent('Signin.Actions.submit');
+
       var login = this.getProperties(this.FIELDS);
       var record = App.Session.create(login);
       var self = this;

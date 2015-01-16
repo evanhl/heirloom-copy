@@ -174,12 +174,14 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
   onSelectionMode: function () {
     if (this.get('isSelectionMode')) {
       App.DropboxLoader.create().load();
+      App.get('analytics').trackEvent('Moments.Actions.enterSelectionMode');
     }
   }.observes('isSelectionMode'),
 
   actions: {
     enlarge: function (id) {
       this.transitionToRoute('photo', id);
+      App.get('analytics').trackEvent('Moments.Actions.singlePhotoView');
     },
 
     select: function (photoController) {
@@ -197,6 +199,8 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
 
     deletePhotos: function () {
       var self = this;
+
+      App.get('analytics').trackEvent('Moments.SelectedPhotos.delete');
 
       App.Photo.batchDelete(this.get('selectedIds')).then(function (response) {
         response.photo_ids.forEach(function (id) {
@@ -217,6 +221,7 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
 
     addToAlbum: function () {
       this.send('openModal', 'albumPicker');
+      App.get('analytics').trackEvent('Moments.SelectedPhotos.addToAlbum', this.get('selectedIds.length'));
     },
 
     dropboxDownload: function () {
@@ -231,10 +236,13 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
       App.DropboxLauncher.launch(urls, function () {
         self.trigger('toast', 'dropbox.error', null, 'toast-error');
       });
+
+      App.get('analytics').trackEvent('Moments.SelectedPhotos.zipDownload', this.get('selectedIds.length'));
     },
 
     zipDownload: function () {
       this.doZipDownload();
+      App.get('analytics').trackEvent('Moments.SelectedPhotos.dropboxSave', this.get('selectedIds.length'));
     },
 
     toggleShare: function () {

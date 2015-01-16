@@ -21,5 +21,5 @@ App.ApplicationRoute = Ember.Route.extend({
         parentView: 'application'
       });
     }
-  }
+  },
 });

@@ -1,10 +1,4 @@
-App.IndexRoute = Ember.Route.extend({
-  beforeModel: function () {
-    if (App.get('auth.isLoggedIn')) {
-      this.transitionTo('photos');
-    }
-  },
-
+App.HomeRoute = Ember.Route.extend({
   actions: {
     willTransition: function (transition) {
       if (transition.targetName === 'signin') {

@@ -1,5 +1,3 @@
-/* global trackOutboundLink */
-
 App.TrackLinkMixin = Ember.Mixin.create({
   trackLinks: function () {
     this.$().click(function (e) {
@@ -7,7 +5,7 @@ App.TrackLinkMixin = Ember.Mixin.create({
 
       e.preventDefault();
 
-      trackOutboundLink($(this).attr('href'), newWindow);
+      App.get('analytics').trackOutboundLink($(this).attr('href'), newWindow);
     });
   }.on('didInsertElement')
 });
