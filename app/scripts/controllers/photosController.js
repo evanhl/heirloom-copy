@@ -101,14 +101,15 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
     var self = this;
     var photoCount = this.get('selectedIds.length');
 
-    album.addPhotos(this.get('selectedIds')).then(function () {
-      // TODO: handle error
+    album.addPhotos(undefined).then(function () {
       self.deselect();
       album.reload();
       self.trigger('toast', 'photos.addedToAlbum', {
         count: photoCount,
         albumName: album.get('name')
       });
+    }, function () {
+      self.trigger('toast', 'photos.addToAlbum.error', null, 'toast-error');
     });
   },
 
