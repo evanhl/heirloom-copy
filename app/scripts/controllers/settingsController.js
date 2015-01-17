@@ -18,6 +18,7 @@ App.SettingsController = Ember.ObjectController.extend({
   reset: function () {
     this.notifyPropertyChange('dummy');
     this.set('passwordSuccess', false);
+    this.set('errors', null);
   },
 
   saveDisabled: function () {
@@ -54,6 +55,7 @@ App.SettingsController = Ember.ObjectController.extend({
       user.patch(user.toJSON()).then(function () {
         self.get('app.auth.currentSession').reload();
         self.set('waiting', false);
+        self.set('errors', null);
         self.send('closeModal');
       }, function (response) {
         self.set('errors', Utils.parseErrorResponse(response));
