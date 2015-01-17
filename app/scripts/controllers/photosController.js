@@ -86,6 +86,8 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
       photo_ids: this.get('selectedIds')
     });
 
+    App.get('analytics').trackEvent('Moments.CreateAlbum.submit', this.get('selectedIds.length'));
+
     record.save().then(function (createdRecord) {
       self.trigger('toast', 'photos.createdAlbum', {
         albumName: albumName,
@@ -100,6 +102,8 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
   addPhotosToAlbum: function (album) {
     var self = this;
     var photoCount = this.get('selectedIds.length');
+
+    App.get('analytics').trackEvent('Moments.AddToAlbum.submit', this.get('selectedIds.length'));
 
     album.addPhotos(undefined).then(function () {
       self.deselect();
@@ -237,12 +241,12 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
         self.trigger('toast', 'dropbox.error', null, 'toast-error');
       });
 
-      App.get('analytics').trackEvent('Moments.SelectedPhotos.zipDownload', this.get('selectedIds.length'));
+      App.get('analytics').trackEvent('Moments.SelectedPhotos.dropboxSave', this.get('selectedIds.length'));
     },
 
     zipDownload: function () {
       this.doZipDownload();
-      App.get('analytics').trackEvent('Moments.SelectedPhotos.dropboxSave', this.get('selectedIds.length'));
+      App.get('analytics').trackEvent('Moments.SelectedPhotos.zipDownload', this.get('selectedIds.length'));
     },
 
     toggleShare: function () {

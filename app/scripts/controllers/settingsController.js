@@ -52,6 +52,9 @@ App.SettingsController = Ember.ObjectController.extend({
       user = this.get('user');
 
       this.set('waiting', true);
+
+      App.get('analytics').trackEvent('Settings.Actions.submit');
+
       user.patch(user.toJSON()).then(function () {
         self.get('app.auth.currentSession').reload();
         self.set('waiting', false);
@@ -65,6 +68,7 @@ App.SettingsController = Ember.ObjectController.extend({
 
     changePassword: function () {
       this.send('openModal', 'changePassword');
+      App.get('analytics').trackEvent('Settings.Actions.changePassword');
     }
   }
 });

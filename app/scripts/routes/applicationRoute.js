@@ -20,6 +20,16 @@ App.ApplicationRoute = Ember.Route.extend({
         outlet: 'modal',
         parentView: 'application'
       });
+    },
+
+    willTransition: function (transition) {
+      if (transition.targetName === 'photos.index') {
+        App.get('analytics').trackEvent('Nav.Actions.moments');
+      } else if (transition.targetName === 'albums.index') {
+        App.get('analytics').trackEvent('Nav.Actions.albums');
+      } else if (transition.targetName === 'conversations.index') {
+        App.get('analytics').trackEvent('Nav.Actions.groups');
+      }
     }
   },
 });

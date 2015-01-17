@@ -34,6 +34,8 @@ App.AlbumPhotosController = Ember.ArrayController.extend(Ember.Evented, Infinite
     var self = this;
     var album = this.get('album.model');
 
+    App.get('analytics').trackEvent('AlbumPhotos.AddPhotos.submit', ids && ids.length);
+
     album.addPhotos(ids).then(function () {
       // TODO: handle error
       album.reload();
@@ -47,6 +49,12 @@ App.AlbumPhotosController = Ember.ArrayController.extend(Ember.Evented, Infinite
     this.resetSelected();
     this.trigger('deselect');
   },
+
+  onSelectionMode: function () {
+    if (this.get('isSelectionMode')) {
+      App.get('analytics').trackEvent('AlbumPhotos.Actions.enterSelectionMode');
+    }
+  }.observes('isSelectionMode'),
 
   actions: {
     select: function (photoController) {
@@ -64,6 +72,7 @@ App.AlbumPhotosController = Ember.ArrayController.extend(Ember.Evented, Infinite
 
     enlarge: function (id) {
       this.transitionToRoute('albumPhoto', this.get('album.id'), id);
+      App.get('analytics').trackEvent('AlbumPhotos.Actions.singlePhotoView');
     },
 
     cancel: function () {
@@ -75,6 +84,8 @@ App.AlbumPhotosController = Ember.ArrayController.extend(Ember.Evented, Infinite
       var album = self.get('album.model');
       var selectedIds = this.get('selectedIds');
       var selected = selectedIds.map(function (id) { return App.Photo.find(id); });
+
+      App.get('analytics').trackEvent('AlbumPhotos.SelectedPhotos.remove', selectedIds && selectedIds.length);
 
       album.removePhotos(selectedIds).then(function () {
         self.deselect();
@@ -91,6 +102,8 @@ App.AlbumPhotosController = Ember.ArrayController.extend(Ember.Evented, Infinite
       var self = this;
       var album = this.get('album.model');
 
+      App.get('analytics').trackEvent('AlbumPhotos.Actions.deleteAlbum');
+
       album.deleteRecord().then(function () {
         self.get('albums').removeObject(album);
         self.transitionToRoute('albums');
@@ -99,11 +112,23 @@ App.AlbumPhotosController = Ember.ArrayController.extend(Ember.Evented, Infinite
 
     addPhotos: function () {
       this.send('openModal', 'albumPhotoPicker');
+      App.get('analytics').trackEvent('AlbumPhotos.Actions.addPhotos');
     },
 
     enterChangeCoverMode: function () {
       this.set('isCcMode', true);
       this.set('showSettingsMenu', false);
+      App.get('analytics').trackEvent('AlbumPhotos.Actions.changeCoverPhoto');
+    },
+
+    twitterShare: function () {
+      this._super();
+      App.get('analytics').trackEvent('AlbumPhotos.SelectedPhotos.shareTwitter', this.get('selectedIds.length'));
+    },
+
+    facebookShare: function () {
+      this._super();
+      App.get('analytics').trackEvent('AlbumPhotos.SelectedPhotos.shareFacebook', this.get('selectedIds.length'));
     },
 
     cancelChangeCover: function () {

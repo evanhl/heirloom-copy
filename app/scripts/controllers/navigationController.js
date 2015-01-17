@@ -89,6 +89,8 @@ App.NavigationController = Ember.Controller.extend({
       // dummy record is required to delete record
       var session = App.Session.create();
 
+      App.get('analytics').trackEvent('Nav.Actions.signout');
+
       session.deleteRecord().then(function () {
         App.set('auth.currentSession', null);
       }, function () {
@@ -102,14 +104,17 @@ App.NavigationController = Ember.Controller.extend({
 
     settings: function () {
       this.send('openModal', 'settings');
+      App.get('analytics').trackEvent('Nav.Actions.settings');
     },
 
     signin: function () {
       this.transitionToRoute('signin');
+      App.get('analytics').trackEvent('Nav.Actions.signin');
     },
 
     upload: function () {
       this.send('openModal', 'uploadModal');
+      App.get('analytics').trackEvent('Nav.Actions.upload');
     }
   }
 });

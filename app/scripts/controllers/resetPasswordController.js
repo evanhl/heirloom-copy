@@ -13,6 +13,8 @@ App.ResetPasswordController = Ember.Controller.extend({
         password_confirmation: this.get('confirmPassword')
       };
 
+      App.get('analytics').trackEvent('ResetPassword.Actions.submit');
+
       Utils.apiCall('/password', "PATCH", data, function () {
         self.transitionToRoute('resetPasswordSuccess');
       }, function (response) {

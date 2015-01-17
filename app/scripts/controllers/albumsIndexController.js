@@ -29,6 +29,8 @@ App.AlbumsIndexController = Ember.ArrayController.extend(Ember.Evented, Infinite
     };
     var record = App.Album.create(album);
 
+    App.get('analytics').trackEvent('Albums.CreateAlbum.submit', ids && ids.length);
+
     record.save().then(function (createdRecord) {
       self.unshiftObject(record);
       self.set('error', null);
@@ -48,13 +50,21 @@ App.AlbumsIndexController = Ember.ArrayController.extend(Ember.Evented, Infinite
     this.set('selected', {});
   },
 
+  onSelectionMode: function () {
+    if (this.get('isSelectionMode')) {
+      App.get('analytics').trackEvent('Albums.Actions.enterSelectionMode');
+    }
+  }.observes('isSelectionMode'),
+
   actions: {
     enlarge: function (id) {
       this.transitionToRoute('albumPhotos', id);
+      App.get('analytics').trackEvent('Albums.Actions.viewAlbum');
     },
 
     create: function () {
       this.send('openModal', 'newAlbumPhotoPicker');
+      App.get('analytics').trackEvent('Albums.Actions.create');
     },
 
     select: function (albumController) {

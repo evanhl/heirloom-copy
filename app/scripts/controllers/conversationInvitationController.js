@@ -55,10 +55,13 @@ App.ConversationInvitationController = Ember.ObjectController.extend({
   actions: {
     signIn: function () {
       this.transitionToRoute('signin');
+      App.get('analytics').trackEvent('Invitation.Actions.signin');
+
     },
 
     signUp: function () {
       this.transitionToRoute('registration');
+      App.get('analytics').trackEvent('Invitation.Actions.signup');
     }
   }
 });

@@ -20,6 +20,20 @@ App.ConversationsCreateController = Ember.Controller.extend(Ember.Evented, {
     });
   },
 
+  selectedContactsWillChange: function () {
+    this.set('oldContactsLength', this.get('selectedContacts.length') || 0);
+  }.observesBefore('selectedContacts.length'),
+
+  selectedContactsChanged: function () {
+    var diff = (this.get('selectedContacts.length') || 0) - this.get('oldContactsLength');
+
+    if (diff > 0) {
+      App.get('analytics').trackEvent('Groups.NewGroup.addContact');
+    } else if (diff < 0) {
+      App.get('analytics').trackEvent('Groups.NewGroup.removeContact');
+    }
+  }.observes('selectedContacts.length'),
+
   actions: {
     createPost: function (postOptions) {
       var convo;
@@ -36,7 +50,10 @@ App.ConversationsCreateController = Ember.Controller.extend(Ember.Evented, {
         contacts: contacts
       });
 
+      App.get('analytics').trackEvent('Groups.NewGroup.submit');
+
       convo.save().then(function () {
+        App.get('analytics').trackEvent('Groups.NewGroup.submitPost');
         self.createFirstPost(convo, postOptions);
       }, function () {
         // TODO: handle error

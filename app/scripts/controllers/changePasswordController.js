@@ -30,6 +30,8 @@ App.ChangePasswordController = Ember.Controller.extend({
         return;
       }
 
+      App.get('analytics').trackEvent('Settings.ChangePassword.submit');
+
       registration = App.Registration.create();
 
       this.set('waiting', true);

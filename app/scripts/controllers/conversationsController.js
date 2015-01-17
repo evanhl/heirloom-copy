@@ -33,6 +33,7 @@ App.ConversationsController = Ember.ArrayController.extend(InfiniteScroll.Contro
     create: function () {
       this.trigger('enterCreateMode');
       this.transitionToRoute('conversations.create');
+      App.get('analytics').trackEvent('Groups.Actions.create');
     }
   }
 });

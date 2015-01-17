@@ -9,6 +9,8 @@ App.ForgotPasswordController = Ember.Controller.extend({
     sendEmail: function () {
       var self = this;
 
+      App.get('analytics').trackEvent('ForgotPassword.Actions.submit');
+
       Utils.apiCall('/password', 'POST', { email: this.get('email') },
       function () {
         self.set('isSuccessful', true);

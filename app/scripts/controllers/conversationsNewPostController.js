@@ -42,6 +42,7 @@ App.ConversationsNewPostController = Ember.ObjectController.extend(Ember.Evented
   },
 
   albumSelected: function (album) {
+    App.get('analytics').trackEvent('Groups.NewPost.didAddAlbum');
     this.set('newPostAlbum', album);
   },
 
@@ -50,6 +51,7 @@ App.ConversationsNewPostController = Ember.ObjectController.extend(Ember.Evented
       return App.Photo.find(photoId);
     });
 
+    App.get('analytics').trackEvent('Groups.NewPost.didAddMoments', photoIds && photoIds.length);
     this.get('newPostPhotos').pushObjects(photos);
   },
 
@@ -101,10 +103,12 @@ App.ConversationsNewPostController = Ember.ObjectController.extend(Ember.Evented
 
     addAlbum: function () {
       this.send('openModal', 'groupAlbumPicker');
+      App.get('analytics').trackEvent('Groups.NewPost.addAlbum');
     },
 
     addPhotos: function () {
       this.send('openModal', 'groupPhotoPicker');
+      App.get('analytics').trackEvent('Groups.NewPost.addMoments');
     },
 
     removePhoto: function (photo) {

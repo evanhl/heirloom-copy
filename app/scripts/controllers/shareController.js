@@ -47,11 +47,14 @@ App.ShareController = Ember.ObjectController.extend(Ember.Evented, {
 
     enlarge: function (id) {
       this.transitionToRoute('sharePhoto', this.get('id'), id);
+      App.get('analytics').trackEvent('Share.Actions.singlePhotoView');
     },
 
     save: function () {
       var self = this;
       var share = this.get('model');
+
+      App.get('analytics').trackEvent('Share.Actions.savePhoto');
 
       share.add().then(function () {
         self.set('isAddSuccess', true);

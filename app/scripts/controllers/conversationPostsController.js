@@ -48,6 +48,8 @@ App.ConversationPostsController = Ember.ArrayController.extend(Ember.Evented, In
       var post = App.Post.create(options);
       var conversation = self.get('conversation.model');
 
+      App.get('analytics').trackEvent('Groups.NewPost.submit');
+
       conversation.createPost(post).then(function () {
         self.unshiftObject(post);
         self.trigger('didCreatePost', post);
@@ -58,6 +60,7 @@ App.ConversationPostsController = Ember.ArrayController.extend(Ember.Evented, In
 
     enlarge: function (id) {
       this.transitionToRoute('conversationPostPhoto', id);
+      App.get('analytics').trackEvent('Groups.Group.singlePhotoView');
     }
   }
 });
