@@ -1,5 +1,7 @@
-//= require shareMixin
-App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMixin, Ember.Evented, App.SelectableMixin, {
+//= require downloadableMixin
+//= require selectableMixin
+
+App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMixin, Ember.Evented, App.SelectableMixin, App.DownloadableMixin, {
   needs: ['albumPicker', 'albumsIndex'],
   albumPicker: Ember.computed.alias('controllers.albumPicker'),
   albums: Ember.computed.alias('controllers.albumsIndex'),
@@ -155,32 +157,16 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
     }
   }.observes('model.length'),
 
-  doZipDownload: function () {
-    var assembly;
-    var urls = this.get('selectedIds').map(function (photoId) {
-      return App.Photo.find(photoId).get('fullVersion');
-    });
-
-    assembly = App.ZipAssembly.create({
-      urls: urls
-    });
-
-    this.set('zipAssembly', assembly);
-    this.send('openModal', 'zipDownloadModal', assembly);
-  },
-
   closeShareMenu: function () {
     if (this.get('shareMenu')) {
       this.get('shareMenu').close();
     }
   },
 
-  onSelectionMode: function () {
-    if (this.get('isSelectionMode')) {
-      App.DropboxLoader.create().load();
-      App.get('analytics').trackEvent('Moments.Actions.enterSelectionMode');
-    }
-  }.observes('isSelectionMode'),
+  onEnterSelectionMode: function () {
+    this._super();
+    App.get('analytics').trackEvent('Moments.Actions.enterSelectionMode');
+  },
 
   actions: {
     enlarge: function (id) {
@@ -229,23 +215,12 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
     },
 
     dropboxDownload: function () {
-      var self = this;
-      var urls = this.get('selectedIds').map(function (photoId) {
-        return {
-          url: App.Photo.find(photoId).get('fullVersion'),
-          filename: photoId + '.jpg'
-        };
-      });
-
-      App.DropboxLauncher.launch(urls, function () {
-        self.trigger('toast', 'dropbox.error', null, 'toast-error');
-      });
-
+      this._super();
       App.get('analytics').trackEvent('Moments.SelectedPhotos.dropboxSave', this.get('selectedIds.length'));
     },
 
     zipDownload: function () {
-      this.doZipDownload();
+      this._super();
       App.get('analytics').trackEvent('Moments.SelectedPhotos.zipDownload', this.get('selectedIds.length'));
     },
 
@@ -253,8 +228,14 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
       this.get('shareMenu').toggle();
     },
 
-    toggleDownload: function () {
-      this.get('downloadMenu').toggle();
-    }
+    twitterShare: function () {
+      this._super();
+      App.get('analytics').trackEvent('Moments.SelectedPhotos.shareTwitter', this.get('selectedIds.length'));
+    },
+
+    facebookShare: function () {
+      this._super();
+      App.get('analytics').trackEvent('Moments.SelectedPhotos.shareFacebook', this.get('selectedIds.length'));
+    },
   }
 });

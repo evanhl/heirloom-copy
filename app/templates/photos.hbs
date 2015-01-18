@@ -1,7 +1,7 @@
 <div {{bind-attr class=":photos-container isSelectionMode:selection-mode"}}>
   <div {{bind-attr class=":nav-filler isSelectionMode::collapsed"}}></div>
   {{#if showToolbar}}
-    <div {{bind-attr class=":selection-toolbar :alt-toolbar removingToolbar:removing"}}>
+    <div {{bind-attr class=":selection-toolbar  removingToolbar:removing"}}>
       <div class="left">
 
         <div class="num-selected">
@@ -10,7 +10,7 @@
 
         <div class="bubble-menu-cont">
           {{#toolbar-item iconClass="toolbar-share-icon" label=(ts 'share') action="toggleShare"}}{{/toolbar-item}}
-          {{#share-menu registerAs=shareMenu selectedIds=selectedIds}}{{/share-menu}}
+          {{#share-menu registerAs=shareMenu selectedIds=selectedIds twitterShare="twitterShare" facebookShare="facebookShare"}}{{/share-menu}}
         </div>
 
         <div class="toolbar-divider"></div>

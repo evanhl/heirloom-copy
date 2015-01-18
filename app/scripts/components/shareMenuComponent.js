@@ -68,11 +68,13 @@ App.ShareMenuComponent = Ember.Component.extend(App.RegisterableMixin, App.Toast
   actions: {
     twitterShare: function () {
       this.openTwitterShare();
+      this.sendAction('twitterShare');
       this.close();
     },
 
     facebookShare: function () {
       this.openFacebookShare();
+      this.sendAction('facebookShare');
       this.close();
     }
   }

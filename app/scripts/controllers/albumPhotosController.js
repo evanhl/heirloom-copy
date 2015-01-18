@@ -1,6 +1,6 @@
 //= require selectableMixin
-//= require shareMixin
-App.AlbumPhotosController = Ember.ArrayController.extend(Ember.Evented, InfiniteScroll.ControllerMixin, App.SelectableMixin, App.ShareMixin, {
+//= require downloadableMixin
+App.AlbumPhotosController = Ember.ArrayController.extend(Ember.Evented, InfiniteScroll.ControllerMixin, App.SelectableMixin, App.DownloadableMixin, {
   needs: ['album', 'albumsIndex', 'albumPhotoPicker'],
   album: Ember.computed.alias('controllers.album'),
   albums: Ember.computed.alias('controllers.albumsIndex'),
@@ -50,11 +50,10 @@ App.AlbumPhotosController = Ember.ArrayController.extend(Ember.Evented, Infinite
     this.trigger('deselect');
   },
 
-  onSelectionMode: function () {
-    if (this.get('isSelectionMode')) {
-      App.get('analytics').trackEvent('AlbumPhotos.Actions.enterSelectionMode');
-    }
-  }.observes('isSelectionMode'),
+  onEnterSelectionMode: function () {
+    this._super();
+    App.get('analytics').trackEvent('AlbumPhotos.Actions.enterSelectionMode');
+  },
 
   actions: {
     select: function (photoController) {
@@ -121,13 +120,21 @@ App.AlbumPhotosController = Ember.ArrayController.extend(Ember.Evented, Infinite
       App.get('analytics').trackEvent('AlbumPhotos.Actions.changeCoverPhoto');
     },
 
-    twitterShare: function () {
+    dropboxDownload: function () {
       this._super();
+      App.get('analytics').trackEvent('AlbumPhotos.SelectedPhotos.dropboxSave', this.get('selectedIds.length'));
+    },
+
+    zipDownload: function () {
+      this._super();
+      App.get('analytics').trackEvent('AlbumPhotos.SelectedPhotos.zipDownload', this.get('selectedIds.length'));
+    },
+
+    twitterShare: function () {
       App.get('analytics').trackEvent('AlbumPhotos.SelectedPhotos.shareTwitter', this.get('selectedIds.length'));
     },
 
     facebookShare: function () {
-      this._super();
       App.get('analytics').trackEvent('AlbumPhotos.SelectedPhotos.shareFacebook', this.get('selectedIds.length'));
     },
 
@@ -148,6 +155,10 @@ App.AlbumPhotosController = Ember.ArrayController.extend(Ember.Evented, Infinite
         self.set('isCcMode', false);
         album.reload();
       });
+    },
+
+    toggleShare: function () {
+      this.get('shareMenu').toggle();
     }
   }
 });

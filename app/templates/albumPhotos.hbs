@@ -35,12 +35,23 @@
     {{#if removingCcToolbar}}
     {{else}}
       {{#if showToolbar}}
-        <div {{bind-attr class=":selection-toolbar removingToolbar:removing"}}>
+        <div {{bind-attr class=":selection-toolbar  removingToolbar:removing"}}>
           <div class="left">
             <div class="num-selected">
               <span class="count-text">{{t "photos.selected" countBinding="selectedCount"}}</span>
             </div>
-            {{partial 'shareButton'}}
+
+            <div class="bubble-menu-cont">
+              {{#toolbar-item iconClass="toolbar-share-icon" label=(ts 'share') action="toggleShare"}}{{/toolbar-item}}
+              {{#share-menu registerAs=shareMenu selectedIds=selectedIds twitterShare="twitterShare" facebookShare="facebookShare"}}{{/share-menu}}
+            </div>
+
+            <div class="toolbar-divider"></div>
+
+            <div class="bubble-menu-cont">
+              {{#toolbar-item iconClass="toolbar-download-icon" label=(ts 'download') action="toggleDownload"}}{{/toolbar-item}}
+              {{#download-menu registerAs=downloadMenu selectedIds=selectedIds zipDownload="zipDownload" dropboxDownload="dropboxDownload"}}{{/download-menu}}
+            </div>
           </div>
           <div class="right">
             <button class="secondary" {{action 'removePhotos'}}>{{t 'albums.remove'}}</button>

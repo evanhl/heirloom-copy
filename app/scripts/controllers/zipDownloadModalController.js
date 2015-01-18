@@ -1,7 +1,5 @@
 App.ZipDownloadModalController = Ember.ObjectController.extend({
-  needs: ['photos'],
-  // FIXME: Blerg. In Ember 1.9, we can use Route.render to send the model instead of using this hack.
-  zipAssembly: Ember.computed.alias('controllers.photos.zipAssembly'),
+  zipAssembly: Ember.computed.alias('model'),
 
   isZipping: function () {
     var state = this.get('zipAssembly.state');

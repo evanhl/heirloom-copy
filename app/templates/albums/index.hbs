@@ -1,9 +1,9 @@
 <div {{bind-attr class=":albums-container"}}>
   <div {{bind-attr class=":nav-filler isSelectionMode::collapsed"}}></div>
   {{#if showToolbar}}
-    <div {{bind-attr class=":selection-toolbar removingToolbar:removing"}}>
+    <div {{bind-attr class=":selection-toolbar  removingToolbar:removing"}}>
       <div class="right">
-        <button class="secondary icon-only delete" {{action 'deleteAlbums'}}></button>
+        {{#toolbar-item iconClass="toolbar-trash-icon" label=(ts 'delete') action="deleteAlbums"}}{{/toolbar-item}}
         <button class="secondary" {{action 'cancel'}}>{{t 'cancel'}}</button>
       </div>
     </div>

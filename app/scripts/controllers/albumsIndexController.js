@@ -50,11 +50,10 @@ App.AlbumsIndexController = Ember.ArrayController.extend(Ember.Evented, Infinite
     this.set('selected', {});
   },
 
-  onSelectionMode: function () {
-    if (this.get('isSelectionMode')) {
-      App.get('analytics').trackEvent('Albums.Actions.enterSelectionMode');
-    }
-  }.observes('isSelectionMode'),
+  onEnterSelectionMode: function () {
+    this._super();
+    App.get('analytics').trackEvent('Albums.Actions.enterSelectionMode');
+  },
 
   actions: {
     enlarge: function (id) {
