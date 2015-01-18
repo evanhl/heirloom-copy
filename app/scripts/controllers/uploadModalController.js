@@ -51,6 +51,8 @@ App.UploadModalController = Ember.Controller.extend(Ember.Evented, {
     complete: function () {
       var self = this;
 
+      App.get('analytics').trackEvent('Upload.Actions.submit', this.get('successCount'));
+
       this.set('waiting', true);
       this.get('uploadToS3').createPhotoRecords(function () {
         self.set('waiting', false);

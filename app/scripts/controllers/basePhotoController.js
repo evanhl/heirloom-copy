@@ -63,8 +63,6 @@ App.BasePhotoController = Ember.ObjectController.extend({
       return photo.get('id') === photoId;
     });
 
-    window.console.log('pm.length', this.get('photosModel.length'), 'index', index);
-
     if (index !== -1) {
       return index;
     }

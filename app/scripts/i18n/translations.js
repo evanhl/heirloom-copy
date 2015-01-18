@@ -17,7 +17,8 @@ Ember.I18n.translations = {
   'signin.button.signin': 'Sign In',
   'signin.button.facebook': 'Sign In with Facebook',
   'signin.signUpInstead': 'Don\'t have an account?',
-  'signin.forgotPassword': 'Forgot password? <a href="/forgot_password">Reset it here</a>',
+  'signin.forgotPassword.part1': 'Forgot password?',
+  'signin.forgotPassword.part2': 'Reset it here',
 
   'signup.message': 'Sign up and bring the past to the present, effortlessly.',
   'signup.message.hasInvitation': 'Please sign up to join this group.',
