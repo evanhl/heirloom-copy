@@ -20,4 +20,10 @@
     <div class="photo-button" {{action 'toggleMetadata'}}></div>
   </div>
 </div>
-<div class="photo-sidebar"></div>
+<div class="photo-sidebar">
+  <div class="photo-icon-cont">
+    {{render 'userIcon' currentPhoto.owner}}
+    <div class="photo-owner-name">{{currentPhoto.owner.name}}</div>
+    <div class="photo-owner-username">{{currentPhoto.owner.username}}</div>
+  </div>
+</div>

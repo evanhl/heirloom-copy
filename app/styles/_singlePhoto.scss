@@ -4,12 +4,36 @@
 
   &.collapsed {
     .photo-cont, .photo-options {
-      width: 70%;
+      width: 100%;
     }
 
     .photo-sidebar {
-      width: 30%;
+      right: -30%;
     }
+
+    @media #{$breakpoint-mobile-2} {
+      .photo-cont, .photo-options {
+        width: 70%;
+      }
+
+      .photo-sidebar {
+        right: 0;
+      }
+    }
+
+    @media #{$breakpoint-desktop-3} {
+      .photo-cont, .photo-options {
+        width: calc(100% - 432px);
+      }
+
+      .photo-sidebar {
+        width: calc(432px);
+      }
+    }
+  }
+
+  .btn-collapse {
+    display: none;
   }
 
   .photo-cont, .photo-options {
@@ -21,9 +45,11 @@
 
   .photo-cont {
     height: 90%;
-    height: calc(100% - 60px);
+    height: calc(100% - 60px + 1px);
     left: 0;
     top: 0;
+
+
   }
 
   .photo-options {
@@ -37,6 +63,11 @@
   .photo-buttons {
     float: right;
     height: 100%;
+    display: none;
+
+    @media #{$breakpoint-mobile-2} {
+      display: block;
+    }
   }
 
   .photo-button {
@@ -56,12 +87,23 @@
   }
 
   .photo-sidebar {
-    transition: width 0.4s ease-out;
+    transition: right 0.4s ease-out;
     position: absolute;
     background: $bg-color-accent-light;
     height: 100%;
-    right: 0;
-    width: 0;
+    right: -30%;
+    width: 30%;
+    padding: 2.1%;
+
+    @media #{$breakpoint-desktop-3} {
+      width: calc(432px);
+      right: calc(-432px);
+      padding: 30px;
+    }
+
+    .icon, .avatar {
+      float: left;
+    }
   }
 
   .left-arrow, .right-arrow, .close {
@@ -107,17 +149,17 @@
     }
   }
 
-  .close, .collapse {
+  .close {
     position: absolute;
-    width: 5%;
-    height: 5vw;
+    width: $escape_photoview-width;
+    height: $escape_photoview-height;
     vertical-align: middle;
     right: 2.5%;
     top: 2.5%;
 
     @media #{$breakpoint-mobile-2} {
-      right: 0;
-      top: 0;
+      right: 20px;
+      top: 20px;
     }
 
     &::after {
@@ -125,23 +167,39 @@
       position: absolute;
       display: block;
       @include sprite-retina($escape_photoview, $escape_photoview-2x);
-      margin-left: -$escape_photoview-width / 2;
-      margin-top: -$escape_photoview-height / 2;
-      left: 50%;
-      top: 50%;
     }
   }
+}
 
-  .collapse {
-    left: 0;
-  }
+.photo-icon-cont {
+  padding-bottom: 7%;
+  border-bottom: 1px solid $subtle-highlight-color;
+}
+
+.photo-owner-name, .photo-owner-username {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.photo-owner-name {
+  font-size: 18px;
+  font-weight: 600;
+  padding: 7px 0 0 15px;
+}
+
+.photo-owner-username {
+  font-weight: 600;
+  padding-left: 15px;
+  margin-top: -2px;
+  color: $subtle-highlight-color;
 }
 
 img.detail {
   position: absolute;
 
   max-height: 90%;
-  max-width: 94%;
+  max-width: 90%;
 
   bottom: 0;
   right: 0;

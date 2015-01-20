@@ -8,6 +8,7 @@ App.BasePhoto = App.ApiModel.extend({
   created_at: Ember.attr(Date),
   versions: Ember.attr(),
   policy: Ember.attr(),
+  owner: Ember.belongsTo('App.User', { key: 'owner', embedded: true }),
   dataUri: null,
 
   isReady: function () {
