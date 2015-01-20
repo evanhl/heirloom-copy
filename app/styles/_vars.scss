@@ -88,3 +88,14 @@ $left-col-fixed-breakpoint: "only screen and (min-width: #{$left-col-fixed-break
   background: -o-linear-gradient(top, rgba(251,251,251,1) 0%, rgba(249,249,249,1) 100%);
   background: -ms-linear-gradient(top, rgba(251,251,251,1) 0%, rgba(249,249,249,1) 100%);
 }
+
+@mixin full-screen {
+  width: auto;
+  height: auto;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+  position: fixed;
+  overflow: hidden;
+}

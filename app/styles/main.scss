@@ -134,20 +134,8 @@ h2.highlighted {
   }
 }
 
-.opaque-lightbox {
-  z-index: 99;
-  background: $opaque-lightbox-color;
-}
-
-.lightbox, .opaque-lightbox {
-  width: auto;
-  height: auto;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  top: 0;
-  position: fixed;
-  overflow: hidden;
+.lightbox {
+  @include full-screen;
 }
 
 @keyframes fadeinout {

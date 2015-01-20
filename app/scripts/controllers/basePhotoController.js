@@ -1,6 +1,7 @@
 App.BasePhotoController = Ember.ObjectController.extend({
   loadingImg: false,
   firstSlot: false,
+  showMetadata: false,
 
   init: function () {
     this._super();
@@ -112,6 +113,10 @@ App.BasePhotoController = Ember.ObjectController.extend({
 
     nextPhoto: function () {
       this.toPhoto(this.get('nextId'));
+    },
+
+    toggleMetadata: function () {
+      this.toggleProperty('showMetadata');
     }
   }
 });

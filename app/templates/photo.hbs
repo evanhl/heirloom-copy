@@ -1,27 +1,23 @@
-
-{{view 'image' image=firstState}}
-{{view 'image' image=secondState}}
-
-
-{{!--
-we'll bring back the sidebar for 1.1.
-<div class="photo-sidebar">
-  <div class="owner">
-    <div class="icon"></div>
-    <div class="name">{{userName}}</div>
-    <div class="date">{{prettyDay created_at}}</div>
-    <div style="clear: both;"></div>
-  </div>
-  {{#if description}}
-    <div class="description">{{description}}</div>
-  {{/if}}
+<div class="photo-cont">
+  {{view 'image' image=firstState}}
+  {{view 'image' image=secondState}}
+  <div class="close" {{action 'toCollection'}}></div>
 </div>
---}}
-
-{{#if prevId}}
-  <div class="left-arrow" {{action 'prevPhoto'}}></div>
-{{/if}}
-{{#if nextId}}
-  <div class="right-arrow" {{action 'nextPhoto'}}></div>
-{{/if}}
-<div class="close" {{action 'toCollection'}}></div>
+<div class="photo-options">
+  <div class="photo-paginate">
+    {{#if prevId}}
+      <div class="left-arrow" {{action 'prevPhoto'}}></div>
+    {{else}}
+      <div class="blank-arrow"></div>
+    {{/if}}
+    {{#if nextId}}
+      <div class="right-arrow" {{action 'nextPhoto'}}></div>
+    {{else}}
+      <div class="blank-arrow"></div>
+    {{/if}}
+  </div>
+  <div class="photo-buttons">
+    <div class="photo-button" {{action 'toggleMetadata'}}></div>
+  </div>
+</div>
+<div class="photo-sidebar"></div>

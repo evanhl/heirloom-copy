@@ -2,7 +2,8 @@ App.PhotoView = Ember.View.extend({
   // explicitly supply template for views that inherit from this one
   templateName: 'photo',
   tagName: 'section',
-  classNames: ['opaque-lightbox'],
+  classNames: ['single-photo-cont'],
+  classNameBindings: ['controller.showMetadata:collapsed'],
 
   setFocus: function () {
     // brings the view into focus in order to capture keyDowns.

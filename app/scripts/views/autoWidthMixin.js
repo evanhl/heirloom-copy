@@ -3,6 +3,7 @@ App.AutoWidthMixin = Ember.Mixin.create({
     Ember.run.schedule('afterRender', this, function () {
       this.setContainerWidth();
       this.proxiedSetContainerWidth = $.proxy(this.setContainerWidth, this);
+      // TODO: debounce resize
       $(window).on('resize', this.proxiedSetContainerWidth);
     });
   }.on('didInsertElement'),
