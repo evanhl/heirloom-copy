@@ -32,13 +32,5 @@ App.PhotoView = Ember.View.extend({
 
   preloadNextNextImage: function () {
     Utils.preloadImage(this.get('controller.nextNextImageUrl'));
-  }.observes('controller.nextNextImageUrl'),
-
-  onDescriptionEdit: function () {
-    if (this.get('controller.isDescriptionEdit')) {
-      Ember.run.next(this, function () {
-        this.$('.description-field').focus();
-      });
-    }
-  }.observes('controller.isDescriptionEdit')
+  }.observes('controller.nextNextImageUrl')
 });

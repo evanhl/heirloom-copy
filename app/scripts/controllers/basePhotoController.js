@@ -1,4 +1,4 @@
-App.BasePhotoController = Ember.ObjectController.extend({
+App.BasePhotoController = Ember.ObjectController.extend(Ember.Evented, {
   loadingImg: false,
   firstSlot: false,
   showMetadata: true,
@@ -105,34 +105,19 @@ App.BasePhotoController = Ember.ObjectController.extend({
     }
   }.observes('photosUntilEnd'),
 
-  editingDescription: false,
-  isDescriptionEdit: function () {
-    return this.get('editingDescription') || !this.get('currentPhoto.anyMetadata');
-  }.property('editingDescription', 'currentPhoto.metadata'),
-
   actions: {
     prevPhoto: function () {
       this.toPhoto(this.get('prevId'));
+      this.set('editingDescription', false);
     },
 
     nextPhoto: function () {
       this.toPhoto(this.get('nextId'));
+      this.set('editingDescription', false);
     },
 
     toggleMetadata: function () {
       this.toggleProperty('showMetadata');
-    },
-
-    saveDescription: function () {
-      var self = this;
-
-      this.get('currentPhoto').patch().then(function () {
-        self.set('editingDescription', false);
-      });
-    },
-
-    editDescription: function () {
-      this.set('editingDescription', true);
     }
   }
 });
