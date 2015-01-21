@@ -70,6 +70,8 @@ $breakpoint-desktop-3: "only screen and (min-width : 1440px)";
 $breakpoint-mobile-2: "only screen and (min-width : 512px)";
 $left-col-fixed-breakpoint: "only screen and (min-width: #{$left-col-fixed-breakpoint-width})";
 
+$nbsp: '\00a0';
+
 @mixin subtle-gradient {
   /* autoprefixer: off */
   background: white;

@@ -1,7 +1,7 @@
 App.BasePhotoController = Ember.ObjectController.extend({
   loadingImg: false,
   firstSlot: false,
-  showMetadata: false,
+  showMetadata: true,
 
   init: function () {
     this._super();
@@ -105,10 +105,10 @@ App.BasePhotoController = Ember.ObjectController.extend({
     }
   }.observes('photosUntilEnd'),
 
-  // TODO: Replace with photo's owner once available. For now we can assume photo owner == current user
-  userName: function () {
-    return App.get('auth.currentSession.name');
-  }.property('App.auth.currentSession.name'),
+  editingDescription: false,
+  isDescriptionEdit: function () {
+    return this.get('editingDescription') || !this.get('currentPhoto.anyMetadata');
+  }.property('editingDescription', 'currentPhoto.metadata'),
 
   actions: {
     prevPhoto: function () {
@@ -121,6 +121,18 @@ App.BasePhotoController = Ember.ObjectController.extend({
 
     toggleMetadata: function () {
       this.toggleProperty('showMetadata');
+    },
+
+    saveDescription: function () {
+      var self = this;
+
+      this.get('currentPhoto').patch().then(function () {
+        self.set('editingDescription', false);
+      });
+    },
+
+    editDescription: function () {
+      this.set('editingDescription', true);
     }
   }
 });

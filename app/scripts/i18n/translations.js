@@ -73,6 +73,11 @@ Ember.I18n.translations = {
 
   'photos.addToAlbum.error': 'We were unable to add your photos to the album.',
 
+  'photo.description': 'Description',
+  'photo.date': 'Date',
+  'photo.location': 'Location',
+  'photo.tags': 'Tags',
+
   'upload.modal.title': 'Upload Photos',
   'upload.modal.addButton': 'Add',
   'upload.confirmClose': 'You have unsaved uploads. Are you sure you want to close Uploads?',

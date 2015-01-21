@@ -87,6 +87,7 @@
   }
 
   .photo-sidebar {
+    overflow-y: scroll;
     transition: right 0.4s ease-out;
     position: absolute;
     background: $bg-color-accent-light;
@@ -103,6 +104,29 @@
 
     .icon, .avatar {
       float: left;
+    }
+
+    label {
+      color: $subtle-highlight-color;
+    }
+
+    p {
+      border-top: 1px solid $subtle-highlight-color;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      min-height: 150px;
+      padding: 13px 9px 7px;
+      margin: 5px 7px 31px;
+      font-weight: 600;
+
+      &:hover {
+        box-shadow: inset 0px 1px 3px -2px rgba(0,0,0,0.75);
+        background: white;
+        border-radius: 3px;
+        border: 1px solid $subtle-highlight-color;
+        margin: 5px 0 31px;
+        padding: 13px 15px 7px;
+      }
     }
   }
 
@@ -172,14 +196,19 @@
 }
 
 .photo-icon-cont {
-  padding-bottom: 7%;
-  border-bottom: 1px solid $subtle-highlight-color;
+  padding-bottom: 2%;
+  // border-bottom: 1px solid $subtle-highlight-color;
 }
 
 .photo-owner-name, .photo-owner-username {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  &:after {
+    // takes up space so that float clearfix doesn't get thrown off
+    content: $nbsp;
+  }
 }
 
 .photo-owner-name {

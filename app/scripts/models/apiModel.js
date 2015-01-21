@@ -21,6 +21,10 @@ App.ApiModel = Ember.Model.extend({
   patch: function (data) {
     var adapter = this.constructor.adapter;
 
+    if (!data) {
+      data = this.getProperties(this.get('_dirtyAttributes'));
+    }
+
     return adapter.patchRecord(this, data);
   }
 });

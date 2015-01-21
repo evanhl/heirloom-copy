@@ -8,21 +8,28 @@
     border: 1px solid;
   }
 
-  input {
+  input, textarea {
     font-size: 1em;
-    height: 40px;
     border-radius: 3px;
     padding: 13px 15px 7px;
     font-weight: 600;
+    margin: 0;
 
     &.error {
       border-color: $highlight-color;
     }
   }
 
+  input {
+    height: 40px;
+  }
+
+  textarea {
+    height: 150px;
+  }
+
   .form-line {
     margin-top: 7px;
-    margin-bottom: 22px;
 
     button {
       border-radius: 3px;
@@ -33,6 +40,10 @@
         display: block;
       }
     }
+  }
+
+  .form-group {
+    margin-bottom: 22px;
   }
 
   label {

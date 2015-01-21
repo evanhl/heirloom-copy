@@ -1,8 +1,8 @@
 //= require apiModel
+//= require fuzzyDate
 
 App.BasePhoto = App.ApiModel.extend({
   id: Ember.attr(Number),
-  description: Ember.attr(String),
   source: Ember.attr(),
   state: Ember.attr(),
   created_at: Ember.attr(Date),
