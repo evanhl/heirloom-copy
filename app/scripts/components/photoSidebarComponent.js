@@ -1,4 +1,5 @@
 App.PhotoSidebarComponent = Ember.Component.extend({
+  classNames: ['photo-sidebar'],
   editingDescription: false,
   isDescriptionEdit: function () {
     return this.get('editingDescription') || !this.get('photo.anyMetadata');
@@ -14,6 +15,18 @@ App.PhotoSidebarComponent = Ember.Component.extend({
       }
     });
   },
+
+  autosize: function () {
+    Ember.run.scheduleOnce('afterRender', this, function () {
+      this.$('.description-field').autosize();
+    });
+  }.on('didInsertElement'),
+
+  onPhotoChange: function () {
+    Ember.run.scheduleOnce('afterRender', this, function () {
+      this.$('.description-field').trigger('autosize.resize');
+    });
+  }.observes('photo.description'),
 
   actions: {
     saveDescription: function () {

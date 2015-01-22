@@ -1,4 +1,4 @@
-<div class="photo-sidebar">
+{{#if photo}}
   <form class="modal-form">
     <div class="form-group photo-icon-cont">
       {{render 'userIcon' photo.owner}}
@@ -7,11 +7,11 @@
     </div>
     <div class="form-group">
       {{#form-label error=errors.name label=(ts 'photo.description')}}{{/form-label}}
-      {{textarea value=photo.description classBinding=":form-line :description-field isDescriptionEdit::view-only" focus-out="saveDescription" focus-in="focusDescription"}}
+      {{view "form-text-area" value=photo.description classBinding=":form-line :description-field isDescriptionEdit::view-only" focus-out="saveDescription" focus-in="focusDescription"}}
     </div>
     <div class="form-group">
       {{#form-label error=errors.name label=(ts 'photo.date')}}{{/form-label}}
       {{input value=photo.date classBinding=":form-line" }}
     </div>
   </form>
-</div>
+{{/if}}
