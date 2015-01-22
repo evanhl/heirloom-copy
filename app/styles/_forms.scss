@@ -64,3 +64,14 @@
   // fixes Firefox issue where top 1px of row was being cut off
   height: 41px;
 }
+
+.fuzzy-date {
+  input {
+    width: 32%;
+    margin-right: 2%;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
