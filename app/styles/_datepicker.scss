@@ -1,6 +1,39 @@
 @import 'datepicker3';
 
 // Hides these for fuzzy date component
-// .datepicker-months thead, .datepicker-days thead {
-//   display: none;
-// }
+.datepicker .datepicker-months table tr th, .datepicker .datepicker-days table tr:first-child th {
+  height: 0;
+  line-height: 0;
+  overflow: hidden;
+}
+
+.datepicker-dropdown.datepicker-orient-bottom {
+  &:before, &:after {
+    display: none;
+  }
+}
+
+.datepicker table tr td.active.active, .datepicker table tr td span.active.active {
+  background-color: $form-selection-color;
+  border-color: $form-selection-color;
+
+  &:hover {
+    background-color: darken($form-selection-color, 10%);
+    border-color: darken($form-selection-color, 10%);
+  }
+}
+
+.datepicker table tr td.old, .datepicker table tr td.new {
+  position: relative;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: white;
+    height: 30px;
+    width: 30px;
+    z-index: 1;
+  }
+}
