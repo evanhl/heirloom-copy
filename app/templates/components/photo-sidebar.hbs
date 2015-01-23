@@ -11,11 +11,8 @@
     </div>
     <div class="form-group">
       {{#form-label error=errors.name label=(ts 'photo.date')}}{{/form-label}}
-      {{#if isDateEdit}}
-        {{#fuzzy-date date=photo.backdated_time complete="saveDate" focus-in="focusDate"}}{{/fuzzy-date}}
-      {{else}}
-        {{input value=photo.backdated_time.prettyDate on="focus-in" action="editDate" classBinding=":form-line :view-only"}}
-      {{/if}}
+      {{#fuzzy-date date=photo.backdated_time complete="saveDate" focus-in="focusDate" classBinding="isDateEdit::hidden"}}{{/fuzzy-date}}
+      {{input value=photo.backdated_time.prettyDate on="focus-in" action="editDate" classBinding=":form-line :view-only isDateEdit:hidden"}}
     </div>
   </form>
 {{/if}}
