@@ -33,7 +33,6 @@ App.FuzzyDate = Ember.Object.extend({
     if (Em.isBlank(year)) {
       this.set('hasYear', false);
     } else {
-      this.correctDayOverflow();
       this.set('hasYear', true);
       this.get('date').year(year);
     }
@@ -45,7 +44,6 @@ App.FuzzyDate = Ember.Object.extend({
     if (Em.isBlank(month)) {
       this.set('hasMonth', false);
     } else {
-      this.correctDayOverflow();
       this.set('hasMonth', true);
       this.get('date').month(month);
     }
@@ -62,14 +60,6 @@ App.FuzzyDate = Ember.Object.extend({
     }
 
     this.setPrettyDate();
-  },
-
-  correctDayOverflow: function () {
-    if (!this.get('hasDay')) {
-      // every month has a 15th day
-      // this.get('date').date(15);
-      window.a = 5;
-    }
   },
 
   toJSON: function () {

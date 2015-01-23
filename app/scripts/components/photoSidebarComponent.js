@@ -22,6 +22,10 @@ App.PhotoSidebarComponent = Ember.Component.extend({
     });
   },
 
+  onDateEdit: function () {
+    this.get('fuzzyDate').enterAndFocus();
+  },
+
   autosize: function () {
     Ember.run.scheduleOnce('afterRender', this, function () {
       this.$('.description-field').autosize();
@@ -45,6 +49,7 @@ App.PhotoSidebarComponent = Ember.Component.extend({
 
     editDate: function () {
       this.set('editingDate', true);
+      this.onDateEdit();
     },
 
     saveDate: function () {

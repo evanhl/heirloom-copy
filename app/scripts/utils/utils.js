@@ -139,6 +139,7 @@ Utils.PHOTO_WIDTH = 186;
 Utils.PHOTO_MARGIN = 16;
 
 Utils.Keys = {
+  TAB: 9,
   ENTER: 13,
   ESC: 27,
   LEFT: 37,
