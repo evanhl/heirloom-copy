@@ -61,6 +61,10 @@ App.FuzzyDateComponent = Ember.Component.extend({
       this.$('.date-month').datepicker('setDate', null);
     }
 
+    this.updateDayInput();
+  },
+
+  updateDayInput: function () {
     if (this.get('date.hasDay')) {
       this.$('.date-day').datepicker('setDate', this.get('date.date').clone().toDate());
     } else {
@@ -134,6 +138,8 @@ App.FuzzyDateComponent = Ember.Component.extend({
     this.$('.date-day').datepicker('setViewDate', fuzzyDateMoment.clone().date(15).toDate());
     this.$('.date-day').datepicker('setStartDate', fuzzyDateMoment.clone().startOf('month').toDate());
     this.$('.date-day').datepicker('setEndDate', fuzzyDateMoment.clone().endOf('month').toDate());
+
+    this.updateDayInput();
   },
 
   dayDisabled: function () {

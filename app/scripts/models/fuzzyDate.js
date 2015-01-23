@@ -67,7 +67,8 @@ App.FuzzyDate = Ember.Object.extend({
   correctDayOverflow: function () {
     if (!this.get('hasDay')) {
       // every month has a 15th day
-      this.get('date').date(15);
+      // this.get('date').date(15);
+      window.a = 5;
     }
   },
 

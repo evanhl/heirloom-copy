@@ -60,7 +60,6 @@ App.PhotoSidebarComponent = Ember.Component.extend({
     },
 
     focusDate: function () {
-      window.console.log('focusDate');
       this.set('editingDate', true);
     },
 
