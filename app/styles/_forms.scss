@@ -15,6 +15,18 @@
     font-weight: 600;
     margin: 0;
 
+    &::-webkit-input-placeholder {
+      color: $subtle-highlight-color;
+    }
+
+    &::-moz-placeholder {
+      color: $subtle-highlight-color;
+    }
+
+    &:-ms-input-placeholder {
+      color: $subtle-highlight-color;
+    }
+
     &.error {
       border-color: $highlight-color;
     }
@@ -67,38 +79,10 @@
 
 .fuzzy-date {
   input {
+    width: 32%;
     margin-right: 2%;
-    overflow: hidden;
 
     &:last-child {
-      margin-right: 0;
-    }
-  }
-
-  &.year-mode input {
-    width: 100%;
-
-    &.date-month, &.date-day {
-      display: none;
-    }
-  }
-
-  &.month-mode input {
-    width: 49%;
-
-    &.date-month {
-      margin-right: 0;
-    }
-
-    &.date-day {
-      display: none;
-    }
-  }
-
-  &.day-mode input {
-    width: 32%;
-
-    &.date-day {
       margin-right: 0;
     }
   }

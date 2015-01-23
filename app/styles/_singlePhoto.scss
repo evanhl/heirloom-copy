@@ -110,21 +110,24 @@
       color: $subtle-highlight-color;
     }
 
-    textarea.view-only {
-      background: none;
-      border-style: none;
-      border-top: 1px solid $subtle-highlight-color;
-      padding: 14px 9px 7px;
-      margin: 6px 7px 1px;
-      border-radius: 0;
+    input, textarea {
+      &.view-only {
+        background: none;
+        border-style: none;
+        padding: 14px 9px 7px;
+        margin: 6px 7px 1px;
+        border-top: 1px solid $subtle-highlight-color;
+        border-radius: 0;
 
-      &:hover {
-        border-radius: 3px;
-        border: 1px dashed $subtle-highlight-color;
-        margin-left: 0;
-        margin-right: 0;
-        padding-left: 15px;
-        padding-right: 15px;
+        &:hover {
+          border: 1px dashed $subtle-highlight-color;
+          border-radius: 3px;
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: 7px;
+          padding-left: 15px;
+          padding-right: 15px;
+        }
       }
     }
   }

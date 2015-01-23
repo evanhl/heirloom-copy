@@ -63,6 +63,7 @@ textarea {
 
   &:disabled {
     color: $disabled-button-color;
+    background: $bg-color-accent-light;
   }
 }
 

@@ -2,9 +2,22 @@ App.FuzzyDate = Ember.Object.extend({
   hasYear: false,
   hasMonth: false,
   hasDay: false,
+
+  isBlank: Ember.computed.alias('hasYear'),
+
   date: function () {
     return moment();
   }.property(),
+
+  prettyDate: function () {
+    if (this.get('hasDay')) {
+      return this.get('date').format('MMMM D, YYYY');
+    } else if (this.get('hasMonth')) {
+      return this.get('date').format('MMMM YYYY');
+    } else if (this.get('hasYear')) {
+      return this.get('date').format('YYYY');
+    }
+  }.property('date', 'hasDay', 'hasMonth', 'hasYear'),
 
   setYear: function (year) {
     if (Em.isBlank(year)) {
@@ -13,6 +26,7 @@ App.FuzzyDate = Ember.Object.extend({
       this.correctDayOverflow();
       this.set('hasYear', true);
       this.get('date').year(year);
+      this.notifyPropertyChange('date');
     }
   },
 
@@ -23,6 +37,7 @@ App.FuzzyDate = Ember.Object.extend({
       this.correctDayOverflow();
       this.set('hasMonth', true);
       this.get('date').month(month);
+      this.notifyPropertyChange('date');
     }
   },
 
@@ -32,6 +47,7 @@ App.FuzzyDate = Ember.Object.extend({
     } else {
       this.set('hasDay', true);
       this.get('date').date(day);
+      this.notifyPropertyChange('date');
     }
   },
 

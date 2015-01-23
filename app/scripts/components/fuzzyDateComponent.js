@@ -4,27 +4,48 @@ App.FuzzyDateComponent = Ember.Component.extend({
 
   init: function () {
     this._super();
-    Utils.bindMethods(this, ['updateYear', 'updateMonth', 'updateDay']);
+    Utils.bindMethods(this, ['updateYear', 'updateMonth', 'updateDay', 'yearChanged', 'monthChanged', 'onBodyClick']);
   },
 
   updateYear: function () {
     var yearDate = this.$('.date-year').datepicker('getDate');
+    var year;
 
-    this.get('date').setYear(moment(yearDate).year());
+    if (Utils.isValidDate(yearDate)) {
+      year = moment(yearDate).year();
+    } else {
+      year = null;
+    }
+
+    this.get('date').setYear(year);
     this.updateDayPickerViewDate();
   },
 
   updateMonth: function () {
     var monthDate = this.$('.date-month').datepicker('getDate');
+    var month;
 
-    this.get('date').setMonth(moment(monthDate).month());
+    if (Utils.isValidDate(monthDate)) {
+      month = moment(monthDate).month();
+    } else {
+      month = null;
+    }
+
+    this.get('date').setMonth(month);
     this.updateDayPickerViewDate();
   },
 
   updateDay: function () {
     var dayDate = this.$('.date-day').datepicker('getDate');
+    var day;
 
-    this.get('date').setDay(moment(dayDate).date());
+    if (Utils.isValidDate(dayDate)) {
+      day = moment(dayDate).date();
+    } else {
+      day = null;
+    }
+
+    this.get('date').setDay(day);
   },
 
   updateInputs: function () {
@@ -47,7 +68,13 @@ App.FuzzyDateComponent = Ember.Component.extend({
     }
   },
 
-  dateChanged: function () {
+  onBodyClick: function (e) {
+    if (!$(e.target).is('.day,.month,.year') && !$(e.target).closest(this.$()).length) {
+      this.sendAction('complete');
+    }
+  },
+
+  dateModelChanged: function () {
     this.resetDayPickerViewDate();
     this.detachInputEvents();
     this.updateInputs();
@@ -59,13 +86,43 @@ App.FuzzyDateComponent = Ember.Component.extend({
     this.$('.date-day').datepicker('setEndDate', null);
   },
 
+  yearChanged: function () {
+    Ember.run.next(this, function () {
+      if (!this.$(':focus') || !this.$(':focus').length) {
+        if (this.$('.date-month')) {
+          this.$('.date-month').focus();
+        }
+      }
+    });
+  },
+
+  monthChanged: function () {
+    Ember.run.next(this, function () {
+      if (!this.$(':focus') || !this.$(':focus').length) {
+        if (this.$('.date-day')) {
+          this.$('.date-day').focus();
+        }
+      }
+    });
+  },
+
   attachInputEvents: function () {
+    $('body').on('click', this.onBodyClick);
+
+    this.$('.date-year').on('changeDate', this.yearChanged);
+    this.$('.date-month').on('changeDate', this.monthChanged);
+
     this.$('.date-year').on('change', this.updateYear);
     this.$('.date-month').on('change', this.updateMonth);
     this.$('.date-day').on('change', this.updateDay);
   },
 
   detachInputEvents: function () {
+    $('body').off('click', this.onBodyClick);
+
+    this.$('.date-year').off('changeDate', this.yearChanged);
+    this.$('.date-month').off('changeDate', this.monthChanged);
+
     this.$('.date-year').off('change', this.updateYear);
     this.$('.date-month').off('change', this.updateMonth);
     this.$('.date-day').off('change', this.updateDay);
@@ -79,15 +136,13 @@ App.FuzzyDateComponent = Ember.Component.extend({
     this.$('.date-day').datepicker('setEndDate', fuzzyDateMoment.clone().endOf('month').toDate());
   },
 
-  mode: function () {
-    if (this.get('date.hasDay') || this.get('date.hasMonth')) {
-      return 'day-mode';
-    } else if (this.get('date.hasYear')) {
-      return 'month-mode';
-    } else {
-      return 'year-mode';
-    }
-  }.property('date.hasDay', 'date.hasMonth', 'date.hasYear'),
+  dayDisabled: function () {
+    return !this.get('date.hasDay') && !this.get('date.hasMonth');
+  }.property('date.hasDay', 'date.hasMonth'),
+
+  monthDisabled: function () {
+    return !this.get('date.hasMonth') && !this.get('date.hasYear');
+  }.property('date.hasMonth', 'date.hasYear'),
 
   didInsertElement: function () {
     Ember.run.scheduleOnce('afterRender', this, function () {
@@ -97,7 +152,7 @@ App.FuzzyDateComponent = Ember.Component.extend({
         minViewMode: 2,
         autoclose: true,
         endDate: new Date()
-      });
+      }).datepicker('setViewDate', moment().year(2000).toDate()); // defaults year picker to year 2000
 
       this.$('.date-month').datepicker({
         format: 'MM',
@@ -116,5 +171,15 @@ App.FuzzyDateComponent = Ember.Component.extend({
       this.updateInputs();
       this.attachInputEvents();
     });
+  },
+
+  focusIn: function () {
+    this.sendAction('focus-in');
+  },
+
+  actions: {
+    focus: function () {
+      this.sendAction('focus');
+    }
   }
 });
