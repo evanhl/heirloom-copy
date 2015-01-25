@@ -219,7 +219,7 @@ App.FuzzyDateComponent = Ember.Component.extend(App.RegisterableMixin, {
         startView: 2,
         minViewMode: 2,
         autoclose: true,
-        endDate: new Date()
+        endDate: moment().endOf('year').toDate(),
       }).datepicker('setViewDate', moment().year(2000).toDate()); // defaults year picker to year 2000
 
       this.$month = this.$('.date-month').datepicker({
