@@ -5,7 +5,7 @@ App.FuzzyDate = Ember.Object.extend({
   date: null,
   prettyDate: "",
 
-  isBlank: Ember.computed.alias('hasYear'),
+  isBlank: Ember.computed.not('hasYear'),
 
   initDate: function () {
     if (!this.get('date')) {

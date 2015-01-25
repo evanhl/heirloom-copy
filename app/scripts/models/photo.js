@@ -3,9 +3,10 @@
 App.Photo = App.BasePhoto.extend({
   description: Ember.attr(String),
   backdated_time: Ember.attr(App.FuzzyDate),
-  anyMetadata: function () {
-    return this.get('backdated_time.isBlank') || this.get('description');
-  }.property('description', 'backdated_time.isBlank'),
+
+  isMetadataBlank: function () {
+    return !this.get('description') && this.get('backdated_time.isBlank');
+  }.property('backdated_time.isBlank', 'description'),
 
   thumbVersion: function () {
     return this.get('dataUri') || this.versionForDimension('xs') || this.get('mediumVersion');

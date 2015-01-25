@@ -4,12 +4,12 @@ App.PhotoSidebarComponent = Ember.Component.extend({
   editingDate: false,
 
   isDescriptionEdit: function () {
-    return this.get('editingDescription') || !this.get('photo.anyMetadata');
-  }.property('editingDescription', 'photo.anyMetadata'),
+    return this.get('editingDescription') || (!this.get('photo.description') && !this.get('photo.hasBeenEdited'));
+  }.property('editingDescription', 'photo.description', 'photo.hasBeenEdited'),
 
   isDateEdit: function () {
-    return this.get('editingDate') || !this.get('photo.anyMetadata');
-  }.property('editingDate', 'photo.anyMetadata'),
+    return this.get('editingDate') || (this.get('photo.backdated_time.isBlank') && !this.get('photo.hasBeenEdited'));
+  }.property('editingDate', 'photo.backdated_time.isBlank', 'photo.hasBeenEdited'),
 
   onDescriptionEdit: function () {
     var $field;
@@ -33,16 +33,28 @@ App.PhotoSidebarComponent = Ember.Component.extend({
   }.on('didInsertElement'),
 
   onPhotoChange: function () {
+    if (this.get('photo') && this.get('photo.isMetadataBlank')) {
+      this.set('photo.hasBeenEdited', false);
+    } else {
+      this.set('photo.hasBeenEdited', true);
+    }
+
     Ember.run.scheduleOnce('afterRender', this, function () {
       this.$('.description-field').trigger('autosize.resize');
     });
-  }.observes('photo.description'),
+  }.observes('photo'),
+
+  beforePhotoChange: function () {
+    if (this.get('photo') && !this.get('photo.isMetadataBlank')) {
+      this.set('photo.hasBeenEdited', true);
+    }
+  }.observesBefore('photo'),
 
   actions: {
     saveDescription: function () {
       var self = this;
 
-      this.get('photo').patch().then(function () {
+      this.get('photo').patch({ description: this.get('photo.description') }).then(function () {
         self.set('editingDescription', false);
       });
     },
@@ -55,6 +67,8 @@ App.PhotoSidebarComponent = Ember.Component.extend({
     saveDate: function () {
       var self = this;
 
+      // TODO: figure out how to get backdated_time doesn't show up among the _dirtyAttributes
+      // (since it's an Ember object and not a primitive)
       this.get('photo').patch({ backdated_time: this.get('photo.backdated_time').toJSON() }).then(function () {
         self.set('editingDate', false);
       });
