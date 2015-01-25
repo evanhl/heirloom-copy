@@ -14,5 +14,9 @@
       {{#fuzzy-date date=photo.backdated_time complete="saveDate" focus-in="focusDate" classBinding="isDateEdit::hidden" registerAs=fuzzyDate}}{{/fuzzy-date}}
       {{input value=photo.backdated_time.prettyDate on="focus-in" action="editDate" classBinding=":form-line :view-only isDateEdit:hidden"}}
     </div>
+    <div class="form-group">
+      {{#form-label error=errors.name label=(ts 'photo.location')}}{{/form-label}}
+      {{#location-search location=photo.location}}{{/location-search}}
+    </div>
   </form>
 {{/if}}

@@ -38,11 +38,13 @@ App.PhotoSidebarComponent = Ember.Component.extend({
     } else {
       this.set('photo.hasBeenEdited', true);
     }
+  }.observes('photo'),
 
+  onDescriptionChange: function () {
     Ember.run.scheduleOnce('afterRender', this, function () {
       this.$('.description-field').trigger('autosize.resize');
     });
-  }.observes('photo'),
+  }.observes('photo.description'),
 
   beforePhotoChange: function () {
     if (this.get('photo') && !this.get('photo.isMetadataBlank')) {
