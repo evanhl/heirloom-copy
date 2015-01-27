@@ -13,7 +13,7 @@ App.PhotoSidebarComponent = Ember.Component.extend({
   }.property('editingDate', 'photo.backdated_time.isBlank', 'photo.hasBeenEdited'),
 
   isLocationEdit: function () {
-    return this.get('editingLocation') || (this.get('photo.location') && !this.get('photo.hasBeenEdited'));
+    return this.get('editingLocation') || (!this.get('photo.location') && !this.get('photo.hasBeenEdited'));
   }.property('editingLocation', 'photo.location', 'photo.hasBeenEdited'),
 
   onDescriptionEdit: function () {
@@ -96,6 +96,10 @@ App.PhotoSidebarComponent = Ember.Component.extend({
 
     focusDate: function () {
       this.set('editingDate', true);
+    },
+
+    focusOutLocation: function () {
+      this.set('editingLocation', false);
     },
 
     editDescription: function () {

@@ -15,7 +15,7 @@ App.LocationSearchComponent = Ember.Component.extend(App.RegisterableMixin, {
     var locService = App.get('locationSearch');
 
     this.$('.loc-search').select2({
-      minimumInputLength: 1,
+      // minimumInputLength: 1,
       multiple: false,
       query: function (query) {
 
@@ -31,6 +31,8 @@ App.LocationSearchComponent = Ember.Component.extend(App.RegisterableMixin, {
       var results = $input.data('results');
       var selected = results.findBy('id', $(this).val());
 
+      if (!selected.id) { return; }
+
       locService.getLatLng(selected.id, function (latLng) {
         if (!latLng) { return; }
 
@@ -41,11 +43,35 @@ App.LocationSearchComponent = Ember.Component.extend(App.RegisterableMixin, {
         self.sendAction('action', selected);
       });
     });
+
+    this.set('$searchInput', this.$('.loc-search .select2-search input'));
+  },
+
+  focusOut: function () {
+    if (!this.get('$searchInput').val()) {
+      // FIXME: change empty string to null once PATCH issue is fixed in the API
+      this.set('selected', "");
+      this.sendAction('selected', "");
+
+    } else {
+      this.set('mode', 'selected');
+      this.sendAction('focus-out');
+    }
   },
 
   enterAndFocus: function () {
+    if (this.get('isSelectedMode')) {
+      this.set('mode', 'search');
+    }
+
     Ember.run.scheduleOnce('afterRender', this, function () {
-      this.$('.loc-search .select2-search input').focus();
+      var $searchInput = this.get('$searchInput');
+      $searchInput.focus();
+
+      if (this.get('selected.name')) {
+        $searchInput.val(this.get('selected.name'));
+        $searchInput.select();
+      }
     });
   }
 });
