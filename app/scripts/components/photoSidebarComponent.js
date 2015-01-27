@@ -2,6 +2,7 @@ App.PhotoSidebarComponent = Ember.Component.extend({
   classNames: ['photo-sidebar'],
   editingDescription: false,
   editingDate: false,
+  editingLocation: false,
 
   isDescriptionEdit: function () {
     return this.get('editingDescription') || (!this.get('photo.description') && !this.get('photo.hasBeenEdited'));
@@ -10,6 +11,10 @@ App.PhotoSidebarComponent = Ember.Component.extend({
   isDateEdit: function () {
     return this.get('editingDate') || (this.get('photo.backdated_time.isBlank') && !this.get('photo.hasBeenEdited'));
   }.property('editingDate', 'photo.backdated_time.isBlank', 'photo.hasBeenEdited'),
+
+  isLocationEdit: function () {
+    return this.get('editingLocation') || (this.get('photo.location') && !this.get('photo.hasBeenEdited'));
+  }.property('editingLocation', 'photo.location', 'photo.hasBeenEdited'),
 
   onDescriptionEdit: function () {
     var $field;
@@ -26,11 +31,9 @@ App.PhotoSidebarComponent = Ember.Component.extend({
     this.get('fuzzyDate').enterAndFocus();
   },
 
-  autosize: function () {
-    Ember.run.scheduleOnce('afterRender', this, function () {
-      this.$('.description-field').autosize();
-    });
-  }.on('didInsertElement'),
+  onLocationEdit: function () {
+    this.get('locationSearch').enterAndFocus();
+  },
 
   onPhotoChange: function () {
     if (this.get('photo') && this.get('photo.isMetadataBlank')) {
@@ -45,6 +48,12 @@ App.PhotoSidebarComponent = Ember.Component.extend({
       this.$('.description-field').trigger('autosize.resize');
     });
   }.observes('photo.description'),
+
+  autosize: function () {
+    Ember.run.scheduleOnce('afterRender', this, function () {
+      this.$('.description-field').autosize();
+    });
+  }.on('didInsertElement'),
 
   beforePhotoChange: function () {
     if (this.get('photo') && !this.get('photo.isMetadataBlank')) {
@@ -64,6 +73,11 @@ App.PhotoSidebarComponent = Ember.Component.extend({
     editDate: function () {
       this.set('editingDate', true);
       this.onDateEdit();
+    },
+
+    editLocation: function () {
+      this.set('editingLocation', true);
+      this.onLocationEdit();
     },
 
     saveDate: function () {
@@ -87,6 +101,15 @@ App.PhotoSidebarComponent = Ember.Component.extend({
     editDescription: function () {
       this.set('editingDescription', true);
       this.onDescriptionEdit();
+    },
+
+    saveLocation: function (location) {
+      var self = this;
+
+      this.set('photo.location', location);
+      this.get('photo').patch({ location: this.get('photo.location') }).then(function () {
+        self.set('editingLocation', false);
+      });
     }
   }
 });

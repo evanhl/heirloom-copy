@@ -29,7 +29,7 @@ Utils.LocationSearch = Ember.Object.extend({
         lat = place.geometry.location.lat();
         lng = place.geometry.location.lng();
 
-        callback({ lat: lat, lng: lng });
+        callback({ latitude: lat, longitude: lng });
       } else {
         callback();
       }
