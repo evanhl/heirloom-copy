@@ -17,6 +17,7 @@ var App = Ember.Application.create({
 
 App.set('facebook', Utils.Facebook.create());
 App.set('analytics', Utils.GoogleAnalytics);
+App.set('locationSearch', Utils.LocationSearch.create());
 
 // Use HTML5 History API (pushState) to manage app URLs
 App.Router.reopen({

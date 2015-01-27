@@ -1,25 +1,23 @@
-/* global google */
-
 App.LocationSearchComponent = Ember.Component.extend({
-  placesService: function () {
-    return new google.maps.places.PlacesService($('<div id="g-map">').get(0));
-  }.property(),
+  init: function () {
+    this._super();
+
+  },
 
   didInsertElement: function () {
     var self = this;
 
     this.$('input').select2({
-      minimumInputLength: 3,
-      multiple: true,
+      minimumInputLength: 1,
+      multiple: false,
       query: function (query) {
-        self.get('placesService').textSearch({ query: query.term }, function (results) {
-          var transformedResults = results.map(function (place) {
-            return { text: place.formatted_address, id: place.id };
-          });
+        var locService = App.get('locationSearch');
 
-          query.callback({ results: transformedResults });
+        locService.search(query.term, function (results) {
+          query.callback({ results: results });
         });
       }
     });
+    this.$('input').on('change');
   }
 });
