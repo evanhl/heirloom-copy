@@ -42,6 +42,8 @@ App.PhotoSidebarComponent = Ember.Component.extend({
     } else {
       this.set('photo.hasBeenEdited', true);
     }
+
+    this.get('locationSearch').reset();
   }.observes('photo', 'photo.isLoaded'),
 
   onDescriptionChange: function () {
@@ -114,6 +116,7 @@ App.PhotoSidebarComponent = Ember.Component.extend({
       this.set('photo.location', location);
       this.get('photo').patch({ location: this.get('photo.location') }).then(function () {
         self.set('editingLocation', false);
+        self.get('locationSearch').reset();
       });
     }
   }

@@ -11,10 +11,11 @@ App.LocationSearchComponent = Ember.Component.extend(App.RegisterableMixin, {
     Utils.bindMethods(this, ['onBodyClick']);
   },
 
-  selectedChange: function () {
+  reset: function () {
+    this.set('mode', 'search');
     this.get('$searchInput').val('');
     this.forceSearchChange();
-  }.observes('selected'),
+  },
 
   keyDown: Utils.stopControlKeyPropagation,
 
