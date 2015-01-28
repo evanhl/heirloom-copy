@@ -1,5 +1,6 @@
 App.PhotoSidebarComponent = Ember.Component.extend({
   classNames: ['photo-sidebar'],
+  photo: null,
   editingDescription: false,
   editingDate: false,
   editingLocation: false,
@@ -41,7 +42,7 @@ App.PhotoSidebarComponent = Ember.Component.extend({
     } else {
       this.set('photo.hasBeenEdited', true);
     }
-  }.observes('photo'),
+  }.observes('photo', 'photo.isLoaded'),
 
   onDescriptionChange: function () {
     Ember.run.scheduleOnce('afterRender', this, function () {

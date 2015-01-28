@@ -69,10 +69,6 @@ App.BasePhotoController = Ember.ObjectController.extend(Ember.Evented, {
     }
   }.property('photosModel', 'photosModel.[]', 'model'),
 
-  currentPhoto: function () {
-    return this.adjacentPhoto(0);
-  }.property('currentIndex'),
-
   prevId: function () {
     return this.adjacentId(-1);
   }.property('photosModel', 'photosModel.[]', 'id'),

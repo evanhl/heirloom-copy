@@ -31,7 +31,8 @@
     "FB",
     "moment",
     "HLConfig",
-    "Dropbox"
+    "Dropbox",
+    "console"
   ],
 
 

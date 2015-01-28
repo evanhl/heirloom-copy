@@ -132,6 +132,18 @@ Utils.isValidDate = function (obj) {
   return !isNaN(obj.getTime());
 };
 
+
+Utils.stopControlKeyPropagation = function (e) {
+  switch (e.keyCode) {
+    case Utils.Keys.ESC:
+    case Utils.Keys.LEFT:
+    case Utils.Keys.RIGHT:
+      e.stopPropagation();
+      break;
+  }
+};
+
+
 Utils.IOS_STORE_LINK = 'https://itunes.apple.com/us/app/heirloom-for-all-moments-we/id931656673';
 Utils.ANDROID_STORE_LINK = 'https://play.google.com/store/apps/details?id=io.heirloom.app';
 

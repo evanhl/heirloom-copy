@@ -155,7 +155,6 @@ App.FuzzyDateComponent = Ember.Component.extend(App.RegisterableMixin, {
     if (!this.get('completeOnDayChangeEnabled')) { return; }
 
     if (Utils.isValidDate(this.getDayFieldValue())) {
-      window.console.trace();
       this.tryComplete();
     }
   },
