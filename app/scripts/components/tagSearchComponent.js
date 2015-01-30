@@ -31,6 +31,8 @@ App.TagSearchComponent = App.SearchComponent.extend({
             result.id = result.name;
           });
 
+          results = self.filterSelected(results);
+
           self.get('$select2').data('results', results);
 
           return { results: results };
@@ -50,6 +52,14 @@ App.TagSearchComponent = App.SearchComponent.extend({
     };
   }.property(),
 
+  filterSelected: function (results) {
+    var selected = this.get('selected');
+
+    return results.filter(function (result) {
+      return !selected.contains(result.name);
+    });
+  },
+
   onSelect: function () {
     var results = this.get('$select2').data('results');
     var selectedId = this.get('$select2').val();
@@ -61,6 +71,7 @@ App.TagSearchComponent = App.SearchComponent.extend({
     });
 
     this.addTag(selected.name);
+    this.clearInput();
   },
 
   addTag: function (tagName) {

@@ -17,6 +17,10 @@ App.SearchComponent = Ember.Component.extend(App.RegisterableMixin, App.BodyFocu
 
   reset: function () {
     this.set('mode', 'open');
+    this.clearInput();
+  },
+
+  clearInput: function () {
     this.get('$searchInput').val('');
     this.forceSearchChange();
   },
