@@ -36,7 +36,7 @@ App.ConversationsCreateView = Ember.View.extend({
       formatInputTooShort: function (foo) {
         return '';
       },
-      createSearchChoice: function(term) {
+      createSearchChoice: function (term) {
         if (Utils.isProbablyAValidEmail(term)) {
           return {
             name: term,

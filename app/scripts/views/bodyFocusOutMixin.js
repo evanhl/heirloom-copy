@@ -21,5 +21,7 @@ App.BodyFocusOutMixin = Ember.Mixin.create({
 
   getDomSelf: function () {
     return this.$();
-  }
+  },
+
+  onFocusOut: function () {}
 });

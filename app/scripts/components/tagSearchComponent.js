@@ -12,96 +12,63 @@ App.TagSearchComponent = App.SearchComponent.extend({
     var self = this;
 
     return {
-      minimumInputLength: 2,
+      minimumInputLength: 0,
+      // We want to manage choices outside of Select2, so we don't need its multiple choice functionality
       multiple: false,
-      ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
+      ajax: {
         url: HLConfig.HOSTNAME + '/me/tags',
         dataType: 'json',
         data: function (term, page) {
           return {
-            q: term // search term
+            q: term
           };
         },
-        results: function (data, page) {
+        results: function (results, page) {
           // parse the results into the format expected by Select2.
-          data.forEach(function (result) {
+          results.forEach(function (result) {
             result.text = result.name;
+            // setting id = name allows Select2 to remove the user-created choice if it's a duplicate
+            result.id = result.name;
           });
 
-          self.get('$select2').data('results', data);
+          self.get('$select2').data('results', results);
 
-          return { results: data };
-        }
+          return { results: results };
+        },
       },
       formatSelection: function (selection) {
         return selection.name;
+      },
+      createSearchChoice: function (term) {
+        return {
+          name: term,
+          text: term,
+          id: term,
+          custom: true
+        };
       }
-      // query: function (query) {
-
-      //   var self = this;
-
-      //   locService.search(query.term, function (results) {
-      //     $(self.element).data('results', results);
-      //     query.callback({ results: results });
-      //   });
-      // },
-
     };
   }.property(),
 
   onSelect: function () {
     var results = this.get('$select2').data('results');
-    var selected = results.findBy('id', parseInt(this.get('$select2').val(), 10));
+    var selectedId = this.get('$select2').val();
+    var selected = results.find(function (result) {
+      // I know what I'm doing, JSHint!
+      /* jshint eqeqeq:false */
+      return result.id == selectedId;
+      /* jshint eqeqeq:true */
+    });
 
-    this.get('selected').pushObject(selected.name);
+    this.addTag(selected.name);
+  },
+
+  addTag: function (tagName) {
+    if (!this.get('selected').contains(tagName)) {
+      this.get('selected').pushObject(tagName);
+    }
   }
 
-  // onSelect: function () {
-  //   var locService = App.get('locationSearch');
-  //   var self = this;
-  //   var results = this.get('$select2').data('results');
-  //   var selected = results.findBy('id', this.get('$select2').val());
-
-  //   if (!selected.id) { return; }
-
-  //   locService.getLatLng(selected.id, function (latLng) {
-  //     if (!latLng) { return; }
-
-  //     selected = $.extend({ name: selected.text }, latLng);
-
-  //     self.setSelected(selected);
-  //   });
-  // },
-
-  // onFocusOut: function () {
-  //   if (!this.get('isSearchMode')) {
-  //     return;
-  //   }
-
-  //   if (!this.get('$searchInput').val()) {
-  //     // FIXME: change empty string to null once PATCH issue is fixed in the API
-  //     this.setSelected('');
-  //   } else {
-  //     this.set('mode', 'open');
-  //     this.sendAction('focus-out');
-  //   }
-  // },
-
-  // enterAndFocus: function () {
-  //   this.set('mode', 'search');
-
-  //   Ember.run.scheduleOnce('afterRender', this, function () {
-  //     var $searchInput = this.get('$searchInput');
-
-  //     this.$('.search').select2('enable');
-  //     $searchInput.focus();
-
-  //     if (this.get('selected.name')) {
-  //       $searchInput.val(this.get('selected.name'));
-  //       $searchInput.select();
-  //     }
-
-  //     this.forceSearchChange();
-  //   });
-  // }
+  // TODO: handle onFocusOut
+  // TODO: handle enterAndFocus
 });
