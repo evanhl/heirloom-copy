@@ -2,3 +2,8 @@
   {{input classNameBindings=":form-line :search"}}
 </div>
 {{input classNameBindings="hidden::hidden :form-line" value=selected.name disabled=true}}
+<div class="search-selected-items">
+  {{#each tag in selected}}
+    <div>{{tag}}</div>
+  {{/each}}
+</div>

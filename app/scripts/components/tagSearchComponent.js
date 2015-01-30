@@ -3,7 +3,14 @@
 App.TagSearchComponent = App.SearchComponent.extend({
   hidden: Ember.computed.alias('isSelectedMode'),
 
+  init: function () {
+    this._super();
+    this.set('selected', []);
+  },
+
   select2Args: function () {
+    var self = this;
+
     return {
       minimumInputLength: 2,
       multiple: false,
@@ -20,6 +27,8 @@ App.TagSearchComponent = App.SearchComponent.extend({
           data.forEach(function (result) {
             result.text = result.name;
           });
+
+          self.get('$select2').data('results', data);
 
           return { results: data };
         }
@@ -39,6 +48,13 @@ App.TagSearchComponent = App.SearchComponent.extend({
 
     };
   }.property(),
+
+  onSelect: function () {
+    var results = this.get('$select2').data('results');
+    var selected = results.findBy('id', parseInt(this.get('$select2').val(), 10));
+
+    this.get('selected').pushObject(selected.name);
+  }
 
   // onSelect: function () {
   //   var locService = App.get('locationSearch');
