@@ -1,42 +1,10 @@
-//= require registerableMixin
 //= require searchComponent
 
 App.LocationSearchComponent = App.SearchComponent.extend({
-  mode: 'open',
-
-  // User can search
-  isSearchMode: Ember.computed.equal('mode', 'search'),
-
-  // Input is disabled. Used while saving.
-  isSelectedMode: Ember.computed.equal('mode', 'selected'),
-
-  // Input is displayed as enabled, but user is not actively seraching
-  isOpenMode: Ember.computed.equal('mode', 'open'),
-
-  hidden: Ember.computed.alias('isSelectedMode'),
-
-  onModeChange: function () {
-    console.log('mode', this.get('mode'));
-  }.observes('mode').on('init'),
-
-  init: function () {
-    this._super();
-    Utils.bindMethods(this, ['onBodyClick']);
-  },
-
-  reset: function () {
-    this.set('mode', 'open');
-    this.get('$searchInput').val('');
-    this.forceSearchChange();
-  },
-
-  keyDown: Utils.stopControlKeyPropagation,
-
-  didInsertElement: function () {
-    var self = this;
+  select2Args: function () {
     var locService = App.get('locationSearch');
 
-    var $select2 = this.$('.loc-search').select2({
+    return {
       minimumInputLength: 2,
       multiple: false,
       query: function (query) {
@@ -48,28 +16,8 @@ App.LocationSearchComponent = App.SearchComponent.extend({
           query.callback({ results: results });
         });
       }
-    });
-
-    this.overrideOnSelect($select2);
-
-    this.set('$select2', $select2);
-    this.set('$searchInput', this.$('.loc-search .select2-search input'));
-
-    this.get('$searchInput').focus(function () {
-      self.set('mode', 'search');
-    });
-  },
-
-  overrideOnSelect: function ($select2) {
-    var select2 = $select2.data('select2');
-    var origOnSelect = select2.onSelect;
-    var self = this;
-
-    select2.onSelect = function () {
-      origOnSelect.apply(select2, arguments);
-      self.onSelect.apply(self, arguments);
     };
-  },
+  }.property(),
 
   onSelect: function () {
     var locService = App.get('locationSearch');
@@ -84,30 +32,8 @@ App.LocationSearchComponent = App.SearchComponent.extend({
 
       selected = $.extend({ name: selected.text }, latLng);
 
-      self.set('selected', selected);
-      self.set('mode', 'selected');
-      self.sendAction('action', selected);
+      self.setSelected(selected);
     });
-  },
-
-  forceSearchChange: function () {
-    this.get('$searchInput').trigger('keyup-change');
-  },
-
-
-  // TODO: body click handling is a really common pattern. This should be turned into a mixin
-  registerBodyClick: function () {
-    $('body').on('click', this.onBodyClick);
-  }.on('didInsertElement'),
-
-  unregisterBodyClick: function () {
-    $('body').off('click', this.onBodyClick);
-  }.on('willDestroyElement'),
-
-  onBodyClick: function (e) {
-    if (!$(e.target).closest(this.$()).length) {
-      this.onFocusOut();
-    }
   },
 
   onFocusOut: function () {
@@ -117,9 +43,7 @@ App.LocationSearchComponent = App.SearchComponent.extend({
 
     if (!this.get('$searchInput').val()) {
       // FIXME: change empty string to null once PATCH issue is fixed in the API
-      this.set('mode', 'selected');
-      this.set('selected', "");
-      this.sendAction('action', "");
+      this.setSelected('');
     } else {
       this.set('mode', 'open');
       this.sendAction('focus-out');
@@ -132,7 +56,7 @@ App.LocationSearchComponent = App.SearchComponent.extend({
     Ember.run.scheduleOnce('afterRender', this, function () {
       var $searchInput = this.get('$searchInput');
 
-      this.$('.loc-search').select2('enable');
+      this.$('.search').select2('enable');
       $searchInput.focus();
 
       if (this.get('selected.name')) {
