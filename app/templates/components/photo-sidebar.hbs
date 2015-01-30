@@ -21,7 +21,7 @@
     </div>
     <div class="form-group">
       {{#form-label error=errors.name label=(ts 'photo.tags')}}{{/form-label}}
-      {{#tag-search}}{{/tag-search}}
+      {{#tag-search selected=photo.tag_list action="saveTags"}}{{/tag-search}}
     </div>
   </form>
 {{/if}}

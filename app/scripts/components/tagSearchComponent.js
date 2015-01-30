@@ -80,6 +80,10 @@ App.TagSearchComponent = App.SearchComponent.extend({
     }
   },
 
+  selectedChanged: function () {
+    this.sendAction('action', this.get('selected'));
+  }.observes('selected.[]'),
+
   actions: {
     remove: function (tagName) {
       this.get('selected').removeObject(tagName);

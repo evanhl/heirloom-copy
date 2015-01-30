@@ -118,6 +118,11 @@ App.PhotoSidebarComponent = Ember.Component.extend({
         self.set('editingLocation', false);
         self.get('locationSearch').reset();
       });
+    },
+
+    saveTags: function (tags) {
+      this.set('photo.tag_list', tags);
+      this.get('photo').patch({ tag_list: tags });
     }
   }
 });
