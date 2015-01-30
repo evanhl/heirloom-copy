@@ -132,6 +132,10 @@
         }
       }
     }
+
+    input.view-only {
+      text-overflow: ellipsis;
+    }
   }
 
   .left-arrow, .right-arrow, .close {

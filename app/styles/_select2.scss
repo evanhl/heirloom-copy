@@ -10,6 +10,10 @@
   width: 100% !important;
 }
 
+.open-mode .select2-container .select2-results {
+  display: none;
+}
+
 $contact-result-height: 88px;
 
 .select2-container .select2-search input.select2-active {

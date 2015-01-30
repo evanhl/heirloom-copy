@@ -1,4 +1,4 @@
-<div {{bind-attr class=":loc-search-cont isSearchMode::hidden"}}>
+<div {{bind-attr class="hidden isOpenMode:open-mode"}}>
   {{input classNameBindings=":form-line :loc-search"}}
 </div>
-{{input classNameBindings=":form-line isSelectedMode::hidden" value=selected.name disabled=true}}
+{{input classNameBindings="hidden::hidden :form-line" value=selected.name disabled=true}}

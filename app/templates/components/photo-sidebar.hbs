@@ -19,5 +19,8 @@
       {{#location-search selected=photo.location action="saveLocation" classBinding="isLocationEdit::hidden" focus-out="focusOutLocation" registerAs=locationSearch}}{{/location-search}}
       {{input value=photo.location.name on="focus-in" action="editLocation" classBinding=":form-line :view-only :loc-search-textarea isLocationEdit:hidden"}}
     </div>
+    <div class="form-group">
+      {{#form-label error=errors.name label=(ts 'photo.tags')}}{{/form-label}}
+    </div>
   </form>
 {{/if}}

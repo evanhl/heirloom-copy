@@ -1,10 +1,23 @@
 //= require registerableMixin
+//= require searchComponent
 
-App.LocationSearchComponent = Ember.Component.extend(App.RegisterableMixin, {
-  mode: 'search',
+App.LocationSearchComponent = App.SearchComponent.extend({
+  mode: 'open',
 
+  // User can search
   isSearchMode: Ember.computed.equal('mode', 'search'),
+
+  // Input is disabled. Used while saving.
   isSelectedMode: Ember.computed.equal('mode', 'selected'),
+
+  // Input is displayed as enabled, but user is not actively seraching
+  isOpenMode: Ember.computed.equal('mode', 'open'),
+
+  hidden: Ember.computed.alias('isSelectedMode'),
+
+  onModeChange: function () {
+    console.log('mode', this.get('mode'));
+  }.observes('mode').on('init'),
 
   init: function () {
     this._super();
@@ -12,7 +25,7 @@ App.LocationSearchComponent = Ember.Component.extend(App.RegisterableMixin, {
   },
 
   reset: function () {
-    this.set('mode', 'search');
+    this.set('mode', 'open');
     this.get('$searchInput').val('');
     this.forceSearchChange();
   },
@@ -41,6 +54,10 @@ App.LocationSearchComponent = Ember.Component.extend(App.RegisterableMixin, {
 
     this.set('$select2', $select2);
     this.set('$searchInput', this.$('.loc-search .select2-search input'));
+
+    this.get('$searchInput').focus(function () {
+      self.set('mode', 'search');
+    });
   },
 
   overrideOnSelect: function ($select2) {
@@ -94,7 +111,7 @@ App.LocationSearchComponent = Ember.Component.extend(App.RegisterableMixin, {
   },
 
   onFocusOut: function () {
-    if (this.get('isSelectedMode')) {
+    if (!this.get('isSearchMode')) {
       return;
     }
 
@@ -104,15 +121,13 @@ App.LocationSearchComponent = Ember.Component.extend(App.RegisterableMixin, {
       this.set('selected', "");
       this.sendAction('action', "");
     } else {
-      this.set('mode', 'selected');
+      this.set('mode', 'open');
       this.sendAction('focus-out');
     }
   },
 
   enterAndFocus: function () {
-    if (this.get('isSelectedMode')) {
-      this.set('mode', 'search');
-    }
+    this.set('mode', 'search');
 
     Ember.run.scheduleOnce('afterRender', this, function () {
       var $searchInput = this.get('$searchInput');
