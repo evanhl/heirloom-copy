@@ -67,6 +67,12 @@ App.TagSearchComponent = App.SearchComponent.extend({
     if (!this.get('selected').contains(tagName)) {
       this.get('selected').pushObject(tagName);
     }
+  },
+
+  actions: {
+    remove: function (tagName) {
+      this.get('selected').removeObject(tagName);
+    }
   }
 
   // TODO: handle onFocusOut
