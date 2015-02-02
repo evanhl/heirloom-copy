@@ -4,6 +4,7 @@ App.FuzzyDateComponent = Ember.Component.extend(App.RegisterableMixin, {
   classNames: ['form-line', 'fuzzy-date'],
   classNameBindings: ['mode'],
   completeOnDayChangeEnabled: true,
+  hasFocus: false,
 
   init: function () {
     this._super();
@@ -111,10 +112,17 @@ App.FuzzyDateComponent = Ember.Component.extend(App.RegisterableMixin, {
   },
 
   onBodyClick: function (e) {
-    var isDatepicker = $(e.target).is('.day,.month,.year') || !$(e.target).parent().length || $(e.target).closest('.datepicker').length;
-    var isSelf = $(e.target).closest(this.$()).length;
+    var isDatepicker, isSelf;
+
+    if (!this.get('hasFocus')) {
+      return;
+    }
+
+    isDatepicker = $(e.target).is('.day,.month,.year') || !$(e.target).parent().length || $(e.target).closest('.datepicker').length;
+    isSelf = $(e.target).closest(this.$()).length;
 
     if (!isDatepicker && !isSelf) {
+      this.set('hasFocus', false);
       this.tryComplete();
     }
   },
@@ -242,6 +250,7 @@ App.FuzzyDateComponent = Ember.Component.extend(App.RegisterableMixin, {
   },
 
   focusIn: function () {
+    this.set('hasFocus', true);
     this.sendAction('focus-in');
   },
 
@@ -254,6 +263,7 @@ App.FuzzyDateComponent = Ember.Component.extend(App.RegisterableMixin, {
   },
 
   tryComplete: function () {
+    // datepicker fires multiple change events so let's debounce
     Ember.run.debounce(this, this.sendComplete, 25);
   },
 
