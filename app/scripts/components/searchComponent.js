@@ -15,6 +15,11 @@ App.SearchComponent = Ember.Component.extend(App.RegisterableMixin, App.BodyFocu
 
   hidden: Ember.computed.alias('isSelectedMode'),
 
+  init: function () {
+    this._super();
+    Utils.bindMethods(this, ['onSearchInputFocus']);
+  },
+
   reset: function () {
     this.set('mode', 'open');
     this.clearInput();
@@ -26,8 +31,6 @@ App.SearchComponent = Ember.Component.extend(App.RegisterableMixin, App.BodyFocu
   },
 
   didInsertElement: function () {
-    var self = this;
-
     var $select2 = this.$('.search').select2(this.get('select2Args'));
 
     this.overrideOnSelect($select2);
@@ -35,9 +38,11 @@ App.SearchComponent = Ember.Component.extend(App.RegisterableMixin, App.BodyFocu
     this.set('$select2', $select2);
     this.set('$searchInput', this.$('.search .select2-search input'));
 
-    this.get('$searchInput').focus(function () {
-      self.set('mode', 'search');
-    });
+    this.get('$searchInput').focus(this.onSearchInputFocus);
+  },
+
+  onSearchInputFocus: function () {
+    this.set('mode', 'search');
   },
 
   overrideOnSelect: function ($select2) {
