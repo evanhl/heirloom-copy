@@ -62,11 +62,12 @@ $contact-result-height: 88px;
   border-left: 1px solid $subtler-highlight-color;
   border-right: 1px solid $subtler-highlight-color;
   border-bottom: 1px solid $subtler-highlight-color;
-  position: relative;
+  position: absolute;
   overflow-x: hidden;
   overflow-y: auto;
   z-index: 2;
   background: white;
+  width: 100%;
 
   li {
     font-weight: 600;
