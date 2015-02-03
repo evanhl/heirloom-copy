@@ -61,7 +61,6 @@ $contact-result-height: 88px;
   border-bottom-right-radius: 3px;
   border-left: 1px solid $subtler-highlight-color;
   border-right: 1px solid $subtler-highlight-color;
-  border-bottom: 1px solid $subtler-highlight-color;
   position: absolute;
   overflow-x: hidden;
   overflow-y: auto;
@@ -75,6 +74,10 @@ $contact-result-height: 88px;
     cursor: pointer;
     display: list-item;
     padding: 12px 12px 9px 14px;
+
+    &:last-child {
+      border-bottom: 1px solid $subtler-highlight-color;
+    }
   }
 
   .select2-highlighted {
