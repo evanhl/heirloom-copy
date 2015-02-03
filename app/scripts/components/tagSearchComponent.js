@@ -8,10 +8,6 @@ App.TagSearchComponent = App.SearchComponent.extend({
     this.set('selected', []);
   },
 
-  onModeChange: function () {
-    console.log('mode', this.get('mode'));
-  }.observes('mode'),
-
   select2Args: function () {
     var self = this;
 
@@ -83,12 +79,9 @@ App.TagSearchComponent = App.SearchComponent.extend({
   addTag: function (tagName) {
     if (!this.get('selected').contains(tagName)) {
       this.get('selected').pushObject(tagName);
+      this.sendAction('action', this.get('selected'));
     }
   },
-
-  selectedChanged: function () {
-    this.sendAction('action', this.get('selected'));
-  }.observes('selected.[]'),
 
   // let's wait until a key is pressed before we go into search mode
   onSearchInputFocus: function () {},
@@ -105,6 +98,7 @@ App.TagSearchComponent = App.SearchComponent.extend({
   actions: {
     remove: function (tagName) {
       this.get('selected').removeObject(tagName);
+      this.sendAction('action', this.get('selected'));
     }
   }
 });

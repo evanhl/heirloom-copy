@@ -135,13 +135,17 @@ App.FuzzyDateComponent = Ember.Component.extend(App.RegisterableMixin, {
   }.observes('date'),
 
   resetDayPickerViewDate: function () {
+    this.set('completeOnDayChangeEnabled', false);
+
     this.$day.datepicker('setStartDate', null);
     this.$day.datepicker('setEndDate', null);
+
+    this.set('completeOnDayChangeEnabled', true);
   },
 
-  yearChanged: function () {
+  yearChanged: function (e, fromEnter) {
     Ember.run.next(this, function () {
-      if (!this.$(':focus') || !this.$(':focus').length) {
+      if (fromEnter === true || (!this.$(':focus') || !this.$(':focus').length)) {
         if (this.$month) {
           this.$month.focus();
         }
@@ -149,9 +153,9 @@ App.FuzzyDateComponent = Ember.Component.extend(App.RegisterableMixin, {
     });
   },
 
-  monthChanged: function () {
+  monthChanged: function (e, fromEnter) {
     Ember.run.next(this, function () {
-      if (!this.$(':focus') || !this.$(':focus').length) {
+      if (fromEnter === true || (!this.$(':focus') || !this.$(':focus').length)) {
         if (this.$day) {
           this.$day.focus();
         }
@@ -255,10 +259,13 @@ App.FuzzyDateComponent = Ember.Component.extend(App.RegisterableMixin, {
   },
 
   keyDown: function (e) {
-    if (e.keyCode === Utils.Keys.TAB) {
+    if (e.keyCode === Utils.Keys.TAB && !e.shiftKey) {
       if (!Utils.isValidDate($(e.target).datepicker('getDate')) || $(e.target).is(this.$day)) {
         this.tryComplete();
       }
+    } else if (e.keyCode === Utils.Keys.ENTER) {
+      $(e.target).trigger('change');
+      $(e.target).trigger('changeDate', true);
     }
   },
 
