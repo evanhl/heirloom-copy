@@ -79,3 +79,9 @@ $.fn.datepicker.Constructor.prototype.update = function () {
 
   this.fill();
 };
+
+$.fn.datepicker.Constructor.prototype.__setDate = $.fn.datepicker.Constructor.prototype._setDate;
+$.fn.datepicker.Constructor.prototype._setDate = function (date) {
+  this.__setDate(date);
+  this._trigger('afterDateClick');
+};

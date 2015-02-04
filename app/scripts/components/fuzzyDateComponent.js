@@ -8,7 +8,7 @@ App.FuzzyDateComponent = Ember.Component.extend(App.RegisterableMixin, {
 
   init: function () {
     this._super();
-    Utils.bindMethods(this, ['updateYear', 'updateMonth', 'updateDay', 'yearChanged', 'monthChanged', 'dayChanged', 'onBodyClick']);
+    Utils.bindMethods(this, ['updateYear', 'updateMonth', 'updateDay', 'yearChanged', 'monthChanged', 'dayChanged', 'onDayDateClick', 'onBodyClick']);
   },
 
   updateYear: function () {
@@ -171,12 +171,17 @@ App.FuzzyDateComponent = Ember.Component.extend(App.RegisterableMixin, {
     }
   },
 
+  onDayDateClick: function () {
+    this.dayChanged();
+  },
+
   attachInputEvents: function () {
     $('body').on('click', this.onBodyClick);
 
     this.$year.on('changeDate', this.yearChanged);
     this.$month.on('changeDate', this.monthChanged);
-    this.$day.on('changeDate', this.dayChanged);
+
+    this.$day.on('afterDateClick enterDate', this.onDayDateClick);
 
     this.$year.on('change', this.updateYear);
     this.$month.on('change', this.updateMonth);
@@ -188,7 +193,8 @@ App.FuzzyDateComponent = Ember.Component.extend(App.RegisterableMixin, {
 
     this.$year.off('changeDate', this.yearChanged);
     this.$month.off('changeDate', this.monthChanged);
-    this.$day.off('changeDate', this.dayChanged);
+
+    this.$day.off('afterDateClick enterDate', this.dayChanged);
 
     this.$year.off('change', this.updateYear);
     this.$month.off('change', this.updateMonth);
@@ -277,6 +283,7 @@ App.FuzzyDateComponent = Ember.Component.extend(App.RegisterableMixin, {
     } else if (e.keyCode === Utils.Keys.ENTER) {
       $(e.target).trigger('change');
       $(e.target).trigger('changeDate', true);
+      $(e.target).trigger('enterDate');
     }
   },
 
