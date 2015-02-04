@@ -4,6 +4,12 @@ App.PhotoSidebarComponent = Ember.Component.extend({
   editingDescription: false,
   editingDate: false,
   editingLocation: false,
+  savedDescription: false,
+  savingDescription: false,
+  savedLocation: false,
+  savingLocation: false,
+  savedDate: false,
+  savingDate: false,
 
   isDescriptionEdit: function () {
     return this.get('editingDescription') || (!this.get('photo.description') && !this.get('photo.hasBeenEdited'));
@@ -68,8 +74,13 @@ App.PhotoSidebarComponent = Ember.Component.extend({
     saveDescription: function () {
       var self = this;
 
+      this.set('savedDescription', false);
+      this.set('savingDescription', true);
+
       this.get('photo').patch({ description: this.get('photo.description') }).then(function () {
         self.set('editingDescription', false);
+        self.set('savedDescription', true);
+        self.set('savingDescription', false);
       });
     },
 
@@ -86,10 +97,15 @@ App.PhotoSidebarComponent = Ember.Component.extend({
     saveDate: function () {
       var self = this;
 
+      this.set('savedDate', false);
+      this.set('savingDate', true);
+
       // TODO: figure out how to get backdated_time doesn't show up among the _dirtyAttributes
       // (since it's an Ember object and not a primitive)
       this.get('photo').patch({ backdated_time: this.get('photo.backdated_time').toJSON() }).then(function () {
         self.set('editingDate', false);
+        self.set('savedDate', true);
+        self.set('savingDate', false);
       });
     },
 
@@ -113,16 +129,30 @@ App.PhotoSidebarComponent = Ember.Component.extend({
     saveLocation: function (location) {
       var self = this;
 
+      this.set('savedLocation', false);
+      this.set('savingLocation', true);
+
       this.set('photo.location', location);
       this.get('photo').patch({ location: this.get('photo.location') }).then(function () {
         self.set('editingLocation', false);
         self.get('locationSearch').reset();
+
+        self.set('savedLocation', true);
+        self.set('savingLocation', false);
       });
     },
 
     saveTags: function (tags) {
+      var self = this;
+
+      this.set('savedTags', false);
+      this.set('savingTags', true);
+
       this.set('photo.tag_list', tags);
-      this.get('photo').patch({ tag_list: tags });
+      this.get('photo').patch({ tag_list: tags }).then(function () {
+        self.set('savedTags', true);
+        self.set('savingTags', false);
+      });
     }
   }
 });

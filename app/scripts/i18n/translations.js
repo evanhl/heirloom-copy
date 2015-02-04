@@ -144,6 +144,8 @@ Ember.I18n.translations = {
   'save': 'Save',
   'settings': 'Settings',
   'share': 'Share',
+  'saved': 'Saved',
+  'saving': 'Saving...',
 
   'facebook': 'Facebook',
   'twitter': 'Twitter',

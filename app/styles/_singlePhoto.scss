@@ -136,6 +136,16 @@
     input.view-only {
       text-overflow: ellipsis;
     }
+
+    .saving-state {
+      float: right;
+
+      &.saved {
+        color: $form-selection-color;
+        animation: toasty 2s;
+        opacity: 0;
+      }
+    }
   }
 
   .left-arrow, .right-arrow, .close {
@@ -290,4 +300,11 @@ img.detail {
   opacity: 0;
   width: 0;
   transition: opacity .25s ease-in-out;
+}
+
+@-webkit-keyframes toasty {
+  0%    { opacity: 0; }
+  10%   { opacity: 1; }
+  90%   { opacity: 1;  }
+  100%  { opacity: 0; }
 }
