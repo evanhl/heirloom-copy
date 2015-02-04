@@ -33,6 +33,9 @@ module.exports = function(grunt) {
 
     // Watches files for changes and runs tasks based on the changed files
     watch: {
+      options: {
+        interval: 1000
+      },
       bower: {
         files: ['bower.json'],
         tasks: ['wiredep']
@@ -41,6 +44,7 @@ module.exports = function(grunt) {
         files: ['<%= config.app %>/scripts/{,*/}*.js'],
         tasks: ['jshint', 'resolveDependencies'],
         options: {
+          interval: 200,
           livereload: true
         }
       },
@@ -53,7 +57,10 @@ module.exports = function(grunt) {
       },
       sass: {
         files: ['<%= config.app %>/styles/{,*/}*.{scss,sass}'],
-        tasks: ['sass:server', 'autoprefixer']
+        tasks: ['sass:server', 'autoprefixer'],
+        options: {
+          interval: 200
+        }
       },
       styles: {
         files: ['<%= config.app %>/styles/{,*/}*.css'],
