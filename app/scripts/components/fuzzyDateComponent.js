@@ -225,27 +225,34 @@ App.FuzzyDateComponent = Ember.Component.extend(App.RegisterableMixin, {
 
   didInsertElement: function () {
     Ember.run.scheduleOnce('afterRender', this, function () {
-      this.$year = this.$('.date-year').datepicker({
+      this.$year = this.$('.date-year');
+      this.$month = this.$('.date-month');
+      this.$day = this.$('.date-day');
+
+      this.$year.datepicker({
         format: 'yyyy',
         startView: 2,
         minViewMode: 2,
         autoclose: true,
         startDate: moment().year(1850).startOf('year').toDate(),
         endDate: moment().endOf('year').toDate(),
+        keyboardNavigation: false
       }).datepicker('setViewDate', moment().year(2000).toDate()); // defaults year picker to year 2000
 
-      this.$month = this.$('.date-month').datepicker({
+      this.$month.datepicker({
         format: 'MM',
         startView: 1,
         minViewMode: 1,
-        autoclose: true
+        autoclose: true,
+        keyboardNavigation: false
       });
 
-      this.$day = this.$('.date-day').datepicker({
+      this.$day.datepicker({
         format: 'd',
         startView: 0,
         minViewMode: 0,
-        autoclose: true
+        autoclose: true,
+        keyboardNavigation: false
       });
 
       this.updateInputs();
@@ -261,6 +268,10 @@ App.FuzzyDateComponent = Ember.Component.extend(App.RegisterableMixin, {
   keyDown: function (e) {
     if (e.keyCode === Utils.Keys.TAB && !e.shiftKey) {
       if (!Utils.isValidDate($(e.target).datepicker('getDate')) || $(e.target).is(this.$day)) {
+        this.tryComplete();
+      }
+    } else if (e.keyCode === Utils.Keys.TAB && e.shiftKey) {
+      if ($(e.target).is(this.$year)) {
         this.tryComplete();
       }
     } else if (e.keyCode === Utils.Keys.ENTER) {
