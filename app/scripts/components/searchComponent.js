@@ -33,7 +33,7 @@ App.SearchComponent = Ember.Component.extend(App.RegisterableMixin, App.BodyFocu
   didInsertElement: function () {
     var $select2 = this.$('.search').select2(this.get('select2Args'));
 
-    this.overrideOnSelect($select2);
+    this.addOverrides($select2);
 
     this.set('$select2', $select2);
     this.set('$searchInput', this.$('.search .select2-search input'));
@@ -45,7 +45,7 @@ App.SearchComponent = Ember.Component.extend(App.RegisterableMixin, App.BodyFocu
     this.set('mode', 'search');
   },
 
-  overrideOnSelect: function ($select2) {
+  addOverrides: function ($select2) {
     var select2 = $select2.data('select2');
     var origOnSelect = select2.onSelect;
     var self = this;

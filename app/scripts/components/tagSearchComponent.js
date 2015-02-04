@@ -8,6 +8,28 @@ App.TagSearchComponent = App.SearchComponent.extend({
     this.set('selected', []);
   },
 
+  didInsertElement: function () {
+    var select2, $select2;
+
+    this._super();
+
+    $select2 = this.get('$select2');
+    select2 = $select2.data('select2');
+    this.get('$searchInput').on('keyup-change', function () {
+      var result, results, term;
+
+      term = $(this).val();
+
+      if (!term) { return; }
+
+      result = $('<li class="select2-result select2-highlighted"></li>').html($(this).val());
+      results = [select2.opts.createSearchChoice(term)];
+      result.data('select2-data', results[0]);
+      $select2.data('results', results);
+      select2.results.html(result);
+    });
+  },
+
   select2Args: function () {
     var self = this;
 
