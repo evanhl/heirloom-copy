@@ -128,7 +128,7 @@ App.TagSearchComponent = App.SearchComponent.extend({
       this.set('mode', 'open');
     }
 
-    this._super();
+    this._super(e);
   },
 
   // let's wait until a key is pressed before we go into search mode

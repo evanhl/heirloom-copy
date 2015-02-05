@@ -87,6 +87,8 @@ App.PhotoSidebarComponent = Ember.Component.extend({
       this.set('savedDescription', false);
       this.set('savingDescription', true);
 
+      App.get('analytics').trackEvent('Metadata.Actions.editDescription');
+
       this.get('photo').patch({ description: this.get('photo.description') }).then(function () {
         self.set('editingDescription', false);
         self.set('savedDescription', true);
@@ -109,6 +111,8 @@ App.PhotoSidebarComponent = Ember.Component.extend({
 
       this.set('savedDate', false);
       this.set('savingDate', true);
+
+      App.get('analytics').trackEvent('Metadata.Actions.editDate');
 
       // TODO: figure out how to get backdated_time doesn't show up among the _dirtyAttributes
       // (since it's an Ember object and not a primitive)
@@ -143,6 +147,8 @@ App.PhotoSidebarComponent = Ember.Component.extend({
       this.set('savedLocation', false);
       this.set('savingLocation', true);
 
+      App.get('analytics').trackEvent('Metadata.Actions.editLocation');
+
       this.set('photo.location', location);
       this.get('photo').patch({ location: this.get('photo.location') }).then(function () {
         self.set('editingLocation', false);
@@ -158,6 +164,8 @@ App.PhotoSidebarComponent = Ember.Component.extend({
 
       this.set('savedTags', false);
       this.set('savingTags', true);
+
+      App.get('analytics').trackEvent('Metadata.Actions.editTags');
 
       this.set('photo.tag_list', tags);
       this.get('photo').patch({ tag_list: tags }).then(function () {
