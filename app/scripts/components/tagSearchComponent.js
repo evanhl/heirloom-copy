@@ -135,7 +135,7 @@ App.TagSearchComponent = App.SearchComponent.extend({
   onSearchInputFocus: function () {},
 
   onFocusOut: function () {
-    this.clearInput();
+    this.get('$searchInput').val('');
     this.set('mode', 'open');
   },
 
