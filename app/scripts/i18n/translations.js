@@ -78,6 +78,10 @@ Ember.I18n.translations = {
   'photo.location': 'Location',
   'photo.tags': 'Tags',
 
+  'photo.date.extra': 'month and day are optional',
+  'photo.location.placeholder': 'City, address, business, etc.',
+  'photo.tags.placeholder': 'Uncle Joe, High School Graduation, etc.',
+
   'upload.modal.title': 'Upload Photos',
   'upload.modal.addButton': 'Add',
   'upload.confirmClose': 'You have unsaved uploads. Are you sure you want to close Uploads?',

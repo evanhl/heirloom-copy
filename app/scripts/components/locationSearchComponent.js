@@ -1,6 +1,11 @@
 //= require searchComponent
 
 App.LocationSearchComponent = App.SearchComponent.extend({
+  didInsertElement: function () {
+    this._super();
+    this.get('$searchInput').attr('placeholder', Ember.I18n.t('photo.location.placeholder'));
+  },
+
   select2Args: function () {
     var locService = App.get('locationSearch');
 

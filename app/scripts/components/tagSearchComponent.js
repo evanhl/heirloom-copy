@@ -37,6 +37,14 @@ App.TagSearchComponent = App.SearchComponent.extend({
       $select2.data('results', results);
       select2.results.html(result);
     });
+
+    this.get('$searchInput').focus(function () {
+      $(this).attr('placeholder', Ember.I18n.t('photo.tags.placeholder'));
+    });
+
+    this.get('$searchInput').blur(function () {
+      $(this).attr('placeholder', null);
+    });
   },
 
   select2Args: function () {
