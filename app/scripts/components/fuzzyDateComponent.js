@@ -293,7 +293,27 @@ App.FuzzyDateComponent = Ember.Component.extend(App.RegisterableMixin, {
   },
 
   sendComplete: function () {
+    if (this.checkForErrors()) { return; }
+
     this.hidePickers();
     this.sendAction('complete');
+  },
+
+  checkForErrors: function () {
+    var valid = this.get('date').isValid();
+
+    if (!valid) {
+      this.sendAction('error', this.getErrorStrings());
+    }
+
+    return !valid;
+  },
+
+  getErrorStrings: function () {
+    var errors = this.get('date').getErrors();
+
+    return errors.map(function (error) {
+      return Ember.I18n.t(error);
+    });
   }
 });

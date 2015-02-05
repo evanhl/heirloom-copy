@@ -42,6 +42,11 @@ App.PhotoSidebarComponent = Ember.Component.extend({
     this.get('locationSearch').enterAndFocus();
   },
 
+  reset: function () {
+    this.set('errors', {});
+    this.get('locationSearch').reset();
+  },
+
   onPhotoChange: function () {
     if (this.get('photo') && this.get('photo.isMetadataBlank')) {
       this.set('photo.hasBeenEdited', false);
@@ -49,7 +54,7 @@ App.PhotoSidebarComponent = Ember.Component.extend({
       this.set('photo.hasBeenEdited', true);
     }
 
-    this.get('locationSearch').reset();
+    this.reset();
   }.observes('photo', 'photo.isLoaded'),
 
   onDescriptionChange: function () {
@@ -106,6 +111,7 @@ App.PhotoSidebarComponent = Ember.Component.extend({
         self.set('editingDate', false);
         self.set('savedDate', true);
         self.set('savingDate', false);
+        self.set('errors.date', null);
       });
     },
 
@@ -153,6 +159,10 @@ App.PhotoSidebarComponent = Ember.Component.extend({
         self.set('savedTags', true);
         self.set('savingTags', false);
       });
+    },
+
+    dateError: function (errors) {
+      this.set('errors.date', errors.join(' '));
     }
   }
 });

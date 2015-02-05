@@ -78,6 +78,22 @@ App.FuzzyDate = Ember.Object.extend({
     }
 
     return dateString;
+  },
+
+  getErrors: function () {
+    var errors = [];
+
+    if (this.get('hasDay') && !this.get('hasYear')) {
+      errors.push(this.constructor.Errors.MISSING_YEAR);
+    } else if (this.get('hasDay') && this.get('hasYear') && !this.get('hasMonth')) {
+      errors.push(this.constructor.Errors.MISSING_MONTH);
+    }
+
+    return errors;
+  },
+
+  isValid: function () {
+    return !this.getErrors().length;
   }
 });
 
@@ -112,3 +128,9 @@ App.FuzzyDate.reopenClass({
     return fuzzyDate.toJSON();
   }
 });
+
+App.FuzzyDate.Errors = {
+  // these values could be anything, but let's make them i18n keys to make it easier to look up
+  MISSING_MONTH: 'date.errors.missingMonth',
+  MISSING_YEAR: 'date.errors.missingYear'
+};

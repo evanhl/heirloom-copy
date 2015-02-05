@@ -127,6 +127,9 @@ Ember.I18n.translations = {
   'date.month': 'Month',
   'date.year': 'Year',
 
+  'date.errors.missingMonth': 'Date can\'t have day without a month.',
+  'date.errors.missingYear': 'Date can\'t have day without a year.',
+
   'settings.title': 'Profile Settings',
   'settings.changePasswordButton': 'Change',
 

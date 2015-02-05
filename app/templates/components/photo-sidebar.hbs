@@ -6,24 +6,24 @@
       <div class="photo-owner-username">{{photo.owner.username}}</div>
     </div>
     <div class="form-group">
-      {{#form-label error=errors.name label=(ts 'photo.description')}}{{/form-label}}
+      {{#form-label label=(ts 'photo.description')}}{{/form-label}}
       {{#form-saving-state saved=savedDescription saving=savingDescription}}{{/form-saving-state}}
       {{view "form-text-area" value=photo.description classBinding=":form-line :description-field isDescriptionEdit::view-only" focus-out="saveDescription" focus-in="focusDescription"}}
     </div>
     <div class="form-group">
-      {{#form-label error=errors.name label=(ts 'photo.date')}}{{/form-label}}
+      {{#form-label error=errors.date label=(ts 'photo.date')}}{{/form-label}}
       {{#form-saving-state saved=savedDate saving=savingDate}}{{/form-saving-state}}
-      {{#fuzzy-date date=photo.backdated_time complete="saveDate" focus-in="focusDate" classBinding="isDateEdit::hidden" registerAs=fuzzyDate}}{{/fuzzy-date}}
+      {{#fuzzy-date date=photo.backdated_time complete="saveDate" error="dateError" focus-in="focusDate" classBinding="isDateEdit::hidden" registerAs=fuzzyDate}}{{/fuzzy-date}}
       {{input value=photo.backdated_time.prettyDate on="focus-in" action="editDate" classBinding=":form-line :view-only isDateEdit:hidden"}}
     </div>
     <div class="form-group">
-      {{#form-label error=errors.name label=(ts 'photo.location')}}{{/form-label}}
+      {{#form-label label=(ts 'photo.location')}}{{/form-label}}
       {{#form-saving-state saved=savedLocation saving=savingLocation}}{{/form-saving-state}}
       {{#location-search selected=photo.location action="saveLocation" classBinding="isLocationEdit::hidden" focus-out="focusOutLocation" registerAs=locationSearch}}{{/location-search}}
       {{input value=photo.location.name on="focus-in" action="editLocation" classBinding=":form-line :view-only isLocationEdit:hidden"}}
     </div>
     <div class="form-group">
-      {{#form-label error=errors.name label=(ts 'photo.tags')}}{{/form-label}}
+      {{#form-label label=(ts 'photo.tags')}}{{/form-label}}
       {{#form-saving-state saved=savedTags saving=savingTags}}{{/form-saving-state}}
       {{#tag-search selected=photo.tag_list action="saveTags"}}{{/tag-search}}
     </div>
