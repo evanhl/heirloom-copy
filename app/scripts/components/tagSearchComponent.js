@@ -10,11 +10,17 @@ App.TagSearchComponent = App.SearchComponent.extend({
 
   didInsertElement: function () {
     var select2, $select2;
+    var self = this;
 
     this._super();
 
     $select2 = this.get('$select2');
     select2 = $select2.data('select2');
+
+    this.get('$searchInput').on('keyup-change', function () {
+      self.set('mode', 'search');
+    });
+
     this.get('$searchInput').on('keyup-change', function () {
       var result, results, term;
 
@@ -105,16 +111,21 @@ App.TagSearchComponent = App.SearchComponent.extend({
     }
   },
 
+  keyDown: function (e) {
+    if (e.keyCode === Utils.Keys.ESC) {
+      // close results tray
+      this.set('mode', 'open');
+    }
+
+    this._super();
+  },
+
   // let's wait until a key is pressed before we go into search mode
   onSearchInputFocus: function () {},
 
   onFocusOut: function () {
     this.clearInput();
     this.set('mode', 'open');
-  },
-
-  keyDown: function () {
-    this.set('mode', 'search');
   },
 
   actions: {
