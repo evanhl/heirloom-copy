@@ -5,6 +5,7 @@ App.ConversationPostPhotoController = App.BasePhotoController.extend({
   photos: Ember.computed.alias('controllers.conversationPhotos'),
   conversationId: Ember.computed.alias('conversationPosts.conversationId'),
   photosModel: Ember.computed.alias('photos.photos'),
+  metadataDisabled: true,
 
   toPhoto: function (toId) {
     if (!toId) { return; }

@@ -16,8 +16,12 @@
       <div class="blank-arrow"></div>
     {{/if}}
   </div>
+  {{#unless metadataDisabled}}
   <div class="photo-buttons">
     <div {{bind-attr class=":photo-button :toggle-metadata showMetadata:show-metadata"}} {{action 'toggleMetadata'}}></div>
   </div>
+  {{/unless}}
 </div>
-{{#photo-sidebar photo=model}}{{/photo-sidebar}}
+{{#unless metadataDisabled}}
+  {{#photo-sidebar photo=model}}{{/photo-sidebar}}
+{{/unless}}

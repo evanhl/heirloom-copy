@@ -3,7 +3,15 @@ App.PhotoView = Ember.View.extend({
   templateName: 'photo',
   tagName: 'section',
   classNames: ['single-photo-cont'],
-  classNameBindings: ['controller.showMetadata:collapsed'],
+  classNameBindings: ['collapsed:collapsed'],
+
+  collapsed: function () {
+    if (this.get('controller.metadataDisabled')) {
+      return false;
+    } else {
+      return this.get('controller.showMetadata');
+    }
+  }.property('controller.showMetadata', 'controller.metadataDisabled'),
 
   setFocus: function () {
     // brings the view into focus in order to capture keyDowns.
