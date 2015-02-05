@@ -5,7 +5,10 @@ App.TagSearchComponent = App.SearchComponent.extend({
 
   init: function () {
     this._super();
-    this.set('selected', []);
+
+    if (!this.get('selected')) {
+      this.set('selected', []);
+    }
   },
 
   didInsertElement: function () {
