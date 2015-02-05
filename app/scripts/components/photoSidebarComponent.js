@@ -10,6 +10,8 @@ App.PhotoSidebarComponent = Ember.Component.extend({
   savingLocation: false,
   savedDate: false,
   savingDate: false,
+  savedTags: false,
+  savingTags: false,
 
   init: function () {
     this._super();
@@ -48,6 +50,19 @@ App.PhotoSidebarComponent = Ember.Component.extend({
   },
 
   reset: function () {
+    this.setProperties({
+      editingDescription: false,
+      editingDate: false,
+      editingLocation: false,
+      savedDescription: false,
+      savingDescription: false,
+      savedLocation: false,
+      savingLocation: false,
+      savedDate: false,
+      savingDate: false,
+      savedTags: false,
+      savingTags: false
+    });
     this.set('errors', {});
     this.get('locationSearch').reset();
   },
