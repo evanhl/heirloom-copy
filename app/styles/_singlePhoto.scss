@@ -74,9 +74,27 @@
     height: 100%;
     width: 70px;
     border: 1px solid rgba(255,255,255,0.15);
+    position: relative;
 
     &:hover {
       background: rgba(255,255,255,0.08);
+    }
+
+    &.toggle-metadata {
+      &:after {
+        content: '';
+        position: absolute;
+        top: (60px - $toggle_metadata-height) / 2;
+        left: (70px - $toggle_metadata-width) / 2;;
+        @include sprite-retina($toggle_metadata, $toggle_metadata-2x);
+        transition: transform 0.25s ease-in-out 0.4s;
+      }
+
+      &.show-metadata {
+        &:after {
+          transform: rotateY(180deg);
+        }
+      }
     }
   }
 

@@ -17,7 +17,7 @@
     {{/if}}
   </div>
   <div class="photo-buttons">
-    <div class="photo-button" {{action 'toggleMetadata'}}></div>
+    <div {{bind-attr class=":photo-button :toggle-metadata showMetadata:show-metadata"}} {{action 'toggleMetadata'}}></div>
   </div>
 </div>
 {{#photo-sidebar photo=model}}{{/photo-sidebar}}
