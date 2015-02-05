@@ -107,7 +107,7 @@ App.PhotosController = Ember.ArrayController.extend(InfiniteScroll.ControllerMix
 
     App.get('analytics').trackEvent('Moments.AddToAlbum.submit', this.get('selectedIds.length'));
 
-    album.addPhotos(undefined).then(function () {
+    album.addPhotos(this.get('selectedIds')).then(function () {
       self.deselect();
       album.reload();
       self.trigger('toast', 'photos.addedToAlbum', {
