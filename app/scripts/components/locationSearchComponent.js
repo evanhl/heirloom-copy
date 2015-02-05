@@ -15,6 +15,15 @@ App.LocationSearchComponent = App.SearchComponent.extend({
           $(self.element).data('results', results);
           query.callback({ results: results });
         });
+      },
+
+      formatInputTooShort: function (term, minLength) {
+        var termLength = term ? term.length : 0;
+        var shortBy = Math.max(0, minLength - termLength);
+
+        if (shortBy) {
+          return Ember.I18n.t('search.inputTooShort', { count: shortBy });
+        }
       }
     };
   }.property(),

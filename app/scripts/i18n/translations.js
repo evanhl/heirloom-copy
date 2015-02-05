@@ -162,5 +162,8 @@ Ember.I18n.translations = {
   'resetPassword.successMsg': 'Password successfully reset!',
 
   'errors.general': 'There\'s been an error. Try again.',
-  'errors.conversations.notFound': 'We can\'t find this group, or you\'re not in the group.'
+  'errors.conversations.notFound': 'We can\'t find this group, or you\'re not in the group.',
+
+  'search.inputTooShort.one': 'Please type {{count}} more character.',
+  'search.inputTooShort.other': 'Please type {{count}} more characters.',
 };
