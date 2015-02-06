@@ -18,16 +18,32 @@
 
       .photo-sidebar {
         right: 0;
+
+        // IE10 + IE11
+        html[data-useragent*='rv:11'] &, html[data-useragent*='MSIE 10.0'] & {
+          right: 0;
+        }
       }
     }
 
     @media #{$breakpoint-desktop-3} {
       .photo-cont, .photo-options {
         width: calc(100% - 432px);
+
+        // IE10 + IE11 can't handle calc + transition due to an IE bug
+        // http://stackoverflow.com/questions/21142923/ie-10-11-css-transitions-with-calc-do-not-work
+        html[data-useragent*='rv:11'] &, html[data-useragent*='MSIE 10.0'] & {
+          width: 70%;
+        }
       }
 
       .photo-sidebar {
         width: calc(432px);
+
+        // IE10 + IE11
+        html[data-useragent*='rv:11'] &, html[data-useragent*='MSIE 10.0'] & {
+          width: 30%;
+        }
       }
     }
   }
@@ -84,6 +100,7 @@
       &:after {
         content: '';
         position: absolute;
+        opacity: 0.8;
         top: (60px - $toggle_metadata-height) / 2;
         left: (70px - $toggle_metadata-width) / 2;;
         @include sprite-retina($toggle_metadata, $toggle_metadata-2x);
@@ -94,6 +111,12 @@
       &.show-metadata {
         &:after {
           transform: rotateY(0deg);
+        }
+      }
+
+      &:hover {
+        &:after {
+          opacity: 1;
         }
       }
     }
@@ -119,6 +142,12 @@
       width: calc(432px);
       right: calc(-432px);
       padding: 30px;
+
+      // IE10 + IE11
+      html[data-useragent*='rv:11'] &, html[data-useragent*='MSIE 10.0'] & {
+        width: 30%;
+        right: -30%;
+      }
     }
 
     .icon, .avatar {
