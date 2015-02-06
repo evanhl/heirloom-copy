@@ -145,6 +145,8 @@ Ember.I18n.translations = {
   'changePassword.new2': 'New Password, again',
   'changePassword.success': 'Your password was successfully changed.',
 
+  'appLanding.message': 'If you\'re not automatically redirected to the app store, select a badge below.',
+
   'add': 'Add',
   'cancel': 'Cancel',
   'close': 'Close',

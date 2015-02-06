@@ -61,6 +61,7 @@ App.Router.map(function () {
   this.resource('share', { path: 's/:share_id' }, function () {
     this.resource('sharePhoto', { path: 'photos/:photo_id' });
   });
+  this.route('app');
   this.route('closeWindow');
   this.route('home');
   this.route('registration');
