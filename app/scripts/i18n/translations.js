@@ -78,6 +78,9 @@ Ember.I18n.translations = {
   'photo.location': 'Location',
   'photo.tags': 'Tags',
 
+  'photo.download.title': 'Download Full-Resolution Photo',
+  'photo.toggleMetadata.title': 'Add Info',
+
   'photo.date.extra': 'month and day are optional',
   'photo.location.placeholder': 'City, address, business, etc.',
   'photo.tags.placeholder': 'Uncle Joe, High School Graduation, etc.',
