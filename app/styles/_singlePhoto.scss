@@ -92,11 +92,12 @@
     height: 100%;
     width: 70px;
     border: 1px solid rgba(255,255,255,0.15);
+    border-right: none;
     position: relative;
     display: inline-block;
 
     &.last-child {
-      border-left: none;
+      border-right: 1px solid rgba(255,255,255,0.15);
     }
 
     &:hover {
@@ -368,6 +369,9 @@ img.detail {
   opacity: 0;
   width: 0;
   transition: opacity .25s ease-in-out;
+  transition: transform 0.4s ease-in-out;
+
+  z-index: 1;
 }
 
 @-webkit-keyframes toasty {

@@ -79,5 +79,57 @@ App.ImageView = Ember.View.extend({
   // TODO: handle error state
   imageError: function (e) {
     this.set('controller.loadingImg', false);
+  },
+
+  onImageChange: function () {
+    if (this.get('image.photo')) {
+      this.get('image.photo').addObserver('rotationAngle', this, this.animateRotateImage);
+    }
+
+    if (this.get('image.visible')) {
+      this.staticRotateImage();
+    }
+  }.observes('image').on('didInsertElement'),
+
+  beforeImageChange: function () {
+    if (this.get('image.photo')) {
+      this.get('image.photo').removeObserver('rotationAngle', this, this.animateRotateImage);
+    }
+  }.observesBefore('image'),
+
+  style: function () {
+    if (!this.get('image.visible')) {
+      return;
+    }
+
+  }.observes('image'),
+
+  animateRotateImage: function () {
+    this.rotateImage(true);
+  },
+
+  staticRotateImage: function () {
+    this.rotateImage(false);
+  },
+
+  rotateImage: function (animate) {
+    var rotationAngle = this.get('image.photo.rotationAngle') || 0;
+    var ratio = this.get('image.photo.versions.full.height') / this.get('image.photo.versions.full.width');
+    var style = '';
+    var transition = '';
+
+    if (rotationAngle % 180 !== 0) {
+      style += (' scale(' +  ratio + ') ');
+    }
+
+    if (animate) {
+      transition += 'transform 0.4s ease-in-out, ';
+    }
+
+    transition += 'opacity .25s ease-in-out';
+
+    style += ' rotate(' + rotationAngle + 'deg) ';
+    this.$().css('transition', transition);
+    this.$().css('transform', style);
   }
 });
