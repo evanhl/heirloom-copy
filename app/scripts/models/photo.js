@@ -5,6 +5,7 @@ App.Photo = App.BasePhoto.extend({
   backdated_time: Ember.attr(App.FuzzyDate),
   location: Ember.attr(),
   tag_list: Ember.attr(),
+  recipe: Ember.attr(),
 
   isMetadataBlank: function () {
     return !this.get('description') && this.get('backdated_time.isBlank') && !this.get('location');

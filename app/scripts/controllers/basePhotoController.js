@@ -119,7 +119,12 @@ App.BasePhotoController = Ember.ObjectController.extend(Ember.Evented, {
     },
 
     rotatePhoto: function () {
-      this.get('model').set('rotationAngle', ((this.get('model').get('rotationAngle') || 0) + 90) % 360);
+      this.get('model').set('rotationAngle', (this.get('model').get('rotationAngle') || 0) + 90);
+    },
+
+    confirmRotate: function () {
+      var newRecipe = Utils.PhotoRecipe.createRotateRecipe(this.get('model.rotationAngle'));
+      this.get('model').patch({ recipe: newRecipe });
     }
   }
 });
