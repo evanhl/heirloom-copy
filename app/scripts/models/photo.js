@@ -12,7 +12,7 @@ App.Photo = App.BasePhoto.extend({
   }.property('backdated_time.isBlank', 'description', 'location'),
 
   thumbVersion: function () {
-    return this.get('dataUri') || this.versionForDimension('xs') || this.get('mediumVersion');
+    return this.versionForDimension('xs') || this.get('dataUri') || this.get('mediumVersion');
   }.property('versions'),
 
   mediumVersion: function () {

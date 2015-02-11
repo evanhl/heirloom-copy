@@ -1,5 +1,5 @@
 <img {{bind-attr src=thumbVersion}} {{bind-attr style=view.coverPhotoStyle}}alt="">
-{{#if isReady}}
+{{#if isViewable}}
   {{#if view.unselectable}}
   {{else}}
     <div {{bind-attr class=":select selected"}} {{action 'select' bubbles=false}}></div>

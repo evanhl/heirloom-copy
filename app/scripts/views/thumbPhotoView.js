@@ -1,6 +1,6 @@
 App.ThumbPhotoView = Ember.View.extend({
   classNames: 'photo',
-  classNameBindings: ['controller.selected', 'controller.isSelectionMode:selection-mode', 'controller.model.isReady::processing'],
+  classNameBindings: ['controller.selected', 'controller.isSelectionMode:selection-mode', 'controller.model.isViewable::processing'],
 
   coverPhotoStyle: function () {
     if (!this.get('controller.model.rotationAngle')) {
