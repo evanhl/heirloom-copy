@@ -114,7 +114,7 @@ App.ImageView = Ember.View.extend({
 
   rotateImage: function (animate) {
     var rotationAngle = this.get('image.photo.rotationAngle') || 0;
-    var ratio = this.get('image.photo.versions.full.height') / this.get('image.photo.versions.full.width');
+    var ratio = this.get('image.photo.fullHeight') / this.get('image.photo.fullWidth');
     var style = '';
     var transition = '';
 

@@ -13,7 +13,7 @@ App.BasePhotoController = Ember.ObjectController.extend(Ember.Evented, {
   largeVersionChanged: function () {
     var properties;
 
-    if (!this.get('largeVersion')) {
+    if (!this.get('largeVersion') || this.get('ignoreVersionChanges')) {
       return;
     }
 

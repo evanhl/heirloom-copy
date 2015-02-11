@@ -27,6 +27,18 @@ App.Photo = App.BasePhoto.extend({
     return this.versionForDimension('full');
   }.property('versions'),
 
+  fullHeight: function () {
+    return this.get('versions.full.height');
+  }.property('versions'),
+
+  fullWidth: function () {
+    return this.get('versions.full.width');
+  }.property('versions'),
+
+  isViewable: function () {
+    return this.get('isReady') || this.get('isEditing');
+  }.property('isReady', 'isEditing'),
+
   rotate90: function () {
     this.set('rotationAngle', (this.get('rotationAngle') || 0) + 90);
     this.tryRotatePatch();
@@ -74,6 +86,22 @@ App.Photo = App.BasePhoto.extend({
 
     if (this.get('rotationAngle')) {
       this.rotatePatch();
+    }
+  },
+
+  load: function (id, hash) {
+    var preserveVersions = (this.get('versions') && hash.state === 'processing');
+
+    if (preserveVersions) {
+      this.set('ignoreVersionChanges', true);
+      hash.versions = this.get('versions');
+    }
+
+    this._super(id, hash);
+
+    if (preserveVersions) {
+      this.set('ignoreVersionChanges', false);
+      this.set('isEditing', true);
     }
   }
 });
