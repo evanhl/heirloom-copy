@@ -95,7 +95,7 @@ App.ImageView = Ember.View.extend({
     if (this.get('image.photo')) {
       this.get('image.photo').removeObserver('rotationAngle', this, this.animateRotateImage);
     }
-  }.observesBefore('image'),
+  }.observesBefore('image').on('willDestroyElement'),
 
   style: function () {
     if (!this.get('image.visible')) {

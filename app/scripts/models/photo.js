@@ -25,7 +25,57 @@ App.Photo = App.BasePhoto.extend({
 
   fullVersion: function () {
     return this.versionForDimension('full');
-  }.property('versions')
+  }.property('versions'),
+
+  rotate90: function () {
+    this.set('rotationAngle', (this.get('rotationAngle') || 0) + 90);
+    this.tryRotatePatch();
+  },
+
+  tryRotatePatch: function () {
+    Ember.run.debounce(this, this.rotatePatch, 3000);
+  },
+
+  rotatePatch: function () {
+    var newRecipe,
+        angle = (this.get('rotationAngle') || 0) - (this.get('pendingRotationAngle') || 0);
+
+    // we can't have two concurrent PATCH requests
+    if (this.get('pendingRotationAngle')) { return; }
+
+    // this is a no op, so skip the patch
+    if (angle % 360 === 0) { return; }
+
+    newRecipe = Utils.PhotoRecipe.createRotateRecipe(angle);
+    this.patch({ recipe: newRecipe });
+    this.set('pendingRotationAngle', angle);
+
+    this.pollForReady();
+  },
+
+  pollForReady: function () {
+    var self = this;
+
+    // TODO: max # of attempts
+    setTimeout(function () {
+      self.reload().finally(function () {
+        if (self.get('isReady')) {
+          self.didRotate();
+        } else {
+          self.pollForReady();
+        }
+      });
+    }, 1000);
+  },
+
+  didRotate: function () {
+    this.set('rotationAngle', this.get('rotationAngle') - this.get('pendingRotationAngle'));
+    this.set('pendingRotationAngle', 0);
+
+    if (this.get('rotationAngle')) {
+      this.rotatePatch();
+    }
+  }
 });
 
 App.Photo.reopenClass({
