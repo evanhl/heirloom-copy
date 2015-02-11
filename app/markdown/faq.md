@@ -251,6 +251,7 @@ We ask for access to contacts to enable you to invite friends and family to view
 There are two ways to add a photo to an existing album.
 
 From Moments:
+
 1. Tap the 'checkmark' icon in the top right corner.
 2. Select the photos you want to add to an album.
 3. Tap the album icon in the middle of the bottom bar.
@@ -258,6 +259,7 @@ From Moments:
 5. Select the Album you want to which you want to add photos.
 
 From Albums:
+
 1. Select an album.
 2. When viewing the photos in an album, tap the ‘+’ button in the action bar.
 3. Select the photos you would like to add.
