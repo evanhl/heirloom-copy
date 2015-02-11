@@ -22,16 +22,21 @@
         $bodyAndHtml: $('html, body'),
         $faq:         $('#faq'),
         $h1:          $('h1'),
-        $h2:          $('h2')
+        $h2:          $('h2'),
+        $h3:          $('h3')
       };
     },
 
     formatHtml: function () {
-      var wrapAnswers, prependNameAnchorsToH2s;
+      var wrapAnswers, prependNameAnchorsToH2s, wrapSections;
 
-      // Needed for accordian animation.
+      // Needed for accordion animation.
       wrapAnswers = function () {
-        $(this).nextUntil('h2').wrapAll($('<div/>', { 'class': 'answer' }));
+        $(this).nextUntil('h3,h2').wrapAll($('<div/>', { 'class': 'answer' }));
+      };
+
+      wrapSections = function () {
+        $(this).nextUntil('h2').wrapAll($('<div/>', { 'class': 'section' }));
       };
 
       /**
@@ -50,9 +55,13 @@
         $('<a/>', attrs).insertBefore($(this));
       };
 
-      this.elms.$h2.each(function () {
+      this.elms.$h3.each(function () {
         wrapAnswers.call(this);
-        prependNameAnchorsToH2s.call(this);
+        // prependNameAnchorsToH2s.call(this);
+      });
+
+      this.elms.$h2.each(function () {
+        wrapSections.call(this);
       });
 
       // The Markdown parser inserts dumb empty paragraphs. Hopefully I can remove this code soon once I
@@ -105,13 +114,20 @@
     },
 
     bindEventListeners: function () {
-      var accordian, scrollToQuestion, scrollToTop;
+      var accordion, scrollToQuestion, scrollToTop, sectionAccordion;
 
-      accordian = function () {
+      accordion = function () {
         var $this = $(this);
 
         $this.toggleClass('expanded');
         $this.next('.answer').slideToggle('fast');
+      };
+
+      sectionAccordion = function () {
+        var $this = $(this);
+
+        $this.toggleClass('expanded');
+        $this.next('.section').slideToggle('fast');
       };
 
       // NOTE: The deeplinking works without JavaScript, however if the user has JavaScript we're going to
@@ -136,7 +152,8 @@
         self.elms.$bodyAndHtml.stop().animate({ scrollTop: 0 }, self.ANIMATIONSPEED);
       };
 
-      this.elms.$h2.on('click', accordian);
+      this.elms.$h2.on('click', sectionAccordion);
+      this.elms.$h3.on('click', accordion);
       $('.back-to-top').on('click', { namespace: this }, scrollToTop);
     }
   });
