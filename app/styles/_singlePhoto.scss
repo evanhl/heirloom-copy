@@ -122,6 +122,14 @@
       }
     }
 
+    &.rotate-photo {
+      &:after {
+        top: (60px - $rotate_photo-height) / 2;
+        left: (70px - $rotate_photo-width) / 2;
+        @include sprite-retina($rotate_photo, $rotate_photo-2x);
+      }
+    }
+
     &.toggle-metadata {
       &:after {
         top: (60px - $toggle_metadata-height) / 2;
