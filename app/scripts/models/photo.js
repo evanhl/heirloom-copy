@@ -6,6 +6,8 @@ App.Photo = App.BasePhoto.extend({
   location: Ember.attr(),
   tag_list: Ember.attr(),
   recipe: Ember.attr(),
+  INITIAL_POLL_INTERVAL: 1000,
+  BACKOFF_FACTOR: 1.2,
 
   isMetadataBlank: function () {
     return !this.get('description') && this.get('backdated_time.isBlank') && !this.get('location');
@@ -62,6 +64,7 @@ App.Photo = App.BasePhoto.extend({
     this.patch({ recipe: newRecipe });
     this.set('pendingRotationAngle', angle);
 
+    this.pollInterval = this.INITIAL_POLL_INTERVAL;
     this.pollForReady();
   },
 
@@ -77,7 +80,8 @@ App.Photo = App.BasePhoto.extend({
           self.pollForReady();
         }
       });
-    }, 1000);
+    }, this.pollInterval);
+    this.pollInterval = Math.round(this.pollInterval * this.BACKOFF_FACTOR);
   },
 
   didRotate: function () {
