@@ -80,6 +80,7 @@ Ember.I18n.translations = {
 
   'photo.download.title': 'Download Full-Resolution Photo',
   'photo.toggleMetadata.title': 'Add Info',
+  'photo.rotate.title': 'Rotate Photo',
 
   'photo.date.extra': 'month and day are optional',
   'photo.location.placeholder': 'City, address, business, etc.',

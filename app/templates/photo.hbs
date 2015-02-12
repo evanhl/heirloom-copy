@@ -18,7 +18,7 @@
   </div>
   {{#unless metadataDisabled}}
   <div class="photo-buttons">
-    <div {{bind-attr class=":photo-button :rotate-photo"}} {{action 'rotatePhoto'}}></div>{{!--
+    <div {{bind-attr class=":photo-button :rotate-photo"}} {{action 'rotatePhoto'}} {{translateAttr title="photo.rotate.title"}}></div>{{!--
     --}}<a {{bind-attr href="model.fullVersion"}} target="_blank"><div {{bind-attr class=":photo-button :photo-download"}} {{translateAttr title="photo.download.title"}}></div></a>{{!--
     --}}<div {{bind-attr class=":photo-button :toggle-metadata :last-child showMetadata:show-metadata"}} {{action 'toggleMetadata'}} {{translateAttr title="photo.toggleMetadata.title"}}></div>
   </div>

@@ -61,6 +61,8 @@ App.Photo = App.BasePhoto.extend(Ember.Evented, {
     // this is a no op, so skip the patch
     if (angle % 360 === 0) { return; }
 
+    App.get('analytics').trackEvent('Editing.Rotate.submit');
+
     newRecipe = Utils.PhotoRecipe.createRotateRecipe(angle);
     this.patch({ recipe: newRecipe });
     this.set('pendingRotationAngle', angle);
