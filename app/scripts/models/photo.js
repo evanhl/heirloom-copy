@@ -1,6 +1,6 @@
 //= require basePhoto
 
-App.Photo = App.BasePhoto.extend({
+App.Photo = App.BasePhoto.extend(Ember.Evented, {
   description: Ember.attr(String),
   backdated_time: Ember.attr(App.FuzzyDate),
   location: Ember.attr(),
@@ -43,6 +43,7 @@ App.Photo = App.BasePhoto.extend({
 
   rotate90: function () {
     this.set('rotationAngle', (this.get('rotationAngle') || 0) + 90);
+    this.trigger('rotate');
     this.tryRotatePatch();
   },
 
@@ -87,6 +88,8 @@ App.Photo = App.BasePhoto.extend({
   didRotate: function () {
     this.set('rotationAngle', this.get('rotationAngle') - this.get('pendingRotationAngle'));
     this.set('pendingRotationAngle', 0);
+
+    this.trigger('didRotate');
 
     if (this.get('rotationAngle')) {
       this.rotatePatch();
