@@ -23,6 +23,7 @@ header {
   width: 100%;
   top: 0;
   background: white;
+  z-index: 1;
 }
 
 [role="main"],
@@ -40,7 +41,7 @@ header > div {
   margin-top: 72px;
 }
 
-h2 {
+h2, h3 {
   cursor: pointer;
 
   &:before {
@@ -66,10 +67,10 @@ h2 {
   }
 }
 
-.answer {
+.answer, .section {
   display: none;
 
-  p, ul {
+  > p, > ul, > ol, > h3 {
     margin-top: 0; /* Prevents collapsing margin on animation. */
   }
 }
