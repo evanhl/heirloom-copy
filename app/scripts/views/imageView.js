@@ -114,12 +114,11 @@ App.ImageView = Ember.View.extend({
 
   rotateImage: function (animate) {
     var rotationAngle = this.get('image.photo.rotationAngle') || 0;
-    var ratio = this.get('image.photo.fullHeight') / this.get('image.photo.fullWidth');
     var style = '';
     var transition = '';
 
     if (rotationAngle % 180 !== 0) {
-      style += (' scale(' +  ratio + ') ');
+      style += (' scale(' +  this.getRotatedScale() + ') ');
     }
 
     if (animate) {
@@ -131,5 +130,25 @@ App.ImageView = Ember.View.extend({
     style += ' rotate(' + rotationAngle + 'deg) ';
     this.$().css('transition', transition);
     this.$().css('transform', style);
+  },
+
+  getRotatedScale: function () {
+    // height limited = ratio > parentRatio
+    var ratio = this.get('image.photo.fullHeight') / this.get('image.photo.fullWidth');
+    var parentRatio = this.$().parent().outerHeight() / this.$().parent().outerWidth();
+    var heightLimited = ratio > parentRatio;
+    var heightIsBigger = ratio > 1;
+
+    if (heightLimited && heightIsBigger) {
+      return Math.min(ratio, 1 / parentRatio);
+    } else if (heightLimited && !heightIsBigger) {
+      return ratio;
+    } else if (!heightLimited && heightIsBigger) {
+      return 1 / ratio;
+    } else {
+      return Math.min(1 / ratio, parentRatio);
+    }
+
+
   }
 });
