@@ -122,13 +122,12 @@ App.ImageView = Ember.View.extend({
     }
 
     if (animate) {
-      transition += 'transform 0.4s ease-in-out, ';
+      this.$().addClass('anim-transform');
+    } else {
+      this.$().removeClass('anim-transform');
     }
 
-    transition += 'opacity .25s ease-in-out';
-
     style += ' rotate(' + rotationAngle + 'deg) ';
-    this.$().css('transition', transition);
     this.$().css('transform', style);
   },
 
