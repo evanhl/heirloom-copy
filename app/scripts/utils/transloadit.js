@@ -14,7 +14,7 @@ Utils.Transloadit = {
       }
     };
 
-    Utils.apiCall('/transloadit_signature', 'GET', data, function (response) {
+    Utils.apiCall('/transloadit_signature', 'POST', data, function (response) {
       Utils.ajaxJson(self.HOST + '/assemblies', 'POST', response, success, error);
     }, error);
   },
