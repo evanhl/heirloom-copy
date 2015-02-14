@@ -296,7 +296,7 @@ App.FuzzyDateComponent = Ember.Component.extend(App.RegisterableMixin, {
     if (this.checkForErrors()) { return; }
 
     this.hidePickers();
-    this.sendAction('complete');
+    this.sendAction('complete', this.get('date'));
   },
 
   checkForErrors: function () {

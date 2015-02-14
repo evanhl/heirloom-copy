@@ -18,17 +18,28 @@ App.PhotoSidebarComponent = Ember.Component.extend({
     this.set('errors', {});
   },
 
+  setFields: function () {
+    var self = this;
+
+    ['date', 'description', 'backdated_time', 'tag_list'].forEach(function (field) {
+      self.set(field, self.get('photo.' + field));
+    });
+  },
+
   isDescriptionEdit: function () {
-    return this.get('editingDescription') || (!this.get('photo.description') && !this.get('photo.hasBeenEdited'));
-  }.property('editingDescription', 'photo.description', 'photo.hasBeenEdited'),
+    console.log('editingDescription', this.get('editingDescription'));
+    console.log('description', this.get('description'));
+    console.log('photo.hasBeenEdited', this.get('photo.hasBeenEdited'));
+    return this.get('editingDescription') || (!this.get('description') && !this.get('photo.hasBeenEdited'));
+  }.property('editingDescription', 'description', 'photo.hasBeenEdited'),
 
   isDateEdit: function () {
-    return this.get('editingDate') || (this.get('photo.backdated_time.isBlank') && !this.get('photo.hasBeenEdited'));
-  }.property('editingDate', 'photo.backdated_time.isBlank', 'photo.hasBeenEdited'),
+    return this.get('editingDate') || (this.get('backdated_time.isBlank') && !this.get('photo.hasBeenEdited'));
+  }.property('editingDate', 'backdated_time.isBlank', 'photo.hasBeenEdited'),
 
   isLocationEdit: function () {
-    return this.get('editingLocation') || (!this.get('photo.location') && !this.get('photo.hasBeenEdited'));
-  }.property('editingLocation', 'photo.location', 'photo.hasBeenEdited'),
+    return this.get('editingLocation') || (!this.get('location') && !this.get('photo.hasBeenEdited'));
+  }.property('editingLocation', 'location', 'photo.hasBeenEdited'),
 
   onDescriptionEdit: function () {
     var $field;
@@ -64,10 +75,20 @@ App.PhotoSidebarComponent = Ember.Component.extend({
       savingTags: false
     });
     this.set('errors', {});
-    this.get('locationSearch').reset();
+
+    if (this.get('locationSearch')) {
+      this.get('locationSearch').reset();
+    }
   },
 
   onPhotoChange: function () {
+    if (!this.get('photo')) { return; }
+
+    if (!this.get('photo.isLoaded')) {
+      this.get('photo').one('didLoad', this, this.onPhotoChange);
+      return;
+    }
+
     if (this.get('photo') && this.get('photo.isMetadataBlank')) {
       this.set('photo.hasBeenEdited', false);
     } else {
@@ -75,7 +96,8 @@ App.PhotoSidebarComponent = Ember.Component.extend({
     }
 
     this.reset();
-  }.observes('photo', 'photo.isLoaded'),
+    this.setFields();
+  }.observes('photo').on('init'),
 
   onDescriptionChange: function () {
     Ember.run.scheduleOnce('afterRender', this, function () {
@@ -104,7 +126,8 @@ App.PhotoSidebarComponent = Ember.Component.extend({
 
       App.get('analytics').trackEvent('Metadata.Actions.editDescription');
 
-      this.get('photo').patch({ description: this.get('photo.description') }).then(function () {
+      this.get('photo').set('description', this.get('description'));
+      this.get('photo').patch({ description: this.get('description') }).then(function () {
         self.set('editingDescription', false);
         self.set('savedDescription', true);
         self.set('savingDescription', false);
@@ -131,7 +154,8 @@ App.PhotoSidebarComponent = Ember.Component.extend({
 
       // TODO: figure out how to get backdated_time doesn't show up among the _dirtyAttributes
       // (since it's an Ember object and not a primitive)
-      this.get('photo').patch({ backdated_time: this.get('photo.backdated_time').toJSON() }).then(function () {
+      this.get('photo').set('backdated_time', this.get('backdated_time'));
+      this.get('photo').patch({ backdated_time: this.get('backdated_time').toJSON() }).then(function () {
         self.set('editingDate', false);
         self.set('savedDate', true);
         self.set('savingDate', false);
@@ -165,7 +189,7 @@ App.PhotoSidebarComponent = Ember.Component.extend({
       App.get('analytics').trackEvent('Metadata.Actions.editLocation');
 
       this.set('photo.location', location);
-      this.get('photo').patch({ location: this.get('photo.location') }).then(function () {
+      this.get('photo').patch({ location: location }).then(function () {
         self.set('editingLocation', false);
         self.get('locationSearch').reset();
 
