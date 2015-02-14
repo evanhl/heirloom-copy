@@ -26,5 +26,32 @@ App.ApiModel = Ember.Model.extend({
     }
 
     return adapter.patchRecord(this, data);
+  },
+
+  getBelongsTo: function(key, type, meta) {
+    var get = Ember.get,
+        idOrAttrs = get(this, '_data.' + key),
+        record;
+
+    if (Ember.isNone(idOrAttrs)) {
+      return null;
+    }
+
+    if (meta.options.embedded) {
+      var primaryKey = get(type, 'primaryKey'),
+        id = idOrAttrs[primaryKey],
+        cachedRecord = type.getCachedReferenceRecord(id);
+
+      if (cachedRecord) {
+        record = cachedRecord;
+      } else {
+        record = type.create({ isLoaded: false, id: id });
+      }
+      record.load(id, idOrAttrs);
+    } else {
+      record = type.find(idOrAttrs);
+    }
+
+    return record;
   }
 });

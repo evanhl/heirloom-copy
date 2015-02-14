@@ -1,5 +1,5 @@
 {{#if cover_photo}}
-  <img {{bind-attr src=cover_photo.mediumVersion}} alt="">
+  <img {{bind-attr src=cover_photo.mediumVersion}} {{bind-attr style="view.coverPhotoStyle"}} alt="">
 {{/if}}
 {{#if view.unselectable}}
 {{else}}

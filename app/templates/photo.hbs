@@ -1,6 +1,6 @@
 <div class="photo-cont">
-  {{view 'image' image=firstState}}
-  {{view 'image' image=secondState}}
+  {{view 'image' image=firstState photo=model}}
+  {{view 'image' image=secondState photo=model}}
   <div class="close" {{action 'toCollection'}}></div>
 </div>
 <div class="photo-options">
@@ -18,7 +18,8 @@
   </div>
   {{#unless metadataDisabled}}
   <div class="photo-buttons">
-    <a {{bind-attr href="model.fullVersion"}} target="_blank"><div {{bind-attr class=":photo-button :photo-download"}} {{translateAttr title="photo.download.title"}}></div></a>{{!--
+    <div {{bind-attr class=":photo-button :rotate-photo"}} {{action 'rotatePhoto'}} {{translateAttr title="photo.rotate.title"}}></div>{{!--
+    --}}<a {{bind-attr href="model.fullVersion"}} target="_blank"><div {{bind-attr class=":photo-button :photo-download"}} {{translateAttr title="photo.download.title"}}></div></a>{{!--
     --}}<div {{bind-attr class=":photo-button :toggle-metadata :last-child showMetadata:show-metadata"}} {{action 'toggleMetadata'}} {{translateAttr title="photo.toggleMetadata.title"}}></div>
   </div>
   {{/unless}}

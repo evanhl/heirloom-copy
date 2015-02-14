@@ -79,5 +79,75 @@ App.ImageView = Ember.View.extend({
   // TODO: handle error state
   imageError: function (e) {
     this.set('controller.loadingImg', false);
+  },
+
+  onImageChange: function () {
+    if (this.get('image.photo')) {
+      this.get('image.photo').addObserver('rotationAngle', this, this.animateRotateImage);
+    }
+
+    if (this.get('image.visible')) {
+      this.staticRotateImage();
+    }
+  }.observes('image').on('didInsertElement'),
+
+  beforeImageChange: function () {
+    if (this.get('image.photo')) {
+      this.get('image.photo').removeObserver('rotationAngle', this, this.animateRotateImage);
+    }
+  }.observesBefore('image').on('willDestroyElement'),
+
+  style: function () {
+    if (!this.get('image.visible')) {
+      return;
+    }
+
+  }.observes('image'),
+
+  animateRotateImage: function () {
+    this.rotateImage(true);
+  },
+
+  staticRotateImage: function () {
+    this.rotateImage(false);
+  },
+
+  rotateImage: function (animate) {
+    var rotationAngle = this.get('image.photo.rotationAngle') || 0;
+    var style = '';
+    var transition = '';
+
+    if (rotationAngle % 180 !== 0) {
+      style += (' scale(' +  this.getRotatedScale() + ') ');
+    }
+
+    if (animate) {
+      this.$().addClass('anim-transform');
+    } else {
+      this.$().removeClass('anim-transform');
+    }
+
+    style += ' rotate(' + rotationAngle + 'deg) ';
+    this.$().css('transform', style);
+  },
+
+  getRotatedScale: function () {
+    // height limited = ratio > parentRatio
+    var ratio = this.get('image.photo.fullHeight') / this.get('image.photo.fullWidth');
+    var parentRatio = this.$().parent().outerHeight() / this.$().parent().outerWidth();
+    var heightLimited = ratio > parentRatio;
+    var heightIsBigger = ratio > 1;
+
+    if (heightLimited && heightIsBigger) {
+      return Math.min(ratio, 1 / parentRatio);
+    } else if (heightLimited && !heightIsBigger) {
+      return ratio;
+    } else if (!heightLimited && heightIsBigger) {
+      return 1 / ratio;
+    } else {
+      return Math.min(1 / ratio, parentRatio);
+    }
+
+
   }
 });

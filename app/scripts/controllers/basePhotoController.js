@@ -13,7 +13,7 @@ App.BasePhotoController = Ember.ObjectController.extend(Ember.Evented, {
   largeVersionChanged: function () {
     var properties;
 
-    if (!this.get('largeVersion')) {
+    if (!this.get('largeVersion') || this.get('ignoreVersionChanges')) {
       return;
     }
 
@@ -25,6 +25,7 @@ App.BasePhotoController = Ember.ObjectController.extend(Ember.Evented, {
 
     state.visible = this.get('firstSlot');
     state.src = this.get('firstSlot') ? this.get('largeVersion') : null;
+    state.photo = this.get('firstSlot') ? this.get('model') : null;
 
     return state;
   }.property('firstSlot'),
@@ -34,6 +35,7 @@ App.BasePhotoController = Ember.ObjectController.extend(Ember.Evented, {
 
     state.visible = !this.get('firstSlot');
     state.src = this.get('firstSlot') ? null : this.get('largeVersion');
+    state.photo = this.get('firstSlot') ? null : this.get('model');
 
     return state;
   }.property('firstSlot'),
@@ -114,6 +116,10 @@ App.BasePhotoController = Ember.ObjectController.extend(Ember.Evented, {
 
     toggleMetadata: function () {
       this.toggleProperty('showMetadata');
+    },
+
+    rotatePhoto: function () {
+      this.get('model').rotate90();
     }
   }
 });

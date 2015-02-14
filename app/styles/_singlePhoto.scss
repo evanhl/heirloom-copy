@@ -92,11 +92,13 @@
     height: 100%;
     width: 70px;
     border: 1px solid rgba(255,255,255,0.15);
+    border-right: none;
+    border-bottom: none;
     position: relative;
     display: inline-block;
 
     &.last-child {
-      border-left: none;
+      border-right: 1px solid rgba(255,255,255,0.15);
     }
 
     &:hover {
@@ -118,6 +120,14 @@
         top: (60px - $photo_download-height) / 2;
         left: (70px - $photo_download-width) / 2;
         @include sprite-retina($photo_download, $photo_download-2x);
+      }
+    }
+
+    &.rotate-photo {
+      &:after {
+        top: (60px - $rotate_photo-height) / 2;
+        left: (70px - $rotate_photo-width) / 2;
+        @include sprite-retina($rotate_photo, $rotate_photo-2x);
       }
     }
 
@@ -368,6 +378,12 @@ img.detail {
   opacity: 0;
   width: 0;
   transition: opacity .25s ease-in-out;
+
+  &.anim-transform {
+    transition: transform 0.4s ease-in-out;
+  }
+
+  z-index: 1;
 }
 
 @-webkit-keyframes toasty {
