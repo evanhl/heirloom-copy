@@ -8,6 +8,13 @@
     filename: 'faq',
     init: function () {
       this.fetchMarkdown();
+      this.addHeaderLink();
+    },
+
+    addHeaderLink: function () {
+      if (window.location.pathname.match(/^\/webFaq$/)) {
+        $('header .logo-with-text').wrap('<a href="/"></a>');
+      }
     },
 
     success: function (index, data) {

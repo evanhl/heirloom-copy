@@ -43,6 +43,8 @@ app.use(function(req, res, next) {
     req.url = '/press.html';
   } else if (req.url.match(/\/faq$/)) {
     req.url = '/faq.html';
+  } else if (req.url.match(/\/webFaq$/)) {
+    req.url = '/faq.html';
   } else if (!req.url.match(/\.js$|\.css$|\.gif$|\.svg$|\.png$|\.jpg$|\.md$|\.html$|\.ico$|\.woff$/)) {
     req.url = '/index.html';
   }
