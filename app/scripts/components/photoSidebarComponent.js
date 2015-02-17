@@ -27,9 +27,6 @@ App.PhotoSidebarComponent = Ember.Component.extend({
   },
 
   isDescriptionEdit: function () {
-    console.log('editingDescription', this.get('editingDescription'));
-    console.log('description', this.get('description'));
-    console.log('photo.hasBeenEdited', this.get('photo.hasBeenEdited'));
     return this.get('editingDescription') || (!this.get('description') && !this.get('photo.hasBeenEdited'));
   }.property('editingDescription', 'description', 'photo.hasBeenEdited'),
 

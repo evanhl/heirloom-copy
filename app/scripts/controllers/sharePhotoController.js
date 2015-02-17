@@ -3,6 +3,7 @@ App.SharePhotoController = App.BasePhotoController.extend({
   needs: ['share'],
   photos: Ember.computed.alias('controllers.share'),
   photosModel: Ember.computed.alias('photos.photos'),
+  metadataDisabled: true,
 
   toPhoto: function (toId) {
     if (!toId) { return; }
