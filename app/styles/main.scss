@@ -52,12 +52,12 @@ textarea {
   font-size: 0.875rem;
   transition: border-color 0.15s ease-in-out;
   width: 100%;
-  border: 1px solid $subtle-highlight-color;
+  border: 1px solid $subtler-highlight-color;
 
   &:focus {
     box-shadow: none;
     background: white;
-    border-color: $subtler-highlight-color;
+    border-color: $subtle-highlight-color;
     outline: 0;
   }
 
