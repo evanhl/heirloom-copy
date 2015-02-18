@@ -14,7 +14,7 @@ App.BodyFocusOutMixin = Ember.Mixin.create({
   }.on('willDestroyElement'),
 
   onBodyClick: function (e) {
-    if (!$(e.target).closest(this.getDomSelf()).length) {
+    if (!$(e.target).closest(this.getDomSelf()).length && !this.get('isDestroyed')) {
       this.onFocusOut();
     }
   },
