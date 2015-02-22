@@ -164,6 +164,12 @@ Ember.I18n.translations = {
   'twitter': 'Twitter',
   'email': 'Email',
 
+  'faq': 'FAQ',
+  'jobs': 'Jobs',
+  'press': 'Press',
+  'contact': 'Contact',
+  'blog': 'Blog',
+
   'emailAddress': 'Email Address',
   'firstLastName': 'First & Last Name',
 
