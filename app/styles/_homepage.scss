@@ -141,7 +141,7 @@ background-size: auto 576px;
     height: 90%;
     left: 50%;
     width: 50%;
-    top: -15px;
+    top: -6px;
     display: table;
     z-index: 1;
   }
@@ -173,6 +173,7 @@ background-size: auto 576px;
   right: 0;
   left: 0;
   bottom: 0;
+  max-width: 1050px;
   transform: translateX(-93px);
 
   @media #{$tablet-size} {
