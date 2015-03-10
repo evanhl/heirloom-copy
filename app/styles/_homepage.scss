@@ -139,9 +139,9 @@ background-size: auto 576px;
   .right-section {
     position: absolute;
     height: 90%;
-    left: 56%;
+    left: 50%;
     width: 50%;
-    top: -47px;
+    top: -15px;
     display: table;
     z-index: 1;
   }
@@ -170,9 +170,10 @@ background-size: auto 576px;
   position: absolute;
   margin: auto;
   top: 0;
-  right: 93px;
+  right: 0;
   left: 0;
   bottom: 0;
+  transform: translateX(-93px);
 
   @media #{$tablet-size} {
 
@@ -188,11 +189,10 @@ background-size: auto 576px;
   display: table-cell;
   vertical-align: middle;
   width: 100%;
-  padding-left: 42px;
+  padding-left: 65px;
 
   p.description {
-    width: 70%;
-    max-width: 430px;
+    max-width: 324px;
     color: $alt-text-color;
     margin-bottom: 1.9em;
   }
