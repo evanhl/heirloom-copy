@@ -1,0 +1,78 @@
+<!DOCTYPE html><!-- Any copyright is dedicated to the Public Domain.
+   - http://creativecommons.org/publicdomain/zero/1.0/ --><html><head><style>body {
+    font-family: Helvetica;
+  }</style><script src=/bower_components/jquery/dist/jquery.js></script><script src=jpg.js></script><script src=image.js></script><script>function loadImages(urls, loadImagesComplete) {
+  var images = [];
+  var i;
+  for (i = 0; i < urls.length; i++) {
+
+    loadImage(urls[i], i, function (image, imageIndex) {
+      images[imageIndex] = image;
+      if (countValidImages(images) == urls.length) {
+        loadImagesComplete(images);
+      }
+    });
+  }
+}
+
+function countValidImages(images) {
+  var i;
+  var count = 0;
+  for (i = 0; i < images.length; ++i) {
+    if (images[i]) { count++; }
+  }
+  return count;
+}
+
+function loadImage(url, imageIndex, loadImageComplete) {
+  var j = new JpegImage();
+  j.onload = function () {
+    debugger;
+    loadImageComplete(j, imageIndex);
+  };
+  j.load(url);
+}
+
+function meanDiff(images) {
+  var iComp;
+  var iChannel;
+  var aChannel;
+  var bChannel;
+  var channelLength;
+  var channelsLength = 0;
+  var diffTally = 0;
+  var diff;
+  var channelMax = 0;
+
+  for (iComp = 0; iComp < 3; iComp++) {
+    aChannel = images[0].components[iComp].output;
+    bChannel = images[1].components[iComp].output;
+    channelMax = 0;
+
+    channelLength = aChannel.length;
+
+    channelsLength += channelLength;
+    for (iChannel = 0; iChannel < channelLength; iChannel++) {
+      diff = Math.abs(aChannel[iChannel] - bChannel[iChannel]);
+      if (diff) {
+        diffTally += diff;
+      }
+      // if (iChannel % 10000 == 0) { console.log(diffTally) }
+      channelMax = Math.max(channelMax, aChannel[iChannel])
+    }
+    console.log('channelMax', channelMax);
+  }
+
+  return diffTally / channelsLength;
+}
+
+
+$(function () {
+  var urls = [
+    "derbyshire-heirloomOrig.jpg",
+    "derbyshire-orig-q90.jpg"
+  ];
+  loadImages(urls, function (images) {
+    $('h1').html(urls[0] + '<br>' + urls[1] + '<br>' + meanDiff(images));
+  });
+});</script><body onload=""><h1></h1>

@@ -1,6 +1,5 @@
 /.sass-cache
 /.tmp
-/dist
 .DS_Store
 newrelic_agent.log
 .gitconfig

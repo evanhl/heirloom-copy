@@ -1,0 +1,165 @@
+<!DOCTYPE html><!-- Any copyright is dedicated to the Public Domain.
+   - http://creativecommons.org/publicdomain/zero/1.0/ --><html><head><style>body {
+    font-family: Helvetica;
+  }</style><script src=/bower_components/jquery/dist/jquery.js></script><script src=jpg.js></script><script src=image.js></script><script>var imageData;
+var imageDataOrig;
+var ctx;
+var c;
+var j;
+
+function displayImage(canvasId, url) {
+  j = new JpegImage();
+  j.onload = function() {
+    c = document.getElementById(canvasId);
+    c.width = j.width;
+    c.height = j.height;
+    ctx = c.getContext("2d");
+    imageData = ctx.getImageData(0,0,j.width,j.height);
+
+    var tDecode = timeThis(function () {
+      j.copyToImageData(imageData);
+    });
+
+    imageDataOrig = ctx.createImageData(imageData);
+    for (var i = 0; i < imageData.data.length; ++i) {
+      imageDataOrig.data[i] = imageData.data[i];
+    }
+
+    modSaturation(0.4);
+    putImage();
+
+    $('#timing1').html("Decode time: " + tDecode + "ms");
+  };
+  j.load(url);
+}
+
+function modSaturation2(saturation) {
+  var tProcessTime = timeThis(function () {
+    var heapImage = Module._malloc(imageDataOrig.data.length);
+    Module.HEAPU8.set(imageDataOrig.data, heapImage);
+    _modSaturation(heapImage, j.width, j.height, saturation);
+
+    for (var i = 0; i < imageData.data.length; ++i) {
+      var val = Module.getValue(heapImage + i);
+      imageData.data[i] = val >= 0 ? val : (256 + val);
+    }
+
+    Module._free(heapImage);
+    ctx.putImageData(imageData, 0, 0);
+  });
+  $('#timing2').html("Process time: " + tProcessTime + "ms");
+}
+
+function modConvolution2(sharpness) {
+  var tProcessTime = timeThis(function () {
+    var denom = 8;
+    var matrix = new Int8Array([   0, -1,  0,
+                                  -1,  5, -1,
+                                   0, -1,  0]);
+
+    matrix[4] = sharpness * denom;
+    matrix[1] = matrix[3] = matrix[5] = matrix[7] = ((1 - sharpness) / 4) * denom;
+
+    var heapImage = Module._malloc(imageDataOrig.data.length);
+    var heapImageOut = Module._malloc(imageDataOrig.data.length);
+    var heapMatrix = Module._malloc(9);
+    Module.HEAPU8.set(imageDataOrig.data, heapImage);
+    Module.HEAPU8.set(matrix, heapMatrix);
+    console.log(_modConvolution(heapImage, heapImageOut, j.width, j.height, heapMatrix, denom));
+
+    for (var i = 0; i < imageData.data.length; ++i) {
+      var val = Module.getValue(heapImageOut + i);
+      imageData.data[i] = val >= 0 ? val : (256 + val);
+    }
+
+    Module._free(heapImage);
+    Module._free(heapImageOut);
+    Module._free(heapMatrix);
+    ctx.putImageData(imageData, 0, 0);
+  });
+  $('#timing2').html("Process time: " + tProcessTime + "ms");
+}
+
+function modSaturation(saturation) {
+  var invSaturation = 1 - saturation;
+  var tModTime = timeThis(function () {
+    var imageDataData = imageData.data;
+    var imageDataOrigData = imageDataOrig.data;
+    var len = imageData.data.length;
+    var luminance, gOffset, bOffset;
+    for (var i = 0; i < len; ++i) {
+      if (i % 4 == 0) {
+        gOffset = i + 1;
+        bOffset = i + 2;
+
+        luminance = (imageDataOrigData[i] + imageDataOrigData[gOffset] + imageDataOrigData[bOffset]) / 3;
+
+        imageDataData[i] = (luminance * (invSaturation)) + (imageDataOrigData[i] * saturation);
+        imageDataData[gOffset] = (luminance * (invSaturation)) + (imageDataOrigData[gOffset] * saturation);
+        imageDataData[bOffset] = (luminance * (invSaturation)) + (imageDataOrigData[bOffset] * saturation);
+      }
+    }
+  });
+  $('#timing2').html("Mod color time: " + tModTime + "ms");
+}
+
+function modConvolution() {
+  var matrix = [[ 0, -1,  0],
+                [-1,  5, -1],
+                [ 0, -1,  0]];
+  var matrixCenterX = 1;
+  var matrixCenterY = 1;
+
+  var tModTime = timeThis(function () {
+    var imageDataData = imageData.data;
+    var imageDataOrigData = imageDataOrig.data;
+    var len = imageData.data.length;
+    var luminance, gOffset, bOffset;
+
+    var hSkip = 4;
+    var vSkip = imageData.width * 4;
+    var channelPixelVal;
+    for (var i = 0; i < len; ++i) {
+      if (i % 4 !== 3) {
+        channelPixelVal = 0;
+
+        for (var j = 0; j <= 2; j++) {
+          for (var k = 0; k <= 2; k++) {
+            // console.log(i, j, k, i + (hSkip * (j - matrixCenterX)) + (vSkip * (k - matrixCenterY)));
+
+            origVal = (imageDataOrigData[i + (hSkip * (j - matrixCenterX)) + (vSkip * (k - matrixCenterY))]  * matrix[j][k]);
+            channelPixelVal += origVal;
+          }
+        }
+
+        imageDataData[i] = channelPixelVal;
+      }
+    }
+  });
+  $('#timing2').html("Sharpen: " + tModTime + "ms");
+}
+
+function putImage() {
+  ctx.putImageData(imageData, 0, 0);
+}
+
+$(function () {
+  displayImage("c1", "flowers2_800.jpg");
+
+  $('#saturation').on('change', function () {
+    modSaturation2($(this).val());
+    putImage();
+  });
+
+  $('#sharpness').on('change', function () {
+    modConvolution2($(this).val());
+    // putImage();
+  });
+});
+
+function timeThis(f) {
+  var t0;
+  t0 = new Date().getTime();
+  f();
+  return new Date().getTime() - t0;
+}</script><body onload=""><canvas id=c1></canvas><h1 id=timing1></h1><h1 id=timing2></h1><h1 id=timing3></h1><!-- <input type="number" id="saturation" min="0" max="2" step="0.1" value="0" style="font-size: 25px;"> --><input type=number id=sharpness min=0 max=15 step=1 value=5 style="font-size: 25px">
