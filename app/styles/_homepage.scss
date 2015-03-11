@@ -164,6 +164,14 @@ background-size: auto 576px;
       height: auto;
     }
   }
+
+  @media #{$phone-size} {
+    height: 850px;
+
+    .flex-height-cont {
+      height: 850px;
+    }
+  }
 }
 
 .hp-phone {
