@@ -219,12 +219,12 @@ $wizard-icon-height: 68px;
 
 .play-store {
   display: inline-block;
-  @include sprite-retina($google_play, $google_play-2x);
+  @include sprite-retina($google_play_v2, $google_play_v2-2x);
 }
 
 .app-store {
   display: inline-block;
-  @include sprite-retina($app_store, $app_store-2x);
+  @include sprite-retina($app_store_v2, $app_store_v2-2x);
 }
 
 .wizard-tag {

@@ -128,20 +128,12 @@ background-size: auto 576px;
   min-height: 600px;
   height: 100vh;
   width: 100%;
-  background-image: url(/images/homepage-product-bg.jpg);
-  background-size: cover;
+  background: $homepage-product-bg-color;
+  position: relative;
 
   h2 {
     color: $alt-text-color;
     max-width: 380px;
-  }
-
-  .left-section {
-    position: absolute;
-    left: 0;
-    width: 50%;
-    top: 45%;
-
   }
 
   .right-section {
@@ -149,9 +141,9 @@ background-size: auto 576px;
     height: 90%;
     left: 50%;
     width: 50%;
-    top: 0;
+    top: -6px;
     display: table;
-
+    z-index: 1;
   }
 
   .flex-height-cont {
@@ -160,16 +152,9 @@ background-size: auto 576px;
 
   @media #{$tablet-size} {
     height: 950px;
-    background-image: url(/images/product_background_small.jpg);
 
     .flex-height-cont {
       height: 950px;
-    }
-
-    .left-section {
-      position: static;
-      width: 100%;
-      height: auto;
     }
 
     .right-section {
@@ -179,40 +164,39 @@ background-size: auto 576px;
       height: auto;
     }
   }
-}
 
-.hp-phone-cont {
-  height: 552px;
-  width: 485px;
-  margin-top: -253px;
-  float: right;
-  padding-right: 18px;
+  @media #{$phone-size} {
+    height: 850px;
 
-  @media #{$tablet-size} {
-    float: none;
-    margin: 30px auto;
-    padding: 0;
-    height: auto;
-    width: auto;
+    .flex-height-cont {
+      height: 850px;
+    }
   }
 }
 
 .hp-phone {
-  background: url(/images/phones_homepage_smaller.png) no-repeat;
-  height: 552px;
-  width: 485px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  width: 1050px;
+  height: 540px;
+  transform: translateX(-93px);
+  background: url(/images/product_section_2x.jpg) no-repeat;
+  background-size: 100%;
 
   @media #{$tablet-size} {
-    background-size: 100% auto;
-    height: 552px * 0.8;
-    width: 485px * 0.8;
-    margin: 0 auto;
+    position: static;
   }
 
   @media #{$phone-size} {
-    height: 552px * 0.6;
-    width: 485px * 0.6;
-    margin: 0 auto;
+    width: 100%;
+    transform: none;
+    max-width: 100%;
+    background: url(/images/product_section_mobile_2x.jpg) no-repeat;
+    background-size: 100%;
   }
 }
 
@@ -225,11 +209,10 @@ background-size: auto 576px;
   display: table-cell;
   vertical-align: middle;
   width: 100%;
-  padding-left: 42px;
+  padding-left: 65px;
 
   p.description {
-    width: 70%;
-    max-width: 430px;
+    max-width: 324px;
     color: $alt-text-color;
     margin-bottom: 1.9em;
   }
@@ -242,7 +225,9 @@ background-size: auto 576px;
     text-align: center;
 
     p.description {
+      width: 70%;
       margin: 0 auto;
+      max-width: 430px;
     }
   }
 
