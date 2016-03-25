@@ -4,7 +4,7 @@
   "dependencies": {
     "compression": "^1.0.8",
     "express": "^4.3.2",
-    "grunt-cli": "^1.1.0",
+    "grunt": "^0.4.5",
     "grunt-cdn": "git://github.com/HeirloomTech/grunt-cdn",
     "grunt-ember-templates": "0.5.0-alpha",
     "ember-template-compiler": "1.9.0-alpha",
@@ -13,7 +13,6 @@
   },
   "devDependencies": {
     "connect-modrewrite": "^0.7.6",
-    "grunt": "^0.4.5",
     "grunt-autoprefixer": "^2.0.0",
     "grunt-cdn": "~0.6.0",
     "grunt-concurrent": "~0.5.0",
@@ -49,6 +48,6 @@
   },
   "scripts": {
     "test": "grunt --verbose",
-    "postinstall": "grunt build"
+    "postinstall": "npm install -g grunt-cli && grunt build"
   }
 }
