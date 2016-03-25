@@ -12,9 +12,7 @@
     "ember-template-compiler": "1.9.0-alpha",
     "newrelic": "^1.12.1",
     "prerender-node": "^1.1.1",
-    "time-grunt": "~0.3.1"
-  },
-  "devDependencies": {
+    "time-grunt": "~0.3.1",
     "grunt-autoprefixer": "^2.0.0",
     "grunt-cdn": "~0.6.0",
     "grunt-concurrent": "~0.5.0",
