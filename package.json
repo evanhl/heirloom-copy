@@ -48,6 +48,6 @@
   },
   "scripts": {
     "test": "grunt --verbose",
-    "postInstall": "npm install -g grunt-cli && grunt build"
+    "postinstall": "npm install -g grunt-cli && grunt build"
   }
 }
