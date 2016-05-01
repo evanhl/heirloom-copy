@@ -467,3 +467,11 @@ On Android:
 2. Tap on your profile picture at the top.
 3. Take a photo or select a photo from your gallery.
 4. Confirm by tapping ‘Save’.
+
+## Mylestoned
+
+### Who is Mylestoned?
+
+In March, 2016 Mylestoned, Inc. acquired Heirloom and is the new company that will bring Heirloom to you – we are based out of Boston and are in the business of capturing and delivering dynamic memories to delight users. Over the coming weeks/months you may hear from Mylestoned when we start to offer more services.
+
+And before you ask if there will be any changes with your amazing photos - the simple answer is that no changes will be made to how your accounts or photos will be treated. Repeat, none. The only real difference is that our lawyers updated the [Privacy Policy](https://www.heirloom.net/privacy) and [End User Terms of Use](https://www.heirloom.net/terms) to reflect the new owner and location of Heirloom – you should check those documents out when you have a minute. If you have any questions about the ownership of Heirloom, you can reach out using any of the contact tools you find on the Heirloom site or in the Heirloom app or by emailing us at <a href="mailto:heirloom@mylestoned.com">heirloom@mylestoned.com</a>. We would love to hear from you.

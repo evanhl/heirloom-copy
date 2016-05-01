@@ -1,8 +1,8 @@
 # HEIRLOOM PRIVACY POLICY
 
-**Last Updated: September 26, 2014**
+**Last Updated: April 30, 2016**
 
-This privacy policy (this “**Policy**”) describes the collection of personal information by Heirloom Technology, Inc. (“**Heirloom**,” “**we**,” or “**us**”) from users of the website www.heirloom.net (the “**Website**”) and any mobile applications (each, an “**App**”) or other Internet services under Heirloom’s control (the Website, App, and such Internet services are, collectively, our “**Services**”). This Policy also describes our use and disclosure of such information. By using our Services, you consent to the collection, use, and disclosure of personal information in accordance with this Policy. This Policy is incorporated by reference into Heirloom’s End User License Agreement and Terms of Service (the “**EULA**”) and is subject to the provisions of the EULA.
+This privacy policy (this “**Policy**”) describes the collection of personal information by Mylestoned, Inc., successor in interest to Heirloom Technology, Inc. and doing business as Heirloom by Mylestoned (“**Heirloom**,” “**we**,” or “**us**”) from users of the website www.heirloom.net (the “**Website**”), the Heirloom mobile applications or other related Internet services under Heirloom’s control (the Website, applications, and Internet services are, collectively, our “**Services**”). This Policy also describes our use and disclosure of such information. By using our Services, you consent to the collection, use, and disclosure of personal information in accordance with this Policy. In addition, by using the Services, you accept Heirloom’s [End User License Agreement and Terms of Service](/terms) (the “**EULA**”).
 
 **Personal Information**
 
@@ -30,6 +30,10 @@ We may collect this information passively using technologies such as standard se
 
 Also, please be aware that third parties, such as companies displaying advertisements on the Services or sites or services provided by third parties (“Third-Party Sites”) that may be linked to from the Services, may set cookies on your hard drive or use other means of passively collecting information about your use of their services, Third-Party Sites or content. We do not have access to, or control over, these third-party means of passive data collection.
 
+<em>Location-based data</em>
+
+When you access the Services by or through a mobile device, we may access, collect, monitor and/or remotely store “location data,” which may include GPS coordinates (e.g. latitude and/or longitude) or similar information regarding the location of your mobile device.  Location data may convey to us information about how you browse and use the Services.  You will always have the option to disable location-based services through your settings on your mobile device.  Some features of the Services, particularly location-based services, may not function properly if use or availability of location data is impaired or disabled.
+
 **Use of Personal Information**
 
 We use Personal Information to provide services and information that you request; to enhance, improve, operate, and maintain our Services, our programs, services, websites, and other systems; to prevent fraudulent use of our Services and other systems; to prevent or take action against activities that are, or may be, in violation of the EULA or applicable law; to tailor content, and other aspects of your experience on and in connection with the Services; to maintain a record of our dealings with you; for other administrative purposes; and for any other purposes that we may disclose to you at the point at which we request your Personal Information, and pursuant to your consent.
@@ -56,13 +60,13 @@ We also disclose Personal Information if we believe that doing so is legally req
 
 *Choice*
 
-If you receive commercial e-mail from us, you may unsubscribe at any time by following the instructions contained within the e-mail. You may also opt-out from receiving commercial e-mail from us by sending your request to us by e-mail at [feedback@heirloom.net](feedback@heirloom.net) or by writing to us at the address given at the end of this policy.
+If you receive commercial e-mail from us, you may unsubscribe at any time by following the instructions contained within the e-mail. You may also opt-out from receiving commercial e-mail from us by sending your request to us by e-mail at <a href="mailto:heirloom@mylestoned.com">heirloom@mylestoned.com</a> or by writing to us at the address given at the end of this policy.
 
 Please be aware that if you opt-out of receiving commercial e-mail from us, it may take up to ten (10) business days for us to process your opt-out request, and you may receive commercial e-mail from us during that period. Additionally, even after you opt-out from receiving commercial messages from us, you will continue to receive administrative messages from us regarding our Services.
 
 *Access*
 
-You may have the ability to access and update many categories of Personal Information that you provide to us by logging in to your account and accessing your account settings. If you wish to access or amend any other Personal Information we hold about you, you may contact us at [feedback@heirloom.net](feedback@heirloom.net).
+You may have the ability to access and update many categories of Personal Information that you provide to us by logging in to your account and accessing your account settings. If you wish to access or amend any other Personal Information we hold about you, you may contact us at <a href="mailto:heirloom@mylestoned.com">heirloom@mylestoned.com</a>.
 
 If you request that we delete your account on any of our Services, we will do so within a reasonable period of time, but we may need to retain some of your Personal Information in order to satisfy our legal obligations, or where we reasonably believe that we have a legitimate reason to do so.
 
@@ -72,7 +76,7 @@ The Services may contain links to other websites, products, or services that we 
 
 *Children*
 
-Children’s safety is important to us, and we encourage parents and guardians to take an active interest in the online activities of their children. Our Services are not directed to and should not be used by children under the age of 13, and we do not knowingly collect Personal Information from children under the age of 13. If we learn that we have collected Personal Information from a child under the age of 13 on our Services, we will delete that information as quickly as possible. If you believe that we may have collected any such Personal Information on our Services, please notify us at [feedback@heirloom.net](feedback@heirloom.net).
+Children’s safety is important to us, and we encourage parents and guardians to take an active interest in the online activities of their children. Our Services are not directed to and should not be used by children under the age of 13, and we do not knowingly collect Personal Information from children under the age of 13. If we learn that we have collected Personal Information from a child under the age of 13 on our Services, we will delete that information as quickly as possible. If you believe that we may have collected any such Personal Information on our Services, please notify us at <a href="mailto:heirloom@mylestoned.com">heirloom@mylestoned.com</a>.
 
 *International Visitors*
 
@@ -91,7 +95,4 @@ We may occasionally update this Policy. When we do, we will also revise the “l
 
 If you have any questions or comments about this Policy, please contact us using the following contact information:
 
-Heirloom Technology, Inc.
-650 2nd St., #405
-San Francisco, California 94107
-[feedback@heirloom.net](feedback@heirloom.net)
+Heirloom by Mylestoned, c/o Mylestoned, Inc., 500 Harrison Ave. Ste 3R, Boston, MA 02118, or by email at <a href="mailto:heirloom@mylestoned.com">heirloom@mylestoned.com</a>.
