@@ -1,6 +1,6 @@
 # End User License Agreement and Terms of Use
 
-**Last Updated Date:** December 15, 2014
+**Last Updated Date:** April 30, 2016
 
 1. Introduction and Eligibility
 
